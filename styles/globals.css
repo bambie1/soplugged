@@ -14,3 +14,226 @@ a {
 * {
   box-sizing: border-box;
 }
+img {
+  max-height: 100%;
+}
+.page {
+  margin: auto;
+  min-height: 85vh;
+  padding-top: 60px;
+}
+.bodyContent {
+  padding: 1.15rem;
+  max-width: 1400px;
+  margin: auto;
+}
+.hero {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  padding: 1.15rem;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  transition: background 2s ease;
+  text-decoration: none;
+  /* max-height: 450px;
+  min-height: 380px; */
+  height: 550px;
+  z-index: 1;
+  justify-content: center;
+}
+.hero-side-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+  max-width: 50%;
+  height: 80%;
+  overflow: hidden;
+}
+.hero-text-overlay {
+  max-width: 650px;
+  width: 100%;
+  z-index: 3;
+  text-align: center;
+}
+.gap {
+  flex-grow: 1;
+}
+.sectionDesktop {
+  display: none;
+}
+.sectionMobile {
+  display: flex;
+}
+.carousel-item {
+  padding: 0px 6px;
+  margin-top: 8px;
+}
+.carousel-item:nth-child(1) {
+  padding-left: 0px;
+}
+
+.footer {
+  padding: 16px 0px 8px 0px;
+  margin-top: 10vh;
+  min-height: 5vh;
+  text-align: center;
+  background-color: #cdb693;
+}
+.footer-container {
+  margin: 16px auto 0px;
+}
+.footer-links-div > * {
+  display: block;
+}
+@media only screen and (min-width: 600px) {
+  .sectionMobile {
+    display: none;
+  }
+  .sectionDesktop {
+    display: flex;
+  }
+  .sectionDesktop > * {
+    margin: 0 8px;
+  }
+}
+
+/* ALGOLIA */
+:root {
+  --dark: #4e3505;
+  --light: #cdb693;
+}
+.ais-Hits-item {
+  width: calc(100% - 1rem);
+  word-break: break-word;
+}
+[class^="ais-"] {
+  font-size: inherit;
+  font-family: inherit;
+}
+.ais-Highlight-highlighted,
+.ais-Snippet-highlighted {
+  background-color: #bdbdbd;
+  font-style: normal;
+}
+.search-algolia {
+  max-width: 700px;
+  margin: 0px auto 16px;
+  display: flex;
+  flex-direction: column;
+}
+input.ais-SearchBox-input:focus,
+input.react-autosuggest__input:focus {
+  outline-color: var(--dark);
+}
+.ais-PoweredBy {
+  display: inline-flex;
+  font-size: 0.7rem;
+  margin-left: auto;
+}
+.ais-Pagination-link {
+  color: var(--dark);
+}
+.ais-Pagination-link:hover {
+  color: var(--dark);
+}
+.ais-Pagination-item--selected .ais-Pagination-link {
+  color: #fff;
+  background-color: var(--dark);
+  border-color: var(--dark);
+}
+.ais-Pagination {
+  margin-top: 16px;
+}
+.ais-ClearRefinements {
+  display: flex;
+}
+.ais-ClearRefinements-button[disabled] {
+  display: none;
+}
+.ais-ClearRefinements-button {
+  background-color: var(--dark);
+  display: inline-flex;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+.ais-ClearRefinements-button:hover {
+  background-color: var(--light);
+  color: var(--dark);
+}
+.left-panel > * {
+  margin: 8px 0px;
+}
+.ais-Stats-text {
+  font-size: 0.8rem;
+  display: flex;
+  margin: 1rem auto 0.1rem;
+}
+.ais-CurrentRefinements {
+  margin: 2px 0px 16px;
+}
+li.ais-CurrentRefinements-item {
+  font-size: 0.7rem;
+  flex-wrap: wrap;
+  background-color: var(--light);
+}
+.autocomplete-search-container {
+  margin-top: 24px;
+}
+input.react-autosuggest__input {
+  width: 90%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Raleway";
+  border-radius: 5px;
+  border-color: transparent;
+}
+/* .react-autosuggest__container {
+  display: flex;
+} */
+.react-autosuggest__suggestions-container {
+  position: relative;
+}
+.react-autosuggest__suggestions-list {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0px;
+  position: absolute;
+  background: #fffaf2;
+  width: 100%;
+}
+.react-autosuggest__suggestion {
+  padding: 8px;
+  border-bottom: 1px solid var(--dark);
+  font-family: "Raleway";
+  cursor: pointer;
+}
+.autocompleteTags {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+@media only screen and (min-width: 600px) {
+  .ais-Hits-item {
+    width: calc(50% - 1rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .ais-Hits-item {
+    width: calc(33.3% - 1rem);
+  }
+  .results-filters {
+    display: flex;
+  }
+  .left-panel {
+    width: calc(20% - 10px);
+    margin-right: 10px;
+    margin-top: 10vh;
+  }
+  .right-panel {
+    width: 80%;
+  }
+}

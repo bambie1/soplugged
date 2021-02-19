@@ -1,65 +1,99 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { Typography, Button, Container, Grid } from "@material-ui/core";
+import Link from "next/link";
+import HeroBanner from "../components/HeroBanner";
+import CategoriesCarousel from "../components/CategoriesCarousel";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
+        />
+        <title>Find the perfect black-owned business for your needs.</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div>
+        <HeroBanner />
+        <div className="bodyContent">
+          <br></br>
+          <Typography variant="h6">Popular Categories:</Typography>
+          <CategoriesCarousel />
+          <br></br>
+          <Link href="/search">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ margin: "16px auto 0px", display: "flex" }}
+            >
+              View All Businesses
+            </Button>
+          </Link>
+          <br></br>
+          <br></br>
+          <hr style={{ width: "70%" }} />
+          <Container maxWidth="lg">
+            <Grid container className={styles.homeInfo}>
+              <Grid item xs={12} sm={6}>
+                <img
+                  src="/images/undraw_Web_search.png"
+                  alt="Browse illustration"
+                  className={styles.undraw}
+                />
+              </Grid>
+              <Grid item xs={12} sm={5} className={styles.infoText}>
+                <Typography style={{ fontSize: "1.2rem" }}>
+                  Browse our directory to find and connect with the perfect
+                  black-owned business for your needs
+                </Typography>
+                <Link href="/search">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ margin: "16px 0px", fontSize: "1.1rem" }}
+                  >
+                    BROWSE
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item sm={1}></Grid>
+            </Grid>
+            <Grid
+              container
+              className={`${styles.homeInfo} ${styles.secondGrid}`}
+            >
+              <Grid item sm={1}></Grid>
+              <Grid item xs={12} sm={5} className={styles.infoText}>
+                <Typography style={{ fontSize: "1.2rem" }}>
+                  Register your business to have your services featured on our
+                  platform and join a community of black entrepreneurs.
+                </Typography>
+                <Link href="/join">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ margin: "16px 0px", fontSize: "1.1rem" }}
+                  >
+                    REGISTER
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <img
+                  src="/images/undraw_Portfolio.png"
+                  alt="undraw portfolio"
+                  className={styles.undraw}
+                />
+              </Grid>
+            </Grid>
+          </Container>
+          <br></br>
+          {/* <br></br>
+          <SubscribeForm /> */}
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      </div>
+    </>
+  );
 }
