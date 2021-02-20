@@ -17,7 +17,7 @@ const HeroBanner = () => {
         >
           Find the perfect <em>black-owned</em> business for your needs.
         </Typography>
-        {/* <AlgoliaAutoComplete /> */}
+        <AlgoliaAutoComplete />
       </section>
     </header>
   );

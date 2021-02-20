@@ -4,8 +4,23 @@ import { Typography, Button, Container, Grid } from "@material-ui/core";
 import Link from "next/link";
 import HeroBanner from "../components/HeroBanner";
 import CategoriesCarousel from "../components/CategoriesCarousel";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  media: {
+    height: 140,
+  },
+  undraw: {
+    maxWidth: "90%",
+  },
+  infoText: {
+    textAlign: "Center",
+  },
+}));
 
 export default function Home() {
+  const classes = useStyles();
+
   return (
     <>
       <Head>
@@ -17,7 +32,7 @@ export default function Home() {
       </Head>
       <div>
         <HeroBanner />
-        <div className="bodyContent">
+        <div className="body-content">
           <br></br>
           <Typography variant="h6">Popular Categories:</Typography>
           <CategoriesCarousel />
@@ -35,15 +50,15 @@ export default function Home() {
           <br></br>
           <hr style={{ width: "70%" }} />
           <Container maxWidth="lg">
-            <Grid container className={styles.homeInfo}>
+            <Grid container className="home-info">
               <Grid item xs={12} sm={6}>
                 <img
                   src="/images/undraw_Web_search.png"
                   alt="Browse illustration"
-                  className={styles.undraw}
+                  className={classes.undraw}
                 />
               </Grid>
-              <Grid item xs={12} sm={5} className={styles.infoText}>
+              <Grid item xs={12} sm={5} className={classes.infoText}>
                 <Typography style={{ fontSize: "1.2rem" }}>
                   Browse our directory to find and connect with the perfect
                   black-owned business for your needs
@@ -60,12 +75,9 @@ export default function Home() {
               </Grid>
               <Grid item sm={1}></Grid>
             </Grid>
-            <Grid
-              container
-              className={`${styles.homeInfo} ${styles.secondGrid}`}
-            >
+            <Grid container className="home-info second-grid">
               <Grid item sm={1}></Grid>
-              <Grid item xs={12} sm={5} className={styles.infoText}>
+              <Grid item xs={12} sm={5} className={classes.infoText}>
                 <Typography style={{ fontSize: "1.2rem" }}>
                   Register your business to have your services featured on our
                   platform and join a community of black entrepreneurs.
@@ -84,7 +96,7 @@ export default function Home() {
                 <img
                   src="/images/undraw_Portfolio.png"
                   alt="undraw portfolio"
-                  className={styles.undraw}
+                  className={classes.undraw}
                 />
               </Grid>
             </Grid>

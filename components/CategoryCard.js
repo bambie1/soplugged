@@ -1,13 +1,63 @@
 import { Typography } from "@material-ui/core";
-import styles from "../styles/Home.module.css";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    position: "relative",
+    color: "white",
+    cursor: "pointer",
+    borderRadius: "5px",
+    overflow: "hidden",
+    height: "250px",
+    "&:hover": {
+      "& img": {
+        transform: "scale(1.1)",
+      },
+    },
+  },
+  title: {
+    position: "absolute",
+    bottom: "0",
+    left: "50%",
+    width: "calc(100% - 10px)",
+    textAlign: "center",
+    transform: "translate(-50%, -50%)",
+    display: "block",
+    fontWeight: "bold",
+    wordBreak: "break-word",
+    fontSize: "1.2rem",
+    textTransform: "uppercase",
+  },
+  overlay: {
+    position: "absolute",
+    top: "0",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#757575bd",
+    borderRadius: "5px",
+    transition: "all 0.5s ease-in-out",
+    "&:hover": {
+      backgroundColor: "#75757536",
+    },
+  },
+  bgImg: {
+    minWidth: "100%",
+    borderRadius: "5px",
+    height: "100%",
+    transition: "all 2s ease-in-out",
+  },
+}));
 
 const CategoryCard = ({ label, imgSrc, value }) => {
+  const classes = useStyles();
   const handleClick = () => {};
+
   return (
-    <div className={styles.cardRoot} onClick={handleClick}>
-      <img src={imgSrc} alt="category-display" className={styles.cardImage} />
-      <div className={styles.cardOverlay}></div>
-      <Typography className={styles.cardTitle}>{label}</Typography>
+    <div className={classes.root} onClick={handleClick}>
+      <img src={imgSrc} alt="category-display" className={classes.bgImg} />
+      <div className={classes.overlay}></div>
+      <Typography className={classes.title}>{label}</Typography>
     </div>
   );
 };

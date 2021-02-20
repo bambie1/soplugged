@@ -19,8 +19,8 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const searchClient = algoliasearch(
-  process.env.ALGOLIA_ID,
-  process.env.ALGOLIA_SEARCH_API
+  "1B4AKI9R9K",
+  "f5bbf47a5df167edb2d078c5db06de1a"
 );
 
 const AlgoliaSearch = () => {
@@ -34,12 +34,9 @@ const AlgoliaSearch = () => {
   return (
     <>
       <div className="ais-InstantSearch">
-        <InstantSearch
-          indexName={process.env.REACT_APP_ALGOLIA_BIZ_INDEX}
-          searchClient={searchClient}
-        >
+        <InstantSearch indexName="Business" searchClient={searchClient}>
           <div className="search-algolia">
-            <PoweredBy />
+            {/* <PoweredBy /> */}
             <SearchBox />
           </div>
           <div className="results-filters">

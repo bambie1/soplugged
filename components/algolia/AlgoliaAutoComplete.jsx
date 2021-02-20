@@ -4,8 +4,8 @@ import { InstantSearch, Configure } from "react-instantsearch-dom";
 import Autocomplete from "./Autocomplete";
 
 const searchClient = algoliasearch(
-  process.env.LOCAL_ALGOLIA_ID,
-  process.env.LOCAL_ALGOLIA_SEARCH
+  "0P514VMKM1",
+  "a991b7a115a14c6c44df6fb753511267"
 );
 
 const AlgoliaAutoComplete = () => {
