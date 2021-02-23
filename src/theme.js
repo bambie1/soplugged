@@ -21,6 +21,10 @@ export const theme = createMuiTheme({
     body1: {
       fontFamily: ["Raleway", "sans-serif"].join(","),
     },
+    h1: {
+      fontWeight: "700",
+      fontSize: "2.5rem",
+    },
     h5: {
       fontWeight: "bold",
       // textTransform: "uppercase",

@@ -19,8 +19,8 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const searchClient = algoliasearch(
-  "1B4AKI9R9K",
-  "f5bbf47a5df167edb2d078c5db06de1a"
+  process.env.NEXT_PUBLIC_ALGOLIA_ID,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API
 );
 
 const AlgoliaSearch = () => {
@@ -34,7 +34,10 @@ const AlgoliaSearch = () => {
   return (
     <>
       <div className="ais-InstantSearch">
-        <InstantSearch indexName="Business" searchClient={searchClient}>
+        <InstantSearch
+          indexName={process.env.NEXT_PUBLIC_ALGOLIA_BIZ_INDEX}
+          searchClient={searchClient}
+        >
           <div className="search-algolia">
             {/* <PoweredBy /> */}
             <SearchBox />
@@ -87,17 +90,5 @@ const AlgoliaSearch = () => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  // Using the variables below in the browser will return `undefined`. Next.js doesn't
-  // expose environment variables unless they start with `NEXT_PUBLIC_`
-  console.log("[Node.js only] ENV_VARIABLE:", process.env.ALGOLIA_ID);
-  console.log(
-    "[Node.js only] ENV_LOCAL_VARIABLE:",
-    process.env.ALGOLIA_SEARCH_API
-  );
-
-  return { props: {} };
-}
 
 export default AlgoliaSearch;

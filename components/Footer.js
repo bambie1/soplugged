@@ -3,6 +3,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -28,16 +29,19 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} className="footer-links-div">
-            <a href="https://www.soplugged.com/faqs" target="__blank">
+            <a href="https://www.soplugged.com/faqs" target="_blank">
               <Button>FAQs</Button>
             </a>
-            <a href="https://www.soplugged.com/blog" target="__blank">
-              <Button>BLOG</Button>
-            </a>
-            <a href="https://www.soplugged.com/our-story" target="__blank">
+
+            <Link href="/blog" target="_blank">
+              <a>
+                <Button>BLOG</Button>
+              </a>
+            </Link>
+            <a href="https://www.soplugged.com/our-story" target="_blank">
               <Button>ABOUT US</Button>
             </a>
-            <a href="https://www.soplugged.com/privacy-policy" target="__blank">
+            <a href="https://www.soplugged.com/privacy-policy" target="_blank">
               <Button>PRIVACY & TERMS</Button>
             </a>
           </Grid>

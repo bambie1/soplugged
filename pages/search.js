@@ -3,6 +3,7 @@ import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AlgoliaSearch from "../components/algolia/AlgoliaSearch";
 import Link from "next/link";
+import Head from "next/head";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -16,9 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Search = () => {
   const classes = useStyles();
-
   return (
     <>
+      <Head>
+        <meta
+          name="description"
+          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
+        />
+        <title>Business Directory | SoPlugged</title>
+      </Head>
       <div className={classes.page}>
         <Container maxWidth="lg" style={{ textAlign: "center" }}>
           <Typography

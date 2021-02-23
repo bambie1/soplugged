@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditBusiness = () => {
+const EditBusiness = ({ session }) => {
   const classes = useStyles();
-  const [fetching, setFetching] = useState(false);
   const [saving, setSaving] = useState(false);
 
+  // if (currentUser) {
   return (
     <>
       <Head>

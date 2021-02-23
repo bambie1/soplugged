@@ -17,10 +17,10 @@ import {
 } from "@material-ui/core";
 import { theme } from "../src/theme";
 import { useForm } from "react-hook-form";
-// import LocationSearch from "./LocationSearch";
+import LocationSearch from "./LocationSearch";
 import Form from "./Form";
-// import CategorySearch from "./CategorySearch";
-// import FileDropzone from "./FileDropzone";
+import CategorySearch from "./CategorySearch";
+import FileDropzone from "./FileDropzone";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -68,7 +68,8 @@ const BusinessInfoForm = ({ submitHandler }) => {
     setChecked(e.target.checked);
   };
   const onSubmit = (data) => {
-    // console.log(data);
+    console.log(data);
+    console.log(files);
     submitHandler(data, files);
   };
 
@@ -131,7 +132,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} key={currentBusiness?.category}>
-                  {/* <CategorySearch
+                  <CategorySearch
                     label="Business Category"
                     variant="outlined"
                     name="businessCategory"
@@ -144,7 +145,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                     }
                     defaultCategory={currentBusiness?.category || ""}
                     setInfoChanged={setInfoChanged}
-                  /> */}
+                  />
                 </Grid>
 
                 <Grid
@@ -153,7 +154,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                   sm={6}
                   key={currentBusiness?.business_location}
                 >
-                  {/* <LocationSearch
+                  <LocationSearch
                     label="Location of Business"
                     name="businessLocation"
                     ref={register({
@@ -168,7 +169,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                     }
                     defaultLocation={currentBusiness?.business_location || ""}
                     setInfoChanged={setInfoChanged}
-                  /> */}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -197,7 +198,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <InputLabel shrink>Business logo:</InputLabel>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap" }}>
                     <input
                       accept="image/png, image/jpeg"
                       className={classes.input}
@@ -235,11 +236,11 @@ const BusinessInfoForm = ({ submitHandler }) => {
                   </div>
                 </Grid>
                 <Grid item xs={12}>
-                  {/* <FileDropzone
+                  <FileDropzone
                     fbUrls={fbUrls}
                     setInfoChanged={setInfoChanged}
                     setFiles={setFiles}
-                  /> */}
+                  />
                 </Grid>
 
                 <Grid item xs={12} key={currentBusiness?.business_description}>
@@ -373,7 +374,8 @@ const BusinessInfoForm = ({ submitHandler }) => {
                     name="ownerEmail"
                     label="E-mail"
                     variant="outlined"
-                    defaultValue={currentUser?.email}
+                    defaultValue="info@mail.com"
+                    // defaultValue={currentUser?.email}
                     inputRef={register({
                       required: true,
                     })}
@@ -394,7 +396,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                 variant="contained"
                 className={classes.submit}
                 onClick={() => {
-                  setIsNewBusiness(false);
+                  // setIsNewBusiness(false);
                 }}
               >
                 View card

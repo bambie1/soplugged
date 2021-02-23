@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#4285f4",
     width: "calc(100% - 32px)",
     fontWeight: "bold",
-    marginBottom: "0px",
   },
   signInLink: {
     color: "#4e3505",
@@ -53,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Join = ({ session }) => {
+const SignIn = ({ session }) => {
   const [mail, setMail] = useState("");
   const [mailSent, setMailSent] = useState(false);
   const classes = useStyles();
@@ -69,7 +68,7 @@ const Join = ({ session }) => {
       <Head>
         <meta
           name="description"
-          content="Quick sign-up process to join as a business-owner"
+          content="Sign in to your SoPlugged business account"
         />
         <title>Sign In to SoPlugged</title>
       </Head>
@@ -77,16 +76,15 @@ const Join = ({ session }) => {
         <Container maxWidth="sm">
           <Paper className={classes.root}>
             <form onSubmit={handleSubmit} className={classes.form}>
-              <Typography variant="h5">Register my business</Typography>
+              <Typography variant="h5">Sign In</Typography>
               <Typography variant="body1">
-                Please enter the e-mail you'd like to use for your SoPlugged
-                account.
+                Please enter the e-mail associated with your SoPlugged account.
               </Typography>{" "}
               <br></br>
               <Typography variant="body2">
                 We'll send you a{" "}
                 <span style={{ textDecoration: "underline" }}>one-time</span>{" "}
-                verification link.
+                sign-in link.
               </Typography>
               <TextField
                 name="userMail"
@@ -94,7 +92,6 @@ const Join = ({ session }) => {
                 variant="outlined"
                 type="email"
                 disabled={mailSent}
-                helperText="P.S: Your potential customers will contact you via this e-mail"
                 required
                 onChange={(e) => setMail(e.target.value)}
               />
@@ -138,30 +135,19 @@ const Join = ({ session }) => {
               />
               <span style={{ marginLeft: "16px" }}>Continue with Google</span>
             </Button>
-            <Typography
-              style={{ color: "grey", fontSize: "0.9rem", marginTop: "0px" }}
-            >
-              P.S: Your potential customers will contact you via this e-mail
-            </Typography>
           </Paper>
           <div style={{ textAlign: "center", margin: "8px" }}>
-            <Typography variant="body2">
-              Already have your business on SoPlugged?
-            </Typography>
-
+            <Typography variant="body2">First time on SoPlugged?</Typography>
             <Typography variant="body1">
-              <Link href="/sign-in">
-                <a className={classes.signInLink}>Sign in</a>
+              <Link href="/join">
+                <a className={classes.signInLink}>Set up</a>
               </Link>{" "}
-              to your business page
+              your business page
             </Typography>
-
             <Link href="/">
-              <a>
-                <Button variant="outlined" style={{ marginTop: "8px" }}>
-                  Take me back Home
-                </Button>
-              </a>
+              <Button variant="outlined" style={{ marginTop: "8px" }}>
+                Take me back Home
+              </Button>
             </Link>
           </div>
         </Container>
@@ -170,4 +156,4 @@ const Join = ({ session }) => {
   );
 };
 
-export default Join;
+export default SignIn;

@@ -88,7 +88,7 @@ const AlgoliaHit = ({ hit }) => {
             </IconButton>
           </a>
           {hit.business_url && (
-            <a href={`http://${hit.business_url}`} target="__blank">
+            <a href={`http://${hit.business_url}`} target="_blank">
               <IconButton aria-label="website">
                 <LanguageIcon />
               </IconButton>

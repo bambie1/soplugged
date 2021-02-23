@@ -12,6 +12,7 @@ import {
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -31,7 +32,7 @@ function HideOnScroll(props) {
 
 const Header = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-
+  const router = useRouter();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const currentUser = {};
   const handleSignOut = () => {
@@ -80,7 +81,7 @@ const Header = (props) => {
   );
   return (
     <>
-      <HideOnScroll {...props}>
+      <HideOnScroll {...props} home={router.pathname === "/"}>
         <AppBar>
           <Toolbar>
             <Link href="/">
@@ -98,25 +99,25 @@ const Header = (props) => {
               <Button color="inherit">
                 <Link href="/search">DIRECTORY</Link>
               </Button>
-              {currentUser ? (
-                <Link href="/my-business">
-                  <a>
-                    <Button color="inherit">MY BUSINESS</Button>
-                  </a>
-                </Link>
-              ) : (
-                <Link href="/join">
-                  <a>
-                    <Button color="inherit">JOIN</Button>
-                  </a>
-                </Link>
-              )}
+              {/* {currentUser ? ( */}
+              <Link href="/my-business">
+                <a>
+                  <Button color="inherit">MY BUSINESS</Button>
+                </a>
+              </Link>
+              {/* ) : ( */}
+              <Link href="/join">
+                <a>
+                  <Button color="inherit">JOIN</Button>
+                </a>
+              </Link>
+              {/* )} */}
 
-              {currentUser && (
+              {/* {currentUser && (
                 <Button onClick={handleSignOut} color="inherit">
                   Sign Out
                 </Button>
-              )}
+              )} */}
             </div>
             <div className="sectionMobile">
               <IconButton
