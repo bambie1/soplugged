@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BusinessInfoForm from "../components/BusinessInfoForm";
+import BusinessInfoForm from "../../components/BusinessInfoForm";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";

@@ -18,6 +18,7 @@
     "env-cmd": "^10.1.0",
     "firebase": "^8.2.1",
     "firebase-admin": "^9.5.0",
+    "little-state-machine": "^4.1.0",
     "lodash": "^4.17.20",
     "next": "10.0.7",
     "nookies": "^2.5.2",

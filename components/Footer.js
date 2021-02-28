@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <Container className="footer-container">
         <Grid container>
           <Grid item xs={12} sm={6}>
@@ -29,21 +29,27 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} className="footer-links-div">
-            <a href="https://www.soplugged.com/faqs" target="_blank">
-              <Button>FAQs</Button>
-            </a>
+            <Link href="/faqs" target="_blank">
+              <a>
+                <Button>FAQs</Button>
+              </a>
+            </Link>
 
             <Link href="/blog" target="_blank">
               <a>
                 <Button>BLOG</Button>
               </a>
             </Link>
-            <a href="https://www.soplugged.com/our-story" target="_blank">
-              <Button>ABOUT US</Button>
-            </a>
-            <a href="https://www.soplugged.com/privacy-policy" target="_blank">
-              <Button>PRIVACY & TERMS</Button>
-            </a>
+            <Link href="/our-story" target="_blank">
+              <a>
+                <Button>ABOUT US</Button>
+              </a>
+            </Link>
+            <Link href="/privacy-policy" target="_blank">
+              <a>
+                <Button>PRIVACY & TERMS</Button>
+              </a>
+            </Link>
           </Grid>
         </Grid>
         <br></br>
@@ -52,7 +58,7 @@ const Footer = () => {
           Copyright&copy; {new Date().getFullYear()}, SoPlugged
         </Typography>
       </Container>
-    </div>
+    </footer>
   );
 };
 

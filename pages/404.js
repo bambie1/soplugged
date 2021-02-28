@@ -1,21 +1,41 @@
 import { Button, Typography, Container } from "@material-ui/core";
 import Link from "next/link";
+import { makeStyles } from "@material-ui/core/styles";
+import ErrorIcon from "@material-ui/icons/Error";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: "16px",
+    background: theme.palette.secondary.light,
+    "& > *": {
+      margin: "8px auto",
+    },
+  },
+  page: {
+    minHeight: "85vh",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+  },
+}));
 
 const NotFound = () => {
+  const classes = useStyles();
   return (
-    <div className="page">
-      <Container maxWidth="md" className="container">
-        <Typography variant="h4">Oops!</Typography>
-        <Typography variant="h6">
+    <main className={classes.page}>
+      <Container maxWidth="md" className={classes.container}>
+        <ErrorIcon style={{ fontSize: "5vh", color: "#bb6969" }} />
+        <Typography variant="h1">Oops!</Typography>
+        <Typography variant="h6" component="h2">
           The url you've reached doesn't exist.
         </Typography>
-        <Button variant="contained">
-          <Link href="/">
-            <a>Return to Home Page</a>
-          </Link>
-        </Button>
+        <Link href="/">
+          <a>
+            <Button variant="contained">Return to Home Page</Button>
+          </a>
+        </Link>
       </Container>
-    </div>
+    </main>
   );
 };
 

@@ -1,3 +1,7 @@
+:root {
+  --dark: #4e3505;
+  --light: #cdb693;
+}
 html,
 body {
   padding: 0;
@@ -92,6 +96,17 @@ img {
 .second-grid {
   flex-direction: column-reverse;
 }
+.carousel .thumb {
+  max-height: 30px;
+}
+.business-image {
+  max-height: 350px;
+}
+.carousel .slide img,
+.carousel img {
+  width: auto !important;
+  max-width: 100%;
+}
 
 @media only screen and (min-width: 600px) {
   .masonry-item {
@@ -114,13 +129,28 @@ img {
   margin-top: 10vh;
   min-height: 5vh;
   text-align: center;
-  background-color: #cdb693;
+  background-color: var(--light);
 }
 .footer-container {
   margin: 16px auto 0px;
 }
 .footer-links-div > * {
   display: block;
+}
+#progressbar {
+  display: none;
+}
+.progress-bar {
+  background-color: var(--dark);
+  height: 100%;
+  border-radius: 10px;
+}
+.progress {
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  width: 80%;
 }
 @media only screen and (min-width: 600px) {
   .sectionMobile {
@@ -131,5 +161,61 @@ img {
   }
   .sectionDesktop > * {
     margin: 0 8px;
+  }
+
+  /* mulit step */
+  .mobile-step-display {
+    display: none;
+  }
+  #progressbar {
+    list-style: none;
+    display: flex;
+    padding: 0px;
+    justify-content: space-evenly;
+  }
+  #progressbar li {
+    width: 20%;
+    word-break: break-word;
+    padding: 0px 8px;
+    text-align: center;
+    position: relative;
+  }
+
+  #progressbar li p {
+    font-size: 0.8rem;
+  }
+  #progressbar li .icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    border: 1px solid grey;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 2s;
+  }
+  #progressbar li.filled .icon-wrapper {
+    background: var(--dark);
+    transition: all10s ease;
+  }
+  #progressbar li.filled .icon-wrapper > * {
+    color: white;
+  }
+  #progressbar li::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+  }
+  #progressbar li.filled::after {
+    background: var(--dark);
+    transition: all10s ease;
+  }
+  #progressbar li.filled p {
+    color: var(--dark);
+    font-weight: bold;
   }
 }

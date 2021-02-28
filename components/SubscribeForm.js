@@ -61,7 +61,9 @@ const SubscribeForm = () => {
   return (
     <div className={classes.subscribe}>
       <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h6">Stay Plugged-in</Typography>
+        <Typography variant="h6" component="h3">
+          Stay Plugged-in
+        </Typography>
         <Typography>
           Join our mailing list to receive news and updates on new service
           features, blog posts, and be the first to know when we launch!{" "}
@@ -71,6 +73,7 @@ const SubscribeForm = () => {
             <Grid item xs={12} sm={6} md={4}>
               <TextField
                 variant="outlined"
+                id="firstName"
                 label="First Name"
                 name="first_name"
                 inputRef={register({
@@ -90,6 +93,7 @@ const SubscribeForm = () => {
               <TextField
                 variant="outlined"
                 label="Last Name"
+                id="lastName"
                 name="last_name"
                 inputRef={register({
                   required: "Please enter your last name",
@@ -105,6 +109,7 @@ const SubscribeForm = () => {
                 variant="outlined"
                 label="Email address"
                 name="email"
+                id="emailAddress"
                 inputRef={register({
                   required: "Please enter your e-mail address",
                   pattern: {

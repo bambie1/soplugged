@@ -5,6 +5,12 @@ import "../styles/algolia.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
+import "regenerator-runtime/runtime.js";
+import { StateMachineProvider, createStore } from "little-state-machine";
+
+createStore({
+  businessInfo: {},
+});
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -38,9 +44,11 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <StateMachineProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </StateMachineProvider>
       </ThemeProvider>
     </>
   );

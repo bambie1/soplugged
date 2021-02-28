@@ -32,11 +32,13 @@ export default function Home() {
           Find the perfect black-owned business for your needs | SoPlugged
         </title>
       </Head>
-      <div>
+      <main>
         <HeroBanner />
         <div className="body-content">
           <br></br>
-          <Typography variant="h6">Popular Categories:</Typography>
+          <Typography variant="h6" component="h2">
+            Popular Categories:
+          </Typography>
           <CategoriesCarousel />
           <br></br>
           <Link href="/search">
@@ -113,7 +115,7 @@ export default function Home() {
           <br></br>
           <SubscribeForm />
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -22,8 +22,15 @@ const Blogs = ({ posts }) => {
     <>
       <Head>
         <title>Blog | SoPlugged</title>
+        <meta
+          name="description"
+          content="Hi, I’m Nina - creator, and founder of SoPlugged! On the blog, I
+          share my experiences buying black and some tips that might be
+          helpful for entrepreneurs or shopaholics like me. Let’s chat in the
+          comment section!"
+        />
       </Head>
-      <div className="page">
+      <main className="page">
         <Container className={classes.container}>
           <Typography variant="h1">Welcome to My Blog</Typography>
           <Typography style={{ margin: "32px auto", maxWidth: "700px" }}>
@@ -40,7 +47,7 @@ const Blogs = ({ posts }) => {
             ))}
           </Grid>
         </Container>
-      </div>
+      </main>
     </>
   );
 };

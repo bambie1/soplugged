@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button, Typography } from "@material-ui/core";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 const baseStyle = {
   flex: 1,
@@ -66,7 +67,7 @@ const rejectStyle = {
 };
 const MAX_FILES = 3; //file upload limit
 
-const FileDropzone = ({ fbUrls, setInfoChanged, setFiles }) => {
+const FileDropzone = ({ fbUrls, setFiles }) => {
   const [myFiles, setMyFiles] = useState(fbUrls);
   const [fileError, setFileError] = useState(false);
 
@@ -94,10 +95,13 @@ const FileDropzone = ({ fbUrls, setInfoChanged, setFiles }) => {
     isDragAccept,
     isDragReject,
     fileRejections,
+    open,
   } = useDropzone({
     onDrop,
     accept: "image/jpeg, image/png",
     maxFiles: MAX_FILES,
+    noClick: true,
+    noKeyboard: true,
   });
   const removeFile = (file) => () => {
     let filtered = myFiles.filter(function (item) {
@@ -130,9 +134,8 @@ const FileDropzone = ({ fbUrls, setInfoChanged, setFiles }) => {
   useEffect(
     () => () => {
       files.forEach((file) => URL.revokeObjectURL(file.preview));
-      setInfoChanged(true);
     },
-    [files, setInfoChanged]
+    [files]
   );
 
   const style = useMemo(
@@ -152,7 +155,15 @@ const FileDropzone = ({ fbUrls, setInfoChanged, setFiles }) => {
         <Typography variant="body2">
           Upload up to 3 images to showcase your services to customers.
         </Typography>
-        <Typography>Drag 'n' drop, or click to select files.</Typography>
+        <br></br>
+        <Button
+          variant="contained"
+          color="default"
+          startIcon={<CloudUploadIcon />}
+          onClick={open}
+        >
+          Click to upload images
+        </Button>
       </div>
 
       {files.length > 0 && (
