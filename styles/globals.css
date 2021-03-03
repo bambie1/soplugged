@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 :root {
   --dark: #4e3505;
   --light: #cdb693;
@@ -23,8 +24,8 @@ img {
 }
 .page {
   margin: auto;
-  min-height: 85vh;
-  padding-top: 60px;
+  min-height: 850px;
+  padding-top: 70px;
 }
 .body-content {
   padding: 1.15rem;
@@ -99,21 +100,79 @@ img {
 .carousel .thumb {
   max-height: 30px;
 }
-.business-image {
+.carousel .slide {
+  background: #e2e2e2 !important;
+}
+.business-image-div {
   max-height: 350px;
+  display: flex;
+  align-items: center;
 }
-.carousel .slide img,
-.carousel img {
-  width: auto !important;
-  max-width: 100%;
+.carousel .slide img {
+  max-height: initial;
 }
-
+.carousel .control-prev.control-arrow:before {
+  border-right: 8px solid var(--dark) !important;
+}
+.carousel .control-next.control-arrow:before {
+  border-left: 8px solid var(--dark) !important;
+}
+.carousel-root {
+  max-width: 90vw;
+}
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
+  background: #fffaf2;
+}
+.owner-section {
+  display: flex;
+  flex-direction: column;
+}
+.thumbs.animated {
+  display: flex;
+  align-items: center;
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 1000;
+  overflow-y: scroll;
+  text-align: center;
+}
+.modal-card {
+  background: white;
+  max-width: 85vw;
+  margin: 80px auto 10px;
+  border-radius: 5px;
+}
 @media only screen and (min-width: 600px) {
   .masonry-item {
     padding: 8px 16px;
   }
   .second-grid {
     flex-direction: row;
+  }
+  .contentGrid {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    min-height: 80vh;
+  }
+  aside.owner-section {
+    position: sticky;
+    align-self: flex-start;
+    top: 86px;
+    width: 33.6%;
+  }
+  .business-section {
+    margin-right: 5.5%;
+    width: 59.08%;
+    display: block;
+    -webkit-box-ordinal-group: 11;
+    -ms-flex-order: 10;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -130,6 +189,9 @@ img {
   min-height: 5vh;
   text-align: center;
   background-color: var(--light);
+  z-index: 2;
+  position: absolute;
+  width: 100%;
 }
 .footer-container {
   margin: 16px auto 0px;

@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import { Avatar, IconButton } from "@material-ui/core";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { textTruncate } from "../utils/truncateText";
 import CheckIcon from "@material-ui/icons/Check";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -83,11 +82,7 @@ const BusinessCard = ({ mini, average, ...props }) => {
       <Typography variant="body1" style={{ fontWeight: "bold" }}>
         CATEGORY: {category}
       </Typography>
-      <Typography variant="body2">
-        {mini || average
-          ? textTruncate(business_description || "")
-          : business_description}
-      </Typography>
+      <Typography variant="body2">{business_description}</Typography>
       <br></br>
       {!(mini || average) && (
         <>

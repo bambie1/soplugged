@@ -16,15 +16,19 @@ const Footer = () => {
             </a>
             <Typography style={{ paddingTop: "8px" }}>Follow Us:</Typography>
             <div className="social-media">
-              <IconButton aria-label="instagram" edge="start">
-                <InstagramIcon />
-              </IconButton>
-              <IconButton aria-label="twitter">
-                <TwitterIcon />
-              </IconButton>
-              <IconButton aria-label="linkedin">
-                <LinkedInIcon />
-              </IconButton>
+              <a href="https://www.instagram.com/sopluggd/" target="_blank">
+                <IconButton aria-label="instagram" edge="start">
+                  <InstagramIcon />
+                </IconButton>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/soplugged/"
+                target="_blank"
+              >
+                <IconButton aria-label="linkedin">
+                  <LinkedInIcon />
+                </IconButton>
+              </a>
             </div>
           </Grid>
 

@@ -3,16 +3,30 @@ import {
   AppBar,
   Toolbar,
   Button,
-  IconButton,
-  MenuItem,
-  Menu,
   useScrollTrigger,
+  IconButton,
+  ListItemText,
+  ListItem,
+  List,
+  ListItemIcon,
+  SwipeableDrawer,
   Divider,
 } from "@material-ui/core";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { makeStyles } from "@material-ui/core/styles";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import MenuIcon from "@material-ui/icons/Menu";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+});
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -31,54 +45,50 @@ function HideOnScroll(props) {
 }
 
 const Header = (props) => {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const router = useRouter();
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const currentUser = {};
-  const handleSignOut = () => {
+  const classes = useStyles();
+  const anchor = "right";
+  const [state, setState] = useState({
+    right: false,
+  });
+  const toggleDrawer = (anchor, open) => (event) => {
     if (
-      window.confirm("Would you like to sign out of your SoPlugged account?")
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
-      // signOut();
+      return;
     }
+    setState({ ...state, [anchor]: open });
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+  const menuList = [
+    { text: "Directory", icon: <ListAltIcon />, link: "/directory" },
+    { text: "Dashboard", icon: <DashboardIcon />, link: "/dashboard" },
+    { text: "My Business", icon: <BusinessCenterIcon />, link: "/tester" },
+    { text: "Sign Out", icon: <ExitToAppIcon />, link: "/join" },
+  ];
+  const list = (anchor) => (
+    <div
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
     >
-      <MenuItem onClick={handleMobileMenuClose}>
-        <Link href="/search">DIRECTORY</Link>
-      </MenuItem>
-      {currentUser ? (
-        <MenuItem onClick={handleMobileMenuClose}>
-          <Link href="/my-business">MY BUSINESS</Link>
-        </MenuItem>
-      ) : (
-        <MenuItem onClick={handleMobileMenuClose}>
-          <Link href="/join">JOIN</Link>
-        </MenuItem>
-      )}
-
-      {currentUser && <Divider />}
-      {currentUser && <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>}
-    </Menu>
+      <List className={classes.list}>
+        {menuList.map((item) => (
+          <Link href={item.link} key={item.text}>
+            <a>
+              <ListItem button style={{ margin: "25px 0px" }}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </a>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+    </div>
   );
+
   return (
     <>
       <HideOnScroll {...props} home={router.pathname === "/"}>
@@ -119,19 +129,25 @@ const Header = (props) => {
             </div>
             <div className="sectionMobile">
               <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
+                color="secondary"
+                aria-label="open drawer"
+                onClick={toggleDrawer(anchor, true)}
+                edge="start"
               >
-                <MoreIcon />
+                <MenuIcon />
               </IconButton>
+              <SwipeableDrawer
+                anchor={anchor}
+                open={state[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+                onOpen={toggleDrawer(anchor, true)}
+              >
+                {list(anchor)}
+              </SwipeableDrawer>
             </div>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      {renderMobileMenu}
     </>
   );
 };

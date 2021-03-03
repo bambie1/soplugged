@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Paper, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DashboardLayout from "../../components/DashboardLayout";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   noBusiness: {
     backgroundColor: theme.palette.secondary.light,
     padding: "16px",
+    marginBottom: "8px",
     "& > *": {
       margin: "8px 0px",
     },
@@ -23,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const classes = useStyles();
   const hasBusiness = false;
+  const hasFavorites = false;
 
   return (
     <>
@@ -49,12 +52,44 @@ const Dashboard = () => {
                 You can do so in under 5 minutes! Click the button below, and
                 follow our easy guide
               </Typography>
-              <Button variant="contained" color="secondary">
-                Register Business
-              </Button>
+              <Link href="/my-business/step2">
+                <a>
+                  <Button variant="contained" color="secondary">
+                    Register Business
+                  </Button>
+                </a>
+              </Link>
             </div>
           )}
         </Paper>
+        <div id="favorites">
+          {hasFavorites ? (
+            <div>
+              <p>Yes favorites</p>
+            </div>
+          ) : (
+            <div
+              className={classes.noBusiness}
+              style={{ backgroundColor: "white", border: "1px dashed #cdb693" }}
+            >
+              <Typography variant="h6" component="h2">
+                Favorite Businesses
+              </Typography>
+              <Typography>
+                Doesn't look like you've saved any businesses as favorites yet.
+                <br></br> Browse through our directory, and click the 'Heart'
+                icon on a business that you'd like to save for later
+              </Typography>
+              <Link href="/directory">
+                <a>
+                  <Button variant="contained" color="secondary">
+                    Browse businesses
+                  </Button>
+                </a>
+              </Link>
+            </div>
+          )}
+        </div>
       </DashboardLayout>
     </>
   );
