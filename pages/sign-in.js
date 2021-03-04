@@ -10,6 +10,9 @@ import Link from "next/link";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert } from "@material-ui/lab";
+import firebaseClient from "../src/firebase/firebaseClient";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -56,11 +59,30 @@ const SignIn = ({ session }) => {
   const [mail, setMail] = useState("");
   const [mailSent, setMailSent] = useState(false);
   const classes = useStyles();
+  firebaseClient();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // sendLink(mail);
     setMailSent(true);
+  };
+  const handleGoogleSubmit = async () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+    await firebase
+      .auth()
+      .getRedirectResult()
+      .then((result) => {
+        if (result.credential) {
+          var credential = result.credential;
+          var token = credential.accessToken;
+          window.location.href("/dashboard");
+        }
+        var user = result.user;
+      })
+      .catch((error) => {
+        console.log("fb error: ", error.message, error.code);
+      });
   };
 
   return (

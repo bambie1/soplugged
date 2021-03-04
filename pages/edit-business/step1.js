@@ -12,8 +12,6 @@ import LocationSearch from "../../components/LocationSearch";
 import Form from "../../components/Form";
 import { useRouter } from "next/router";
 import MultiStepLayout from "../../components/MultiStepLayout";
-import { useStateMachine } from "little-state-machine";
-import updateAction from "../../src/updateAction";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -27,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 const BusinessInfo = () => {
   const classes = useStyles();
-  const { state, action } = useStateMachine(updateAction);
   const currentUser = null;
   const currentBusiness = {};
   const router = useRouter();
@@ -49,7 +46,7 @@ const BusinessInfo = () => {
   const onSubmit = (data) => {
     console.log(data);
     // action(data);
-    router.push("/my-business/step2");
+    router.push("/edit-business/step2");
   };
 
   return (

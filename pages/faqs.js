@@ -77,7 +77,7 @@ const FAQs = () => {
               questions, feel free to reach out to a member of our team, we
               would love to have your services featured on our platform.
             </Typography>
-            <Link href="/my-business">
+            <Link href="/edit-business">
               <a>
                 <Button color="secondary" variant="outlined">
                   Register
@@ -103,7 +103,7 @@ const FAQs = () => {
               </a>
               .
             </Typography>
-            <Link href="/my-business">
+            <Link href="/edit-business">
               <a>
                 <Button color="secondary" variant="outlined">
                   Edit my business

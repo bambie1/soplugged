@@ -27,12 +27,12 @@ const BusinessInfo = () => {
   const fbUrls = !samples ? [] : samples.split(",");
 
   const { register, handleSubmit } = useForm();
-  const [logo, setLogo] = useState(data?.logo?.item(0) || null);
+  const [logo, setLogo] = useState(null);
   const [logoFileRead, setLogoFileRead] = useState(null);
-  const [files, setFiles] = useState(data.files || []);
+  const [files, setFiles] = useState([]);
 
   const onSubmit = (data) => {
-    router.push("/my-business/step4");
+    router.push("/edit-business/step4");
   };
 
   useEffect(() => {

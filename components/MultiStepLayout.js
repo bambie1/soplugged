@@ -26,7 +26,7 @@ const MultiStepLayout = ({ children, ...props }) => {
         <Container maxWidth="md">
           <BusinessProgressBar {...props} />
           {props.step > 1 && (
-            <Link href={`/my-business/step${props.step - 1}`}>
+            <Link href={`/edit-business/step${props.step - 1}`}>
               <a>
                 <Typography>Back</Typography>
               </a>

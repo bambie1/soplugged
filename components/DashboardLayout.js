@@ -77,7 +77,7 @@ const Dashboard = ({ children, ...props }) => {
               </div>
               <Divider />
               <Typography variant="body2">Joined in 2020</Typography>
-              <Link href="/my-business/step1">
+              <Link href="/edit-business/step1">
                 <a>
                   <Button
                     variant="outlined"

@@ -21,6 +21,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import { useAuth } from "../contexts/auth";
+import firebase from "firebase/app";
 
 const useStyles = makeStyles({
   list: {
@@ -47,10 +49,16 @@ function HideOnScroll(props) {
 const Header = (props) => {
   const router = useRouter();
   const classes = useStyles();
+  const { user } = useAuth();
   const anchor = "right";
   const [state, setState] = useState({
     right: false,
   });
+  const signOut = async () => {
+    await firebase.auth().signOut();
+    window.location.href = "/sign-in";
+  };
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
@@ -63,10 +71,16 @@ const Header = (props) => {
   };
   const menuList = [
     { text: "Directory", icon: <ListAltIcon />, link: "/directory" },
-    { text: "Dashboard", icon: <DashboardIcon />, link: "/dashboard" },
-    { text: "My Business", icon: <BusinessCenterIcon />, link: "/tester" },
-    { text: "Sign Out", icon: <ExitToAppIcon />, link: "/join" },
   ];
+  if (user) {
+    menuList.push([
+      { text: "Dashboard", icon: <DashboardIcon />, link: "/dashboard" },
+      { text: "My Business", icon: <BusinessCenterIcon />, link: "/tester" },
+      { text: "Sign Out", icon: <ExitToAppIcon />, link: "/join" },
+    ]);
+  } else {
+    menuList.push({ text: "Join", icon: <DashboardIcon />, link: "/join" });
+  }
   const list = (anchor) => (
     <div
       role="presentation"
@@ -74,8 +88,8 @@ const Header = (props) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.list}>
-        {menuList.map((item) => (
-          <Link href={item.link} key={item.text}>
+        {menuList.map((item, index) => (
+          <Link href={item.link} key={index}>
             <a>
               <ListItem button style={{ margin: "25px 0px" }}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
@@ -111,21 +125,31 @@ const Header = (props) => {
                   <Button color="inherit">DIRECTORY</Button>
                 </a>
               </Link>
-              <Link href="/my-business">
-                <a>
-                  <Button color="inherit">MY BUSINESS</Button>
-                </a>
-              </Link>
-              <Link href="/dashboard">
-                <a>
-                  <Button color="inherit">DASHBOARD</Button>
-                </a>
-              </Link>
-              <Link href="/join">
-                <a>
-                  <Button color="inherit">JOIN</Button>
-                </a>
-              </Link>
+              {user ? (
+                <>
+                  <Link href="/edit-business">
+                    <a>
+                      <Button color="inherit">MY BUSINESS</Button>
+                    </a>
+                  </Link>
+                  <Link href="/dashboard">
+                    <a>
+                      <Button color="inherit">DASHBOARD</Button>
+                    </a>
+                  </Link>
+                  <Button color="inherit" onClick={signOut}>
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Link href="/join">
+                  <a>
+                    <Button color="inherit" variant="outlined">
+                      JOIN
+                    </Button>
+                  </a>
+                </Link>
+              )}
             </div>
             <div className="sectionMobile">
               <IconButton

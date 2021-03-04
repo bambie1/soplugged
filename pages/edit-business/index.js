@@ -13,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 const EditBusiness = ({ session }) => {
   const classes = useStyles();
-  const [saving, setSaving] = useState(false);
-
-  // if (currentUser) {
   return (
     <>
       <Head>
@@ -28,26 +25,6 @@ const EditBusiness = ({ session }) => {
       <Container maxWidth="lg" className={classes.page}>
         <BusinessInfoForm submitHandler={() => console.log("submit")} />
       </Container>
-      {saving && (
-        <div
-          className="backdrop"
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ margin: "auto", textAlign: "center", width: "150px" }}>
-            <div className="lds-grid">
-              {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((x) => (
-                <div key={x}></div>
-              ))}
-            </div>
-            <Typography style={{ color: "white" }}>
-              Loading your Business Card
-            </Typography>
-          </div>
-        </div>
-      )}
     </>
   );
 };

@@ -5,6 +5,7 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import LanguageIcon from "@material-ui/icons/Language";
 import { Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
+import Link from "next/link";
 
 const formStepsArray = [
   {
@@ -12,30 +13,35 @@ const formStepsArray = [
     icon: <PersonPinIcon fontSize="large" color="primary" />,
     id: "location",
     text: "Name / Location",
+    url: "step1",
   },
   {
     num: 2,
     icon: <FindInPageIcon fontSize="large" color="primary" />,
     id: "description",
     text: "Category / Description",
+    url: "step2",
   },
   {
     num: 3,
     icon: <CloudUploadIcon fontSize="large" color="primary" />,
     id: "images",
     text: "Upload Images",
+    url: "step3",
   },
   {
     num: 4,
     icon: <LanguageIcon fontSize="large" color="primary" />,
     id: "social-links",
     text: "Social Links",
+    url: "step4",
   },
   {
     num: 5,
     icon: <CheckIcon fontSize="large" color="primary" />,
     id: "confirm",
     text: "Review & Confirm",
+    url: "review",
   },
 ];
 const BusinessProgressBar = ({ step }) => {
@@ -45,10 +51,14 @@ const BusinessProgressBar = ({ step }) => {
         {formStepsArray.filter((x) => x.num === step)[0].text}
       </Typography>
       <ul id="progressbar">
-        {formStepsArray.map(({ num, icon, id, text }) => (
+        {formStepsArray.map(({ num, icon, id, text, url }) => (
           <li key={id} id={id} className={num <= step ? "filled" : ""}>
-            <span className="icon-wrapper">{icon}</span>
-            <Typography>{text}</Typography>
+            <Link href={`/edit-business/${url}`}>
+              <a>
+                <span className="icon-wrapper">{icon}</span>
+                <Typography>{text}</Typography>
+              </a>
+            </Link>
           </li>
         ))}
       </ul>

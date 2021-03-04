@@ -9,11 +9,18 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Link from "next/link";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import BusinessCarousel from "../components/BusinessCarousel";
-import Modal from "../components/Modal";
+import BusinessCard from "../components/BusinessCard";
 import React from "react";
+import ImageGallery from "react-image-gallery";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel";
+import BusinessCarousel from "../components/BusinessCarousel";
+import "react-multi-carousel/lib/styles.css";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -34,12 +41,16 @@ const useStyles = makeStyles((theme) => ({
       margin: "8px 0px",
     },
   },
+  recommended: {
+    padding: "16px",
+    backgroundColor: theme.palette.secondary.light,
+  },
 }));
 
 const BusinessSite = ({ business }) => {
   const classes = useStyles();
-  const images = business.sample_images.split(",");
-  const [imageSelected, setImageSelected] = React.useState(null);
+  let images = business.sample_images.split(",");
+  images = images.map((item) => ({ original: item, thumbnail: item }));
 
   return business ? (
     <>
@@ -60,24 +71,27 @@ const BusinessSite = ({ business }) => {
           <div className="contentGrid">
             <div className="business-section">
               {images.length !== 0 && images[0].length !== 0 && (
-                <Carousel>
-                  {images.map((img, index) => (
-                    <div
-                      key={index}
-                      className="business-image-div"
-                      onClick={() => setImageSelected(img)}
-                    >
-                      <img
-                        className="business-image"
-                        src={img}
-                        alt="business-display"
-                      />
-                    </div>
-                  ))}
-                </Carousel>
+                <ImageGallery items={images} showPlayButton={false} />
               )}
-              <Typography>{business.business_description}</Typography>
-              {/* <BusinessCarousel businessList={[business, business, business]} /> */}
+              <section className="about-business">
+                <Typography variant="h5" component="h2">
+                  About This Business:
+                </Typography>
+                <Typography>{business.business_description}</Typography>
+              </section>
+              <Paper component="section" className={classes.recommended}>
+                <Typography variant="h5" component="h2">
+                  Similar businesses:
+                </Typography>
+                {/* <BusinessCarousel /> */}
+                {/* <Grid container spacing={2}>
+                  {[business, business, business].map((item, index) => (
+                    <Grid key={index} item xs={12} sm={6} md={4}>
+                      <BusinessCard dbObject={item} mini={true} />
+                    </Grid>
+                  ))}
+                </Grid> */}
+              </Paper>
             </div>
             <aside className="owner-section">
               <Paper elevation={2} className={classes.owner}>
@@ -94,14 +108,6 @@ const BusinessSite = ({ business }) => {
             </aside>
           </div>
         </Container>
-        {imageSelected && (
-          <Modal
-            component={
-              <img src={imageSelected} alt="" style={{ maxWidth: "100%" }} />
-            }
-            closeModal={setImageSelected}
-          />
-        )}
       </main>
     </>
   ) : (
@@ -126,7 +132,7 @@ export async function getServerSideProps(context) {
     logo_url:
       "https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/59DCA21F-6498-4862-8C9E-3DFD1AB980F3.png?alt=media&token=69dc874e-bd4f-4bc3-b1d7-c30feb56bdf2",
     sample_images:
-      "https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/2.%20Valentine's%20day%20gift%20idea.%20Calming%20Spa%20Day%20Gift%20Box.jpg?alt=media&token=96a17cc2-2eb7-409f-8172-dbf34b66c190,https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/BoxF1.jpg?alt=media&token=204ef4f5-7538-4e66-9c0d-560ae339b65e,https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/7B%20(1).jpg?alt=media&token=72617bb0-8884-47f4-93fd-453835ffe6a0",
+      "https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/3293F8C8-E5B9-4CA5-A2E6-8FA8DE6383D5.jpeg?alt=media&token=4396cb81-9bb9-4a26-914b-8fb612e28612,https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/6977CA2E-0CCC-4BD6-B22E-820CD04B8F6F.jpeg?alt=media&token=75c18b2a-0409-4c12-83a6-8aeb7b7309e4,https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/ACD38B08-1776-4A7E-A50A-DE866E287BD1.jpeg?alt=media&token=fa961593-fcf4-4eed-b32f-5721c128960b",
     category: "Hair / Beauty",
     tags: "",
     services: [],

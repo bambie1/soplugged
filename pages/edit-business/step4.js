@@ -34,7 +34,7 @@ const BusinessInfo = ({ submitHandler }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    router.push("/my-business/step5");
+    router.push("/edit-business/step5");
   };
 
   return (

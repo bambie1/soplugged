@@ -42,7 +42,7 @@ const BusinessInfo = () => {
   );
 
   const onSubmit = (data) => {
-    router.push("/my-business/step3");
+    router.push("/edit-business/step3");
   };
 
   return (
