@@ -10,9 +10,10 @@ import Link from "next/link";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert } from "@material-ui/lab";
+import nookies from "nookies";
+import { verifyIdToken } from "../src/firebase/firebaseAdmin";
 import firebaseClient from "../src/firebase/firebaseClient";
 import firebase from "firebase/app";
-import "firebase/auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -85,97 +86,117 @@ const SignIn = ({ session }) => {
       });
   };
 
-  return (
-    <>
-      <Head>
-        <meta
-          name="description"
-          content="Sign in to your SoPlugged business account"
-        />
-        <title>Sign In to SoPlugged</title>
-      </Head>
-      <div className="page">
-        <Container maxWidth="sm">
-          <Paper className={classes.root}>
-            <form onSubmit={handleSubmit} className={classes.form}>
-              <Typography variant="h5">Sign In</Typography>
-              <Typography variant="body1">
-                Please enter the e-mail associated with your SoPlugged account.
-              </Typography>{" "}
-              <br></br>
-              <Typography variant="body2">
-                We'll send you a{" "}
-                <span style={{ textDecoration: "underline" }}>one-time</span>{" "}
-                sign-in link.
-              </Typography>
-              <TextField
-                name="userMail"
-                label="E-mail"
-                variant="outlined"
-                type="email"
-                disabled={mailSent}
-                required
-                onChange={(e) => setMail(e.target.value)}
-              />
+  if (session) {
+    return <p>loading</p>;
+  } else {
+    return (
+      <>
+        <Head>
+          <meta
+            name="description"
+            content="Sign in to your SoPlugged business account"
+          />
+          <title>Sign In to SoPlugged</title>
+        </Head>
+        <div className="page">
+          <Container maxWidth="sm">
+            <Paper className={classes.root}>
+              <form onSubmit={handleSubmit} className={classes.form}>
+                <Typography variant="h5">Sign In</Typography>
+                <Typography variant="body1">
+                  Please enter the e-mail associated with your SoPlugged
+                  account.
+                </Typography>{" "}
+                <br></br>
+                <Typography variant="body2">
+                  We'll send you a{" "}
+                  <span style={{ textDecoration: "underline" }}>one-time</span>{" "}
+                  sign-in link.
+                </Typography>
+                <TextField
+                  name="userMail"
+                  label="E-mail"
+                  variant="outlined"
+                  type="email"
+                  disabled={mailSent}
+                  required
+                  onChange={(e) => setMail(e.target.value)}
+                />
+                <Button
+                  variant="contained"
+                  type="submit"
+                  style={{ width: "100%" }}
+                  disabled={mailSent}
+                >
+                  Send link
+                </Button>
+                {mailSent && (
+                  <>
+                    <Alert severity="info">
+                      We've sent a sign-in link to this e-mail address.{" "}
+                      <br></br>
+                      If you don't get an e-mail, please double-check the e-mail
+                      you've entered and check your spam folder.
+                    </Alert>
+                    <Typography
+                      variant="body2"
+                      className={classes.wrongEmail}
+                      onClick={() => setMailSent(false)}
+                    >
+                      Wrong e-mail?
+                    </Typography>
+                  </>
+                )}
+              </form>
+              <div className="hr-div">
+                <span className="hr-text">OR</span>
+              </div>
               <Button
-                variant="contained"
-                type="submit"
-                style={{ width: "100%" }}
-                disabled={mailSent}
+                className={classes.google}
+                onClick={() => {
+                  handleGoogleSubmit();
+                }}
               >
-                Send link
+                <img
+                  src="https://img.icons8.com/plasticine/30/000000/google-logo.png"
+                  alt="google"
+                />
+                <span style={{ marginLeft: "16px" }}>Continue with Google</span>
               </Button>
-              {mailSent && (
-                <>
-                  <Alert severity="info">
-                    We've sent a sign-in link to this e-mail address. <br></br>
-                    If you don't get an e-mail, please double-check the e-mail
-                    you've entered and check your spam folder.
-                  </Alert>
-                  <Typography
-                    variant="body2"
-                    className={classes.wrongEmail}
-                    onClick={() => setMailSent(false)}
-                  >
-                    Wrong e-mail?
-                  </Typography>
-                </>
-              )}
-            </form>
-            <div className="hr-div">
-              <span className="hr-text">OR</span>
+            </Paper>
+            <div style={{ textAlign: "center", margin: "8px" }}>
+              <Typography variant="body2">First time on SoPlugged?</Typography>
+              <Typography variant="body1">
+                <Link href="/join">
+                  <a className={classes.signInLink}>Set up</a>
+                </Link>{" "}
+                your business page
+              </Typography>
+              <Link href="/">
+                <Button variant="outlined" style={{ marginTop: "8px" }}>
+                  Take me back Home
+                </Button>
+              </Link>
             </div>
-            <Button
-              className={classes.google}
-              onClick={() => {
-                handleGoogleSubmit();
-              }}
-            >
-              <img
-                src="https://img.icons8.com/plasticine/30/000000/google-logo.png"
-                alt="google"
-              />
-              <span style={{ marginLeft: "16px" }}>Continue with Google</span>
-            </Button>
-          </Paper>
-          <div style={{ textAlign: "center", margin: "8px" }}>
-            <Typography variant="body2">First time on SoPlugged?</Typography>
-            <Typography variant="body1">
-              <Link href="/join">
-                <a className={classes.signInLink}>Set up</a>
-              </Link>{" "}
-              your business page
-            </Typography>
-            <Link href="/">
-              <Button variant="outlined" style={{ marginTop: "8px" }}>
-                Take me back Home
-              </Button>
-            </Link>
-          </div>
-        </Container>
-      </div>
-    </>
-  );
+          </Container>
+        </div>
+      </>
+    );
+  }
 };
+
+export async function getServerSideProps(context) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    context.res.writeHead(302, { Location: "/dashboard" });
+    context.res.end();
+    return {
+      props: { session: "Logged in" },
+    };
+  } catch (err) {
+    return { props: {} };
+  }
+}
 
 export default SignIn;

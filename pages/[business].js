@@ -12,13 +12,6 @@ import Link from "next/link";
 import BusinessCard from "../components/BusinessCard";
 import React from "react";
 import ImageGallery from "react-image-gallery";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
 import BusinessCarousel from "../components/BusinessCarousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -83,14 +76,6 @@ const BusinessSite = ({ business }) => {
                 <Typography variant="h5" component="h2">
                   Similar businesses:
                 </Typography>
-                {/* <BusinessCarousel /> */}
-                {/* <Grid container spacing={2}>
-                  {[business, business, business].map((item, index) => (
-                    <Grid key={index} item xs={12} sm={6} md={4}>
-                      <BusinessCard dbObject={item} mini={true} />
-                    </Grid>
-                  ))}
-                </Grid> */}
               </Paper>
             </div>
             <aside className="owner-section">

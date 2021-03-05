@@ -21,8 +21,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import PowerIcon from "@material-ui/icons/Power";
 import { useAuth } from "../contexts/auth";
-import firebase from "firebase/app";
+import SignOutAlert from "./SignOutAlert";
 
 const useStyles = makeStyles({
   list: {
@@ -54,9 +55,9 @@ const Header = (props) => {
   const [state, setState] = useState({
     right: false,
   });
-  const signOut = async () => {
-    await firebase.auth().signOut();
-    window.location.href = "/sign-in";
+  const [signOut, setSignOut] = useState(false);
+  const handleSignOut = async () => {
+    setSignOut(true);
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -79,7 +80,7 @@ const Header = (props) => {
       { text: "Sign Out", icon: <ExitToAppIcon />, link: "/join" },
     ]);
   } else {
-    menuList.push({ text: "Join", icon: <DashboardIcon />, link: "/join" });
+    menuList.push({ text: "Join", icon: <PowerIcon />, link: "/join" });
   }
   const list = (anchor) => (
     <div
@@ -88,16 +89,18 @@ const Header = (props) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.list}>
-        {menuList.map((item, index) => (
-          <Link href={item.link} key={index}>
+        <ListItem>
+          <Link href="/dashboard">
             <a>
-              <ListItem button style={{ margin: "25px 0px" }}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItem>
+              <>
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </>
             </a>
           </Link>
-        ))}
+        </ListItem>
       </List>
       <Divider />
     </div>
@@ -137,7 +140,7 @@ const Header = (props) => {
                       <Button color="inherit">DASHBOARD</Button>
                     </a>
                   </Link>
-                  <Button color="inherit" onClick={signOut}>
+                  <Button color="inherit" onClick={handleSignOut}>
                     Sign Out
                   </Button>
                 </>
@@ -169,6 +172,7 @@ const Header = (props) => {
                 {list(anchor)}
               </SwipeableDrawer>
             </div>
+            {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
           </Toolbar>
         </AppBar>
       </HideOnScroll>

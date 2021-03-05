@@ -6,7 +6,6 @@ import Link from "next/link";
 import nookies from "nookies";
 import { verifyIdToken } from "../../src/firebase/firebaseAdmin";
 import firebaseClient from "../../src/firebase/firebaseClient";
-import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,18 +23,19 @@ const useStyles = makeStyles((theme) => ({
       margin: "8px 0px",
     },
   },
+  illustration: {
+    width: "100%",
+    maxWidth: "420px",
+    display: "block",
+    margin: "auto",
+  },
 }));
 
 const Dashboard = ({ session }) => {
   const classes = useStyles();
   const hasBusiness = false;
   const hasFavorites = false;
-
   firebaseClient();
-  const signOut = async () => {
-    await firebase.auth().signOut();
-    window.location.href = "/sign-in";
-  };
   if (session) {
     return (
       <>
@@ -85,7 +85,7 @@ const Dashboard = ({ session }) => {
                   border: "1px dashed #cdb693",
                 }}
               >
-                <Typography variant="h6" component="h2">
+                {/* <Typography variant="h6" component="h2">
                   Favorite Businesses
                 </Typography>
                 <Typography>
@@ -93,7 +93,11 @@ const Dashboard = ({ session }) => {
                   yet.
                   <br></br> Browse through our directory, and click the 'Heart'
                   icon on a business that you'd like to save for later
-                </Typography>
+                </Typography> */}
+                <img
+                  src="/images/undraw_no_data.png"
+                  className={classes.illustration}
+                />
                 <Link href="/directory">
                   <a>
                     <Button variant="contained" color="secondary">
@@ -104,9 +108,6 @@ const Dashboard = ({ session }) => {
               </div>
             )}
           </div>
-          <Button variant="contained" onClick={signOut}>
-            Sign out
-          </Button>
         </DashboardLayout>
       </>
     );
