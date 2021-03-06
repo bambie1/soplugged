@@ -1,15 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import BusinessCard from "../components/BusinessCard";
-import Header from "../components/Header";
+import BusinessCard from "../../components/BusinessCard";
+import Header from "../../components/Header";
 import { Button, Container } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
 import Head from "next/head";
 import nookies from "nookies";
-import { verifyIdToken } from "../src/firebase/firebaseAdmin";
-import firebaseClient from "../src/firebase/firebaseClient";
+import { verifyIdToken } from "../../src/firebase/firebaseAdmin";
+import firebaseClient from "../../src/firebase/firebaseClient";
 // import ErrorBoundary from "../components/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
 
 const BusinessPreview = ({ currentBusiness }) => {
   const classes = useStyles();
-  const isNewBusiness = false;
 
   return (
     <>
@@ -48,25 +47,8 @@ const BusinessPreview = ({ currentBusiness }) => {
       </Head>
       <Container className={classes.page} maxWidth="md">
         <Typography variant="h6">
-          {isNewBusiness
-            ? "Thanks for registering your business on SoPlugged!"
-            : "Your SoPlugged business has been updated"}
+          Your SoPlugged business has been updated
         </Typography>
-        {isNewBusiness && (
-          <>
-            <br></br>
-            <Typography>
-              We've sent a confirmation e-mail to you as well.
-            </Typography>
-            <Typography
-              variant="body2"
-              style={{ fontSize: "0.8rem" }}
-              color="textSecondary"
-            >
-              Didn't get one? Be sure to check your spam/junk folder
-            </Typography>
-          </>
-        )}
         <br></br>
         <Typography variant="body2">
           Here's a snapshot of your business card:
@@ -127,6 +109,10 @@ export async function getServerSideProps(context) {
       throw new Error("HTTP status " + res.status);
     }
     const resJson = await res.json();
+    if (!resJson) {
+      context.res.writeHead(302, { Location: "/my-business" });
+      context.res.end();
+    }
     return {
       props: {
         email: email,

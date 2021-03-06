@@ -1,0 +1,74 @@
+import { getImageUrl } from "./uploadImage";
+
+const updateBusiness = async (
+  fetchUrl,
+  fetchMethod,
+  businessObject,
+  userToken
+) => {
+  try {
+    const res = await fetch(fetchUrl, {
+      method: fetchMethod,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Firebase-Token": userToken,
+      },
+      body: JSON.stringify({
+        business: businessObject,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("HTTP status " + res.status);
+    }
+    return res;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+export const submitBusinessObject = async (
+  data,
+  files,
+  email,
+  userToken,
+  business
+) => {
+  const { logo, ...dbData } = data;
+  let logoUrl = "";
+  let images = [];
+  if (logo[0]) logoUrl = await getImageUrl(logo[0]);
+  for (let i = 0; i < files.length; i++) {
+    files[i] &&
+      images.push(
+        typeof files[i] === "string" ? files[i] : await getImageUrl(files[i])
+      );
+  }
+
+  if (!logoUrl) logoUrl = business?.logo_url;
+
+  const businessObject = {
+    owner_name: data.ownerName.trim(),
+    email,
+    phone_number: data.ownerPhone,
+    business_name: data.businessName.trim(),
+    business_url: data.businessUrl.trim(),
+    business_location: data.businessLocation,
+    logo_url: logoUrl || "",
+    sample_images: images.join(),
+    street_address: data.streetAddress,
+    fixed_to_one_location: !data.canadaWide,
+    category: data.businessCategory,
+    tags: data.businessTags || "",
+    business_description: data.businessDescription.trim(),
+    ig_handle: data.igHandle,
+  };
+  // console.log(businessObject);
+  const fetchUrl = business
+    ? process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS
+    : process.env.NEXT_PUBLIC_SERVER_ALL_BUSINESSES;
+  const fetchMethod = business ? "PATCH" : "POST";
+
+  return updateBusiness(fetchUrl, fetchMethod, businessObject, userToken); //create or update
+};

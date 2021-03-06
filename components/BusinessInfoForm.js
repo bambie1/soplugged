@@ -57,7 +57,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
   );
   const [logo, setLogo] = useState(null);
   const [infoChanged, setInfoChanged] = useState(false);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(fbUrls);
   const [checked, setChecked] = useState(
     !currentBusiness?.fixed_to_one_location
   );
@@ -67,8 +67,6 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
     setChecked(e.target.checked);
   };
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(files);
     submitHandler(data, files);
   };
 
@@ -238,7 +236,9 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                   <FileDropzone
                     fbUrls={fbUrls}
                     setInfoChanged={setInfoChanged}
-                    setFiles={setFiles}
+                    setFiles={(files) => {
+                      setFiles(files);
+                    }}
                   />
                 </Grid>
 

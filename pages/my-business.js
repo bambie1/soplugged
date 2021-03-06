@@ -9,6 +9,8 @@ import firebaseClient from "../src/firebase/firebaseClient";
 import { useAuth } from "../contexts/auth";
 import { useRouter } from "next/router";
 import { getImageUrl } from "../src/uploadImage";
+import SavingAnimation from "../components/SavingAnimation";
+import { submitBusinessObject } from "../src/updateBusiness";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -22,71 +24,14 @@ const EditBusiness = ({ email, business }) => {
   firebaseClient();
   const { user } = useAuth();
   const router = useRouter();
-
-  const updateBusiness = async (fetchUrl, fetchMethod, businessObject) => {
-    try {
-      const userToken = await user.getIdToken();
-      const res = await fetch(fetchUrl, {
-        method: fetchMethod,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Firebase-Token": userToken,
-        },
-        body: JSON.stringify({
-          business: businessObject,
-        }),
-      });
-      if (!res.ok) {
-        throw new Error("HTTP status " + res.status);
-      }
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
+  const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (data, files) => {
-    const { logo, ...dbData } = data;
-
-    let logoUrl = "";
-    let images = [];
-    if (logo[0]) logoUrl = await getImageUrl(logo[0]);
-    for (let i = 0; i < files.length; i++) {
-      files[i] &&
-        images.push(
-          typeof files[i] === "string" ? files[i] : await getImageUrl(files[i])
-        );
-    }
-
-    if (!logoUrl) logoUrl = business?.logo_url;
-
-    const businessObject = {
-      owner_name: data.ownerName.trim(),
-      email: email,
-      phone_number: data.ownerPhone,
-      business_name: data.businessName.trim(),
-      business_url: data.businessUrl.trim(),
-      business_location: data.businessLocation,
-      logo_url: logoUrl || "",
-      sample_images: images.join(),
-      street_address: data.streetAddress,
-      fixed_to_one_location: !data.canadaWide,
-      category: data.businessCategory,
-      tags: data.businessTags || "",
-      business_description: data.businessDescription.trim(),
-      ig_handle: data.igHandle,
-    };
-    // console.log(businessObject);
-    const fetchUrl = business
-      ? process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS
-      : process.env.NEXT_PUBLIC_SERVER_ALL_BUSINESSES;
-    const fetchMethod = business ? "PATCH" : "POST";
-
-    updateBusiness(fetchUrl, fetchMethod, businessObject); //create or update
-
-    localStorage.setItem("businessObject", JSON.stringify(businessObject));
-
-    router.push("/preview");
+    const userToken = await user.getIdToken();
+    setSaving(true);
+    await submitBusinessObject(data, files, email, userToken, business);
+    setSaving(false);
+    business ? router.push("/preview") : router.push("/preview/new");
   };
   if (email) {
     return (
@@ -105,6 +50,7 @@ const EditBusiness = ({ email, business }) => {
             email={email}
           />
         </Container>
+        {saving && <SavingAnimation />}
       </>
     );
   } else {

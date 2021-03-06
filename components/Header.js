@@ -21,12 +21,17 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import PowerIcon from "@material-ui/icons/Power";
+import HomeIcon from "@material-ui/icons/Home";
 import { useAuth } from "../contexts/auth";
 import SignOutAlert from "./SignOutAlert";
 
 const useStyles = makeStyles({
   list: {
     width: 250,
+  },
+  mobileLink: {
+    display: "flex",
+    alignItems: "center",
   },
 });
 
@@ -78,8 +83,11 @@ const Header = (props) => {
       <List className={classes.list}>
         <ListItem>
           <Link href="/">
-            <a style={{ display: "flex" }}>
+            <a className={classes.mobileLink}>
               <>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
                 <ListItemText
                   primary="SoPlugged"
                   primaryTypographyProps={{ variant: "h5" }}
@@ -91,7 +99,7 @@ const Header = (props) => {
         <Divider />
         <ListItem>
           <Link href="/search">
-            <a style={{ display: "flex" }}>
+            <a className={classes.mobileLink}>
               <>
                 <ListItemIcon>
                   <ListAltIcon />
@@ -105,7 +113,7 @@ const Header = (props) => {
           <>
             <ListItem>
               <Link href="/my-business">
-                <a style={{ display: "flex" }}>
+                <a className={classes.mobileLink}>
                   <>
                     <ListItemIcon>
                       <BusinessCenterIcon />
@@ -125,12 +133,12 @@ const Header = (props) => {
         ) : (
           <ListItem>
             <Link href="/join">
-              <a>
+              <a className={classes.mobileLink}>
                 <>
                   <ListItemIcon>
                     <PowerIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Join" />
+                  <ListItemText primary="JOIN" />
                 </>
               </a>
             </Link>

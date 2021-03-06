@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "../styles/algolia.css";
+import "../styles/animation.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";

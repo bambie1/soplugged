@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     return firebase.auth().onIdTokenChanged(async (user) => {
-      console.log("auth changed", user?.email);
       if (!user) {
         setUser(null);
         nookies.set(undefined, "token", "", {});

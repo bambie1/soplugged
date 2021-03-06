@@ -102,6 +102,7 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
     maxFiles: MAX_FILES,
     noClick: true,
     noKeyboard: true,
+    maxSize: 16777216,
   });
   const removeFile = (file) => () => {
     let filtered = myFiles.filter(function (item) {
@@ -109,9 +110,11 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
       else return item.name !== file.name;
     });
     setMyFiles(filtered);
+    setFiles(filtered);
   };
   const removeAll = () => {
     setMyFiles([]);
+    setFiles([]);
   };
 
   const files = myFiles.map((file, index) => (
@@ -134,9 +137,10 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
   useEffect(
     () => () => {
       files.forEach((file) => URL.revokeObjectURL(file.preview));
-      // setInfoChanged(true);
+
+      setInfoChanged(true);
     },
-    [files]
+    [myFiles]
   );
 
   const style = useMemo(
@@ -186,7 +190,7 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
       {(fileRejections.length !== 0 || fileError) && (
         <aside>
           <Typography variant="body2" color="error">
-            Error: You can only upload images, and a max of 3 images
+            Error: You can only upload images, and a max of 3 images (Max: 16MB)
           </Typography>
         </aside>
       )}
