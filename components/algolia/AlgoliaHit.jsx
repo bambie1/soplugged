@@ -7,7 +7,7 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LanguageIcon from "@material-ui/icons/Language";
 import { Highlight, Snippet } from "react-instantsearch-dom";
-// import BusinessCardModal from "../BusinessCardModal";
+import BusinessCardModal from "../BusinessCardModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,12 +103,12 @@ const AlgoliaHit = ({ hit }) => {
           )}
         </div>
       </div>
-      {/* {selectedBusiness && (
+      {selectedBusiness && (
         <BusinessCardModal
           business={selectedBusiness}
           closeModal={setSelectedBusiness}
         />
-      )} */}
+      )}
     </>
   );
 };

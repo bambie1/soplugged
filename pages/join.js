@@ -93,7 +93,7 @@ const Join = ({ session }) => {
             name="description"
             content="Quick sign-up process to join as a business-owner"
           />
-          <title>Sign In to SoPlugged</title>
+          <title>Register your business on SoPlugged</title>
         </Head>
         <div className="page">
           <Container maxWidth="sm">
@@ -198,7 +198,7 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    context.res.writeHead(302, { Location: "/dashboard" });
+    context.res.writeHead(302, { Location: "/my-business" });
     context.res.end();
     return {
       props: { session: "Logged in" },

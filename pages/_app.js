@@ -7,6 +7,7 @@ import { theme } from "../src/theme";
 import Head from "next/head";
 import "regenerator-runtime/runtime.js";
 import { AuthProvider } from "../contexts/auth";
+import { SearchProvider } from "../contexts/searchContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -41,9 +42,11 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <SearchProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SearchProvider>
         </AuthProvider>
       </ThemeProvider>
     </>

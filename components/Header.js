@@ -18,7 +18,6 @@ import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import MenuIcon from "@material-ui/icons/Menu";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import PowerIcon from "@material-ui/icons/Power";
@@ -70,18 +69,6 @@ const Header = (props) => {
     }
     setState({ ...state, [anchor]: open });
   };
-  const menuList = [
-    { text: "Directory", icon: <ListAltIcon />, link: "/directory" },
-  ];
-  if (user) {
-    menuList.push([
-      { text: "Dashboard", icon: <DashboardIcon />, link: "/dashboard" },
-      { text: "My Business", icon: <BusinessCenterIcon />, link: "/tester" },
-      { text: "Sign Out", icon: <ExitToAppIcon />, link: "/join" },
-    ]);
-  } else {
-    menuList.push({ text: "Join", icon: <PowerIcon />, link: "/join" });
-  }
   const list = (anchor) => (
     <div
       role="presentation"
@@ -90,19 +77,66 @@ const Header = (props) => {
     >
       <List className={classes.list}>
         <ListItem>
-          <Link href="/dashboard">
-            <a>
+          <Link href="/">
+            <a style={{ display: "flex" }}>
               <>
-                <ListItemIcon>
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
+                <ListItemText
+                  primary="SoPlugged"
+                  primaryTypographyProps={{ variant: "h5" }}
+                />
               </>
             </a>
           </Link>
         </ListItem>
+        <Divider />
+        <ListItem>
+          <Link href="/search">
+            <a style={{ display: "flex" }}>
+              <>
+                <ListItemIcon>
+                  <ListAltIcon />
+                </ListItemIcon>
+                <ListItemText primary="Directory" />
+              </>
+            </a>
+          </Link>
+        </ListItem>
+        {user ? (
+          <>
+            <ListItem>
+              <Link href="/my-business">
+                <a style={{ display: "flex" }}>
+                  <>
+                    <ListItemIcon>
+                      <BusinessCenterIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="My Business" />
+                  </>
+                </a>
+              </Link>
+            </ListItem>
+            <ListItem onClick={handleSignOut}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign Out" />
+            </ListItem>
+          </>
+        ) : (
+          <ListItem>
+            <Link href="/join">
+              <a>
+                <>
+                  <ListItemIcon>
+                    <PowerIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Join" />
+                </>
+              </a>
+            </Link>
+          </ListItem>
+        )}
       </List>
-      <Divider />
     </div>
   );
 
@@ -130,14 +164,9 @@ const Header = (props) => {
               </Link>
               {user ? (
                 <>
-                  <Link href="/edit-business">
+                  <Link href="/my-business">
                     <a>
                       <Button color="inherit">MY BUSINESS</Button>
-                    </a>
-                  </Link>
-                  <Link href="/dashboard">
-                    <a>
-                      <Button color="inherit">DASHBOARD</Button>
                     </a>
                   </Link>
                   <Button color="inherit" onClick={handleSignOut}>

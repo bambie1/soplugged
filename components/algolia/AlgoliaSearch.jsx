@@ -17,6 +17,7 @@ import { Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useSearch } from "../../contexts/searchContext";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID,
@@ -26,9 +27,10 @@ const searchClient = algoliasearch(
 const AlgoliaSearch = () => {
   const [currentDropDown, setCurrentDropDown] = useState(0); //0, for no dropdowns
   const laptop = useMediaQuery("(min-width:1024px)");
+  const { contextCategory } = useSearch();
 
   const filters = [
-    { label: "CATEGORY", attribute: "category" },
+    { label: "CATEGORY", attribute: "category", default: contextCategory },
     { label: "LOCATION", attribute: "business_location" },
   ];
   return (
@@ -73,6 +75,7 @@ const AlgoliaSearch = () => {
                   attribute={item.attribute}
                   label={item.label}
                   hide={currentDropDown !== index + 1 && !laptop}
+                  defaultRefinement={item.default ? [item.default] : []}
                 />
               ))}
               <Configure hitsPerPage={12} />

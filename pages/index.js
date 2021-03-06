@@ -42,12 +42,8 @@ export default function Home() {
           <CategoriesCarousel />
           <br></br>
           <Link href="/search">
-            <a>
-              <Button
-                color="secondary"
-                variant="contained"
-                style={{ margin: "16px auto 0px", display: "flex" }}
-              >
+            <a style={{ display: "flex", alignSelf: "center" }}>
+              <Button color="secondary" variant="contained">
                 View All Businesses
               </Button>
             </a>

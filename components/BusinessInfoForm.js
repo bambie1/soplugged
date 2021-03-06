@@ -21,6 +21,7 @@ import LocationSearch from "./LocationSearch";
 import Form from "./Form";
 import CategorySearch from "./CategorySearch";
 import FileDropzone from "./FileDropzone";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,13 +44,11 @@ const useStyles = makeStyles((theme) => ({
   button: { margin: theme.spacing(1) },
 }));
 
-const BusinessInfoForm = ({ submitHandler }) => {
+const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
   const classes = useStyles();
-  // const { currentUser, currentBusiness, setIsNewBusiness } = useAuth();
-  const currentUser = null;
-  const currentBusiness = {};
   const samples = currentBusiness?.sample_images || "";
   const fbUrls = !samples ? [] : samples.split(",");
+  const router = useRouter();
 
   const { register, handleSubmit, errors, watch } = useForm();
   const watchDescription = watch(
@@ -369,24 +368,17 @@ const BusinessInfoForm = ({ submitHandler }) => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} key={currentUser?.email}>
+                <Grid item xs={12} key={email}>
                   <TextField
                     name="ownerEmail"
                     label="E-mail"
                     variant="outlined"
-                    defaultValue="info@mail.com"
-                    // defaultValue={currentUser?.email}
+                    defaultValue={email}
                     inputRef={register({
                       required: true,
                     })}
                     disabled={true}
-                    error={!!errors.ownerEmail}
                     helperText="Customers will reach out to you via this e-mail"
-                    onChange={(e) => {
-                      setInfoChanged(
-                        !(e.target.value === currentBusiness?.email)
-                      );
-                    }}
                   />
                 </Grid>
               </Grid>
@@ -397,6 +389,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
                 className={classes.submit}
                 onClick={() => {
                   // setIsNewBusiness(false);
+                  router.push("/preview");
                 }}
               >
                 View card
@@ -405,7 +398,7 @@ const BusinessInfoForm = ({ submitHandler }) => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={classes.submit}
               >
                 {currentBusiness

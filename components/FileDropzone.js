@@ -67,7 +67,7 @@ const rejectStyle = {
 };
 const MAX_FILES = 3; //file upload limit
 
-const FileDropzone = ({ fbUrls, setFiles }) => {
+const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
   const [myFiles, setMyFiles] = useState(fbUrls);
   const [fileError, setFileError] = useState(false);
 
@@ -134,6 +134,7 @@ const FileDropzone = ({ fbUrls, setFiles }) => {
   useEffect(
     () => () => {
       files.forEach((file) => URL.revokeObjectURL(file.preview));
+      // setInfoChanged(true);
     },
     [files]
   );

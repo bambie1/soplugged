@@ -1,5 +1,7 @@
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSearch } from "../contexts/searchContext";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +53,13 @@ const useStyles = makeStyles((theme) => ({
 
 const CategoryCard = ({ label, imgSrc, value }) => {
   const classes = useStyles();
-  const handleClick = () => {};
+  const { setContextCategory } = useSearch();
+  const router = useRouter();
+
+  const handleClick = () => {
+    setContextCategory(label);
+    router.push("/search");
+  };
 
   return (
     <div className={classes.root} onClick={handleClick}>

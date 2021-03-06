@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Configure } from "react-instantsearch-dom";
 import Autocomplete from "./Autocomplete";
+import { useSearch } from "../../contexts/searchContext";
+import { useRouter } from "next/router";
 
 const searchClient = algoliasearch(
   "0P514VMKM1",
@@ -10,9 +12,12 @@ const searchClient = algoliasearch(
 
 const AlgoliaAutoComplete = () => {
   const [query, setQuery] = useState("");
+  const router = useRouter();
+  const { setContextCategory } = useSearch();
 
   const onSuggestionSelected = (_, { suggestion }) => {
-    setQuery(suggestion.name);
+    setContextCategory(suggestion.name);
+    router.push("/search");
   };
 
   const onSuggestionCleared = () => {
