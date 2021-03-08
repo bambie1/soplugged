@@ -30,6 +30,13 @@ const Footer = () => {
                 </IconButton>
               </a>
             </div>
+            <Link href="/sponsors">
+              <a>
+                <Button variant="outlined" color="secondary">
+                  Sponsors
+                </Button>
+              </a>
+            </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} className="footer-links-div">

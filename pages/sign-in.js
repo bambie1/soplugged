@@ -14,6 +14,8 @@ import nookies from "nookies";
 import { verifyIdToken } from "../src/firebase/firebaseAdmin";
 import firebaseClient from "../src/firebase/firebaseClient";
 import firebase from "firebase/app";
+import { useRouter } from "next/router";
+import { useAuth } from "../contexts/auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -60,33 +62,22 @@ const SignIn = ({ session }) => {
   const [mail, setMail] = useState("");
   const [mailSent, setMailSent] = useState(false);
   const classes = useStyles();
+  const router = useRouter();
+  const { sendLink } = useAuth();
   firebaseClient();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // sendLink(mail);
+    sendLink(mail);
     setMailSent(true);
   };
   const handleGoogleSubmit = async () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
-    await firebase
-      .auth()
-      .getRedirectResult()
-      .then((result) => {
-        if (result.credential) {
-          var credential = result.credential;
-          var token = credential.accessToken;
-          window.location.href("/dashboard");
-        }
-        var user = result.user;
-      })
-      .catch((error) => {
-        console.log("fb error: ", error.message, error.code);
-      });
   };
 
   if (session) {
+    router.push("/my-business");
     return <p>loading</p>;
   } else {
     return (
@@ -189,7 +180,7 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    context.res.writeHead(302, { Location: "/dashboard" });
+    context.res.writeHead(302, { Location: "/my-business" });
     context.res.end();
     return {
       props: { session: "Logged in" },

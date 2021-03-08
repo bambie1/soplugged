@@ -14,6 +14,8 @@ import nookies from "nookies";
 import { verifyIdToken } from "../src/firebase/firebaseAdmin";
 import firebaseClient from "../src/firebase/firebaseClient";
 import firebase from "firebase/app";
+import { useRouter } from "next/router";
+import { useAuth } from "../contexts/auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -61,29 +63,22 @@ const Join = ({ session }) => {
   const [mail, setMail] = useState("");
   const [mailSent, setMailSent] = useState(false);
   const classes = useStyles();
+  const router = useRouter();
+  const { sendLink } = useAuth();
+
   firebaseClient();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // sendLink(mail);
+    sendLink(mail);
     setMailSent(true);
   };
 
   const handleGoogleSubmit = async () => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    await firebase.auth().signInWithRedirect(provider);
-    firebase
-      .auth()
-      .getRedirectResult()
-      .then((result) => {
-        if (result.credential) {
-          console.log("result cred: ", result.credential);
-        }
-      })
-      .catch((error) => {
-        console.log("FB error: ", error.message);
-      });
+    firebase.auth().signInWithRedirect(provider);
   };
   if (session) {
+    router.push("/my-business");
     return <p>loading</p>;
   } else {
     return (

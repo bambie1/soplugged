@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "../styles/algolia.css";
@@ -9,8 +9,43 @@ import Head from "next/head";
 import "regenerator-runtime/runtime.js";
 import { AuthProvider } from "../contexts/auth";
 import { SearchProvider } from "../contexts/searchContext";
+import firebase from "firebase/app";
+import { useRouter } from "next/router";
+import firebaseClient from "../src/firebase/firebaseClient";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  firebaseClient();
+  firebase
+    .auth()
+    .getRedirectResult()
+    .then((result) => {
+      if (result.credential) {
+        router.push("/my-business");
+      }
+    })
+    .catch((error) => {
+      console.log({ error });
+    });
+
+  useEffect(() => {
+    if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+      var email = window.localStorage.getItem("emailForSignIn");
+      if (!email) {
+        email = window.prompt("Please provide your email for confirmation");
+      }
+      firebase
+        .auth()
+        .signInWithEmailLink(email, window.location.href)
+        .then((result) => {
+          window.localStorage.removeItem("emailForSignIn");
+          router.push("/my-business");
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    }
+  }, []);
   return (
     <>
       <Head>

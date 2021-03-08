@@ -10,6 +10,22 @@ export const AuthProvider = ({ children }) => {
   firebaseClient();
   const [user, setUser] = useState(null);
 
+  const sendLink = (userMail) => {
+    return firebase
+      .auth()
+      .sendSignInLinkToEmail(userMail, actionCodeSettings)
+      .then(() => {
+        window.localStorage.setItem("emailForSignIn", userMail);
+      })
+      .catch(function (error) {
+        console.log("error: ", error);
+      });
+  };
+  var actionCodeSettings = {
+    url: process.env.NEXT_PUBLIC_FB_URL,
+    handleCodeInApp: true,
+  };
+
   useEffect(() => {
     return firebase.auth().onIdTokenChanged(async (user) => {
       if (!user) {
@@ -23,7 +39,9 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, sendLink }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

@@ -43,12 +43,11 @@ const Search = () => {
               Let us know
             </a>
           </Typography>
-
           <hr style={{ width: "70%", maxWidth: "500px" }}></hr>
           <Typography>
             Are you a business owner?{" "}
-            <Link href="/join" className={classes.link}>
-              Add your business to our platform
+            <Link href="/join">
+              <a className={classes.link}>Add your business to our platform</a>
             </Link>
           </Typography>
         </Container>

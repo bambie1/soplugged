@@ -42,6 +42,17 @@ const useStyles = makeStyles((theme) => ({
   submit: { width: "auto !important" },
   input: { display: "none" },
   button: { margin: theme.spacing(1) },
+  help: {
+    backgroundColor: theme.palette.secondary.light,
+    marginTop: "30px",
+    padding: "15px",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "60px",
+    },
+    "& > *": {
+      margin: "8px 0px",
+    },
+  },
 }));
 
 const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
@@ -76,7 +87,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
         {currentBusiness ? (
           <>
             <Typography variant="h5">
-              Welcome back, {currentBusiness.owner_name}!
+              Welcome back, {currentBusiness.owner_name.split(" ")[0]}!
             </Typography>
             <Typography variant="body1" style={{ marginTop: "5px" }}>
               Edit your business info as you wish
@@ -406,6 +417,29 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                   : "Register and view card"}
               </Button>
             )}
+            <Paper className={classes.help}>
+              <Typography>
+                Have an issue completing the form? Please hit the button below
+                and let us know. We'll get back to you as soon as possible
+              </Typography>
+              <a href="mailto:hello@soplugged.com">
+                <Button variant="outlined">Contact Us</Button>
+              </a>
+              {currentBusiness && (
+                <>
+                  <hr></hr>
+                  <Typography>
+                    Want to make a suggestion on how to improve your SoPlugged
+                    experience?
+                  </Typography>
+                  <a href="https://soplugged.kampsite.co/" target="_blank">
+                    <Button variant="contained" color="primary">
+                      Let us know
+                    </Button>
+                  </a>
+                </>
+              )}
+            </Paper>
           </Grid>
         </Grid>
       </Form>
