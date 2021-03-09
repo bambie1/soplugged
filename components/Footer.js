@@ -1,11 +1,27 @@
-import { Typography, Container, Grid, Button } from "@material-ui/core";
+import {
+  Typography,
+  Container,
+  Grid,
+  Button,
+  Divider,
+} from "@material-ui/core";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
 import Link from "next/link";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  divider: {
+    margin: "8px",
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+}));
 
 const Footer = () => {
+  const classes = useStyles();
   return (
     <footer className="footer">
       <Container className="footer-container">
@@ -30,13 +46,17 @@ const Footer = () => {
                 </IconButton>
               </a>
             </div>
-            <Link href="/sponsors">
-              <a>
-                <Button variant="outlined" color="secondary">
-                  Sponsors
-                </Button>
-              </a>
-            </Link>
+
+            <a
+              href="https://soplugged.kampsite.co/"
+              target="_blank"
+              style={{ display: "block" }}
+            >
+              <Button variant="outlined" color="secondary">
+                Make a feature request
+              </Button>
+            </a>
+            <Divider className={classes.divider} />
           </Grid>
 
           <Grid item xs={12} sm={6} className="footer-links-div">
@@ -56,11 +76,18 @@ const Footer = () => {
                 <Button>ABOUT US</Button>
               </a>
             </Link>
-            <Link href="/privacy-policy" target="_blank">
+            <Link href="/sponsors">
+              <a>
+                <Button variant="outlined" color="secondary">
+                  Sponsors
+                </Button>
+              </a>
+            </Link>
+            {/* <Link href="/privacy-policy" target="_blank">
               <a>
                 <Button>PRIVACY & TERMS</Button>
               </a>
-            </Link>
+            </Link> */}
           </Grid>
         </Grid>
         <br></br>

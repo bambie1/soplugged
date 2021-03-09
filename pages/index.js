@@ -43,7 +43,11 @@ export default function Home() {
           <br></br>
           <Link href="/search">
             <a style={{ display: "flex", alignSelf: "center" }}>
-              <Button color="secondary" variant="contained">
+              <Button
+                color="secondary"
+                variant="contained"
+                // style={{ fontSize: "1.1rem" }}
+              >
                 View All Businesses
               </Button>
             </a>
@@ -70,7 +74,7 @@ export default function Home() {
                     <Button
                       variant="contained"
                       color="secondary"
-                      style={{ margin: "16px 0px", fontSize: "1.1rem" }}
+                      style={{ margin: "16px 0px" }}
                     >
                       BROWSE
                     </Button>
@@ -91,7 +95,7 @@ export default function Home() {
                     <Button
                       variant="contained"
                       color="secondary"
-                      style={{ margin: "16px 0px", fontSize: "1.1rem" }}
+                      style={{ margin: "16px 0px" }}
                     >
                       REGISTER
                     </Button>

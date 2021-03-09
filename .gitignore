@@ -36,3 +36,8 @@ yarn-error.log*
 .env*
 .env
 soplugged-stg-firebase-adminsdk-wb669-7fcf6ea519.json
+
+.vercel
+app-soplugged-firebase-adminsdk-6pk1o-2b15ee62de.json
+
+.vercel

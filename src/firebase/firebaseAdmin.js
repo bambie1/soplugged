@@ -1,5 +1,7 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../../soplugged-stg-firebase-adminsdk-wb669-7fcf6ea519.json");
+const serviceAccount = process.env.NEXT_PUBLIC_FB_PRIVATE_KEY_JSON
+  ? JSON.parse(process.env.NEXT_PUBLIC_FB_PRIVATE_KEY_JSON)
+  : undefined;
 
 export const verifyIdToken = (token) => {
   if (!admin.apps.length) {
