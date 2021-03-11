@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "../styles/algolia.css";
@@ -6,46 +6,13 @@ import "../styles/animation.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
-import "regenerator-runtime/runtime.js";
-import { AuthProvider } from "../contexts/auth";
+// import "regenerator-runtime/runtime.js";
 import { SearchProvider } from "../contexts/searchContext";
-import firebase from "firebase/app";
-import { useRouter } from "next/router";
-import firebaseClient from "../src/firebase/firebaseClient";
+import initAuth from "../utils/initAuth";
+
+initAuth();
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  firebaseClient();
-  firebase
-    .auth()
-    .getRedirectResult()
-    .then((result) => {
-      if (result.credential) {
-        router.push("/my-business");
-      }
-    })
-    .catch((error) => {
-      console.log({ error });
-    });
-
-  useEffect(() => {
-    if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-      var email = window.localStorage.getItem("emailForSignIn");
-      if (!email) {
-        email = window.prompt("Please provide your email for confirmation");
-      }
-      firebase
-        .auth()
-        .signInWithEmailLink(email, window.location.href)
-        .then((result) => {
-          window.localStorage.removeItem("emailForSignIn");
-          router.push("/my-business");
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
-    }
-  }, []);
   return (
     <>
       <Head>
@@ -78,13 +45,11 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <AuthProvider>
-          <SearchProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </SearchProvider>
-        </AuthProvider>
+        <SearchProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SearchProvider>
       </ThemeProvider>
     </>
   );

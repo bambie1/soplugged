@@ -7,9 +7,6 @@ import { Button, Container } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
 import Head from "next/head";
-import nookies from "nookies";
-import { verifyIdToken } from "../../src/firebase/firebaseAdmin";
-import firebaseClient from "../../src/firebase/firebaseClient";
 // import ErrorBoundary from "../components/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
@@ -93,38 +90,5 @@ const BusinessPreview = ({ currentBusiness }) => {
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    const { email } = token;
-    const res = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
-      method: "GET",
-      headers: {
-        "Firebase-Token": cookies.token,
-      },
-    });
-    if (!res.ok) {
-      throw new Error("HTTP status " + res.status);
-    }
-    const resJson = await res.json();
-    if (!resJson) {
-      context.res.writeHead(302, { Location: "/my-business" });
-      context.res.end();
-    }
-    return {
-      props: {
-        email: email,
-        currentBusiness: resJson,
-      },
-    };
-  } catch (err) {
-    console.log({ err });
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-    return { props: {} };
-  }
-}
 
 export default BusinessPreview;

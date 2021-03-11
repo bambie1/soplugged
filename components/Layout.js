@@ -4,7 +4,7 @@ import Header from "./Header";
 const Layout = ({ children }) => {
   return (
     <div className="content">
-      <Header home={true} />
+      <Header />
       {children}
       <Footer />
     </div>

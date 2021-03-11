@@ -22,8 +22,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import PowerIcon from "@material-ui/icons/Power";
 import HomeIcon from "@material-ui/icons/Home";
-import { useAuth } from "../contexts/auth";
 import SignOutAlert from "./SignOutAlert";
+import { useAuthUser, withAuthUser } from "next-firebase-auth";
 
 const useStyles = makeStyles({
   list: {
@@ -54,15 +54,12 @@ function HideOnScroll(props) {
 const Header = (props) => {
   const router = useRouter();
   const classes = useStyles();
-  const { user } = useAuth();
+  const user = useAuthUser();
   const anchor = "right";
   const [state, setState] = useState({
     right: false,
   });
   const [signOut, setSignOut] = useState(false);
-  const handleSignOut = async () => {
-    setSignOut(true);
-  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -109,7 +106,7 @@ const Header = (props) => {
             </a>
           </Link>
         </ListItem>
-        {user ? (
+        {user.email ? (
           <>
             <ListItem>
               <Link href="/my-business">
@@ -123,7 +120,7 @@ const Header = (props) => {
                 </a>
               </Link>
             </ListItem>
-            <ListItem onClick={handleSignOut}>
+            <ListItem onClick={() => setSignOut(true)}>
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>
@@ -170,14 +167,14 @@ const Header = (props) => {
                   <Button color="inherit">DIRECTORY</Button>
                 </a>
               </Link>
-              {user ? (
+              {user.email ? (
                 <>
                   <Link href="/my-business">
                     <a>
                       <Button color="inherit">MY BUSINESS</Button>
                     </a>
                   </Link>
-                  <Button color="inherit" onClick={handleSignOut}>
+                  <Button color="inherit" onClick={() => setSignOut(true)}>
                     Sign Out
                   </Button>
                 </>
@@ -209,7 +206,12 @@ const Header = (props) => {
                 {list(anchor)}
               </SwipeableDrawer>
             </div>
-            {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
+            {signOut && (
+              <SignOutAlert
+                handleClose={() => setSignOut(false)}
+                signOut={user.signOut}
+              />
+            )}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -217,4 +219,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default withAuthUser()(Header);

@@ -3,14 +3,15 @@ import BusinessInfoForm from "../components/BusinessInfoForm";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
-import nookies from "nookies";
-import { verifyIdToken } from "../src/firebase/firebaseAdmin";
-import firebaseClient from "../src/firebase/firebaseClient";
-import { useAuth } from "../contexts/auth";
 import { useRouter } from "next/router";
-import { getImageUrl } from "../src/uploadImage";
 import SavingAnimation from "../components/SavingAnimation";
 import { submitBusinessObject } from "../src/updateBusiness";
+import {
+  useAuthUser,
+  withAuthUser,
+  withAuthUserTokenSSR,
+  AuthAction,
+} from "next-firebase-auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -21,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const EditBusiness = ({ email, business }) => {
   const classes = useStyles();
-  firebaseClient();
-  const { user } = useAuth();
+  const { user } = {};
   const router = useRouter();
   const [saving, setSaving] = useState(false);
 
@@ -58,33 +58,32 @@ const EditBusiness = ({ email, business }) => {
   }
 };
 
-export async function getServerSideProps(context) {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    const { email } = token;
-    const res = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
-      method: "GET",
-      headers: {
-        "Firebase-Token": cookies.token,
-      },
-    });
-    if (!res.ok) {
-      throw new Error("HTTP status " + res.status);
-    }
-    const resJson = await res.json();
-    return {
-      props: {
-        email: email,
-        business: resJson,
-      },
-    };
-  } catch (err) {
-    console.log({ err });
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-    return { props: {} };
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req }) => {
+  const token = await AuthUser.getIdToken();
+  const response = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
+    method: "GET",
+    headers: {
+      "Firebase-Token": token,
+    },
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `Data fetching failed with status ${response.status}: ${JSON.stringify(
+        data
+      )}`
+    );
   }
-}
+  return {
+    props: {
+      email: AuthUser.email,
+      business: data,
+    },
+  };
+});
 
-export default EditBusiness;
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(EditBusiness);

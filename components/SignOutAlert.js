@@ -7,11 +7,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import firebase from "firebase/app";
 
-export default function AlertDialog({ handleClose }) {
-  const signOut = async () => {
-    await firebase.auth().signOut();
+export default function AlertDialog({ handleClose, signOut }) {
+  const handleSignOut = async () => {
+    signOut();
     handleClose();
-    window.location.href = "/sign-in";
+    window.location.href = "/join";
   };
   return (
     <Dialog
@@ -33,7 +33,7 @@ export default function AlertDialog({ handleClose }) {
           Cancel
         </Button>
         <Button
-          onClick={signOut}
+          onClick={handleSignOut}
           color="secondary"
           variant="outlined"
           autoFocus
