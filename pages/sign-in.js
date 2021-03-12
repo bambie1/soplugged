@@ -51,16 +51,15 @@ const Auth = () => {
       <Head>
         <meta
           name="description"
-          content="Quick sign-up process to get started on SoPlugged as a business owner"
+          content="Quick sign-in process to access SoPlugged account as a business owner"
         />
-        <title>Join SoPlugged</title>
+        <title>Sign in to SoPlugged</title>
       </Head>
       <div className="page">
         <Container maxWidth="sm" className={classes.container}>
-          <Typography variant="h1">Join SoPlugged</Typography>
+          <Typography variant="h1">SoPlugged Sign-in</Typography>
           <Typography>
-            Please verify your identity via one of the following sign-in
-            methods:
+            Please sign into your account using the mathod used to register:
           </Typography>
           <div className={classes.paper}>
             <FirebaseAuth />
@@ -68,10 +67,10 @@ const Auth = () => {
           <br></br>
           <br></br>
           <Typography>
-            Already a SoPlugged member?
-            <a href="/sign-in" className={classes.link}>
+            First time on SoPlugged, or have no account?
+            <a href="/join" className={classes.link}>
               {" "}
-              Sign in here{" "}
+              Set up one{" "}
             </a>
             .
           </Typography>

@@ -7,6 +7,11 @@ import { Button, Container } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
 import Head from "next/head";
+import {
+  withAuthUser,
+  withAuthUserTokenSSR,
+  AuthAction,
+} from "next-firebase-auth";
 // import ErrorBoundary from "../components/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
@@ -103,34 +108,32 @@ const BusinessPreview = ({ currentBusiness }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  try {
-    const res = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
-      method: "GET",
-      headers: {
-        "Firebase-Token": "",
-      },
-    });
-    if (!res.ok) {
-      throw new Error("HTTP status " + res.status);
-    }
-    const resJson = await res.json();
-    if (!resJson) {
-      context.res.writeHead(302, { Location: "/my-business" });
-      context.res.end();
-    }
-    return {
-      props: {
-        email: email,
-        currentBusiness: resJson,
-      },
-    };
-  } catch (err) {
-    console.log({ err });
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-    return { props: {} };
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req }) => {
+  const token = await AuthUser.getIdToken();
+  const response = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
+    method: "GET",
+    headers: {
+      "Firebase-Token": token,
+    },
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `Data fetching failed with status ${response.status}: ${JSON.stringify(
+        data
+      )}`
+    );
   }
-}
+  return {
+    props: {
+      email: AuthUser.email,
+      business: data,
+    },
+  };
+});
 
-export default BusinessPreview;
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(BusinessPreview);

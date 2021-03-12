@@ -19,7 +19,7 @@ const HeroBanner = () => {
         </Typography>
         <AlgoliaAutoComplete />
       </section>
-      <div className="custom-shape-divider-bottom-1615374122">
+      <div className="custom-shape-divider-bottom-1615430493">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"

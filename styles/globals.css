@@ -345,3 +345,26 @@ button.close-btn {
     font-weight: bold;
   }
 }
+
+.custom-shape-divider-bottom-1615430493 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1615430493 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 35px;
+}
+
+.custom-shape-divider-bottom-1615430493 .shape-fill {
+  fill: #ffffff;
+}
+.firebaseui-container * {
+  font-family: "Raleway";
+}

@@ -20,14 +20,26 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import SearchIcon from "@material-ui/icons/Search";
 import PowerIcon from "@material-ui/icons/Power";
 import HomeIcon from "@material-ui/icons/Home";
 import SignOutAlert from "./SignOutAlert";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
 
 const useStyles = makeStyles({
+  navDiv: {
+    height: "100%",
+  },
   list: {
     width: 250,
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    "& > li": {
+      paddingTop: "16px",
+      paddingBottom: "16px",
+    },
   },
   mobileLink: {
     display: "flex",
@@ -74,6 +86,7 @@ const Header = (props) => {
   const list = (anchor) => (
     <div
       role="presentation"
+      className={classes.navDiv}
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
@@ -99,7 +112,7 @@ const Header = (props) => {
             <a className={classes.mobileLink}>
               <>
                 <ListItemIcon>
-                  <ListAltIcon />
+                  <SearchIcon />
                 </ListItemIcon>
                 <ListItemText primary="Directory" />
               </>

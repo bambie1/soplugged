@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import SavingAnimation from "../components/SavingAnimation";
 import { submitBusinessObject } from "../src/updateBusiness";
 import {
-  useAuthUser,
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,

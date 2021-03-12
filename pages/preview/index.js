@@ -2,7 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import BusinessCard from "../../components/BusinessCard";
-import Header from "../../components/Header";
+import {
+  withAuthUser,
+  withAuthUserTokenSSR,
+  AuthAction,
+} from "next-firebase-auth";
 import { Button, Container } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
@@ -91,4 +95,32 @@ const BusinessPreview = ({ currentBusiness }) => {
   );
 };
 
-export default BusinessPreview;
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser, req }) => {
+  const token = await AuthUser.getIdToken();
+  const response = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
+    method: "GET",
+    headers: {
+      "Firebase-Token": token,
+    },
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `Data fetching failed with status ${response.status}: ${JSON.stringify(
+        data
+      )}`
+    );
+  }
+  return {
+    props: {
+      email: AuthUser.email,
+      business: data,
+    },
+  };
+});
+
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(BusinessPreview);
