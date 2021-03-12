@@ -42,7 +42,6 @@ function MyApp({ Component, pageProps }) {
           integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
           crossOrigin="anonymous"
         />
-        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
         <SearchProvider>

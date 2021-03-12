@@ -50,6 +50,7 @@ const Footer = () => {
             <a
               href="https://soplugged.kampsite.co/"
               target="_blank"
+              rel="noopener"
               style={{ display: "block" }}
             >
               <Button variant="outlined" color="secondary">

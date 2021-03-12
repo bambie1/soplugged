@@ -432,7 +432,11 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     Want to make a suggestion on how to improve your SoPlugged
                     experience?
                   </Typography>
-                  <a href="https://soplugged.kampsite.co/" target="_blank">
+                  <a
+                    href="https://soplugged.kampsite.co/"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     <Button variant="contained" color="primary">
                       Let us know
                     </Button>
