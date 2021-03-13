@@ -7,7 +7,6 @@ import "../styles/skeleton.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
-// import "regenerator-runtime/runtime.js";
 import { SearchProvider } from "../contexts/searchContext";
 import initAuth from "../utils/initAuth";
 
