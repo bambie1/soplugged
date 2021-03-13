@@ -72,7 +72,7 @@ const BusinessCard = ({ mini, average, ...props }) => {
         }}
       >
         <Avatar alt="Business Logo" src={logo_url} variant="square">
-          {business_name.charAt(0)}
+          {business_name.toUpperCase().charAt(0)}
         </Avatar>
         <Typography variant="h6" className={classes.businessName}>
           {business_name}

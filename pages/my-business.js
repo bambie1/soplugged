@@ -61,7 +61,7 @@ const EditBusiness = ({ email, token }) => {
         </Head>
         <div className={classes.page}>
           <Container maxWidth="lg">
-            {data ? (
+            {data !== undefined ? (
               <BusinessInfoForm
                 submitHandler={handleSubmit}
                 currentBusiness={data}

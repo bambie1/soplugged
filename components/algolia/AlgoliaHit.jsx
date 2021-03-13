@@ -45,7 +45,7 @@ const AlgoliaHit = ({ hit }) => {
           }}
         >
           <Avatar alt="Business Logo" src={hit.logo_url} variant="square">
-            {hit.business_name.charAt(0)}
+            {hit.business_name.toUpperCase().charAt(0)}
           </Avatar>
           <Typography variant="h6" className={classes.businessName}>
             <Highlight attribute="business_name" hit={hit} />

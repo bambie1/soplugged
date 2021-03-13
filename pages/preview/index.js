@@ -1,13 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import BusinessCard from "../../components/BusinessCard";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
-import { Button, Container } from "@material-ui/core";
+import { Button, Container, Typography, Paper } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
 import Head from "next/head";
@@ -52,6 +51,13 @@ const BusinessPreview = ({ token }) => {
     [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
     fetcher
   );
+  if (data === undefined) {
+    return (
+      <Container className={classes.page} maxWidth="md">
+        <BusinessCardSkeleton />
+      </Container>
+    );
+  }
   return (
     <>
       <Head>
@@ -62,9 +68,7 @@ const BusinessPreview = ({ token }) => {
         <title>Preview Business | SoPlugged</title>
       </Head>
       <Container className={classes.page} maxWidth="md">
-        <Typography variant="h6">
-          Your SoPlugged business has been updated
-        </Typography>
+        <Typography variant="h6">SoPlugged Business Preview</Typography>
         <br></br>
         <Typography variant="body2">
           Here's a snapshot of your business card:
@@ -81,10 +85,20 @@ const BusinessPreview = ({ token }) => {
             </Button>
           </a>
         </Link>
-        {/* <ErrorBoundary> */}
-        {data ? <BusinessCard dbObject={data} /> : <BusinessCardSkeleton />}
-
-        {/* </ErrorBoundary> */}
+        {data ? (
+          <BusinessCard dbObject={data} />
+        ) : (
+          <Paper style={{ padding: "16px", maxWidth: "400px", margin: "auto" }}>
+            <Typography>
+              Doesn't look like you have registered your business yet
+            </Typography>
+            <br></br>
+            <br></br>
+            <Typography variant="body2">
+              Hit the 'Edit' button to add your business
+            </Typography>
+          </Paper>
+        )}
 
         <div className={classes.buttonDiv}>
           <Link
