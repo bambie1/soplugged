@@ -10,27 +10,44 @@ import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
+  useAuthUser,
 } from "next-firebase-auth";
+import useSWR from "swr";
+import BusinessInfoSkeleton from "../components/skeletons/BusinessInfoSkeleton";
 
 const useStyles = makeStyles((theme) => ({
   page: {
     padding: theme.spacing(10, 1, 2),
     minHeight: "85vh",
+    zIndex: "1",
+    background: "white",
   },
 }));
 
-const EditBusiness = ({ email, business }) => {
+const fetcher = (url, token) =>
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Firebase-Token": token,
+    },
+  }).then((r) => r.json());
+
+const EditBusiness = ({ email, token }) => {
   const classes = useStyles();
-  const { user } = {};
+  const user = useAuthUser();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
 
-  const handleSubmit = async (data, files) => {
-    const userToken = await user.getIdToken();
+  const { data, error } = useSWR(
+    [process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, token],
+    fetcher
+  );
+  const handleSubmit = async (businessData, files) => {
     setSaving(true);
-    await submitBusinessObject(data, files, email, userToken, business);
+    const userToken = await user.getIdToken();
+    await submitBusinessObject(businessData, files, email, userToken, data);
     setSaving(false);
-    business ? router.push("/preview") : router.push("/preview/new");
+    data ? router.push("/preview") : router.push("/preview/new");
   };
   if (email) {
     return (
@@ -42,14 +59,20 @@ const EditBusiness = ({ email, business }) => {
           />
           <title>My Business | SoPlugged</title>
         </Head>
-        <Container maxWidth="lg" className={classes.page}>
-          <BusinessInfoForm
-            submitHandler={handleSubmit}
-            currentBusiness={business}
-            email={email}
-          />
-        </Container>
-        {saving && <SavingAnimation />}
+        <div className={classes.page}>
+          <Container maxWidth="lg">
+            {data ? (
+              <BusinessInfoForm
+                submitHandler={handleSubmit}
+                currentBusiness={data}
+                email={email}
+              />
+            ) : (
+              <BusinessInfoSkeleton />
+            )}
+          </Container>
+          {saving && <SavingAnimation />}
+        </div>
       </>
     );
   } else {
@@ -61,24 +84,10 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser, req }) => {
   const token = await AuthUser.getIdToken();
-  const response = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
-    method: "GET",
-    headers: {
-      "Firebase-Token": token,
-    },
-  });
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(
-      `Data fetching failed with status ${response.status}: ${JSON.stringify(
-        data
-      )}`
-    );
-  }
   return {
     props: {
       email: AuthUser.email,
-      business: data,
+      token,
     },
   };
 });

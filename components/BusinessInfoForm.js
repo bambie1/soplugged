@@ -221,7 +221,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     />
                     <label htmlFor="business-logo">
                       <Button
-                        variant="outlined"
+                        variant="contained"
                         color="primary"
                         component="span"
                       >
@@ -314,7 +314,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     <FormHelperText error={!!errors.businessUrl}>
                       {!!errors.businessUrl
                         ? "Please enter a valid url"
-                        : "Cusomers will be taken to this page to view your business"}
+                        : "Customers will be taken to this page to view your business"}
                     </FormHelperText>
                   </FormControl>
                 </Grid>
@@ -396,7 +396,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
             </Paper>
             {!infoChanged && currentBusiness ? (
               <Button
-                variant="contained"
+                variant="outlined"
                 className={classes.submit}
                 onClick={() => {
                   // setIsNewBusiness(false);

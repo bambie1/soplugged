@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
   page: {
     minHeight: "85vh",
     padding: theme.spacing(10, 1, 2),
+    zIndex: "1",
+    background: "white",
   },
   link: {
     color: theme.palette.primary.main,
@@ -22,8 +24,17 @@ const Search = () => {
       <Head>
         <meta
           name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
+          content="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
         />
+        <meta
+          property="og:title"
+          content="Find the perfect black-owned business for your needs | SoPlugged"
+        />
+        <meta
+          property="og:description"
+          content="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
+        />
+        <meta property="og:url" content="http://soplugged.com/search" />
         <title>Business Directory | SoPlugged</title>
       </Head>
       <div className={classes.page}>

@@ -7,11 +7,14 @@ import SubscribeForm from "../components/SubscribeForm";
 const useStyles = makeStyles((theme) => ({
   page: {
     paddingTop: "60px",
+    zIndex: "1",
+    background: "white",
   },
   container: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "85vh",
+    minHeight: "100vh",
+    textAlign: "center",
   },
   title: {
     textAlign: "center",
@@ -46,7 +49,7 @@ const OurStory = () => {
         />
       </Head>
       <main className={classes.page}>
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="md" className={classes.container}>
           <div className={classes.content}>
             <Typography variant="h1" className={classes.title}>
               Our Story ...

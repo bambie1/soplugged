@@ -34,7 +34,7 @@ const FAQs = () => {
           content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
         />
       </Head>
-      <main className="page">
+      <main className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="lg">
           <Typography variant="h1" className={classes.title}>
             Frequently Asked Questions
@@ -111,7 +111,10 @@ const FAQs = () => {
               </a>
             </Link>
           </section>
-          <section className={classes.faqSection}>
+          <section
+            className={classes.faqSection}
+            style={{ marginBottom: "12vh" }}
+          >
             <Typography
               variant="h6"
               component="h2"
@@ -125,8 +128,6 @@ const FAQs = () => {
               with the business to find out their preference.
             </Typography>
           </section>
-          <br></br>
-          <br></br>
           <SubscribeForm />
         </Container>
       </main>

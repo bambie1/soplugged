@@ -5,6 +5,8 @@ import HeroBanner from "../components/HeroBanner";
 import CategoriesCarousel from "../components/CategoriesCarousel";
 import SubscribeForm from "../components/SubscribeForm";
 import { makeStyles } from "@material-ui/core/styles";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -28,11 +30,21 @@ export default function Home() {
           name="description"
           content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
         />
+        <meta
+          property="og:title"
+          content="Find the perfect black-owned business for your needs | SoPlugged"
+        />
+        <meta
+          property="og:description"
+          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
+        />
+        <meta property="og:url" content="http://soplugged.com" />
         <title>
           Find the perfect black-owned business for your needs | SoPlugged
         </title>
       </Head>
-      <main>
+      {/* <Header /> */}
+      <main style={{ zIndex: "1", background: "white" }}>
         <HeroBanner />
         <div className="body-content">
           <br></br>
@@ -116,6 +128,7 @@ export default function Home() {
           <SubscribeForm />
         </div>
       </main>
+      {/* <Footer /> */}
     </>
   );
 }

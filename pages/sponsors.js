@@ -7,6 +7,8 @@ import SubscribeForm from "../components/SubscribeForm";
 const useStyles = makeStyles((theme) => ({
   page: {
     paddingTop: "70px",
+    zIndex: "1",
+    background: "white",
   },
   container: {
     display: "flex",

@@ -27,8 +27,24 @@ img {
   min-height: 850px;
   padding-top: 70px;
 }
-.content {
+#content {
   min-height: 100vh;
+  z-index: 1;
+}
+#loading {
+  position: fixed;
+  top: 25%;
+  /* z-index: 1; */
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+}
+.layout-div {
+  display: flex;
+  flex-direction: column;
 }
 .body-content {
   padding: 1.15rem;
@@ -254,7 +270,7 @@ button.close-btn {
   text-align: center;
   background-color: var(--light);
   z-index: 2;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
 }
 .footer-container {

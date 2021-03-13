@@ -30,7 +30,7 @@ const Blogs = ({ posts }) => {
           comment section!"
         />
       </Head>
-      <main className="page">
+      <main className="page" style={{ zIndex: "1", background: "white" }}>
         <Container className={classes.container}>
           <Typography variant="h1">Welcome to My Blog</Typography>
           <Typography style={{ margin: "32px auto", maxWidth: "700px" }}>

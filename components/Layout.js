@@ -1,11 +1,21 @@
 import Footer from "./Footer";
 import Header from "./Header";
+import { CircularProgress, Typography } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 
 const Layout = ({ children }) => {
   return (
-    <div className="content">
+    <div className="layout-div">
       <Header />
-      {children}
+      <div id="content">{children}</div>
+      <div id="loading">
+        <div style={{ maxWidth: "450px" }}>
+          <Alert severity="info" style={{ marginBottom: "16px" }}>
+            We'll just be a second while we load the page for you
+          </Alert>
+          <CircularProgress color="secondary" />
+        </div>
+      </div>
       <Footer />
     </div>
   );

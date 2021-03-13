@@ -36,7 +36,8 @@
     "react-instantsearch-dom": "^6.9.0",
     "react-multi-carousel": "^2.6.1",
     "react-responsive-carousel": "^3.2.11",
-    "sharp": "^0.27.1"
+    "sharp": "^0.27.1",
+    "swr": "^0.5.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",

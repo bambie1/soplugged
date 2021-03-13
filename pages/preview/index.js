@@ -11,6 +11,8 @@ import { Button, Container } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import Link from "next/link";
 import Head from "next/head";
+import useSWR from "swr";
+import BusinessCardSkeleton from "../../components/skeletons/BusinessCardSkeleton";
 // import ErrorBoundary from "../components/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: "80px 8px 0px",
     minHeight: "80vh",
+    zIndex: "1",
+    background: "white",
   },
   button: {
     margin: theme.spacing(1),
@@ -34,9 +38,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessPreview = ({ currentBusiness }) => {
-  const classes = useStyles();
+const fetcher = (url, token) =>
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Firebase-Token": token,
+    },
+  }).then((r) => r.json());
 
+const BusinessPreview = ({ token }) => {
+  const classes = useStyles();
+  const { data, error } = useSWR(
+    [process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, token],
+    fetcher
+  );
   return (
     <>
       <Head>
@@ -67,7 +82,8 @@ const BusinessPreview = ({ currentBusiness }) => {
           </a>
         </Link>
         {/* <ErrorBoundary> */}
-        <BusinessCard dbObject={currentBusiness} />
+        {data ? <BusinessCard dbObject={data} /> : <BusinessCardSkeleton />}
+
         {/* </ErrorBoundary> */}
 
         <div className={classes.buttonDiv}>
@@ -99,24 +115,9 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser, req }) => {
   const token = await AuthUser.getIdToken();
-  const response = await fetch(process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, {
-    method: "GET",
-    headers: {
-      "Firebase-Token": token,
-    },
-  });
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(
-      `Data fetching failed with status ${response.status}: ${JSON.stringify(
-        data
-      )}`
-    );
-  }
   return {
     props: {
-      email: AuthUser.email,
-      business: data,
+      token,
     },
   };
 });

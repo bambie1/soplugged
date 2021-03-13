@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "../styles/algolia.css";
 import "../styles/animation.css";
+import "../styles/skeleton.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
@@ -17,15 +18,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:title"
-          content="Find the perfect black-owned business for your needs."
-        />
-        <meta
-          property="og:description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-        <meta property="og:url" content="http://soplugged.com" />
 
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link

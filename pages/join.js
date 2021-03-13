@@ -3,14 +3,10 @@ import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  Paper,
-  TextField,
-  Typography,
-  Container,
-} from "@material-ui/core";
+import { Button, Typography, Container } from "@material-ui/core";
 import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const styles = {
   container: {
@@ -55,7 +51,8 @@ const Auth = () => {
         />
         <title>Join SoPlugged</title>
       </Head>
-      <div className="page">
+      {/* <Header /> */}
+      <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">Join SoPlugged</Typography>
           <Typography>
@@ -84,13 +81,13 @@ const Auth = () => {
           </Link>
         </Container>
       </div>
+      {/* <Footer /> */}
     </>
   );
 };
 
 export default withAuthUser({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
-  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
   whenUnauthedAfterInit: AuthAction.RENDER,
-  LoaderComponent: MyLoader,
 })(Auth);

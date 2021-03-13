@@ -3,13 +3,7 @@ import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  Paper,
-  TextField,
-  Typography,
-  Container,
-} from "@material-ui/core";
+import { Button, Typography, Container } from "@material-ui/core";
 import Link from "next/link";
 
 const styles = {
@@ -55,7 +49,7 @@ const Auth = () => {
         />
         <title>Sign in to SoPlugged</title>
       </Head>
-      <div className="page">
+      <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">SoPlugged Sign-in</Typography>
           <Typography>
