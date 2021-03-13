@@ -49,8 +49,8 @@ const OurStory = () => {
         />
       </Head>
       <main className={classes.page}>
-        <Container maxWidth="md" className={classes.container}>
-          <div className={classes.content}>
+        <Container maxWidth="lg" className={classes.container}>
+          <Container className={classes.content} maxWidth="md">
             <Typography variant="h1" className={classes.title}>
               Our Story ...
             </Typography>
@@ -80,7 +80,7 @@ const OurStory = () => {
                 </Button>
               </a>
             </Link>
-          </div>
+          </Container>
           <SubscribeForm />
         </Container>
       </main>
