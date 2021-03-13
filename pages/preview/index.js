@@ -49,7 +49,7 @@ const fetcher = (url, token) =>
 const BusinessPreview = ({ token }) => {
   const classes = useStyles();
   const { data, error } = useSWR(
-    [process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, token],
+    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
     fetcher
   );
   return (

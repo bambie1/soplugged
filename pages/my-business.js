@@ -39,7 +39,7 @@ const EditBusiness = ({ email, token }) => {
   const [saving, setSaving] = useState(false);
 
   const { data, error } = useSWR(
-    [process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS, token],
+    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
     fetcher
   );
   const handleSubmit = async (businessData, files) => {

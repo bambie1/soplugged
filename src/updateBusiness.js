@@ -66,8 +66,8 @@ export const submitBusinessObject = async (
   };
   // console.log(businessObject);
   const fetchUrl = business
-    ? process.env.NEXT_PUBLIC_SERVER_ONE_BUSINESS
-    : process.env.NEXT_PUBLIC_SERVER_ALL_BUSINESSES;
+    ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`
+    : `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`;
   const fetchMethod = business ? "PATCH" : "POST";
 
   return updateBusiness(fetchUrl, fetchMethod, businessObject, userToken); //create or update

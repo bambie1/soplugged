@@ -36,10 +36,7 @@ const AlgoliaSearch = () => {
   return (
     <>
       <div className="ais-InstantSearch">
-        <InstantSearch
-          indexName={process.env.NEXT_PUBLIC_ALGOLIA_BIZ_INDEX}
-          searchClient={searchClient}
-        >
+        <InstantSearch indexName="Business" searchClient={searchClient}>
           <div className="search-algolia">
             {/* <PoweredBy /> */}
             <SearchBox />
