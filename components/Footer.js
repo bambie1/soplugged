@@ -32,7 +32,11 @@ const Footer = () => {
             </a>
             <Typography style={{ paddingTop: "8px" }}>Follow Us:</Typography>
             <div className="social-media">
-              <a href="https://www.instagram.com/sopluggd/" target="_blank">
+              <a
+                href="https://www.instagram.com/sopluggd/"
+                target="_blank"
+                rel="noopener"
+              >
                 <IconButton aria-label="instagram" edge="start">
                   <InstagramIcon />
                 </IconButton>
@@ -40,6 +44,7 @@ const Footer = () => {
               <a
                 href="https://www.linkedin.com/company/soplugged/"
                 target="_blank"
+                rel="noopener"
               >
                 <IconButton aria-label="linkedin">
                   <LinkedInIcon />

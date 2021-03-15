@@ -19,8 +19,12 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     // Initialize Fathom when the app loads
-    Fathom.load("MCGBFJJZ", {
-      includedDomains: ["https://staging-soplugged.vercel.app/"],
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_ID, {
+      includedDomains: [
+        "http://localhost:3000/",
+        "https://staging-soplugged.vercel.app/",
+        "https://soplugged.com",
+      ],
     });
 
     function onRouteChangeComplete() {
@@ -54,6 +58,11 @@ function MyApp({ Component, pageProps }) {
           integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
           crossOrigin="anonymous"
         />
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site={process.env.NEXT_PUBLIC_FATHOM_ID}
+          defer
+        ></script>
       </Head>
       <ThemeProvider theme={theme}>
         <SearchProvider>

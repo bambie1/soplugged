@@ -136,14 +136,18 @@ const BusinessCard = ({ mini, average, ...props }) => {
             </IconButton>
           </a>
           {business_url && (
-            <a href={`http://${business_url}`} target="__blank">
+            <a href={`http://${business_url}`} target="_blank" rel="noopener">
               <IconButton aria-label="website">
                 <LanguageIcon />
               </IconButton>
             </a>
           )}
           {ig_handle && (
-            <a href={`https://www.instagram.com/${ig_handle}`}>
+            <a
+              href={`https://www.instagram.com/${ig_handle}`}
+              target="_blank"
+              rel="noopener"
+            >
               <IconButton aria-label="instagram">
                 <InstagramIcon />
               </IconButton>
