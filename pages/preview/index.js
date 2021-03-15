@@ -12,7 +12,6 @@ import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";
 import BusinessCardSkeleton from "../../components/skeletons/BusinessCardSkeleton";
-// import ErrorBoundary from "../components/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
   page: {
