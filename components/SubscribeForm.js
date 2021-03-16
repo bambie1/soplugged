@@ -66,7 +66,7 @@ const SubscribeForm = () => {
         </Typography>
         <Typography>
           Join our mailing list to receive news and updates on new service
-          features, blog posts, and be the first to know when we launch!{" "}
+          features, blog posts, and be in the know!
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={1} className={classes.grid}>
