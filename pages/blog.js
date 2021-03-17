@@ -1,9 +1,8 @@
 import { Container, Grid, Typography } from "@material-ui/core";
 import React from "react";
-import Link from "next/link";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
-import BlogPostCard from "../../components/BlogPostCard";
+import BlogPostCard from "../components/BlogPostCard";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -59,14 +58,11 @@ export async function getServerSideProps(context) {
   try {
     const response = await fetch(mediumURL);
     const data = await response.json();
-    const res = data.items; //This is an array with the content. No feed, no info about author etc..
-    // console.log({ res });
+    const res = data.items;
     posts = res.filter((item) => item.categories.length > 0);
   } catch (error) {
     console.log({ error });
   }
-
-  // title, pubDate, link, author, thumbnail (image), description - html, content
   return {
     props: { posts }, // will be passed to the page component as props
   };
