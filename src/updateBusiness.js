@@ -1,4 +1,5 @@
 import { getImageUrl } from "./uploadImage";
+import slugify from "slugify";
 
 const updateBusiness = async (
   fetchUrl,
@@ -53,6 +54,7 @@ export const submitBusinessObject = async (
     email,
     phone_number: data.ownerPhone,
     business_name: data.businessName.trim(),
+    // slug: slugify(data.businessName.trim(), { lower: true }) ,
     business_url: data.businessUrl.trim(),
     business_location: data.businessLocation,
     logo_url: logoUrl || "",

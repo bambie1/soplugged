@@ -17,7 +17,7 @@ import BusinessInfoSkeleton from "../components/skeletons/BusinessInfoSkeleton";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    padding: theme.spacing(10, 1, 2),
+    padding: theme.spacing(10, 0, 2),
     minHeight: "85vh",
     zIndex: "1",
     background: "white",

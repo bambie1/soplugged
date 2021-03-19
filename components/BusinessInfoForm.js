@@ -25,7 +25,7 @@ import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    padding: "15px",
+    padding: "8px",
     marginBottom: "10px",
   },
   grid: {

@@ -42,7 +42,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/soplugged-stg.appspot.com/o/soplugged_og_image.PNG?alt=media&token=f17aa7ce-764f-4b99-bf0a-31ac7f7e27d7"
+        ></meta>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&display=swap"

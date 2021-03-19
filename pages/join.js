@@ -5,8 +5,7 @@ import Head from "next/head";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography, Container } from "@material-ui/core";
 import Link from "next/link";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import slugify from "slugify";
 
 const styles = {
   container: {
@@ -34,14 +33,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MyLoader = () => (
-  <div style={styles.container}>
-    <h3>Loading...</h3>
-  </div>
-);
+const getBiz = async () => {
+  let res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
+    {
+      method: "GET",
+    }
+  );
+  let businesses = await res.json();
+  let slugArray = [];
+  businesses.map((item) => {
+    let slug = slugify(item.business_name, { lower: true });
+    let obj = { name: item.business_name, slug };
+    slugArray.push(obj);
+  });
+  console.log({ slugArray });
+  return businesses;
+};
 
 const Auth = () => {
   const classes = useStyles();
+  // getBiz();
+
   return (
     <>
       <Head>
@@ -81,7 +94,6 @@ const Auth = () => {
           </Link>
         </Container>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

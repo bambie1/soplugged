@@ -126,7 +126,7 @@ input.react-autosuggest__input {
   .left-panel {
     width: calc(20% - 10px);
     margin-right: 10px;
-    margin-top: 10vh;
+    margin-top: 70px;
   }
   .right-panel {
     width: 80%;

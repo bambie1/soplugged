@@ -66,34 +66,39 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} className="footer-links-div">
-            <Link href="/faqs" target="_blank">
-              <a>
-                <Button>FAQs</Button>
-              </a>
-            </Link>
+            <div>
+              <Link href="/faqs">
+                <a>
+                  <Button>FAQs</Button>
+                </a>
+              </Link>
+            </div>
 
-            <Link href="/blog" target="_blank">
-              <a>
-                <Button>BLOG</Button>
-              </a>
-            </Link>
-            <Link href="/our-story" target="_blank">
-              <a>
-                <Button>ABOUT US</Button>
-              </a>
-            </Link>
-            <Link href="/sponsors">
-              <a>
-                <Button variant="outlined" color="secondary">
-                  Sponsors
-                </Button>
-              </a>
-            </Link>
-            {/* <Link href="/privacy-policy" target="_blank">
-              <a>
-                <Button>PRIVACY & TERMS</Button>
-              </a>
-            </Link> */}
+            <div>
+              <Link href="/blog">
+                <a>
+                  <Button>BLOG</Button>
+                </a>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/our-story">
+                <a>
+                  <Button>ABOUT US</Button>
+                </a>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/sponsors">
+                <a>
+                  <Button variant="outlined" color="secondary">
+                    Sponsors
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </Grid>
         </Grid>
         <br></br>
@@ -101,6 +106,13 @@ const Footer = () => {
         <Typography variant="body2">
           Copyright&copy; {new Date().getFullYear()}, SoPlugged
         </Typography>
+        <a
+          href="https://docs.google.com/document/d/1lq7Be0U3GTswo3kCZ2tHvZ20J_eJbqhQX3XiKAjih20/edit?usp=sharing"
+          target="_blank"
+          rel="noopener"
+        >
+          <Button>Privacy Policy</Button>
+        </a>
       </Container>
     </footer>
   );
