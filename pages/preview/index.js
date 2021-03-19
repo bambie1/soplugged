@@ -1,13 +1,18 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import BusinessCard from "../../components/BusinessCard";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
-import { Button, Container, Typography, Paper } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
+import {
+  Button,
+  Container,
+  Typography,
+  Paper,
+  makeStyles,
+} from "../../components/mui-components";
+import { EditIcon } from "../../components/mui-icons";
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";

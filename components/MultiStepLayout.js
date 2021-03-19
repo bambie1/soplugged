@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Container, Typography } from "@material-ui/core";
+import { makeStyles, Paper, Container, Typography } from "./mui-components";
 import BusinessProgressBar from "./BusinessProgressBar";
 import Head from "next/head";
 import Link from "next/link";

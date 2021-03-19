@@ -1,11 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { Avatar, IconButton } from "@material-ui/core";
-import CheckIcon from "@material-ui/icons/Check";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LanguageIcon from "@material-ui/icons/Language";
+import { makeStyles, Typography, Avatar, IconButton } from "../mui-components";
+import {
+  CheckIcon,
+  InstagramIcon,
+  MailOutlineIcon,
+  LanguageIcon,
+} from "../mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import BusinessCardModal from "../BusinessCardModal";
 

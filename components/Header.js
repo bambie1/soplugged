@@ -11,18 +11,20 @@ import {
   ListItemIcon,
   SwipeableDrawer,
   Divider,
-} from "@material-ui/core";
+  makeStyles,
+} from "./mui-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { makeStyles } from "@material-ui/core/styles";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import MenuIcon from "@material-ui/icons/Menu";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
-import SearchIcon from "@material-ui/icons/Search";
-import PowerIcon from "@material-ui/icons/Power";
-import HomeIcon from "@material-ui/icons/Home";
+import {
+  ListAltIcon,
+  MenuIcon,
+  ExitToAppIcon,
+  BusinessCenterIcon,
+  SearchIcon,
+  PowerIcon,
+  HomeIcon,
+} from "./mui-icons";
 import SignOutAlert from "./SignOutAlert";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
 

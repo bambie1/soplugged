@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "./mui-components";
 import AlgoliaAutoComplete from "./algolia/AlgoliaAutoComplete";
 
 const HeroBanner = () => {

@@ -2,8 +2,12 @@ import React from "react";
 import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
 import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Typography, Container } from "@material-ui/core";
+import {
+  Button,
+  Typography,
+  Container,
+  makeStyles,
+} from "../components/mui-components";
 import Link from "next/link";
 import slugify from "slugify";
 

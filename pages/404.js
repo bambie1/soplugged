@@ -1,7 +1,11 @@
-import { Button, Typography, Container } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Typography,
+  makeStyles,
+} from "../components/mui-components";
 import Link from "next/link";
-import { makeStyles } from "@material-ui/core/styles";
-import ErrorIcon from "@material-ui/icons/Error";
+import { ErrorIcon } from "../components/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
   container: {

@@ -1,10 +1,12 @@
 import React from "react";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import FindInPageIcon from "@material-ui/icons/FindInPage";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import LanguageIcon from "@material-ui/icons/Language";
-import { Typography } from "@material-ui/core";
-import CheckIcon from "@material-ui/icons/Check";
+import {
+  PersonPinIcon,
+  FindInPageIcon,
+  CloudUploadIcon,
+  LanguageIcon,
+  CheckIcon,
+} from "./mui-components";
+import { Typography } from "./mui-components";
 import Link from "next/link";
 
 const formStepsArray = [

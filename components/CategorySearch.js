@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { TextField } from "./mui-components";
+import { Autocomplete } from "./mui-lab";
 import { categories } from "../src/ListOfCategories";
 
 const CategorySearch = forwardRef((props, ref) => {

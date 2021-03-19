@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "./mui-components";
 
 const SavingAnimation = () => {
   return (

@@ -1,5 +1,11 @@
-import { Container, Typography, Button, Grid, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Paper,
+  makeStyles,
+} from "../components/mui-components";
 import Head from "next/head";
 import Link from "next/link";
 import SubscribeForm from "../components/SubscribeForm";

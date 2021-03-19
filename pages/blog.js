@@ -1,7 +1,11 @@
-import { Container, Grid, Typography } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  Typography,
+  makeStyles,
+} from "../components/mui-components";
 import React from "react";
 import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
 import BlogPostCard from "../components/BlogPostCard";
 
 const useStyles = makeStyles((theme) => ({

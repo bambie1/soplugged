@@ -1,7 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
-import { Paper, Typography } from "@material-ui/core";
+import { Paper, Typography, makeStyles } from "./mui-components";
 
 const useStyles = makeStyles((theme) => ({
   title: {

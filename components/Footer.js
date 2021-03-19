@@ -4,12 +4,11 @@ import {
   Grid,
   Button,
   Divider,
-} from "@material-ui/core";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import IconButton from "@material-ui/core/IconButton";
+  IconButton,
+  makeStyles,
+} from "./mui-components";
+import { InstagramIcon, LinkedInIcon } from "./mui-icons";
 import Link from "next/link";
-import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   divider: {

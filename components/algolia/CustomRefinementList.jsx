@@ -1,12 +1,16 @@
 import React from "react";
 import { Highlight, connectRefinementList } from "react-instantsearch-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Checkbox from "@material-ui/core/Checkbox";
-import Divider from "@material-ui/core/Divider";
-import { Button, Paper, Typography } from "@material-ui/core";
+import {
+  makeStyles,
+  Checkbox,
+  Divider,
+  Paper,
+  Typography,
+  Button,
+  List,
+  ListItem,
+} from "../mui-components";
+import { ListItemIcon } from "../mui-icons";
 
 const ITEMS_LIMIT = 4;
 const useStyles = makeStyles((theme) => ({

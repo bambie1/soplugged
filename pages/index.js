@@ -1,10 +1,15 @@
 import Head from "next/head";
-import { Typography, Button, Container, Grid } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Container,
+  Grid,
+  makeStyles,
+} from "../components/mui-components";
 import Link from "next/link";
 import HeroBanner from "../components/HeroBanner";
 import CategoriesCarousel from "../components/CategoriesCarousel";
 import SubscribeForm from "../components/SubscribeForm";
-import { makeStyles } from "@material-ui/core/styles";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 

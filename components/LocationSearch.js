@@ -1,8 +1,7 @@
 import React, { forwardRef, useState } from "react";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { Grid, Typography, TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Autocomplete } from "./mui-lab";
+import { LocationOnIcon } from "./mui-icons";
+import { Grid, Typography, TextField, makeStyles } from "./mui-components";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
 

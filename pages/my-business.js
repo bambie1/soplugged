@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BusinessInfoForm from "../components/BusinessInfoForm";
-import { Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Container, makeStyles } from "../components/mui-components";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import SavingAnimation from "../components/SavingAnimation";

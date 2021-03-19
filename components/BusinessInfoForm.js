@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   InputLabel,
   Button,
@@ -14,7 +13,8 @@ import {
   InputAdornment,
   OutlinedInput,
   FormHelperText,
-} from "@material-ui/core";
+  makeStyles,
+} from "./mui-components";
 import { theme } from "../src/theme";
 import { useForm } from "react-hook-form";
 import LocationSearch from "./LocationSearch";

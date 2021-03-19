@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import { CircularProgress, Typography } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import { CircularProgress } from "./mui-components";
+import { Alert } from "./mui-lab";
 
 const Layout = ({ children }) => {
   return (

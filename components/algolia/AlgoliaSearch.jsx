@@ -13,10 +13,8 @@ import algoliasearch from "algoliasearch/lite";
 import AlgoliaHit from "./AlgoliaHit";
 import { CustomRefinementList } from "./CustomRefinementList";
 import { CustomCurrentRefinements } from "./CustomRefinements";
-import { Button } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Button, useMediaQuery } from "../mui-components";
+import { ExpandLessIcon, ExpandMoreIcon } from "../mui-icons";
 import { useSearch } from "../../contexts/searchContext";
 
 const searchClient = algoliasearch(

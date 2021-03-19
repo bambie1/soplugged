@@ -1,11 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
-import { Button, Container, Typography, Paper } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Typography,
+  Paper,
+  makeStyles,
+} from "../../components/mui-components";
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";

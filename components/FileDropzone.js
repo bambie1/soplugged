@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button, Typography } from "@material-ui/core";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { Button, Typography } from "./mui-components";
+import { CloudUploadIcon } from "./mui-icons";
 
 const baseStyle = {
   flex: 1,

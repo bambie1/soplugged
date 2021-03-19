@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Avatar,
   Container,
@@ -11,13 +11,11 @@ import {
   ListItemText,
   ListItem,
   ListItemIcon,
-} from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ContactMailIcon from "@material-ui/icons/ContactMail";
-import { makeStyles } from "@material-ui/core/styles";
+  makeStyles,
+} from "./mui-components";
+import { FavoriteIcon, EditIcon, ContactMailIcon } from "./mui-icons";
 import Head from "next/head";
 import Link from "next/link";
-import EditIcon from "@material-ui/icons/Edit";
 
 const useStyles = makeStyles((theme) => ({
   page: {

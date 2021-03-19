@@ -3,19 +3,19 @@ import {
   Typography,
   Avatar,
   Button,
-  Paper,
   TextField,
-} from "@material-ui/core";
+  makeStyles,
+} from "./mui-components";
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import CheckIcon from "@material-ui/icons/Check";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LanguageIcon from "@material-ui/icons/Language";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  CheckIcon,
+  InstagramIcon,
+  LanguageIcon,
+  PanoramaIcon,
+} from "./mui-icons";
 import ImageGallery from "react-image-gallery";
-import PanoramaIcon from "@material-ui/icons/Panorama";
 import Form from "./Form";
 
 const useStyles = makeStyles((theme) => ({
