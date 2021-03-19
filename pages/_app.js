@@ -11,6 +11,7 @@ import { SearchProvider } from "../contexts/searchContext";
 import initAuth from "../utils/initAuth";
 import { useRouter } from "next/router";
 import * as Fathom from "fathom-client";
+import * as gtag from "../lib/gtag";
 
 initAuth();
 
@@ -38,6 +39,16 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", onRouteChangeComplete);
     };
   }, []);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <>
       <Head>

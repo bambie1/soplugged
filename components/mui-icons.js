@@ -15,17 +15,20 @@ import PowerIcon from "@material-ui/icons/Power";
 import HomeIcon from "@material-ui/icons/Home";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
 import EditIcon from "@material-ui/icons/Edit";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import FindInPageIcon from "@material-ui/icons/FindInPage";
 import PanoramaIcon from "@material-ui/icons/Panorama";
 import ErrorIcon from "@material-ui/icons/Error";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 export {
   CheckIcon,
   InstagramIcon,
+  FavoriteIcon,
+  FavoriteBorderIcon,
   MailOutlineIcon,
   LanguageIcon,
   LinkedInIcon,
@@ -41,7 +44,6 @@ export {
   SearchIcon,
   PowerIcon,
   CloudUploadIcon,
-  FavoriteIcon,
   ContactMailIcon,
   HomeIcon,
   EditIcon,

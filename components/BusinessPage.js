@@ -14,9 +14,12 @@ import {
   InstagramIcon,
   LanguageIcon,
   PanoramaIcon,
+  FavoriteBorderIcon,
+  FavoriteIcon,
 } from "./mui-icons";
 import ImageGallery from "react-image-gallery";
-import Form from "./Form";
+import { useSearch } from "@/contexts/searchContext";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,10 +57,30 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   filler: { background: "#fffaf2", flex: "1 1 auto" },
+  button: {
+    color: theme.palette.primary.light,
+    borderColor: theme.palette.primary.light,
+    "&:hover": {
+      color: "white",
+      backgroundColor: theme.palette.primary.light,
+    },
+  },
+  categorySpan: {
+    cursor: "pointer",
+    borderBottom: "1px solid",
+    borderRadius: "5px",
+    padding: "1px",
+    color: theme.palette.secondary.main,
+    "&:hover": {
+      borderBottom: "none",
+    },
+  },
 }));
 
 const BusinessPage = ({ dbObject }) => {
   const classes = useStyles();
+  const { setContextCategory } = useSearch();
+  const router = useRouter();
   const {
     business_name,
     business_location,
@@ -73,6 +96,12 @@ const BusinessPage = ({ dbObject }) => {
   } = dbObject;
   let images = sample_images.split(",");
   images = images.map((item) => ({ original: item, thumbnail: item }));
+  // images = [];
+  let hasPreview = images.length !== 0 && images[0]?.original.length !== 0;
+  const handleCategoryClick = () => {
+    setContextCategory(category);
+    router.push("/search");
+  };
 
   return (
     <div className={classes.root}>
@@ -98,7 +127,10 @@ const BusinessPage = ({ dbObject }) => {
         </Typography>
       </div>
       <Typography variant="h6" style={{ fontWeight: "bold" }}>
-        CATEGORY: {category}
+        CATEGORY:{" "}
+        <span className={classes.categorySpan} onClick={handleCategoryClick}>
+          {category}
+        </span>
       </Typography>
       <Typography>
         {street_address &&
@@ -123,56 +155,90 @@ const BusinessPage = ({ dbObject }) => {
         )}
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} md={7}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               height: "100%",
+              maxWidth: "700px",
+              margin: "auto",
             }}
           >
-            <Typography variant="body2" className={classes.sectionTitle}>
-              <span>ABOUT BUSINESS:</span>
-            </Typography>
-            {images.length !== 0 && images[0]?.original.length !== 0 ? (
-              <div
-                style={{
-                  background: "grey",
-                  height: "400px",
-                  width: "100%",
-                  // maxWidth: "500px",
-                  margin: "auto",
-                }}
-              ></div>
-            ) : (
-              <div
-                style={{
-                  background: "#e0e0e0",
-                  height: "40px",
-                  width: "100%",
-                  maxWidth: "500px",
-                  margin: "auto",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <PanoramaIcon />
-                <Typography style={{ marginLeft: "8px" }}>
-                  No image preview
-                </Typography>
-              </div>
+            {hasPreview && (
+              <>
+                <div
+                  style={{
+                    background: "grey",
+                    height: "400px",
+                    width: "100%",
+                  }}
+                ></div>
+                <br></br>
+              </>
             )}
             <Typography variant="body2" className={classes.sectionTitle}>
               <span>ABOUT BUSINESS:</span>
             </Typography>
             <Typography variant="body1">{business_description}</Typography>
-            <div className={classes.filler}></div>
-
+            <br></br>
+            <div className={classes.btnGroup}>
+              {business_url && (
+                <a
+                  href={`http://${business_url}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}
+                    startIcon={<LanguageIcon />}
+                  >
+                    Visit website
+                  </Button>
+                </a>
+              )}
+              {ig_handle && (
+                <a
+                  href={`https://www.instagram.com/${ig_handle}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}
+                    startIcon={<InstagramIcon />}
+                  >
+                    IG Page
+                  </Button>
+                </a>
+              )}
+            </div>
+            <div
+              style={{
+                marginTop: "16px",
+                padding: "8px 40px 16px",
+                borderRadius: "5px",
+                background: "#fffaf2",
+              }}
+            >
+              <Typography>
+                Would you recommend this business? Give it a like!
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<FavoriteBorderIcon />}
+              >
+                Like
+              </Button>
+            </div>
             <div className={classes.filler}></div>
           </div>
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} md={5}>
           <Typography variant="body2" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
@@ -191,38 +257,7 @@ const BusinessPage = ({ dbObject }) => {
               Send Message
             </Button>
           </form>
-          <Typography>
-            You can reach out to the owner via any of these options to learn
-            more, or inquire about costs.
-          </Typography>
-          <div className={classes.btnGroup}>
-            {business_url && (
-              <a href={`http://${business_url}`} target="_blank" rel="noopener">
-                <Button
-                  variant="contained"
-                  color="default"
-                  startIcon={<LanguageIcon />}
-                >
-                  Visit website
-                </Button>
-              </a>
-            )}
-            {ig_handle && (
-              <a
-                href={`https://www.instagram.com/${ig_handle}`}
-                target="_blank"
-                rel="noopener"
-              >
-                <Button
-                  variant="contained"
-                  color="default"
-                  startIcon={<InstagramIcon />}
-                >
-                  IG Page
-                </Button>
-              </a>
-            )}
-          </div>
+          <div className={classes.filler}></div>
         </Grid>
       </Grid>
       <br></br>

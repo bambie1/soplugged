@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Configure } from "react-instantsearch-dom";
 import Autocomplete from "./Autocomplete";
-import { useSearch } from "../../contexts/searchContext";
+import { useSearch } from "@/contexts/searchContext";
 import { useRouter } from "next/router";
 
 const searchClient = algoliasearch(

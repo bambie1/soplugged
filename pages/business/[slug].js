@@ -20,7 +20,7 @@ import BusinessPage from "@/components/BusinessPage";
 const useStyles = makeStyles((theme) => ({
   page: {
     textAlign: "center",
-    padding: "60px 8px",
+    paddingTop: "60px",
     minHeight: "80vh",
     zIndex: "1",
     background: "white",

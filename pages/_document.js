@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
-
+import { GA_TRACKING_ID } from "../lib/gtag";
 class MyDocument extends Document {
   render() {
     return (
@@ -12,6 +12,22 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />
