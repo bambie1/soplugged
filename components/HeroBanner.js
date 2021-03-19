@@ -1,13 +1,16 @@
 import { Typography } from "./mui-components";
 import AlgoliaAutoComplete from "./algolia/AlgoliaAutoComplete";
+import Image from "next/image";
 
 const HeroBanner = () => {
   return (
     <header className="hero" style={{ backgroundColor: "#ff914d" }}>
       <div className="hero-side-image">
-        <img
+        <Image
           src="/images/black_woman_hair.png"
           alt="Black woman with ponytail"
+          width={310}
+          height={450}
         />
       </div>
       <section className="hero-text-overlay">

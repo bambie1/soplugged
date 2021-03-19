@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     textAlign: "center",
     marginTop: "16px",
+    marginBottom: "16px",
   },
   postsDiv: {
     display: "flex",

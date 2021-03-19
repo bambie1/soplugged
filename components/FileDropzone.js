@@ -2,6 +2,7 @@ import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button, Typography } from "./mui-components";
 import { CloudUploadIcon } from "./mui-icons";
+import Image from "next/image";
 
 const baseStyle = {
   flex: 1,
@@ -41,12 +42,6 @@ const thumbInner = {
   display: "flex",
   minWidth: 0,
   overflow: "hidden",
-};
-
-const img = {
-  display: "block",
-  width: "auto",
-  height: "100%",
 };
 
 const closeBtn = {
@@ -121,9 +116,10 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
     <React.Fragment key={index}>
       <div style={thumb} key={index}>
         <div style={thumbInner}>
-          <img
+          <Image
             src={typeof file === "string" ? file : file.preview}
-            style={img}
+            width={50}
+            height={30}
             alt=""
           />
         </div>

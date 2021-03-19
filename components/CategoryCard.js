@@ -63,6 +63,7 @@ const CategoryCard = ({ label, imgSrc, value }) => {
   return (
     <div className={classes.root} onClick={handleClick}>
       <img src={imgSrc} alt="category-display" className={classes.bgImg} />
+
       <div className={classes.overlay}></div>
       <Typography className={classes.title}>{label}</Typography>
     </div>

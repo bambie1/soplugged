@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Paper, Typography, makeStyles } from "./mui-components";
+import Image from "next/image";
+import env from "../next.config";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -30,11 +32,7 @@ const BlogPostCard = ({ post }) => {
         rel="noopener"
         className={classes.cardLink}
       >
-        <img
-          src={imgSrc}
-          alt=""
-          style={{ maxWidth: "100%", height: "300px" }}
-        />
+        <Image src={imgSrc} alt="" height={300} width={500} />
         <Typography variant="h6" className={classes.title}>
           {post.title}
         </Typography>

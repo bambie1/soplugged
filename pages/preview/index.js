@@ -1,5 +1,5 @@
 import React from "react";
-import BusinessCard from "../../components/BusinessCard";
+import BusinessCard from "@/components/BusinessCard";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
@@ -11,12 +11,12 @@ import {
   Typography,
   Paper,
   makeStyles,
-} from "../../components/mui-components";
-import { EditIcon } from "../../components/mui-icons";
+} from "@/components/mui-components";
+import { EditIcon } from "@/components/mui-icons";
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";
-import BusinessCardSkeleton from "../../components/skeletons/BusinessCardSkeleton";
+import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
 
 const useStyles = makeStyles((theme) => ({
   page: {

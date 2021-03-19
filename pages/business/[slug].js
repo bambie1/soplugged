@@ -10,12 +10,12 @@ import {
   Typography,
   Paper,
   makeStyles,
-} from "../../components/mui-components";
+} from "@/components/mui-components";
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";
-import BusinessCardSkeleton from "../../components/skeletons/BusinessCardSkeleton";
-import BusinessPage from "../../components/BusinessPage";
+import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
+import BusinessPage from "@/components/BusinessPage";
 
 const useStyles = makeStyles((theme) => ({
   page: {

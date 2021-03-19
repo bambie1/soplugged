@@ -12,6 +12,7 @@ import CategoriesCarousel from "../components/CategoriesCarousel";
 import SubscribeForm from "../components/SubscribeForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -75,10 +76,11 @@ export default function Home() {
           <Container maxWidth="lg">
             <Grid container className="home-info">
               <Grid item xs={12} sm={6}>
-                <img
+                <Image
+                  width={410}
+                  height={310}
                   src="/images/undraw_Web_search.png"
                   alt="Browse illustration"
-                  className={classes.undraw}
                 />
               </Grid>
               <Grid item xs={12} sm={5} className={classes.infoText}>
@@ -120,10 +122,11 @@ export default function Home() {
                 </Link>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <img
+                <Image
+                  width={410}
+                  height={310}
                   src="/images/undraw_Portfolio.png"
                   alt="undraw portfolio"
-                  className={classes.undraw}
                 />
               </Grid>
             </Grid>

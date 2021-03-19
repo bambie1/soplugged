@@ -76,9 +76,10 @@ img {
   right: 0;
   bottom: 0;
   opacity: 0.3;
-  max-width: 50%;
+  /* max-width: 50%; */
   height: 80%;
   overflow: hidden;
+  display: flex;
 }
 .hero-text-overlay {
   max-width: 650px;
