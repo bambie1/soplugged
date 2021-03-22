@@ -5,14 +5,24 @@ import {
   Container,
   Grid,
   makeStyles,
-} from "../components/mui-components";
+  SecondaryButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+  Paper,
+} from "@/components/mui-components";
+import { PowerIcon, SettingsInputSvideoIcon } from "@/components/mui-icons";
 import Link from "next/link";
-import HeroBanner from "../components/HeroBanner";
-import CategoriesCarousel from "../components/CategoriesCarousel";
-import SubscribeForm from "../components/SubscribeForm";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import HeroBanner from "@/components/HeroBanner";
+import BusinessCarousel from "@/components/BusinessCarousel";
+import SubscribeForm from "@/components/SubscribeForm";
 import Image from "next/image";
+import useSWR from "swr";
+import { categoryIcons } from "../src/categoryIcons";
+import { useSearch } from "../contexts/searchContext";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -24,10 +34,70 @@ const useStyles = makeStyles((theme) => ({
   infoText: {
     textAlign: "Center",
   },
+  gridContainer: {
+    justifyContent: "center",
+    maxWidth: "1100px",
+    margin: "auto",
+    "& > *": {
+      marginTop: "8px",
+      marginBottom: "8px",
+    },
+  },
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    "& > *": {
+      marginTop: "4px",
+      marginBottom: "4px",
+    },
+  },
+  list: {
+    flex: "1",
+    display: "flex",
+    flexDirection: "column",
+  },
+  paper: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  shortPaper: {
+    maxWidth: "700px",
+    padding: "16px",
+    marginTop: "8px",
+    marginBottom: "8px",
+    display: "flex",
+    flexDirection: "column",
+    background: "url('/images/blob_14-4-40.svg')",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    "&:last-child": {
+      background: "url('/images/blob_14-4-41.svg')",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    },
+    "& > .MuiTypography-root": { lineHeight: "2rem" },
+  },
 }));
+
+const fetcher = (url) =>
+  fetch(url, {
+    method: "GET",
+  }).then((r) => r.json());
 
 export default function Home() {
   const classes = useStyles();
+  const { data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
+    fetcher
+  );
+  const { setContextCategory } = useSearch();
+  const router = useRouter();
+  const handleClick = (label) => {
+    setContextCategory(label);
+    router.push("/search");
+  };
 
   return (
     <>
@@ -49,94 +119,204 @@ export default function Home() {
           Find the perfect black-owned business for your needs | SoPlugged
         </title>
       </Head>
-      {/* <Header /> */}
       <main style={{ zIndex: "1", background: "white" }}>
         <HeroBanner />
         <div className="body-content">
-          <br></br>
-          <Typography variant="h6" component="h2">
-            Popular Categories:
-          </Typography>
-          <CategoriesCarousel />
-          <br></br>
-          <Link href="/search">
-            <a style={{ display: "flex", alignSelf: "center" }}>
-              <Button
-                color="secondary"
-                variant="contained"
-                // style={{ fontSize: "1.1rem" }}
-              >
-                View All Businesses
-              </Button>
-            </a>
-          </Link>
-          <br></br>
-          <br></br>
-          <hr style={{ width: "70%" }} />
-          <Container maxWidth="lg">
-            <Grid container className="home-info">
-              <Grid item xs={12} sm={6}>
-                <Image
-                  width={410}
-                  height={310}
-                  src="/images/undraw_Web_search.png"
-                  alt="Browse illustration"
-                />
+          {/* <Container maxWidth="lg"> */}
+          {data !== undefined && (
+            <>
+              <section>
+                <Typography variant="h5">Featured Businesses:</Typography>
+                <br></br>
+                <BusinessCarousel businesses={data} />
+              </section>
+              <br></br>
+              <br></br>
+            </>
+          )}
+          <section className={classes.section}>
+            <Typography variant="h5">Why SoPlugged?</Typography>
+            <Typography>
+              Whether you have a need, provide solutions, or both, SoPlugged is
+              for you
+            </Typography>
+            <Container maxWidth="md" style={{ marginTop: "16px" }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Paper className={classes.paper} elevation={2}>
+                    <Typography
+                      variant="h6"
+                      style={{ textAlign: "center", paddingTop: "8px" }}
+                    >
+                      Consumers
+                    </Typography>
+                    <List className={classes.list}>
+                      <ListItem>
+                        <ListItemIcon>
+                          <PowerIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Rich directory of Black-owned businesses" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <PowerIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Easily add businesses to your favorites, for future needs" />
+                      </ListItem>
+                      <ListItem style={{ marginTop: "auto" }}>
+                        <Link href="/search">
+                          <a>
+                            <Button variant="outlined" color="secondary">
+                              Browse Businesses
+                            </Button>
+                          </a>
+                        </Link>
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Paper
+                    style={{ background: "#fffaf2" }}
+                    className={classes.paper}
+                    elevation={2}
+                  >
+                    <Typography
+                      variant="h6"
+                      style={{ textAlign: "center", paddingTop: "8px" }}
+                    >
+                      Business Owners
+                    </Typography>
+                    <List className={classes.list}>
+                      <ListItem>
+                        <ListItemIcon>
+                          <SettingsInputSvideoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Increase your brand visibility" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <SettingsInputSvideoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="FREE and simple process to add your business" />
+                      </ListItem>
+                      <ListItem style={{ marginTop: "auto" }}>
+                        <Link href="/my-business">
+                          <a>
+                            <Button variant="contained" color="secondary">
+                              Register your Business
+                            </Button>
+                          </a>
+                        </Link>
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={5} className={classes.infoText}>
-                <Typography style={{ fontSize: "1.2rem" }}>
-                  Browse our directory to find and connect with the perfect
-                  black-owned business for your needs
+            </Container>
+          </section>
+          <br></br>
+          <br></br>
+          <section
+            style={{
+              textAlign: "center",
+              background: "#fffaf2",
+              padding: "16px 8px",
+            }}
+          >
+            <Typography variant="h5">We've got you covered</Typography>
+            <br></br>
+            <Grid container spacing={2} className={classes.gridContainer}>
+              {categoryIcons.map((icon) => (
+                <Grid
+                  item
+                  xs={6}
+                  sm={4}
+                  md={3}
+                  key={icon.imageSrc}
+                  className="categoryIcon"
+                  onClick={() => handleClick(icon.categoryText)}
+                >
+                  <Image src={icon.imageSrc} width={40} height={40} />
+                  <Typography>{icon.categoryText}</Typography>
+                </Grid>
+              ))}
+            </Grid>
+            <Link href="/search">
+              <a>
+                <Button variant="outlined" color="secondary">
+                  ... and more
+                </Button>
+              </a>
+            </Link>
+          </section>
+          <br></br>
+          <br></br>
+          <section className={classes.section}>
+            <Typography variant="h5">Learn more about our community</Typography>
+            <Typography>
+              Did we mention that we love, and support Black-owned businesses?
+            </Typography>
+            <Typography>Cause, we DO!!</Typography>
+            <Container maxWidth="md">
+              <Paper className={classes.shortPaper} elevation={2}>
+                <Typography variant="h6">What does #BuyBlack mean?</Typography>
+                <Typography>
+                  Buy Black is a movement that started out as a way to circulate
+                  wealth within the Black community by supporting Black-owned
+                  businesses. No doubt, this movement gained a lot of traction
+                  this year because of the tragic events of 2020 and how they
+                  impacted members of this community, especially small business
+                  owners.
                 </Typography>
-                <Link href="/search">
+                <Link href="/blog">
                   <a>
                     <Button
-                      variant="contained"
+                      variant="outlined"
                       color="secondary"
-                      style={{ margin: "16px 0px" }}
+                      style={{ marginRight: "auto", marginTop: "16px" }}
                     >
-                      BROWSE
+                      Read more on our blog
                     </Button>
                   </a>
                 </Link>
-              </Grid>
-              <Grid item sm={1}></Grid>
-            </Grid>
-            <Grid container className="home-info second-grid">
-              <Grid item sm={1}></Grid>
-              <Grid item xs={12} sm={5} className={classes.infoText}>
-                <Typography style={{ fontSize: "1.2rem" }}>
-                  Register your business to have your services featured on our
-                  platform and join a community of black entrepreneurs.
+              </Paper>
+              <Paper
+                className={classes.shortPaper}
+                style={{ marginLeft: "auto" }}
+                elevation={2}
+              >
+                <Typography variant="h6">Where do we come in?</Typography>
+                <Typography>
+                  If you're a #BuyBlack enthusiast like we are, you might agree
+                  that finding the right business for your needs might be quite
+                  an ordeal. Endlessly scrolling through Instagram pages just to
+                  find an event planner is less than ideal. <br /> We provide an
+                  easy-to-use platform that eliminates the head-ache, and
+                  improves brand visibility for business owners.
                 </Typography>
                 <Link href="/join">
                   <a>
                     <Button
                       variant="contained"
                       color="secondary"
-                      style={{ margin: "16px 0px" }}
+                      style={{ marginRight: "auto", marginTop: "16px" }}
                     >
-                      REGISTER
+                      Join SoPlugged
                     </Button>
                   </a>
                 </Link>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Image
-                  width={410}
-                  height={310}
-                  src="/images/undraw_Portfolio.png"
-                  alt="undraw portfolio"
-                />
-              </Grid>
-            </Grid>
-          </Container>
+              </Paper>
+            </Container>
+          </section>
+          <br></br>
+          <br></br>
+          {/* </Container> */}
           <br></br>
           <br></br>
           <SubscribeForm />
         </div>
       </main>
-      {/* <Footer /> */}
     </>
   );
 }

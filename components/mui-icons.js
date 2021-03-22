@@ -23,6 +23,7 @@ import PanoramaIcon from "@material-ui/icons/Panorama";
 import ErrorIcon from "@material-ui/icons/Error";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import SettingsInputSvideoIcon from "@material-ui/icons/SettingsInputSvideo";
 
 export {
   CheckIcon,
@@ -50,4 +51,5 @@ export {
   PersonPinIcon,
   FindInPageIcon,
   ErrorIcon,
+  SettingsInputSvideoIcon,
 };

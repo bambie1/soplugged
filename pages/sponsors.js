@@ -31,11 +31,20 @@ const useStyles = makeStyles((theme) => ({
   },
   textContent: {
     textAlign: "center",
+    maxWidth: "700px",
+    marginLeft: "auto",
+    marginRight: "auto",
     [theme.breakpoints.up("md")]: {
       height: "500px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+    },
+  },
+  laptopText: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "inline",
     },
   },
   list: {
@@ -47,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {},
   link: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     textDecoration: "underline",
   },
   button: {
@@ -62,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OurStory = () => {
   const classes = useStyles();
-  const ready = false;
+  const ready = true;
 
   return (
     <>
@@ -82,25 +91,41 @@ const OurStory = () => {
             <>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={6} className={classes.textContent}>
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    style={{ marginBottom: "10px" }}
-                  >
-                    How can you support?
-                  </Typography>
                   <Typography className={classes.text}>
-                    Our goal is to give black business a wider platform in
-                    Canada for free. You can help us maintain this by:
+                    SoPlugged is an online platform that makes #buyingblack
+                    easy! Our search-friendly platform helps end-users connect
+                    to Black-owned businesses across Canada.{" "}
+                    <span className={classes.laptopText}>
+                      When you{" "}
+                      <a href="/join" className={classes.link}>
+                        register
+                      </a>{" "}
+                      your business on our platform, you increase your brand
+                      visibility and get access to a thriving community of
+                      people looking to support Black-owned businesses.{" "}
+                      <br></br>At SoPlugged, our biggest inspiration is
+                      supporting one another and growing our community. It’s
+                      always a beautiful thing to see people join the movement
+                      to support Black-owned businesses. That’s our story and we
+                      hope you become a part of it!
+                    </span>
+                    <br></br>
+                    We rely on amazing people like you to keep our platform free
+                    and accessible to Black-owned businesses across Canada
                   </Typography>
-                  <ul className={classes.list}>
-                    <li className={classes.listItem}>
-                      <Typography>Spreading the word!</Typography>
-                    </li>
-                    <li className={classes.listItem}>
-                      <Typography>Supporting with a donation</Typography>
-                    </li>
-                  </ul>
+                  <Link href="/">
+                    <a
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "16px",
+                      }}
+                    >
+                      <Button variant="outlined" color="secondary">
+                        Back to Directory
+                      </Button>
+                    </a>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <iframe

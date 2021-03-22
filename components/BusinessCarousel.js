@@ -1,46 +1,53 @@
+import { categories } from "../src/ListOfCategories";
+import CategoryCard from "./CategoryCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import BusinessCard from "./BusinessCard";
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 4,
     slidesToSlide: 3, // optional, default to 1.
+    partialVisibilityGutter: 30,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 800 },
+    items: 3,
+    slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 30,
+  },
+  midTablet: {
+    breakpoint: { max: 800, min: 464 },
     items: 2,
-    slidesToSlide: 2, // optional, default to 1.
+    slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 30,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
     slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 30,
   },
 };
 
-const BusinessCarousel = () => {
+const popularCategories = [
+  "baking-and-catering",
+  "entertainment",
+  "event-planning",
+  "hair-and-beauty",
+  "handcraft-gifting",
+  "media-services",
+];
+const filteredList = categories.filter((item) =>
+  popularCategories.includes(item.value)
+);
+const BusinessCarousel = ({ businesses }) => {
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={true}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      autoPlaySpeed={1000}
-      keyBoardControl={true}
-      customTransition="all .5"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-      <div>Item 1</div>
-      <div>Item 2</div>
-      <div>Item 3</div>
-      <div>Item 4</div>
+    <Carousel partialVisible itemClass="carousel-item" responsive={responsive}>
+      {businesses.map((business, index) => (
+        <BusinessCard dbObject={business} key={index} mini={true} />
+      ))}
     </Carousel>
   );
 };

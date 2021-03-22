@@ -100,12 +100,17 @@ input.react-autosuggest__input {
   position: absolute;
   background: #fffaf2;
   width: 100%;
+  border-radius: 10px;
 }
 .react-autosuggest__suggestion {
   padding: 8px;
   border-bottom: 1px solid var(--dark);
+
   font-family: "Raleway";
   cursor: pointer;
+}
+.react-autosuggest__suggestion:last-child {
+  border-radius: 10px;
 }
 .autocompleteTags {
   font-size: 0.8rem;

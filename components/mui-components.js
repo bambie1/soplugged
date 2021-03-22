@@ -31,9 +31,29 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+const useStyles = makeStyles((theme) => ({
+  button: {
+    color: theme.palette.primary.light,
+    borderColor: theme.palette.primary.light,
+    "&:hover": {
+      color: "white",
+      backgroundColor: theme.palette.primary.light,
+    },
+  },
+}));
+
+const SecondaryButton = ({ children, ...props }) => {
+  const classes = useStyles();
+  return (
+    <Button variant="outlined" className={classes.button} {...props}>
+      {children}
+    </Button>
+  );
+};
 export {
   InputLabel,
   Button,
+  SecondaryButton,
   Grid,
   TextField,
   Container,

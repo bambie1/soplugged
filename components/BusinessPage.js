@@ -5,10 +5,10 @@ import {
   Button,
   TextField,
   makeStyles,
+  SecondaryButton,
 } from "./mui-components";
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import {
   CheckIcon,
   InstagramIcon,
@@ -57,14 +57,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   filler: { background: "#fffaf2", flex: "1 1 auto" },
-  button: {
-    color: theme.palette.primary.light,
-    borderColor: theme.palette.primary.light,
-    "&:hover": {
-      color: "white",
-      backgroundColor: theme.palette.primary.light,
-    },
-  },
   categorySpan: {
     cursor: "pointer",
     borderBottom: "1px solid",
@@ -81,6 +73,26 @@ const BusinessPage = ({ dbObject }) => {
   const classes = useStyles();
   const { setContextCategory } = useSearch();
   const router = useRouter();
+  let dbObject2 = {
+    id: 4,
+    owner_name: "Margaret Ajibola",
+    email: "wigsbymagss@gmail.com",
+    phone_number: "4444444444",
+    business_name: "Wigsbymagss ",
+    business_url: "",
+    ig_handle: "",
+    street_address: "",
+    business_location: "Ottawa, ON, Canada",
+    fixed_to_one_location: true,
+    business_description:
+      "I’m a hair stylist in Ottawa that makes wigs and provides installation services.",
+    logo_url:
+      "https://firebasestorage.googleapis.com/v0/b/app-soplugged.appspot.com/o/AE431D8B-20FA-442E-BBC5-484C05B5932D.jpeg?alt=media&token=1189f2b8-e020-41e6-aee2-22a02aeda93c",
+    sample_images: "",
+    category: "Hair / Beauty",
+    tags: "",
+    services: [],
+  };
   const {
     business_name,
     business_location,
@@ -97,7 +109,7 @@ const BusinessPage = ({ dbObject }) => {
   let images = sample_images.split(",");
   images = images.map((item) => ({ original: item, thumbnail: item }));
   // images = [];
-  let hasPreview = images.length !== 0 && images[0]?.original.length !== 0;
+  let hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const handleCategoryClick = () => {
     setContextCategory(category);
     router.push("/search");
@@ -167,13 +179,7 @@ const BusinessPage = ({ dbObject }) => {
           >
             {hasPreview && (
               <>
-                <div
-                  style={{
-                    background: "grey",
-                    height: "400px",
-                    width: "100%",
-                  }}
-                ></div>
+                <ImageGallery items={images} showPlayButton={false} />
                 <br></br>
               </>
             )}
@@ -189,14 +195,9 @@ const BusinessPage = ({ dbObject }) => {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    className={classes.button}
-                    startIcon={<LanguageIcon />}
-                  >
+                  <SecondaryButton startIcon={<LanguageIcon />}>
                     Visit website
-                  </Button>
+                  </SecondaryButton>
                 </a>
               )}
               {ig_handle && (
@@ -205,37 +206,35 @@ const BusinessPage = ({ dbObject }) => {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    className={classes.button}
-                    startIcon={<InstagramIcon />}
-                  >
-                    IG Page
-                  </Button>
+                  <SecondaryButton startIcon={<InstagramIcon />}>
+                    Visit Instagram
+                  </SecondaryButton>
                 </a>
               )}
             </div>
-            <div
-              style={{
-                marginTop: "16px",
-                padding: "8px 40px 16px",
-                borderRadius: "5px",
-                background: "#fffaf2",
-              }}
-            >
-              <Typography>
-                Would you recommend this business? Give it a like!
-              </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<FavoriteBorderIcon />}
+            {!hasPreview && (
+              <div
+                style={{
+                  marginTop: "40px",
+                  padding: "8px 40px 16px",
+                  borderRadius: "5px",
+                  background: "#fffaf2",
+                }}
               >
-                Like
-              </Button>
-            </div>
-            <div className={classes.filler}></div>
+                <Typography>
+                  Would you recommend this business? Give it a like!
+                </Typography>
+                <br></br>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<FavoriteBorderIcon />}
+                >
+                  Like
+                </Button>
+              </div>
+            )}
+            {/* <div className={classes.filler}></div> */}
           </div>
         </Grid>
         <Grid item xs={12} md={5}>
@@ -260,7 +259,28 @@ const BusinessPage = ({ dbObject }) => {
           <div className={classes.filler}></div>
         </Grid>
       </Grid>
-      <br></br>
+      {hasPreview && (
+        <div
+          style={{
+            marginTop: "40px",
+            padding: "8px 40px 16px",
+            borderRadius: "5px",
+            background: "#fffaf2",
+          }}
+        >
+          <Typography>
+            Would you recommend this business? Give it a like!
+          </Typography>
+          <br></br>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<FavoriteBorderIcon />}
+          >
+            Like
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

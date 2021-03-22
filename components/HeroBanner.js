@@ -13,12 +13,33 @@ const HeroBanner = () => {
           height={450}
         />
       </div>
+      {/* <div className="background-div  ">
+        <div className="background">
+          {[1, 2, 3, 4, 5, 6, 7].map(() => (
+            <>
+              <span></span>
+              <span></span>
+              <span></span>
+            </>
+          ))}
+        </div>
+      </div> */}
+
       <section className="hero-text-overlay">
-        <Typography
-          variant="h1"
-          style={{ fontWeight: "700", fontSize: "2.5rem" }}
-        >
-          Find the perfect <em>black-owned</em> business for your needs.
+        <Typography variant="h1" style={{ color: "white" }}>
+          You have needs,
+          <br />
+          We have{" "}
+          <span
+            style={{
+              fontFamily: ["Permanent Marker", "cursive"].join(","),
+              color: "black",
+              fontWeight: "normal",
+            }}
+          >
+            BLACK-OWNED
+          </span>{" "}
+          Businesses
         </Typography>
         <AlgoliaAutoComplete />
       </section>

@@ -8,6 +8,7 @@ import {
 } from "../mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import BusinessCardModal from "../BusinessCardModal";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,88 +32,59 @@ const useStyles = makeStyles((theme) => ({
 
 const AlgoliaHit = ({ hit }) => {
   const classes = useStyles();
-  const [selectedBusiness, setSelectedBusiness] = React.useState(null);
-
+  let slug = hit.slug || "biz-slug";
   return (
     <>
-      <div className={classes.root} onClick={() => setSelectedBusiness(hit)}>
-        <div
-          className="business-header"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Avatar alt="Business Logo" src={hit.logo_url} variant="square">
-            {hit.business_name.toUpperCase().charAt(0)}
-          </Avatar>
-          <Typography variant="h6" className={classes.businessName}>
-            <Highlight attribute="business_name" hit={hit} />
-          </Typography>
-        </div>
-        <Typography variant="body1" style={{ fontWeight: "bold" }}>
-          CATEGORY: <Highlight attribute="category" hit={hit} />
-        </Typography>
-        <Typography variant="body2">
-          <Snippet attribute="business_description" hit={hit} />
-        </Typography>
-        <br></br>
-        <Typography style={{ marginTop: "auto" }}>
-          {hit.street_address &&
-            hit.fixed_to_one_location &&
-            `LOCATION: ${hit.street_address}`}
-          {hit.street_address && hit.fixed_to_one_location && <br></br>}
-          {hit.business_location}
-          <br></br>
-          {!hit.fixed_to_one_location && (
-            <span
+      <Link href={`/business/${slug}`}>
+        <a>
+          <div className={classes.root}>
+            <div
+              className="business-header"
               style={{
-                fontWeight: "bold",
-                fontSize: "0.9rem",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             >
-              <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-              CANADA-WIDE
-            </span>
-          )}
-        </Typography>
-
-        <div className={classes.btnGroup}>
-          <a href={`mailto:${hit.email}`}>
-            <IconButton aria-label="email">
-              <MailOutlineIcon />
-            </IconButton>
-          </a>
-          {hit.business_url && (
-            <a
-              href={`http://${hit.business_url}`}
-              target="_blank"
-              rel="noopener"
-            >
-              <IconButton aria-label="website">
-                <LanguageIcon />
-              </IconButton>
-            </a>
-          )}
-          {hit.ig_handle && (
-            <a href={`https://www.instagram.com/${hit.ig_handle}`}>
-              <IconButton aria-label="instagram">
-                <InstagramIcon />
-              </IconButton>
-            </a>
-          )}
-        </div>
-      </div>
-      {selectedBusiness && (
-        <BusinessCardModal
-          business={selectedBusiness}
-          closeModal={setSelectedBusiness}
-        />
-      )}
+              <Avatar alt="Business Logo" src={hit.logo_url} variant="square">
+                {hit.business_name.toUpperCase().charAt(0)}
+              </Avatar>
+              <Typography variant="h6" className={classes.businessName}>
+                <Highlight attribute="business_name" hit={hit} />
+              </Typography>
+            </div>
+            <Typography variant="body1" style={{ fontWeight: "bold" }}>
+              CATEGORY: <Highlight attribute="category" hit={hit} />
+            </Typography>
+            <Typography variant="body2">
+              <Snippet attribute="business_description" hit={hit} />
+            </Typography>
+            <br></br>
+            <Typography style={{ marginTop: "auto" }}>
+              {hit.street_address &&
+                hit.fixed_to_one_location &&
+                `LOCATION: ${hit.street_address}`}
+              {hit.street_address && hit.fixed_to_one_location && <br></br>}
+              {hit.business_location}
+              <br></br>
+              {!hit.fixed_to_one_location && (
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
+                  CANADA-WIDE
+                </span>
+              )}
+            </Typography>
+          </div>
+        </a>
+      </Link>
     </>
   );
 };

@@ -1,10 +1,5 @@
 import React from "react";
 import {
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
-import {
   Button,
   Container,
   Typography,
@@ -16,6 +11,7 @@ import Head from "next/head";
 import useSWR from "swr";
 import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
 import BusinessPage from "@/components/BusinessPage";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -32,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     maxWidth: "400px",
-    margin: "40px auto",
+    margin: "10px auto",
     justifyContent: "center",
+    borderTop: "1px solid",
     "& > *": {
       margin: "8px 16px",
     },
@@ -43,20 +40,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const fetcher = (url, token) =>
+const fetcher = (url) =>
   fetch(url, {
     method: "GET",
-    headers: {
-      "Firebase-Token": token,
-    },
   }).then((r) => r.json());
 
 const BusinessPreview = ({ token }) => {
   const classes = useStyles();
+  const router = useRouter();
+  const { slug } = router.query;
   const { data, error } = useSWR(
-    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
+    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`],
     fetcher
   );
+
   if (data === undefined) {
     return (
       <Container className={classes.page} maxWidth="md">
@@ -89,7 +86,7 @@ const BusinessPreview = ({ token }) => {
         )}
 
         <div className={classes.buttonDiv}>
-          <Link
+          {/* <Link
             href="/"
             className={classes.buttonLink}
             className={classes.buttonLink}
@@ -97,14 +94,14 @@ const BusinessPreview = ({ token }) => {
             <a>
               <Button variant="outlined">Take me back Home</Button>
             </a>
-          </Link>
+          </Link> */}
           <Link
             href="/search"
             className={classes.buttonLink}
             className={classes.buttonLink}
           >
             <a>
-              <Button variant="outlined">Visit Directory</Button>
+              <Button variant="outlined">Back to Directory</Button>
             </a>
           </Link>
         </div>
@@ -113,17 +110,4 @@ const BusinessPreview = ({ token }) => {
   );
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})(async ({ AuthUser, req }) => {
-  const token = await AuthUser.getIdToken();
-  return {
-    props: {
-      token,
-    },
-  };
-});
-
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(BusinessPreview);
+export default BusinessPreview;

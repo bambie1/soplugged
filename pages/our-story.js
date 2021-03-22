@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "underline",
   },
   button: {
-    margin: "16px auto",
+    margin: "16px",
   },
 }));
 
@@ -73,17 +73,30 @@ const OurStory = () => {
               support Black-owned businesses.<br></br> That’s our story and we
               hope you become a part of it!
             </Typography>
-            <Link href="/search">
-              <a>
-                <Button
-                  color="secondary"
-                  variant="outlined"
-                  className={classes.button}
-                >
-                  Visit our directory
-                </Button>
-              </a>
-            </Link>
+            <div className={classes.buttonDiv}>
+              <Link href="/search">
+                <a>
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    className={classes.button}
+                  >
+                    Visit our directory
+                  </Button>
+                </a>
+              </Link>
+              <Link href="/sponsors">
+                <a>
+                  <Button
+                    color="secondary"
+                    variant="outlined"
+                    className={classes.button}
+                  >
+                    Become a Sponsor
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </Container>
           <SubscribeForm />
         </Container>

@@ -10,36 +10,12 @@ import Head from "next/head";
 import { SearchProvider } from "../contexts/searchContext";
 import initAuth from "../utils/initAuth";
 import { useRouter } from "next/router";
-import * as Fathom from "fathom-client";
 import * as gtag from "../lib/gtag";
 
 initAuth();
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-
-  useEffect(() => {
-    // Initialize Fathom when the app loads
-    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_ID, {
-      includedDomains: [
-        "http://localhost:3000/",
-        "https://staging-soplugged.vercel.app/",
-        "https://soplugged.com",
-      ],
-    });
-
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-    // Record a pageview when route changes
-    router.events.on("routeChangeComplete", onRouteChangeComplete);
-
-    // Unassign event listener
-    return () => {
-      router.events.off("routeChangeComplete", onRouteChangeComplete);
-    };
-  }, []);
-
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
@@ -49,6 +25,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
   return (
     <>
       <Head>
@@ -59,11 +36,7 @@ function MyApp({ Component, pageProps }) {
         ></meta>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&family=Permanent+Marker&family=Roboto&display=swap"
           rel="stylesheet"
         />
         <link
@@ -72,11 +45,6 @@ function MyApp({ Component, pageProps }) {
           integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
           crossOrigin="anonymous"
         />
-        <script
-          src="https://cdn.usefathom.com/script.js"
-          data-site={process.env.NEXT_PUBLIC_FATHOM_ID}
-          defer
-        ></script>
       </Head>
       <ThemeProvider theme={theme}>
         <SearchProvider>
