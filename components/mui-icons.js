@@ -24,9 +24,11 @@ import ErrorIcon from "@material-ui/icons/Error";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import SettingsInputSvideoIcon from "@material-ui/icons/SettingsInputSvideo";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 export {
   CheckIcon,
+  ArrowRightIcon,
   InstagramIcon,
   FavoriteIcon,
   FavoriteBorderIcon,

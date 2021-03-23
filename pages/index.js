@@ -92,6 +92,14 @@ export default function Home() {
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
     fetcher
   );
+  let filteredData =
+    data?.filter(
+      (business) =>
+        business?.logo_url !== "" &&
+        business?.sample_images !== "" &&
+        business?.business_description?.length > 30
+    ) || [];
+  console.log({ filteredData });
   const { setContextCategory } = useSearch();
   const router = useRouter();
   const handleClick = (label) => {
@@ -123,7 +131,7 @@ export default function Home() {
         <HeroBanner />
         <div className="body-content">
           {/* <Container maxWidth="lg"> */}
-          {data !== undefined && (
+          {filteredData.length > 0 && (
             <>
               <section>
                 <Typography variant="h5">Featured Businesses:</Typography>
@@ -258,7 +266,7 @@ export default function Home() {
               Did we mention that we love, and support Black-owned businesses?
             </Typography>
             <Typography>Cause, we DO!!</Typography>
-            <Container maxWidth="md">
+            <Container maxWidth="md" style={{ padding: "0" }}>
               <Paper className={classes.shortPaper} elevation={2}>
                 <Typography variant="h6">What does #BuyBlack mean?</Typography>
                 <Typography>
@@ -270,12 +278,8 @@ export default function Home() {
                   owners.
                 </Typography>
                 <Link href="/blog">
-                  <a>
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      style={{ marginRight: "auto", marginTop: "16px" }}
-                    >
+                  <a style={{ marginRight: "auto", marginTop: "16px" }}>
+                    <Button variant="outlined" color="secondary">
                       Read more on our blog
                     </Button>
                   </a>
@@ -296,12 +300,8 @@ export default function Home() {
                   improves brand visibility for business owners.
                 </Typography>
                 <Link href="/join">
-                  <a>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      style={{ marginRight: "auto", marginTop: "16px" }}
-                    >
+                  <a style={{ marginRight: "auto", marginTop: "16px" }}>
+                    <Button variant="contained" color="secondary">
                       Join SoPlugged
                     </Button>
                   </a>

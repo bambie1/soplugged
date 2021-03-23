@@ -12,6 +12,7 @@ import useSWR from "swr";
 import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
 import BusinessPage from "@/components/BusinessPage";
 import { useRouter } from "next/router";
+import { useAuthUser, withAuthUser } from "next-firebase-auth";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -48,6 +49,7 @@ const fetcher = (url) =>
 const BusinessPreview = ({ token }) => {
   const classes = useStyles();
   const router = useRouter();
+  const user = useAuthUser();
   const { slug } = router.query;
   const { data, error } = useSWR(
     [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`],
@@ -73,28 +75,33 @@ const BusinessPreview = ({ token }) => {
       <Container className={classes.page} maxWidth="lg">
         <br></br>
         {data ? (
-          <BusinessPage dbObject={data} />
+          <BusinessPage dbObject={data} user={user} />
         ) : (
-          <Paper style={{ padding: "16px", maxWidth: "400px", margin: "auto" }}>
-            <Typography>
-              We don't recognize this business url. Please verify you've entered
-              it correctly
-            </Typography>
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h1">No Business Found</Typography>
             <br></br>
             <br></br>
-          </Paper>
+            <Paper style={{ padding: "16px" }}>
+              <Typography>
+                We don't recognize this business url{" "}
+                <code>{`business/${slug}`}</code>. Please verify you've entered
+                it correctly
+              </Typography>
+              <br></br>
+              <br></br>
+            </Paper>
+          </div>
         )}
 
         <div className={classes.buttonDiv}>
-          {/* <Link
-            href="/"
-            className={classes.buttonLink}
-            className={classes.buttonLink}
-          >
-            <a>
-              <Button variant="outlined">Take me back Home</Button>
-            </a>
-          </Link> */}
           <Link
             href="/search"
             className={classes.buttonLink}
@@ -110,4 +117,4 @@ const BusinessPreview = ({ token }) => {
   );
 };
 
-export default BusinessPreview;
+export default withAuthUser()(BusinessPreview);

@@ -351,7 +351,7 @@ button.close-btn {
   min-height: 5vh;
   text-align: center;
   background-color: var(--light);
-  z-index: 2;
+  /* z-index: 2; */
   width: 100%;
 }
 .footer-container {

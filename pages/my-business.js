@@ -46,7 +46,7 @@ const EditBusiness = ({ email, token }) => {
     const userToken = await user.getIdToken();
     await submitBusinessObject(businessData, files, email, userToken, data);
     setSaving(false);
-    data ? router.push("/preview") : router.push("/preview/new");
+    data ? router.push(`/business/${data.slug}`) : router.push("/welcome");
   };
   if (email) {
     return (

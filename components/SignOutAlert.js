@@ -12,7 +12,6 @@ export default function AlertDialog({ handleClose, signOut }) {
   const handleSignOut = async () => {
     signOut();
     handleClose();
-    window.location.href = "/join";
   };
   return (
     <Dialog

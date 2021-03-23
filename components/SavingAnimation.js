@@ -16,7 +16,7 @@ const SavingAnimation = () => {
           ))}
         </div>
         <Typography style={{ color: "white" }}>
-          Loading your Business Card
+          Updating your Business page
         </Typography>
       </div>
     </div>

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
-  headings: { fontWeight: 600 },
+  heading: { fontWeight: 600, textAlign: "center", textTransform: "uppercase" },
   list: {
     display: "flex",
     flexWrap: "wrap",
@@ -44,10 +44,11 @@ const useStyles = makeStyles((theme) => ({
   button: { margin: theme.spacing(1) },
   help: {
     backgroundColor: theme.palette.secondary.light,
-    marginTop: "30px",
+    margin: "30px auto 0px",
     padding: "15px",
+    maxWidth: "650px",
     [theme.breakpoints.up("md")]: {
-      marginTop: "60px",
+      margin: "60px auto 0px",
     },
     "& > *": {
       margin: "8px 0px",
@@ -109,7 +110,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
             <Paper elevation={3} className={classes.paper}>
               <Grid className={classes.grid} container spacing={2}>
                 <Grid item xs={12}>
-                  <Typography variant="h6" className={classes.headings}>
+                  <Typography variant="h6" className={classes.heading}>
                     Business Info
                   </Typography>
                 </Grid>
@@ -182,12 +183,13 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     variant="outlined"
-                    label="Street Address (optional)"
+                    label="Street Address"
                     name="streetAddress"
                     inputRef={register}
                     autoComplete="off"
                     defaultValue={currentBusiness?.street_address || ""}
                     onChange={() => setInfoChanged(true)}
+                    helperText="Optional"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -204,62 +206,14 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <InputLabel shrink>Business logo:</InputLabel>
-                  <div style={{ display: "flex", flexWrap: "wrap" }}>
-                    <input
-                      accept="image/png, image/jpeg"
-                      className={classes.input}
-                      id="business-logo"
-                      name="logo"
-                      ref={register}
-                      type="file"
-                      onChange={(e) => {
-                        setLogo(e.target.files[0]);
-                        setInfoChanged(true);
-                      }}
-                    />
-                    <label htmlFor="business-logo">
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        component="span"
-                      >
-                        {logo || currentBusiness?.logo_url
-                          ? "Change Logo"
-                          : "Upload Logo"}
-                      </Button>
-                    </label>
-                    <Typography
-                      display="inline"
-                      style={{ marginLeft: "8px", fontSize: "0.7rem" }}
-                    >
-                      {logo && logo.name}
-                    </Typography>
-                    {currentBusiness?.logo_url && !logo && (
-                      <Avatar src={currentBusiness?.logo_url} variant="square">
-                        {currentBusiness?.business_name.charAt(0)}
-                      </Avatar>
-                    )}
-                  </div>
-                </Grid>
-                <Grid item xs={12}>
-                  <FileDropzone
-                    fbUrls={fbUrls}
-                    setInfoChanged={setInfoChanged}
-                    setFiles={(files) => {
-                      setFiles(files);
-                    }}
-                  />
-                </Grid>
 
                 <Grid item xs={12} key={currentBusiness?.business_description}>
                   <TextField
-                    label="Brief description of your services"
+                    label="Description of your services"
                     name="businessDescription"
-                    placeholder="Enter a short summary about the service you provide, to give customers a better idea of your brand"
+                    placeholder="...explain the service you provide, to give customers a better idea of your brand"
                     rows={5}
-                    rowsMax={Infinity}
+                    rowsMax={7}
                     multiline
                     variant="outlined"
                     defaultValue={currentBusiness?.business_description}
@@ -273,22 +227,22 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     }}
                     inputRef={register({
                       required: true,
-                      maxLength: 300,
+                      maxLength: 1500,
                     })}
                     error={!!errors.businessDescription}
                     helperText={
                       errors.businessDescription?.type === "required"
                         ? "Please enter a brief description of your services"
                         : errors.businessDescription?.type === "maxLength"
-                        ? "You've exceeded the maximum character limit (300)"
-                        : `${watchDescription.length}/300`
+                        ? "You've exceeded the maximum character limit (1500)"
+                        : `${watchDescription.length}/1500`
                     }
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth variant="outlined">
                     <InputLabel htmlFor="url" error={!!errors.businessUrl}>
-                      Business Page
+                      Business Website
                     </InputLabel>
                     <OutlinedInput
                       id="url"
@@ -298,7 +252,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                         </InputAdornment>
                       }
                       labelWidth={120}
-                      placeholder="www.businesspage.com (optional)"
+                      placeholder="www.businesspage.com"
                       defaultValue={currentBusiness?.business_url}
                       name="businessUrl"
                       inputRef={register({
@@ -314,7 +268,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     <FormHelperText error={!!errors.businessUrl}>
                       {!!errors.businessUrl
                         ? "Please enter a valid url"
-                        : "Customers will be taken to this page to view your business"}
+                        : "Recommended"}
                     </FormHelperText>
                   </FormControl>
                 </Grid>
@@ -330,7 +284,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                         <InputAdornment position="start">@</InputAdornment>
                       }
                       labelWidth={130}
-                      placeholder="Instagram account (optional)"
+                      placeholder="Instagram account"
                       defaultValue={currentBusiness?.ig_handle}
                       name="igHandle"
                       error={!!errors.igHandle}
@@ -342,7 +296,9 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                       }}
                     />
                     <FormHelperText error={!!errors.igHandle}>
-                      {!!errors.igHandle && "IG Handle cannot have spaces"}
+                      {!!errors.igHandle
+                        ? "IG Handle cannot have spaces"
+                        : "Recommended"}
                     </FormHelperText>
                   </FormControl>
                 </Grid>
@@ -353,44 +309,75 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
             <Paper elevation={3} className={classes.paper}>
               <Grid container spacing={2} className={classes.grid}>
                 <Grid item xs={12}>
-                  <Typography variant="h6">Owner Info</Typography>
+                  <Typography variant="h6" className={classes.heading}>
+                    Images <br></br>
+                    <span style={{ fontSize: "0.7rem" }}>
+                      (Strongly Recommended)
+                    </span>
+                  </Typography>
                 </Grid>
-                <Grid item xs={12} key={currentBusiness?.owner_name}>
-                  <TextField
-                    name="ownerName"
-                    label="Full Name"
-                    variant="outlined"
-                    inputRef={register({
-                      required: true,
-                      minLength: 2,
-                    })}
-                    defaultValue={currentBusiness?.owner_name}
-                    error={!!errors.ownerName}
-                    helperText={
-                      errors.ownerName?.type === "required"
-                        ? "Please enter your name"
-                        : errors.ownerName?.type === "minLength" &&
-                          "Your name must have a minimum of 2 characters"
-                    }
+                <Grid
+                  item
+                  xs={12}
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    marginTop: "8px",
+                    alignItems: "center",
+                  }}
+                >
+                  <InputLabel style={{ marginRight: "8px" }}>
+                    Business logo:
+                  </InputLabel>
+                  <Typography
+                    display="inline"
+                    style={{ marginLeft: "8px", fontSize: "0.7rem" }}
+                  >
+                    {logo && logo.name}
+                  </Typography>
+                  {currentBusiness?.logo_url && !logo && (
+                    <Avatar src={currentBusiness?.logo_url} variant="square">
+                      {currentBusiness?.business_name.charAt(0)}
+                    </Avatar>
+                  )}
+                  <input
+                    accept="image/png, image/jpeg"
+                    className={classes.input}
+                    id="business-logo"
+                    name="logo"
+                    ref={register}
+                    type="file"
                     onChange={(e) => {
-                      setInfoChanged(
-                        !(e.target.value === currentBusiness?.owner_name)
-                      );
+                      setLogo(e.target.files[0]);
+                      setInfoChanged(true);
                     }}
                   />
+                  <label htmlFor="business-logo" style={{ marginLeft: "8px" }}>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      component="span"
+                    >
+                      {logo || currentBusiness?.logo_url
+                        ? "Change Logo"
+                        : "Upload Logo"}
+                    </Button>
+                  </label>
+
+                  {/* </div> */}
                 </Grid>
-                <Grid item xs={12} key={email}>
-                  <TextField
-                    name="ownerEmail"
-                    label="E-mail"
-                    variant="outlined"
-                    defaultValue={email}
-                    inputRef={register({
-                      required: true,
-                    })}
-                    disabled={true}
-                    helperText="Customers will reach out to you via this e-mail"
+                <Grid item xs={12}>
+                  <InputLabel style={{ marginBottom: "8px" }}>
+                    Sample Images
+                  </InputLabel>
+                  <FileDropzone
+                    fbUrls={fbUrls}
+                    setInfoChanged={setInfoChanged}
+                    setFiles={(files) => {
+                      setFiles(files);
+                    }}
                   />
+                  <br></br>
                 </Grid>
               </Grid>
             </Paper>
@@ -400,10 +387,10 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                 className={classes.submit}
                 onClick={() => {
                   // setIsNewBusiness(false);
-                  router.push("/preview");
+                  router.push(`/business/${currentBusiness.slug}`);
                 }}
               >
-                View card
+                View Page
               </Button>
             ) : (
               <Button
@@ -413,38 +400,38 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                 className={classes.submit}
               >
                 {currentBusiness
-                  ? "Save and view card"
-                  : "Register and view card"}
+                  ? "Save and View Page"
+                  : "Register and View Page"}
               </Button>
             )}
-            <Paper className={classes.help}>
-              <Typography>
-                Have an issue completing the form? Please hit the button below
-                and let us know. We'll get back to you as soon as possible
-              </Typography>
-              <a href="mailto:hello@soplugged.com">
-                <Button variant="outlined">Contact Us</Button>
-              </a>
-              {currentBusiness && (
-                <>
-                  <hr></hr>
-                  <Typography>
-                    Want to make a suggestion on how to improve your SoPlugged
-                    experience?
-                  </Typography>
-                  <a
-                    href="https://soplugged.kampsite.co/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <Button variant="contained" color="primary">
-                      Let us know
-                    </Button>
-                  </a>
-                </>
-              )}
-            </Paper>
           </Grid>
+          <Paper className={classes.help}>
+            <Typography>
+              Have an issue completing the form? Please hit the button below and
+              let us know. We'll get back to you as soon as possible
+            </Typography>
+            <a href="mailto:hello@soplugged.com">
+              <Button variant="outlined">Contact Us</Button>
+            </a>
+            {currentBusiness && (
+              <>
+                <hr></hr>
+                <Typography>
+                  Want to make a suggestion on how to improve your SoPlugged
+                  experience?
+                </Typography>
+                <a
+                  href="https://soplugged.kampsite.co/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Button variant="contained" color="primary">
+                    Let us know
+                  </Button>
+                </a>
+              </>
+            )}
+          </Paper>
         </Grid>
       </Form>
     </>

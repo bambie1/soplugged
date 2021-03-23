@@ -30,6 +30,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -58,6 +59,7 @@ export {
   TextField,
   Container,
   Typography,
+  Fab,
   Paper,
   Avatar,
   Divider,

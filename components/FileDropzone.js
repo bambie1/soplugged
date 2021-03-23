@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button, Typography } from "./mui-components";
+import { Button, Typography, makeStyles } from "./mui-components";
 import { CloudUploadIcon } from "./mui-icons";
 import Image from "next/image";
 
@@ -60,11 +60,15 @@ const acceptStyle = {
 const rejectStyle = {
   borderColor: "#ff1744",
 };
+const useStyles = makeStyles((theme) => ({
+  dropZone: { cursor: "default !important" },
+}));
 const MAX_FILES = 3; //file upload limit
 
 const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
   const [myFiles, setMyFiles] = useState(fbUrls);
   const [fileError, setFileError] = useState(false);
+  const classes = useStyles();
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -92,10 +96,11 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
     fileRejections,
     open,
   } = useDropzone({
+    noClick: true,
+    noKeyboard: true,
     onDrop,
     accept: "image/jpeg, image/png",
     maxFiles: MAX_FILES,
-    noClick: true,
     noKeyboard: true,
     maxSize: 16777216,
   });
@@ -151,15 +156,15 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
 
   return (
     <>
-      <div {...getRootProps({ style })}>
+      <div {...getRootProps({ style })} className={classes.dropZone}>
         <input {...getInputProps()} />
         <Typography variant="body2">
           Upload up to 3 images to showcase your services to customers.
         </Typography>
         <br></br>
         <Button
-          variant="contained"
-          color="default"
+          variant="outlined"
+          color="secondary"
           startIcon={<CloudUploadIcon />}
           onClick={open}
         >
@@ -175,7 +180,8 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
               type="button"
               onClick={removeAll}
               style={{ alignSelf: "center", marginLeft: "8px" }}
-              variant="contained"
+              variant="outlined"
+              color="secondary"
               size="small"
             >
               Remove All

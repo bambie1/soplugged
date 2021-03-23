@@ -12,7 +12,7 @@ import {
   Paper,
   makeStyles,
 } from "@/components/mui-components";
-import { EditIcon } from "@/components/mui-icons";
+import { ArrowRightIcon, EditIcon } from "@/components/mui-icons";
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     maxWidth: "400px",
-    margin: "16px auto",
+    margin: "40px auto",
     justifyContent: "space-between",
   },
   buttonLink: {
@@ -72,35 +72,57 @@ const BusinessPreview = ({ token }) => {
         <title>Preview Business | SoPlugged</title>
       </Head>
       <Container className={classes.page} maxWidth="md">
-        <Typography variant="h6">SoPlugged Business Preview</Typography>
-        <br></br>
-        <Typography variant="body2">View your Business page here</Typography>
-        <Link href="/my-business">
-          <a>
-            <Button
-              variant="contained"
-              color="default"
-              className={classes.button}
-              startIcon={<EditIcon />}
-            >
-              Edit
-            </Button>
-          </a>
-        </Link>
         {data ? (
-          <Link href={`/business/${data.slug}`}>
-            <a>
-              <Button
-                variant="contained"
-                color="default"
-                className={classes.button}
-              >
-                My Business page
-              </Button>
-            </a>
-          </Link>
+          <>
+            <Typography variant="h6">
+              Thanks for registering your business on SoPlugged!
+            </Typography>
+            <br></br>
+            <Typography>
+              We'll send a confirmation e-mail to you as well.
+            </Typography>
+            <Typography
+              variant="body2"
+              style={{ fontSize: "0.8rem" }}
+              color="textSecondary"
+            >
+              Didn't get one? Be sure to check your spam/junk folder
+            </Typography>
+
+            <br></br>
+            <Typography variant="body2">
+              View your business page here
+            </Typography>
+            <br></br>
+            <Link href="/">
+              <a>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  endIcon={<ArrowRightIcon />}
+                >
+                  Business Page
+                </Button>
+              </a>
+            </Link>
+          </>
         ) : (
           <Paper style={{ padding: "16px", maxWidth: "400px", margin: "auto" }}>
+            <Typography variant="h6">SoPlugged Business Preview</Typography>
+            <br></br>
+            <Link href="/my-business">
+              <a>
+                <Button
+                  variant="contained"
+                  color="default"
+                  className={classes.button}
+                  startIcon={<EditIcon />}
+                >
+                  Edit
+                </Button>
+              </a>
+            </Link>
+            <br></br>
             <Typography>
               Doesn't look like you have registered your business yet
             </Typography>
@@ -114,12 +136,18 @@ const BusinessPreview = ({ token }) => {
 
         <div className={classes.buttonDiv}>
           <Link
-            href="/"
+            href="/my-business"
             className={classes.buttonLink}
             className={classes.buttonLink}
           >
             <a>
-              <Button variant="outlined">Take me back Home</Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<EditIcon />}
+              >
+                Edit Business
+              </Button>
             </a>
           </Link>
           <Link
@@ -128,7 +156,9 @@ const BusinessPreview = ({ token }) => {
             className={classes.buttonLink}
           >
             <a>
-              <Button variant="outlined">Visit Directory</Button>
+              <Button variant="outlined" color="secondary">
+                Visit Directory
+              </Button>
             </a>
           </Link>
         </div>
