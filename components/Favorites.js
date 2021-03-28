@@ -1,0 +1,102 @@
+import React, { useState } from "react";
+import {
+  Grid,
+  Typography,
+  Button,
+  makeStyles,
+  useMediaQuery,
+} from "./mui-components";
+import Image from "next/image";
+import BusinessCard from "./BusinessCard";
+import PaginationBar from "./Pagination";
+
+const useStyles = makeStyles((theme) => ({
+  favorites: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    flex: "1",
+    flexDirection: "column",
+  },
+  noBusiness: {
+    backgroundColor: theme.palette.secondary.light,
+    padding: "16px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    "& > *": {
+      margin: "8px 0px",
+    },
+  },
+  desktop: {
+    marginTop: "16px",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+      marginTop: "auto",
+    },
+  },
+}));
+
+const Favorites = ({ data }) => {
+  const classes = useStyles();
+  const hasFavorites = true;
+  const [currentPage, setCurrentPage] = useState(1);
+  const matches = useMediaQuery("(min-width:960px)");
+
+  let doubleData = [...data, ...data, ...data];
+  let pageLimit = matches ? 6 : 4;
+  const indexOfLastItem = currentPage * pageLimit;
+  const indexOfFirstItem = indexOfLastItem - pageLimit;
+  const currentItems = doubleData.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <>
+      <Typography variant="h1" gutterBottom={true} align="center">
+        Favorites
+      </Typography>
+      <br></br>
+      {currentItems && data ? (
+        <div className={classes.favorites}>
+          <Grid container spacing={2}>
+            {currentItems.map((business, index) => (
+              <React.Fragment key={index}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <BusinessCard dbObject={business} mini={true} />
+                </Grid>
+              </React.Fragment>
+            ))}
+          </Grid>
+          <div className={classes.desktop}>
+            <PaginationBar
+              totalCount={doubleData.length}
+              pageLimit={pageLimit}
+              handleClick={(page) => setCurrentPage(page)}
+            />
+          </div>
+        </div>
+      ) : (
+        <div
+          className={classes.noBusiness}
+          style={{
+            backgroundColor: "white",
+            border: "1px dashed #cdb693",
+          }}
+        >
+          <Image
+            src="/images/undraw_no_data.png"
+            alt="empty clipboard"
+            width={200}
+            height={200}
+          />
+          <Typography>No favorites found</Typography>
+          <Typography>
+            When you 'Like' a business, it will get added here.
+          </Typography>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Favorites;

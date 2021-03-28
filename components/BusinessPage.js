@@ -7,6 +7,8 @@ import {
   makeStyles,
   SecondaryButton,
   Fab,
+  Snackbar,
+  IconButton,
 } from "./mui-components";
 import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -18,6 +20,7 @@ import {
   FavoriteBorderIcon,
   FavoriteIcon,
   EditIcon,
+  CloseIcon,
 } from "./mui-icons";
 import ImageGallery from "react-image-gallery";
 import { useSearch } from "@/contexts/searchContext";
@@ -109,12 +112,22 @@ const BusinessPage = ({ dbObject, user }) => {
   let hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const pageOwner = user?.email === email;
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handleCategoryClick = () => {
     setContextCategory(category);
     router.push("/search");
   };
   const handleFavorite = () => {
     setLiked(!liked);
+    setOpen(true);
     //back-end query
   };
   return (
@@ -315,6 +328,31 @@ const BusinessPage = ({ dbObject, user }) => {
           )}
         </div>
       )}
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Business added to Favorites"
+        action={
+          <React.Fragment>
+            <Button color="primary" size="small" onClick={handleClose}>
+              View All
+            </Button>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       {pageOwner && (
         <Link href="/my-business">
           <a style={{ position: "fixed", top: "65px", right: "16px" }}>

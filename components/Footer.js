@@ -9,6 +9,7 @@ import {
 } from "./mui-components";
 import { InstagramIcon, LinkedInIcon } from "./mui-icons";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   divider: {
@@ -17,15 +18,23 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  gridDiv: {
+    display: "flex",
+    flexDirection: "column",
+    "& > *": {
+      alignSelf: "center",
+    },
+  },
 }));
 
 const Footer = () => {
   const classes = useStyles();
-  return (
+  const router = useRouter();
+  return !router.pathname.startsWith("/dashboard") ? (
     <footer className="footer">
       <Container className="footer-container">
         <Grid container>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} className={classes.gridDiv}>
             <a href="mailto:hello@soplugged.com">
               <Typography>hello@soplugged.com</Typography>
             </a>
@@ -114,6 +123,8 @@ const Footer = () => {
         </a>
       </Container>
     </footer>
+  ) : (
+    <></>
   );
 };
 

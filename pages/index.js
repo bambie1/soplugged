@@ -67,16 +67,23 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px",
     marginTop: "8px",
     marginBottom: "8px",
+    "&:last-child": {
+      background: theme.palette.primary.main,
+      marginLeft: "auto",
+      color: "white",
+      "& > div": {
+        background: "url('/images/blob_11-4-63.svg')",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      },
+    },
+  },
+  shortPaperDiv: {
     display: "flex",
     flexDirection: "column",
     background: "url('/images/blob_14-4-40.svg')",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    "&:last-child": {
-      background: "url('/images/blob_14-4-41.svg')",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    },
     "& > .MuiTypography-root": { lineHeight: "2rem" },
   },
 }));
@@ -163,19 +170,31 @@ export default function Home() {
                         <ListItemIcon>
                           <PowerIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Rich directory of Black-owned businesses" />
+                        <ListItemText primary="Find the perfect black-owned businesses for your needs." />
                       </ListItem>
                       <ListItem>
                         <ListItemIcon>
                           <PowerIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Easily add businesses to your favorites, for future needs" />
+                        <ListItemText primary="Connect with businesses, send messages and request a quote from our platform." />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <PowerIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Save businesses to your favorites, and come back to them later" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <PowerIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Hassle-FREE" />
                       </ListItem>
                       <ListItem style={{ marginTop: "auto" }}>
                         <Link href="/search">
                           <a>
                             <Button variant="outlined" color="secondary">
-                              Browse Businesses
+                              Browse Directory
                             </Button>
                           </a>
                         </Link>
@@ -206,7 +225,19 @@ export default function Home() {
                         <ListItemIcon>
                           <SettingsInputSvideoIcon />
                         </ListItemIcon>
-                        <ListItemText primary="FREE and simple process to add your business" />
+                        <ListItemText primary="Connect with fellow entrepreneurs across Canada" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <SettingsInputSvideoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Tap into a growing community of people looking to #buyblack" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <SettingsInputSvideoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="It's all FREE" />
                       </ListItem>
                       <ListItem style={{ marginTop: "auto" }}>
                         <Link href="/my-business">
@@ -261,51 +292,59 @@ export default function Home() {
           <br></br>
           <br></br>
           <section className={classes.section}>
-            <Typography variant="h5">Learn more about our community</Typography>
-            <Typography>
+            <Typography variant="h5" align="center">
+              Learn more about our community
+            </Typography>
+            <Typography align="center">
               Did we mention that we love, and support Black-owned businesses?
             </Typography>
-            <Typography>Cause, we DO!!</Typography>
+            <Typography align="center">Cause, we DO!!</Typography>
             <Container maxWidth="md" style={{ padding: "0" }}>
               <Paper className={classes.shortPaper} elevation={2}>
-                <Typography variant="h6">What does #BuyBlack mean?</Typography>
-                <Typography>
-                  Buy Black is a movement that started out as a way to circulate
-                  wealth within the Black community by supporting Black-owned
-                  businesses. No doubt, this movement gained a lot of traction
-                  this year because of the tragic events of 2020 and how they
-                  impacted members of this community, especially small business
-                  owners.
-                </Typography>
-                <Link href="/blog">
-                  <a style={{ marginRight: "auto", marginTop: "16px" }}>
-                    <Button variant="outlined" color="secondary">
-                      Read more on our blog
-                    </Button>
-                  </a>
-                </Link>
+                <div
+                  className={classes.shortPaperDiv}
+                  style={{ marginLeft: "auto" }}
+                >
+                  <Typography variant="h6">
+                    What does #BuyBlack mean?
+                  </Typography>
+                  <Typography>
+                    Buy Black is a movement that started out as a way to
+                    circulate wealth within the Black community by supporting
+                    Black-owned businesses. No doubt, this movement gained a lot
+                    of traction this year because of the tragic events of 2020
+                    and how they impacted members of this community, especially
+                    small business owners.
+                  </Typography>
+                  <Link href="/blog">
+                    <a style={{ marginRight: "auto", marginTop: "16px" }}>
+                      <Button variant="outlined" color="secondary">
+                        Read more on our blog
+                      </Button>
+                    </a>
+                  </Link>
+                </div>
               </Paper>
-              <Paper
-                className={classes.shortPaper}
-                style={{ marginLeft: "auto" }}
-                elevation={2}
-              >
-                <Typography variant="h6">Where do we come in?</Typography>
-                <Typography>
-                  If you're a #BuyBlack enthusiast like we are, you might agree
-                  that finding the right business for your needs might be quite
-                  an ordeal. Endlessly scrolling through Instagram pages just to
-                  find an event planner is less than ideal. <br /> We provide an
-                  easy-to-use platform that eliminates the head-ache, and
-                  improves brand visibility for business owners.
-                </Typography>
-                <Link href="/join">
-                  <a style={{ marginRight: "auto", marginTop: "16px" }}>
-                    <Button variant="contained" color="secondary">
-                      Join SoPlugged
-                    </Button>
-                  </a>
-                </Link>
+              <Paper className={classes.shortPaper} elevation={2}>
+                <div className={classes.shortPaperDiv}>
+                  <Typography variant="h6">Where do we come in?</Typography>
+                  <Typography>
+                    If you're a #BuyBlack enthusiast like we are, you might
+                    agree that finding the right business for your needs might
+                    be quite an ordeal. Endlessly scrolling through Instagram
+                    pages just to find an event planner is less than ideal.{" "}
+                    <br /> We provide an easy-to-use platform that eliminates
+                    the head-ache, and improves brand visibility for business
+                    owners.
+                  </Typography>
+                  <Link href="/join">
+                    <a style={{ marginRight: "auto", marginTop: "16px" }}>
+                      <Button variant="contained" color="secondary">
+                        Join SoPlugged
+                      </Button>
+                    </a>
+                  </Link>
+                </div>
               </Paper>
             </Container>
           </section>

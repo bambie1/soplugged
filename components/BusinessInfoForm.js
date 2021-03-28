@@ -54,6 +54,14 @@ const useStyles = makeStyles((theme) => ({
       margin: "8px 0px",
     },
   },
+  paperHeading: {
+    background: "#fffaf2",
+    borderRadius: "5px",
+    height: "68px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
@@ -62,7 +70,16 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
   const fbUrls = !samples ? [] : samples.split(",");
   const router = useRouter();
 
-  const { register, handleSubmit, errors, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    watch,
+    setError,
+    clearErrors,
+  } = useForm({
+    mode: "onBlur",
+  });
   const watchDescription = watch(
     "businessDescription",
     currentBusiness?.businessDescription || ""
@@ -73,7 +90,33 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
   const [checked, setChecked] = useState(
     !currentBusiness?.fixed_to_one_location
   );
+  const [nameInput, setNameInput] = useState(
+    currentBusiness?.business_name || ""
+  );
 
+  const handleNameInput = (val) => {
+    let trimmedInput = val.trim();
+    let special = "/!@#$%^*()'<>`=+;,{}".split("");
+    if (trimmedInput === "") {
+      setError("businessName", {
+        type: "manual",
+        message: "Please enter a name for your business",
+      });
+    } else if (trimmedInput.split("").some((item) => special.includes(item))) {
+      setError("businessName", {
+        type: "manual",
+        message: "You have invalid characters",
+      });
+    } else if (trimmedInput.length < 4) {
+      setError("businessName", {
+        type: "manual",
+        message: "Your business name is too short (min. 4 characters)",
+      });
+    } else {
+      clearErrors("businessName");
+    }
+    setNameInput(trimmedInput);
+  };
   const handleChange = (e) => {
     setInfoChanged(true);
     setChecked(e.target.checked);
@@ -109,7 +152,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
           <Grid item xs={12} md={6}>
             <Paper elevation={3} className={classes.paper}>
               <Grid className={classes.grid} container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.paperHeading}>
                   <Typography variant="h6" className={classes.heading}>
                     Business Info
                   </Typography>
@@ -119,22 +162,14 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     name="businessName"
                     label="Name of Business"
                     variant="outlined"
-                    defaultValue={currentBusiness?.business_name || ""}
-                    inputRef={register({
-                      required: {
-                        value: true,
-                        message: "Please enter a name for your business",
-                      },
-                      minLength: {
-                        value: 2,
-                        message:
-                          "Your business name must have a minimum of 2 characters",
-                      },
-                    })}
+                    value={nameInput}
+                    inputRef={register}
                     onChange={(e) => {
-                      setInfoChanged(
-                        !(e.target.value === currentBusiness?.business_name)
-                      );
+                      setNameInput(e.target.value);
+                      setInfoChanged(true);
+                    }}
+                    onBlur={(e) => {
+                      handleNameInput(e.target.value);
                     }}
                     error={!!errors.businessName}
                     helperText={errors.businessName?.message}
@@ -289,7 +324,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                       name="igHandle"
                       error={!!errors.igHandle}
                       inputRef={register({
-                        pattern: /^\S*$/,
+                        pattern: /^[a-zA-Z0-9_]*$/,
                       })}
                       onChange={() => {
                         setInfoChanged(true);
@@ -297,7 +332,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
                     />
                     <FormHelperText error={!!errors.igHandle}>
                       {!!errors.igHandle
-                        ? "IG Handle cannot have spaces"
+                        ? "You have entered invalid characters"
                         : "Recommended"}
                     </FormHelperText>
                   </FormControl>
@@ -308,7 +343,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
           <Grid item xs={12} md={6}>
             <Paper elevation={3} className={classes.paper}>
               <Grid container spacing={2} className={classes.grid}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.paperHeading}>
                   <Typography variant="h6" className={classes.heading}>
                     Images <br></br>
                     <span style={{ fontSize: "0.7rem" }}>

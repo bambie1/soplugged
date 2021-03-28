@@ -9,10 +9,10 @@ import {
 import Link from "next/link";
 import Head from "next/head";
 import useSWR from "swr";
-import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
 import BusinessPage from "@/components/BusinessPage";
 import { useRouter } from "next/router";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
+import BusinessPageSkeleton from "@/components/skeletons/BusinessPageSkeleton";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -58,8 +58,8 @@ const BusinessPreview = ({ token }) => {
 
   if (data === undefined) {
     return (
-      <Container className={classes.page} maxWidth="md">
-        <BusinessCardSkeleton />
+      <Container className={classes.page} maxWidth="lg">
+        <BusinessPageSkeleton />
       </Container>
     );
   }

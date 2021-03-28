@@ -11,8 +11,8 @@ import {
   AuthAction,
   useAuthUser,
 } from "next-firebase-auth";
-import useSWR from "swr";
 import BusinessInfoSkeleton from "../components/skeletons/BusinessInfoSkeleton";
+import { useBusiness } from "@/hooks/useBusiness";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -23,30 +23,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Firebase-Token": token,
-    },
-  }).then((r) => r.json());
-
 const EditBusiness = ({ email, token }) => {
   const classes = useStyles();
   const user = useAuthUser();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
 
-  const { data, error } = useSWR(
-    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
-    fetcher
-  );
+  const { business, isLoading, isError } = useBusiness(token);
+
   const handleSubmit = async (businessData, files) => {
     setSaving(true);
     const userToken = await user.getIdToken();
-    await submitBusinessObject(businessData, files, email, userToken, data);
+    await submitBusinessObject(businessData, files, email, userToken, business);
     setSaving(false);
-    data ? router.push(`/business/${data.slug}`) : router.push("/welcome");
+    business
+      ? router.push(`/business/${business.slug}`)
+      : router.push("/welcome");
   };
   if (email) {
     return (
@@ -60,11 +52,12 @@ const EditBusiness = ({ email, token }) => {
         </Head>
         <div className={classes.page}>
           <Container maxWidth="lg">
-            {data !== undefined ? (
+            {business !== undefined ? (
               <BusinessInfoForm
                 submitHandler={handleSubmit}
-                currentBusiness={data}
+                currentBusiness={business}
                 email={email}
+                // yupResolver={yupResolver}
               />
             ) : (
               <BusinessInfoSkeleton />

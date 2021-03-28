@@ -125,13 +125,13 @@ const Header = (props) => {
         {user.email ? (
           <>
             <ListItem>
-              <Link href="/my-business">
+              <Link href="/dashboard">
                 <a className={classes.mobileLink}>
                   <>
                     <ListItemIcon>
                       <BusinessCenterIcon />
                     </ListItemIcon>
-                    <ListItemText primary="My Business" />
+                    <ListItemText primary="My Dashboard" />
                   </>
                 </a>
               </Link>
@@ -185,9 +185,9 @@ const Header = (props) => {
               </Link>
               {user.email ? (
                 <>
-                  <Link href="/my-business">
+                  <Link href="/dashboard">
                     <a>
-                      <Button color="inherit">MY BUSINESS</Button>
+                      <Button color="inherit">MY DASHBOARD</Button>
                     </a>
                   </Link>
                   <Button color="inherit" onClick={() => setSignOut(true)}>

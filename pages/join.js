@@ -64,7 +64,7 @@ const Auth = () => {
       <Head>
         <meta
           name="description"
-          content="Quick sign-up process to get started on SoPlugged as a business owner"
+          content="Quick sign-up process to get started on SoPlugged as a user or business owner"
         />
         <title>Join SoPlugged</title>
       </Head>

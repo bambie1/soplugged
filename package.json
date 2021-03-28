@@ -19,6 +19,7 @@
     "@sentry/webpack-plugin": "^1.14.1",
     "algoliasearch": "^4.8.5",
     "autosuggest-highlight": "^3.1.1",
+    "clsx": "^1.1.1",
     "env-cmd": "^10.1.0",
     "fathom-client": "^3.0.0",
     "firebase": "^8.2.1",
@@ -39,7 +40,8 @@
     "react-responsive-carousel": "^3.2.11",
     "sharp": "^0.27.1",
     "slugify": "^1.4.7",
-    "swr": "^0.5.2"
+    "swr": "^0.5.2",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",

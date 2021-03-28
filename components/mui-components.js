@@ -31,6 +31,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Fab from "@material-ui/core/Fab";
+import Snackbar from "@material-ui/core/Snackbar";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -54,11 +60,17 @@ const SecondaryButton = ({ children, ...props }) => {
 export {
   InputLabel,
   Button,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   SecondaryButton,
+  BottomNavigation,
+  BottomNavigationAction,
   Grid,
   TextField,
   Container,
   Typography,
+  Snackbar,
   Fab,
   Paper,
   Avatar,

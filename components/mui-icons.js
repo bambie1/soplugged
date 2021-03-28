@@ -25,10 +25,20 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import SettingsInputSvideoIcon from "@material-ui/icons/SettingsInputSvideo";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import CloseIcon from "@material-ui/icons/Close";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
+import TextFormatOutlinedIcon from "@material-ui/icons/TextFormatOutlined";
 
 export {
   CheckIcon,
+  TextFormatOutlinedIcon,
+  CloseIcon,
+  CameraAltOutlinedIcon,
+  DashboardIcon,
   ArrowRightIcon,
+  AccountCircleIcon,
   InstagramIcon,
   FavoriteIcon,
   FavoriteBorderIcon,

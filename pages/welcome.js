@@ -1,5 +1,4 @@
 import React from "react";
-import BusinessCard from "@/components/BusinessCard";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
@@ -15,8 +14,8 @@ import {
 import { ArrowRightIcon, EditIcon } from "@/components/mui-icons";
 import Link from "next/link";
 import Head from "next/head";
-import useSWR from "swr";
 import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
+import { useBusiness } from "@/hooks/useBusiness";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -41,21 +40,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Firebase-Token": token,
-    },
-  }).then((r) => r.json());
-
 const BusinessPreview = ({ token }) => {
   const classes = useStyles();
-  const { data, error } = useSWR(
-    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
-    fetcher
-  );
-  if (data === undefined) {
+  const { business, isLoading, isError } = useBusiness(token);
+
+  if (isLoading) {
     return (
       <Container className={classes.page} maxWidth="md">
         <BusinessCardSkeleton />
@@ -72,7 +61,7 @@ const BusinessPreview = ({ token }) => {
         <title>Preview Business | SoPlugged</title>
       </Head>
       <Container className={classes.page} maxWidth="md">
-        {data ? (
+        {business ? (
           <>
             <Typography variant="h6">
               Thanks for registering your business on SoPlugged!
@@ -135,11 +124,7 @@ const BusinessPreview = ({ token }) => {
         )}
 
         <div className={classes.buttonDiv}>
-          <Link
-            href="/my-business"
-            className={classes.buttonLink}
-            className={classes.buttonLink}
-          >
+          <Link href="/my-business" className={classes.buttonLink}>
             <a>
               <Button
                 variant="outlined"
@@ -150,11 +135,7 @@ const BusinessPreview = ({ token }) => {
               </Button>
             </a>
           </Link>
-          <Link
-            href="/search"
-            className={classes.buttonLink}
-            className={classes.buttonLink}
-          >
+          <Link href="/search" className={classes.buttonLink}>
             <a>
               <Button variant="outlined" color="secondary">
                 Visit Directory
