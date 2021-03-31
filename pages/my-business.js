@@ -28,18 +28,30 @@ const EditBusiness = ({ email, token }) => {
   const user = useAuthUser();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
-
   const { business, isLoading, isError } = useBusiness(token);
 
   const handleSubmit = async (businessData, files) => {
     setSaving(true);
     const userToken = await user.getIdToken();
-    await submitBusinessObject(businessData, files, email, userToken, business);
+    let slug = await submitBusinessObject(
+      businessData,
+      files,
+      email,
+      userToken,
+      business
+    );
     setSaving(false);
-    business
-      ? router.push(`/business/${business.slug}`)
-      : router.push("/welcome");
+    if (slug) {
+      business ? router.push(`/business/${slug}`) : router.push("/welcome");
+    }
   };
+
+  if (isLoading)
+    return (
+      <div className={classes.page}>
+        <BusinessInfoSkeleton />
+      </div>
+    );
   if (email) {
     return (
       <>
@@ -52,16 +64,11 @@ const EditBusiness = ({ email, token }) => {
         </Head>
         <div className={classes.page}>
           <Container maxWidth="lg">
-            {business !== undefined ? (
-              <BusinessInfoForm
-                submitHandler={handleSubmit}
-                currentBusiness={business}
-                email={email}
-                // yupResolver={yupResolver}
-              />
-            ) : (
-              <BusinessInfoSkeleton />
-            )}
+            <BusinessInfoForm
+              submitHandler={handleSubmit}
+              currentBusiness={isError ? null : business[0]}
+              email={email}
+            />
           </Container>
           {saving && <SavingAnimation />}
         </div>

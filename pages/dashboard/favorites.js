@@ -1,37 +1,27 @@
 import React from "react";
-import { makeStyles } from "@/components/mui-components";
 import Favorites from "@/components/Favorites";
 import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
-import useSWR from "swr";
 import DashboardLayout from "@/components/DashboardLayout";
 import DashboardSkeleton from "@/components/skeletons/DashboardSkeleton";
+import { useFavorites } from "@/hooks/useFavorites";
 
-const useStyles = makeStyles((theme) => ({}));
+const FavoritesPage = ({ token }) => {
+  const { favorites, isLoading, isError } = useFavorites(token);
 
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "GET",
-  }).then((r) => r.json());
-
-const FavoritesPage = ({ email, token }) => {
-  const { data, error } = useSWR(
-    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`],
-    fetcher
-  );
-  const classes = useStyles();
-
+  if (isLoading)
+    return (
+      <DashboardLayout title="My Dashboard | SoPlugged" position={1}>
+        <DashboardSkeleton page="favorites" />
+      </DashboardLayout>
+    );
   return (
     <>
       <DashboardLayout title="My Dashboard | SoPlugged" position={1}>
-        {data ? (
-          <Favorites data={data} email={email} />
-        ) : (
-          <DashboardSkeleton page="favorites" />
-        )}
+        <Favorites data={favorites} />
       </DashboardLayout>
     </>
   );
@@ -43,7 +33,6 @@ export const getServerSideProps = withAuthUserTokenSSR({
   const token = await AuthUser.getIdToken();
   return {
     props: {
-      email: AuthUser.email,
       token,
     },
   };

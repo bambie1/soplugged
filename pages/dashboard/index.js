@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({}));
 const DashboardPage = ({ email, token }) => {
   const { business, isLoading, isError } = useBusiness(token);
   const classes = useStyles();
-
   if (isLoading)
     return (
       <DashboardLayout title="My Dashboard | SoPlugged" position={0}>
@@ -25,7 +24,7 @@ const DashboardPage = ({ email, token }) => {
   return (
     <>
       <DashboardLayout title="My Dashboard | SoPlugged" position={0}>
-        {business && <Dashboard data={business} email={email} />}
+        {business && <Dashboard data={business[0]} email={email} />}
       </DashboardLayout>
     </>
   );

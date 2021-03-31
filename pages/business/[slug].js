@@ -91,7 +91,7 @@ const BusinessPreview = ({ token }) => {
             <br></br>
             <Paper style={{ padding: "16px" }}>
               <Typography>
-                We don't recognize this business url{" "}
+                We don't recognize this business url
                 <code>{`business/${slug}`}</code>. Please verify you've entered
                 it correctly
               </Typography>

@@ -2,30 +2,20 @@ import {
   Grid,
   Typography,
   Avatar,
-  Button,
-  TextField,
   makeStyles,
   SecondaryButton,
   Fab,
-  Snackbar,
-  IconButton,
 } from "./mui-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {
-  CheckIcon,
-  InstagramIcon,
-  LanguageIcon,
-  PanoramaIcon,
-  FavoriteBorderIcon,
-  FavoriteIcon,
-  EditIcon,
-  CloseIcon,
-} from "./mui-icons";
+import { CheckIcon, InstagramIcon, LanguageIcon, EditIcon } from "./mui-icons";
 import ImageGallery from "react-image-gallery";
 import { useSearch } from "@/contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
+import ContactForm from "./ContactForm";
+import { useFavorites } from "hooks/useFavorites";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,43 +82,39 @@ const useStyles = makeStyles((theme) => ({
 const BusinessPage = ({ dbObject, user }) => {
   const classes = useStyles();
   const { setContextCategory } = useSearch();
-  const [liked, setLiked] = useState(false);
   const router = useRouter();
+
   const {
+    id,
     business_name,
     business_location,
     logo_url,
     sample_images,
     category,
+    creator,
     business_description,
     business_url,
-    email,
     fixed_to_one_location,
     street_address,
     ig_handle,
+    number_of_likes,
   } = dbObject;
+
   let images = sample_images.split(",");
   images = images.map((item) => ({ original: item, thumbnail: item }));
   let hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const pageOwner = user?.email === email;
+  const [myUser, setMyUser] = useState(null);
+  const pageOwner = myUser?.email === creator.email;
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
+  useEffect(() => {
+    if (user.email) {
+      setMyUser(user);
     }
+  }, [user]);
 
-    setOpen(false);
-  };
   const handleCategoryClick = () => {
     setContextCategory(category);
     router.push("/search");
-  };
-  const handleFavorite = () => {
-    setLiked(!liked);
-    setOpen(true);
-    //back-end query
   };
   return (
     <div className={classes.root}>
@@ -240,61 +226,21 @@ const BusinessPage = ({ dbObject, user }) => {
                   Would you recommend this business? Give it a like!
                 </Typography>
                 <br></br>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                  onClick={handleFavorite}
-                  disabled={!user?.email}
-                >
-                  {liked ? "Liked" : "Like"}
-                </Button>
+                <FavoriteButton
+                  business_id={id}
+                  user={user}
+                  numberOfLikes={number_of_likes}
+                  disabled={pageOwner}
+                />
               </div>
             )}
-            {/* <div className={classes.filler}></div> */}
           </div>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography variant="body2" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
-          <form className={classes.paper}>
-            <TextField
-              name="userEmail"
-              label="E-mail"
-              variant="outlined"
-              defaultValue={user?.email}
-              disabled
-            />
-            <TextField
-              name="userName"
-              label="Full Name"
-              variant="outlined"
-              disabled={!user?.email}
-            />
-            <TextField
-              name="userMessage"
-              label="Message"
-              variant="outlined"
-              rows={5}
-              rowsMax={Infinity}
-              multiline
-              disabled={!user?.email}
-            />
-            {user.email ? (
-              <Button variant="contained" color="secondary">
-                Send Message
-              </Button>
-            ) : (
-              <Link href="/join">
-                <a target="_blank">
-                  <Button variant="outlined" color="secondary">
-                    Sign In to send Message
-                  </Button>
-                </a>
-              </Link>
-            )}
-          </form>
+          <ContactForm user={user} business_id={id} />
           <div className={classes.filler}></div>
         </Grid>
       </Grid>
@@ -303,56 +249,9 @@ const BusinessPage = ({ dbObject, user }) => {
           <Typography>
             Would you recommend this business? Give it a like!
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-            onClick={handleFavorite}
-            disabled={!user?.email}
-          >
-            {liked ? "Liked" : "Like"}
-          </Button>
-
-          {!user?.email && (
-            <a
-              target="_blank"
-              href="/join"
-              style={{
-                textDecoration: "underline",
-              }}
-            >
-              <Typography variant="caption">
-                Please sign in to add business to your favorites
-              </Typography>
-            </a>
-          )}
+          <FavoriteButton business_id={id} user={user} disabled={pageOwner} />
         </div>
       )}
-      <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="Business added to Favorites"
-        action={
-          <React.Fragment>
-            <Button color="primary" size="small" onClick={handleClose}>
-              View All
-            </Button>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleClose}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
       {pageOwner && (
         <Link href="/my-business">
           <a style={{ position: "fixed", top: "65px", right: "16px" }}>

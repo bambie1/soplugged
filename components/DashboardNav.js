@@ -37,7 +37,6 @@ const DashboardNav = ({ position }) => {
   const [value, setValue] = React.useState(position);
   const classes = useStyles();
   const router = useRouter();
-  // console.log("re-render"); -renders 4 times (!)
   const handleClick = (href) => {
     router.push(href);
   };

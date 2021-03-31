@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "auto",
       color: "white",
       "& > div": {
-        background: "url('/images/blob_11-4-63.svg')",
+        // background: "url('/images/blob_11-4-63.svg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       },
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   shortPaperDiv: {
     display: "flex",
     flexDirection: "column",
-    background: "url('/images/blob_14-4-40.svg')",
+    // background: "url('/images/blob_14-4-40.svg')",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     "& > .MuiTypography-root": { lineHeight: "2rem" },
@@ -106,7 +106,6 @@ export default function Home() {
         business?.sample_images !== "" &&
         business?.business_description?.length > 30
     ) || [];
-  console.log({ filteredData });
   const { setContextCategory } = useSearch();
   const router = useRouter();
   const handleClick = (label) => {

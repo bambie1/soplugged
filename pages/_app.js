@@ -11,7 +11,9 @@ import { SearchProvider } from "../contexts/searchContext";
 import initAuth from "../utils/initAuth";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
+import { init } from "../utils/sentry";
 
+init();
 initAuth();
 
 function MyApp({ Component, pageProps }) {

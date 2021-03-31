@@ -8,13 +8,13 @@ const fetcher = (url, token) =>
     },
   }).then((r) => r.json());
 
-export function useBusiness(token) {
+export function useUser(token) {
   const { data, error } = useSWR(
-    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`, token],
+    [`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/user`, token],
     fetcher
   );
   return {
-    business: data,
+    user: data,
     isLoading: !error && (!data || data === undefined),
     isError: error,
   };

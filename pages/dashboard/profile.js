@@ -8,20 +8,31 @@ import {
 } from "next-firebase-auth";
 import DashboardLayout from "@/components/DashboardLayout";
 import DashboardSkeleton from "@/components/skeletons/DashboardSkeleton";
+import { useUser } from "@/hooks/useUser";
+import { submitUser } from "src/addUpdateUser";
 
 const useStyles = makeStyles((theme) => ({}));
 
-const ProfilePage = ({ email }) => {
+const ProfilePage = ({ token, email }) => {
   const classes = useStyles();
+  const { user, isLoading, isError } = useUser(token);
 
+  const handleSubmit = (data) => {
+    submitUser(data, isError, token);
+  };
   return (
     <>
       <DashboardLayout title="My Dashboard | SoPlugged" position={2}>
-        <Profile email={email} />
+        {isLoading ? (
+          <DashboardSkeleton page="profile" />
+        ) : (
+          <Profile
+            user={isError ? null : user}
+            email={email}
+            submitHandler={handleSubmit}
+          />
+        )}
       </DashboardLayout>
-      {/* <DashboardLayout title="My Profile | SoPlugged" position={2}>
-        <DashboardSkeleton page="profile" />
-      </DashboardLayout> */}
     </>
   );
 };

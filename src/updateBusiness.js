@@ -23,7 +23,7 @@ const updateBusiness = async (
     if (!res.ok) {
       throw new Error("HTTP status " + res.status);
     }
-    return res;
+    return businessObject.slug;
   } catch (error) {
     console.log("error: ", error);
   }
@@ -50,11 +50,9 @@ export const submitBusinessObject = async (
   if (!logoUrl) logoUrl = business?.logo_url;
 
   const businessObject = {
-    owner_name: data.ownerName.trim(),
-    email,
     phone_number: data.ownerPhone,
     business_name: data.businessName.trim(),
-    // slug: slugify(data.businessName.trim(), { lower: true }) ,
+    slug: slugify(data.businessName.trim(), { lower: true }),
     business_url: data.businessUrl.trim(),
     business_location: data.businessLocation,
     logo_url: logoUrl || "",
@@ -66,7 +64,7 @@ export const submitBusinessObject = async (
     business_description: data.businessDescription.trim(),
     ig_handle: data.igHandle,
   };
-  // console.log(businessObject);
+
   const fetchUrl = business
     ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`
     : `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`;
