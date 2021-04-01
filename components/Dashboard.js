@@ -23,10 +23,10 @@ import {
   MailOutlineIcon,
 } from "./mui-icons";
 import Link from "next/link";
-
 import Image from "next/image";
 import { greetFunction } from "src/greeting";
 import BusinessCard from "./BusinessCard";
+import BusinessStrength from "./BusinessStrength";
 
 const useStyles = makeStyles((theme) => ({
   activity: {
@@ -74,25 +74,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = ({ data }) => {
+const Dashboard = ({ business }) => {
   const classes = useStyles();
-  const hasLogo = data?.logo_url !== "";
-  const hasGoodDescription = data?.business_description.length > 150;
-  const hasThreeImages = data?.sample_images.split(",").length === 3;
-  const hasIG = data?.ig_handle !== "";
+  const hasLogo = business?.logo_url !== "";
+  const hasGoodDescription = business?.business_description.length > 150;
+  const hasThreeImages = business?.sample_images.split(",").length === 3;
+  const hasIG = business?.ig_handle !== "";
   let suggestionsCount = [
     hasLogo,
     hasGoodDescription,
     hasThreeImages,
     hasIG,
   ].filter(Boolean).length;
-
   return (
     <>
       <Typography variant="h1" gutterBottom={true} align="center">
         Home
       </Typography>
-      {data ? (
+      {business ? (
         <>
           <Typography variant="h5" gutterBottom={true} align="center">
             {greetFunction()}
@@ -107,7 +106,7 @@ const Dashboard = ({ data }) => {
                   YOUR BUSINESS:
                 </Typography>
                 <div className={classes.businessDiv}>
-                  <BusinessCard dbObject={data} mini={true} />
+                  <BusinessCard dbObject={business} mini={true} />
                 </div>
                 <Link href="/my-business" className={classes.buttonLink}>
                   <a>
@@ -130,7 +129,7 @@ const Dashboard = ({ data }) => {
                     <Paper className={classes.activity}>
                       <Typography>Favorites</Typography>
                       <Typography variant="h1" component="span">
-                        {data.number_of_likes}
+                        {business.number_of_likes}
                       </Typography>
                       <FavoriteBorderIcon />
                     </Paper>
@@ -146,11 +145,13 @@ const Dashboard = ({ data }) => {
                   </Grid>
                 </Grid>
               </Grid>
-              {!(hasLogo && hasGoodDescription && hasThreeImages && hasIG) && (
+              {/* {!(hasLogo && hasGoodDescription && hasThreeImages && hasIG) && (
                 <Grid item xs={12} sm={6} id="suggestions">
                   <Typography variant="body2" gutterBottom={true}>
                     SUGGESTIONS FOR YOUR PAGE ({4 - suggestionsCount}):
                   </Typography>
+
+                  <BusinessStrength value={(6 + suggestionsCount) * 10} />
                   <Paper elevation={2}>
                     <Accordion className={classes.accordion}>
                       <AccordionSummary
@@ -208,7 +209,7 @@ const Dashboard = ({ data }) => {
                     </Accordion>
                   </Paper>
                 </Grid>
-              )}
+              )} */}
               <Grid item xs={12} sm={6}>
                 <Paper elevation={2} className={classes.activity}>
                   <Typography variant="h6" gutterBottom={true}>
@@ -231,13 +232,18 @@ const Dashboard = ({ data }) => {
       ) : (
         <div className={classes.noBusiness}>
           <Image
-            src="/images/undraw_no_data.png"
+            src="/images/Cocktail_Monochromatic.svg"
             alt="empty clipboard"
-            width={200}
-            height={200}
+            width={300}
+            height={300}
           />
-          <Typography variant="body1">No business found</Typography>
-          <Typography variant="body1">Want to create a business?</Typography>
+          <Typography variant="h6">No business found</Typography>
+          <Typography variant="body1">Are you an entrepreneur?</Typography>
+          <Link href="/my-business">
+            <a>
+              <Button variant="outlined">Add your business</Button>
+            </a>
+          </Link>
         </div>
       )}
     </>

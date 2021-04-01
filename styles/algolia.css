@@ -5,6 +5,7 @@
 .ais-Hits-item {
   width: calc(100% - 1rem);
   word-break: break-word;
+  padding: "8px";
 }
 [class^="ais-"] {
   font-size: inherit;

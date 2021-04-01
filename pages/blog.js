@@ -66,7 +66,7 @@ export async function getServerSideProps(context) {
     const res = data.items;
     posts = res.filter((item) => item.categories.length > 0);
   } catch (error) {
-    console.log({ error });
+    posts = [];
   }
   return {
     props: { posts }, // will be passed to the page component as props

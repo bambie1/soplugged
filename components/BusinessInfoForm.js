@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessInfoForm = ({ submitHandler, currentBusiness, email }) => {
+const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
   const classes = useStyles();
   const samples = currentBusiness?.sample_images || "";
   const fbUrls = !samples ? [] : samples.split(",");

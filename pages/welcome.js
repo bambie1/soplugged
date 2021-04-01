@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessPreview = ({ token }) => {
+const BusinessPreview = ({ token, refPage }) => {
   const classes = useStyles();
   const { business, isLoading, isError } = useBusiness(token);
 
@@ -51,6 +51,7 @@ const BusinessPreview = ({ token }) => {
       </Container>
     );
   }
+  if (refPage === "my-business") alert("New user");
   return (
     <>
       <Head>
@@ -58,7 +59,7 @@ const BusinessPreview = ({ token }) => {
           name="description"
           content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
         />
-        <title>Preview Business | SoPlugged</title>
+        <title>Thanks for registering your business | SoPlugged</title>
       </Head>
       <Container className={classes.page} maxWidth="md">
         {business ? (
@@ -83,7 +84,7 @@ const BusinessPreview = ({ token }) => {
               View your business page here
             </Typography>
             <br></br>
-            <Link href="/">
+            <Link href={`/business/${business[0]?.slug}`}>
               <a>
                 <Button
                   variant="contained"
@@ -152,9 +153,13 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser, req }) => {
   const token = await AuthUser.getIdToken();
+  const refUrl = req.headers.referer;
+  const refPage = refUrl ? refUrl.substr(refUrl.lastIndexOf("/") + 1) : "";
+
   return {
     props: {
       token,
+      refPage,
     },
   };
 });

@@ -15,9 +15,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = ({ user, email, submitHandler }) => {
   const classes = useStyles();
-  const { register, handleSubmit, watch, errors } = useForm();
-
-  const onSubmit = (data) => submitHandler({ fullName: data.fullName, email });
+  const [infoChanged, setInfoChanged] = React.useState(false);
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => {
+    setInfoChanged(false);
+    submitHandler(data);
+  };
 
   return (
     <>
@@ -28,11 +31,20 @@ const Profile = ({ user, email, submitHandler }) => {
         <Grid container spacing={2}>
           <Grid item xs={12} className={classes.grid}>
             <TextField
-              name="fullName"
+              name="full_name"
               label="Full Name"
               variant="outlined"
               defaultValue={user?.full_name || ""}
-              inputRef={register}
+              onChange={() => setInfoChanged(true)}
+              inputRef={register({
+                required: "Please enter your first name",
+                minLength: {
+                  value: 3,
+                  message: "Full name must be at least 3 characters",
+                },
+              })}
+              error={!!errors.full_name}
+              helperText={!!errors.full_name && errors.full_name.message}
             />
           </Grid>
           <Grid item xs={12} className={classes.grid}>
@@ -46,7 +58,12 @@ const Profile = ({ user, email, submitHandler }) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="secondary">
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              disabled={!infoChanged}
+            >
               Update Profile
             </Button>
           </Grid>

@@ -1,3 +1,5 @@
+import { addUser, getUser } from "./handleDBUser";
+
 const updateFavorite = async (fetchUrl, fetchMethod, business_id, token) => {
   try {
     const res = await fetch(fetchUrl, {
@@ -17,15 +19,36 @@ const updateFavorite = async (fetchUrl, fetchMethod, business_id, token) => {
     }
     return res;
   } catch (error) {
-    console.log("error: ", error);
+    return { error };
   }
 };
 
-export const sendFavorite = async (business_id, token, add) => {
-  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/${
-    add ? "favorites" : "favorite"
-  }`;
-  const fetchMethod = add ? "POST" : "DELETE";
+export const addFavorite = async (business_id, user) => {
+  try {
+    let token = await user.getIdToken();
+    let dbUser = await getUser(token);
+    if (dbUser === null)
+      dbUser = await addUser({ email: user.email, full_name: "" }, token);
 
-  return updateFavorite(fetchUrl, fetchMethod, business_id, token); //create or update
+    if (dbUser) {
+      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
+      return updateFavorite(fetchUrl, "POST", business_id, token);
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+export const removeFavorite = async (business_id, user) => {
+  try {
+    let token = await user.getIdToken();
+    const dbUser = await getUser(token);
+
+    if (dbUser !== null) {
+      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorite`;
+      return updateFavorite(fetchUrl, "DELETE", business_id, token); //create or update
+    }
+    return { error: "no user" };
+  } catch (error) {
+    return { error };
+  }
 };

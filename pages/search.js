@@ -48,9 +48,7 @@ const Search = () => {
           >
             directory
           </Typography>
-          {/* <ErrorBoundary> */}
           <AlgoliaSearch />
-          {/* </ErrorBoundary> */}
           <Typography style={{ marginTop: "100px" }}>
             Know of a business that should be on this list?{" "}
             <a href="mailto:hello@soplugged.com" className={classes.link}>

@@ -44,11 +44,17 @@ const filteredList = categories.filter((item) =>
 );
 const BusinessCarousel = ({ businesses }) => {
   return (
-    <Carousel partialVisible itemClass="carousel-item" responsive={responsive}>
-      {businesses.map((business, index) => (
-        <BusinessCard dbObject={business} key={index} mini={true} />
-      ))}
-    </Carousel>
+    <div style={{ marginTop: "8px", marginBottom: "8px" }}>
+      <Carousel
+        partialVisible
+        itemClass="carousel-item"
+        responsive={responsive}
+      >
+        {businesses.map((business, index) => (
+          <BusinessCard dbObject={business} key={index} mini={true} />
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

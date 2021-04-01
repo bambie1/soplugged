@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "40px 8px",
     background: "#fffaf2",
   },
-  input: {
-    background: "white",
-  },
   container: {
     padding: "0px",
     "& > *": {

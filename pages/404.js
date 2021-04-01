@@ -35,9 +35,9 @@ const NotFound = () => {
         <Typography variant="h6" component="h2">
           The url you've reached doesn't exist.
         </Typography>
-        <Link href="/">
+        <Link href="/search">
           <a>
-            <Button variant="contained">Return to Home Page</Button>
+            <Button variant="contained">Return to Directory</Button>
           </a>
         </Link>
       </Container>

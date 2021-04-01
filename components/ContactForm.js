@@ -16,13 +16,14 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactForm = ({ user, business_id }) => {
   const classes = useStyles();
+
   return (
     <form className={classes.paper}>
       <TextField
         name="userEmail"
-        label="E-mail"
         variant="outlined"
-        defaultValue={user?.email}
+        value={user?.email || "E-mail"}
+        onChange={() => console.log("user")}
         disabled
       />
       <TextField
@@ -40,7 +41,7 @@ const ContactForm = ({ user, business_id }) => {
         multiline
         disabled={!user?.email}
       />
-      {user.email ? (
+      {user?.email ? (
         <Button variant="contained" color="secondary">
           Send Message
         </Button>

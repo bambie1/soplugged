@@ -11,8 +11,6 @@ import {
   AuthAction,
   useAuthUser,
 } from "next-firebase-auth";
-import BusinessInfoSkeleton from "../components/skeletons/BusinessInfoSkeleton";
-import { useBusiness } from "@/hooks/useBusiness";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -23,36 +21,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditBusiness = ({ email, token }) => {
+const EditBusiness = ({ business, token, email }) => {
   const classes = useStyles();
-  const user = useAuthUser();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
-  const { business, isLoading, isError } = useBusiness(token);
 
   const handleSubmit = async (businessData, files) => {
     setSaving(true);
-    const userToken = await user.getIdToken();
     let slug = await submitBusinessObject(
       businessData,
       files,
-      email,
-      userToken,
-      business
+      token,
+      !!business
     );
     setSaving(false);
-    if (slug) {
+    if (!slug.error) {
       business ? router.push(`/business/${slug}`) : router.push("/welcome");
+    } else {
+      alert("error saving");
     }
   };
-
-  if (isLoading)
-    return (
-      <div className={classes.page}>
-        <BusinessInfoSkeleton />
-      </div>
-    );
-  if (email) {
+  if (business !== undefined) {
     return (
       <>
         <Head>
@@ -66,8 +55,7 @@ const EditBusiness = ({ email, token }) => {
           <Container maxWidth="lg">
             <BusinessInfoForm
               submitHandler={handleSubmit}
-              currentBusiness={isError ? null : business[0]}
-              email={email}
+              currentBusiness={business}
             />
           </Container>
           {saving && <SavingAnimation />}
@@ -75,7 +63,7 @@ const EditBusiness = ({ email, token }) => {
       </>
     );
   } else {
-    return <p>Not signed in</p>;
+    return <p>No business</p>;
   }
 };
 
@@ -83,12 +71,33 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser, req }) => {
   const token = await AuthUser.getIdToken();
-  return {
-    props: {
-      email: AuthUser.email,
-      token,
-    },
-  };
+  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+  try {
+    const res = await fetch(fetchUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Firebase-Token": token,
+      },
+    });
+    if (!res.ok) throw new Error("HTTP status " + res.status);
+
+    const business = await res.json();
+    return {
+      props: {
+        business: business[0] || null,
+        token,
+        email: AuthUser.email,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        business: null,
+      },
+    };
+  }
 });
 
 export default withAuthUser({

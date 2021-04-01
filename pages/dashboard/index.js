@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@/components/mui-components";
 import Dashboard from "@/components/Dashboard";
 import {
   withAuthUser,
@@ -7,24 +6,12 @@ import {
   AuthAction,
 } from "next-firebase-auth";
 import DashboardLayout from "@/components/DashboardLayout";
-import { useBusiness } from "@/hooks/useBusiness";
-import DashboardSkeleton from "@/components/skeletons/DashboardSkeleton";
 
-const useStyles = makeStyles((theme) => ({}));
-
-const DashboardPage = ({ email, token }) => {
-  const { business, isLoading, isError } = useBusiness(token);
-  const classes = useStyles();
-  if (isLoading)
-    return (
-      <DashboardLayout title="My Dashboard | SoPlugged" position={0}>
-        <DashboardSkeleton page="home" />
-      </DashboardLayout>
-    );
+const DashboardPage = ({ business }) => {
   return (
     <>
       <DashboardLayout title="My Dashboard | SoPlugged" position={0}>
-        {business && <Dashboard data={business[0]} email={email} />}
+        <Dashboard business={business} />
       </DashboardLayout>
     </>
   );
@@ -34,12 +21,31 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser, req }) => {
   const token = await AuthUser.getIdToken();
-  return {
-    props: {
-      email: AuthUser.email,
-      token,
-    },
-  };
+  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+  try {
+    const res = await fetch(fetchUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Firebase-Token": token,
+      },
+    });
+    if (!res.ok) throw new Error("HTTP status " + res.status);
+    const business = await res.json();
+
+    return {
+      props: {
+        business: business[0] || null,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        business: null,
+      },
+    };
+  }
 });
 
 export default withAuthUser({

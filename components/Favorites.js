@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Typography,
-  Button,
-  makeStyles,
-  useMediaQuery,
-} from "./mui-components";
+import { Grid, Typography, makeStyles, useMediaQuery } from "./mui-components";
 import Image from "next/image";
 import BusinessCard from "./BusinessCard";
 import PaginationBar from "./Pagination";
@@ -39,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Favorites = ({ data }) => {
   const classes = useStyles();
-  const hasFavorites = true;
   const [currentPage, setCurrentPage] = useState(1);
   const matches = useMediaQuery("(min-width:960px)");
   let pageLimit = matches ? 6 : 4;
@@ -53,10 +46,10 @@ const Favorites = ({ data }) => {
         Favorites
       </Typography>
       <br></br>
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         <div className={classes.favorites}>
           <Grid container spacing={2}>
-            {data.map((item, index) => (
+            {currentItems.map((item, index) => (
               <React.Fragment key={index}>
                 <Grid item xs={12} sm={6} md={4}>
                   <BusinessCard dbObject={item.liked_business} mini={true} />
@@ -75,12 +68,12 @@ const Favorites = ({ data }) => {
       ) : (
         <div className={classes.noFavorites}>
           <Image
-            src="/images/undraw_no_data.png"
+            src="/images/Checklist_Monochromatic.svg"
             alt="empty clipboard"
-            width={200}
-            height={200}
+            width={300}
+            height={300}
           />
-          <Typography variant="body1">No favorites found</Typography>
+          <Typography variant="h6">No favorites found</Typography>
           <Typography variant="body1">
             When you 'Like' a business, it will get added here.
           </Typography>

@@ -6,7 +6,7 @@ import {
   SecondaryButton,
   Fab,
 } from "./mui-components";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { CheckIcon, InstagramIcon, LanguageIcon, EditIcon } from "./mui-icons";
 import ImageGallery from "react-image-gallery";
@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 import ContactForm from "./ContactForm";
-import { useFavorites } from "hooks/useFavorites";
+import BusinessHeader from "./BusinessHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   businessName: {
-    textTransform: "uppercase",
     fontWeight: "normal",
   },
   btnGroup: {
@@ -44,16 +43,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "500px",
     fontWeight: "bold",
   },
-  paper: {
-    padding: "8px",
-    maxWidth: "500px",
-    margin: "auto",
-    "& > *": {
-      width: "100%",
-      margin: "5px 0px",
-    },
-  },
-  filler: { background: "#fffaf2", flex: "1 1 auto" },
   categorySpan: {
     cursor: "pointer",
     borderBottom: "1px solid",
@@ -65,21 +54,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   favoriteDiv: {
-    marginTop: "40px",
     padding: "8px 40px 16px",
-    borderRadius: "5px",
     background: "#fffaf2",
     display: "flex",
     flexDirection: "column",
-    "& > *": {
-      display: "flex",
-      alignSelf: "center",
-      marginBottom: "8px",
-    },
+  },
+  remote: {
+    fontWeight: "bold",
+    fontSize: "0.9rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));
 
-const BusinessPage = ({ dbObject, user }) => {
+const BusinessPage = ({ business, user }) => {
   const classes = useStyles();
   const { setContextCategory } = useSearch();
   const router = useRouter();
@@ -98,36 +87,21 @@ const BusinessPage = ({ dbObject, user }) => {
     street_address,
     ig_handle,
     number_of_likes,
-  } = dbObject;
+  } = business;
 
   let images = sample_images.split(",");
   images = images.map((item) => ({ original: item, thumbnail: item }));
   let hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const [myUser, setMyUser] = useState(null);
-  const pageOwner = myUser?.email === creator.email;
-
-  useEffect(() => {
-    if (user.email) {
-      setMyUser(user);
-    }
-  }, [user]);
+  const pageOwner = user?.email === creator.email;
 
   const handleCategoryClick = () => {
     setContextCategory(category);
     router.push("/search");
   };
+
   return (
     <div className={classes.root}>
-      <div
-        className="business-header"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "16px",
-          flexWrap: "wrap",
-        }}
-      >
+      <BusinessHeader wrap={true}>
         <Avatar
           alt="Business Logo"
           src={logo_url}
@@ -136,10 +110,11 @@ const BusinessPage = ({ dbObject, user }) => {
           {business_name.toUpperCase().charAt(0)}
         </Avatar>
         <Typography variant="h1" className={classes.businessName}>
-          {business_name}
+          {business_name.toUpperCase()}
         </Typography>
-      </div>
-      <Typography variant="h6" style={{ fontWeight: "bold" }}>
+      </BusinessHeader>
+
+      <Typography variant="h6">
         CATEGORY:{" "}
         <span className={classes.categorySpan} onClick={handleCategoryClick}>
           {category}
@@ -153,15 +128,7 @@ const BusinessPage = ({ dbObject, user }) => {
         {business_location}
         <br></br>
         {!fixed_to_one_location && (
-          <span
-            style={{
-              fontWeight: "bold",
-              fontSize: "0.9rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <span className={classes.remote}>
             <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
             CANADA-WIDE
           </span>
@@ -249,7 +216,12 @@ const BusinessPage = ({ dbObject, user }) => {
           <Typography>
             Would you recommend this business? Give it a like!
           </Typography>
-          <FavoriteButton business_id={id} user={user} disabled={pageOwner} />
+          <FavoriteButton
+            business_id={id}
+            user={user}
+            numberOfLikes={number_of_likes}
+            disabled={pageOwner}
+          />
         </div>
       )}
       {pageOwner && (

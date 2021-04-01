@@ -1,5 +1,6 @@
 import { getImageUrl } from "./uploadImage";
 import slugify from "slugify";
+import { addUser, getUser } from "./handleDBUser";
 
 const updateBusiness = async (
   fetchUrl,
@@ -25,18 +26,19 @@ const updateBusiness = async (
     }
     return businessObject.slug;
   } catch (error) {
-    console.log("error: ", error);
+    return { error };
   }
 };
 
 export const submitBusinessObject = async (
   data,
   files,
-  email,
   userToken,
   business
 ) => {
-  const { logo, ...dbData } = data;
+  const { logo } = data;
+  const creator = await getUser(userToken);
+  if (!creator) await addUser();
   let logoUrl = "";
   let images = [];
   if (logo[0]) logoUrl = await getImageUrl(logo[0]);
@@ -50,6 +52,7 @@ export const submitBusinessObject = async (
   if (!logoUrl) logoUrl = business?.logo_url;
 
   const businessObject = {
+    creator,
     phone_number: data.ownerPhone,
     business_name: data.businessName.trim(),
     slug: slugify(data.businessName.trim(), { lower: true }),

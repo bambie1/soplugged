@@ -5,12 +5,10 @@ import {
   Container,
   Grid,
   makeStyles,
-  SecondaryButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
   Paper,
 } from "@/components/mui-components";
 import { PowerIcon, SettingsInputSvideoIcon } from "@/components/mui-icons";
@@ -47,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginTop: "16px",
+    marginBottom: "16px",
     "& > *": {
       marginTop: "4px",
       marginBottom: "4px",
@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "auto",
       color: "white",
       "& > div": {
-        // background: "url('/images/blob_11-4-63.svg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       },
@@ -81,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
   shortPaperDiv: {
     display: "flex",
     flexDirection: "column",
-    // background: "url('/images/blob_14-4-40.svg')",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     "& > .MuiTypography-root": { lineHeight: "2rem" },
@@ -136,17 +134,13 @@ export default function Home() {
       <main style={{ zIndex: "1", background: "white" }}>
         <HeroBanner />
         <div className="body-content">
-          {/* <Container maxWidth="lg"> */}
           {filteredData.length > 0 && (
-            <>
-              <section>
-                <Typography variant="h5">Featured Businesses:</Typography>
-                <br></br>
-                <BusinessCarousel businesses={data} />
-              </section>
-              <br></br>
-              <br></br>
-            </>
+            <section>
+              <Typography variant="h5" gutterBottom={true} align="center">
+                Featured Businesses:
+              </Typography>
+              <BusinessCarousel businesses={data} />
+            </section>
           )}
           <section className={classes.section}>
             <Typography variant="h5">Why SoPlugged?</Typography>

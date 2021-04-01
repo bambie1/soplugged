@@ -1,21 +1,16 @@
 import React from "react";
 import { makeStyles, Typography, Avatar, IconButton } from "../mui-components";
-import {
-  CheckIcon,
-  InstagramIcon,
-  MailOutlineIcon,
-  LanguageIcon,
-} from "../mui-icons";
+import { CheckIcon } from "../mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
-import BusinessCardModal from "../BusinessCardModal";
 import Link from "next/link";
+import { useAuthUser, withAuthUser } from "next-firebase-auth";
+import FavoriteButton from "../FavoriteButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    cursor: "pointer",
   },
   businessName: {
     textTransform: "uppercase",
@@ -32,12 +27,20 @@ const useStyles = makeStyles((theme) => ({
 
 const AlgoliaHit = ({ hit }) => {
   const classes = useStyles();
+  const user = useAuthUser();
+  const [likes, setLikes] = React.useState(0);
   let slug = hit.slug || "biz-slug";
+  let res = fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${hit.slug}`
+  )
+    .then((r) => r.json())
+    .then((business) => setLikes(business.number_of_likes));
+  const businessOwner = user?.email === hit.creator.email;
   return (
     <>
-      <Link href={`/business/${slug}`}>
-        <a>
-          <div className={classes.root}>
+      <div className={classes.root}>
+        <Link href={`/business/${slug}`}>
+          <a>
             <div
               className="business-header"
               style={{
@@ -59,34 +62,41 @@ const AlgoliaHit = ({ hit }) => {
             <Typography variant="body2">
               <Snippet attribute="business_description" hit={hit} />
             </Typography>
-            <br></br>
-            <Typography style={{ marginTop: "auto" }}>
-              {hit.street_address &&
-                hit.fixed_to_one_location &&
-                `LOCATION: ${hit.street_address}`}
-              {hit.street_address && hit.fixed_to_one_location && <br></br>}
-              {hit.business_location}
-              <br></br>
-              {!hit.fixed_to_one_location && (
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-                  CANADA-WIDE
-                </span>
-              )}
-            </Typography>
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+        <br></br>
+        <Typography style={{ marginTop: "auto" }}>
+          {hit.street_address &&
+            hit.fixed_to_one_location &&
+            `LOCATION: ${hit.street_address}`}
+          {hit.street_address && hit.fixed_to_one_location && <br></br>}
+          {hit.business_location}
+          <br></br>
+          {!hit.fixed_to_one_location && (
+            <span
+              style={{
+                fontWeight: "bold",
+                fontSize: "0.9rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
+              CANADA-WIDE
+            </span>
+          )}
+        </Typography>
+        <FavoriteButton
+          business_id={hit.id}
+          user={user}
+          numberOfLikes={likes}
+          disabled={businessOwner}
+          mini={true}
+        />
+      </div>
     </>
   );
 };
 
-export default AlgoliaHit;
+export default withAuthUser()(AlgoliaHit);

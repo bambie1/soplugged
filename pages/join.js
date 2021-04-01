@@ -9,17 +9,6 @@ import {
   makeStyles,
 } from "../components/mui-components";
 import Link from "next/link";
-import slugify from "slugify";
-
-const styles = {
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-};
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,27 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getBiz = async () => {
-  let res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
-    {
-      method: "GET",
-    }
-  );
-  let businesses = await res.json();
-  let slugArray = [];
-  businesses.map((item) => {
-    let slug = slugify(item.business_name, { lower: true });
-    let obj = { name: item.business_name, slug };
-    slugArray.push(obj);
-  });
-  console.log({ slugArray });
-  return businesses;
-};
-
 const Auth = () => {
   const classes = useStyles();
-  // getBiz();
 
   return (
     <>
@@ -68,7 +38,6 @@ const Auth = () => {
         />
         <title>Join SoPlugged</title>
       </Head>
-      {/* <Header /> */}
       <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">Join SoPlugged</Typography>

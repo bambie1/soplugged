@@ -1,27 +1,64 @@
-import { Typography, Button, Snackbar, IconButton } from "./mui-components";
+import {
+  Typography,
+  Button,
+  Snackbar,
+  IconButton,
+  makeStyles,
+} from "./mui-components";
 import React, { useState } from "react";
 import { FavoriteBorderIcon, FavoriteIcon, CloseIcon } from "./mui-icons";
 import Link from "next/link";
-import { sendFavorite } from "src/addRemoveFavorite";
-import { useFavorites } from "@/hooks/useFavorites";
+import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
 
-const FavoriteButton = ({ business_id, user, disabled, numberOfLikes }) => {
+const useStyles = makeStyles((theme) => ({
+  button: {
+    alignSelf: "center",
+    marginTop: "8px",
+  },
+}));
+
+const FavoriteButton = ({
+  business_id,
+  user,
+  disabled,
+  numberOfLikes,
+  mini,
+}) => {
   const [snackPack, setSnackPack] = React.useState([]);
   const [open, setOpen] = React.useState(false);
+  const [likes, setLikes] = React.useState(numberOfLikes);
+  const classes = useStyles();
   const [messageInfo, setMessageInfo] = React.useState(undefined);
+  const [favorites, setFavorites] = React.useState([]);
+
   let userLikedBusiness = false;
   let token = user.firebaseUser?.za || null;
-  const { favorites, isLoading, isError } = useFavorites(token);
-  if (favorites) {
-    favorites.map((item) => {
-      if (item.liked_business.id === business_id) userLikedBusiness = true;
-    });
+  if (token) {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`, {
+      method: "GET",
+      headers: {
+        "Firebase-Token": token,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => setFavorites(data))
+      .catch((err) => ({ err }));
   }
 
+  favorites.map((item) => {
+    if (item.liked_business.id === business_id) userLikedBusiness = true;
+  });
+
   const [liked, setLiked] = useState(userLikedBusiness);
+
   React.useEffect(() => {
     setLiked(userLikedBusiness);
   }, [userLikedBusiness]);
+
+  React.useEffect(() => {
+    console.log({ numberOfLikes });
+    setLikes(numberOfLikes);
+  }, [numberOfLikes]);
 
   React.useEffect(() => {
     if (snackPack.length && !messageInfo) {
@@ -29,7 +66,7 @@ const FavoriteButton = ({ business_id, user, disabled, numberOfLikes }) => {
       setSnackPack((prev) => prev.slice(1));
       setOpen(true);
     } else if (snackPack.length && messageInfo && open) {
-      setOpen(false);
+      // setOpen(false);
     }
   }, [snackPack, messageInfo, open]);
 
@@ -43,15 +80,21 @@ const FavoriteButton = ({ business_id, user, disabled, numberOfLikes }) => {
     setMessageInfo(undefined);
   };
   const handleClick = async () => {
-    let token = await user.getIdToken();
     if (liked) {
-      let res = await sendFavorite(business_id, token, false);
-      if (res) handleFavorite("Removed from favorites");
+      let res = await removeFavorite(business_id, user);
+      if (!res.error) {
+        handleFavorite("Removed from favorites");
+        setLikes(likes - 1);
+        setLiked(!liked);
+      }
     } else {
-      let res = await sendFavorite(business_id, token, true);
-      if (res) handleFavorite("Added to Favorites");
+      let res = await addFavorite(business_id, user);
+      if (!res.error) {
+        handleFavorite("Added to Favorites");
+        setLikes(likes + 1);
+        setLiked(!liked);
+      }
     }
-    setLiked(!liked);
   };
   const handleFavorite = (message) => {
     setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
@@ -59,15 +102,16 @@ const FavoriteButton = ({ business_id, user, disabled, numberOfLikes }) => {
   return (
     <>
       <Button
-        variant="contained"
-        color="primary"
+        variant={mini ? "text" : "contained"}
+        color={mini ? "secondary" : "primary"}
         startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         onClick={handleClick}
         disabled={!user?.email || disabled}
+        className={classes.button}
       >
-        {liked ? "Liked" : "Like"} - {numberOfLikes}
+        {mini ? likes : `Likes - ${likes} `}
       </Button>
-      {!user?.email && (
+      {!user?.email && !mini && (
         <a
           target="_blank"
           href="/join"
