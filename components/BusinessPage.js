@@ -3,6 +3,7 @@ import {
   Typography,
   Avatar,
   makeStyles,
+  Box,
   SecondaryButton,
   Fab,
 } from "./mui-components";
@@ -28,13 +29,8 @@ const useStyles = makeStyles((theme) => ({
   businessName: {
     fontWeight: "normal",
   },
-  btnGroup: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: "8px 16px",
-    },
+  button: {
+    margin: "8px 16px",
   },
   sectionTitle: {
     width: "100%",
@@ -156,15 +152,16 @@ const BusinessPage = ({ business, user }) => {
             </Typography>
             <Typography variant="body1">{business_description}</Typography>
             <br></br>
-            <div className={classes.btnGroup}>
+            <Box display="flex" justifyContent="center" flexWrap="wrap">
               {business_url && (
                 <a
                   href={`http://${business_url}`}
                   target="_blank"
                   rel="noopener"
+                  className={classes.button}
                 >
                   <SecondaryButton startIcon={<LanguageIcon />}>
-                    Visit website
+                    Visit Website
                   </SecondaryButton>
                 </a>
               )}
@@ -173,13 +170,14 @@ const BusinessPage = ({ business, user }) => {
                   href={`https://www.instagram.com/${ig_handle}`}
                   target="_blank"
                   rel="noopener"
+                  className={classes.button}
                 >
                   <SecondaryButton startIcon={<InstagramIcon />}>
                     Visit Instagram
                   </SecondaryButton>
                 </a>
               )}
-            </div>
+            </Box>
             {!hasPreview && (
               <div
                 style={{

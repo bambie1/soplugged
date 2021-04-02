@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, makeStyles } from "@/components/mui-components";
 import Link from "next/link";
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import BusinessPage from "@/components/BusinessPage";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
 
@@ -31,15 +31,12 @@ const BusinessSlug = ({ business }) => {
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content={`${
-            business?.business_description || "SoPlugged business page"
-          }`}
-        />
-        <title>{`${business?.business_name || ""} | SoPlugged`}</title>
-      </Head>
+      <SEO
+        description={`SoPlugged page for ${
+          business?.business_name || "a business"
+        }`}
+        title={`${business?.business_name || ""} | SoPlugged`}
+      />
       <Container className={classes.page} maxWidth="lg">
         <br></br>
         {business && <BusinessPage business={business} user={user} />}

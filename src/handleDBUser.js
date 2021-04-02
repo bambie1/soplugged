@@ -21,14 +21,13 @@ const updateUser = async (fetchUrl, fetchMethod, data, token) => {
 
 export const editUser = async (data, token) => {
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/user`;
-  console.log({ fetchUrl, method: "PUT" });
   return updateUser(fetchUrl, "PUT", data, token);
 };
 
 export const addUser = async (data, token) => {
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/users`;
-  console.log({ fetchUrl, method: "POST" });
-  return updateUser(fetchUrl, "POST", data, token);
+  await updateUser(fetchUrl, "POST", data, token);
+  return getUser(token);
 };
 
 export const getUser = async (token) => {
@@ -44,10 +43,8 @@ export const getUser = async (token) => {
     });
     if (!res.ok) throw new Error("HTTP status " + res.status);
     const user = await res.json();
-    console.log({ user });
     return user;
   } catch (error) {
-    console.log("no user found");
     return null;
   }
 };

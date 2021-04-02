@@ -6,6 +6,7 @@ import {
 } from "../components/mui-components";
 import Link from "next/link";
 import { ErrorIcon } from "../components/mui-icons";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -28,20 +29,23 @@ const useStyles = makeStyles((theme) => ({
 const NotFound = () => {
   const classes = useStyles();
   return (
-    <main className={classes.page}>
-      <Container maxWidth="md" className={classes.container}>
-        <ErrorIcon style={{ fontSize: "5vh", color: "#bb6969" }} />
-        <Typography variant="h1">Oops!</Typography>
-        <Typography variant="h6" component="h2">
-          The url you've reached doesn't exist.
-        </Typography>
-        <Link href="/search">
-          <a>
-            <Button variant="contained">Return to Directory</Button>
-          </a>
-        </Link>
-      </Container>
-    </main>
+    <>
+      <SEO title="404 Page not found" />
+      <main className={classes.page}>
+        <Container maxWidth="md" className={classes.container}>
+          <ErrorIcon style={{ fontSize: "5vh", color: "#bb6969" }} />
+          <Typography variant="h1">Oops!</Typography>
+          <Typography variant="h6" component="h2">
+            The url you've reached doesn't exist.
+          </Typography>
+          <Link href="/search">
+            <a>
+              <Button variant="contained">Return to Directory</Button>
+            </a>
+          </Link>
+        </Container>
+      </main>
+    </>
   );
 };
 

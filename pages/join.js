@@ -1,7 +1,6 @@
 import React from "react";
 import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
-import Head from "next/head";
 import {
   Button,
   Typography,
@@ -9,6 +8,7 @@ import {
   makeStyles,
 } from "../components/mui-components";
 import Link from "next/link";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,18 +26,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Auth = () => {
+const Join = () => {
   const classes = useStyles();
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Quick sign-up process to get started on SoPlugged as a user or business owner"
-        />
-        <title>Join SoPlugged</title>
-      </Head>
+      <SEO
+        description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
+        title="Join SoPlugged"
+      />
       <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">Join SoPlugged</Typography>
@@ -75,4 +72,4 @@ export default withAuthUser({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
   whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
   whenUnauthedAfterInit: AuthAction.RENDER,
-})(Auth);
+})(Join);

@@ -13,9 +13,8 @@ import {
 } from "@/components/mui-components";
 import { ArrowRightIcon, EditIcon } from "@/components/mui-icons";
 import Link from "next/link";
-import Head from "next/head";
-import BusinessCardSkeleton from "@/components/skeletons/BusinessCardSkeleton";
-import { useBusiness } from "@/hooks/useBusiness";
+import SEO from "@/components/SEO";
+import Router from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -40,27 +39,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessPreview = ({ token, refPage }) => {
+const BusinessPreview = ({ business, refPage }) => {
   const classes = useStyles();
-  const { business, isLoading, isError } = useBusiness(token);
 
-  if (isLoading) {
-    return (
-      <Container className={classes.page} maxWidth="md">
-        <BusinessCardSkeleton />
-      </Container>
-    );
-  }
-  if (refPage === "my-business") alert("New user");
+  React.useEffect(() => {
+    if (refPage !== "my-business" && business)
+      Router.push(`/business/${business.slug}`);
+  }, []);
+
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-        <title>Thanks for registering your business | SoPlugged</title>
-      </Head>
+      <SEO
+        title={
+          business
+            ? "Thanks for regsitering your business!"
+            : "No business found"
+        }
+        description="Thanks for registering your business on SoPlugged. You can edit your info anytime, and view your dashboard for updates."
+      />
       <Container className={classes.page} maxWidth="md">
         {business ? (
           <>
@@ -151,17 +147,33 @@ const BusinessPreview = ({ token, refPage }) => {
 
 export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})(async ({ AuthUser, req }) => {
+})(async ({ AuthUser, req, res }) => {
   const token = await AuthUser.getIdToken();
   const refUrl = req.headers.referer;
   const refPage = refUrl ? refUrl.substr(refUrl.lastIndexOf("/") + 1) : "";
+  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+  try {
+    const res = await fetch(fetchUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Firebase-Token": token,
+      },
+    });
+    if (!res.ok) throw new Error("HTTP status " + res.status);
+    const business = await res.json();
+    if (!business[0]) throw new Error("HTTP status " + res.status);
 
-  return {
-    props: {
-      token,
-      refPage,
-    },
-  };
+    return {
+      props: {
+        business: business[0],
+        refPage,
+      },
+    };
+  } catch (error) {
+    return { props: {} };
+  }
 });
 
 export default withAuthUser({

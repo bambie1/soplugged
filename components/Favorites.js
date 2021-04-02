@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    textAlign: "center",
-    "& > *": {
-      margin: "8px 0px",
-    },
   },
   desktop: {
     marginTop: "16px",
@@ -57,13 +53,15 @@ const Favorites = ({ data }) => {
               </React.Fragment>
             ))}
           </Grid>
-          <div className={classes.desktop}>
-            <PaginationBar
-              totalCount={data.length}
-              pageLimit={pageLimit}
-              handleClick={(page) => setCurrentPage(page)}
-            />
-          </div>
+          {pageLimit < data.length && (
+            <div className={classes.desktop}>
+              <PaginationBar
+                totalCount={data.length}
+                pageLimit={pageLimit}
+                handleClick={(page) => setCurrentPage(page)}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className={classes.noFavorites}>
@@ -73,7 +71,9 @@ const Favorites = ({ data }) => {
             width={300}
             height={300}
           />
-          <Typography variant="h6">No favorites found</Typography>
+          <Typography variant="h6" gutterBottom={true}>
+            No favorites found
+          </Typography>
           <Typography variant="body1">
             When you 'Like' a business, it will get added here.
           </Typography>

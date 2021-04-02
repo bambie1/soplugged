@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BusinessInfoForm from "../components/BusinessInfoForm";
 import { Container, makeStyles } from "../components/mui-components";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import SavingAnimation from "../components/SavingAnimation";
 import { submitBusinessObject } from "../src/updateBusiness";
@@ -9,8 +8,8 @@ import {
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
-  useAuthUser,
 } from "next-firebase-auth";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -21,19 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditBusiness = ({ business, token, email }) => {
+const EditBusiness = ({ business, token }) => {
   const classes = useStyles();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
 
-  const handleSubmit = async (businessData, files) => {
+  const handleSubmit = async (newData, files) => {
     setSaving(true);
-    let slug = await submitBusinessObject(
-      businessData,
-      files,
-      token,
-      !!business
-    );
+    let slug = await submitBusinessObject(newData, files, token, business);
     setSaving(false);
     if (!slug.error) {
       business ? router.push(`/business/${slug}`) : router.push("/welcome");
@@ -44,13 +38,10 @@ const EditBusiness = ({ business, token, email }) => {
   if (business !== undefined) {
     return (
       <>
-        <Head>
-          <meta
-            name="description"
-            content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-          />
-          <title>My Business | SoPlugged</title>
-        </Head>
+        <SEO
+          description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
+          title="My Business | SoPlugged"
+        />
         <div className={classes.page}>
           <Container maxWidth="lg">
             <BusinessInfoForm
@@ -88,7 +79,6 @@ export const getServerSideProps = withAuthUserTokenSSR({
       props: {
         business: business[0] || null,
         token,
-        email: AuthUser.email,
       },
     };
   } catch (error) {

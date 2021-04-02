@@ -6,9 +6,8 @@ import {
   Paper,
   makeStyles,
 } from "../components/mui-components";
-import Head from "next/head";
 import Link from "next/link";
-import SubscribeForm from "../components/SubscribeForm";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -75,13 +74,10 @@ const OurStory = () => {
 
   return (
     <>
-      <Head>
-        <title> Become a Sponsor | SoPlugged</title>
-        <meta
-          name="description"
-          content="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
-        />
-      </Head>
+      <SEO
+        title="Become a Sponsor | SoPlugged"
+        description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
+      />
       <main className={classes.page}>
         <Typography variant="h1" className={classes.title}>
           Become a SoPlugged Sponsor

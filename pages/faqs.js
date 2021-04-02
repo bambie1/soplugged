@@ -4,9 +4,9 @@ import {
   Button,
   makeStyles,
 } from "../components/mui-components";
-import Head from "next/head";
 import Link from "next/link";
 import SubscribeForm from "../components/SubscribeForm";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -31,13 +31,10 @@ const FAQs = () => {
 
   return (
     <>
-      <Head>
-        <title> FAQs | SoPlugged</title>
-        <meta
-          name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-      </Head>
+      <SEO
+        title="Frequently Asked Questions | SoPlugged"
+        description="The SoPlugged team has answers ready for questions you might have. If we missed anything, please send us an email"
+      />
       <main className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="lg">
           <Typography variant="h1" className={classes.title}>

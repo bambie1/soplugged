@@ -5,6 +5,7 @@ import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
 import FavoriteButton from "../FavoriteButton";
+import BusinessHeader from "../BusinessHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,21 +42,15 @@ const AlgoliaHit = ({ hit }) => {
       <div className={classes.root}>
         <Link href={`/business/${slug}`}>
           <a>
-            <div
-              className="business-header"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <BusinessHeader>
               <Avatar alt="Business Logo" src={hit.logo_url} variant="square">
                 {hit.business_name.toUpperCase().charAt(0)}
               </Avatar>
               <Typography variant="h6" className={classes.businessName}>
                 <Highlight attribute="business_name" hit={hit} />
               </Typography>
-            </div>
+            </BusinessHeader>
+
             <Typography variant="body1" style={{ fontWeight: "bold" }}>
               CATEGORY: <Highlight attribute="category" hit={hit} />
             </Typography>

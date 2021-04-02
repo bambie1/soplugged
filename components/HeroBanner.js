@@ -7,23 +7,12 @@ const HeroBanner = () => {
     <header className="hero" style={{ backgroundColor: "#ff914d" }}>
       <div className="hero-side-image">
         <Image
-          src="/images/black_woman_hair.png"
+          src="/images/black_woman_hair_tiny.png"
           alt="Black woman with ponytail"
           width={310}
           height={450}
         />
       </div>
-      {/* <div className="background-div  ">
-        <div className="background">
-          {[1, 2, 3, 4, 5, 6, 7].map(() => (
-            <>
-              <span></span>
-              <span></span>
-              <span></span>
-            </>
-          ))}
-        </div>
-      </div> */}
 
       <section className="hero-text-overlay">
         <Typography variant="h1" style={{ color: "white" }}>

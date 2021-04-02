@@ -34,14 +34,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   heading: { fontWeight: 600, textAlign: "center", textTransform: "uppercase" },
-  list: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
   submit: { width: "auto !important" },
   input: { display: "none" },
-  button: { margin: theme.spacing(1) },
   help: {
     backgroundColor: theme.palette.secondary.light,
     margin: "30px auto 0px",
@@ -398,8 +392,6 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                         : "Upload Logo"}
                     </Button>
                   </label>
-
-                  {/* </div> */}
                 </Grid>
                 <Grid item xs={12}>
                   <InputLabel style={{ marginBottom: "8px" }}>
@@ -421,7 +413,6 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                 variant="outlined"
                 className={classes.submit}
                 onClick={() => {
-                  // setIsNewBusiness(false);
                   router.push(`/business/${currentBusiness.slug}`);
                 }}
               >
@@ -448,24 +439,6 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
             <a href="mailto:hello@soplugged.com">
               <Button variant="outlined">Contact Us</Button>
             </a>
-            {currentBusiness && (
-              <>
-                <hr></hr>
-                <Typography>
-                  Want to make a suggestion on how to improve your SoPlugged
-                  experience?
-                </Typography>
-                <a
-                  href="https://soplugged.kampsite.co/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <Button variant="contained" color="primary">
-                    Let us know
-                  </Button>
-                </a>
-              </>
-            )}
           </Paper>
         </Grid>
       </Form>

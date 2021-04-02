@@ -3,13 +3,14 @@ import {
   Container,
   makeStyles,
   Paper,
+  Box,
   IconButton,
 } from "@/components/mui-components";
-import Head from "next/head";
 import DashboardNav from "@/components/DashboardNav";
 import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "./mui-icons";
 import { Button, Typography } from "@material-ui/core";
 import Link from "next/link";
+import SEO from "./SEO";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     marginBottom: "60px",
     [theme.breakpoints.up("sm")]: {
-      // alignSelf: "center",
       marginBottom: "20px",
       marginTop: "20px",
     },
@@ -35,12 +35,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "flex",
     },
-  },
-  children: {
-    padding: "16px",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
   },
   mobile: {
     display: "block",
@@ -67,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
       background: position === 2 && theme.palette.primary.main,
     },
   }),
+  link: { alignSelf: "flex-end", marginLeft: "8px" },
 }));
 
 const DashboardLayout = ({ title, children, position }) => {
@@ -74,9 +69,10 @@ const DashboardLayout = ({ title, children, position }) => {
 
   return (
     <>
-      <Head>
-        <title> {title}</title>
-      </Head>
+      <SEO
+        title={title}
+        description={`View your dashboard as a user. ${title}`}
+      />
       <main className={classes.root}>
         <Container maxWidth="lg" className={classes.container}>
           <Paper
@@ -110,7 +106,9 @@ const DashboardLayout = ({ title, children, position }) => {
                 </a>
               </Link>
             </div>
-            <div className={classes.children}>{children}</div>
+            <Box width="100%" p={2} display="flex" flexDirection="column">
+              {children}
+            </Box>
           </Paper>
 
           <div className={classes.mobile}>
@@ -126,6 +124,13 @@ const DashboardLayout = ({ title, children, position }) => {
                 </Button>
               </a>
             </Link>
+            <a
+              href="https://soplugged.kampsite.co/"
+              target="_blank"
+              className={classes.link}
+            >
+              <Button color="secondary">Make a suggestion</Button>
+            </a>
           </div>
           <br></br>
         </Container>

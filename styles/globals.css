@@ -18,19 +18,16 @@ a {
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   /* border-radius: 10px; */
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: grey;
   border-radius: 10px;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #6b6a6a;
@@ -211,41 +208,8 @@ img {
 .carousel.carousel-slider .control-arrow {
   background: #cdb693 !important;
 }
-.hr-div {
-  height: 12px;
-  border-bottom: 1px solid var(--dark);
-  text-align: center;
-}
-.hr-text {
-  background-color: white;
-  padding: 0 10px;
-}
-.home-info {
-  display: flex;
-  align-items: center;
-}
-.second-grid {
-  flex-direction: column-reverse;
-}
 .MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
   background: #fffaf2;
-}
-.owner-section {
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-}
-
-.business-section > * {
-  margin: 16px auto;
-}
-.business-section:first {
-  margin-top: 0px;
-}
-.business-section {
-  display: block;
-  -webkit-box-ordinal-group: 11;
-  -ms-flex-order: 10;
 }
 .backdrop {
   position: fixed;
@@ -257,17 +221,6 @@ img {
   z-index: 1000;
   overflow-y: scroll;
   text-align: center;
-}
-.modal-card {
-  background: white;
-  max-width: 444px;
-  margin: 80px auto 10px;
-  border-radius: 5px;
-}
-button.close-btn {
-  padding: 5px 10px;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 .image-gallery-content.bottom
@@ -329,31 +282,6 @@ button.close-btn {
   opacity: 1;
 }
 @media only screen and (min-width: 600px) {
-  .masonry-item {
-    padding: 8px 16px;
-  }
-  .second-grid {
-    flex-direction: row;
-  }
-  .contentGrid {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    min-height: 80vh;
-  }
-  aside.owner-section {
-    position: sticky;
-    align-self: flex-start;
-    top: 86px;
-    width: 33.6%;
-  }
-  .business-section {
-    margin-right: 5.5%;
-    width: 59.08%;
-    display: block;
-    -webkit-box-ordinal-group: 11;
-    -ms-flex-order: 10;
-  }
   .hero-side-image {
     opacity: 0.3;
   }
@@ -380,21 +308,6 @@ button.close-btn {
 .footer-links-div > * {
   display: block;
 }
-#progressbar {
-  display: none;
-}
-.progress-bar {
-  background-color: var(--dark);
-  height: 100%;
-  border-radius: 10px;
-}
-.progress {
-  height: 10px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  width: 80%;
-}
 @media only screen and (min-width: 600px) {
   .sectionMobile {
     display: none;
@@ -404,62 +317,6 @@ button.close-btn {
   }
   .sectionDesktop > * {
     margin: 0 8px;
-  }
-
-  /* mulit step */
-  .mobile-step-display {
-    display: none;
-  }
-  #progressbar {
-    list-style: none;
-    display: flex;
-    padding: 0px;
-    justify-content: space-evenly;
-  }
-  #progressbar li {
-    width: 20%;
-    word-break: break-word;
-    padding: 0px 8px;
-    text-align: center;
-    position: relative;
-  }
-
-  #progressbar li p {
-    font-size: 0.8rem;
-  }
-  #progressbar li .icon-wrapper {
-    display: inline-flex;
-    justify-content: center;
-    border: 1px solid grey;
-    background: white;
-    padding: 8px;
-    border-radius: 50%;
-    transition: 2s;
-  }
-  #progressbar li.filled .icon-wrapper {
-    background: var(--dark);
-    transition: all10s ease;
-  }
-  #progressbar li.filled .icon-wrapper > * {
-    color: white;
-  }
-  #progressbar li::after {
-    content: "";
-    width: 100%;
-    height: 2px;
-    background: lightgray;
-    position: absolute;
-    left: 0;
-    top: 25px;
-    z-index: -1;
-  }
-  #progressbar li.filled::after {
-    background: var(--dark);
-    transition: all10s ease;
-  }
-  #progressbar li.filled p {
-    color: var(--dark);
-    font-weight: bold;
   }
 }
 

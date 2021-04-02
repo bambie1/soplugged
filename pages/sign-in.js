@@ -1,7 +1,6 @@
 import React from "react";
 import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
-import Head from "next/head";
 import {
   Button,
   Typography,
@@ -9,16 +8,7 @@ import {
   makeStyles,
 } from "../components/mui-components";
 import Link from "next/link";
-
-const styles = {
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-};
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,26 +26,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MyLoader = () => (
-  <div style={styles.container}>
-    <h3>Loading...</h3>
-  </div>
-);
-
-const Auth = () => {
+const SignIn = () => {
   const classes = useStyles();
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Quick sign-in process to access SoPlugged account as a business owner"
-        />
-        <title>Sign in to SoPlugged</title>
-      </Head>
+      <SEO
+        title="Sign In to SoPlugged"
+        description="Sign in to to SoPlugged to add your business or save your favorite businesses"
+      />
       <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
-          <Typography variant="h1">SoPlugged Sign-in</Typography>
+          <Typography variant="h1">Sign-in to SoPlugged</Typography>
           <Typography>
             Please sign into your account using the mathod used to register:
           </Typography>
@@ -87,7 +68,6 @@ const Auth = () => {
 
 export default withAuthUser({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
-  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
   whenUnauthedAfterInit: AuthAction.RENDER,
-  LoaderComponent: MyLoader,
-})(Auth);
+})(SignIn);

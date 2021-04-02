@@ -12,13 +12,11 @@ import {
   SwipeableDrawer,
   Divider,
   makeStyles,
-  Container,
 } from "./mui-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import {
-  ListAltIcon,
   MenuIcon,
   ExitToAppIcon,
   BusinessCenterIcon,
@@ -47,6 +45,7 @@ const useStyles = makeStyles({
   mobileLink: {
     display: "flex",
     alignItems: "center",
+    width: "100%",
   },
 });
 
@@ -157,6 +156,36 @@ const Header = (props) => {
             </Link>
           </ListItem>
         )}
+        <div style={{ marginTop: "auto" }}>
+          <ListItem>
+            <Link href="/faqs">
+              <a className={classes.mobileLink}>
+                <Button>FAQs</Button>
+              </a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/blog">
+              <a className={classes.mobileLink}>
+                <Button>Blog</Button>
+              </a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/our-story">
+              <a className={classes.mobileLink}>
+                <Button>About Us</Button>
+              </a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/sponsors">
+              <a className={classes.mobileLink}>
+                <Button>Sponsors</Button>
+              </a>
+            </Link>
+          </ListItem>
+        </div>
       </List>
     </div>
   );

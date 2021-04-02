@@ -5,8 +5,8 @@ import {
   makeStyles,
 } from "../components/mui-components";
 import React from "react";
-import Head from "next/head";
 import BlogPostCard from "../components/BlogPostCard";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,16 +24,13 @@ const Blogs = ({ posts }) => {
 
   return (
     <>
-      <Head>
-        <title>Blog | SoPlugged</title>
-        <meta
-          name="description"
-          content="Hi, I’m Nina - creator, and founder of SoPlugged! On the blog, I
+      <SEO
+        title="Welcome to Our Blog | SoPlugged"
+        description="Hi, I’m Nina - creator, and founder of SoPlugged! On the blog, I
           share my experiences buying black and some tips that might be
           helpful for entrepreneurs or shopaholics like me. Let’s chat in the
           comment section!"
-        />
-      </Head>
+      />
       <main className="page" style={{ zIndex: "1", background: "white" }}>
         <Container className={classes.container}>
           <Typography variant="h1">Welcome to My Blog</Typography>

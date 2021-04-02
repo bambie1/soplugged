@@ -21,9 +21,8 @@ const ProfilePage = ({ user, token, email }) => {
   const handleSubmit = async (data) => {
     let res = null;
     data.email = email;
-    if (user) res = await editUser(data, token);
+    if (user !== null) res = await editUser(data, token);
     else res = await addUser(data, token);
-    console.log({ res });
     if (res && !res.error) setOpen(true);
   };
   return (

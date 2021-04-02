@@ -1,5 +1,3 @@
-import { categories } from "../src/ListOfCategories";
-import CategoryCard from "./CategoryCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import BusinessCard from "./BusinessCard";
@@ -31,17 +29,6 @@ const responsive = {
   },
 };
 
-const popularCategories = [
-  "baking-and-catering",
-  "entertainment",
-  "event-planning",
-  "hair-and-beauty",
-  "handcraft-gifting",
-  "media-services",
-];
-const filteredList = categories.filter((item) =>
-  popularCategories.includes(item.value)
-);
 const BusinessCarousel = ({ businesses }) => {
   return (
     <div style={{ marginTop: "8px", marginBottom: "8px" }}>

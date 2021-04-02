@@ -27,8 +27,9 @@ export const addFavorite = async (business_id, user) => {
   try {
     let token = await user.getIdToken();
     let dbUser = await getUser(token);
-    if (dbUser === null)
+    if (dbUser === null) {
       dbUser = await addUser({ email: user.email, full_name: "" }, token);
+    }
 
     if (dbUser) {
       const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;

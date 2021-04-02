@@ -6,7 +6,7 @@ import {
 } from "../components/mui-components";
 import AlgoliaSearch from "../components/algolia/AlgoliaSearch";
 import Link from "next/link";
-import Head from "next/head";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -24,22 +24,10 @@ const Search = () => {
   const classes = useStyles();
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
-        />
-        <meta
-          property="og:title"
-          content="Find the perfect black-owned business for your needs | SoPlugged"
-        />
-        <meta
-          property="og:description"
-          content="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
-        />
-        <meta property="og:url" content="http://soplugged.com/search" />
-        <title>Business Directory | SoPlugged</title>
-      </Head>
+      <SEO
+        title="Business Directory | SoPlugged"
+        description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
+      />
       <div className={classes.page}>
         <Container maxWidth="lg" style={{ textAlign: "center" }}>
           <Typography

@@ -2,37 +2,33 @@ import React from "react";
 import {
   Grid,
   Paper,
-  List,
-  ListItemIcon,
-  ListItemText,
-  ListItem,
-  AccordionDetails,
-  AccordionSummary,
-  Accordion,
   Typography,
   Button,
   makeStyles,
+  Box,
+  Menu,
+  MenuItem,
 } from "./mui-components";
-import {
-  EditIcon,
-  CameraAltOutlinedIcon,
-  ExpandMoreIcon,
-  TextFormatOutlinedIcon,
-  FavoriteIcon,
-  FavoriteBorderIcon,
-  MailOutlineIcon,
-} from "./mui-icons";
+import { EditIcon, FavoriteIcon, MailIcon } from "./mui-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { greetFunction } from "src/greeting";
 import BusinessCard from "./BusinessCard";
-import BusinessStrength from "./BusinessStrength";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const useStyles = makeStyles((theme) => ({
   activity: {
     textAlign: "center",
-    padding: "16px",
+    padding: "8px",
     cursor: "default",
+    margin: "5px",
+    width: "calc(50% - 10px)",
+    background:
+      "linear-gradient(90deg, hsla(37, 100%, 97%, 1) 32%, hsla(0, 0%, 100%, 0.7) 84%, hsla(0, 0%, 100%, 1) 100%)",
+    [theme.breakpoints.up("md")]: {
+      width: "200px",
+    },
   },
   activityDiv: {
     [theme.breakpoints.up("sm")]: {
@@ -49,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     flexDirection: "column",
     marginBottom: "8px",
-    height: "200px",
+    minHeight: "200px",
   },
   grid: {
     overflowY: "auto",
@@ -61,31 +57,38 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: "wrap",
     },
   },
-  accordion: { padding: "0px" },
   noBusiness: {
     padding: "16px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    textAlign: "center",
-    "& > *": {
-      margin: "8px 0px",
-    },
   },
 }));
 
 const Dashboard = ({ business }) => {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const hasLogo = business?.logo_url !== "";
   const hasGoodDescription = business?.business_description.length > 150;
   const hasThreeImages = business?.sample_images.split(",").length === 3;
   const hasIG = business?.ig_handle !== "";
-  let suggestionsCount = [
+  const suggestionsCount = [
     hasLogo,
     hasGoodDescription,
     hasThreeImages,
     hasIG,
   ].filter(Boolean).length;
+  const percentage = (6 + suggestionsCount) * 10;
+
   return (
     <>
       <Typography variant="h1" gutterBottom={true} align="center">
@@ -102,7 +105,12 @@ const Dashboard = ({ business }) => {
           <div className={classes.grid}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <Typography variant="body2" gutterBottom={true}>
+                <Typography
+                  variant="body1"
+                  gutterBottom={true}
+                  align="center"
+                  style={{ fontWeight: "bold" }}
+                >
                   YOUR BUSINESS:
                 </Typography>
                 <div className={classes.businessDiv}>
@@ -120,111 +128,103 @@ const Dashboard = ({ business }) => {
                   </a>
                 </Link>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="body2" gutterBottom={true}>
+
+              <Grid item xs={12} sm={6} id="suggestions">
+                <Typography
+                  variant="body1"
+                  gutterBottom={true}
+                  align="center"
+                  style={{ fontWeight: "bold" }}
+                >
+                  BUSINESS COMPLETION:
+                </Typography>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  flexWrap="wrap"
+                >
+                  <div
+                    style={{
+                      width: 200,
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    <CircularProgressbar
+                      value={percentage}
+                      text={`${percentage}%`}
+                      styles={buildStyles({
+                        rotation: 0.25,
+                        pathTransitionDuration: 0.5,
+                        pathColor: "rgb(205 182 147)",
+                        textColor: "rgb(205 182 147)",
+                        trailColor: "#d6d6d6",
+                        backgroundColor: "#3e98c7",
+                      })}
+                    />
+                  </div>
+                  <Box margin="8px">
+                    {percentage === 100 ? (
+                      <Typography variant="body1">
+                        You're doing amazing!
+                      </Typography>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        aria-controls="business-suggestions"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                      >
+                        See suggestions ({4 - suggestionsCount})
+                      </Button>
+                    )}
+                  </Box>
+                </Box>
+              </Grid>
+              <Menu
+                id="business-suggestions"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {!hasLogo && <MenuItem>Add a logo</MenuItem>}
+                {!hasThreeImages && (
+                  <MenuItem>
+                    <Typography noWrap>Upload 3 images</Typography>
+                  </MenuItem>
+                )}
+                {!hasGoodDescription && (
+                  <MenuItem>Describe your business more</MenuItem>
+                )}
+                {!hasIG && <MenuItem>Add your IG account</MenuItem>}
+              </Menu>
+
+              <Grid item xs={12}>
+                <Typography
+                  variant="body1"
+                  gutterBottom={true}
+                  align="center"
+                  style={{ fontWeight: "bold" }}
+                >
                   ACTIVITY:
                 </Typography>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
-                    <Paper className={classes.activity}>
-                      <Typography>Favorites</Typography>
-                      <Typography variant="h1" component="span">
-                        {business.number_of_likes}
-                      </Typography>
-                      <FavoriteBorderIcon />
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Paper className={classes.activity}>
-                      <Typography>Total Messages</Typography>
-                      <Typography variant="h1" component="span">
-                        1
-                      </Typography>
-                      <MailOutlineIcon />
-                    </Paper>
-                  </Grid>
-                </Grid>
-              </Grid>
-              {/* {!(hasLogo && hasGoodDescription && hasThreeImages && hasIG) && (
-                <Grid item xs={12} sm={6} id="suggestions">
-                  <Typography variant="body2" gutterBottom={true}>
-                    SUGGESTIONS FOR YOUR PAGE ({4 - suggestionsCount}):
-                  </Typography>
-
-                  <BusinessStrength value={(6 + suggestionsCount) * 10} />
-                  <Paper elevation={2}>
-                    <Accordion className={classes.accordion}>
-                      <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                        <Typography className={classes.heading}>
-                          View Suggestions
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <List aria-label="business page suggestions">
-                          {!hasLogo && (
-                            <ListItem>
-                              <ListItemIcon>
-                                <CameraAltOutlinedIcon />
-                              </ListItemIcon>
-                              <ListItemText
-                                primary="Add a logo"
-                                secondary={
-                                  "Improves the authenticity of your brand"
-                                }
-                              />
-                            </ListItem>
-                          )}
-
-                          {!hasThreeImages && (
-                            <ListItem>
-                              <ListItemIcon>
-                                <CameraAltOutlinedIcon />
-                              </ListItemIcon>
-                              <ListItemText
-                                primary="Add more sample images"
-                                secondary={"You can add up to 3"}
-                              />
-                            </ListItem>
-                          )}
-
-                          {!hasGoodDescription && (
-                            <ListItem>
-                              <ListItemIcon>
-                                <TextFormatOutlinedIcon />
-                              </ListItemIcon>
-                              <ListItemText
-                                primary="Talk more about your business"
-                                secondary={
-                                  "Users tend to connect more when they can learn more from your description"
-                                }
-                              />
-                            </ListItem>
-                          )}
-                        </List>
-                      </AccordionDetails>
-                    </Accordion>
+                <Box display="flex" justifyContent="center" flexWrap="wrap">
+                  <Paper className={classes.activity}>
+                    <Typography variant="body1">Favorites</Typography>
+                    <Typography variant="h1" component="span">
+                      {business.number_of_likes}
+                    </Typography>
+                    <FavoriteIcon />
                   </Paper>
-                </Grid>
-              )} */}
-              <Grid item xs={12} sm={6}>
-                <Paper elevation={2} className={classes.activity}>
-                  <Typography variant="h6" gutterBottom={true}>
-                    Feature Request?
-                  </Typography>
-                  <Typography>
-                    Your wish is our command. Let us know what changes you'd
-                    like to see on this platform
-                  </Typography>
-                  <a href="https://soplugged.kampsite.co/" target="_blank">
-                    <Button variant="outlined" color="secondary">
-                      Make a suggestion
-                    </Button>
-                  </a>
-                </Paper>
+                  <Paper className={classes.activity}>
+                    <Typography variant="body1">Messages</Typography>
+                    <Typography variant="h1" component="span">
+                      0
+                    </Typography>
+                    <MailIcon />
+                  </Paper>
+                </Box>
               </Grid>
             </Grid>
           </div>
@@ -238,7 +238,12 @@ const Dashboard = ({ business }) => {
             height={300}
           />
           <Typography variant="h6">No business found</Typography>
-          <Typography variant="body1">Are you an entrepreneur?</Typography>
+          <Typography variant="caption" gutterBottom={true}>
+            Just a nice beverage
+          </Typography>
+          <Typography variant="body1" gutterBottom={true}>
+            Are you an entrepreneur?
+          </Typography>
           <Link href="/my-business">
             <a>
               <Button variant="outlined">Add your business</Button>

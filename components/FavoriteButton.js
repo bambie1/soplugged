@@ -32,18 +32,20 @@ const FavoriteButton = ({
   const [favorites, setFavorites] = React.useState([]);
 
   let userLikedBusiness = false;
-  let token = user.firebaseUser?.za || null;
-  if (token) {
-    fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`, {
-      method: "GET",
-      headers: {
-        "Firebase-Token": token,
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => setFavorites(data))
-      .catch((err) => ({ err }));
-  }
+  React.useEffect(() => {
+    let token = user.firebaseUser?.za || null;
+    if (token) {
+      fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`, {
+        method: "GET",
+        headers: {
+          "Firebase-Token": token,
+        },
+      })
+        .then((r) => r.json())
+        .then((data) => setFavorites(data))
+        .catch((err) => ({ err }));
+    }
+  }, [user]);
 
   favorites.map((item) => {
     if (item.liked_business.id === business_id) userLikedBusiness = true;
@@ -56,7 +58,6 @@ const FavoriteButton = ({
   }, [userLikedBusiness]);
 
   React.useEffect(() => {
-    console.log({ numberOfLikes });
     setLikes(numberOfLikes);
   }, [numberOfLikes]);
 

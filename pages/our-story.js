@@ -4,9 +4,9 @@ import {
   Button,
   makeStyles,
 } from "../components/mui-components";
-import Head from "next/head";
 import Link from "next/link";
 import SubscribeForm from "../components/SubscribeForm";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -45,13 +45,12 @@ const OurStory = () => {
 
   return (
     <>
-      <Head>
-        <title> Our Story | SoPlugged</title>
-        <meta
-          name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-      </Head>
+      <SEO
+        title="Our Story | SoPlugged"
+        description="SoPlugged is an online platform that makes #buyingblack easy! Our
+              search-friendly platform helps end-users connect to Black-owned
+              businesses across Canada"
+      />
       <main className={classes.page}>
         <Container maxWidth="lg" className={classes.container}>
           <Container className={classes.content} maxWidth="md">

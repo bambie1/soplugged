@@ -1,27 +1,22 @@
 import React from "react";
-import { Avatar, IconButton, Typography, makeStyles } from "./mui-components";
+import { Avatar, Typography, makeStyles } from "./mui-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { textTruncate } from "../src/textTruncate";
-import {
-  CheckIcon,
-  InstagramIcon,
-  MailOutlineIcon,
-  LanguageIcon,
-} from "./mui-icons";
+import { CheckIcon } from "./mui-icons";
 import Link from "next/link";
+import BusinessHeader from "./BusinessHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     border: `1px solid #f9f9f9`,
     boxShadow: "2px 2px 6px #888888",
     borderRadius: "5px",
-    // maxWidth: "444px",
+    flex: "1",
     width: "100%",
+    height: "100%",
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
-    height: "100%",
     background: "#f9f9f9",
     transition: "background 1s",
     "&:hover": {
@@ -31,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     },
     "& > *": {
       margin: theme.spacing(1, 2),
-      // width: `calc(100% - ${theme.spacing(2)}px)`,
     },
   },
   tagsDiv: {
@@ -61,32 +55,22 @@ const BusinessCard = ({ mini, average, ...props }) => {
     sample_images,
     category,
     business_description,
-    business_url,
-    email,
     fixed_to_one_location,
     street_address,
-    ig_handle,
     slug,
   } = props.dbObject;
   const images = sample_images.split(",");
   return (
     <Link href={`/business/${slug}`}>
       <a className={classes.root}>
-        <div
-          className="business-header"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <BusinessHeader>
           <Avatar alt="Business Logo" src={logo_url} variant="square">
             {business_name.toUpperCase().charAt(0)}
           </Avatar>
           <Typography variant="h6" className={classes.businessName}>
             {business_name}
           </Typography>
-        </div>
+        </BusinessHeader>
 
         {/* <br></br> */}
         <Typography variant="body1" style={{ fontWeight: "bold" }}>

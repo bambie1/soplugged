@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {
   Typography,
   Button,
@@ -21,13 +20,11 @@ import useSWR from "swr";
 import { categoryIcons } from "../src/categoryIcons";
 import { useSearch } from "../contexts/searchContext";
 import { useRouter } from "next/router";
+import SEO from "@/components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   media: {
     height: 140,
-  },
-  undraw: {
-    maxWidth: "90%",
   },
   infoText: {
     textAlign: "Center",
@@ -97,6 +94,15 @@ export default function Home() {
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
     fetcher
   );
+  function compare(a, b) {
+    if (a.id < b.id) {
+      return -1;
+    }
+    if (a.id > b.id) {
+      return 1;
+    }
+    return 0;
+  }
   let filteredData =
     data?.filter(
       (business) =>
@@ -104,6 +110,7 @@ export default function Home() {
         business?.sample_images !== "" &&
         business?.business_description?.length > 30
     ) || [];
+  let displayBusinesses = filteredData.sort(compare).slice(0, 7);
   const { setContextCategory } = useSearch();
   const router = useRouter();
   const handleClick = (label) => {
@@ -113,24 +120,10 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-        <meta
-          property="og:title"
-          content="Find the perfect black-owned business for your needs | SoPlugged"
-        />
-        <meta
-          property="og:description"
-          content="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        />
-        <meta property="og:url" content="http://soplugged.com" />
-        <title>
-          Find the perfect black-owned business for your needs | SoPlugged
-        </title>
-      </Head>
+      <SEO
+        description="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
+        title="We have the Black-Owned Businesses for your needs| SoPlugged"
+      />
       <main style={{ zIndex: "1", background: "white" }}>
         <HeroBanner />
         <div className="body-content">
@@ -320,7 +313,7 @@ export default function Home() {
               </Paper>
               <Paper className={classes.shortPaper} elevation={2}>
                 <div className={classes.shortPaperDiv}>
-                  <Typography variant="h6">Where do we come in?</Typography>
+                  <Typography variant="h6">Where we come in</Typography>
                   <Typography>
                     If you're a #BuyBlack enthusiast like we are, you might
                     agree that finding the right business for your needs might

@@ -17,9 +17,9 @@ const Profile = ({ user, email, submitHandler }) => {
   const classes = useStyles();
   const [infoChanged, setInfoChanged] = React.useState(false);
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setInfoChanged(false);
-    submitHandler(data);
+    await submitHandler(data);
   };
 
   return (
