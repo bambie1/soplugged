@@ -10,6 +10,7 @@ import {
   AuthAction,
 } from "next-firebase-auth";
 import SEO from "@/components/SEO";
+import { Alert } from "@/components/mui-lab";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -24,6 +25,7 @@ const EditBusiness = ({ business, token }) => {
   const classes = useStyles();
   const router = useRouter();
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (newData, files) => {
     setSaving(true);
@@ -32,7 +34,7 @@ const EditBusiness = ({ business, token }) => {
     if (!slug.error) {
       business ? router.push(`/business/${slug}`) : router.push("/welcome");
     } else {
-      alert("error saving");
+      setError(true);
     }
   };
   if (business !== undefined) {
@@ -44,6 +46,11 @@ const EditBusiness = ({ business, token }) => {
         />
         <div className={classes.page}>
           <Container maxWidth="lg">
+            {error && (
+              <Alert severity="error">
+                An error occured while saving. Please try again later
+              </Alert>
+            )}
             <BusinessInfoForm
               submitHandler={handleSubmit}
               currentBusiness={business}
@@ -85,6 +92,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     return {
       props: {
         business: null,
+        token,
       },
     };
   }

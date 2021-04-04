@@ -125,7 +125,8 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
         {currentBusiness ? (
           <>
             <Typography variant="h5">
-              Welcome back, {currentBusiness.creator.full_name.split(" ")[0]}!
+              Welcome back,{" "}
+              {currentBusiness.creator.full_name?.split(" ")[0] || "Boss"}!
             </Typography>
             <Typography variant="body1" style={{ marginTop: "5px" }}>
               Edit your business info as you wish

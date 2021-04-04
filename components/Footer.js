@@ -121,6 +121,13 @@ const Footer = () => {
         >
           <Button>Privacy Policy</Button>
         </a>
+        <a
+          href="https://docs.google.com/document/d/1l5OVYw8_WuVmhQDXkXdB7zBRYiLVhJ-lrGERdMQXlcc/edit?usp=sharing"
+          target="_blank"
+          rel="noopener"
+        >
+          <Button>Community Guidelines</Button>
+        </a>
       </Container>
     </footer>
   ) : (
