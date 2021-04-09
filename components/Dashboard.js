@@ -16,6 +16,7 @@ import { greetFunction } from "src/greeting";
 import BusinessCard from "./BusinessCard";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   activity: {
@@ -63,18 +64,24 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+  emptyImage: {
+    opacity: "0.5",
+  },
 }));
 
 const Dashboard = ({ business }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const router = useRouter();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleSuggestions = () => {
+    router.push("/my-business");
   };
 
   const hasLogo = business?.logo_url !== "";
@@ -188,16 +195,24 @@ const Dashboard = ({ business }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {!hasLogo && <MenuItem>Add a logo</MenuItem>}
+                {!hasLogo && (
+                  <MenuItem onClick={handleSuggestions}>Add a logo</MenuItem>
+                )}
                 {!hasThreeImages && (
-                  <MenuItem>
+                  <MenuItem onClick={handleSuggestions}>
                     <Typography noWrap>Upload 3 images</Typography>
                   </MenuItem>
                 )}
                 {!hasGoodDescription && (
-                  <MenuItem>Describe your business more</MenuItem>
+                  <MenuItem onClick={handleSuggestions}>
+                    Describe your business more
+                  </MenuItem>
                 )}
-                {!hasIG && <MenuItem>Add your IG account</MenuItem>}
+                {!hasIG && (
+                  <MenuItem onClick={handleSuggestions}>
+                    Add your IG account
+                  </MenuItem>
+                )}
               </Menu>
 
               <Grid item xs={12}>
@@ -236,6 +251,7 @@ const Dashboard = ({ business }) => {
             alt="empty clipboard"
             width={300}
             height={300}
+            className={classes.emptyImage}
           />
           <Typography variant="h6">No business found</Typography>
           <Typography variant="caption" gutterBottom={true}>

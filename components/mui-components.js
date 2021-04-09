@@ -37,6 +37,7 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Collapse from "@material-ui/core/Collapse";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -63,6 +64,7 @@ export {
   Box,
   Menu,
   MenuItem,
+  Collapse,
   SecondaryButton,
   BottomNavigation,
   BottomNavigationAction,

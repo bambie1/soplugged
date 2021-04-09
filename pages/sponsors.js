@@ -3,7 +3,6 @@ import {
   Typography,
   Button,
   Grid,
-  Paper,
   makeStyles,
 } from "../components/mui-components";
 import Link from "next/link";
@@ -46,31 +45,14 @@ const useStyles = makeStyles((theme) => ({
       display: "inline",
     },
   },
-  list: {
-    display: "flex",
-
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "0",
-  },
-  listItem: {},
   link: {
     color: theme.palette.secondary.main,
     textDecoration: "underline",
   },
-  button: {
-    margin: "16px auto",
-  },
-  comingSoon: {
-    padding: "64px 8px",
-    textAlign: "center",
-    backgroundColor: theme.palette.secondary.light,
-  },
 }));
 
-const OurStory = () => {
+const Sponsors = () => {
   const classes = useStyles();
-  const ready = true;
 
   return (
     <>
@@ -83,87 +65,60 @@ const OurStory = () => {
           Become a SoPlugged Sponsor
         </Typography>
         <Container maxWidth="lg" className={classes.container}>
-          {ready ? (
-            <>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6} className={classes.textContent}>
-                  <Typography className={classes.text}>
-                    SoPlugged is an online platform that makes #buyingblack
-                    easy! Our search-friendly platform helps end-users connect
-                    to Black-owned businesses across Canada.{" "}
-                    <span className={classes.laptopText}>
-                      When you{" "}
-                      <a href="/join" className={classes.link}>
-                        register
-                      </a>{" "}
-                      your business on our platform, you increase your brand
-                      visibility and get access to a thriving community of
-                      people looking to support Black-owned businesses.{" "}
-                      <br></br>At SoPlugged, our biggest inspiration is
-                      supporting one another and growing our community. It’s
-                      always a beautiful thing to see people join the movement
-                      to support Black-owned businesses. That’s our story and we
-                      hope you become a part of it!
-                    </span>
-                    <br></br>
-                    We rely on amazing people like you to keep our platform free
-                    and accessible to Black-owned businesses across Canada
-                  </Typography>
-                  <Link href="/">
-                    <a
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "16px",
-                      }}
-                    >
-                      <Button variant="outlined" color="secondary">
-                        Back to Directory
-                      </Button>
-                    </a>
-                  </Link>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <iframe
-                    src="https://kweeve.page/soplugged/embed"
-                    style={{ border: "none" }}
-                    width="100%"
-                    height="700px"
-                    allow="payment"
-                  ></iframe>
-                </Grid>
+          <>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6} className={classes.textContent}>
+                <Typography className={classes.text}>
+                  SoPlugged is an online platform that makes #buyingblack easy!
+                  Our search-friendly platform helps end-users connect to
+                  Black-owned businesses across Canada.{" "}
+                  <span className={classes.laptopText}>
+                    When you{" "}
+                    <a href="/join" className={classes.link}>
+                      register
+                    </a>{" "}
+                    your business on our platform, you increase your brand
+                    visibility and get access to a thriving community of people
+                    looking to support Black-owned businesses. <br></br>At
+                    SoPlugged, our biggest inspiration is supporting one another
+                    and growing our community. It’s always a beautiful thing to
+                    see people join the movement to support Black-owned
+                    businesses. That’s our story and we hope you become a part
+                    of it!
+                  </span>
+                  <br></br>
+                  We rely on amazing people like you to keep our platform free
+                  and accessible to Black-owned businesses across Canada
+                </Typography>
               </Grid>
-            </>
-          ) : (
-            <>
-              <Paper className={classes.comingSoon}>
-                <Typography variant="h5" component="h2">
-                  COMING SOON ...
-                </Typography>
-                <Typography>
-                  You'll be able to support our journey in providing a free
-                  platform for black businesses to thrive
-                </Typography>
-              </Paper>
-              <Link href="/">
-                <a
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "16px",
-                  }}
-                >
-                  <Button variant="contained" color="primary">
-                    Back Home
-                  </Button>
-                </a>
-              </Link>
-            </>
-          )}
+              <Grid item xs={12} md={6}>
+                <iframe
+                  src="https://kweeve.page/soplugged/embed"
+                  style={{ border: "none" }}
+                  width="100%"
+                  height="700px"
+                  allow="payment"
+                ></iframe>
+              </Grid>
+            </Grid>
+            <Link href="/">
+              <a
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "16px",
+                }}
+              >
+                <Button variant="outlined" color="secondary">
+                  Back to Directory
+                </Button>
+              </a>
+            </Link>
+          </>
         </Container>
       </main>
     </>
   );
 };
 
-export default OurStory;
+export default Sponsors;

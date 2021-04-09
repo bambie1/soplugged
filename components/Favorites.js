@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "auto",
     },
   },
+  emptyImage: {
+    opacity: "0.5",
+  },
 }));
 
 const Favorites = ({ data }) => {
@@ -70,6 +73,7 @@ const Favorites = ({ data }) => {
             alt="empty clipboard"
             width={300}
             height={300}
+            className={classes.emptyImage}
           />
           <Typography variant="h6" gutterBottom={true}>
             No favorites found

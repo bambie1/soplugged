@@ -80,7 +80,7 @@ const BusinessPreview = ({ business, refPage }) => {
               View your business page here
             </Typography>
             <br></br>
-            <Link href={`/business/${business[0]?.slug}`}>
+            <Link href={`/business/${business.slug}`}>
               <a>
                 <Button
                   variant="contained"

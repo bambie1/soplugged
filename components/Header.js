@@ -12,6 +12,9 @@ import {
   SwipeableDrawer,
   Divider,
   makeStyles,
+  Collapse,
+  Menu,
+  MenuItem,
 } from "./mui-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,17 +26,22 @@ import {
   SearchIcon,
   PowerIcon,
   HomeIcon,
+  ExpandMoreIcon,
+  ExpandLessIcon,
+  FavoriteIcon,
+  AccountCircleIcon,
 } from "./mui-icons";
 import SignOutAlert from "./SignOutAlert";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
+import { Typography } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   navDiv: {
     height: "100%",
   },
   list: {
     width: 250,
-    height: "100%",
+    minHeight: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -47,7 +55,19 @@ const useStyles = makeStyles({
     alignItems: "center",
     width: "100%",
   },
-});
+  nested: {
+    paddingLeft: theme.spacing(4),
+    "& .MuiListItemText-primary, .MuiSvgIcon-root": {
+      fontSize: "0.9rem",
+    },
+  },
+  collapse: {
+    position: "absolute",
+    background: theme.palette.primary.main,
+    marginTop: "8px",
+    borderRadius: "5px",
+  },
+}));
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -69,13 +89,25 @@ const Header = (props) => {
   const router = useRouter();
   const classes = useStyles();
   const user = useAuthUser();
-  const anchor = "right";
-  const [state, setState] = useState({
-    right: false,
-  });
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [signOut, setSignOut] = useState(false);
+  const [collapseOpen, setCollapseOpen] = React.useState(false);
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const handleClick = () => {
+    setCollapseOpen(!collapseOpen);
+  };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+  const toggleDrawer = (open) => (event) => {
+    console.log(event.target.toString());
+
     if (
       event &&
       event.type === "keydown" &&
@@ -83,17 +115,12 @@ const Header = (props) => {
     ) {
       return;
     }
-    setState({ ...state, [anchor]: open });
+    setDrawerOpen(open);
   };
-  const list = (anchor) => (
-    <div
-      role="presentation"
-      className={classes.navDiv}
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+  const list = () => (
+    <div role="presentation" className={classes.navDiv}>
       <List className={classes.list}>
-        <ListItem>
+        <ListItem onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <Link href="/">
             <a className={classes.mobileLink}>
               <>
@@ -109,7 +136,7 @@ const Header = (props) => {
           </Link>
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <Link href="/search">
             <a className={classes.mobileLink}>
               <>
@@ -123,18 +150,60 @@ const Header = (props) => {
         </ListItem>
         {user.email ? (
           <>
-            <ListItem>
-              <Link href="/dashboard">
-                <a className={classes.mobileLink}>
-                  <>
-                    <ListItemIcon>
-                      <BusinessCenterIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="My Dashboard" />
-                  </>
-                </a>
-              </Link>
-            </ListItem>
+            <div>
+              <ListItem onClick={handleClick}>
+                <ListItemIcon>
+                  <BusinessCenterIcon />
+                </ListItemIcon>
+                <ListItemText primary="My Dashboard" />
+                {collapseOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              </ListItem>
+              <Collapse in={collapseOpen} timeout="auto">
+                <List
+                  component="div"
+                  disablePadding
+                  onClick={toggleDrawer(false)}
+                >
+                  <ListItem button className={classes.nested}>
+                    <Link href="/dashboard">
+                      <a className={classes.mobileLink}>
+                        <>
+                          <ListItemIcon>
+                            <HomeIcon />
+                          </ListItemIcon>
+                          <ListItemText primary="Home" />
+                        </>
+                      </a>
+                    </Link>
+                  </ListItem>
+                  <ListItem button className={classes.nested}>
+                    <Link href="/dashboard/favorites">
+                      <a className={classes.mobileLink}>
+                        <>
+                          <ListItemIcon>
+                            <FavoriteIcon />
+                          </ListItemIcon>
+                          <ListItemText primary="Favorites" />
+                        </>
+                      </a>
+                    </Link>
+                  </ListItem>
+                  <ListItem button className={classes.nested}>
+                    <Link href="/dashboard/profile">
+                      <a className={classes.mobileLink}>
+                        <>
+                          <ListItemIcon>
+                            <AccountCircleIcon />
+                          </ListItemIcon>
+                          <ListItemText primary="Profile" />
+                        </>
+                      </a>
+                    </Link>
+                  </ListItem>
+                </List>
+              </Collapse>
+            </div>
+
             <ListItem onClick={() => setSignOut(true)}>
               <ListItemIcon>
                 <ExitToAppIcon />
@@ -143,7 +212,10 @@ const Header = (props) => {
             </ListItem>
           </>
         ) : (
-          <ListItem>
+          <ListItem
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+          >
             <Link href="/join">
               <a className={classes.mobileLink}>
                 <>
@@ -157,28 +229,20 @@ const Header = (props) => {
           </ListItem>
         )}
         <div style={{ marginTop: "auto" }}>
-          <ListItem>
+          <ListItem
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+          >
             <Link href="/faqs">
               <a className={classes.mobileLink}>
                 <Button>FAQs</Button>
               </a>
             </Link>
           </ListItem>
-          <ListItem>
-            <Link href="/blog">
-              <a className={classes.mobileLink}>
-                <Button>Blog</Button>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/our-story">
-              <a className={classes.mobileLink}>
-                <Button>About Us</Button>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
+          <ListItem
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+          >
             <Link href="/sponsors">
               <a className={classes.mobileLink}>
                 <Button>Sponsors</Button>
@@ -214,11 +278,65 @@ const Header = (props) => {
               </Link>
               {user.email ? (
                 <>
-                  <Link href="/dashboard">
-                    <a>
-                      <Button color="inherit">MY DASHBOARD</Button>
-                    </a>
-                  </Link>
+                  <div>
+                    <Button
+                      color="inherit"
+                      onClick={handleMenuClick}
+                      endIcon={
+                        collapseOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />
+                      }
+                    >
+                      MY DASHBOARD
+                    </Button>
+                    <Menu
+                      id="dashboard-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleMenuClose}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                      }}
+                      getContentAnchorEl={null}
+                    >
+                      <MenuItem onClick={handleMenuClose}>
+                        <Link href="/dashboard">
+                          <a className={classes.mobileLink}>
+                            <ListItemIcon>
+                              <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                          </a>
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleMenuClose}>
+                        <Link href="/dashboard/favorites">
+                          <a className={classes.mobileLink}>
+                            <ListItemIcon>
+                              <FavoriteIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Favorites" />
+                          </a>
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleMenuClose}>
+                        <Link href="/dashboard/profile">
+                          <a className={classes.mobileLink}>
+                            <ListItemIcon>
+                              <AccountCircleIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Profile" />
+                          </a>
+                        </Link>
+                      </MenuItem>
+                    </Menu>
+                  </div>
+
                   <Button color="inherit" onClick={() => setSignOut(true)}>
                     Sign Out
                   </Button>
@@ -237,18 +355,18 @@ const Header = (props) => {
               <IconButton
                 color="secondary"
                 aria-label="open drawer"
-                onClick={toggleDrawer(anchor, true)}
+                onClick={toggleDrawer(true)}
                 edge="start"
               >
                 <MenuIcon />
               </IconButton>
               <SwipeableDrawer
-                anchor={anchor}
-                open={state[anchor]}
-                onClose={toggleDrawer(anchor, false)}
-                onOpen={toggleDrawer(anchor, true)}
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
               >
-                {list(anchor)}
+                {list()}
               </SwipeableDrawer>
             </div>
             {signOut && (
