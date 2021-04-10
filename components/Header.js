@@ -278,64 +278,11 @@ const Header = (props) => {
               </Link>
               {user.email ? (
                 <>
-                  <div>
-                    <Button
-                      color="inherit"
-                      onClick={handleMenuClick}
-                      endIcon={
-                        collapseOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />
-                      }
-                    >
-                      MY DASHBOARD
-                    </Button>
-                    <Menu
-                      id="dashboard-menu"
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={handleMenuClose}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                      }}
-                      getContentAnchorEl={null}
-                    >
-                      <MenuItem onClick={handleMenuClose}>
-                        <Link href="/dashboard">
-                          <a className={classes.mobileLink}>
-                            <ListItemIcon>
-                              <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Home" />
-                          </a>
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleMenuClose}>
-                        <Link href="/dashboard/favorites">
-                          <a className={classes.mobileLink}>
-                            <ListItemIcon>
-                              <FavoriteIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Favorites" />
-                          </a>
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleMenuClose}>
-                        <Link href="/dashboard/profile">
-                          <a className={classes.mobileLink}>
-                            <ListItemIcon>
-                              <AccountCircleIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Profile" />
-                          </a>
-                        </Link>
-                      </MenuItem>
-                    </Menu>
-                  </div>
+                  <Link href="/dashboard">
+                    <a>
+                      <Button color="inherit">MY DASHBOARD</Button>
+                    </a>
+                  </Link>
 
                   <Button color="inherit" onClick={() => setSignOut(true)}>
                     Sign Out

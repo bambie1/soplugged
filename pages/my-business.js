@@ -11,6 +11,7 @@ import {
 } from "next-firebase-auth";
 import SEO from "@/components/SEO";
 import { Alert } from "@/components/mui-lab";
+import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -27,16 +28,55 @@ const EditBusiness = ({ business, token }) => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(false);
 
+  const swalFunction = async (slug, business) => {
+    swal({
+      title: business ? "Business Updated!" : "Business Created",
+      text: business
+        ? "Your business was updated successfully!"
+        : "Your SoPlugged business was created successfully",
+      icon: "success",
+      buttons: {
+        view: business && "View Page",
+        learn: !business && {
+          text: "What next?",
+          value: "learn",
+        },
+      },
+    }).then((val) => {
+      if (val) {
+        switch (val) {
+          case "view":
+            router.push(`/business/${slug}`);
+            break;
+          case "learn":
+            swal({
+              icon: "success",
+              title: "What next?",
+              text:
+                "We'll send you a confirmation email shortly.\n\n In the meantime, we'll review your new business, and it will be added to our directory once ready.",
+              button: "View Page",
+            }).then((val) => {
+              if (val) router.push(`/business/${slug}`);
+            });
+            break;
+          default:
+            break;
+        }
+      }
+    });
+  };
   const handleSubmit = async (newData, files) => {
     setSaving(true);
     let slug = await submitBusinessObject(newData, files, token, business);
     setSaving(false);
     if (!slug.error) {
-      business ? router.push(`/business/${slug}`) : router.push("/welcome");
+      swalFunction(slug, business);
     } else {
+      console.log(slug.error);
       setError(true);
     }
   };
+  // swalFunction("test", business);
   if (business !== undefined) {
     return (
       <>
@@ -48,7 +88,8 @@ const EditBusiness = ({ business, token }) => {
           <Container maxWidth="lg">
             {error && (
               <Alert severity="error">
-                An error occured while saving. Please try again later
+                An error occured while saving. Another business likely exists
+                with the same name
               </Alert>
             )}
             <BusinessInfoForm

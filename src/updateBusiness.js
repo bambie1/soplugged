@@ -1,6 +1,5 @@
 import { getImageUrl } from "./uploadImage";
 import slugify from "slugify";
-import { addUser, getUser } from "./handleDBUser";
 
 const updateBusiness = async (
   fetchUrl,
@@ -8,6 +7,7 @@ const updateBusiness = async (
   businessObject,
   userToken
 ) => {
+  // console.log({ fetchUrl, fetchMethod, businessObject, userToken });
   try {
     const res = await fetch(fetchUrl, {
       method: fetchMethod,
@@ -66,7 +66,7 @@ export const submitBusinessObject = async (
   };
 
   const fetchUrl = business
-    ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`
+    ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${business.slug}`
     : `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`;
   const fetchMethod = business ? "PATCH" : "POST";
 

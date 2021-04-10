@@ -342,3 +342,20 @@ img {
 .firebaseui-container * {
   font-family: "Raleway";
 }
+
+/* swal styling */
+.swal-overlay {
+  background-color: rgb(205 182 147 / 29%);
+  font-family: "Raleway" !important;
+}
+.swal-button {
+  background: var(--dark);
+  font-family: "Raleway" !important;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgb(121 85 72 / 23%) !important;
+}
+.swal-button:not([disabled]):hover {
+  background-color: var(--light);
+}
+.swal-text {
+  text-align: center;
+}

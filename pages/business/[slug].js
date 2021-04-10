@@ -54,21 +54,23 @@ const BusinessSlug = ({ business }) => {
 
 export async function getServerSideProps(context) {
   let slug = context.query.slug;
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
-  );
-  const business = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
+    );
+    const business = await res.json();
 
-  if (!business) {
+    if (!business) throw new Error("Business wasn't found");
+    return {
+      props: {
+        business,
+      },
+    };
+  } catch (error) {
     return {
       notFound: true,
     };
   }
-  return {
-    props: {
-      business,
-    },
-  };
 }
 
 export default withAuthUser()(BusinessSlug);

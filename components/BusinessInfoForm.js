@@ -116,6 +116,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
     setChecked(e.target.checked);
   };
   const onSubmit = (data) => {
+    setInfoChanged(false);
     submitHandler(data, files);
   };
 
