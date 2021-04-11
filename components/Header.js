@@ -93,15 +93,7 @@ const Header = (props) => {
   const handleClick = () => {
     setCollapseOpen(!collapseOpen);
   };
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
   const toggleDrawer = (open) => (event) => {
     console.log(event.target.toString());
 
@@ -201,7 +193,12 @@ const Header = (props) => {
               </Collapse>
             </div>
 
-            <ListItem onClick={() => setSignOut(true)}>
+            <ListItem
+              onClick={() => {
+                setSignOut(true);
+                toggleDrawer(false);
+              }}
+            >
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>

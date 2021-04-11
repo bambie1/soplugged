@@ -65,7 +65,7 @@ img {
   flex-direction: column;
 }
 .body-content {
-  padding: 1.15rem 1.15rem 0;
+  padding: 0.5rem 0.5rem 0;
   max-width: 1400px;
   margin: auto;
   display: flex;
@@ -282,9 +282,37 @@ img {
 .categoryIcon:hover {
   opacity: 1;
 }
+
+.learn-more {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.shortPaper {
+  padding: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.learn-more-image {
+  margin-top: -16px;
+  margin-bottom: -16px;
+}
+
 @media only screen and (min-width: 600px) {
   .hero-side-image {
     opacity: 0.3;
+  }
+  .body-content {
+    padding: 1.15rem 1.15rem 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .shortPaper {
+    width: 50%;
+  }
+  .learn-more-image {
+    max-width: 50%;
   }
 }
 @media only screen and (min-width: 1024px) {

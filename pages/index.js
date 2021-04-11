@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "8px",
     },
   },
-
   list: {
     flex: "1",
     display: "flex",
@@ -49,21 +48,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-  },
-  shortPaper: {
-    maxWidth: "700px",
-    padding: "16px",
-    marginTop: "16px",
-    marginBottom: "16px",
-    "&:last-child": {
-      background: theme.palette.primary.main,
-      marginLeft: "auto",
-      color: "white",
-      "& > div": {
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      },
-    },
   },
   shortPaperDiv: {
     display: "flex",
@@ -136,7 +120,10 @@ export default function Home() {
               Whether you have a need, provide solutions, or both, SoPlugged is
               for you
             </Typography>
-            <Container maxWidth="md" style={{ marginTop: "24px" }}>
+            <Container
+              maxWidth="md"
+              style={{ marginTop: "24px", padding: "0" }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Paper className={classes.paper} elevation={2}>
@@ -277,11 +264,17 @@ export default function Home() {
             <Typography align="center" gutterBottom={true}>
               Did we mention that we love, and support Black-owned businesses?
             </Typography>
-            <Typography align="center" gutterBottom={true}>
-              Cause, we DO!!
-            </Typography>
-            <Container maxWidth="md" style={{ padding: "0" }}>
-              <Paper className={classes.shortPaper} elevation={2}>
+            <Typography align="center">Cause, we DO!!</Typography>
+            <div className="learn-more">
+              <div className="learn-more-image">
+                <Image
+                  width={400}
+                  height={400}
+                  src="/images/buy_black_illustration2.svg"
+                />
+              </div>
+
+              <Paper className="shortPaper" elevation={2}>
                 <div
                   className={classes.shortPaperDiv}
                   style={{ marginLeft: "auto" }}
@@ -290,12 +283,13 @@ export default function Home() {
                     What does #BuyBlack mean?
                   </Typography>
                   <Typography>
-                    Buy Black is a movement that started out as a way to
-                    circulate wealth within the Black community by supporting
-                    Black-owned businesses. No doubt, this movement gained a lot
-                    of traction this year because of the tragic events of 2020
-                    and how they impacted members of this community, especially
-                    small business owners.
+                    The #buyblack movement started out as a way to circulate
+                    wealth within the Black community by supporting Black-owned
+                    businesses. No doubt, this movement has gained a lot of
+                    traction due to the tragic events of 2020 and how they
+                    impacted small businesses. Our goal is to make buying black
+                    easy by connecting you with the right business for your
+                    needs.
                   </Typography>
                   <Link href="/blog">
                     <a style={{ marginRight: "auto", marginTop: "16px" }}>
@@ -306,28 +300,7 @@ export default function Home() {
                   </Link>
                 </div>
               </Paper>
-              <Paper className={classes.shortPaper} elevation={2}>
-                <div className={classes.shortPaperDiv}>
-                  <Typography variant="h6">Where we come in</Typography>
-                  <Typography>
-                    If you're a #BuyBlack enthusiast like we are, you might
-                    agree that finding the right business for your needs might
-                    be quite an ordeal. Endlessly scrolling through Instagram
-                    pages just to find an event planner is less than ideal.{" "}
-                    <br /> We provide an easy-to-use platform that eliminates
-                    the head-ache, and improves brand visibility for business
-                    owners.
-                  </Typography>
-                  <Link href="/join">
-                    <a style={{ marginRight: "auto", marginTop: "16px" }}>
-                      <Button variant="contained" color="secondary">
-                        Join SoPlugged
-                      </Button>
-                    </a>
-                  </Link>
-                </div>
-              </Paper>
-            </Container>
+            </div>
           </Box>
           <SubscribeForm />
         </div>
