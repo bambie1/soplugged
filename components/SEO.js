@@ -14,7 +14,7 @@ const SEO = ({ description, title }) => {
       <meta name="theme-color" content="#cdb693" />
       <meta
         property="og:image"
-        content="https://firebasestorage.googleapis.com/v0/b/soplugged-stg.appspot.com/o/soplugged_og_image.PNG?alt=media&token=f17aa7ce-764f-4b99-bf0a-31ac7f7e27d7"
+        content="https://firebasestorage.googleapis.com/v0/b/soplugged-stg.appspot.com/o/splgd_og_image_tiny.png?alt=media&token=89cffe13-be44-4e77-b1ba-1d27049129ef"
       />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />

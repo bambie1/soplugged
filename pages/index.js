@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
   shortPaper: {
     maxWidth: "700px",
     padding: "16px",
-    marginTop: "8px",
-    marginBottom: "8px",
+    marginTop: "16px",
+    marginBottom: "16px",
     "&:last-child": {
       background: theme.palette.primary.main,
       marginLeft: "auto",
