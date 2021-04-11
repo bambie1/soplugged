@@ -13,8 +13,6 @@ import {
   Divider,
   makeStyles,
   Collapse,
-  Menu,
-  MenuItem,
 } from "./mui-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,7 +31,6 @@ import {
 } from "./mui-icons";
 import SignOutAlert from "./SignOutAlert";
 import { useAuthUser, withAuthUser } from "next-firebase-auth";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   navDiv: {

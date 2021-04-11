@@ -205,7 +205,7 @@ const BusinessPage = ({ business, user }) => {
           <Typography variant="body2" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
-          <ContactForm user={user} business_id={id} />
+          <ContactForm user={user} business_email={creator.email} />
           <div className={classes.filler}></div>
         </Grid>
       </Grid>

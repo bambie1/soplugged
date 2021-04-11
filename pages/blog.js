@@ -3,10 +3,13 @@ import {
   Grid,
   Typography,
   makeStyles,
+  useMediaQuery,
+  Box,
 } from "../components/mui-components";
-import React from "react";
+import React, { useState } from "react";
 import BlogPostCard from "../components/BlogPostCard";
 import SEO from "@/components/SEO";
+import PaginationBar from "@/components/Pagination";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -21,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Blogs = ({ posts }) => {
   const classes = useStyles();
+  const [currentPage, setCurrentPage] = useState(1);
+  const matches = useMediaQuery("(min-width:960px)");
+  let pageLimit = matches ? 6 : 4;
+  const indexOfLastItem = currentPage * pageLimit;
+  const indexOfFirstItem = indexOfLastItem - pageLimit;
+  const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
@@ -41,12 +50,21 @@ const Blogs = ({ posts }) => {
             comment section!
           </Typography>
           <Grid container spacing={2}>
-            {posts.map((post) => (
+            {currentItems.map((post) => (
               <Grid item xs={12} sm={6} md={4} key={post.link}>
                 <BlogPostCard post={post} />
               </Grid>
             ))}
           </Grid>
+          {pageLimit < posts.length && (
+            <Box my={5} display="flex" justifyContent="center">
+              <PaginationBar
+                totalCount={posts.length}
+                pageLimit={pageLimit}
+                handleClick={(page) => setCurrentPage(page)}
+              />
+            </Box>
+          )}
         </Container>
       </main>
     </>

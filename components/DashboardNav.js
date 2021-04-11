@@ -1,10 +1,8 @@
-import { Button, Typography } from "@material-ui/core";
 import React from "react";
 import {
   makeStyles,
   BottomNavigationAction,
   BottomNavigation,
-  IconButton,
 } from "./mui-components";
 import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "./mui-icons";
 import { useRouter } from "next/router";

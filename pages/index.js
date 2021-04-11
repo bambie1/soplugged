@@ -9,6 +9,7 @@ import {
   ListItemIcon,
   ListItemText,
   Paper,
+  Box,
 } from "@/components/mui-components";
 import { PowerIcon, SettingsInputSvideoIcon } from "@/components/mui-icons";
 import Link from "next/link";
@@ -38,17 +39,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "8px",
     },
   },
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "16px",
-    marginBottom: "16px",
-    "& > *": {
-      marginTop: "4px",
-      marginBottom: "4px",
-    },
-  },
+
   list: {
     flex: "1",
     display: "flex",
@@ -132,16 +123,20 @@ export default function Home() {
               <Typography variant="h5" gutterBottom={true} align="center">
                 Featured Businesses:
               </Typography>
-              <BusinessCarousel businesses={data} />
+              <Box my={3}>
+                <BusinessCarousel businesses={data} />
+              </Box>
             </section>
           )}
-          <section className={classes.section}>
-            <Typography variant="h5">Why SoPlugged?</Typography>
-            <Typography>
+          <Box my={3}>
+            <Typography variant="h5" align="center" gutterBottom={true}>
+              Why SoPlugged?
+            </Typography>
+            <Typography align="center" gutterBottom={true}>
               Whether you have a need, provide solutions, or both, SoPlugged is
               for you
             </Typography>
-            <Container maxWidth="md" style={{ marginTop: "16px" }}>
+            <Container maxWidth="md" style={{ marginTop: "24px" }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Paper className={classes.paper} elevation={2}>
@@ -239,15 +234,14 @@ export default function Home() {
                 </Grid>
               </Grid>
             </Container>
-          </section>
-          <br></br>
-          <br></br>
-          <section
-            style={{
-              textAlign: "center",
-              background: "#fffaf2",
-              padding: "16px 8px",
-            }}
+          </Box>
+
+          <Box
+            textAlign="center"
+            py={2}
+            px={1}
+            my={3}
+            style={{ background: "#fffaf2" }}
           >
             <Typography variant="h5">We've got you covered</Typography>
             <br></br>
@@ -274,17 +268,18 @@ export default function Home() {
                 </Button>
               </a>
             </Link>
-          </section>
-          <br></br>
-          <br></br>
-          <section className={classes.section}>
-            <Typography variant="h5" align="center">
+          </Box>
+
+          <Box mt={3} mb={5}>
+            <Typography variant="h5" align="center" gutterBottom={true}>
               Learn more about our community
             </Typography>
-            <Typography align="center">
+            <Typography align="center" gutterBottom={true}>
               Did we mention that we love, and support Black-owned businesses?
             </Typography>
-            <Typography align="center">Cause, we DO!!</Typography>
+            <Typography align="center" gutterBottom={true}>
+              Cause, we DO!!
+            </Typography>
             <Container maxWidth="md" style={{ padding: "0" }}>
               <Paper className={classes.shortPaper} elevation={2}>
                 <div
@@ -333,12 +328,7 @@ export default function Home() {
                 </div>
               </Paper>
             </Container>
-          </section>
-          <br></br>
-          <br></br>
-          {/* </Container> */}
-          <br></br>
-          <br></br>
+          </Box>
           <SubscribeForm />
         </div>
       </main>

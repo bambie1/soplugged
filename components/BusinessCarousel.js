@@ -31,17 +31,11 @@ const responsive = {
 
 const BusinessCarousel = ({ businesses }) => {
   return (
-    <div style={{ marginTop: "8px", marginBottom: "8px" }}>
-      <Carousel
-        partialVisible
-        itemClass="carousel-item"
-        responsive={responsive}
-      >
-        {businesses.map((business, index) => (
-          <BusinessCard dbObject={business} key={index} mini={true} />
-        ))}
-      </Carousel>
-    </div>
+    <Carousel partialVisible itemClass="carousel-item" responsive={responsive}>
+      {businesses.map((business, index) => (
+        <BusinessCard dbObject={business} key={index} mini={true} />
+      ))}
+    </Carousel>
   );
 };
 

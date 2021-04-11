@@ -5,10 +5,11 @@ import {
   Paper,
   Box,
   IconButton,
+  Button,
+  Typography,
 } from "@/components/mui-components";
 import DashboardNav from "@/components/DashboardNav";
 import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "./mui-icons";
-import { Button, Typography } from "@material-ui/core";
 import Link from "next/link";
 import SEO from "./SEO";
 

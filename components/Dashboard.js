@@ -9,7 +9,7 @@ import {
   Menu,
   MenuItem,
 } from "./mui-components";
-import { EditIcon, FavoriteIcon, MailIcon } from "./mui-icons";
+import { EditIcon, FavoriteIcon } from "./mui-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { greetFunction } from "src/greeting";
@@ -94,6 +94,7 @@ const Dashboard = ({ business }) => {
     hasThreeImages,
     hasIG,
   ].filter(Boolean).length;
+  // const percentage = 100;
   const percentage = (6 + suggestionsCount) * 10;
 
   return (
@@ -173,7 +174,7 @@ const Dashboard = ({ business }) => {
                   <Box margin="8px">
                     {percentage === 100 ? (
                       <Typography variant="body1">
-                        You're doing amazing!
+                        Looking great, Boss!
                       </Typography>
                     ) : (
                       <Button
@@ -222,7 +223,7 @@ const Dashboard = ({ business }) => {
                   align="center"
                   style={{ fontWeight: "bold" }}
                 >
-                  ACTIVITY:
+                  BUSINESS NUMBERS:
                 </Typography>
                 <Box display="flex" justifyContent="center" flexWrap="wrap">
                   <Paper className={classes.activity}>
@@ -232,12 +233,14 @@ const Dashboard = ({ business }) => {
                     </Typography>
                     <FavoriteIcon />
                   </Paper>
-                  <Paper className={classes.activity}>
-                    <Typography variant="body1">Messages</Typography>
-                    <Typography variant="h1" component="span">
-                      0
+                  <Paper
+                    className={classes.activity}
+                    style={{ opacity: "0.5" }}
+                  >
+                    <Typography variant="body1" gutterBottom={true}>
+                      Messages
                     </Typography>
-                    <MailIcon />
+                    <Typography variant="body2">COMING SOON</Typography>
                   </Paper>
                 </Box>
               </Grid>

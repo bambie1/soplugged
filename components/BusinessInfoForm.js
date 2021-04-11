@@ -427,9 +427,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                 color="secondary"
                 className={classes.submit}
               >
-                {currentBusiness
-                  ? "Save and View Page"
-                  : "Register and View Page"}
+                {currentBusiness ? "Save Changes" : "Register Business"}
               </Button>
             )}
           </Grid>

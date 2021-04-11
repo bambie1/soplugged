@@ -76,7 +76,6 @@ const EditBusiness = ({ business, token }) => {
       setError(true);
     }
   };
-  // swalFunction("test", business);
   if (business !== undefined) {
     return (
       <>
