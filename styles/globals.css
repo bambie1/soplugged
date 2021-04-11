@@ -47,7 +47,7 @@ img {
 #content {
   min-height: 85vh;
   z-index: 1;
-  background: white;
+  /* background: white; */
 }
 #loading {
   position: fixed;
