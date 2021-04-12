@@ -3,7 +3,7 @@ import { Button, Container, makeStyles } from "@/components/mui-components";
 import Link from "next/link";
 import SEO from "@/components/SEO";
 import BusinessPage from "@/components/BusinessPage";
-import { useAuthUser, withAuthUser } from "next-firebase-auth";
+import { useAuth } from "@/contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BusinessSlug = ({ business }) => {
   const classes = useStyles();
-  const user = useAuthUser();
+  const { user } = useAuth();
 
   return (
     <>
@@ -73,4 +73,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default withAuthUser()(BusinessSlug);
+export default BusinessSlug;

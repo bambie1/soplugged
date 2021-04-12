@@ -8,13 +8,12 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
 import { SearchProvider } from "../contexts/searchContext";
-import initAuth from "../utils/initAuth";
+import { AuthProvider } from "../contexts/authContext";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import { init } from "../utils/sentry";
 
 init();
-initAuth();
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -44,11 +43,13 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <SearchProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </SearchProvider>
+        <AuthProvider>
+          <SearchProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SearchProvider>
+        </AuthProvider>
       </ThemeProvider>
     </>
   );

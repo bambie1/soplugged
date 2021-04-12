@@ -7,11 +7,16 @@ import {
   Dialog,
   DialogTitle,
 } from "./mui-components";
+import firebase from "firebase/app";
+import { useRouter } from "next/router";
 
-export default function AlertDialog({ handleClose, signOut }) {
+export default function AlertDialog({ handleClose }) {
+  const router = useRouter();
+
   const handleSignOut = async () => {
-    signOut();
+    await firebase.auth().signOut();
     handleClose();
+    router.reload();
   };
   return (
     <Dialog

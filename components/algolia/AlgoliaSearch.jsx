@@ -36,7 +36,7 @@ const AlgoliaSearch = () => {
       <div className="ais-InstantSearch">
         <InstantSearch indexName="Business" searchClient={searchClient}>
           <div className="search-algolia">
-            {/* <PoweredBy /> */}
+            <PoweredBy />
             <SearchBox />
           </div>
           <div className="results-filters">

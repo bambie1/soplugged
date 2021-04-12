@@ -1,14 +1,11 @@
 import React from "react";
 import Profile from "@/components/Profile";
-import {
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
 import DashboardLayout from "@/components/DashboardLayout";
 import { editUser, addUser, getUser } from "src/handleDBUser";
 import { Snackbar, IconButton } from "@/components/mui-components";
 import { CloseIcon } from "@/components/mui-icons";
+import nookies from "nookies";
+import { verifyIdToken } from "../../utils/firebaseAdmin";
 
 const ProfilePage = ({ user, token, email }) => {
   const [open, setOpen] = React.useState(false);
@@ -54,14 +51,21 @@ const ProfilePage = ({ user, token, email }) => {
   );
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})(async ({ AuthUser, req }) => {
-  const token = await AuthUser.getIdToken();
-  const user = await getUser(token);
-  return { props: { user, token, email: AuthUser.email } };
-});
+export async function getServerSideProps(context) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    if (token?.email) {
+      const user = await getUser(cookies.token);
+      return {
+        props: { user, token: cookies.token, email: token.email },
+      };
+    } else throw new Error("no token found");
+  } catch (error) {
+    context.res.writeHead(302, { location: "/join" });
+    context.res.end();
+    return { props: {} };
+  }
+}
 
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(ProfilePage);
+export default ProfilePage;

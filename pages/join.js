@@ -1,5 +1,4 @@
 import React from "react";
-import { withAuthUser, AuthAction } from "next-firebase-auth";
 import FirebaseAuth from "../components/FirebaseAuth";
 import {
   Button,
@@ -9,6 +8,8 @@ import {
 } from "../components/mui-components";
 import Link from "next/link";
 import SEO from "@/components/SEO";
+import nookies from "nookies";
+import { verifyIdToken } from "../utils/firebaseAdmin";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,9 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Join = () => {
+const Join = ({ referrer }) => {
   const classes = useStyles();
-
   return (
     <>
       <SEO
@@ -43,18 +43,9 @@ const Join = () => {
             methods:
           </Typography>
           <div className={classes.paper}>
-            <FirebaseAuth />
+            <FirebaseAuth referrer={referrer} />
           </div>
-          <br></br>
-          <br></br>
-          <Typography>
-            Already a SoPlugged member?
-            <a href="/sign-in" className={classes.link}>
-              {" "}
-              Sign in here{" "}
-            </a>
-            .
-          </Typography>
+          <Typography>We want to make sure you're real.</Typography>
           <Link href="/search">
             <a>
               <Button variant="outlined" color="secondary">
@@ -68,8 +59,25 @@ const Join = () => {
   );
 };
 
-export default withAuthUser({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
-  whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
-  whenUnauthedAfterInit: AuthAction.RENDER,
-})(Join);
+export async function getServerSideProps(context) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+
+    if (token?.email) {
+      context.res.writeHead(302, { location: "/dashboard" });
+      context.res.end();
+      return {
+        props: {},
+      };
+    } else {
+      const referrer = context.req.headers.referer;
+      return { props: { referrer: referrer || "" } };
+    }
+  } catch (error) {
+    const referrer = context.req.headers.referer;
+    return { props: { referrer: referrer || "" } };
+  }
+}
+
+export default Join;

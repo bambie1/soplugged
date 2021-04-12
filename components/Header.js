@@ -30,7 +30,7 @@ import {
   AccountCircleIcon,
 } from "./mui-icons";
 import SignOutAlert from "./SignOutAlert";
-import { useAuthUser, withAuthUser } from "next-firebase-auth";
+import { useAuth } from "@/contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   navDiv: {
@@ -85,7 +85,7 @@ function HideOnScroll(props) {
 const Header = (props) => {
   const router = useRouter();
   const classes = useStyles();
-  const user = useAuthUser();
+  const { user } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [signOut, setSignOut] = useState(false);
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -95,8 +95,6 @@ const Header = (props) => {
   };
 
   const toggleDrawer = (open) => (event) => {
-    console.log(event.target.toString());
-
     if (
       event &&
       event.type === "keydown" &&
@@ -137,7 +135,7 @@ const Header = (props) => {
             </a>
           </Link>
         </ListItem>
-        {user.email ? (
+        {user?.email ? (
           <>
             <div>
               <ListItem onClick={handleClick}>
@@ -270,7 +268,7 @@ const Header = (props) => {
                   <Button color="inherit">DIRECTORY</Button>
                 </a>
               </Link>
-              {user.email ? (
+              {user?.email ? (
                 <>
                   <Link href="/dashboard">
                     <a>
@@ -310,12 +308,7 @@ const Header = (props) => {
                 {list()}
               </SwipeableDrawer>
             </div>
-            {signOut && (
-              <SignOutAlert
-                handleClose={() => setSignOut(false)}
-                signOut={user.signOut}
-              />
-            )}
+            {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -323,4 +316,4 @@ const Header = (props) => {
   );
 };
 
-export default withAuthUser()(Header);
+export default Header;

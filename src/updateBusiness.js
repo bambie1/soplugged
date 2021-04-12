@@ -7,7 +7,6 @@ const updateBusiness = async (
   businessObject,
   userToken
 ) => {
-  // console.log({ fetchUrl, fetchMethod, businessObject, userToken });
   try {
     const res = await fetch(fetchUrl, {
       method: fetchMethod,

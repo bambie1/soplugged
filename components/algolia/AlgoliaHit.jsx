@@ -3,9 +3,9 @@ import { makeStyles, Typography, Avatar, IconButton } from "../mui-components";
 import { CheckIcon } from "../mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
-import { useAuthUser, withAuthUser } from "next-firebase-auth";
 import FavoriteButton from "../FavoriteButton";
 import BusinessHeader from "../BusinessHeader";
+import { useAuth } from "@/contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AlgoliaHit = ({ hit }) => {
   const classes = useStyles();
-  const user = useAuthUser();
+  const { user } = useAuth();
   const [likes, setLikes] = React.useState(0);
   let slug = hit.slug || "biz-slug";
   let res = fetch(
@@ -94,4 +94,4 @@ const AlgoliaHit = ({ hit }) => {
   );
 };
 
-export default withAuthUser()(AlgoliaHit);
+export default AlgoliaHit;

@@ -33,7 +33,7 @@ const FavoriteButton = ({
 
   let userLikedBusiness = false;
   React.useEffect(() => {
-    let token = user.firebaseUser?.za || null;
+    let token = user?.za || null;
     if (token) {
       fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`, {
         method: "GET",
@@ -114,7 +114,6 @@ const FavoriteButton = ({
       </Button>
       {!user?.email && !mini && (
         <a
-          target="_blank"
           href="/join"
           style={{
             textDecoration: "underline",

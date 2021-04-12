@@ -4,14 +4,13 @@ import { Container, makeStyles } from "../components/mui-components";
 import { useRouter } from "next/router";
 import SavingAnimation from "../components/SavingAnimation";
 import { submitBusinessObject } from "../src/updateBusiness";
-import {
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
 import SEO from "@/components/SEO";
 import { Alert } from "@/components/mui-lab";
 import swal from "sweetalert";
+import nookies from "nookies";
+import { verifyIdToken } from "../utils/firebaseAdmin";
+import firebaseClient from "../utils/firebaseClient";
+import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -105,39 +104,35 @@ const EditBusiness = ({ business, token }) => {
   }
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})(async ({ AuthUser, req }) => {
-  const token = await AuthUser.getIdToken();
-  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+export async function getServerSideProps(context) {
   try {
-    const res = await fetch(fetchUrl, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Firebase-Token": token,
-      },
-    });
-    if (!res.ok) throw new Error("HTTP status " + res.status);
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
 
-    const business = await res.json();
-    return {
-      props: {
-        business: business[0] || null,
-        token,
-      },
-    };
+    if (token?.email) {
+      const res = await fetch(fetchUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Firebase-Token": cookies.token,
+        },
+      });
+      if (!res.ok) return { props: {} };
+      const business = await res.json();
+      return {
+        props: {
+          business: business[0] || null,
+          token,
+        },
+      };
+    } else throw new Error("No token found");
   } catch (error) {
-    return {
-      props: {
-        business: null,
-        token,
-      },
-    };
+    context.res.writeHead(302, { location: "/join" });
+    context.res.end();
+    return { props: {} };
   }
-});
+}
 
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(EditBusiness);
+export default EditBusiness;

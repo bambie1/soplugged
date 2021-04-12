@@ -1,11 +1,8 @@
 import React from "react";
 import Dashboard from "@/components/Dashboard";
-import {
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
 import DashboardLayout from "@/components/DashboardLayout";
+import nookies from "nookies";
+import { verifyIdToken } from "../../utils/firebaseAdmin";
 
 const DashboardPage = ({ business }) => {
   return (
@@ -17,37 +14,39 @@ const DashboardPage = ({ business }) => {
   );
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})(async ({ AuthUser, req }) => {
-  const token = await AuthUser.getIdToken();
-  const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+export async function getServerSideProps(context) {
   try {
-    const res = await fetch(fetchUrl, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Firebase-Token": token,
-      },
-    });
-    if (!res.ok) throw new Error("HTTP status " + res.status);
-    const business = await res.json();
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
 
-    return {
-      props: {
-        business: business[0] || null,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        business: null,
-      },
-    };
+    if (token?.email) {
+      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
+      const res = await fetch(fetchUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Firebase-Token": cookies.token,
+        },
+      });
+      if (!res.ok)
+        return {
+          props: {
+            business: null,
+          },
+        };
+      const business = await res.json();
+      return {
+        props: {
+          business: business[0] || null,
+        },
+      };
+    } else throw new Error("No token found");
+  } catch (err) {
+    context.res.writeHead(302, { location: "/join" });
+    context.res.end();
+    return { props: {} };
   }
-});
+}
 
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(DashboardPage);
+export default DashboardPage;

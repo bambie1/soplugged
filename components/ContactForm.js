@@ -109,7 +109,7 @@ const ContactForm = ({ user, business_email }) => {
         </>
       ) : (
         <Link href="/join">
-          <a target="_blank">
+          <a>
             <Button variant="outlined" color="secondary">
               Sign In to send Message
             </Button>
