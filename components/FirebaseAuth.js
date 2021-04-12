@@ -39,7 +39,7 @@ const FirebaseAuth = ({ referrer }) => {
         }
       },
     },
-    signInSuccessUrl: "/dashboard",
+    // signInSuccessUrl: "/dashboard",
   };
 
   return (
