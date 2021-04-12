@@ -1,4 +1,5 @@
 import { addUser, getUser } from "./handleDBUser";
+import * as Sentry from "@sentry/node";
 
 const updateFavorite = async (fetchUrl, fetchMethod, business_id, token) => {
   try {
@@ -19,6 +20,7 @@ const updateFavorite = async (fetchUrl, fetchMethod, business_id, token) => {
     }
     return res;
   } catch (error) {
+    Sentry.captureException(error);
     return { error };
   }
 };
@@ -36,6 +38,7 @@ export const addFavorite = async (business_id, user) => {
       return updateFavorite(fetchUrl, "POST", business_id, token);
     }
   } catch (error) {
+    Sentry.captureException(error);
     return { error };
   }
 };
@@ -50,6 +53,7 @@ export const removeFavorite = async (business_id, user) => {
     }
     return { error: "no user" };
   } catch (error) {
+    Sentry.captureException(error);
     return { error };
   }
 };

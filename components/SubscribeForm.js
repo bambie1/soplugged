@@ -9,6 +9,7 @@ import {
   makeStyles,
 } from "./mui-components";
 import { Alert } from "./mui-lab";
+import * as Sentry from "@sentry/node";
 
 const useStyles = makeStyles((theme) => ({
   grid: { justifyContent: "center", marginBottom: "8px" },
@@ -51,7 +52,7 @@ const SubscribeForm = () => {
         e.target.reset();
       }
     } catch (error) {
-      console.log("error: ", error);
+      Sentry.captureException(error);
     }
   };
 

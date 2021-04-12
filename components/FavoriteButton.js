@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import { FavoriteBorderIcon, FavoriteIcon, CloseIcon } from "./mui-icons";
 import Link from "next/link";
 import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
+import * as Sentry from "@sentry/node";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -43,7 +44,7 @@ const FavoriteButton = ({
       })
         .then((r) => r.json())
         .then((data) => setFavorites(data))
-        .catch((err) => ({ err }));
+        .catch((err) => Sentry.captureException(err));
     }
   }, [user]);
 

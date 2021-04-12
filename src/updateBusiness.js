@@ -1,5 +1,6 @@
 import { getImageUrl } from "./uploadImage";
 import slugify from "slugify";
+import * as Sentry from "@sentry/node";
 
 const updateBusiness = async (
   fetchUrl,
@@ -25,6 +26,7 @@ const updateBusiness = async (
     }
     return businessObject.slug;
   } catch (error) {
+    Sentry.captureException(error);
     return { error };
   }
 };

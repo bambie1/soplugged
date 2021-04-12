@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { Alert } from "./mui-lab";
+import * as Sentry from "@sentry/node";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -58,6 +59,7 @@ const ContactForm = ({ user, business_email }) => {
       }
     } catch (error) {
       setShowError(true);
+      Sentry.captureException(error);
     }
   };
 

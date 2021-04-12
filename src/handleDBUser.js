@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/node";
+
 const updateUser = async (fetchUrl, fetchMethod, data, token) => {
   try {
     const res = await fetch(fetchUrl, {
@@ -15,6 +17,7 @@ const updateUser = async (fetchUrl, fetchMethod, data, token) => {
     }
     return res;
   } catch (error) {
+    Sentry.captureException(error);
     return { error };
   }
 };

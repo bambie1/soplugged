@@ -119,12 +119,12 @@ export async function getServerSideProps(context) {
           "Firebase-Token": cookies.token,
         },
       });
-      if (!res.ok) return { props: {} };
+      if (!res.ok) return { props: { business: null, token: cookies.token } };
       const business = await res.json();
       return {
         props: {
           business: business[0] || null,
-          token,
+          token: cookies.token,
         },
       };
     } else throw new Error("No token found");

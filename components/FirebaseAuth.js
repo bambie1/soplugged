@@ -16,7 +16,7 @@ const FirebaseAuth = ({ referrer }) => {
   }, []);
 
   const firebaseAuthConfig = {
-    signInFlow: "popup",
+    signInFlow: "redirect",
     signInOptions: [
       {
         provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -27,8 +27,7 @@ const FirebaseAuth = ({ referrer }) => {
       {
         provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
         requireDisplayName: false,
-        signInMethod:
-          firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD,
+        signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
       },
     ],
     credentialHelper: "none",
