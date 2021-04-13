@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-
+    console.log("context object: ", JSON.stringify(context, null, 2));
     if (token?.email) {
       context.res.writeHead(302, { location: "/dashboard" });
       context.res.end();
@@ -72,6 +72,7 @@ export async function getServerSideProps(context) {
       };
     } else {
       const referrer = context.req.headers.referer;
+      console.log("context object: ", JSON.stringify(context, null, 2));
       return { props: { referrer: referrer || "" } };
     }
   } catch (error) {

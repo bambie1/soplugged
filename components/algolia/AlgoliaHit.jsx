@@ -9,9 +9,14 @@ import { useAuth } from "@/contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: "100%",
     display: "flex",
     flexDirection: "column",
-    height: "100%",
+  },
+  rootLink: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "1",
   },
   businessName: {
     textTransform: "uppercase",
@@ -41,7 +46,7 @@ const AlgoliaHit = ({ hit }) => {
     <>
       <div className={classes.root}>
         <Link href={`/business/${slug}`}>
-          <a>
+          <a className={classes.rootLink}>
             <BusinessHeader>
               <Avatar alt="Business Logo" src={hit.logo_url} variant="square">
                 {hit.business_name.toUpperCase().charAt(0)}
@@ -57,31 +62,32 @@ const AlgoliaHit = ({ hit }) => {
             <Typography variant="body2">
               <Snippet attribute="business_description" hit={hit} />
             </Typography>
+
+            <br></br>
+            <Typography style={{ marginTop: "auto" }}>
+              {hit.street_address &&
+                hit.fixed_to_one_location &&
+                `LOCATION: ${hit.street_address}`}
+              {hit.street_address && hit.fixed_to_one_location && <br></br>}
+              {hit.business_location}
+              <br></br>
+              {!hit.fixed_to_one_location && (
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
+                  CANADA-WIDE
+                </span>
+              )}
+            </Typography>
           </a>
         </Link>
-        <br></br>
-        <Typography style={{ marginTop: "auto" }}>
-          {hit.street_address &&
-            hit.fixed_to_one_location &&
-            `LOCATION: ${hit.street_address}`}
-          {hit.street_address && hit.fixed_to_one_location && <br></br>}
-          {hit.business_location}
-          <br></br>
-          {!hit.fixed_to_one_location && (
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "0.9rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-              CANADA-WIDE
-            </span>
-          )}
-        </Typography>
         <FavoriteButton
           business_id={hit.id}
           user={user}

@@ -14,7 +14,6 @@ import * as Sentry from "@sentry/node";
 const useStyles = makeStyles((theme) => ({
   button: {
     alignSelf: "center",
-    marginTop: "8px",
   },
 }));
 
@@ -110,6 +109,7 @@ const FavoriteButton = ({
         onClick={handleClick}
         disabled={!user?.email || disabled}
         className={classes.button}
+        style={{ marginTop: mini ? "auto" : "8px" }}
       >
         {mini ? likes : `Likes - ${likes} `}
       </Button>

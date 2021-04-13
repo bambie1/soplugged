@@ -6,12 +6,15 @@ import { useRouter } from "next/router";
 
 const FirebaseAuth = ({ referrer }) => {
   const [renderAuth, setRenderAuth] = useState(false);
-  const [successUrl, setSuccessUrl] = useState(referrer);
   const router = useRouter();
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setRenderAuth(true);
+      console.log({ referrer });
+      let sessionRef = localStorage.getItem("ref");
+      if (referrer && referrer !== "") {
+        localStorage.setItem("ref", referrer);
+      }
     }
   }, []);
 
@@ -26,20 +29,21 @@ const FirebaseAuth = ({ referrer }) => {
       },
       {
         provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        requireDisplayName: false,
         signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
       },
     ],
     credentialHelper: "none",
     callbacks: {
-      signInSuccessWithAuthResult: () => {
-        if (successUrl) window.location.href = successUrl;
-        else {
-          router.push("/dashboard");
-        }
+      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+        console.log({ authResult, redirectUrl });
+        let getSession = localStorage.getItem("ref");
+        if (getSession) {
+          window.location.href = getSession;
+        } else router.push("/dashboard");
+        console.log({ getSession });
+        return false;
       },
     },
-    // signInSuccessUrl: "/dashboard",
   };
 
   return (
