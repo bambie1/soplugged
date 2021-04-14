@@ -60,10 +60,16 @@ const Join = ({ referrer }) => {
 };
 
 export async function getServerSideProps(context) {
+  const referrer = context.req.headers.referer;
+  const host = context.req.headers.host;
+  const sameRef =
+    referrer?.indexOf("http://" + host) === 0 ||
+    referrer?.indexOf("https://" + host) === 0
+      ? referrer
+      : null;
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    console.log("context object: ", JSON.stringify(context, null, 2));
     if (token?.email) {
       context.res.writeHead(302, { location: "/dashboard" });
       context.res.end();
@@ -71,13 +77,10 @@ export async function getServerSideProps(context) {
         props: {},
       };
     } else {
-      const referrer = context.req.headers.referer;
-      console.log("context object: ", JSON.stringify(context, null, 2));
-      return { props: { referrer: referrer || "" } };
+      throw new Error("not signed in");
     }
   } catch (error) {
-    const referrer = context.req.headers.referer;
-    return { props: { referrer: referrer || "" } };
+    return { props: { referrer: sameRef || "" } };
   }
 }
 

@@ -11,7 +11,6 @@ const FirebaseAuth = ({ referrer }) => {
     if (typeof window !== "undefined") {
       setRenderAuth(true);
       console.log({ referrer });
-      let sessionRef = localStorage.getItem("ref");
       if (referrer && referrer !== "") {
         localStorage.setItem("ref", referrer);
       }
@@ -40,7 +39,6 @@ const FirebaseAuth = ({ referrer }) => {
         if (getSession) {
           window.location.href = getSession;
         } else router.push("/dashboard");
-        console.log({ getSession });
         return false;
       },
     },
