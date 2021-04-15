@@ -83,8 +83,8 @@ const Footer = () => {
             </div>
 
             <div>
-              <Link href="/blog">
-                <a>
+              <Link href="https://soplugged.medium.com/">
+                <a target="_blank">
                   <Button>BLOG</Button>
                 </a>
               </Link>

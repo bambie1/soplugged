@@ -291,8 +291,11 @@ export default function Home() {
                     easy by connecting you with the right business for your
                     needs.
                   </Typography>
-                  <Link href="/blog">
-                    <a style={{ marginRight: "auto", marginTop: "16px" }}>
+                  <Link href="https://soplugged.medium.com/">
+                    <a
+                      style={{ marginRight: "auto", marginTop: "16px" }}
+                      target="_blank"
+                    >
                       <Button variant="outlined" color="secondary">
                         Read more on our blog
                       </Button>

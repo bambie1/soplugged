@@ -10,7 +10,7 @@ const FirebaseAuth = ({ referrer }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setRenderAuth(true);
-      console.log({ referrer });
+      // console.log({ referrer });
       if (referrer && referrer !== "") {
         localStorage.setItem("ref", referrer);
       }
