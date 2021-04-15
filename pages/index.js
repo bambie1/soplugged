@@ -108,7 +108,7 @@ export default function Home() {
                 Featured Businesses:
               </Typography>
               <Box my={3}>
-                <BusinessCarousel businesses={data} />
+                <BusinessCarousel businesses={displayBusinesses} />
               </Box>
             </section>
           )}
