@@ -101,11 +101,10 @@ const Sponsors = () => {
                 ></iframe>
               </Grid>
             </Grid>
-            <Link href="/">
+            <Link href="/search">
               <a
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
+                  alignSelf: "center",
                   margin: "16px",
                 }}
               >
