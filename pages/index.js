@@ -14,14 +14,18 @@ import {
 import { PowerIcon, SettingsInputSvideoIcon } from "@/components/mui-icons";
 import Link from "next/link";
 import HeroBanner from "@/components/HeroBanner";
-import BusinessCarousel from "@/components/BusinessCarousel";
-import SubscribeForm from "@/components/SubscribeForm";
 import Image from "next/image";
 import useSWR from "swr";
 import { categoryIcons } from "../src/categoryIcons";
 import { useSearch } from "../contexts/searchContext";
 import { useRouter } from "next/router";
 import SEO from "@/components/SEO";
+import dynamic from "next/dynamic";
+
+const DynamicSubscribe = dynamic(() => import("@/components/SubscribeForm"));
+const DynamicBusinessCarousel = dynamic(() =>
+  import("@/components/BusinessCarousel")
+);
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -108,7 +112,7 @@ export default function Home() {
                 Featured Businesses:
               </Typography>
               <Box my={3}>
-                <BusinessCarousel businesses={displayBusinesses} />
+                <DynamicBusinessCarousel businesses={displayBusinesses} />
               </Box>
             </section>
           )}
@@ -305,7 +309,7 @@ export default function Home() {
               </Paper>
             </div>
           </Box>
-          <SubscribeForm />
+          <DynamicSubscribe />
         </div>
       </main>
     </>

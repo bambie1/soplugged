@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     background: "#f9f9f9",
     transition: "background 1s",
+    padding: "8px",
     "&:hover": {
       background: "white",
       borderColor: `${theme.palette.primary.main}`,
@@ -54,7 +55,6 @@ const BusinessCard = ({ mini, average, ...props }) => {
     logo_url,
     sample_images,
     category,
-    business_description,
     fixed_to_one_location,
     street_address,
     slug,
@@ -72,13 +72,9 @@ const BusinessCard = ({ mini, average, ...props }) => {
           </Typography>
         </BusinessHeader>
 
-        {/* <br></br> */}
         <Typography variant="body1" style={{ fontWeight: "bold" }}>
           CATEGORY: {category}
         </Typography>
-        {/* <Typography variant="body2">
-            {textTruncate(business_description || "")}
-          </Typography> */}
         <br></br>
         {!mini && (
           <>

@@ -38,14 +38,16 @@ const Join = ({ referrer }) => {
       <div className="page" style={{ zIndex: "1", background: "white" }}>
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">Join SoPlugged</Typography>
-          <Typography>
+          <Typography variant="body1">
             Please verify your identity via one of the following sign-in
             methods:
           </Typography>
           <div className={classes.paper}>
             <FirebaseAuth referrer={referrer} />
           </div>
-          <Typography>We want to make sure you're real.</Typography>
+          <Typography variant="body2">
+            We want to make sure you're real.
+          </Typography>
           <Link href="/search">
             <a>
               <Button variant="outlined" color="secondary">

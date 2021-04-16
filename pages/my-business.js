@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import BusinessInfoForm from "../components/BusinessInfoForm";
 import { Container, makeStyles } from "../components/mui-components";
 import { useRouter } from "next/router";
-import SavingAnimation from "../components/SavingAnimation";
 import { submitBusinessObject } from "../src/updateBusiness";
 import SEO from "@/components/SEO";
-import { Alert } from "@/components/mui-lab";
-import swal from "sweetalert";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
-import firebaseClient from "../utils/firebaseClient";
-import firebase from "firebase/app";
+
+import dynamic from "next/dynamic";
+
+const DynamicSwal = dynamic(() => import("sweetalert"));
+const DynamicSaveAnimation = dynamic(() =>
+  import("../components/SavingAnimation")
+);
+const DynamicAlert = dynamic(() =>
+  import("@/components/mui-lab").then((mod) => mod.Alert)
+);
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -28,7 +33,7 @@ const EditBusiness = ({ business, token }) => {
   const [error, setError] = useState(false);
 
   const swalFunction = async (slug, business) => {
-    swal({
+    DynamicSwal({
       title: business ? "Business Updated!" : "Business Created",
       text: business
         ? "Your business was updated successfully!"
@@ -48,7 +53,7 @@ const EditBusiness = ({ business, token }) => {
             router.push(`/business/${slug}`);
             break;
           case "learn":
-            swal({
+            DynamicSwal({
               icon: "success",
               title: "What next?",
               text:
@@ -85,17 +90,17 @@ const EditBusiness = ({ business, token }) => {
         <div className={classes.page}>
           <Container maxWidth="lg">
             {error && (
-              <Alert severity="error">
+              <DynamicAlert severity="error">
                 An error occured while saving. Another business likely exists
                 with the same name
-              </Alert>
+              </DynamicAlert>
             )}
             <BusinessInfoForm
               submitHandler={handleSubmit}
               currentBusiness={business}
             />
           </Container>
-          {saving && <SavingAnimation />}
+          {saving && <DynamicSaveAnimation />}
         </div>
       </>
     );

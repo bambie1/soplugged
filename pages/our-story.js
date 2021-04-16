@@ -5,8 +5,10 @@ import {
   makeStyles,
 } from "../components/mui-components";
 import Link from "next/link";
-import SubscribeForm from "../components/SubscribeForm";
+import dynamic from "next/dynamic";
 import SEO from "@/components/SEO";
+
+const DynamicSubscribe = dynamic(() => import("@/components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -97,7 +99,7 @@ const OurStory = () => {
               </Link>
             </div>
           </Container>
-          <SubscribeForm />
+          <DynamicSubscribe />
         </Container>
       </main>
     </>

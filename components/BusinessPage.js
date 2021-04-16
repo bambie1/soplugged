@@ -14,9 +14,12 @@ import ImageGallery from "react-image-gallery";
 import { useSearch } from "@/contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import FavoriteButton from "./FavoriteButton";
-import ContactForm from "./ContactForm";
 import BusinessHeader from "./BusinessHeader";
+
+import dynamic from "next/dynamic";
+
+const DynamicContact = dynamic(() => import("./ContactForm"));
+const DynamicFavorite = dynamic(() => import("./FavoriteButton"));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -191,7 +194,7 @@ const BusinessPage = ({ business, user }) => {
                   Would you recommend this business? Give it a like!
                 </Typography>
                 <br></br>
-                <FavoriteButton
+                <DynamicFavorite
                   business_id={id}
                   user={user}
                   numberOfLikes={number_of_likes}
@@ -205,7 +208,7 @@ const BusinessPage = ({ business, user }) => {
           <Typography variant="body2" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
-          <ContactForm user={user} business_email={creator.email} />
+          <DynamicContact user={user} business_email={creator.email} />
           <div className={classes.filler}></div>
         </Grid>
       </Grid>
@@ -214,7 +217,7 @@ const BusinessPage = ({ business, user }) => {
           <Typography>
             Would you recommend this business? Give it a like!
           </Typography>
-          <FavoriteButton
+          <DynamicFavorite
             business_id={id}
             user={user}
             numberOfLikes={number_of_likes}
