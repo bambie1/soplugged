@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
           <DynamicAlert severity="info" style={{ marginBottom: "16px" }}>
             We'll just be a second while we load the page for you
           </DynamicAlert>
-          <DynamicProgress color="secondary" />
+          <DynamicProgress color="secondary" aria-label="loading progress" />
         </div>
       </div>
       <DynamicFooter />

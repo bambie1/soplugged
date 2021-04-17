@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const SEO = ({ description, title }) => {
   const router = useRouter();
   const firstUrl = router.pathname || "not-found";
-  const url = "https://www.soplugged.com" + firstUrl === "/" ? "" : firstUrl;
+  const url = "https://www.soplugged.com" + firstUrl;
   return (
     <Head>
       <meta name="description" content={description || ""} />

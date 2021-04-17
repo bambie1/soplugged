@@ -275,6 +275,7 @@ export default function Home() {
                   width={400}
                   height={400}
                   src="/images/buy_black_illustration2.svg"
+                  alt="black lady tracking finances"
                 />
               </div>
 
@@ -299,6 +300,7 @@ export default function Home() {
                     <a
                       style={{ marginRight: "auto", marginTop: "16px" }}
                       target="_blank"
+                      rel="noopener"
                     >
                       <Button variant="outlined" color="secondary">
                         Read more on our blog

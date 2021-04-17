@@ -18,6 +18,7 @@ const CategorySearch = forwardRef((props, ref) => {
         setInfoChanged &&
           setInfoChanged(!(newValue?.label === defaultCategory));
       }}
+      getOptionSelected={(option, value) => option.label == value.label}
       getOptionLabel={(option) => option.label}
       inputValue={inputValue}
       onInputChange={(e, newInputValue) => {
