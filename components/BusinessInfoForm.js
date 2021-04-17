@@ -78,7 +78,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
     "businessDescription",
     currentBusiness?.businessDescription || ""
   );
-  const [logo, setLogo] = useState(null);
+  const [logoPreview, setLogoPreview] = useState("");
   const [infoChanged, setInfoChanged] = useState(false);
   const [files, setFiles] = useState(fbUrls);
   const [checked, setChecked] = useState(
@@ -115,7 +115,18 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
     setInfoChanged(true);
     setChecked(e.target.checked);
   };
+  const handleLogoUpload = (e) => {
+    const fileReceived = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(fileReceived);
+    reader.onloadend = () => {
+      setLogoPreview(reader.result);
+    };
+    setInfoChanged(true);
+  };
+
   const onSubmit = (data) => {
+    console.log({ data });
     setInfoChanged(false);
     submitHandler(data, files);
   };
@@ -360,13 +371,13 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                   <InputLabel style={{ marginRight: "8px" }}>
                     Business logo:
                   </InputLabel>
-                  <Typography
-                    display="inline"
-                    style={{ marginLeft: "8px", fontSize: "0.7rem" }}
-                  >
-                    {logo && logo.name}
-                  </Typography>
-                  {currentBusiness?.logo_url && !logo && (
+                  {logoPreview && (
+                    <Avatar src={logoPreview} variant="square">
+                      {currentBusiness?.business_name.charAt(0)}
+                    </Avatar>
+                  )}
+
+                  {currentBusiness?.logo_url && !logoPreview && (
                     <Avatar src={currentBusiness?.logo_url} variant="square">
                       {currentBusiness?.business_name.charAt(0)}
                     </Avatar>
@@ -378,10 +389,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                     name="logo"
                     ref={register}
                     type="file"
-                    onChange={(e) => {
-                      setLogo(e.target.files[0]);
-                      setInfoChanged(true);
-                    }}
+                    onChange={handleLogoUpload}
                   />
                   <label htmlFor="business-logo" style={{ marginLeft: "8px" }}>
                     <Button
@@ -389,7 +397,7 @@ const BusinessInfoForm = ({ submitHandler, currentBusiness }) => {
                       color="secondary"
                       component="span"
                     >
-                      {logo || currentBusiness?.logo_url
+                      {logoPreview || currentBusiness?.logo_url
                         ? "Change Logo"
                         : "Upload Logo"}
                     </Button>

@@ -6,10 +6,10 @@ import { submitBusinessObject } from "../src/updateBusiness";
 import SEO from "@/components/SEO";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
+import swal from "sweetalert";
 
 import dynamic from "next/dynamic";
 
-const DynamicSwal = dynamic(() => import("sweetalert"));
 const DynamicSaveAnimation = dynamic(() =>
   import("../components/SavingAnimation")
 );
@@ -33,7 +33,7 @@ const EditBusiness = ({ business, token }) => {
   const [error, setError] = useState(false);
 
   const swalFunction = async (slug, business) => {
-    DynamicSwal({
+    swal({
       title: business ? "Business Updated!" : "Business Created",
       text: business
         ? "Your business was updated successfully!"
@@ -53,7 +53,7 @@ const EditBusiness = ({ business, token }) => {
             router.push(`/business/${slug}`);
             break;
           case "learn":
-            DynamicSwal({
+            swal({
               icon: "success",
               title: "What next?",
               text:
