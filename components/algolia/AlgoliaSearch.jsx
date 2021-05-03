@@ -13,9 +13,9 @@ import algoliasearch from "algoliasearch/lite";
 import AlgoliaHit from "./AlgoliaHit";
 import { CustomRefinementList } from "./CustomRefinementList";
 import { CustomCurrentRefinements } from "./CustomRefinements";
-import { Button, useMediaQuery } from "../mui-components";
-import { ExpandLessIcon, ExpandMoreIcon } from "../mui-icons";
-import { useSearch } from "../../contexts/searchContext";
+import { Button, useMediaQuery } from "@material/mui-components";
+import { ExpandLessIcon, ExpandMoreIcon } from "@material/mui-icons";
+import { useSearch } from "@contexts/searchContext";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID,

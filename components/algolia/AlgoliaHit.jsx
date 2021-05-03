@@ -1,11 +1,16 @@
 import React from "react";
-import { makeStyles, Typography, Avatar, IconButton } from "../mui-components";
-import { CheckIcon } from "../mui-icons";
+import {
+  makeStyles,
+  Typography,
+  Avatar,
+  IconButton,
+} from "@material/mui-components";
+import { CheckIcon } from "@material/mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 import BusinessHeader from "../BusinessHeader";
-import { useAuth } from "@/contexts/authContext";
+import { useAuth } from "@contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +62,7 @@ const AlgoliaHit = ({ hit }) => {
             </BusinessHeader>
 
             <Typography variant="body1" style={{ fontWeight: "bold" }}>
-              CATEGORY: <Highlight attribute="category" hit={hit} />
+              <Highlight attribute="category" hit={hit} />
             </Typography>
             <Typography variant="body2">
               <Snippet attribute="business_description" hit={hit} />

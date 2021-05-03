@@ -9,8 +9,8 @@ import {
   Button,
   List,
   ListItem,
-} from "../mui-components";
-import { ListItemIcon } from "../mui-icons";
+} from "@material/mui-components";
+import { ListItemIcon } from "@material/mui-icons";
 
 const ITEMS_LIMIT = 4;
 const useStyles = makeStyles((theme) => ({
