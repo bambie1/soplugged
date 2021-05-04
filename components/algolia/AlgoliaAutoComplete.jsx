@@ -16,9 +16,8 @@ const AlgoliaAutoComplete = () => {
   const { setContextCategory } = useSearch();
 
   const onSuggestionSelected = (_, { suggestion }) => {
-    // console.log({ suggestion });
     // setContextCategory(suggestion.name);
-    // router.push("/search");
+    suggestion.slug && router.push(`/business/${suggestion.slug}`);
   };
 
   const onSuggestionCleared = () => {

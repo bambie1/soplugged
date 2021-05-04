@@ -11,6 +11,9 @@
   font-size: inherit;
   font-family: inherit;
 }
+.ais-SearchBox-input {
+  padding: 0.5rem 1.7rem;
+}
 .ais-Highlight-highlighted,
 .ais-Snippet-highlighted {
   background-color: #bdbdbd;
@@ -24,7 +27,10 @@
 }
 input.ais-SearchBox-input:focus,
 input.react-autosuggest__input:focus {
-  outline-color: var(--dark);
+  outline-color: var(--light);
+}
+input.react-autosuggest__input:focus-visible {
+  outline-color: var(--light);
 }
 .ais-PoweredBy {
   display: inline-flex;
@@ -72,6 +78,11 @@ input.react-autosuggest__input:focus {
 .ais-CurrentRefinements {
   margin: 2px 0px 16px;
 }
+/* highlight: matching letters/words */
+ais-highlight-0000000000 {
+  color: #ff914d;
+  border-bottom: 1px solid #ff914d;
+}
 li.ais-CurrentRefinements-item {
   font-size: 0.7rem;
   flex-wrap: wrap;
@@ -81,7 +92,7 @@ li.ais-CurrentRefinements-item {
   margin-top: 24px;
 }
 input.react-autosuggest__input {
-  width: 90%;
+  width: 100%;
   padding: 1rem;
   font-size: 1rem;
   font-family: "Raleway";
@@ -99,23 +110,53 @@ input.react-autosuggest__input {
   padding-left: 0px;
   margin: 0px;
   position: absolute;
-  background: #fffaf2;
+  background: white;
   width: 100%;
-  border-radius: 10px;
+  /* margin-top: -5px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: white;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 .react-autosuggest__suggestion {
   padding: 8px;
-  border-bottom: 1px solid var(--dark);
-
+  /* border-bottom: 1px solid var(--dark); */
   font-family: "Raleway";
   cursor: pointer;
+  background: white;
+  margin: 4px 2px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
-.react-autosuggest__suggestion:last-child {
-  border-radius: 10px;
+.react-autosuggest__suggestion--highlighted {
+  background-color: #fffaf2;
+  opacity: 0.8;
+  border-left: 2px solid #cdb693;
 }
 .autocompleteTags {
   font-size: 0.8rem;
   font-style: italic;
+  display: block;
+}
+.suggestionDiv {
+  display: flex;
+}
+.suggestionCaption {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.no-suggestions {
+  background-color: #fffaf2;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 32px 8px 8px;
+  margin-top: -5px;
 }
 @media only screen and (min-width: 600px) {
   .ais-Hits-item {

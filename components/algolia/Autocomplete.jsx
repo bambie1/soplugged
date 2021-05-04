@@ -5,7 +5,14 @@ import {
   connectAutoComplete,
 } from "react-instantsearch-dom";
 import AutoSuggest from "react-autosuggest";
-import { makeStyles, Typography, Avatar } from "@material/mui-components";
+import {
+  makeStyles,
+  Typography,
+  Avatar,
+  Button,
+} from "@material/mui-components";
+import Link from "next/link";
+import SearchOutlined from "@material-ui/icons/SearchOutlined";
 class AutoComplete extends Component {
   state = {
     value: this.props.currentRefinement,
@@ -77,18 +84,37 @@ class AutoComplete extends Component {
       placeholder: "What are you looking for?",
       onChange: this.onChange,
       value,
+      type: "search",
     };
 
     return (
-      <AutoSuggest
-        suggestions={hits}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        onSuggestionSelected={onSuggestionSelected}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps}
-      />
+      <div className="inputDiv">
+        <AutoSuggest
+          suggestions={hits}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionSelected={onSuggestionSelected}
+          getSuggestionValue={this.getSuggestionValue}
+          renderSuggestion={this.renderSuggestion}
+          highlightFirstSuggestion={true}
+          shouldRenderSuggestions={() => true}
+          // alwaysRenderSuggestions={true}
+          inputProps={inputProps}
+        />
+        {!(value.trim() === "") && hits.length === 0 && (
+          <div className="no-suggestions">
+            <SearchOutlined fontSize="large" color="primary" />
+            <Typography color="textSecondary" gutterBottom={true}>
+              No results found for "{value.trim()}"
+            </Typography>
+            {/* <Link href="/search">
+              <a>
+                <Button variant="outlined">Go to Directory</Button>
+              </a>
+            </Link> */}
+          </div>
+        )}
+      </div>
     );
   }
 }
