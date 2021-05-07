@@ -12,7 +12,6 @@ import { AuthProvider } from "@contexts/authContext";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import { init } from "../utils/sentry";
-import "nprogress/nprogress.css";
 import SavingAnimation from "@components/SavingAnimation";
 
 init();
