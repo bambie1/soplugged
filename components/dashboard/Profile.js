@@ -5,7 +5,7 @@ import {
   Typography,
   Button,
   makeStyles,
-} from "./mui-components";
+} from "@material/mui-components";
 import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({

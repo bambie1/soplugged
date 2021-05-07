@@ -1,6 +1,6 @@
-import { Typography } from "./mui-components";
+import { Typography } from "@material/mui-components";
 
-const SavingAnimation = () => {
+const SavingAnimation = ({ message }) => {
   return (
     <div
       className="backdrop"
@@ -15,9 +15,7 @@ const SavingAnimation = () => {
             <div key={x}></div>
           ))}
         </div>
-        <Typography style={{ color: "white" }}>
-          Updating your Business page
-        </Typography>
+        <Typography style={{ color: "white" }}>{message}</Typography>
       </div>
     </div>
   );

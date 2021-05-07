@@ -1,5 +1,5 @@
 import React from "react";
-import { Pagination } from "./mui-lab";
+import { Pagination } from "@material/mui-lab";
 
 const PaginationBar = ({ totalCount, pageLimit, handleClick }) => {
   let pageCount = Math.ceil(totalCount / pageLimit);

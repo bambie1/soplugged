@@ -3,10 +3,10 @@ import {
   Container,
   Typography,
   makeStyles,
-} from "../components/mui-components";
+} from "@material/mui-components";
 import Link from "next/link";
-import { ErrorIcon } from "../components/mui-icons";
-import SEO from "@/components/SEO";
+import { ErrorIcon } from "@material/mui-icons";
+import SEO from "@components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   container: {

@@ -10,6 +10,10 @@ export const theme = createMuiTheme({
       main: "#4e3505",
       light: "#fffaf2",
     },
+    tertiary: {
+      main: "#4e3505",
+      // main: "#CD9993",
+    },
   },
   typography: {
     fontFamily: [
@@ -25,6 +29,10 @@ export const theme = createMuiTheme({
     h1: {
       fontWeight: "700",
       fontSize: "2.5rem",
+    },
+    h2: {
+      fontWeight: "700",
+      fontSize: "1.8rem",
     },
     h5: {
       fontWeight: "bold",

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Grid, Typography, makeStyles, useMediaQuery } from "./mui-components";
+import {
+  Grid,
+  Typography,
+  makeStyles,
+  useMediaQuery,
+} from "@material/mui-components";
 import Image from "next/image";
-import BusinessCard from "./BusinessCard";
-import PaginationBar from "./Pagination";
+import BusinessCard from "../BusinessCard";
+import PaginationBar from "../Pagination";
 
 const useStyles = makeStyles((theme) => ({
   favorites: {

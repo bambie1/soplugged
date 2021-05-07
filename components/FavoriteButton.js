@@ -4,9 +4,14 @@ import {
   Snackbar,
   IconButton,
   makeStyles,
-} from "./mui-components";
+  Tooltip,
+} from "@material/mui-components";
 import React, { useState } from "react";
-import { FavoriteBorderIcon, FavoriteIcon, CloseIcon } from "./mui-icons";
+import {
+  FavoriteBorderIcon,
+  FavoriteIcon,
+  CloseIcon,
+} from "@material/mui-icons";
 import Link from "next/link";
 import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
 import * as Sentry from "@sentry/node";
@@ -102,17 +107,20 @@ const FavoriteButton = ({
   };
   return (
     <>
-      <Button
-        variant={mini ? "text" : "contained"}
-        color={mini ? "secondary" : "primary"}
-        startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-        onClick={handleClick}
-        disabled={!user?.email || disabled}
-        className={classes.button}
-        style={{ marginTop: mini ? "auto" : "8px" }}
-      >
-        {mini ? likes : `Likes - ${likes} `}
-      </Button>
+      <Tooltip title={liked ? "Remove from Favorites" : "Add to Favorites"}>
+        <span className={classes.button}>
+          <Button
+            variant={mini ? "text" : "contained"}
+            color={mini ? "secondary" : "primary"}
+            startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            onClick={handleClick}
+            disabled={!user?.email || disabled}
+            style={{ marginTop: mini ? "auto" : "8px" }}
+          >
+            {mini ? likes : `Likes - ${likes} `}
+          </Button>
+        </span>
+      </Tooltip>
       {!user?.email && !mini && (
         <a
           href="/join"

@@ -1,4 +1,4 @@
-import { makeStyles } from "./mui-components";
+import { makeStyles } from "@material/mui-components";
 
 const useStyles = makeStyles((theme) => ({
   root: ({ wrap }) => ({

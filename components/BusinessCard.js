@@ -1,8 +1,8 @@
 import React from "react";
-import { Avatar, Typography, makeStyles } from "./mui-components";
+import { Avatar, Typography, makeStyles } from "@material/mui-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { CheckIcon } from "./mui-icons";
+import { CheckIcon } from "@material/mui-icons";
 import Link from "next/link";
 import BusinessHeader from "./BusinessHeader";
 

@@ -1,9 +1,16 @@
-import React, { forwardRef, useState } from "react";
-import { Autocomplete } from "./mui-lab";
-import { LocationOnIcon } from "./mui-icons";
-import { Grid, Typography, TextField, makeStyles } from "./mui-components";
+import React, { useState } from "react";
+import { Autocomplete } from "@material/mui-lab";
+import { LocationOnIcon } from "@material/mui-icons";
+import {
+  Grid,
+  Typography,
+  makeStyles,
+  CustomTextField,
+} from "@material/mui-components";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
+import { useFormikContext } from "formik";
+import { useField } from "formik";
 
 function loadScript(src, position, id) {
   if (!position) {
@@ -27,19 +34,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //Google search box using Places API
-const LocationSearch = forwardRef((props, ref) => {
+const LocationSearch = ({ name, ...otherProps }) => {
   const classes = useStyles();
-  const { defaultLocation, setInfoChanged, ...otherProps } = props;
+  const { setFieldValue, values } = useFormikContext();
   const [value, setValue] = useState(
-    defaultLocation
+    values
       ? {
-          description: defaultLocation,
+          description: values.businessLocation,
         }
       : null
   );
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
+  const [field, meta] = useField(name);
+
+  const configTextField = {
+    ...field,
+    ...otherProps,
+    variant: "outlined",
+    fullWidth: true,
+  };
+  if (meta && meta.touched && meta.error) {
+    configTextField.error = true;
+    configTextField.helperText = meta.error;
+  }
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -116,19 +135,17 @@ const LocationSearch = forwardRef((props, ref) => {
       onChange={(e, newValue) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setValue(newValue);
-        setInfoChanged &&
-          setInfoChanged(!(newValue?.description === defaultLocation));
+        setFieldValue(name, newValue?.description || "");
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField
+        <CustomTextField
           {...params}
           {...otherProps}
           fullWidth
-          inputRef={ref}
-          style={{ backgroundColor: "white" }}
+          {...configTextField}
         />
       )}
       renderOption={(option) => {
@@ -163,6 +180,6 @@ const LocationSearch = forwardRef((props, ref) => {
       }}
     />
   );
-});
+};
 
 export default LocationSearch;

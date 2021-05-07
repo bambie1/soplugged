@@ -4,9 +4,9 @@ import {
   Button,
   Grid,
   makeStyles,
-} from "../components/mui-components";
+} from "@material/mui-components";
 import Link from "next/link";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {

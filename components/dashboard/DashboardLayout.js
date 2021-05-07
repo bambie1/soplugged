@@ -7,11 +7,11 @@ import {
   IconButton,
   Button,
   Typography,
-} from "@/components/mui-components";
-import DashboardNav from "@/components/DashboardNav";
-import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "./mui-icons";
+} from "@material/mui-components";
+import DashboardNav from "@components/dashboard/DashboardNav";
+import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "@material/mui-icons";
 import Link from "next/link";
-import SEO from "./SEO";
+import SEO from "../SEO";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +19,12 @@ const useStyles = makeStyles((theme) => ({
     background: "white",
     display: "flex",
     paddingTop: "70px",
-    minHeight: "100vh",
+    // minHeight: "100vh",
     [theme.breakpoints.up("sm")]: {
-      height: "100vh",
+      // height: "100vh",
+    },
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "100vh",
     },
   },
   container: {

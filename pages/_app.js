@@ -6,23 +6,36 @@ import "../styles/animation.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
 import Head from "next/head";
-import { SearchProvider } from "../contexts/searchContext";
-import { AuthProvider } from "../contexts/authContext";
+import { SearchProvider } from "@contexts/searchContext";
+import { BusinessFormProvider } from "@contexts/businessFormContext";
+import { AuthProvider } from "@contexts/authContext";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import { init } from "../utils/sentry";
+import "nprogress/nprogress.css";
+import SavingAnimation from "@components/SavingAnimation";
 
 init();
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const start = (url) => {
       gtag.pageview(url);
+      setLoading(true);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    const end = () => {
+      setLoading(false);
+    };
+
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
     };
   }, [router.events]);
 
@@ -44,9 +57,12 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <SearchProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <BusinessFormProvider>
+              <Layout>
+                {loading && <SavingAnimation message="Coming right up" />}
+                <Component {...pageProps} />
+              </Layout>
+            </BusinessFormProvider>
           </SearchProvider>
         </AuthProvider>
       </ThemeProvider>

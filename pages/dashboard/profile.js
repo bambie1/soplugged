@@ -1,9 +1,9 @@
 import React from "react";
-import Profile from "@/components/Profile";
-import DashboardLayout from "@/components/DashboardLayout";
+import Profile from "@components/dashboard/Profile";
+import DashboardLayout from "@components/dashboard/DashboardLayout";
 import { editUser, addUser, getUser } from "src/handleDBUser";
-import { Snackbar, IconButton } from "@/components/mui-components";
-import { CloseIcon } from "@/components/mui-icons";
+import { Snackbar, IconButton } from "@material/mui-components";
+import { CloseIcon } from "@material/mui-icons";
 import nookies from "nookies";
 import { verifyIdToken } from "../../utils/firebaseAdmin";
 
@@ -62,9 +62,12 @@ export async function getServerSideProps(context) {
       };
     } else throw new Error("no token found");
   } catch (error) {
-    context.res.writeHead(302, { location: "/join" });
-    context.res.end();
-    return { props: {} };
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
   }
 }
 

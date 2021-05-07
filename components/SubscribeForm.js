@@ -7,8 +7,8 @@ import {
   TextField,
   Container,
   makeStyles,
-} from "./mui-components";
-import { Alert } from "./mui-lab";
+} from "@material/mui-components";
+import { Alert } from "@material/mui-lab";
 import * as Sentry from "@sentry/node";
 
 const useStyles = makeStyles((theme) => ({

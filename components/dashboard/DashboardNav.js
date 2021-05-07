@@ -3,8 +3,8 @@ import {
   makeStyles,
   BottomNavigationAction,
   BottomNavigation,
-} from "./mui-components";
-import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "./mui-icons";
+} from "@material/mui-components";
+import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "@material/mui-icons";
 import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({

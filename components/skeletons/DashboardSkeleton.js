@@ -1,6 +1,6 @@
 import React from "react";
 import Skeleton from "./Skeleton";
-import { Grid, Paper, makeStyles, Container } from "../mui-components";
+import { Grid, Paper, makeStyles, Container } from "@material/mui-components";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

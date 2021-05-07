@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  makeStyles,
-} from "../components/mui-components";
-import AlgoliaSearch from "../components/algolia/AlgoliaSearch";
+import { Container, Typography, makeStyles } from "@material/mui-components";
+import AlgoliaSearch from "@components/algolia/AlgoliaSearch";
 import Link from "next/link";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -46,7 +42,7 @@ const Search = () => {
           <hr style={{ width: "70%", maxWidth: "500px" }}></hr>
           <Typography>
             Are you a business owner?{" "}
-            <Link href="/join">
+            <Link href="/my-business">
               <a className={classes.link}>Add your business to our platform</a>
             </Link>
           </Typography>

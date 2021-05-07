@@ -1,4 +1,3 @@
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
@@ -38,34 +37,95 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Collapse from "@material-ui/core/Collapse";
+import Tooltip from "@material-ui/core/Tooltip";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormLabel from "@material-ui/core/FormLabel";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
+import StepContent from "@material-ui/core/StepContent";
+import StepLabel from "@material-ui/core/StepLabel";
+import Input from "@material-ui/core/Input";
+import Badge from "@material-ui/core/Badge";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Slide from "@material-ui/core/Slide";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+
+const CustomTextField = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#4e3505",
+      },
+    },
+  },
+})(TextField);
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    color: theme.palette.primary.light,
-    borderColor: theme.palette.primary.light,
+    color: "white",
+    borderColor: theme.palette.tertiary.main,
+    backgroundColor: theme.palette.tertiary.main,
     "&:hover": {
-      color: "white",
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.tertiary.main,
+      color: theme.palette.secondary.main,
+    },
+  },
+  outlinedButton: {
+    borderColor: "white",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "rgb(255 255 255 / 74%)",
+      borderColor: "rgb(255 255 255 / 74%)",
+      color: theme.palette.secondary.main,
     },
   },
 }));
 
-const SecondaryButton = ({ children, ...props }) => {
+const WhiteButton = ({ children, ...props }) => {
   const classes = useStyles();
   return (
-    <Button variant="outlined" className={classes.button} {...props}>
+    <Button variant="contained" className={classes.button} {...props}>
       {children}
     </Button>
   );
 };
+const WhiteOutlinedButton = ({ children, ...props }) => {
+  const classes = useStyles();
+  return (
+    <Button variant="outlined" className={classes.outlinedButton} {...props}>
+      {children}
+    </Button>
+  );
+};
+
 export {
   InputLabel,
+  Card,
+  WhiteOutlinedButton,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Slide,
+  Badge,
+  Step,
+  Input,
+  Stepper,
+  StepLabel,
+  StepButton,
+  StepContent,
   Button,
   Box,
+  FormGroup,
+  FormLabel,
   Menu,
   MenuItem,
+  CustomTextField,
   Collapse,
-  SecondaryButton,
+  Tooltip,
   BottomNavigation,
   BottomNavigationAction,
   Grid,

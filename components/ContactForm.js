@@ -1,9 +1,14 @@
 import React from "react";
-import { Button, TextField, makeStyles, Typography } from "./mui-components";
+import {
+  Button,
+  TextField,
+  makeStyles,
+  Typography,
+} from "@material/mui-components";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import { Alert } from "./mui-lab";
+import { Alert } from "@material/mui-lab";
 import * as Sentry from "@sentry/node";
 
 const useStyles = makeStyles((theme) => ({

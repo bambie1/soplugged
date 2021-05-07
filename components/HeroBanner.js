@@ -1,10 +1,13 @@
-import { Typography } from "./mui-components";
+import { Typography } from "@material/mui-components";
 import AlgoliaAutoComplete from "./algolia/AlgoliaAutoComplete";
 import Image from "next/image";
 
 const HeroBanner = () => {
   return (
-    <header className="hero" style={{ backgroundColor: "#ff914d" }}>
+    <header
+      className="hero"
+      style={{ backgroundColor: "#ff914d", marginBottom: "24px" }}
+    >
       <div className="hero-side-image">
         <Image
           src="/images/black_woman_hair_tiny.png"
@@ -24,6 +27,8 @@ const HeroBanner = () => {
               fontFamily: ["Permanent Marker", "cursive"].join(","),
               color: "black",
               fontWeight: "normal",
+              fontSize: "2rem",
+              whiteSpace: "nowrap",
             }}
           >
             BLACK-OWNED

@@ -1,84 +1,95 @@
 import React, { useState } from "react";
-import BusinessInfoForm from "../components/BusinessInfoForm";
-import { Container, makeStyles } from "../components/mui-components";
-import { useRouter } from "next/router";
+import { Container, makeStyles } from "@material/mui-components";
 import { submitBusinessObject } from "../src/updateBusiness";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
-import swal from "sweetalert";
-
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 import dynamic from "next/dynamic";
+import StyledBusinessForm from "@components/multi-step-form/StyledBusinessForm";
+import swal from "sweetalert";
+import { useRouter } from "next/router";
 
 const DynamicSaveAnimation = dynamic(() =>
   import("../components/SavingAnimation")
 );
 const DynamicAlert = dynamic(() =>
-  import("@/components/mui-lab").then((mod) => mod.Alert)
+  import("@material/mui-lab").then((mod) => mod.Alert)
 );
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    padding: theme.spacing(10, 0, 2),
-    minHeight: "85vh",
+    padding: theme.spacing(10, 0, 0),
+    // minHeight: "100vh",
     zIndex: "1",
     background: "white",
+    display: "flex",
+  },
+  container: {
+    padding: "0",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: "50px",
+      marginBottom: "50px",
+    },
   },
 }));
 
 const EditBusiness = ({ business, token }) => {
   const classes = useStyles();
-  const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(false);
+  const { setBusiness } = useBusinessFormContext();
+  const router = useRouter();
 
-  const swalFunction = async (slug, business) => {
-    swal({
-      title: business ? "Business Updated!" : "Business Created",
-      text: business
-        ? "Your business was updated successfully!"
-        : "Your SoPlugged business was created successfully",
-      icon: "success",
-      buttons: {
-        view: business && "View Page",
-        learn: !business && {
-          text: "What next?",
-          value: "learn",
-        },
-      },
-    }).then((val) => {
-      if (val) {
-        switch (val) {
-          case "view":
-            router.push(`/business/${slug}`);
-            break;
-          case "learn":
-            swal({
-              icon: "success",
-              title: "What next?",
-              text:
-                "We'll send you a confirmation email shortly.\n\n In the meantime, we'll review your new business, and it will be added to our directory once ready.",
-              button: "View Page",
-            }).then((val) => {
-              if (val) router.push(`/business/${slug}`);
-            });
-            break;
-          default:
-            break;
-        }
-      }
-    });
-  };
-  const handleSubmit = async (newData, files) => {
+  React.useEffect(() => {
+    //set business in context
+    if (business) setBusiness(business);
+  }, [business]);
+  const handleSubmit = async (newData) => {
     setSaving(true);
-    let slug = await submitBusinessObject(newData, files, token, business);
+    let slug = await submitBusinessObject(newData, token, business);
     setSaving(false);
     if (!slug.error) {
-      swalFunction(slug, business);
+      swal({
+        title: business ? "Business Updated!" : "Business Created",
+        text: business
+          ? "Your business was updated successfully!"
+          : "Your SoPlugged business was created successfully",
+        icon: "success",
+        buttons: {
+          view: business && "View Page",
+          learn: !business && {
+            text: "What next?",
+            value: "learn",
+          },
+        },
+      }).then((val) => {
+        if (val) {
+          switch (val) {
+            case "view":
+              router.push(`/business/${slug}`);
+              break;
+            case "learn":
+              swal({
+                icon: "success",
+                title: "What next?",
+                text:
+                  "We'll send you a confirmation email shortly.\n\n In the meantime, we'll review your new business, and it will be added to our directory once ready.",
+                button: "View Page",
+              }).then((val) => {
+                if (val) router.push(`/business/${slug}`);
+              });
+              break;
+            default:
+              break;
+          }
+        }
+      });
     } else {
       console.log(slug.error);
       setError(true);
     }
+    return slug;
   };
   if (business !== undefined) {
     return (
@@ -88,19 +99,21 @@ const EditBusiness = ({ business, token }) => {
           title="My Business | SoPlugged"
         />
         <div className={classes.page}>
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" className={classes.container}>
             {error && (
               <DynamicAlert severity="error">
                 An error occured while saving. Another business likely exists
                 with the same name
               </DynamicAlert>
             )}
-            <BusinessInfoForm
+            <StyledBusinessForm
+              myBusiness={business}
               submitHandler={handleSubmit}
-              currentBusiness={business}
             />
           </Container>
-          {saving && <DynamicSaveAnimation />}
+          {saving && (
+            <DynamicSaveAnimation message="Updating your Business page" />
+          )}
         </div>
       </>
     );
@@ -134,9 +147,12 @@ export async function getServerSideProps(context) {
       };
     } else throw new Error("No token found");
   } catch (error) {
-    context.res.writeHead(302, { location: "/join" });
-    context.res.end();
-    return { props: {} };
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
   }
 }
 

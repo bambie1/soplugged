@@ -10,22 +10,20 @@ import {
   ListItemText,
   Paper,
   Box,
-} from "@/components/mui-components";
-import { PowerIcon, SettingsInputSvideoIcon } from "@/components/mui-icons";
+  WhiteOutlinedButton,
+} from "@material/mui-components";
+import { PowerIcon, SettingsInputSvideoIcon } from "@material/mui-icons";
 import Link from "next/link";
-import HeroBanner from "@/components/HeroBanner";
+import HeroBanner from "@components/HeroBanner";
 import Image from "next/image";
-import useSWR from "swr";
 import { categoryIcons } from "../src/categoryIcons";
-import { useSearch } from "../contexts/searchContext";
+import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 import dynamic from "next/dynamic";
+import TopCategories from "@components/TopCategories";
 
-const DynamicSubscribe = dynamic(() => import("@/components/SubscribeForm"));
-const DynamicBusinessCarousel = dynamic(() =>
-  import("@/components/BusinessCarousel")
-);
+const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -52,7 +50,22 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
+    paddingTop: "16px",
   },
+  consumerPaper: {
+    color: theme.palette.secondary.main,
+    "& .MuiListItemIcon-root": {
+      color: theme.palette.secondary.main,
+    },
+  },
+  ownerPaper: {
+    background: theme.palette.tertiary.main,
+    color: "white",
+    "& .MuiListItemIcon-root": {
+      color: "white",
+    },
+  },
+
   shortPaperDiv: {
     display: "flex",
     flexDirection: "column",
@@ -62,34 +75,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const fetcher = (url) =>
-  fetch(url, {
-    method: "GET",
-  }).then((r) => r.json());
-
 export default function Home() {
   const classes = useStyles();
-  const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
-    fetcher
-  );
-  function compare(a, b) {
-    if (a.id < b.id) {
-      return -1;
-    }
-    if (a.id > b.id) {
-      return 1;
-    }
-    return 0;
-  }
-  let filteredData =
-    data?.filter(
-      (business) =>
-        business?.logo_url !== "" &&
-        business?.sample_images !== "" &&
-        business?.business_description?.length > 30
-    ) || [];
-  let displayBusinesses = filteredData.sort(compare).slice(0, 7);
+
   const { setContextCategory } = useSearch();
   const router = useRouter();
   const handleClick = (label) => {
@@ -106,21 +94,12 @@ export default function Home() {
       <main style={{ zIndex: "1", background: "white" }}>
         <HeroBanner />
         <div className="body-content">
-          {filteredData.length > 0 && (
-            <section>
-              <Typography variant="h5" gutterBottom={true} align="center">
-                Featured Businesses:
-              </Typography>
-              <Box my={3}>
-                <DynamicBusinessCarousel businesses={displayBusinesses} />
-              </Box>
-            </section>
-          )}
+          <TopCategories />
           <Box my={3}>
             <Typography variant="h5" align="center" gutterBottom={true}>
               Why SoPlugged?
             </Typography>
-            <Typography align="center" gutterBottom={true}>
+            <Typography variant="body1" align="center" gutterBottom={true}>
               Whether you have a need, provide solutions, or both, SoPlugged is
               for you
             </Typography>
@@ -130,11 +109,11 @@ export default function Home() {
             >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
-                  <Paper className={classes.paper} elevation={2}>
-                    <Typography
-                      variant="h6"
-                      style={{ textAlign: "center", paddingTop: "8px" }}
-                    >
+                  <Paper
+                    className={`${classes.paper} ${classes.consumerPaper}`}
+                    elevation={2}
+                  >
+                    <Typography variant="h6" align="center">
                       Consumers
                     </Typography>
                     <List className={classes.list}>
@@ -142,7 +121,7 @@ export default function Home() {
                         <ListItemIcon>
                           <PowerIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Find the perfect black-owned businesses for your needs." />
+                        <ListItemText primary="Buy Black easily" />
                       </ListItem>
                       <ListItem>
                         <ListItemIcon>
@@ -156,7 +135,7 @@ export default function Home() {
                         </ListItemIcon>
                         <ListItemText primary="Save businesses to your favorites, and come back to them later" />
                       </ListItem>
-                      <ListItem>
+                      <ListItem style={{ marginBottom: "16px" }}>
                         <ListItemIcon>
                           <PowerIcon />
                         </ListItemIcon>
@@ -176,14 +155,10 @@ export default function Home() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Paper
-                    style={{ background: "#fffaf2" }}
-                    className={classes.paper}
+                    className={`${classes.paper} ${classes.ownerPaper}`}
                     elevation={2}
                   >
-                    <Typography
-                      variant="h6"
-                      style={{ textAlign: "center", paddingTop: "8px" }}
-                    >
+                    <Typography variant="h6" align="center">
                       Business Owners
                     </Typography>
                     <List className={classes.list}>
@@ -205,7 +180,7 @@ export default function Home() {
                         </ListItemIcon>
                         <ListItemText primary="Tap into a growing community of people looking to #buyblack" />
                       </ListItem>
-                      <ListItem>
+                      <ListItem style={{ marginBottom: "16px" }}>
                         <ListItemIcon>
                           <SettingsInputSvideoIcon />
                         </ListItemIcon>
@@ -214,9 +189,12 @@ export default function Home() {
                       <ListItem style={{ marginTop: "auto" }}>
                         <Link href="/my-business">
                           <a>
-                            <Button variant="contained" color="secondary">
+                            {/* <Button variant="outlined" color="inherit">
                               Register your Business
-                            </Button>
+                            </Button> */}
+                            <WhiteOutlinedButton>
+                              Register your Business
+                            </WhiteOutlinedButton>
                           </a>
                         </Link>
                       </ListItem>
@@ -227,48 +205,16 @@ export default function Home() {
             </Container>
           </Box>
 
-          <Box
-            textAlign="center"
-            py={2}
-            px={1}
-            my={3}
-            style={{ background: "#fffaf2" }}
-          >
-            <Typography variant="h5">We've got you covered</Typography>
-            <br></br>
-            <Grid container spacing={2} className={classes.gridContainer}>
-              {categoryIcons.map((icon) => (
-                <Grid
-                  item
-                  xs={6}
-                  sm={4}
-                  md={3}
-                  key={icon.imageSrc}
-                  className="categoryIcon"
-                  onClick={() => handleClick(icon.categoryText)}
-                >
-                  <Image src={icon.imageSrc} width={40} height={40} />
-                  <Typography>{icon.categoryText}</Typography>
-                </Grid>
-              ))}
-            </Grid>
-            <Link href="/search">
-              <a>
-                <Button variant="outlined" color="secondary">
-                  ... and more
-                </Button>
-              </a>
-            </Link>
-          </Box>
-
-          <Box mt={3} mb={5}>
+          <Box mt={4} mb={5}>
             <Typography variant="h5" align="center" gutterBottom={true}>
               Learn more about our community
             </Typography>
-            <Typography align="center" gutterBottom={true}>
+            <Typography variant="body1" align="center" gutterBottom={true}>
               Did we mention that we love, and support Black-owned businesses?
             </Typography>
-            <Typography align="center">Cause, we DO!!</Typography>
+            <Typography variant="body1" align="center">
+              Cause, we DO!!
+            </Typography>
             <div className="learn-more">
               <div className="learn-more-image">
                 <Image
@@ -311,8 +257,8 @@ export default function Home() {
               </Paper>
             </div>
           </Box>
-          <DynamicSubscribe />
         </div>
+        <DynamicSubscribe />
       </main>
     </>
   );

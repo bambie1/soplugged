@@ -3,12 +3,12 @@ import {
   Typography,
   Button,
   makeStyles,
-} from "../components/mui-components";
+} from "@material/mui-components";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 
-const DynamicSubscribe = dynamic(() => import("@/components/SubscribeForm"));
+const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -63,7 +63,7 @@ const OurStory = () => {
               SoPlugged is an online platform that makes #buyingblack easy! Our
               search-friendly platform helps end-users connect to Black-owned
               businesses across Canada. When you{" "}
-              <a href="/join" className={classes.link}>
+              <a href="/my-business" className={classes.link}>
                 register
               </a>{" "}
               your business on our platform, you increase your brand visibility
@@ -99,8 +99,8 @@ const OurStory = () => {
               </Link>
             </div>
           </Container>
-          <DynamicSubscribe />
         </Container>
+        <DynamicSubscribe />
       </main>
     </>
   );

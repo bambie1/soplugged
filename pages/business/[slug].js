@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Container, makeStyles } from "@/components/mui-components";
-import Link from "next/link";
-import SEO from "@/components/SEO";
-import BusinessPage from "@/components/BusinessPage";
-import { useAuth } from "@/contexts/authContext";
+import { Button, Container, makeStyles } from "@material/mui-components";
+import SEO from "@components/SEO";
+import BusinessPage from "@components/BusinessPage";
+import { useAuth } from "@contexts/authContext";
+import { useSearch } from "@contexts/searchContext";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -28,6 +29,13 @@ const useStyles = makeStyles((theme) => ({
 const BusinessSlug = ({ business }) => {
   const classes = useStyles();
   const { user } = useAuth();
+  const router = useRouter();
+  const { setContextCategory } = useSearch();
+
+  const backToSearch = () => {
+    setContextCategory(business?.category);
+    router.push("/search");
+  };
 
   return (
     <>
@@ -35,17 +43,15 @@ const BusinessSlug = ({ business }) => {
         description={`SoPlugged page for ${
           business?.business_name || "a business"
         }`}
-        title={`${business?.business_name || ""} | SoPlugged`}
+        title={`${business?.business_name.toUpperCase() || ""} | SoPlugged`}
       />
       <Container className={classes.page} maxWidth="lg">
         <br></br>
         {business && <BusinessPage business={business} user={user} />}
         <div className={classes.buttonDiv}>
-          <Link href="/search">
-            <a>
-              <Button variant="outlined">Back to Directory</Button>
-            </a>
-          </Link>
+          <Button variant="outlined" onClick={backToSearch}>
+            View business like this
+          </Button>
         </div>
       </Container>
     </>

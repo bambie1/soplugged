@@ -4,18 +4,22 @@ import {
   Avatar,
   makeStyles,
   Box,
-  SecondaryButton,
   Fab,
-} from "./mui-components";
+  Button,
+} from "@material/mui-components";
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { CheckIcon, InstagramIcon, LanguageIcon, EditIcon } from "./mui-icons";
+import {
+  CheckIcon,
+  InstagramIcon,
+  LanguageIcon,
+  EditIcon,
+} from "@material/mui-icons";
 import ImageGallery from "react-image-gallery";
-import { useSearch } from "@/contexts/searchContext";
+import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import BusinessHeader from "./BusinessHeader";
-
 import dynamic from "next/dynamic";
 
 const DynamicContact = dynamic(() => import("./ContactForm"));
@@ -64,6 +68,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  description: {
+    lineHeight: "1.5",
+    "& > ul": {
+      display: "table",
+      margin: "auto",
+    },
+    "& > ol": {
+      display: "table",
+      margin: "auto",
+    },
   },
 }));
 
@@ -150,22 +165,21 @@ const BusinessPage = ({ business, user }) => {
                 <br></br>
               </>
             )}
-            <Typography variant="body2" className={classes.sectionTitle}>
-              <span>ABOUT BUSINESS:</span>
-            </Typography>
-            <Typography variant="body1">{business_description}</Typography>
-            <br></br>
             <Box display="flex" justifyContent="center" flexWrap="wrap">
               {business_url && (
                 <a
-                  href={`http://${business_url}`}
+                  href={business_url}
                   target="_blank"
                   rel="noopener"
                   className={classes.button}
                 >
-                  <SecondaryButton startIcon={<LanguageIcon />}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    startIcon={<LanguageIcon />}
+                  >
                     Visit Website
-                  </SecondaryButton>
+                  </Button>
                 </a>
               )}
               {ig_handle && (
@@ -175,12 +189,25 @@ const BusinessPage = ({ business, user }) => {
                   rel="noopener"
                   className={classes.button}
                 >
-                  <SecondaryButton startIcon={<InstagramIcon />}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    startIcon={<InstagramIcon />}
+                  >
                     Visit Instagram
-                  </SecondaryButton>
+                  </Button>
                 </a>
               )}
             </Box>
+            <Typography variant="body1" className={classes.sectionTitle}>
+              <span>ABOUT BUSINESS:</span>
+            </Typography>
+            <div
+              className={classes.description}
+              dangerouslySetInnerHTML={{ __html: business_description }}
+            ></div>
+            <br></br>
+
             {!hasPreview && (
               <div
                 style={{
@@ -205,7 +232,7 @@ const BusinessPage = ({ business, user }) => {
           </div>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Typography variant="body2" className={classes.sectionTitle}>
+          <Typography variant="body1" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
           <DynamicContact user={user} business_email={creator.email} />

@@ -31,33 +31,15 @@ const updateBusiness = async (
   }
 };
 
-export const submitBusinessObject = async (
-  data,
-  files,
-  userToken,
-  business
-) => {
-  const { logo } = data;
-  let logoUrl = "";
-  let images = [];
-  if (logo[0]) logoUrl = await getImageUrl(logo[0]);
-  for (let i = 0; i < files.length; i++) {
-    files[i] &&
-      images.push(
-        typeof files[i] === "string" ? files[i] : await getImageUrl(files[i])
-      );
-  }
-
-  if (!logoUrl) logoUrl = business?.logo_url;
-
+export const submitBusinessObject = async (data, userToken, business) => {
   const businessObject = {
     phone_number: data.ownerPhone,
     business_name: data.businessName.trim(),
     slug: slugify(data.businessName.trim(), { lower: true }),
     business_url: data.businessUrl.trim(),
     business_location: data.businessLocation,
-    logo_url: logoUrl || "",
-    sample_images: images.join(),
+    logo_url: data.logoUrl,
+    sample_images: data.sampleImages,
     street_address: data.streetAddress,
     fixed_to_one_location: !data.canadaWide,
     category: data.businessCategory,

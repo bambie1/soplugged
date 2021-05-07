@@ -1,6 +1,6 @@
 import React from "react";
-import Favorites from "@/components/Favorites";
-import DashboardLayout from "@/components/DashboardLayout";
+import Favorites from "@components/dashboard/Favorites";
+import DashboardLayout from "@components/dashboard/DashboardLayout";
 import nookies from "nookies";
 import { verifyIdToken } from "../../utils/firebaseAdmin";
 
@@ -43,9 +43,12 @@ export async function getServerSideProps(context) {
       };
     } else throw new Error("No token found");
   } catch (error) {
-    context.res.writeHead(302, { location: "/join" });
-    context.res.end();
-    return { props: {} };
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
   }
 }
 

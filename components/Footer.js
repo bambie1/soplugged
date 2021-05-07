@@ -6,8 +6,10 @@ import {
   Divider,
   IconButton,
   makeStyles,
-} from "./mui-components";
-import { InstagramIcon, LinkedInIcon } from "./mui-icons";
+  useMediaQuery,
+} from "@material/mui-components";
+import { useTheme } from "@material-ui/core/styles";
+import { InstagramIcon, LinkedInIcon } from "@material/mui-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -30,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   const router = useRouter();
-  return !router.pathname.startsWith("/dashboard") ? (
+  const theme = useTheme();
+  const mobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
+
+  return !(router.pathname.startsWith("/dashboard") && !mobileScreen) ? (
     <footer className="footer">
       <Container className="footer-container">
         <Grid container>

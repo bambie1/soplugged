@@ -6,7 +6,7 @@ import {
   DialogActions,
   Dialog,
   DialogTitle,
-} from "./mui-components";
+} from "@material/mui-components";
 import firebase from "firebase/app";
 import { useRouter } from "next/router";
 

@@ -13,7 +13,9 @@ import {
   Divider,
   makeStyles,
   Collapse,
-} from "./mui-components";
+  Menu,
+  MenuItem,
+} from "@material/mui-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -28,9 +30,11 @@ import {
   ExpandLessIcon,
   FavoriteIcon,
   AccountCircleIcon,
-} from "./mui-icons";
+  MoreVertIcon,
+  EditIcon,
+} from "@material/mui-icons";
 import SignOutAlert from "./SignOutAlert";
-import { useAuth } from "@/contexts/authContext";
+import { useAuth } from "@contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   navDiv: {
@@ -90,6 +94,17 @@ const Header = (props) => {
   const [signOut, setSignOut] = useState(false);
   const [collapseOpen, setCollapseOpen] = React.useState(false);
 
+  // Sign out menu on desktop
+  const [signOutAnchorEl, setSignOutAnchorEl] = React.useState(null);
+  const signOutMenuOpen = Boolean(signOutAnchorEl);
+  const signOutMenuClick = (event) => {
+    setSignOutAnchorEl(event.currentTarget);
+  };
+  const signOutMenuClose = () => {
+    setSignOutAnchorEl(null);
+  };
+
+  // Drawer component on mobile
   const handleClick = () => {
     setCollapseOpen(!collapseOpen);
   };
@@ -123,7 +138,11 @@ const Header = (props) => {
           </Link>
         </ListItem>
         <Divider />
-        <ListItem onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+        <ListItem
+          button
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
           <Link href="/search">
             <a className={classes.mobileLink}>
               <>
@@ -138,7 +157,7 @@ const Header = (props) => {
         {user?.email ? (
           <>
             <div>
-              <ListItem onClick={handleClick}>
+              <ListItem onClick={handleClick} button>
                 <ListItemIcon>
                   <BusinessCenterIcon />
                 </ListItemIcon>
@@ -190,8 +209,21 @@ const Header = (props) => {
                 </List>
               </Collapse>
             </div>
-
+            <ListItem onClick={toggleDrawer(false)} button>
+              <Link href="/my-business">
+                <a className={classes.mobileLink}>
+                  <>
+                    <ListItemIcon>
+                      <EditIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="My Business" />
+                  </>
+                </a>
+              </Link>
+            </ListItem>
+            <Divider />
             <ListItem
+              button
               onClick={() => {
                 setSignOut(true);
                 toggleDrawer(false);
@@ -205,6 +237,7 @@ const Header = (props) => {
           </>
         ) : (
           <ListItem
+            button
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
           >
@@ -262,52 +295,83 @@ const Header = (props) => {
               </a>
             </Link>
             <div className="gap"></div>
-            <div className="sectionDesktop">
-              <Link href="/search">
-                <a>
-                  <Button color="inherit">DIRECTORY</Button>
-                </a>
-              </Link>
-              {user?.email ? (
-                <>
-                  <Link href="/dashboard">
+            {router.pathname != "/join" && (
+              <>
+                <div className="sectionDesktop">
+                  <Link href="/search">
                     <a>
-                      <Button color="inherit">MY DASHBOARD</Button>
+                      <Button color="inherit">DIRECTORY</Button>
                     </a>
                   </Link>
+                  {user?.email ? (
+                    <>
+                      <Link href="/dashboard">
+                        <a>
+                          <Button color="inherit">MY DASHBOARD</Button>
+                        </a>
+                      </Link>
+                      <Link href="/my-business">
+                        <a>
+                          <Button color="inherit" variant="outlined">
+                            MY BUSINESS
+                          </Button>
+                        </a>
+                      </Link>
+                      <IconButton
+                        aria-label="more"
+                        aria-controls="desktop-menu"
+                        aria-haspopup="true"
+                        onClick={signOutMenuClick}
+                      >
+                        <MoreVertIcon />
+                      </IconButton>
+                      <Menu
+                        id="desktop-menu"
+                        anchorEl={signOutAnchorEl}
+                        open={signOutMenuOpen}
+                        onClose={signOutMenuClose}
+                      >
+                        <MenuItem
+                          onClick={() => {
+                            signOutMenuClose();
+                            setSignOut(true);
+                          }}
+                        >
+                          Sign Out
+                        </MenuItem>
+                      </Menu>
+                    </>
+                  ) : (
+                    <Link href="/join">
+                      <a>
+                        <Button color="inherit" variant="outlined">
+                          JOIN
+                        </Button>
+                      </a>
+                    </Link>
+                  )}
+                </div>
+                <div className="sectionMobile">
+                  <IconButton
+                    color="secondary"
+                    aria-label="open drawer"
+                    onClick={toggleDrawer(true)}
+                    edge="start"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <SwipeableDrawer
+                    anchor="right"
+                    open={drawerOpen}
+                    onClose={toggleDrawer(false)}
+                    onOpen={toggleDrawer(true)}
+                  >
+                    {list()}
+                  </SwipeableDrawer>
+                </div>
+              </>
+            )}
 
-                  <Button color="inherit" onClick={() => setSignOut(true)}>
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <Link href="/join">
-                  <a>
-                    <Button color="inherit" variant="outlined">
-                      JOIN
-                    </Button>
-                  </a>
-                </Link>
-              )}
-            </div>
-            <div className="sectionMobile">
-              <IconButton
-                color="secondary"
-                aria-label="open drawer"
-                onClick={toggleDrawer(true)}
-                edge="start"
-              >
-                <MenuIcon />
-              </IconButton>
-              <SwipeableDrawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={toggleDrawer(false)}
-                onOpen={toggleDrawer(true)}
-              >
-                {list()}
-              </SwipeableDrawer>
-            </div>
             {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
           </Toolbar>
         </AppBar>

@@ -1,7 +1,14 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button, Typography, makeStyles } from "./mui-components";
-import { CloudUploadIcon } from "./mui-icons";
+import {
+  Button,
+  Typography,
+  makeStyles,
+  Avatar,
+} from "@material/mui-components";
+import { CloudUploadIcon } from "@material/mui-icons";
+import useImageUploader from "@hooks/useImageUploader";
+import { useFormikContext } from "formik";
 
 const baseStyle = {
   flex: 1,
@@ -29,23 +36,21 @@ const thumbsContainer = {
 const thumb = {
   display: "inline-flex",
   borderRadius: 2,
-  border: "1px solid #eaeaea",
   marginBottom: 8,
-  width: 50,
-  height: 50,
   padding: 4,
   boxSizing: "border-box",
-};
-
-const thumbInner = {
-  display: "flex",
-  minWidth: 0,
-  overflow: "hidden",
+  position: "relative",
 };
 
 const closeBtn = {
   alignSelf: "start",
   marginRight: "8px",
+  borderRadius: "50%",
+  border: "none",
+  position: "absolute",
+  top: "0px",
+  right: "-10px",
+  cursor: "pointer",
 };
 
 const activeStyle = {
@@ -64,27 +69,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 const MAX_FILES = 3; //file upload limit
 
-const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
-  const [myFiles, setMyFiles] = useState(fbUrls);
+const FileDropzone = () => {
+  const { setFieldValue, values } = useFormikContext();
+  let currentImages = [];
+  if (values.sampleImages !== "")
+    currentImages = values.sampleImages.split(",");
+  const [myFiles, setMyFiles] = useState(currentImages);
   const [fileError, setFileError] = useState(false);
   const classes = useStyles();
+  const [url, error, uploadImage] = useImageUploader();
 
-  const onDrop = useCallback(
-    (acceptedFiles) => {
-      let modFiles = acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      );
-      if (myFiles.length + acceptedFiles.length <= MAX_FILES) {
-        setMyFiles([...myFiles, ...modFiles]);
+  useEffect(() => {
+    if (url) {
+      if (myFiles.length + 1 <= MAX_FILES) {
+        setMyFiles([...myFiles, url]);
         setFileError(false);
-        setFiles([...myFiles, ...modFiles]);
       } else {
         setFileError(true);
       }
+    }
+  }, [url, error]);
+  useEffect(() => {
+    setFieldValue("sampleImages", myFiles.join());
+  }, [myFiles]);
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      acceptedFiles.map(async (file) => {
+        uploadImage(file, "business_images");
+      });
     },
-    [myFiles, setFiles]
+    [myFiles]
   );
   const {
     getRootProps,
@@ -105,40 +120,31 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
   });
   const removeFile = (file) => () => {
     let filtered = myFiles.filter(function (item) {
-      if (typeof file === "string") return item !== file;
-      else return item.name !== file.name;
+      return item !== file;
     });
     setMyFiles(filtered);
-    setFiles(filtered);
   };
   const removeAll = () => {
     setMyFiles([]);
-    setFiles([]);
   };
 
-  const files = myFiles.map((file, index) => (
-    <React.Fragment key={index}>
-      <div style={thumb} key={index}>
-        <div style={thumbInner}>
-          <img
-            src={typeof file === "string" ? file : file.preview}
-            width={50}
-            height={30}
-            alt=""
-          />
+  const files = myFiles.map((file, index) => {
+    if (file == "") return <></>;
+    return (
+      <React.Fragment key={index}>
+        <div style={thumb} key={index}>
+          <Avatar src={file} alt="" />
+          <button type="button" onClick={removeFile(file)} style={closeBtn}>
+            x
+          </button>
         </div>
-      </div>
-      <button type="button" onClick={removeFile(file)} style={closeBtn}>
-        x
-      </button>
-    </React.Fragment>
-  ));
+      </React.Fragment>
+    );
+  });
 
   useEffect(
     () => () => {
       files.forEach((file) => URL.revokeObjectURL(file.preview));
-
-      setInfoChanged(true);
     },
     [myFiles]
   );
@@ -174,7 +180,8 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
       {files.length > 0 && (
         <>
           <aside style={thumbsContainer}>
-            {files.length !== 0 && files}
+            {files}
+
             <Button
               type="button"
               onClick={removeAll}
@@ -190,8 +197,8 @@ const FileDropzone = ({ fbUrls, setFiles, setInfoChanged }) => {
       )}
       {(fileRejections.length !== 0 || fileError) && (
         <aside>
-          <Typography variant="body2" color="error">
-            Error: You can only upload images, and a max of 3 images (Max: 16MB)
+          <Typography variant="caption" color="error">
+            Error: You can only upload 3 images (each under 1 MB)
           </Typography>
         </aside>
       )}

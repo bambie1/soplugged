@@ -8,12 +8,12 @@ import {
   Box,
   Menu,
   MenuItem,
-} from "./mui-components";
-import { EditIcon, FavoriteIcon } from "./mui-icons";
+} from "@material/mui-components";
+import { EditIcon, FavoriteIcon } from "@material/mui-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { greetFunction } from "src/greeting";
-import BusinessCard from "./BusinessCard";
+import BusinessCard from "../BusinessCard";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useRouter } from "next/router";

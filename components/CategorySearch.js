@@ -1,12 +1,13 @@
-import React, { forwardRef, useState } from "react";
-import { TextField } from "./mui-components";
-import { Autocomplete } from "./mui-lab";
+import React, { useState } from "react";
+import { TextField } from "@material/mui-components";
+import { Autocomplete } from "@material/mui-lab";
 import { categories } from "../src/ListOfCategories";
+import { useFormikContext } from "formik";
 
-const CategorySearch = forwardRef((props, ref) => {
-  const { defaultCategory, setInfoChanged, ...otherProps } = props;
+const CategorySearch = ({ name, ...otherProps }) => {
+  const { setFieldValue, values } = useFormikContext();
   const [value, setValue] = useState(
-    defaultCategory ? { label: defaultCategory } : null
+    values ? { label: values.businessCategory } : null
   );
   const [inputValue, setInputValue] = useState("");
 
@@ -15,8 +16,7 @@ const CategorySearch = forwardRef((props, ref) => {
       value={value}
       onChange={(e, newValue) => {
         setValue(newValue);
-        setInfoChanged &&
-          setInfoChanged(!(newValue?.label === defaultCategory));
+        setFieldValue(name, newValue.label);
       }}
       getOptionSelected={(option, value) => option.label == value.label}
       getOptionLabel={(option) => option.label}
@@ -25,11 +25,9 @@ const CategorySearch = forwardRef((props, ref) => {
         setInputValue(newInputValue);
       }}
       options={categories}
-      renderInput={(params) => (
-        <TextField {...params} {...otherProps} inputRef={ref} />
-      )}
+      renderInput={(params) => <TextField {...params} {...otherProps} />}
     />
   );
-});
+};
 
 export default CategorySearch;

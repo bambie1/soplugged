@@ -2,37 +2,35 @@
 :root {
   --dark: #4e3505;
   --light: #cdb693;
+  --jd-color-border: #4e3505;
+  --jd-color-panel: #cdb693;
 }
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-::-webkit-scrollbar {
-  width: 10px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  /* border-radius: 10px; */
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: grey;
-  border-radius: 10px;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #6b6a6a;
-}
 
+fieldset {
+  border: none;
+  outline: none;
+}
 * {
   box-sizing: border-box;
 }
@@ -220,7 +218,7 @@ img {
   height: 100%;
   background: rgba(0, 0, 0, 0.62);
   z-index: 1000;
-  overflow-y: scroll;
+  overflow-y: hidden;
   text-align: center;
 }
 
@@ -343,6 +341,7 @@ img {
   }
   .sectionDesktop {
     display: flex;
+    align-items: center;
   }
   .sectionDesktop > * {
     margin: 0 8px;
@@ -387,4 +386,21 @@ img {
 }
 .swal-text {
   text-align: center;
+}
+
+/* quill editor */
+.ql-editor {
+  min-height: 150px;
+  max-height: 300px;
+  font-family: "Raleway";
+}
+.ql-snow {
+  border-radius: 4px !important;
+}
+
+/* stepper */
+@media screen and (max-width: 700px) {
+  .MuiStepper-root {
+    padding: 24px 0px !important;
+  }
 }

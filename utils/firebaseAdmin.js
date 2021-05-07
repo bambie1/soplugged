@@ -14,6 +14,6 @@ export const verifyIdToken = (token) => {
     .auth()
     .verifyIdToken(token)
     .catch((err) => {
-      throw error;
+      throw err;
     });
 };

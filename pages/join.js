@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FirebaseAuth from "../components/FirebaseAuth";
 import {
   Button,
   Typography,
   Container,
   makeStyles,
-} from "../components/mui-components";
+} from "@material/mui-components";
 import Link from "next/link";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -27,8 +28,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Join = ({ referrer }) => {
+const Join = ({ referrer, refresh }) => {
   const classes = useStyles();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.beforePopState(({ url, as, options }) => {
+      console.log({ refresh });
+      // if(refresh == "auth/id-token-expired") router.reload
+    });
+  }, [refresh]);
+
   return (
     <>
       <SEO
@@ -73,16 +83,22 @@ export async function getServerSideProps(context) {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
     if (token?.email) {
-      context.res.writeHead(302, { location: "/dashboard" });
-      context.res.end();
       return {
-        props: {},
+        redirect: {
+          destination: "/dashboard",
+          permanent: false,
+        },
       };
     } else {
       throw new Error("not signed in");
     }
   } catch (error) {
-    return { props: { referrer: sameRef || "" } };
+    return {
+      props: {
+        referrer: sameRef || "",
+        refresh: error.code,
+      },
+    };
   }
 }
 

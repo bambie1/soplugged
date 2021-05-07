@@ -25,10 +25,18 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
 import TextFormatOutlinedIcon from "@material-ui/icons/TextFormatOutlined";
 import MailIcon from "@material-ui/icons/Mail";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
 export {
   CheckIcon,
   TextFormatOutlinedIcon,
+  SearchOutlinedIcon,
+  CheckCircleOutlineIcon,
+  LockOutlinedIcon,
+  MoreVertIcon,
   CloseIcon,
   CameraAltOutlinedIcon,
   ArrowRightIcon,

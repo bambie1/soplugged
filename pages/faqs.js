@@ -3,12 +3,12 @@ import {
   Typography,
   Button,
   makeStyles,
-} from "../components/mui-components";
+} from "@material/mui-components";
 import Link from "next/link";
-import SEO from "@/components/SEO";
+import SEO from "@components/SEO";
 import dynamic from "next/dynamic";
 
-const DynamicSubscribe = dynamic(() => import("@/components/SubscribeForm"));
+const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -131,8 +131,8 @@ const FAQs = () => {
               with the business to find out their preference.
             </Typography>
           </section>
-          <DynamicSubscribe />
         </Container>
+        <DynamicSubscribe />
       </main>
     </>
   );
