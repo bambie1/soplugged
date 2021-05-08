@@ -28,7 +28,7 @@ const AlgoliaSearch = () => {
   const { contextCategory } = useSearch();
 
   const filters = [
-    { label: "CATEGORY", attribute: "category", default: contextCategory },
+    { label: "CATEGORY", attribute: "category" },
     { label: "LOCATION", attribute: "business_location" },
   ];
   return (
@@ -37,7 +37,7 @@ const AlgoliaSearch = () => {
         <InstantSearch indexName="Business" searchClient={searchClient}>
           <div className="search-algolia">
             <PoweredBy />
-            <SearchBox />
+            <SearchBox defaultRefinement={contextCategory} />
           </div>
           <div className="results-filters">
             <div className="left-panel">

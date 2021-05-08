@@ -14,11 +14,11 @@
 .ais-SearchBox-input {
   padding: 0.5rem 1.7rem;
 }
-.ais-Highlight-highlighted,
+/* .ais-Highlight-highlighted,
 .ais-Snippet-highlighted {
   background-color: #bdbdbd;
   font-style: normal;
-}
+} */
 .search-algolia {
   max-width: 700px;
   margin: 16px auto;
@@ -80,9 +80,13 @@ input.react-autosuggest__input:hover {
   margin: 2px 0px 16px;
 }
 /* highlight: matching letters/words */
-ais-highlight-0000000000 {
+ais-highlight-0000000000,
+.ais-Highlight-highlighted,
+.ais-Snippet-highlighted {
   color: #ff914d;
   border-bottom: 1px solid #ff914d;
+  background-color: transparent;
+  font-style: inherit;
 }
 li.ais-CurrentRefinements-item {
   font-size: 0.7rem;

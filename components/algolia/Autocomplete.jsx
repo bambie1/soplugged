@@ -63,7 +63,9 @@ class AutoComplete extends Component {
 
           <Link href="/search">
             <a>
-              <Button variant="outlined">Go to Directory</Button>
+              <Button variant="contained" color="secondary">
+                Go to Directory
+              </Button>
             </a>
           </Link>
         </Box>

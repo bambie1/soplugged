@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
   description: {
     maxHeight: "250px",
     overflowY: "scroll",
+    border: "1px dashed",
+    padding: "8px 0px",
     "& > ul": {
       display: "table",
       margin: "auto",

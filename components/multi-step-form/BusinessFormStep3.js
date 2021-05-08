@@ -46,6 +46,7 @@ const BusinessFormStep3 = () => {
         name="businessUrl"
         label="Business Website"
         helperText="Optional"
+        type="url"
       />
       <FormikTextField
         name="igHandle"

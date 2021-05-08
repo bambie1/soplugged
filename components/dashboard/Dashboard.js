@@ -86,12 +86,12 @@ const Dashboard = ({ business }) => {
 
   const hasLogo = business?.logo_url !== "";
   const hasGoodDescription = business?.business_description.length > 150;
-  const hasThreeImages = business?.sample_images.split(",").length === 3;
+  const hasImages = !!business?.sample_images.split(",")[0];
   const hasIG = business?.ig_handle !== "";
   const suggestionsCount = [
     hasLogo,
     hasGoodDescription,
-    hasThreeImages,
+    hasImages,
     hasIG,
   ].filter(Boolean).length;
   // const percentage = 100;
@@ -199,9 +199,9 @@ const Dashboard = ({ business }) => {
                 {!hasLogo && (
                   <MenuItem onClick={handleSuggestions}>Add a logo</MenuItem>
                 )}
-                {!hasThreeImages && (
+                {!hasImages && (
                   <MenuItem onClick={handleSuggestions}>
-                    <Typography noWrap>Upload 3 images</Typography>
+                    <Typography noWrap>Upload some images</Typography>
                   </MenuItem>
                 )}
                 {!hasGoodDescription && (

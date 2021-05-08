@@ -32,12 +32,16 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(1),
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "#fffaf2",
     marginTop: "16px",
     padding: "0.7rem",
+    boxShadow: "rgb(78 53 5) -1px 9px 30px -10px",
+    color: theme.palette.secondary.main,
     "&:hover": {
-      backgroundColor: "#fafafa",
-      borderColor: theme.palette.primary.main,
+      // backgroundColor: "#fafafa",
+      backgroundColor: "#fffaf2",
+      // borderColor: theme.palette.primary.main,
+      boxShadow: "rgb(0 0 0 / 25%) 0px 25px 50px -12px",
     },
   },
   autocompleteDialog: {

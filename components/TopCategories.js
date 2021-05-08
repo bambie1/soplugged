@@ -109,6 +109,7 @@ const TopCategories = () => {
               src={icon.imageSrc}
               width={bigScreen ? 70 : 50}
               height={bigScreen ? 70 : 50}
+              alt={`${icon.shortText}-icon`}
             />
             <Typography
               align="center"

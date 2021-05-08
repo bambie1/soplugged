@@ -23,6 +23,16 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      const user = firebase.auth().currentUser;
+      if (user) await user.getIdToken(true);
+    }, 30 * 60 * 1000);
+
+    // clean up setInterval
+    return () => clearInterval(handle);
+  }, []);
+
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );

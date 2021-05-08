@@ -45,6 +45,7 @@ const LocationSearch = ({ name, ...otherProps }) => {
       : null
   );
   const [inputValue, setInputValue] = React.useState("");
+
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
   const [field, meta] = useField(name);
@@ -149,12 +150,13 @@ const LocationSearch = ({ name, ...otherProps }) => {
         />
       )}
       renderOption={(option) => {
-        const matches =
-          option.structured_formatting?.main_text_matched_substrings || [];
-        const parts = parse(
-          option.structured_formatting?.main_text,
-          matches.map((match) => [match.offset, match.offset + match.length])
-        );
+        // console.log({ option });
+        // const matches =
+        //   option.structured_formatting?.main_text_matched_substrings || [];
+        // const parts = parse(
+        //   option.structured_formatting?.main_text,
+        //   matches.map((match) => [match.offset, match.offset + match.length])
+        // );
 
         return (
           <Grid container alignItems="center">
@@ -162,18 +164,18 @@ const LocationSearch = ({ name, ...otherProps }) => {
               <LocationOnIcon className={classes.icon} />
             </Grid>
             <Grid item xs>
-              {parts.map((part, index) => (
-                <span
-                  key={index}
-                  style={{ fontWeight: part.highlight ? 700 : 400 }}
-                >
-                  {part.text}
-                </span>
-              ))}
+              {/* {parts.map((part, index) => ( */}
+              <span
+              // key={index}
+              // style={{ fontWeight: part.highlight ? 700 : 400 }}
+              >
+                {option.description}
+              </span>
+              {/* ))} */}
 
-              <Typography variant="body2" color="textSecondary">
+              {/* <Typography variant="body2" color="textSecondary">
                 {option.structured_formatting.secondary_text}
-              </Typography>
+              </Typography> */}
             </Grid>
           </Grid>
         );

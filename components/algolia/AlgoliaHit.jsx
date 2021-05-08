@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  makeStyles,
-  Typography,
-  Avatar,
-  IconButton,
-} from "@material/mui-components";
+import { makeStyles, Typography, Avatar } from "@material/mui-components";
 import { CheckIcon } from "@material/mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
