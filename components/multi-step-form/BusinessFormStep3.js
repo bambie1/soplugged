@@ -17,14 +17,12 @@ const BusinessFormStep3 = () => {
   ];
 
   const handleUpdate = (newContent) => {
-    // console.log({ newContent });
-    console.log({ newContent });
     setContent(newContent);
     setFieldValue("businessDescription", newContent);
   };
 
   return (
-    <div>
+    <>
       <ReactQuill
         placeholder="Enter a description for your business (the more, the better)"
         value={content}
@@ -56,7 +54,7 @@ const BusinessFormStep3 = () => {
           startAdornment: <InputAdornment position="start">@</InputAdornment>,
         }}
       />
-    </div>
+    </>
   );
 };
 

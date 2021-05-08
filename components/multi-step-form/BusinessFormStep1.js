@@ -5,7 +5,7 @@ import LocationSearch from "../LocationSearch";
 
 const BusinessFormStep1 = () => {
   return (
-    <div>
+    <>
       <FormikTextField name="businessName" label="Name of Business" />
       <LocationSearch
         label="Location of Business"
@@ -23,7 +23,7 @@ const BusinessFormStep1 = () => {
         legend="Geo Restriction"
         label="I provide services Canada-wide"
       />
-    </div>
+    </>
   );
 };
 

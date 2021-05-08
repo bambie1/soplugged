@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
   description: {
     maxHeight: "250px",
     overflowY: "scroll",
-    border: "1px dashed",
     padding: "8px 0px",
     "& > ul": {
       display: "table",
@@ -104,6 +103,7 @@ const BusinessFormReview = () => {
           dangerouslySetInnerHTML={{ __html: businessDescription }}
         ></div>
       </div>
+      <hr style={{ width: "60%" }}></hr>
       {businessUrl && (
         <Typography>
           Website url: <span>{businessUrl}</span>
