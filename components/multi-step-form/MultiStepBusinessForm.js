@@ -9,10 +9,24 @@ import { useBusinessFormContext } from "@contexts/businessFormContext";
 import FormikStepper from "./FormikStepper";
 import BusinessFormReview from "./BusinessFormReview";
 
-const MultiStepBusinessForm = ({ handleSubmit }) => {
-  const { formSteps, currentStep } = useBusinessFormContext();
+const MultiStepBusinessForm = ({ submitHandler }) => {
+  const { business, formSteps, currentStep } = useBusinessFormContext();
   const theme = useTheme();
   const bigScreen = useMediaQuery(theme.breakpoints.up("md"));
+
+  const initialValues = {
+    businessName: business?.business_name || "",
+    businessCategory: business?.category || "",
+    businessDescription: business?.business_description || "",
+    businessLocation: business?.business_location || "",
+    businessUrl: business?.business_url || "",
+    canadaWide: !business?.fixed_to_one_location || false,
+    igHandle: business?.ig_handle || "",
+    logoUrl: business?.logo_url || "",
+    streetAddress: business?.street_address || "",
+    sampleImages: business?.sample_images || "",
+    phoneNumber: business?.phone_number || "",
+  };
 
   return (
     <>
@@ -24,7 +38,10 @@ const MultiStepBusinessForm = ({ handleSubmit }) => {
           <hr style={{ width: "20%" }}></hr>
         </>
       )}
-      <FormikStepper handleSubmit={handleSubmit}>
+      <FormikStepper
+        initialValues={initialValues}
+        onSubmit={(values) => submitHandler(values)}
+      >
         <BusinessFormStep1 label="Name / Location" />
         <BusinessFormStep2 label="Category" />
         <BusinessFormStep3 label="Description / Links" />

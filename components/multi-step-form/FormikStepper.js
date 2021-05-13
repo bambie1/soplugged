@@ -9,6 +9,8 @@ import {
 import { useTheme } from "@material-ui/core/styles";
 import { useBusinessFormContext } from "@contexts/businessFormContext";
 import Image from "next/image";
+import { Form, Formik } from "formik";
+import validationSchema from "./validationSchema";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -56,23 +58,29 @@ const FormikStepper = ({ children, ...props }) => {
   const bigScreen = useMediaQuery(theme.breakpoints.up("md"));
   const classes = useStyles(bigScreen);
   const steps = React.Children.toArray(children);
-  const {
-    formSteps,
-    currentStep,
-    setCurrentStep,
-    business,
-  } = useBusinessFormContext();
+  const { formSteps, currentStep, setCurrentStep } = useBusinessFormContext();
   const currentChild = steps[currentStep];
-  const { handleSubmit } = props;
 
   const handleBack = () => {
     setCurrentStep((prevStep) => prevStep - 1);
   };
+  const handleSubmit = async (values, helpers) => {
+    if (currentStep === steps.length - 1) {
+      await props.onSubmit(values, helpers);
+    } else {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
+  };
 
   return (
-    <div className={classes.form}>
-      <Box my={1}>{currentChild}</Box>
-      <>
+    <Formik
+      {...props}
+      validationSchema={validationSchema[currentStep]}
+      onSubmit={handleSubmit}
+    >
+      <Form className={classes.form}>
+        <Box my={1}>{currentChild}</Box>
+
         <div
           className={!bigScreen ? classes.buttonGroup : classes.laptopBtnGroup}
         >
@@ -91,38 +99,28 @@ const FormikStepper = ({ children, ...props }) => {
             }`}</Typography>
           )}
 
-          {bigScreen ? (
-            <Button
-              variant="contained"
-              color="secondary"
-              type="submit"
-              className={bigScreen ? classes.buttons : undefined}
-            >
-              {currentStep === steps.length - 1 ? "Submit" : "Next"}
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleSubmit}
-              className={bigScreen ? classes.buttons : undefined}
-            >
-              {currentStep === steps.length - 1 ? "Submit " : "Next"}
-            </Button>
-          )}
+          <Button
+            variant="contained"
+            color="secondary"
+            type="submit"
+            className={bigScreen ? classes.buttons : ""}
+          >
+            {currentStep === steps.length - 1 ? "Submit" : "Next"}
+          </Button>
         </div>
-      </>
-      {formSteps[currentStep].bottomImage && !bigScreen && (
-        <div className={classes.decorImage}>
-          <Image
-            src={formSteps[currentStep].bottomImage}
-            width={400}
-            height={400}
-            alt="Decorative illustration"
-          />
-        </div>
-      )}
-    </div>
+
+        {formSteps[currentStep].bottomImage && !bigScreen && (
+          <div className={classes.decorImage}>
+            <Image
+              src={formSteps[currentStep].bottomImage}
+              width={400}
+              height={400}
+              alt="Decorative illustration"
+            />
+          </div>
+        )}
+      </Form>
+    </Formik>
   );
 };
 

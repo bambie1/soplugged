@@ -98,7 +98,6 @@ const useStyles = makeStyles((theme) => ({
 
 const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
   const classes = useStyles();
-  const { setFieldValue, values } = useFormikContext();
   const {
     currentStep,
     completedSteps,
@@ -106,26 +105,7 @@ const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
     formSteps,
     unlockedSteps,
   } = useBusinessFormContext();
-  let unlocked =
-    !!business ||
-    stepInfo.number == 0 ||
-    unlockedSteps.includes(stepInfo.number) ||
-    stepInfo.number == currentStep;
-
-  const isStepComplete = () => {
-    let currentFields = formSteps[stepInfo.number].fieldNames;
-    if (currentFields) {
-      let allFieldsComplete = true;
-      for (let i = 0; i < currentFields.length; i++) {
-        if (values[currentFields[i]] == "") {
-          allFieldsComplete = false;
-        }
-      }
-      // allFieldsComplete && markStepComplete(currentStep);
-      return allFieldsComplete;
-    }
-    return false;
-  };
+  let unlocked = true;
 
   return (
     <Box
@@ -133,7 +113,7 @@ const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
       key={stepInfo.title}
       onClick={unlocked ? handleClick : null}
       className={`${classes.step} ${active && classes.activeStep} ${
-        (completed || isStepComplete()) && classes.completedStep
+        completed && classes.completedStep
       } ${unlocked && classes.unlocked}`}
     >
       <div className="iconDiv">

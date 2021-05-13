@@ -18,8 +18,9 @@ export default [
   Yup.object().shape({
     businessDescription: Yup.string().test(
       "required-length",
-      "Business description is too short",
+      "Please enter a description for your business (at least 10 characters)",
       (value) => {
+        if (!value) return false;
         let strippedString = value.replace(/<[^>]*>?/gm, "");
         return strippedString.length > 10;
       }
