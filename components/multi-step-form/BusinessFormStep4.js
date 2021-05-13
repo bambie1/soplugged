@@ -6,6 +6,7 @@ import {
   InputLabel,
   makeStyles,
   Typography,
+  CircularProgress,
 } from "@material/mui-components";
 import useImageUploader from "@hooks/useImageUploader";
 import { useFormikContext } from "formik";
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const BusinessFormStep4 = () => {
   const classes = useStyles();
   const { setFieldValue, values } = useFormikContext();
-  const [url, error, uploadImage] = useImageUploader();
+  const [url, error, uploadImage, uploading] = useImageUploader();
 
   useEffect(() => {
     if (url) setFieldValue("logoUrl", url);
@@ -59,6 +60,8 @@ const BusinessFormStep4 = () => {
               color="secondary"
               component="span"
               className={classes.button}
+              endIcon={uploading ? <CircularProgress size="1rem" /> : null}
+              disabled={uploading}
             >
               {url || values.logoUrl ? "Change Logo" : "UploadLogo"}
             </Button>
@@ -70,7 +73,7 @@ const BusinessFormStep4 = () => {
         </Box>
         {error && (
           <Typography color="error" variant="caption" gutterBottom={true}>
-            Can't upload. Image exceeds size limit
+            {error}
           </Typography>
         )}
       </div>

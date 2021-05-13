@@ -3,31 +3,39 @@ import React, { useState } from "react";
 const useImageUploader = () => {
   const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
-  const uploadImage = (file, preset) => {
+  const uploadImage = async (file, preset) => {
     if (!file) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = async () => {
-      try {
-        const res = await fetch("api/image-upload", {
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset);
+
+    try {
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), 5000);
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/denbpv9kp/upload",
+        {
           method: "POST",
-          body: JSON.stringify({ data: reader.result, preset: preset }),
-          headers: { "Content-type": "application/json" },
-        });
-        console.log({ res });
-        if (!res.ok) throw new Error("HTTP status " + res.status);
-        else {
-          const resJson = await res.json();
-          setUrl(resJson.imageUrl);
+          body: formData,
+          signal: controller.signal,
         }
-      } catch (error) {
-        setError(error);
-      }
-    };
+      );
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message);
+      setUrl(data.url);
+    } catch (error) {
+      if (error.name === "AbortError")
+        setError("Request error timeout. Please try again");
+      else
+        setError("The selected image is too large. Please use a smaller image");
+    }
+    setUploading(false);
   };
 
-  return [url, error, uploadImage];
+  return [url, error, uploadImage, uploading];
 };
 
 export default useImageUploader;

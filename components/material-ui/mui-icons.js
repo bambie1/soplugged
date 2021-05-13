@@ -29,13 +29,17 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import TelegramIcon from "@material-ui/icons/Telegram";
+import CallIcon from "@material-ui/icons/Call";
 
 export {
   CheckIcon,
   TextFormatOutlinedIcon,
+  CallIcon,
   SearchOutlinedIcon,
   CheckCircleOutlineIcon,
   LockOutlinedIcon,
+  TelegramIcon,
   MoreVertIcon,
   CloseIcon,
   CameraAltOutlinedIcon,

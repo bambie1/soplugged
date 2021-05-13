@@ -6,6 +6,8 @@ import {
   Box,
   Fab,
   Button,
+  IconButton,
+  Tooltip,
 } from "@material/mui-components";
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -14,6 +16,8 @@ import {
   InstagramIcon,
   LanguageIcon,
   EditIcon,
+  TelegramIcon,
+  CallIcon,
 } from "@material/mui-icons";
 import ImageGallery from "react-image-gallery";
 import { useSearch } from "@contexts/searchContext";
@@ -38,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: "8px 16px",
+    border: `1px solid ${theme.palette.secondary.main}`,
+    borderRadius: "50%",
   },
   sectionTitle: {
     width: "100%",
@@ -101,6 +107,7 @@ const BusinessPage = ({ business, user }) => {
     street_address,
     ig_handle,
     number_of_likes,
+    phone_number,
   } = business;
 
   let images = sample_images.split(",");
@@ -165,40 +172,6 @@ const BusinessPage = ({ business, user }) => {
                 <br></br>
               </>
             )}
-            <Box display="flex" justifyContent="center" flexWrap="wrap">
-              {business_url && (
-                <a
-                  href={business_url}
-                  target="_blank"
-                  rel="noopener"
-                  className={classes.button}
-                >
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    startIcon={<LanguageIcon />}
-                  >
-                    Visit Website
-                  </Button>
-                </a>
-              )}
-              {ig_handle && (
-                <a
-                  href={`https://www.instagram.com/${ig_handle}`}
-                  target="_blank"
-                  rel="noopener"
-                  className={classes.button}
-                >
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    startIcon={<InstagramIcon />}
-                  >
-                    Visit Instagram
-                  </Button>
-                </a>
-              )}
-            </Box>
             <Typography variant="body1" className={classes.sectionTitle}>
               <span>ABOUT BUSINESS:</span>
             </Typography>
@@ -231,12 +204,50 @@ const BusinessPage = ({ business, user }) => {
             )}
           </div>
         </Grid>
-        <Grid item xs={12} md={5}>
+        <Grid id="contact" item xs={12} md={5}>
           <Typography variant="body1" className={classes.sectionTitle}>
             <span>CONTACT OWNER</span>
           </Typography>
+          <Box display="flex" justifyContent="center" flexWrap="wrap">
+            {phone_number && (
+              <a href={`tel:${phone_number}`} className={classes.button}>
+                <Tooltip title="Call Business" aria-label="call business">
+                  <IconButton>
+                    <CallIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {business_url && (
+              <a
+                href={business_url}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="Visit Website" aria-label="visit website">
+                  <IconButton>
+                    <LanguageIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {ig_handle && (
+              <a
+                href={`https://www.instagram.com/${ig_handle}`}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="View IG page" aria-label="view IG page">
+                  <IconButton>
+                    <InstagramIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+          </Box>
           <DynamicContact user={user} business_email={creator.email} />
-          <div className={classes.filler}></div>
         </Grid>
       </Grid>
       {hasPreview && (
@@ -252,7 +263,7 @@ const BusinessPage = ({ business, user }) => {
           />
         </div>
       )}
-      {pageOwner && (
+      {pageOwner ? (
         <Link href="/my-business">
           <a style={{ position: "fixed", top: "65px", right: "16px" }}>
             <Fab variant="extended">
@@ -261,6 +272,15 @@ const BusinessPage = ({ business, user }) => {
             </Fab>
           </a>
         </Link>
+      ) : (
+        <a
+          href="#contact"
+          style={{ position: "fixed", bottom: "0px", right: "16px" }}
+        >
+          <Fab color="secondary">
+            <TelegramIcon style={{ marginRight: "8px" }} />
+          </Fab>
+        </a>
       )}
     </div>
   );

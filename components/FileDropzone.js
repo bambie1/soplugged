@@ -5,6 +5,7 @@ import {
   Typography,
   makeStyles,
   Avatar,
+  CircularProgress,
 } from "@material/mui-components";
 import { CloudUploadIcon } from "@material/mui-icons";
 import useImageUploader from "@hooks/useImageUploader";
@@ -42,7 +43,7 @@ const thumb = {
   position: "relative",
 };
 
-const closeBtn = {
+const removeBtn = {
   alignSelf: "start",
   marginRight: "8px",
   borderRadius: "50%",
@@ -75,20 +76,24 @@ const FileDropzone = () => {
   if (values.sampleImages !== "")
     currentImages = values.sampleImages.split(",");
   const [myFiles, setMyFiles] = useState(currentImages);
-  const [fileError, setFileError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const classes = useStyles();
-  const [url, error, uploadImage] = useImageUploader();
+  const [url, error, uploadImage, uploading] = useImageUploader();
 
   useEffect(() => {
     if (url) {
       if (myFiles.length + 1 <= MAX_FILES) {
         setMyFiles([...myFiles, url]);
-        setFileError(false);
+        setErrorMessage("");
       } else {
-        setFileError(true);
+        setErrorMessage(
+          "You have reached the max number of allowed images (3)"
+        );
       }
     }
+    if (error) setErrorMessage(error);
   }, [url, error]);
+
   useEffect(() => {
     setFieldValue("sampleImages", myFiles.join());
   }, [myFiles]);
@@ -115,17 +120,17 @@ const FileDropzone = () => {
     onDrop,
     accept: "image/jpeg, image/png",
     maxFiles: MAX_FILES,
-    noKeyboard: true,
-    maxSize: 16777216,
   });
   const removeFile = (file) => () => {
     let filtered = myFiles.filter(function (item) {
       return item !== file;
     });
     setMyFiles(filtered);
+    setErrorMessage("");
   };
   const removeAll = () => {
     setMyFiles([]);
+    setErrorMessage("");
   };
 
   const files = myFiles.map((file, index) => {
@@ -134,7 +139,7 @@ const FileDropzone = () => {
       <React.Fragment key={index}>
         <div style={thumb} key={index}>
           <Avatar src={file} alt="" />
-          <button type="button" onClick={removeFile(file)} style={closeBtn}>
+          <button type="button" onClick={removeFile(file)} style={removeBtn}>
             x
           </button>
         </div>
@@ -170,7 +175,10 @@ const FileDropzone = () => {
         <Button
           variant="outlined"
           color="secondary"
-          startIcon={<CloudUploadIcon />}
+          startIcon={
+            uploading ? <CircularProgress size="1rem" /> : <CloudUploadIcon />
+          }
+          disabled={uploading}
           onClick={open}
         >
           Click to upload images
@@ -195,10 +203,10 @@ const FileDropzone = () => {
           </aside>
         </>
       )}
-      {(fileRejections.length !== 0 || fileError) && (
+      {(fileRejections.length !== 0 || errorMessage) && (
         <aside>
           <Typography variant="caption" color="error">
-            Error: You can only upload 3 images (each under 1 MB)
+            {errorMessage}
           </Typography>
         </aside>
       )}

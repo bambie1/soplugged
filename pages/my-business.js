@@ -38,7 +38,11 @@ const EditBusiness = ({ business, token }) => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(false);
-  const { setBusiness } = useBusinessFormContext();
+  const {
+    setBusiness,
+    backEndReferral,
+    backEndReferralBusiness,
+  } = useBusinessFormContext();
   const router = useRouter();
 
   React.useEffect(() => {
@@ -47,7 +51,17 @@ const EditBusiness = ({ business, token }) => {
   }, [business]);
   const handleSubmit = async (newData) => {
     setSaving(true);
-    let slug = await submitBusinessObject(newData, token, business);
+    let businessWithReferral = { ...newData };
+    if (!business) {
+      businessWithReferral.backEndReferral = backEndReferral;
+      businessWithReferral.backEndReferralBusiness = backEndReferralBusiness;
+    }
+    // console.log({ businessWithReferral });
+    let slug = await submitBusinessObject(
+      businessWithReferral,
+      token,
+      business
+    );
     setSaving(false);
     if (!slug.error) {
       swal({

@@ -48,24 +48,23 @@ const BusinessFormStep2 = () => {
   const [selectedCategory, setSelectedCategory] = useState(
     values.businessCategory
   );
+  const defaultCategory = categories.find(
+    (item) => item.label === selectedCategory
+  );
+  const [tags, setTags] = useState(defaultCategory?.tags || "");
 
-  const handleClick = (label) => {
-    if (isSelected(label)) {
-      setSelectedCategory(null);
-      setFieldValue("businessCategory", "");
-    } else {
-      setSelectedCategory(label);
-      setFieldValue("businessCategory", label);
-    }
+  const handleClick = (label, tags) => {
+    setSelectedCategory(label);
+    setTags(tags);
+    setFieldValue("businessCategory", label);
   };
-  const isSelected = (val) => selectedCategory == val;
 
   return (
     <>
       <Typography align="center">Please select a category below:</Typography>
       <FormControl component="fieldset">
         <div className={classes.categoriesWrapper}>
-          {categories.map(({ label, imageSrc }) => (
+          {categories.map(({ tags, label, imageSrc }) => (
             <label key={label}>
               <input
                 type="radio"
@@ -73,13 +72,13 @@ const BusinessFormStep2 = () => {
                 value={label}
                 className={classes.categoryInput}
                 checked={selectedCategory == label}
-                onChange={() => handleClick(label)}
+                onChange={() => handleClick(label, tags)}
                 aria-label={label}
               />
               <Tooltip key={label} title={label}>
                 <div
                   className="categoryDivImage"
-                  onClick={() => handleClick(label)}
+                  onClick={() => handleClick(label, tags)}
                 >
                   <Image src={imageSrc} width={40} height={40} />
                   <Typography
@@ -97,9 +96,17 @@ const BusinessFormStep2 = () => {
         </div>
       </FormControl>
       {selectedCategory && (
-        <Typography align="center">
-          <strong>Category selected: </strong> {selectedCategory}
-        </Typography>
+        <>
+          <Typography align="center">
+            <strong>Category selected: </strong> {selectedCategory}
+          </Typography>
+          <Typography
+            align="center"
+            style={{ fontStyle: "italic", fontSize: "0.7rem" }}
+          >
+            {tags}
+          </Typography>
+        </>
       )}
     </>
   );

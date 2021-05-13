@@ -1,4 +1,3 @@
-import { getImageUrl } from "./uploadImage";
 import slugify from "slugify";
 import * as Sentry from "@sentry/node";
 
@@ -33,7 +32,7 @@ const updateBusiness = async (
 
 export const submitBusinessObject = async (data, userToken, business) => {
   const businessObject = {
-    phone_number: data.ownerPhone,
+    phone_number: data.phoneNumber,
     business_name: data.businessName.trim(),
     slug: slugify(data.businessName.trim(), { lower: true }),
     business_url: data.businessUrl.trim(),
@@ -47,6 +46,10 @@ export const submitBusinessObject = async (data, userToken, business) => {
     business_description: data.businessDescription.trim(),
     ig_handle: data.igHandle,
   };
+  if (!business) {
+    businessObject.referral_source = data.backEndReferral;
+    businessObject.referral_business_slug = data.backEndReferralBusiness;
+  }
 
   const fetchUrl = business
     ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${business.slug}`

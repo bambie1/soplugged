@@ -44,6 +44,7 @@ const BusinessFormReview = () => {
     sampleImages,
     logoUrl,
     streetAddress,
+    phoneNumber,
   } = values;
   const sampleImagesArray = sampleImages === "" ? [] : sampleImages.split(",");
   return (
@@ -112,6 +113,11 @@ const BusinessFormReview = () => {
       {igHandle && (
         <Typography>
           IG Handle: <span>@{igHandle}</span>
+        </Typography>
+      )}
+      {phoneNumber && (
+        <Typography>
+          Phone Number: <span>{phoneNumber}</span>
         </Typography>
       )}
     </div>

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -16,6 +16,7 @@ import {
 } from "@material/mui-components";
 import { Autocomplete } from "@material/mui-lab";
 import { useTheme } from "@material-ui/core/styles";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const useStyles = makeStyles((theme) => ({
   dialog: {
@@ -27,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const referralSources = [
-  "Instagram (@sopluggd)",
-  "Google search",
-  "Someone told me about it",
-  "LinkedIn",
-  "Other",
+  { label: "A business referred me", value: "Business" },
+  { label: "Instagram (@sopluggd)", value: "SoPlugged" },
+  { label: "Google search", value: "Google" },
+  { label: "LinkedIn", value: "LinkedIn" },
+  { label: "Other", value: "Other" },
 ];
 
 export default function BusinessTermsConditions({ handleAgree }) {
@@ -39,9 +40,17 @@ export default function BusinessTermsConditions({ handleAgree }) {
   const [isBlackOwner, setIsBlackOwner] = React.useState(false);
   const [isCanadianBusiness, setIsCanadianBusiness] = React.useState(false);
   const [hasAgreedToTerms, setHasAgreedToTerms] = React.useState(false);
-  const [referralSource, setReferralSource] = React.useState("");
-  const [otherReferral, setOtherReferral] = React.useState("");
+  const [referralSource, setReferralSource] = React.useState(null);
+  const [referringBusiness, setReferringBusiness] = React.useState(null);
   const [inputValue, setInputValue] = React.useState("");
+  const [referringBusinessInput, setReferringBusinessInput] = React.useState(
+    ""
+  );
+  const [businesses, setBusinesses] = React.useState([]);
+  const {
+    setBackEndReferral,
+    setBackEndReferralBusiness,
+  } = useBusinessFormContext();
   const classes = useStyles();
   const router = useRouter();
   const theme = useTheme();
@@ -53,6 +62,20 @@ export default function BusinessTermsConditions({ handleAgree }) {
       handleAgree();
     } else if (prop == "rejected") router.push("/search");
   };
+
+  const fetchAllBusinesses = async () => {
+    let res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
+    );
+    let businesses = await res.json();
+    setBusinesses(businesses);
+  };
+
+  useEffect(() => {
+    if (referralSource?.value == "Business") {
+      fetchAllBusinesses();
+    }
+  }, [referralSource]);
 
   return (
     <Dialog
@@ -161,13 +184,15 @@ export default function BusinessTermsConditions({ handleAgree }) {
             value={referralSource}
             onChange={(event, newValue) => {
               setReferralSource(newValue);
+              setBackEndReferral(newValue?.value);
             }}
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {
               setInputValue(newInputValue);
             }}
             options={referralSources}
-            style={{ maxWidth: 300, marginBottom: "16px", marginTop: "16px" }}
+            getOptionLabel={(option) => option.label}
+            style={{ maxWidth: 400, marginBottom: "16px", marginTop: "16px" }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -177,13 +202,29 @@ export default function BusinessTermsConditions({ handleAgree }) {
               />
             )}
           />
-          {referralSource == "Other" && (
-            <TextField
-              variant="outlined"
-              value={otherReferral}
-              onChange={(e) => setOtherReferral(e.target.value)}
-              label="Other Referral"
-              style={{ maxWidth: 300, marginBottom: "16px" }}
+          {referralSource?.value == "Business" && (
+            <Autocomplete
+              id="business-referral"
+              value={referringBusiness}
+              onChange={(event, newValue) => {
+                setReferringBusiness(newValue);
+                setBackEndReferralBusiness(newValue?.slug);
+              }}
+              inputValue={referringBusinessInput}
+              onInputChange={(event, newInputValue) => {
+                setReferringBusinessInput(newInputValue);
+              }}
+              options={businesses}
+              getOptionLabel={(option) => option.business_name}
+              style={{ maxWidth: 400, marginBottom: "16px" }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Name of Business that referred you"
+                  variant="outlined"
+                  required
+                />
+              )}
             />
           )}
         </FormGroup>
@@ -216,7 +257,7 @@ export default function BusinessTermsConditions({ handleAgree }) {
               isCanadianBusiness &&
               hasAgreedToTerms &&
               referralSource &&
-              (referralSource == "Other" ? otherReferral : true)
+              (referralSource?.value == "Business" ? referringBusiness : true)
             )
           }
           autoFocus

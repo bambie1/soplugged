@@ -10,6 +10,8 @@ export function BusinessFormProvider({ children }) {
   const [business, setBusiness] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
   const [unlockedSteps, setUnlockedSteps] = useState([]);
+  const [backEndReferral, setBackEndReferral] = useState("");
+  const [backEndReferralBusiness, setBackEndReferralBusiness] = useState("");
 
   const formSteps = [
     {
@@ -28,9 +30,8 @@ export function BusinessFormProvider({ children }) {
     },
     {
       number: 2,
-      title: "Description and Links",
-      text:
-        "Elaborate on the services you provide, and add links to your website and/or IG",
+      title: "Description and Contact",
+      text: "Elaborate on the services you provide, and add contact info",
       bottomImage: "/images/social_media_pixels.svg",
       fieldNames: ["businessDescription", "businessUrl", "igHandle"],
     },
@@ -74,6 +75,10 @@ export function BusinessFormProvider({ children }) {
     business,
     setBusiness,
     unlockedSteps,
+    backEndReferral,
+    backEndReferralBusiness,
+    setBackEndReferral,
+    setBackEndReferralBusiness,
   };
 
   return (

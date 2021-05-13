@@ -32,5 +32,8 @@ export default [
         message: "Your IG handle can't contain special characters or spaces",
       })
       .max(30, "IG Handle is too long"),
+    phoneNumber: Yup.string()
+      .matches(/^\d+$/, "The field should have digits only")
+      .length(10, "Phone number must be 10 digits"),
   }),
 ];

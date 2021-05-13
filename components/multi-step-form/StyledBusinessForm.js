@@ -81,6 +81,7 @@ const StyledBusinessForm = ({ myBusiness, submitHandler }) => {
     logoUrl: myBusiness?.logo_url || "",
     streetAddress: myBusiness?.street_address || "",
     sampleImages: myBusiness?.sample_images || "",
+    phoneNumber: myBusiness?.phone_number || "",
   };
   const [submittedValues, setSubmittedValues] = useState(initialValues);
   const [slug, setSlug] = useState(myBusiness?.slug || "");

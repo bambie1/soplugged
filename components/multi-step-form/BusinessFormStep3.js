@@ -6,6 +6,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { useField } from "formik";
 import "react-quill/dist/quill.snow.css";
 import { Typography, InputAdornment } from "@material/mui-components";
+import PhoneNumberTextField from "./PhoneNumberTextField";
 
 const BusinessFormStep3 = () => {
   const { setFieldValue, values } = useFormikContext();
@@ -54,6 +55,7 @@ const BusinessFormStep3 = () => {
           startAdornment: <InputAdornment position="start">@</InputAdornment>,
         }}
       />
+      <PhoneNumberTextField />
     </>
   );
 };
