@@ -1,9 +1,7 @@
 import React from "react";
 import {
   Dialog,
-  DialogActions,
   DialogContent,
-  Button,
   Slide,
   AppBar,
   Toolbar,
@@ -43,7 +41,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-const StepFormDialog = ({ opened, handleClose, handleSubmit }) => {
+const StepFormDialog = ({ opened, handleClose, token }) => {
   const classes = useStyles();
   const { formSteps, currentStep } = useBusinessFormContext();
 
@@ -82,7 +80,7 @@ const StepFormDialog = ({ opened, handleClose, handleSubmit }) => {
           </Toolbar>
         </AppBar>
         <DialogContent className={classes.dialogContent}>
-          <MultiStepBusinessForm handleSubmit={handleSubmit} />
+          <MultiStepBusinessForm token={token} />
         </DialogContent>
       </Dialog>
     </div>

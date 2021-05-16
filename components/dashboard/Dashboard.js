@@ -17,6 +17,7 @@ import BusinessCard from "../BusinessCard";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useRouter } from "next/router";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const useStyles = makeStyles((theme) => ({
   activity: {
@@ -73,6 +74,7 @@ const Dashboard = ({ business }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const router = useRouter();
+  const { setCurrentStep } = useBusinessFormContext();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -80,21 +82,24 @@ const Dashboard = ({ business }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleSuggestions = () => {
+  const handleSuggestions = (step) => {
+    setCurrentStep(step);
     router.push("/my-business");
   };
 
   const hasLogo = business?.logo_url !== "";
   const hasGoodDescription = business?.business_description.length > 150;
   const hasImages = !!business?.sample_images.split(",")[0];
-  const hasIG = business?.ig_handle !== "";
+  const hasContact =
+    business?.ig_handle !== "" &&
+    business?.business_url !== "" &&
+    business?.phone_number !== "";
   const suggestionsCount = [
     hasLogo,
     hasGoodDescription,
     hasImages,
-    hasIG,
+    hasContact,
   ].filter(Boolean).length;
-  // const percentage = 100;
   const percentage = (6 + suggestionsCount) * 10;
 
   return (
@@ -105,7 +110,7 @@ const Dashboard = ({ business }) => {
       {business ? (
         <>
           <Typography variant="h5" gutterBottom={true} align="center">
-            {greetFunction()}
+            {greetFunction(business.creator.full_name)}
           </Typography>
           <Typography gutterBottom={true} align="center">
             Here's some important stuff we've outlined for you
@@ -197,21 +202,23 @@ const Dashboard = ({ business }) => {
                 onClose={handleClose}
               >
                 {!hasLogo && (
-                  <MenuItem onClick={handleSuggestions}>Add a logo</MenuItem>
+                  <MenuItem onClick={() => handleSuggestions(3)}>
+                    Add a logo
+                  </MenuItem>
                 )}
                 {!hasImages && (
-                  <MenuItem onClick={handleSuggestions}>
+                  <MenuItem onClick={() => handleSuggestions(3)}>
                     <Typography noWrap>Upload some images</Typography>
                   </MenuItem>
                 )}
                 {!hasGoodDescription && (
-                  <MenuItem onClick={handleSuggestions}>
+                  <MenuItem onClick={() => handleSuggestions(2)}>
                     Describe your business more
                   </MenuItem>
                 )}
-                {!hasIG && (
-                  <MenuItem onClick={handleSuggestions}>
-                    Add your IG account
+                {!hasContact && (
+                  <MenuItem onClick={() => handleSuggestions(2)}>
+                    Add another means of contact
                   </MenuItem>
                 )}
               </Menu>

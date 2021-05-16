@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 
 const BusinessFormContext = createContext();
 export const useBusinessFormContext = () => {
@@ -12,6 +12,11 @@ export function BusinessFormProvider({ children }) {
   const [unlockedSteps, setUnlockedSteps] = useState([]);
   const [backEndReferral, setBackEndReferral] = useState("");
   const [backEndReferralBusiness, setBackEndReferralBusiness] = useState("");
+  const [formWasChanged, setFormWasChanged] = useState(false);
+
+  useEffect(() => {
+    if (business) setUnlockedSteps([0, 1, 2, 3, 4]);
+  }, [business]);
 
   const formSteps = [
     {
@@ -55,11 +60,13 @@ export function BusinessFormProvider({ children }) {
     }
   };
   const markStepComplete = (number) => {
+    markStepUnlocked(number);
     if (!completedSteps.includes(number)) {
       setCompletedSteps((prevArr) => [...prevArr, number]);
     }
   };
   const markStepIncomplete = (number) => {
+    markStepUnlocked(number);
     let newArr = completedSteps.filter((step) => step !== number);
     setCompletedSteps(newArr);
   };
@@ -79,6 +86,8 @@ export function BusinessFormProvider({ children }) {
     backEndReferralBusiness,
     setBackEndReferral,
     setBackEndReferralBusiness,
+    formWasChanged,
+    setFormWasChanged,
   };
 
   return (

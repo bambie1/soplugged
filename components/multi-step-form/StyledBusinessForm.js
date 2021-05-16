@@ -56,17 +56,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StyledBusinessForm = ({ myBusiness, submitHandler }) => {
+const StyledBusinessForm = ({ myBusiness, token }) => {
   const classes = useStyles();
   const router = useRouter();
   const {
     formSteps,
     currentStep,
     setCurrentStep,
-    markStepComplete,
-    markStepIncomplete,
     completedSteps,
-    markStepUnlocked,
+    formWasChanged,
   } = useBusinessFormContext();
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -89,7 +87,11 @@ const StyledBusinessForm = ({ myBusiness, submitHandler }) => {
 
   // check for value change before leaving page
   const handlePageExit = () => {
-    router.push(`/business/${slug}`);
+    console.log({ formWasChanged });
+    if (formWasChanged) {
+      console.log("want to exit but form has changed");
+      setUnsavedAlertOpen(true);
+    } else router.push(`/business/${slug}`);
   };
 
   return (
@@ -134,15 +136,14 @@ const StyledBusinessForm = ({ myBusiness, submitHandler }) => {
           {laptopScreen ? (
             <Grid item md={7} className={classes.grid}>
               <div className={classes.form}>
-                <MultiStepBusinessForm
-                  submitHandler={(values) => submitHandler(values)}
-                />
+                <MultiStepBusinessForm token={token} />
               </div>
             </Grid>
           ) : (
             <StepFormDialog
               opened={dialogOpen}
               handleClose={() => setDialogOpen(false)}
+              token={token}
             />
           )}
         </Grid>

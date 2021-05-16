@@ -58,7 +58,15 @@ const FormikStepper = ({ children, ...props }) => {
   const bigScreen = useMediaQuery(theme.breakpoints.up("md"));
   const classes = useStyles(bigScreen);
   const steps = React.Children.toArray(children);
-  const { formSteps, currentStep, setCurrentStep } = useBusinessFormContext();
+  const {
+    formSteps,
+    currentStep,
+    setCurrentStep,
+    markStepUnlocked,
+    setFormWasChanged,
+    markStepComplete,
+    markStepIncomplete,
+  } = useBusinessFormContext();
   const currentChild = steps[currentStep];
 
   const handleBack = () => {
@@ -68,8 +76,23 @@ const FormikStepper = ({ children, ...props }) => {
     if (currentStep === steps.length - 1) {
       await props.onSubmit(values, helpers);
     } else {
+      let currentFields = formSteps[currentStep].fieldNames;
+      if (currentFields) {
+        let allFieldsComplete = true;
+        for (let i = 0; i < currentFields.length; i++) {
+          if (values[currentFields[i]] == "") {
+            allFieldsComplete = false;
+          }
+        }
+        markStepUnlocked(currentStep + 1);
+        allFieldsComplete
+          ? markStepComplete(currentStep)
+          : markStepIncomplete(currentStep);
+      }
       setCurrentStep((prevStep) => prevStep + 1);
     }
+    // reset changed boolean to allow step buttons to be clicked again
+    setFormWasChanged(false);
   };
 
   return (
@@ -78,7 +101,10 @@ const FormikStepper = ({ children, ...props }) => {
       validationSchema={validationSchema[currentStep]}
       onSubmit={handleSubmit}
     >
-      <Form className={classes.form}>
+      <Form
+        className={classes.form}
+        onChange={(val) => setFormWasChanged(true)}
+      >
         <Box my={1}>{currentChild}</Box>
 
         <div

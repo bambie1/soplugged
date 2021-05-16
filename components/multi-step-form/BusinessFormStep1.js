@@ -6,7 +6,7 @@ import LocationSearch from "../LocationSearch";
 const BusinessFormStep1 = () => {
   return (
     <>
-      <FormikTextField name="businessName" label="Name of Business" />
+      <FormikTextField name="businessName" label="Name of Business" required />
       <LocationSearch
         label="Location of Business"
         name="businessLocation"

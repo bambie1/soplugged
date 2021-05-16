@@ -1,6 +1,13 @@
 import React from "react";
 import { useFormikContext } from "formik";
-import { Avatar, Typography, makeStyles, Box } from "@material/mui-components";
+import {
+  Avatar,
+  Typography,
+  makeStyles,
+  Box,
+  TextField,
+  Grid,
+} from "@material/mui-components";
 import { CheckIcon } from "@material/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,79 +55,125 @@ const BusinessFormReview = () => {
   } = values;
   const sampleImagesArray = sampleImages === "" ? [] : sampleImages.split(",");
   return (
-    <div className={classes.root}>
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Typography>
-          <span className={classes.sectionTitle}>Business Name:</span>{" "}
-          {businessName.toUpperCase()}
-        </Typography>
-        <Avatar
-          alt="Business Logo"
-          src={logoUrl}
-          style={{ marginLeft: "16px" }}
-        >
-          {businessName.toUpperCase().charAt(0)}
-        </Avatar>
-      </Box>
-
-      <Typography>
-        <span className={classes.sectionTitle}>CATEGORY:</span>{" "}
-        {businessCategory}
-      </Typography>
-      <Typography>
-        {streetAddress && !canadaWide && `LOCATION: ${streetAddress}`}
-        {businessLocation}{" "}
-        {canadaWide && (
-          <span>
-            (<CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-            CANADA-WIDE)
-          </span>
-        )}
-      </Typography>
-      <div>
-        <Typography className={classes.sectionTitle} gutterBottom={true}>
-          Sample Images:
-        </Typography>
-        {sampleImagesArray.length > 0 && (
-          <Box display="flex" justifyContent="center">
-            {sampleImagesArray.map((image, index) => (
-              <Avatar key={index} src={image} />
-            ))}
-          </Box>
-        )}
-      </div>
-
-      <div>
-        <Typography className={classes.sectionTitle}>
-          <span>ABOUT BUSINESS:</span>
-        </Typography>
-        <div
-          className={classes.description}
-          dangerouslySetInnerHTML={{ __html: businessDescription }}
-        ></div>
-      </div>
-      <hr style={{ width: "60%" }}></hr>
+    <Grid container spacing={2} style={{ marginTop: "8px" }}>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          disabled
+          value={businessName.toUpperCase()}
+          label="Business Name"
+          variant="outlined"
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          disabled
+          value={businessCategory}
+          label="Business Category"
+          variant="outlined"
+          fullWidth
+        />
+      </Grid>
       {businessUrl && (
-        <Typography>
-          Website url: <span>{businessUrl}</span>
-        </Typography>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            disabled
+            value={businessUrl}
+            label="Business Website"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
       )}
       {igHandle && (
-        <Typography>
-          IG Handle: <span>@{igHandle}</span>
-        </Typography>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            disabled
+            value={igHandle}
+            label="IG Handle"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
       )}
+
       {phoneNumber && (
-        <Typography>
-          Phone Number: <span>{phoneNumber}</span>
-        </Typography>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            disabled
+            value={phoneNumber}
+            label="Business Phone"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
       )}
-    </div>
+
+      <Grid item xs={12}>
+        <TextField
+          value={businessDescription.replace(/<[^>]*>?/gm, "")}
+          multiline={true}
+          label="Business Description"
+          disabled
+          fullWidth
+          variant="outlined"
+          rowsMax={5}
+          helperText="P.S: This is a stripped-down version of the text. Any formatting pre-applied will persist upon save"
+        />
+      </Grid>
+      {businessLocation && (
+        <Grid item xs={12} sm={6}>
+          <TextField
+            disabled
+            value={businessLocation}
+            label="Business Location"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
+      )}
+      {streetAddress && (
+        <Grid item xs={12} sm={6}>
+          <TextField
+            disabled
+            value={streetAddress}
+            label="Street Address"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
+      )}
+      {canadaWide && (
+        <Grid item xs={12}>
+          <Typography variant="body2" align="center">
+            <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
+            CANADA-WIDE
+          </Typography>
+        </Grid>
+      )}
+      <Grid item xs={12}>
+        {(sampleImagesArray.length > 0 || logoUrl) && (
+          <>
+            <Typography
+              className={classes.sectionTitle}
+              gutterBottom={true}
+              align="center"
+            >
+              Logo and Sample Images:
+            </Typography>
+            <Box display="flex" justifyContent="center">
+              <Avatar alt="Business Logo" src={logoUrl}>
+                {businessName.toUpperCase().charAt(0)}
+              </Avatar>
+              {sampleImagesArray.map((image, index) => (
+                <Avatar key={index} src={image} variant="square" />
+              ))}
+            </Box>
+          </>
+        )}
+      </Grid>
+      <hr style={{ width: "60%" }}></hr>
+    </Grid>
   );
 };
 

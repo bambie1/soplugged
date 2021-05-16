@@ -1,8 +1,8 @@
 export const categoryIcons = [
   {
-    categoryTitle: "Hair & Beauty",
+    categoryTitle: "Hair",
     imageSrc: "/images/long-wavy-hair-variant.png",
-    categoryText: "Hair / Beauty",
+    categoryText: "Hair",
     shortText: "Hair",
     categoryColor: "#CD9993",
   },

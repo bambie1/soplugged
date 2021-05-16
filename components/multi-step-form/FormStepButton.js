@@ -6,10 +6,10 @@ import {
   CardActionArea,
   CardContent,
   Box,
+  Tooltip,
 } from "@material/mui-components";
 import { useBusinessFormContext } from "@contexts/businessFormContext";
 import { CheckCircleOutlineIcon, LockOutlinedIcon } from "@material/mui-icons";
-import { useFormikContext } from "formik";
 
 const useStyles = makeStyles((theme) => ({
   step: {
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+
   unlocked: {
     opacity: "1",
     border: "1px solid #93aacd",
@@ -52,6 +53,10 @@ const useStyles = makeStyles((theme) => ({
         display: "block",
       },
     },
+  },
+
+  inactive: {
+    opacity: "0.6",
   },
 
   completedStep: {
@@ -104,37 +109,52 @@ const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
     business,
     formSteps,
     unlockedSteps,
+    formWasChanged,
   } = useBusinessFormContext();
-  let unlocked = true;
+  let unlocked = unlockedSteps.includes(stepInfo.number);
+  let complete = completedSteps.includes(stepInfo.number);
+  let inactive = formWasChanged && !active;
 
   return (
-    <Box
-      position="relative"
-      key={stepInfo.title}
-      onClick={unlocked ? handleClick : null}
-      className={`${classes.step} ${active && classes.activeStep} ${
-        completed && classes.completedStep
-      } ${unlocked && classes.unlocked}`}
+    <Tooltip
+      title={
+        inactive &&
+        "Form is active, please use 'Next' and 'Back' buttons to navigate"
+      }
+      disableHoverListener={!inactive}
     >
-      <div className="iconDiv">
-        <CheckCircleOutlineIcon className="checkIcon" fontSize="small" />
-        <span className="stepNumber">{stepInfo.number + 1}</span>
-        <LockOutlinedIcon className="lockIcon" fontSize="small" />
-      </div>
+      <Box
+        position="relative"
+        key={stepInfo.title}
+        onClick={unlocked && !inactive ? handleClick : null}
+        className={`${classes.step} ${active && classes.activeStep} ${
+          unlocked && classes.unlocked
+        } ${complete && classes.completedStep} ${inactive && classes.inactive}`}
+      >
+        <div className="iconDiv">
+          <CheckCircleOutlineIcon className="checkIcon" fontSize="small" />
+          <span className="stepNumber">{stepInfo.number + 1}</span>
+          <LockOutlinedIcon className="lockIcon" fontSize="small" />
+        </div>
 
-      <Card color="inherit" raised={active}>
-        <CardActionArea disableRipple={!unlocked}>
-          <CardContent>
-            <Typography gutterBottom variant="h6" style={{ fontSize: "1rem" }}>
-              {stepInfo.title}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {stepInfo.text}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Box>
+        <Card color="inherit" raised={active}>
+          <CardActionArea disableRipple={!unlocked || inactive}>
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h6"
+                style={{ fontSize: "1rem" }}
+              >
+                {stepInfo.title}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {stepInfo.text}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Box>
+    </Tooltip>
   );
 };
 
