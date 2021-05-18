@@ -11,6 +11,7 @@ const FormikTextField = ({ name, handleChange, ...otherProps }) => {
     variant: "outlined",
     fullWidth: true,
   };
+
   if (meta && meta.touched && meta.error) {
     configTextField.error = true;
     configTextField.helperText = meta.error;
