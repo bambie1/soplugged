@@ -43,14 +43,11 @@ export default function BusinessTermsConditions({ handleAgree }) {
   const [referralSource, setReferralSource] = React.useState(null);
   const [referringBusiness, setReferringBusiness] = React.useState(null);
   const [inputValue, setInputValue] = React.useState("");
-  const [referringBusinessInput, setReferringBusinessInput] = React.useState(
-    ""
-  );
+  const [referringBusinessInput, setReferringBusinessInput] =
+    React.useState("");
   const [businesses, setBusinesses] = React.useState([]);
-  const {
-    setBackEndReferral,
-    setBackEndReferralBusiness,
-  } = useBusinessFormContext();
+  const { setBackEndReferral, setBackEndReferralBusiness } =
+    useBusinessFormContext();
   const classes = useStyles();
   const router = useRouter();
   const theme = useTheme();
@@ -261,7 +258,7 @@ export default function BusinessTermsConditions({ handleAgree }) {
             )
           }
           autoFocus
-          variant="outlined"
+          variant="contained"
         >
           Agree
         </Button>

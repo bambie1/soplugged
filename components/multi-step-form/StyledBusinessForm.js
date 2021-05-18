@@ -59,22 +59,15 @@ const useStyles = makeStyles((theme) => ({
 const StyledBusinessForm = ({ myBusiness, token }) => {
   const classes = useStyles();
   const router = useRouter();
-  const {
-    formSteps,
-    currentStep,
-    setCurrentStep,
-    completedSteps,
-    formWasChanged,
-  } = useBusinessFormContext();
+  const { formSteps, currentStep, setCurrentStep, formWasChanged } =
+    useBusinessFormContext();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const [submittedValues, setSubmittedValues] = useState(null);
   const [slug, setSlug] = useState(myBusiness?.slug || "");
   const [unsavedAlertOpen, setUnsavedAlertOpen] = useState(false);
   const theme = useTheme();
   const laptopScreen = useMediaQuery(theme.breakpoints.up("md"));
   const [termsAccepted, setTermsAccepted] = useState(!!myBusiness);
-  const [submitAll, setSubmitAll] = useState(false);
 
   const handleClose = () => {
     setUnsavedAlertOpen(false);
@@ -87,9 +80,7 @@ const StyledBusinessForm = ({ myBusiness, token }) => {
 
   // check for value change before leaving page
   const handlePageExit = () => {
-    console.log({ formWasChanged });
     if (formWasChanged) {
-      console.log("want to exit but form has changed");
       setUnsavedAlertOpen(true);
     } else router.push(`/business/${slug}`);
   };
@@ -127,7 +118,6 @@ const StyledBusinessForm = ({ myBusiness, token }) => {
                     key={step.number}
                     handleClick={() => handleStepClick(step)}
                     active={currentStep == step.number}
-                    completed={completedSteps.includes(step.number)}
                   />
                 ))}
               </div>
@@ -179,7 +169,6 @@ const StyledBusinessForm = ({ myBusiness, token }) => {
             <Button
               onClick={() => {
                 setUnsavedAlertOpen(false);
-                setSubmitAll(true);
               }}
               color="secondary"
               autoFocus

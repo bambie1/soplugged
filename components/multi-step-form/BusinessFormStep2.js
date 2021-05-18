@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import { categories } from "../../src/ListOfCategories";
 import { useFormikContext } from "formik";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const useStyles = makeStyles((theme) => ({
   categoriesWrapper: {
@@ -52,11 +53,13 @@ const BusinessFormStep2 = () => {
     (item) => item.label === selectedCategory
   );
   const [tags, setTags] = useState(defaultCategory?.tags || "");
+  const { setFormWasChanged } = useBusinessFormContext();
 
   const handleClick = (label, tags) => {
     setSelectedCategory(label);
     setTags(tags);
     setFieldValue("businessCategory", label);
+    setFormWasChanged(true);
   };
 
   return (

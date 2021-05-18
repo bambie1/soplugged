@@ -7,15 +7,19 @@ import {
   FormGroup,
 } from "@material/mui-components";
 import { useField, useFormikContext } from "formik";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const FormikCheckbox = ({ name, label, legend, ...otherProps }) => {
   const { setFieldValue } = useFormikContext();
   const [field, meta] = useField(name);
   const [isChecked, setIsChecked] = useState(field.value);
+  const { setFormWasChanged } = useBusinessFormContext();
+
   const handleChange = (e) => {
     const { checked } = e.target;
     setIsChecked(checked);
     setFieldValue(name, checked);
+    setFormWasChanged(true);
   };
 
   const configCheckbox = {

@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid #93aacd`,
     color: "#93aacd",
     "& .MuiCard-root": {
-      backgroundColor: "rgb(147 170 205 / 41%)",
+      backgroundColor: "rgb(147 170 205 / 68%)",
     },
     "& .iconDiv": {
       border: "none",
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   activeStep: {
     border: `2px solid ${theme.palette.secondary.main}`,
     "& .MuiCard-root": {
-      backgroundColor: "white",
+      backgroundColor: "rgb(147 170 205 / 15%)",
     },
     "& .iconDiv": {
       border: `2px solid ${theme.palette.secondary.main}`,
@@ -101,16 +101,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
+const FormStepButton = ({ stepInfo, handleClick, active }) => {
   const classes = useStyles();
-  const {
-    currentStep,
-    completedSteps,
-    business,
-    formSteps,
-    unlockedSteps,
-    formWasChanged,
-  } = useBusinessFormContext();
+  const { completedSteps, unlockedSteps, formWasChanged } =
+    useBusinessFormContext();
   let unlocked = unlockedSteps.includes(stepInfo.number);
   let complete = completedSteps.includes(stepInfo.number);
   let inactive = formWasChanged && !active;
@@ -122,6 +116,8 @@ const FormStepButton = ({ stepInfo, handleClick, active, completed }) => {
         "Form is active, please use 'Next' and 'Back' buttons to navigate"
       }
       disableHoverListener={!inactive}
+      disableFocusListener={!inactive}
+      disableTouchListener={!inactive}
     >
       <Box
         position="relative"

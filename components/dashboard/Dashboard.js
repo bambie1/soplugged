@@ -91,9 +91,8 @@ const Dashboard = ({ business }) => {
   const hasGoodDescription = business?.business_description.length > 150;
   const hasImages = !!business?.sample_images.split(",")[0];
   const hasContact =
-    business?.ig_handle !== "" &&
     business?.business_url !== "" &&
-    business?.phone_number !== "";
+    (business?.ig_handle !== "" || business?.phone_number !== "");
   const suggestionsCount = [
     hasLogo,
     hasGoodDescription,

@@ -7,11 +7,14 @@ import { useField } from "formik";
 import "react-quill/dist/quill.snow.css";
 import { Typography, InputAdornment } from "@material/mui-components";
 import PhoneNumberTextField from "./PhoneNumberTextField";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const BusinessFormStep3 = () => {
   const { setFieldValue, values } = useFormikContext();
   const [content, setContent] = useState(values.businessDescription);
   const [field, meta] = useField("businessDescription");
+  const { setFormWasChanged } = useBusinessFormContext();
+
   var toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     [{ list: "ordered" }, { list: "bullet" }],
@@ -20,6 +23,7 @@ const BusinessFormStep3 = () => {
   const handleUpdate = (newContent) => {
     setContent(newContent);
     setFieldValue("businessDescription", newContent);
+    setFormWasChanged(true);
   };
 
   return (

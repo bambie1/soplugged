@@ -66,6 +66,7 @@ const FormikStepper = ({ children, ...props }) => {
     setFormWasChanged,
     markStepComplete,
     markStepIncomplete,
+    formWasChanged,
   } = useBusinessFormContext();
   const currentChild = steps[currentStep];
 
@@ -75,6 +76,9 @@ const FormikStepper = ({ children, ...props }) => {
   const handleSubmit = async (values, helpers) => {
     if (currentStep === steps.length - 1) {
       await props.onSubmit(values, helpers);
+
+      // reset changed boolean to allow step buttons to be clicked again
+      setFormWasChanged(false);
     } else {
       let currentFields = formSteps[currentStep].fieldNames;
       if (currentFields) {
@@ -91,8 +95,6 @@ const FormikStepper = ({ children, ...props }) => {
       }
       setCurrentStep((prevStep) => prevStep + 1);
     }
-    // reset changed boolean to allow step buttons to be clicked again
-    setFormWasChanged(false);
   };
 
   return (
@@ -130,6 +132,7 @@ const FormikStepper = ({ children, ...props }) => {
             color="secondary"
             type="submit"
             className={bigScreen ? classes.buttons : ""}
+            disabled={currentStep === steps.length - 1 && !formWasChanged}
           >
             {currentStep === steps.length - 1 ? "Submit" : "Next"}
           </Button>

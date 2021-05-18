@@ -10,6 +10,7 @@ import {
 import { CloudUploadIcon } from "@material/mui-icons";
 import useImageUploader from "@hooks/useImageUploader";
 import { useFormikContext } from "formik";
+import { useBusinessFormContext } from "@contexts/businessFormContext";
 
 const baseStyle = {
   flex: 1,
@@ -79,12 +80,14 @@ const FileDropzone = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const classes = useStyles();
   const [url, error, uploadImage, uploading] = useImageUploader();
+  const { setFormWasChanged } = useBusinessFormContext();
 
   useEffect(() => {
     if (url) {
       if (myFiles.length + 1 <= MAX_FILES) {
         setMyFiles([...myFiles, url]);
         setErrorMessage("");
+        setFormWasChanged(true);
       } else {
         setErrorMessage(
           "You have reached the max number of allowed images (3)"
@@ -127,10 +130,12 @@ const FileDropzone = () => {
     });
     setMyFiles(filtered);
     setErrorMessage("");
+    setFormWasChanged(true);
   };
   const removeAll = () => {
     setMyFiles([]);
     setErrorMessage("");
+    setFormWasChanged(true);
   };
 
   const files = myFiles.map((file, index) => {

@@ -5,6 +5,46 @@ export const useBusinessFormContext = () => {
   return useContext(BusinessFormContext);
 };
 
+const formSteps = [
+  {
+    number: 0,
+    title: "Name and Location",
+    text: "Add your business name, and location",
+    bottomImage: "/images/man_globe.svg",
+    fieldNames: ["businessName", "businessLocation"],
+    backEndFields: ["business_name", "business_location"],
+  },
+  {
+    number: 1,
+    title: "Category",
+    text: "Select the most-fitting category for your business",
+    bottomImage: "/images/man_globe.svg",
+    fieldNames: ["businessCategory"],
+    backEndFields: ["category"],
+  },
+  {
+    number: 2,
+    title: "Description and Contact",
+    text: "Elaborate on the services you provide, and add contact info",
+    bottomImage: "/images/social_media_pixels.svg",
+    fieldNames: ["businessDescription", "businessUrl", "igHandle"],
+    backEndFields: ["business_description", "business_url", "ig_handle"],
+  },
+  {
+    number: 3,
+    title: "Images",
+    text: "Upload a logo and sample images of your work",
+    bottomImage: "/images/img-carousel.svg",
+    fieldNames: ["logoUrl", "sampleImages"],
+    backEndFields: ["logo_url", "sample_images"],
+  },
+  {
+    number: 4,
+    title: "Review & Submit",
+    text: "Take a chance to review your business info, then Submit",
+  },
+];
+
 export function BusinessFormProvider({ children }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [business, setBusiness] = useState(null);
@@ -15,44 +55,20 @@ export function BusinessFormProvider({ children }) {
   const [formWasChanged, setFormWasChanged] = useState(false);
 
   useEffect(() => {
-    if (business) setUnlockedSteps([0, 1, 2, 3, 4]);
-  }, [business]);
+    if (business) {
+      setUnlockedSteps([0, 1, 2, 3, 4]);
 
-  const formSteps = [
-    {
-      number: 0,
-      title: "Name and Location",
-      text: "Add your business name, and location",
-      bottomImage: "/images/man_globe.svg",
-      fieldNames: ["businessName", "businessLocation"],
-    },
-    {
-      number: 1,
-      title: "Category",
-      text: "Select the most-fitting category for your business",
-      bottomImage: "/images/man_globe.svg",
-      fieldNames: ["businessCategory"],
-    },
-    {
-      number: 2,
-      title: "Description and Contact",
-      text: "Elaborate on the services you provide, and add contact info",
-      bottomImage: "/images/social_media_pixels.svg",
-      fieldNames: ["businessDescription", "businessUrl", "igHandle"],
-    },
-    {
-      number: 3,
-      title: "Images",
-      text: "Upload a logo and sample images of your work",
-      bottomImage: "/images/img-carousel.svg",
-      fieldNames: ["logoUrl", "sampleImages"],
-    },
-    {
-      number: 4,
-      title: "Review & Submit",
-      text: "Take a chance to review your business info, then Submit",
-    },
-  ];
+      formSteps.map(({ number, backEndFields }) => {
+        let complete = true;
+        if (backEndFields) {
+          backEndFields.map((field) => {
+            if (business[field] == "") complete = false;
+          });
+          if (complete) completedSteps.push(number);
+        }
+      });
+    }
+  }, [business]);
 
   const markStepUnlocked = (number) => {
     if (!unlockedSteps.includes(number)) {

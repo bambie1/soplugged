@@ -54,6 +54,7 @@ const BusinessFormReview = () => {
     phoneNumber,
   } = values;
   const sampleImagesArray = sampleImages === "" ? [] : sampleImages.split(",");
+
   return (
     <Grid container spacing={2} style={{ marginTop: "8px" }}>
       <Grid item xs={12} sm={6}>
@@ -118,7 +119,7 @@ const BusinessFormReview = () => {
           fullWidth
           variant="outlined"
           rowsMax={5}
-          helperText="P.S: This is a stripped-down version of the text. Any formatting pre-applied will persist upon save"
+          helperText="This is a stripped-down version of the text. Any formatting pre-applied will persist upon save"
         />
       </Grid>
       {businessLocation && (
