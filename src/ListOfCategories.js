@@ -9,8 +9,7 @@ export const categories = [
     value: "baking-and-catering",
     label: "Baking / Catering",
     imageSrc: "/images/bake.png",
-    tags:
-      "food, cake, dessert, biscuits, loaves, macaroons, sweets, cupcakes, chef, catering, bulk catering, private chef, cuisine",
+    tags: "food, cake, dessert, biscuits, loaves, macaroons, sweets, cupcakes, chef, catering, bulk catering, private chef, cuisine",
   },
   {
     value: "beauty",
@@ -28,8 +27,7 @@ export const categories = [
     value: "consultancy",
     label: "Consultancy",
     imageSrc: "/images/consultation.png",
-    tags:
-      "legal, financial, taxes, immigration, professional, marketing, career coaching",
+    tags: "legal, financial, taxes, immigration, professional, marketing, career coaching",
   },
   {
     value: "content-creating-and-writing",
@@ -47,15 +45,13 @@ export const categories = [
     value: "event-planning",
     label: "Event Planning",
     imageSrc: "/images/party-planner.png",
-    tags:
-      "weddings, corporate events, virtual events, luxury events, social events",
+    tags: "weddings, corporate events, virtual events, luxury events, social events",
   },
   {
     value: "fashion",
     imageSrc: "/images/fashion.png",
     label: "Fashion",
-    tags:
-      "alterations, bespoke, bridal gowns, tuxedo, prom dresses, fabrics, fashion, stylists, seamstress, tailor",
+    tags: "alterations, bespoke, bridal gowns, tuxedo, prom dresses, fabrics, fashion, stylists, seamstress, tailor",
   },
   {
     value: "fitness",
@@ -85,22 +81,19 @@ export const categories = [
     value: "interior-decor",
     label: "Interior Decor",
     imageSrc: "/images/decor.png",
-    tags:
-      "party decor, rennovation, rentals, wedding design, balloons, florals, home decor",
+    tags: "party decor, rennovation, rentals, wedding design, balloons, florals, home decor",
   },
   {
     value: "maintenance-repair",
     label: "Maintenance/Repair Services ",
     imageSrc: "/images/tools.png",
-    tags:
-      "automotive, plumbing, electrical, carpentry, woodwork, home rennovation, cleaning, furniture assembly, handyman, housekeeping",
+    tags: "automotive, plumbing, electrical, carpentry, woodwork, home rennovation, cleaning, furniture assembly, handyman, housekeeping",
   },
   {
     value: "media-services",
     label: "Media services",
     imageSrc: "/images/video-media.png",
-    tags:
-      "photographer, potrait, wedding photographer, photoshoot, cinematography, product photography, event media",
+    tags: "photographer, potrait, wedding photographer, photoshoot, cinematography, product photography, event media",
   },
   {
     value: "travel-tourism",
@@ -112,7 +105,12 @@ export const categories = [
     value: "web-dev-design",
     label: "Web Development / Design",
     imageSrc: "/images/web-programming.png",
-    tags:
-      "coding, UI/UX, webapp, website design, webflow, wordpress, shopify, javascript",
+    tags: "coding, UI/UX, webapp, website design, webflow, wordpress, shopify, javascript",
+  },
+  {
+    value: "other",
+    label: "Other",
+    imageSrc: "/images/search.png",
+    tags: "We'll reach out to you to find out more",
   },
 ];
