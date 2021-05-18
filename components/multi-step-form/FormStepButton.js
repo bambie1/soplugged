@@ -123,9 +123,11 @@ const FormStepButton = ({ stepInfo, handleClick, active }) => {
         position="relative"
         key={stepInfo.title}
         onClick={unlocked && !inactive ? handleClick : null}
-        className={`${classes.step} ${active && classes.activeStep} ${
-          unlocked && classes.unlocked
-        } ${complete && classes.completedStep} ${inactive && classes.inactive}`}
+        className={`${classes.step} ${active ? classes.activeStep : ""} ${
+          unlocked ? classes.unlocked : ""
+        } ${complete ? classes.completedStep : ""} ${
+          inactive ? classes.inactive : ""
+        }`}
       >
         <div className="iconDiv">
           <CheckCircleOutlineIcon className="checkIcon" fontSize="small" />

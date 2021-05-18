@@ -49,7 +49,7 @@ export function BusinessFormProvider({ children }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [business, setBusiness] = useState(null);
   const [completedSteps, setCompletedSteps] = useState([]);
-  const [unlockedSteps, setUnlockedSteps] = useState([]);
+  const [unlockedSteps, setUnlockedSteps] = useState([0]);
   const [backEndReferral, setBackEndReferral] = useState("");
   const [backEndReferralBusiness, setBackEndReferralBusiness] = useState("");
   const [formWasChanged, setFormWasChanged] = useState(false);

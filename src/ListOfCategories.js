@@ -12,12 +12,6 @@ export const categories = [
     tags: "food, cake, dessert, biscuits, loaves, macaroons, sweets, cupcakes, chef, catering, bulk catering, private chef, cuisine",
   },
   {
-    value: "beauty",
-    label: "Beauty",
-    imageSrc: "/images/cosmetics.png",
-    tags: "makeup, skincare, eyebrows, eyelashes, hair removal",
-  },
-  {
     value: "coaching-tutoring",
     label: "Coaching / Tutoring",
     imageSrc: "/images/teach.png",
@@ -66,16 +60,28 @@ export const categories = [
     tags: "logo, poster, flyer, banner",
   },
   {
-    value: "hair",
-    label: "Hair",
+    value: "groceries",
+    label: "Groceries",
+    imageSrc: "/images/groceries.png",
+    tags: "african groceries, grocery delivery, nigerian snacks",
+  },
+  {
+    value: "hair-and-beauty",
+    label: "Hair / Beauty",
     imageSrc: "/images/long-wavy-hair-variant.png",
-    tags: "wigs, weaves, custom wigs, cornrows, afro",
+    tags: "wigs, weaves, custom wigs, cornrows, afro, makeup, skincare, eyebrows, eyelashes, hair removal",
   },
   {
     value: "handcraft-gifting",
     label: "Handcraft / Gifting Services",
     imageSrc: "/images/gift-box.png",
     tags: "souvenirs, gift boxes, handmade, customized apparel, favours",
+  },
+  {
+    value: "housekeeping-domestic",
+    label: "Housekeeping / Domestic Services",
+    imageSrc: "/images/household.png",
+    tags: "cleaning, housekeeping, office cleaning, house sitting",
   },
   {
     value: "interior-decor",
