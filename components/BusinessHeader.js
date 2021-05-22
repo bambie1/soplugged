@@ -1,12 +1,12 @@
 import { makeStyles } from "@material/mui-components";
 
 const useStyles = makeStyles((theme) => ({
-  root: ({ wrap }) => ({
+  root: (props) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: "16px",
-    flexWrap: wrap ? "wrap" : "initial",
+    flexWrap: "wrap",
   }),
 }));
 

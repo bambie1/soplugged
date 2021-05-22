@@ -43,3 +43,7 @@ app-soplugged-firebase-adminsdk-6pk1o-2b15ee62de.json
 .vercel
 dbUpdate-prod.js
 dbUpdate-stg.js
+src/tests/
+
+setupTests.js
+.babelrc

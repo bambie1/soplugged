@@ -34,7 +34,10 @@ export const submitBusinessObject = async (data, userToken, business) => {
   const businessObject = {
     phone_number: data.phoneNumber,
     business_name: data.businessName.trim(),
-    slug: slugify(data.businessName.trim(), { lower: true }),
+    slug: slugify(data.businessName.trim(), {
+      lower: true,
+      remove: /[*+~.()'"!:@]/g,
+    }),
     business_url: data.businessUrl.trim(),
     business_location: data.businessLocation,
     logo_url: data.logoUrl,

@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   businessName: {
     fontWeight: "normal",
+    wordBreak: "break-word",
   },
   button: {
     margin: "8px 16px",
