@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  Highlight,
-  Snippet,
-  connectAutoComplete,
-} from "react-instantsearch-dom";
+import { connectAutoComplete } from "react-instantsearch-dom";
 import AutoSuggest from "react-autosuggest";
 import {
   makeStyles,
@@ -13,7 +9,6 @@ import {
   Box,
 } from "@material/mui-components";
 import Link from "next/link";
-import SearchOutlined from "@material-ui/icons/SearchOutlined";
 class AutoComplete extends Component {
   state = {
     value: this.props.currentRefinement,

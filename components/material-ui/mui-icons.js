@@ -31,12 +31,14 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import TelegramIcon from "@material-ui/icons/Telegram";
 import CallIcon from "@material-ui/icons/Call";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 export {
   CheckIcon,
   TextFormatOutlinedIcon,
   CallIcon,
   SearchOutlinedIcon,
+  ErrorOutlineIcon,
   CheckCircleOutlineIcon,
   LockOutlinedIcon,
   TelegramIcon,

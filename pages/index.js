@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Typography,
   Button,
@@ -15,13 +16,10 @@ import {
 import { PowerIcon, SettingsInputSvideoIcon } from "@material/mui-icons";
 import Link from "next/link";
 import HeroBanner from "@components/HeroBanner";
-import Image from "next/image";
-import { categoryIcons } from "../src/categoryIcons";
-import { useSearch } from "@contexts/searchContext";
-import { useRouter } from "next/router";
 import SEO from "@components/SEO";
 import dynamic from "next/dynamic";
 import TopCategories from "@components/TopCategories";
+import Image from "next/image";
 
 const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
@@ -77,13 +75,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
-
-  const { setContextCategory } = useSearch();
-  const router = useRouter();
-  const handleClick = (label) => {
-    setContextCategory(label);
-    router.push("/search");
-  };
 
   return (
     <>
@@ -189,9 +180,6 @@ export default function Home() {
                       <ListItem style={{ marginTop: "auto" }}>
                         <Link href="/my-business">
                           <a>
-                            {/* <Button variant="outlined" color="inherit">
-                              Register your Business
-                            </Button> */}
                             <WhiteOutlinedButton>
                               Register your Business
                             </WhiteOutlinedButton>
@@ -203,6 +191,22 @@ export default function Home() {
                 </Grid>
               </Grid>
             </Container>
+          </Box>
+
+          <Box mt={4} mb={5} textAlign="center">
+            <Typography variant="h5" align="center" gutterBottom={true}>
+              Check out our merch
+            </Typography>
+            <Typography variant="body1" align="center" gutterBottom={true}>
+              See the amazing shirts and accessories we have
+            </Typography>
+            <Link href="/merch">
+              <a style={{ marginTop: "20px", display: "inline-flex" }}>
+                <Button variant="outlined" color="secondary">
+                  Shop Merch
+                </Button>
+              </a>
+            </Link>
           </Box>
 
           <Box mt={4} mb={5}>

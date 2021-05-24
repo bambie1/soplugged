@@ -45,7 +45,7 @@ const Join = ({ referrer, refresh }) => {
         description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
         title="Join SoPlugged"
       />
-      <div className="page" style={{ zIndex: "1", background: "white" }}>
+      <div className="page">
         <Container maxWidth="sm" className={classes.container}>
           <Typography variant="h1">Join SoPlugged</Typography>
           <Typography variant="body1">

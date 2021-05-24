@@ -42,6 +42,8 @@ img {
   margin: auto;
   min-height: 850px;
   padding-top: 70px;
+  z-index: 1;
+  background: white;
 }
 #content {
   min-height: 85vh;

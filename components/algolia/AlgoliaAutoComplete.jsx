@@ -26,21 +26,14 @@ const searchClient = algoliasearch(
 );
 
 const useStyles = makeStyles((theme) => ({
-  closeButton: {
-    position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-  },
   button: {
-    backgroundColor: "#fffaf2",
+    backgroundColor: "#fffaf2 ",
     marginTop: "16px",
     padding: "0.7rem",
     boxShadow: "rgb(78 53 5) -1px 9px 30px -10px",
     color: theme.palette.secondary.main,
     "&:hover": {
-      // backgroundColor: "#fafafa",
       backgroundColor: "#fffaf2",
-      // borderColor: theme.palette.primary.main,
       boxShadow: "rgb(0 0 0 / 25%) 0px 25px 50px -12px",
     },
   },
@@ -86,7 +79,6 @@ const AlgoliaAutoComplete = () => {
   return (
     <>
       <Button
-        variant="outlined"
         startIcon={<SearchIcon />}
         fullWidth
         disableRipple

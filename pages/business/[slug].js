@@ -50,7 +50,9 @@ const BusinessSlug = ({ business }) => {
         {business && <BusinessPage business={business} user={user} />}
         <div className={classes.buttonDiv}>
           <Button variant="outlined" onClick={backToSearch}>
-            View business like this
+            {business?.category
+              ? "View business like this"
+              : "Back to directory"}
           </Button>
         </div>
       </Container>

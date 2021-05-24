@@ -37,7 +37,7 @@ const FAQs = () => {
         title="Frequently Asked Questions | SoPlugged"
         description="The SoPlugged team has answers ready for questions you might have. If we missed anything, please send us an email"
       />
-      <main className="page" style={{ zIndex: "1", background: "white" }}>
+      <main className="page">
         <Container maxWidth="lg">
           <Typography variant="h1" className={classes.title}>
             Frequently Asked Questions
