@@ -32,9 +32,11 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import TelegramIcon from "@material-ui/icons/Telegram";
 import CallIcon from "@material-ui/icons/Call";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
 
 export {
   CheckIcon,
+  LocalMallIcon,
   TextFormatOutlinedIcon,
   CallIcon,
   SearchOutlinedIcon,

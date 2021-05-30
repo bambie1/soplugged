@@ -20,6 +20,7 @@ import SEO from "@components/SEO";
 import dynamic from "next/dynamic";
 import TopCategories from "@components/TopCategories";
 import Image from "next/image";
+import displayShopifyCollection from "../src/shopifyStore";
 
 const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
@@ -70,6 +71,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     "& > .MuiTypography-root": { lineHeight: "2rem" },
+  },
+
+  shopMore: {
+    display: "inline-flex",
+    marginBottom: "20px",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "-20px",
+    },
   },
 }));
 
@@ -198,62 +207,56 @@ export default function Home() {
               Check out our merch
             </Typography>
             <Typography variant="body1" align="center" gutterBottom={true}>
-              See the amazing shirts and accessories we have
+              Normalize #buyingblack, but make it fashionable
             </Typography>
+            <div id="collection-component-1622397719540">
+              {displayShopifyCollection(
+                "collection-component-1622397719540",
+                "266521968830"
+              )}
+            </div>
             <Link href="/merch">
-              <a style={{ marginTop: "20px", display: "inline-flex" }}>
+              <a className={classes.shopMore}>
                 <Button variant="outlined" color="secondary">
-                  Shop Merch
+                  Shop More
                 </Button>
               </a>
             </Link>
           </Box>
 
-          <Box mt={4} mb={5}>
+          <Box mb={5}>
             <Typography variant="h5" align="center" gutterBottom={true}>
-              Learn more about our community
-            </Typography>
-            <Typography variant="body1" align="center" gutterBottom={true}>
-              Did we mention that we love, and support Black-owned businesses?
-            </Typography>
-            <Typography variant="body1" align="center">
-              Cause, we DO!!
+              Become a Sponsor
             </Typography>
             <div className="learn-more">
               <div className="learn-more-image">
                 <Image
-                  width={400}
-                  height={400}
-                  src="/images/buy_black_illustration2.svg"
-                  alt="black lady tracking finances"
+                  width={330}
+                  height={330}
+                  src="/images/winners_monochromatic.svg"
+                  alt="trophy winners showing support"
                 />
               </div>
-
               <Paper className="shortPaper" elevation={2}>
                 <div
                   className={classes.shortPaperDiv}
                   style={{ marginLeft: "auto" }}
                 >
-                  <Typography variant="h6">
-                    What does #BuyBlack mean?
-                  </Typography>
                   <Typography>
-                    The #buyblack movement started out as a way to circulate
-                    wealth within the Black community by supporting Black-owned
-                    businesses. No doubt, this movement has gained a lot of
-                    traction due to the tragic events of 2020 and how they
-                    impacted small businesses. Our goal is to make buying black
-                    easy by connecting you with the right business for your
-                    needs.
+                    At SoPlugged, our biggest inspiration is supporting one
+                    another and growing our community. Our goal is to normalize
+                    buying black and we rely on amazing people like you to keep
+                    our platform free and accessible to Black-owned businesses
+                    across Canada.
                   </Typography>
-                  <Link href="https://soplugged.medium.com/">
-                    <a
-                      style={{ marginRight: "auto", marginTop: "16px" }}
-                      target="_blank"
-                      rel="noopener"
-                    >
+                  <Typography variant="body2">
+                    All donations go towards maintaining our platform and
+                    supporting Black-owned businesses across Canada.
+                  </Typography>
+                  <Link href="/sponsors">
+                    <a style={{ marginRight: "auto", marginTop: "16px" }}>
                       <Button variant="outlined" color="secondary">
-                        Read more on our blog
+                        Show your support
                       </Button>
                     </a>
                   </Link>

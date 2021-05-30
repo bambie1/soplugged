@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   subscribe: {
     padding: "40px 8px",
     background: "#fffaf2",
+    marginTop: "10px",
   },
   container: {
     padding: "0px",

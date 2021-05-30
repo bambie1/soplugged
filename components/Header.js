@@ -27,6 +27,7 @@ import {
   HomeIcon,
   MoreVertIcon,
   EditIcon,
+  LocalMallIcon,
 } from "@material/mui-icons";
 import SignOutAlert from "./SignOutAlert";
 import { useAuth } from "@contexts/authContext";
@@ -129,7 +130,23 @@ const Header = (props) => {
                 <ListItemIcon>
                   <SearchIcon />
                 </ListItemIcon>
-                <ListItemText primary="Directory" />
+                <ListItemText primary="DIRECTORY" />
+              </>
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem
+          button
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <Link href="/merch">
+            <a className={classes.mobileLink}>
+              <>
+                <ListItemIcon>
+                  <LocalMallIcon />
+                </ListItemIcon>
+                <ListItemText primary="MERCH" />
               </>
             </a>
           </Link>
@@ -148,28 +165,12 @@ const Header = (props) => {
                       <ListItemIcon>
                         <BusinessCenterIcon />
                       </ListItemIcon>
-                      <ListItemText primary="My Dashboard" />
+                      <ListItemText primary="MY DASHBOARD" />
                     </>
                   </a>
                 </Link>
               </ListItem>
             </div>
-            <ListItem
-              button
-              onClick={toggleDrawer(false)}
-              onKeyDown={toggleDrawer(false)}
-            >
-              <Link href="/my-business">
-                <a className={classes.mobileLink}>
-                  <>
-                    <ListItemIcon>
-                      <EditIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="My Business" />
-                  </>
-                </a>
-              </Link>
-            </ListItem>
             <Divider />
           </>
         ) : (
@@ -190,6 +191,7 @@ const Header = (props) => {
             </Link>
           </ListItem>
         )}
+        <Divider />
 
         <ListItem
           button
@@ -198,7 +200,7 @@ const Header = (props) => {
         >
           <Link href="/faqs">
             <a className={classes.mobileLink}>
-              <Button>FAQs</Button>
+              <Button style={{ justifyContent: "start" }}>FAQs</Button>
             </a>
           </Link>
         </ListItem>
@@ -209,7 +211,7 @@ const Header = (props) => {
         >
           <Link href="/sponsors">
             <a className={classes.mobileLink}>
-              <Button>Sponsors</Button>
+              <Button style={{ justifyContent: "start" }}>SPONSORS</Button>
             </a>
           </Link>
         </ListItem>
@@ -258,20 +260,27 @@ const Header = (props) => {
                       <Button color="inherit">DIRECTORY</Button>
                     </a>
                   </Link>
+                  <Link href="/merch">
+                    <a>
+                      <Button color="inherit">MERCH</Button>
+                    </a>
+                  </Link>
                   {user?.email ? (
                     <>
                       <Link href="/dashboard">
                         <a>
-                          <Button color="inherit">MY DASHBOARD</Button>
+                          <Button color="inherit" variant="outlined">
+                            MY DASHBOARD
+                          </Button>
                         </a>
                       </Link>
-                      <Link href="/my-business">
+                      {/* <Link href="/my-business">
                         <a>
                           <Button color="inherit" variant="outlined">
                             MY BUSINESS
                           </Button>
                         </a>
-                      </Link>
+                      </Link> */}
                       <IconButton
                         aria-label="more"
                         aria-controls="desktop-menu"

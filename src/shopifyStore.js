@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-export default function displayShopifyCollection() {
+export default function displayShopifyCollection(componentID, id) {
   useEffect(() => {
     var scriptURL =
       "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
@@ -13,7 +13,6 @@ export default function displayShopifyCollection() {
       loadScript();
     }
     function loadScript() {
-      console.log("load script start");
       var script = document.createElement("script");
       script.async = true;
       script.src = scriptURL;
@@ -31,8 +30,8 @@ export default function displayShopifyCollection() {
       });
       ShopifyBuy.UI.onReady(client).then(function (ui) {
         ui.createComponent("collection", {
-          id: "266521968830",
-          node: document.getElementById("collection-component-1621820423617"),
+          id,
+          node: document.getElementById(componentID),
           moneyFormat: "%24%7B%7Bamount%7D%7D",
           options: {
             product: {
@@ -207,7 +206,6 @@ export default function displayShopifyCollection() {
             },
           },
         });
-        console.log("load script complete");
       });
     }
   }, []);
