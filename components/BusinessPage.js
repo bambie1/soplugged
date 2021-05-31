@@ -206,7 +206,7 @@ const BusinessPage = ({ business, user }) => {
               </>
             )}
 
-            {!hasPreview && verified ? (
+            {!hasPreview && verified && (
               <div
                 style={{
                   marginTop: "40px",
@@ -225,22 +225,6 @@ const BusinessPage = ({ business, user }) => {
                   numberOfLikes={number_of_likes}
                   disabled={pageOwner}
                 />
-              </div>
-            ) : (
-              <div
-                style={{
-                  padding: "16px 40px",
-                  borderRadius: "5px",
-                  background: "#fffaf2",
-                }}
-              >
-                <Typography>Are you the owner of this business?</Typography>
-                <br></br>
-                <a href="mailto:hello@soplugged.com">
-                  <Button variant="contained" color="secondary">
-                    Let us know
-                  </Button>
-                </a>
               </div>
             )}
           </div>
@@ -293,7 +277,7 @@ const BusinessPage = ({ business, user }) => {
           )}
         </Grid>
       </Grid>
-      {hasPreview && verified ? (
+      {hasPreview && verified && (
         <div className={classes.favoriteDiv}>
           <Typography>
             Would you recommend this business? Give it a like!
@@ -305,7 +289,24 @@ const BusinessPage = ({ business, user }) => {
             disabled={pageOwner}
           />
         </div>
-      ) : null}
+      )}
+      {!verified && (
+        <div
+          style={{
+            padding: "16px 40px",
+            borderRadius: "5px",
+            background: "#fffaf2",
+          }}
+        >
+          <Typography>Are you the owner of this business?</Typography>
+          <br></br>
+          <a href="mailto:hello@soplugged.com">
+            <Button variant="contained" color="secondary">
+              Let us know
+            </Button>
+          </a>
+        </div>
+      )}
       {pageOwner ? (
         <Link href="/my-business">
           <a style={{ position: "fixed", top: "65px", right: "16px" }}>
