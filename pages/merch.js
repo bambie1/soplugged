@@ -24,7 +24,9 @@ const Merch = () => {
         <Typography align="center" gutterBottom={true}>
           Normalize <b>#buyingblack</b>, but make it fashionable
         </Typography>
-        <hr style={{ width: "40%", maxWidth: "170px" }}></hr>
+        <hr
+          style={{ width: "40%", maxWidth: "170px", marginBottom: "40px" }}
+        ></hr>
         <div id="collection-component-1622397974663">
           {displayShopifyCollection(
             "collection-component-1622397974663",

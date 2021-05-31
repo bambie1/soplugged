@@ -204,11 +204,14 @@ export default function Home() {
 
           <Box mt={4} mb={5} textAlign="center">
             <Typography variant="h5" align="center" gutterBottom={true}>
-              Check out our merch
+              Check out our merch collection
             </Typography>
             <Typography variant="body1" align="center" gutterBottom={true}>
-              Normalize #buyingblack, but make it fashionable
+              Normalize <b>#buyingblack</b>, but make it fashionable
             </Typography>
+            <hr
+              style={{ width: "40%", maxWidth: "170px", marginBottom: "30px" }}
+            ></hr>
             <div id="collection-component-1622397719540">
               {displayShopifyCollection(
                 "collection-component-1622397719540",

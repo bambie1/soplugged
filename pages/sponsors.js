@@ -69,26 +69,21 @@ const Sponsors = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6} className={classes.textContent}>
                 <Typography className={classes.text}>
-                  SoPlugged is an online platform that makes #buyingblack easy!
-                  Our search-friendly platform helps end-users connect to
-                  Black-owned businesses across Canada.{" "}
-                  <span className={classes.laptopText}>
-                    When you{" "}
-                    <a href="/join" className={classes.link}>
-                      register
-                    </a>{" "}
-                    your business on our platform, you increase your brand
-                    visibility and get access to a thriving community of people
-                    looking to support Black-owned businesses. <br></br>At
-                    SoPlugged, our biggest inspiration is supporting one another
-                    and growing our community. It’s always a beautiful thing to
-                    see people join the movement to support Black-owned
-                    businesses. That’s our story and we hope you become a part
-                    of it!
-                  </span>
-                  <br></br>
-                  We rely on amazing people like you to keep our platform free
-                  and accessible to Black-owned businesses across Canada
+                  At SoPlugged, our biggest inspiration is supporting one
+                  another and growing our community. Our goal is to normalize
+                  buying black and we rely on amazing people like you to keep
+                  our platform free and accessible to Black-owned businesses
+                  across Canada.
+                </Typography>
+                <hr style={{ width: "100%", maxWidth: "150px" }}></hr>
+                <Typography
+                  // style={{ width: "80%", margin: "0 auto" }}
+                  className={classes.text}
+                >
+                  <em>
+                    All donations go towards maintaining our platform and
+                    supporting Black-owned businesses across Canada.
+                  </em>
                 </Typography>
               </Grid>
               <Grid item xs={12} md={6}>
