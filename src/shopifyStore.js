@@ -210,3 +210,5 @@ export default function displayShopifyCollection(componentID, id) {
     }
   }, []);
 }
+
+// shopify config
