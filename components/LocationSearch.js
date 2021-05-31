@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Autocomplete } from "@material/mui-lab";
 import { LocationOnIcon } from "@material/mui-icons";
-import {
-  Grid,
-  Typography,
-  makeStyles,
-  CustomTextField,
-} from "@material/mui-components";
+import { Grid, makeStyles, CustomTextField } from "@material/mui-components";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
 import { useFormikContext } from "formik";
@@ -84,7 +79,8 @@ const LocationSearch = ({ name, ...otherProps }) => {
     let active = true;
 
     if (!autocompleteService.current && window.google) {
-      autocompleteService.current = new window.google.maps.places.AutocompleteService();
+      autocompleteService.current =
+        new window.google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
       return undefined;

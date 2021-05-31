@@ -236,9 +236,11 @@ const BusinessPage = ({ business, user }) => {
               >
                 <Typography>Are you the owner of this business?</Typography>
                 <br></br>
-                <Button variant="contained" color="secondary">
-                  Claim it
-                </Button>
+                <a href="mailto:hello@soplugged.com">
+                  <Button variant="contained" color="secondary">
+                    Let us know
+                  </Button>
+                </a>
               </div>
             )}
           </div>
