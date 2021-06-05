@@ -407,7 +407,7 @@ img {
   }
 }
 
-/* shopify iframe */
+/* shopify iframe over loading spinner */
 .shopify-buy-frame iframe {
   z-index: 2;
   background: white;
