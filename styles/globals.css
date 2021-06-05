@@ -406,3 +406,9 @@ img {
     padding: 24px 0px !important;
   }
 }
+
+/* shopify iframe */
+.shopify-buy-frame iframe {
+  z-index: 2;
+  background: white;
+}
