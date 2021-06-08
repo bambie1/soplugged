@@ -73,6 +73,7 @@ const Join = ({ referrer, refresh }) => {
 export async function getServerSideProps(context) {
   const referrer = context.req.headers.referer;
   const host = context.req.headers.host;
+  // only redirect to referre if referrer is a business or the directory. Else go to daashboard
   const redirectRef =
     referrer?.indexOf(host + "/business") !== -1 ||
     referrer?.indexOf(host + "/search") !== -1
