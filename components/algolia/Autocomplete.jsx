@@ -33,7 +33,6 @@ class AutoComplete extends Component {
   };
 
   getSuggestionValue(hit) {
-    // console.log({ hit });
     return hit.business_name || hit.name;
   }
 
@@ -152,7 +151,6 @@ class AutoComplete extends Component {
       autoFocus: true,
     };
 
-    // console.log({ hits });
     return (
       <div className="inputDiv">
         <AutoSuggest

@@ -10,9 +10,8 @@ const FirebaseAuth = ({ referrer }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setRenderAuth(true);
-      // console.log({ referrer });
       if (referrer && referrer !== "") {
-        localStorage.setItem("ref", referrer);
+        localStorage.setItem("redirectRef", referrer);
       }
     }
   }, []);
@@ -34,10 +33,10 @@ const FirebaseAuth = ({ referrer }) => {
     credentialHelper: "none",
     callbacks: {
       signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-        console.log({ authResult, redirectUrl });
-        let getSession = localStorage.getItem("ref");
+        let getSession = localStorage.getItem("redirectRef");
         if (getSession) {
           window.location.href = getSession;
+          localStorage.removeItem("redirectRef");
         } else router.push("/dashboard");
         return false;
       },

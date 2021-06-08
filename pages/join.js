@@ -35,7 +35,6 @@ const Join = ({ referrer, refresh }) => {
   useEffect(() => {
     router.beforePopState(({ url, as, options }) => {
       console.log({ refresh });
-      // if(refresh == "auth/id-token-expired") router.reload
     });
   }, [refresh]);
 
@@ -74,9 +73,9 @@ const Join = ({ referrer, refresh }) => {
 export async function getServerSideProps(context) {
   const referrer = context.req.headers.referer;
   const host = context.req.headers.host;
-  const sameRef =
-    referrer?.indexOf("http://" + host) === 0 ||
-    referrer?.indexOf("https://" + host) === 0
+  const redirectRef =
+    referrer?.indexOf(host + "/business") !== -1 ||
+    referrer?.indexOf(host + "/search") !== -1
       ? referrer
       : null;
   try {
@@ -95,7 +94,7 @@ export async function getServerSideProps(context) {
   } catch (error) {
     return {
       props: {
-        referrer: sameRef || "",
+        referrer: redirectRef || "",
         refresh: error.code,
       },
     };
