@@ -30,6 +30,7 @@
     "lodash": "^4.17.20",
     "next": "^10.2.0",
     "next-firebase-auth": "^0.13.0-alpha.0",
+    "next-pwa": "^5.2.23",
     "nookies": "^2.5.2",
     "react": "^17.0.1",
     "react-autosuggest": "^10.1.0",
