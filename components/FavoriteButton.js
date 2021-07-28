@@ -3,7 +3,6 @@ import {
   Button,
   Snackbar,
   IconButton,
-  makeStyles,
   Tooltip,
 } from "@material/mui-components";
 import React, { useState } from "react";
@@ -14,13 +13,8 @@ import {
 } from "@material/mui-icons";
 import Link from "next/link";
 import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
+import { useRouter } from "next/router";
 import * as Sentry from "@sentry/node";
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    alignSelf: "center",
-  },
-}));
 
 const FavoriteButton = ({
   business_id,
@@ -32,9 +26,9 @@ const FavoriteButton = ({
   const [snackPack, setSnackPack] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const [likes, setLikes] = React.useState(numberOfLikes);
-  const classes = useStyles();
   const [messageInfo, setMessageInfo] = React.useState(undefined);
   const [favorites, setFavorites] = React.useState([]);
+  const router = useRouter();
 
   let userLikedBusiness = false;
   React.useEffect(() => {
@@ -86,6 +80,10 @@ const FavoriteButton = ({
     setMessageInfo(undefined);
   };
   const handleClick = async () => {
+    if (!user?.email || disabled) {
+      router.push("/join");
+      return;
+    }
     if (liked) {
       let res = await removeFavorite(business_id, user);
       if (!res.error) {
@@ -108,17 +106,30 @@ const FavoriteButton = ({
   return (
     <>
       <Tooltip title={liked ? "Remove from Favorites" : "Add to Favorites"}>
-        <span className={classes.button}>
-          <Button
-            variant={mini ? "text" : "contained"}
-            color={mini ? "secondary" : "primary"}
-            startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-            onClick={handleClick}
-            disabled={!user?.email || disabled}
-            style={{ marginTop: mini ? "auto" : "8px" }}
-          >
-            {mini ? likes : `Likes - ${likes} `}
-          </Button>
+        <span style={{ marginLeft: "auto" }}>
+          {likes > 0 ? (
+            <Button
+              size="small"
+              variant={mini ? "text" : "contained"}
+              color="secondary"
+              startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              onClick={handleClick}
+              style={{ marginTop: mini ? "auto" : "8px" }}
+            >
+              {mini ? likes : `Likes - ${likes} `}
+            </Button>
+          ) : (
+            <Button
+              size="small"
+              variant={mini ? "text" : "contained"}
+              color="secondary"
+              endIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              onClick={handleClick}
+              style={{ marginTop: mini ? "auto" : "8px" }}
+            >
+              -
+            </Button>
+          )}
         </span>
       </Tooltip>
       {!user?.email && !mini && (

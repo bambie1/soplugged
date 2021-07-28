@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { connectCurrentRefinements } from "react-instantsearch-dom";
 
 const CurrentRefinements = ({ items, refine, createURL }) => {
+  const [storedItems, setStoredItems] = useState(items);
+  console.log({ items });
+
   return (
     <ul className="ais-CurrentRefinements-list">
       {items.map((item) => (
@@ -29,15 +32,19 @@ const CurrentRefinements = ({ items, refine, createURL }) => {
               ))}
             </React.Fragment>
           ) : (
-            <a
-              href={createURL(item.value)}
-              onClick={(event) => {
-                event.preventDefault();
-                refine(item.value);
-              }}
-            >
-              {item.label}
-            </a>
+            <>
+              <a href={createURL(item.value)}>
+                {item.label}{" "}
+                <span
+                  onClick={(event) => {
+                    event.preventDefault();
+                    refine(item.value);
+                  }}
+                >
+                  ✕
+                </span>
+              </a>
+            </>
           )}
         </li>
       ))}
@@ -45,6 +52,5 @@ const CurrentRefinements = ({ items, refine, createURL }) => {
   );
 };
 
-export const CustomCurrentRefinements = connectCurrentRefinements(
-  CurrentRefinements
-);
+export const CustomCurrentRefinements =
+  connectCurrentRefinements(CurrentRefinements);

@@ -64,48 +64,9 @@ const CustomTextField = withStyles({
   },
 })(TextField);
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    color: "white",
-    borderColor: theme.palette.tertiary.main,
-    backgroundColor: theme.palette.tertiary.main,
-    "&:hover": {
-      backgroundColor: theme.palette.tertiary.main,
-      color: theme.palette.secondary.main,
-    },
-  },
-  outlinedButton: {
-    borderColor: "white",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "rgb(255 255 255 / 74%)",
-      borderColor: "rgb(255 255 255 / 74%)",
-      color: theme.palette.secondary.main,
-    },
-  },
-}));
-
-const WhiteButton = ({ children, ...props }) => {
-  const classes = useStyles();
-  return (
-    <Button variant="contained" className={classes.button} {...props}>
-      {children}
-    </Button>
-  );
-};
-const WhiteOutlinedButton = ({ children, ...props }) => {
-  const classes = useStyles();
-  return (
-    <Button variant="outlined" className={classes.outlinedButton} {...props}>
-      {children}
-    </Button>
-  );
-};
-
 export {
   InputLabel,
   Card,
-  WhiteOutlinedButton,
   CardActionArea,
   CardActions,
   CardContent,

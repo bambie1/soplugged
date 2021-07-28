@@ -5,41 +5,47 @@ import {
   Button,
   Divider,
   IconButton,
-  makeStyles,
   useMediaQuery,
 } from "@material/mui-components";
 import { useTheme } from "@material-ui/core/styles";
 import { InstagramIcon, LinkedInIcon } from "@material/mui-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const useStyles = makeStyles((theme) => ({
-  divider: {
-    margin: "8px",
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  gridDiv: {
-    display: "flex",
-    flexDirection: "column",
-    "& > *": {
-      alignSelf: "center",
-    },
-  },
-}));
+import styles from "../styles/Footer.module.scss";
+import SubscribeForm from "./SubscribeForm";
 
 const Footer = () => {
-  const classes = useStyles();
   const router = useRouter();
   const theme = useTheme();
   const mobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-  return !(router.pathname.startsWith("/dashboard") && !mobileScreen) ? (
-    <footer className="footer">
-      <Container className="footer-container">
+  // const showFooter =
+  //   !(router.pathname.startsWith("/dashboard") && !mobileScreen) ||
+  //   !router.pathname.startsWith("/join");
+
+  const hideFooter = router.pathname.startsWith("/join");
+
+  return hideFooter ? (
+    <></>
+  ) : (
+    <footer className={styles.footer}>
+      <div className={styles.shape_divider_container}>
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            className={styles.shape_fill}
+          ></path>
+        </svg>
+      </div>
+      <SubscribeForm />
+      <Container className={styles.footer_container}>
         <Grid container>
-          <Grid item xs={12} sm={6} className={classes.gridDiv}>
+          <Grid item xs={12} sm={6} className={styles.grid}>
             <a href="mailto:hello@soplugged.com">
               <Typography>hello@soplugged.com</Typography>
             </a>
@@ -75,10 +81,9 @@ const Footer = () => {
                 Make a feature request
               </Button>
             </a>
-            <Divider className={classes.divider} />
           </Grid>
 
-          <Grid item xs={12} sm={6} className="footer-links-div">
+          <Grid item xs={12} sm={6} className={styles.footer_links_div}>
             <div>
               <Link href="/faqs">
                 <a>
@@ -135,8 +140,6 @@ const Footer = () => {
         </a>
       </Container>
     </footer>
-  ) : (
-    <></>
   );
 };
 

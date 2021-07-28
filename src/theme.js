@@ -14,6 +14,9 @@ export const theme = createMuiTheme({
       main: "#4e3505",
       // main: "#CD9993",
     },
+    white: {
+      main: "#fff",
+    },
   },
   typography: {
     fontFamily: [
@@ -24,15 +27,26 @@ export const theme = createMuiTheme({
       "sans-serif",
     ].join(","),
     body1: {
+      lineHeight: "2rem",
       fontFamily: ["Raleway", "sans-serif"].join(","),
+      // marginBottom: "2rem",
+    },
+    body2: {
+      lineHeight: "1.4rem",
+      // marginBottom: "2rem",
     },
     h1: {
       fontWeight: "700",
-      fontSize: "2.5rem",
+      fontSize: "3.1rem",
+      marginBottom: "2rem",
+      color: "#4e3505",
     },
     h2: {
       fontWeight: "700",
-      fontSize: "1.8rem",
+      fontSize: "2.2rem",
+      marginBottom: "1rem",
+      marginTop: "1rem",
+      color: "#4e3505",
     },
     h5: {
       fontWeight: "bold",
@@ -44,6 +58,7 @@ export const theme = createMuiTheme({
     },
     button: {
       textTransform: "none",
+      fontSize: "1rem",
     },
   },
 });

@@ -1,0 +1,50 @@
+@import "mixins";
+
+.footer {
+  padding: 16px 0px 8px 0px;
+  position: relative;
+  min-height: 5vh;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(205, 182, 147, 1) 100%
+  );
+  /* z-index: 1; */
+  width: 100%;
+}
+.footer_container {
+  margin: 16px auto 0px;
+}
+.footer_links_div > * {
+  display: block;
+}
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  * {
+    align-self: center;
+  }
+}
+
+.shape_divider_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.shape_divider_container svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 86px;
+}
+
+.shape_divider_container .shape_fill {
+  fill: #ffffff;
+}

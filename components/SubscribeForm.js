@@ -11,12 +11,14 @@ import {
 import { Alert } from "@material/mui-lab";
 import * as Sentry from "@sentry/node";
 
+// no external styles used here
+
 const useStyles = makeStyles((theme) => ({
   grid: { justifyContent: "center", marginBottom: "8px" },
   subscribe: {
     padding: "40px 8px",
-    background: "#fffaf2",
-    marginTop: "10px",
+    // background: "#fffaf2",
+    marginTop: "40px",
   },
   container: {
     padding: "0px",

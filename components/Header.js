@@ -14,6 +14,7 @@ import {
   makeStyles,
   Menu,
   MenuItem,
+  Slide,
 } from "@material/mui-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,7 +27,6 @@ import {
   PowerIcon,
   HomeIcon,
   MoreVertIcon,
-  EditIcon,
   LocalMallIcon,
 } from "@material/mui-icons";
 import SignOutAlert from "./SignOutAlert";
@@ -59,19 +59,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HideOnScroll(props) {
-  const { children } = props;
-  const trigger = useScrollTrigger({
+  const { children, window } = props;
+  const homeTrigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0,
+    threshold: 70,
+  });
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    threshold: 70,
   });
 
-  if (props.home === true) {
-    return React.cloneElement(children, {
-      elevation: trigger ? 4 : 0,
-      color: trigger ? "primary" : "transparent",
-    });
-  }
-  return children;
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {React.cloneElement(children, {
+        elevation: homeTrigger ? 1 : 0,
+        // elevation: 0,
+        color: homeTrigger ? "primary" : "transparent",
+      })}
+    </Slide>
+  );
 }
 
 const Header = (props) => {
@@ -90,6 +96,9 @@ const Header = (props) => {
   const signOutMenuClose = () => {
     setSignOutAnchorEl(null);
   };
+
+  const isHomePage = router.pathname === "/";
+  const isDirectoryPage = router.pathname === "/search";
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -238,21 +247,25 @@ const Header = (props) => {
 
   return (
     <>
-      <HideOnScroll {...props} home={router.pathname === "/"}>
-        <AppBar>
-          <Toolbar>
-            <Link href="/">
-              <a>
-                <Image
-                  src="/soplugged-logo.png"
-                  alt="SoPlugged Logo"
-                  width={40}
-                  height={40}
-                />
-              </a>
-            </Link>
-            <div className="gap"></div>
-            {router.pathname != "/join" && (
+      {router.pathname != "/join" && (
+        <HideOnScroll {...props} home={isHomePage} directory={isDirectoryPage}>
+          <AppBar
+            position={isHomePage ? "fixed" : "static"}
+            color="transparent"
+            elevation={0}
+          >
+            <Toolbar>
+              <Link href="/">
+                <a>
+                  <Image
+                    src="/soplugged-logo.png"
+                    alt="SoPlugged Logo"
+                    width={40}
+                    height={40}
+                  />
+                </a>
+              </Link>
+              <div className="gap"></div>
               <>
                 <div className="sectionDesktop">
                   <Link href="/search">
@@ -274,13 +287,6 @@ const Header = (props) => {
                           </Button>
                         </a>
                       </Link>
-                      {/* <Link href="/my-business">
-                        <a>
-                          <Button color="inherit" variant="outlined">
-                            MY BUSINESS
-                          </Button>
-                        </a>
-                      </Link> */}
                       <IconButton
                         aria-label="more"
                         aria-controls="desktop-menu"
@@ -334,12 +340,14 @@ const Header = (props) => {
                   </SwipeableDrawer>
                 </div>
               </>
-            )}
 
-            {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
+              {signOut && (
+                <SignOutAlert handleClose={() => setSignOut(false)} />
+              )}
+            </Toolbar>
+          </AppBar>
+        </HideOnScroll>
+      )}
     </>
   );
 };

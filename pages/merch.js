@@ -2,7 +2,6 @@ import React from "react";
 import displayShopifyCollection from "../src/shopifyStore";
 import { Typography, makeStyles, Box } from "@material/mui-components";
 import SEO from "@components/SEO";
-import SubscribeForm from "@components/SubscribeForm";
 import dynamic from "next/dynamic";
 
 const DynamicProgress = dynamic(() =>
@@ -39,12 +38,8 @@ const Merch = () => {
         className="page"
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <Typography
-          variant="h4"
-          style={{ textAlign: "center", fontWeight: "700" }}
-          gutterBottom={true}
-        >
-          shop
+        <Typography variant="h1" align="center" gutterBottom={true}>
+          merch
         </Typography>
         <Typography align="center" gutterBottom={true}>
           Normalize <b>#buyingblack</b>, but make it fashionable
@@ -70,9 +65,6 @@ const Merch = () => {
               Loading the store. Hang tight!
             </DynamicAlert>
           </div>
-        </div>
-        <div style={{ marginTop: "auto" }}>
-          <SubscribeForm />
         </div>
       </Box>
     </>

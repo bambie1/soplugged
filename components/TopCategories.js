@@ -11,6 +11,7 @@ import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useTheme } from "@material-ui/core/styles";
+import { NavigateNextIcon } from "./material-ui/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
   categoriesDiv: {
@@ -65,12 +66,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   categoryName: {
-    marginTop: "16px",
+    marginTop: "8px",
     textTransform: "uppercase",
     fontWeight: "bold",
-    visibility: "hidden",
-    opacity: "0",
-    height: "0",
+    // visibility: "hidden",
+    // opacity: "0",
+    // height: "0",
     transition: "visibility 0.3s, opacity 0.3s, border 0.3s linear",
     fontSize: "0.8rem",
   },
@@ -90,12 +91,7 @@ const TopCategories = () => {
 
   return (
     <>
-      <Typography
-        align="center"
-        gutterBottom={true}
-        variant="h5"
-        component="h2"
-      >
+      <Typography align="center" gutterBottom={true} variant="h2">
         Top Categories
       </Typography>
       <div className={classes.categoriesDiv}>
@@ -107,8 +103,8 @@ const TopCategories = () => {
           >
             <Image
               src={icon.imageSrc}
-              width={bigScreen ? 70 : 50}
-              height={bigScreen ? 70 : 50}
+              width={bigScreen ? 50 : 35}
+              height={bigScreen ? 50 : 35}
               alt={`${icon.shortText}-icon`}
             />
             <Typography
@@ -123,8 +119,12 @@ const TopCategories = () => {
       </div>
       <Link href="/search">
         <a style={{ alignSelf: "center", marginBottom: "24px" }}>
-          <Button variant="outlined" color="secondary">
-            Search More
+          <Button
+            variant="contained"
+            color="secondary"
+            endIcon={<NavigateNextIcon />}
+          >
+            Explore More
           </Button>
         </a>
       </Link>

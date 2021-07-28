@@ -43,11 +43,7 @@ const RefinementList = ({
   const classes = useStyles();
   const [extended, setExtended] = React.useState(false);
   return (
-    <Paper
-      className={classes.root}
-      elevation={2}
-      style={{ display: hide ? "none" : "block" }}
-    >
+    <div>
       <Typography variant="caption">{label}</Typography>
       <List component="nav" aria-label="location refinement options">
         <ListItem disableGutters>
@@ -87,7 +83,7 @@ const RefinementList = ({
                   ) : (
                     item.label
                   )}{" "}
-                  <span className={classes.numBadge}>{item.count}</span>
+                  {/* <span className={classes.numBadge}>{item.count}</span> */}
                 </a>
               </ListItem>
             )
@@ -98,7 +94,7 @@ const RefinementList = ({
           {extended ? "Show Less" : "Show More"}
         </Button>
       )}
-    </Paper>
+    </div>
   );
 };
 

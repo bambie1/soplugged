@@ -1,13 +1,7 @@
-const withPWA = require("next-pwa");
-
-// const withBundleAnalyzer = require("@next/bundle-analyzer")({
-//   enabled: process.env.ANALYZE === "true",
-// });
-module.exports = withPWA({
-  pwa: {
-    dest: "public",
-    swSrc: "service-worker.js",
-  },
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+module.exports = withBundleAnalyzer({
   webpack: (config, { isServer, webpack, _ }) => {
     config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
     if (!isServer) {

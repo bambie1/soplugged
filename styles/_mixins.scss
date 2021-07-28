@@ -1,0 +1,32 @@
+$primary: #cdb693;
+$secondary: #4e3505;
+
+@mixin mobile_only() {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile_xl() {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin large_tablet_down {
+  @media (max-width: 959px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

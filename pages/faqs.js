@@ -6,9 +6,6 @@ import {
 } from "@material/mui-components";
 import Link from "next/link";
 import SEO from "@components/SEO";
-import dynamic from "next/dynamic";
-
-const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -16,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "32px 0px",
   },
   faqSection: {
-    margin: "16px 0px",
+    margin: "32px 0px",
     "& > *": {
       margin: "8px 0px",
       lineHeight: "2",
@@ -40,8 +37,9 @@ const FAQs = () => {
       <main className="page">
         <Container maxWidth="lg">
           <Typography variant="h1" className={classes.title}>
-            Frequently Asked Questions
+            FAQs
           </Typography>
+          <br></br>
           <section className={classes.faqSection}>
             <Typography
               variant="h6"
@@ -132,7 +130,6 @@ const FAQs = () => {
             </Typography>
           </section>
         </Container>
-        <DynamicSubscribe />
       </main>
     </>
   );

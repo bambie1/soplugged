@@ -1,0 +1,72 @@
+@import "mixins";
+
+.main {
+  z-index: 1;
+  background: white;
+}
+
+.body_content {
+  padding: 0.5rem 0.5rem 0;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile_xl() {
+    padding: 1.15rem 1.15rem 0;
+  }
+  @include desktop() {
+    max-width: 1400px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.benefits_grid {
+  &.second {
+    @include large_tablet_down {
+      flex-direction: column-reverse;
+    }
+  }
+
+  > * {
+    align-self: center;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.shop_more {
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.short_paper_div {
+  display: flex;
+  flex-direction: column;
+}
+
+.learn_more {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.short_paper {
+  padding: 16px;
+  margin: 8px 24px;
+  text-align: center;
+
+  @include tablet() {
+    max-width: 50%;
+  }
+}
+.learn_more_image {
+  margin-top: -16px;
+  margin-bottom: -16px;
+
+  @include tablet() {
+    max-width: 50%;
+  }
+}

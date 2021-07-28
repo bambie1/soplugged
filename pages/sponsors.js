@@ -7,6 +7,7 @@ import {
 } from "@material/mui-components";
 import Link from "next/link";
 import SEO from "@components/SEO";
+import { NavigateBeforeIcon } from "@material/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -61,8 +62,8 @@ const Sponsors = () => {
         description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
       />
       <main className={classes.page}>
-        <Typography variant="h1" className={classes.title}>
-          Become a SoPlugged Sponsor
+        <Typography variant="h1" align="center">
+          sponsors
         </Typography>
         <Container maxWidth="lg" className={classes.container}>
           <>
@@ -103,7 +104,11 @@ const Sponsors = () => {
                   margin: "16px",
                 }}
               >
-                <Button variant="outlined" color="secondary">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  startIcon={<NavigateBeforeIcon />}
+                >
                   Back to Directory
                 </Button>
               </a>

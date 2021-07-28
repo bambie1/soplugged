@@ -22,7 +22,10 @@ h6 {
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+::selection {
+  color: white;
+  background: var(--dark);
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -48,7 +51,7 @@ img {
 #content {
   min-height: 85vh;
   z-index: 1;
-  /* background: white; */
+  background: white;
 }
 #loading {
   position: fixed;
@@ -65,29 +68,7 @@ img {
   display: flex;
   flex-direction: column;
 }
-.body-content {
-  padding: 0.5rem 0.5rem 0;
-  max-width: 1400px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-.hero {
-  position: relative;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  padding: 1.15rem;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  transition: background 2s ease;
-  text-decoration: none;
-  height: 550px;
-  z-index: 1;
-  justify-content: center;
-}
+
 .line {
   position: absolute;
   width: 5px;
@@ -137,42 +118,7 @@ img {
     top: 110%;
   }
 }
-.hero-side-image {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  /* max-width: 50%; */
-  height: 80%;
-  overflow: hidden;
-  display: flex;
-}
-.hero-text-overlay {
-  max-width: 650px;
-  width: 100%;
-  z-index: 3;
-  text-align: center;
-}
-.custom-shape-divider-bottom-1615375944 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
 
-.custom-shape-divider-bottom-1615375944 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 59px;
-  transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom-1615375944 .shape-fill {
-  fill: #ffffff;
-}
 .gap {
   flex-grow: 1;
 }
@@ -284,59 +230,6 @@ img {
   opacity: 1;
 }
 
-.learn-more {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.shortPaper {
-  padding: 16px;
-  margin: 8px 24px;
-}
-.learn-more-image {
-  margin-top: -16px;
-  margin-bottom: -16px;
-}
-
-@media only screen and (min-width: 600px) {
-  .hero-side-image {
-    opacity: 0.3;
-  }
-  .body-content {
-    padding: 1.15rem 1.15rem 0;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .shortPaper {
-    width: 50%;
-  }
-  .learn-more-image {
-    max-width: 50%;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .body-content {
-    max-width: 1400px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-.footer {
-  padding: 16px 0px 8px 0px;
-  min-height: 5vh;
-  text-align: center;
-  background-color: var(--light);
-  /* z-index: 1; */
-  width: 100%;
-}
-.footer-container {
-  margin: 16px auto 0px;
-}
-.footer-links-div > * {
-  display: block;
-}
 @media only screen and (min-width: 600px) {
   .sectionMobile {
     display: none;
@@ -350,25 +243,6 @@ img {
   }
 }
 
-.custom-shape-divider-bottom-1615430493 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-bottom-1615430493 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 35px;
-}
-
-.custom-shape-divider-bottom-1615430493 .shape-fill {
-  fill: #ffffff;
-}
 .firebaseui-container * {
   font-family: "Raleway";
 }

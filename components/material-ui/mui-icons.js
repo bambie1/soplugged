@@ -33,9 +33,17 @@ import TelegramIcon from "@material-ui/icons/Telegram";
 import CallIcon from "@material-ui/icons/Call";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import TuneIcon from "@material-ui/icons/Tune";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 export {
   CheckIcon,
+  NavigateNextIcon,
+  NavigateBeforeIcon,
+  TuneIcon,
+  FilterListIcon,
   LocalMallIcon,
   TextFormatOutlinedIcon,
   CallIcon,

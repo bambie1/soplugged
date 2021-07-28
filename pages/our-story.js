@@ -5,10 +5,7 @@ import {
   makeStyles,
 } from "@material/mui-components";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import SEO from "@components/SEO";
-
-const DynamicSubscribe = dynamic(() => import("@components/SubscribeForm"));
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -21,10 +18,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     minHeight: "100vh",
     textAlign: "center",
-  },
-  title: {
-    textAlign: "center",
-    margin: "32px 0px",
   },
   text: {
     lineHeight: "2",
@@ -39,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: "16px",
+  },
+  buttonDiv: {
+    marginTop: "32px",
   },
 }));
 
@@ -56,8 +52,8 @@ const OurStory = () => {
       <main className={classes.page}>
         <Container maxWidth="lg" className={classes.container}>
           <Container className={classes.content} maxWidth="md">
-            <Typography variant="h1" className={classes.title}>
-              Our Story ...
+            <Typography variant="h1" align="center">
+              about-us
             </Typography>
             <Typography className={classes.text}>
               SoPlugged is an online platform that makes #buyingblack easy! Our
@@ -100,7 +96,6 @@ const OurStory = () => {
             </div>
           </Container>
         </Container>
-        <DynamicSubscribe />
       </main>
     </>
   );

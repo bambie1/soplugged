@@ -1,0 +1,68 @@
+@import "mixins";
+
+// 6px 7px 5px 0 #e3e5ec
+
+.sticky_search {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.hit_root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hit_root_link {
+  flex: 1;
+  border: 1px solid transparent;
+  display: flex;
+  padding: 16px 8px;
+  transition: border 0.1s ease-in-out;
+  transition: box-shadow 0.3s;
+  border-radius: 10px;
+  flex-direction: column;
+  box-shadow: #000 1px 1px 5px -1px;
+
+  &:hover {
+    box-shadow: #000 1px 1px 18px -10px;
+    // box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px;
+  }
+}
+
+.hit_business_name {
+  text-align: center;
+  font-weight: normal !important;
+  margin-left: 8px !important;
+  text-transform: uppercase;
+}
+
+.hit_business_category {
+  font-weight: bold !important;
+  font-size: 0.9rem !important;
+}
+
+.hit_business_location {
+  margin-top: auto !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+}
+
+.hit_footer {
+  display: flex;
+  justify-content: space-between;
+
+  .canada_wide {
+    font-weight: bold;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+  }
+}

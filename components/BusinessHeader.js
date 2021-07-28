@@ -5,8 +5,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "16px",
-    flexWrap: "wrap",
+    // marginBottom: "16px",
   }),
 }));
 

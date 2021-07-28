@@ -1,0 +1,20 @@
+@import "mixins";
+
+.container {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+}
+.logo_circle {
+  padding: 16px;
+  border-radius: 50%;
+  border: 1.4px solid #4e3505;
+  align-self: center;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 16px;
+}
+
+.firebase_auth_paper {
+  padding: 16px 0px;
+}
