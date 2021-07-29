@@ -3,11 +3,8 @@ import {
   Container,
   Grid,
   Button,
-  Divider,
   IconButton,
-  useMediaQuery,
 } from "@material/mui-components";
-import { useTheme } from "@material-ui/core/styles";
 import { InstagramIcon, LinkedInIcon } from "@material/mui-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -16,14 +13,10 @@ import SubscribeForm from "./SubscribeForm";
 
 const Footer = () => {
   const router = useRouter();
-  const theme = useTheme();
-  const mobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-  // const showFooter =
-  //   !(router.pathname.startsWith("/dashboard") && !mobileScreen) ||
-  //   !router.pathname.startsWith("/join");
-
-  const hideFooter = router.pathname.startsWith("/join");
+  const hideFooter =
+    router.pathname.startsWith("/join") ||
+    router.pathname.startsWith("/dashboard");
 
   return hideFooter ? (
     <></>
