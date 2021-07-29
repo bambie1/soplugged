@@ -18,11 +18,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "1",
     background: "white",
     display: "flex",
-    paddingTop: "70px",
-    // minHeight: "100vh",
-    [theme.breakpoints.up("sm")]: {
-      // height: "100vh",
-    },
+
     [theme.breakpoints.down("sm")]: {
       minHeight: "100vh",
     },
@@ -38,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "flex",
+      // minHeight: "600px",
     },
   },
   mobile: {
@@ -81,8 +78,8 @@ const DashboardLayout = ({ title, children, position }) => {
         <Container maxWidth="lg" className={classes.container}>
           <Paper
             className={classes.desktop}
+            style={{ minHeight: "600px" }}
             elevation={4}
-            style={{ height: "650px" }}
           >
             <div className={classes.desktopNav}>
               <Link href="/dashboard">

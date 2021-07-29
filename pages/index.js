@@ -5,9 +5,13 @@ import HeroBanner from "@components/HeroBanner";
 import SEO from "@components/SEO";
 import TopCategories from "@components/TopCategories";
 import Image from "next/image";
-import displayShopifyCollection from "../src/shopifyStore";
+
 import styles from "../styles/Home.module.scss";
-import { SearchIcon } from "@components/material-ui/mui-icons";
+
+import dynamic from "next/dynamic";
+const DynamicShopifyCollection = dynamic(() =>
+  import("@components/ShopifyMiniCollection")
+);
 
 export default function Home() {
   return (
@@ -29,25 +33,29 @@ export default function Home() {
                 <Typography variant="h2">Want to #BuyBlack?</Typography>
                 <Typography variant="body1">
                   We have businesses based in Ottawa, Toronto, and across Canada
-                  that you can choose from <br></br>Save business you like for
-                  later, and also help other people find them, by liking them
-                  <br></br>Contact them directly on our platform, or their
-                  preferred means of communication
+                  that you can choose from. Whether you're looking for a hair
+                  stylist or a caterer for your next event, we've got you
+                  covered. Once you find a business you like, you can contact
+                  them directly on our platform, or through their preferred
+                  means of communication.
                 </Typography>
                 <br></br>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  endIcon={<SearchIcon />}
-                >
-                  Find a Business
-                </Button>
+                <Link href="/search">
+                  <a>
+                    <Button variant="contained" color="secondary">
+                      Find a Business
+                    </Button>
+                  </a>
+                </Link>
               </Grid>
               <Grid item xs={12} md={6}>
                 <Image
-                  src="/images/search_businesses.png"
+                  placeholder="blur"
+                  src="/images/search_businesses_tiny.png"
                   width={400}
-                  height={270}
+                  height={272}
+                  alt="Search for businesses"
+                  priority
                 />
               </Grid>
             </Grid>
@@ -59,50 +67,35 @@ export default function Home() {
             <Grid container spacing={2} className={`${styles.benefits_grid} `}>
               <Grid item xs={12} md={6}>
                 <Image
+                  placeholder="blur"
                   src="/images/add_business.png"
                   width={400}
                   height={350}
+                  alt="Add a business"
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <Typography variant="h2">Want to add your business?</Typography>
                 <Typography variant="body1">
-                  We have businesses based in Ottawa, Toronto, and across Canada
-                  that you can choose from <br></br>Save business you like for
-                  later, and also help other people find them, by liking them
-                  <br></br>Contact them directly on our platform, or their
-                  preferred means of communication
+                  You can do so for <u>FREE!</u> Simply click the 'JOIN' button
+                  to register, and follow the instructions to add your business
+                  to our directory. Once complete, you can begin to field
+                  quotesand requests through your preferred means of
+                  communication.
                 </Typography>
                 <br></br>
-                <Button variant="contained" color="secondary">
-                  Add your Business for FREE
-                </Button>
+                <Link href="/my-business">
+                  <a>
+                    <Button variant="contained" color="secondary">
+                      Add your Business
+                    </Button>
+                  </a>
+                </Link>
               </Grid>
             </Grid>
           </Box>
-          <Box textAlign="center" mt={5} mb={10}>
-            <Typography variant="h2" align="center" gutterBottom={true}>
-              Check out our merch collection
-            </Typography>
-            <Typography variant="body1" align="center" gutterBottom={true}>
-              Normalize <b>#buyingblack</b>, but make it fashionable
-            </Typography>
-            {/* <hr></hr> */}
-            <div id="collection-component-1622397719540">
-              {displayShopifyCollection(
-                "collection-component-1622397719540",
-                "266521968830"
-              )}
-            </div>
-            <Link href="/merch">
-              <a className={styles.shop_more}>
-                <Button variant="outlined" color="secondary">
-                  Shop More
-                </Button>
-              </a>
-            </Link>
-          </Box>
 
+          <DynamicShopifyCollection />
           <Box mb={10}>
             <Grid
               container
@@ -118,7 +111,7 @@ export default function Home() {
                   our platform free and accessible to Black-owned businesses
                   across Canada.
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" className={styles.subText}>
                   All donations go towards maintaining our platform and
                   supporting Black-owned businesses across Canada.
                 </Typography>
@@ -133,8 +126,9 @@ export default function Home() {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Image
+                  placeholder="blur"
                   src="/images/support_team.png"
-                  alt="trophy winners showing support"
+                  alt="Become a sponsor"
                   width={400}
                   height={400}
                 />

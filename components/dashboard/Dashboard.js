@@ -237,7 +237,7 @@ const Dashboard = ({ business }) => {
                     <Typography variant="h1" component="span">
                       {business.number_of_likes}
                     </Typography>
-                    <FavoriteIcon />
+                    <FavoriteIcon color="secondary" />
                   </Paper>
                   <Paper
                     className={classes.activity}

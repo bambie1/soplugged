@@ -10,7 +10,6 @@ import { SearchProvider } from "@contexts/searchContext";
 import { BusinessFormProvider } from "@contexts/businessFormContext";
 import { AuthProvider } from "@contexts/authContext";
 import { useRouter } from "next/router";
-import * as gtag from "../lib/gtag";
 import { init } from "../utils/sentry";
 import SavingAnimation from "@components/SavingAnimation";
 
@@ -21,7 +20,6 @@ function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = React.useState(false);
   useEffect(() => {
     const start = (url) => {
-      gtag.pageview(url);
       setLoading(true);
     };
     const end = () => {
@@ -43,7 +41,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&family=Permanent+Marker&family=Roboto&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&family=Roboto&display=swap"
           rel="stylesheet"
         />
         <link

@@ -79,13 +79,13 @@ const useStyles = makeStyles((theme) => ({
 
 const TopCategories = () => {
   const classes = useStyles();
-  const { setContextCategory } = useSearch();
+  // const { setContextCategory } = useSearch();
   const router = useRouter();
   const theme = useTheme();
   const bigScreen = useMediaQuery(theme.breakpoints.up("lg"));
 
   const handleClick = (label) => {
-    setContextCategory(label);
+    // setContextCategory(label);
     router.push("/search");
   };
 

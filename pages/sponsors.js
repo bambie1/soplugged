@@ -11,7 +11,6 @@ import { NavigateBeforeIcon } from "@material/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    paddingTop: "70px",
     zIndex: "1",
     background: "white",
   },

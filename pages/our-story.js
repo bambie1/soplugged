@@ -9,7 +9,6 @@ import SEO from "@components/SEO";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    paddingTop: "60px",
     zIndex: "1",
     background: "white",
   },

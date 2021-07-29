@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   businessName: {
     fontWeight: "normal",
     wordBreak: "break-word",
+    margin: 0,
   },
   button: {
     margin: "8px 16px",
@@ -65,8 +66,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   favoriteDiv: {
-    padding: "8px 40px 16px",
-    background: "#fffaf2",
+    padding: "8px 40px 0px",
     display: "flex",
     flexDirection: "column",
   },

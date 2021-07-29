@@ -67,7 +67,11 @@ const BusinessCard = ({ mini, average, ...props }) => {
           <Avatar alt="Business Logo" src={logo_url} variant="square">
             {business_name.toUpperCase().charAt(0)}
           </Avatar>
-          <Typography variant="h6" className={classes.businessName}>
+          <Typography
+            variant="h6"
+            className={classes.businessName}
+            noWrap={true}
+          >
             {business_name}
           </Typography>
         </BusinessHeader>

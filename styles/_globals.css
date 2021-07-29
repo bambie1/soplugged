@@ -5,6 +5,7 @@
   --jd-color-border: #4e3505;
   --jd-color-panel: #cdb693;
 }
+
 html,
 body {
   padding: 0;
@@ -44,7 +45,6 @@ img {
 .page {
   margin: auto;
   min-height: 850px;
-  padding-top: 70px;
   z-index: 1;
   background: white;
 }

@@ -24,6 +24,7 @@
     "autosuggest-highlight": "^3.1.1",
     "cloudinary": "^1.25.1",
     "env-cmd": "^10.1.0",
+    "file-loader": "^6.2.0",
     "firebase": "^8.2.1",
     "firebase-admin": "^9.5.0",
     "formik": "^2.2.6",
@@ -48,6 +49,7 @@
     "slugify": "^1.4.7",
     "sweetalert": "^2.1.2",
     "swr": "^0.5.2",
+    "url-loader": "^4.1.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {

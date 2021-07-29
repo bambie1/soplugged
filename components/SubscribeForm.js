@@ -125,7 +125,7 @@ const SubscribeForm = () => {
               />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Button type="submit" variant="contained" color="secondary">
+              <Button type="submit" variant="outlined" color="secondary">
                 SUBSCRIBE
               </Button>
             </Grid>

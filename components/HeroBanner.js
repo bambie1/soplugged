@@ -1,6 +1,5 @@
 import { Typography, Button } from "@material/mui-components";
 import { NavigateNextIcon } from "@material/mui-icons";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Hero.module.scss";
 
@@ -44,7 +43,7 @@ const HeroBanner = () => {
               size="large"
               className={styles.hero_cta_white}
             >
-              Begin your search
+              BEGIN YOUR SEARCH
             </Button>
           </a>
         </Link>

@@ -106,22 +106,24 @@ const FavoriteButton = ({
   return (
     <>
       <Tooltip title={liked ? "Remove from Favorites" : "Add to Favorites"}>
-        <span style={{ marginLeft: "auto" }}>
+        <span style={{ marginLeft: mini ? "auto" : "initial" }}>
           {likes > 0 ? (
             <Button
-              size="small"
-              variant={mini ? "text" : "contained"}
+              size={mini ? "small" : "medium"}
+              variant={mini ? "text" : "outlined"}
               color="secondary"
               startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               onClick={handleClick}
-              style={{ marginTop: mini ? "auto" : "8px" }}
+              style={{
+                marginTop: mini ? "auto" : "8px",
+              }}
             >
               {mini ? likes : `Likes - ${likes} `}
             </Button>
           ) : (
             <Button
-              size="small"
-              variant={mini ? "text" : "contained"}
+              size={mini ? "small" : "medium"}
+              variant={mini ? "text" : "outlined"}
               color="secondary"
               endIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               onClick={handleClick}
@@ -132,19 +134,6 @@ const FavoriteButton = ({
           )}
         </span>
       </Tooltip>
-      {!user?.email && !mini && (
-        <a
-          href="/join"
-          style={{
-            textDecoration: "underline",
-            display: "block",
-          }}
-        >
-          <Typography variant="caption">
-            Please sign in to add business to your favorites
-          </Typography>
-        </a>
-      )}
 
       <Snackbar
         key={messageInfo ? messageInfo.key : undefined}

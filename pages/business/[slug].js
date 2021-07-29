@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 const useStyles = makeStyles((theme) => ({
   page: {
     textAlign: "center",
-    paddingTop: "60px",
+    // paddingTop: "60px",
     minHeight: "80vh",
     zIndex: "1",
     background: "white",
@@ -49,7 +49,7 @@ const BusinessSlug = ({ business }) => {
         <br></br>
         {business && <BusinessPage business={business} user={user} />}
         <div className={classes.buttonDiv}>
-          <Button variant="outlined" onClick={backToSearch}>
+          <Button variant="contained" color="secondary" onClick={backToSearch}>
             {business?.category
               ? "View business like this"
               : "Back to directory"}

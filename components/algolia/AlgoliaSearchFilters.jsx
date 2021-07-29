@@ -17,7 +17,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CustomRefinementList } from "./CustomRefinementList";
 import { useSearch } from "@contexts/searchContext";
 import { ClearRefinements } from "react-instantsearch-dom";
-import { CustomCurrentRefinements } from "./CustomRefinements";
+import CustomRefinements from "./CustomRefinements";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
@@ -47,7 +47,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const AlgoliaSearchFilters = ({ opened, handleClose }) => {
+const AlgoliaSearchFilters = ({ opened, handleClose, defaultRefinement }) => {
   const classes = useStyles();
   const { contextCategory } = useSearch();
   const theme = useTheme();
@@ -70,10 +70,10 @@ const AlgoliaSearchFilters = ({ opened, handleClose }) => {
         maxWidth="md"
       >
         <DialogContent className={classes.dialogContent}>
-          <div className="algolia-filters">
-            <ClearRefinements />
-            <CustomCurrentRefinements clearsQuery />
-          </div>
+          {/* <div className="algolia-filters">
+            <ClearRefinements defaultRefinement={defaultRefinement} />
+            <CustomRefinements clearsQuery />
+          </div> */}
           {filters.map((item, index) => (
             <CustomRefinementList
               key={item.attribute}
