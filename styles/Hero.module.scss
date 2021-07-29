@@ -20,17 +20,16 @@
   background: $primary;
   background: linear-gradient(180deg, $primary 0%, white 100%);
 
-  svg {
+  .svg_right {
+    right: 0;
     position: absolute;
     max-height: 100%;
-
-    &.svg_right {
-      right: 0;
-    }
-    &.svg_left {
-      // bottom: 20px;
-      left: 0;
-    }
+  }
+  .svg_left {
+    // bottom: 20px;
+    left: 0;
+    position: absolute;
+    max-height: 100%;
   }
 }
 
@@ -62,6 +61,28 @@
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.hero_cta_link {
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero_cta_button {
+  color: #4e3505 !important;
+  padding: 0.7rem !important;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+
+  margin-top: 8px !important;
+  background-color: #fffaf2 !important;
+  transition: box-shadow 0.2s ease-in-out !important;
+  span {
+    color: #787268;
+    font-size: 18px;
+  }
+  &:hover {
+    box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px !important;
   }
 }
 

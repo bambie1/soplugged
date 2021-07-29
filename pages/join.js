@@ -16,7 +16,7 @@ const Join = ({ referrer }) => {
         description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
         title="Join SoPlugged"
       />
-      <div className="page">
+      <div className={styles.page}>
         <Container maxWidth="sm" className={styles.container}>
           <div className={styles.logo_circle}>
             <Image

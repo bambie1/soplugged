@@ -33,11 +33,7 @@ const Merch = () => {
         description="Custom tees, sweatshirts and accessories to spread the word"
         title="SoPlugged Merch"
       />
-      <Box
-        mt={3}
-        className="page"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <Box pt={2} display="flex" flexDirection="column" className="page">
         <Typography variant="h1" align="center" gutterBottom={true}>
           merch
         </Typography>

@@ -1,5 +1,5 @@
 import { Typography, Button } from "@material/mui-components";
-import { NavigateNextIcon } from "@material/mui-icons";
+import { NavigateNextIcon, SearchIcon } from "@material/mui-icons";
 import Link from "next/link";
 import styles from "../styles/Hero.module.scss";
 
@@ -36,14 +36,17 @@ const HeroBanner = () => {
           We have <span className={styles.black_owned}>BLACK-OWNED</span>{" "}
           Businesses
         </Typography>
-        <Link href="/search" className={styles.hero_cta_white}>
-          <a>
+
+        <Link href="/search">
+          <a className={styles.hero_cta_link}>
             <Button
-              variant="contained"
+              startIcon={<SearchIcon />}
+              fullWidth
+              disableRipple
+              className={styles.hero_cta_button}
               size="large"
-              className={styles.hero_cta_white}
             >
-              BEGIN YOUR SEARCH
+              Find a hair-stylist, caterer, ...
             </Button>
           </a>
         </Link>

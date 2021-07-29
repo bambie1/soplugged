@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   page: {
     zIndex: "1",
     background: "white",
+    paddingTop: theme.spacing(2),
   },
   container: {
     display: "flex",

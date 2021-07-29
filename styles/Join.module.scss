@@ -1,5 +1,12 @@
 @import "mixins";
 
+.page {
+  margin: auto;
+  min-height: 850px;
+  z-index: 1;
+  background: white;
+  padding-top: 60px;
+}
 .container {
   text-align: center;
   display: flex !important;

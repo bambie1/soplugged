@@ -8,10 +8,6 @@ import Link from "next/link";
 import SEO from "@components/SEO";
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    textAlign: "center",
-    margin: "32px 0px",
-  },
   faqSection: {
     margin: "32px 0px",
     "& > *": {
@@ -34,9 +30,9 @@ const FAQs = () => {
         title="Frequently Asked Questions | SoPlugged"
         description="The SoPlugged team has answers ready for questions you might have. If we missed anything, please send us an email"
       />
-      <main className="page">
+      <main className="page" style={{ paddingTop: "16px" }}>
         <Container maxWidth="lg">
-          <Typography variant="h1" className={classes.title}>
+          <Typography variant="h1" align="center">
             FAQs
           </Typography>
           <br></br>
