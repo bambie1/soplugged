@@ -72,6 +72,7 @@ export default function Home() {
                   width={400}
                   height={350}
                   alt="Add a business"
+                  priority
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -131,6 +132,7 @@ export default function Home() {
                   alt="Become a sponsor"
                   width={400}
                   height={400}
+                  priority
                 />
               </Grid>
             </Grid>

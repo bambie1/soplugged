@@ -5,7 +5,6 @@ import "../styles/_algolia.css";
 import "../styles/_animation.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../src/theme";
-import Head from "next/head";
 import { SearchProvider } from "@contexts/searchContext";
 import { BusinessFormProvider } from "@contexts/businessFormContext";
 import { AuthProvider } from "@contexts/authContext";
@@ -38,19 +37,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&family=Roboto&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
-          integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
-          crossOrigin="anonymous"
-        />
-      </Head>
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <SearchProvider>

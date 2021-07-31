@@ -1,51 +1,24 @@
-import { Typography, Button } from "@material/mui-components";
+import { Typography } from "@material/mui-components";
 import { SearchIcon } from "@material/mui-icons";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "styles/Hero.module.scss";
 
 const HeroBanner = () => {
   return (
     <section className={styles.hero}>
-      {/* <div className={styles.hero_image}>
-        <Image
-          src="/images/plug_illustrations.svg"
-          width={600}
-          height={600}
-          alt="Decorative plugs"
-        />
-      </div> */}
-      {/* <svg
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        className={styles.hero_svg}
-      >
-        <path
-          fill="#FFF"
-          d="M28.4,-48.7C38.3,-43.4,48.9,-38.9,56.4,-30.9C63.9,-22.9,68.3,-11.5,66.5,-1.1C64.6,9.3,56.5,18.6,50.1,28.5C43.7,38.4,38.9,48.8,30.9,59.7C22.8,70.5,11.4,81.8,1.4,79.3C-8.5,76.8,-17.1,60.5,-24.9,49.6C-32.8,38.6,-40,33,-51.9,25.6C-63.7,18.2,-80.1,9.1,-85.9,-3.4C-91.8,-15.8,-87,-31.6,-75.5,-39.6C-64,-47.6,-45.8,-47.8,-32.1,-50.8C-18.4,-53.9,-9.2,-59.9,0,-59.9C9.2,-59.9,18.5,-53.9,28.4,-48.7Z"
-          transform="translate(100 100)"
-        />
-      </svg> */}
-
       <div className={styles.hero_content}>
         <Typography variant="h1">
-          You have needs,
+          You have needs, <br className={styles.line_break} /> we have
           <br />
-          We have <span className={styles.black_owned}>BLACK-OWNED</span>{" "}
-          Businesses
+          <span className={styles.black_owned}>BLACK-OWNED</span> Businesses
         </Typography>
 
         <Link href="/search">
           <a className={styles.hero_cta_link}>
-            <Button
-              startIcon={<SearchIcon />}
-              fullWidth
-              disableRipple
-              className={styles.hero_cta_button}
-              size="large"
-            >
-              Try "hair", or "food"
-            </Button>
+            <div className={styles.hero_cta_button}>
+              <SearchIcon />
+              <Typography>Try "hair", or "food"</Typography>
+            </div>
           </a>
         </Link>
       </div>

@@ -13,7 +13,7 @@
   transition: background 2s ease;
   text-decoration: none;
   // height: 80vh;
-  min-height: 700px;
+  min-height: 30rem;
   z-index: 1;
   justify-content: center;
   margin-bottom: 24px;
@@ -53,6 +53,17 @@
 
   h1 {
     font-weight: normal;
+    font-size: 2.5rem;
+
+    @include mobile_only() {
+      font-size: 2rem;
+    }
+  }
+
+  .line_break {
+    @include tablet() {
+      display: none;
+    }
   }
 
   .black_owned {
@@ -76,19 +87,29 @@
 }
 
 .hero_cta_button {
-  color: #4e3505 !important;
-  padding: 0.7rem !important;
+  color: #4e3505;
+  padding: 0.5rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
-  margin-top: 8px !important;
-  background-color: #fffaf2 !important;
-  transition: box-shadow 0.2s ease-in-out !important;
-  span {
-    color: #787268;
-    white-space: nowrap;
+  margin-top: 8px;
+  background-color: #fffaf2;
+  transition: box-shadow 0.2s ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+
+  * {
+    opacity: 0.6;
+  }
+  svg {
+    position: absolute;
+  }
+  p {
+    width: 100%;
   }
   &:hover {
-    box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px !important;
+    box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px;
   }
 }
 

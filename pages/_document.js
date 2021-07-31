@@ -6,12 +6,19 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* <link rel="preconnect" href="https://fonts.gstatic.com" /> */}
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon-192x192.png" />
           <meta name="theme-color" content="#cdb693" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;600&family=Roboto&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+            integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
+            crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
