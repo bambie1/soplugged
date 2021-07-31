@@ -13,7 +13,7 @@
   transition: background 2s ease;
   text-decoration: none;
   // height: 80vh;
-  min-height: 30rem;
+  min-height: 35rem;
   z-index: 1;
   justify-content: center;
   margin-bottom: 24px;
@@ -53,10 +53,10 @@
 
   h1 {
     font-weight: normal;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
 
     @include mobile_only() {
-      font-size: 2rem;
+      font-size: 2.1rem;
     }
   }
 

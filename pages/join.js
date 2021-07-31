@@ -36,7 +36,7 @@ const Join = ({ referrer }) => {
           </div>
           <hr style={{ width: "30%", margin: " 16px auto" }} />
           <Link href="/search">
-            <a>
+            <a className={styles.back_to_directory_btn}>
               <Button
                 variant="contained"
                 color="secondary"
