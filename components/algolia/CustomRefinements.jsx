@@ -30,7 +30,7 @@ const CurrentRefinements = ({ items, refine, createURL }) => {
             </React.Fragment>
           ) : (
             <>
-              <a href={createURL(item.value)}>
+              <a href={createURL(item.value)} className="ais-refinement-query">
                 {item.label}{" "}
                 <span
                   onClick={(event) => {

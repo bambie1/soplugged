@@ -2,14 +2,26 @@
 
 // 6px 7px 5px 0 #e3e5ec
 
-.sticky_search {
-  position: sticky;
+.search_div {
+  // position: sticky;
   top: 0;
   background: white;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 5px;
+  width: 90%;
+  margin: auto;
+  max-width: 700px;
+
+  .search_filters {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 5px;
+    }
+  }
 }
 
 .hit_root {
@@ -64,5 +76,11 @@
     align-items: center;
     justify-content: center;
     color: grey;
+  }
+}
+
+.hide_on_mobile {
+  @include mobile_only() {
+    display: none;
   }
 }

@@ -21,12 +21,9 @@ import CustomRefinements from "./CustomRefinements";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
-    paddingTop: "70px",
-    paddingBottom: "70px",
+    // paddingTop: "70px",
+    // paddingBottom: "70px",
     positon: "relative",
-    background: "rgb(255,250,242)",
-    background:
-      "linear-gradient(0deg, rgba(255,250,242,1) 0%, rgba(255,255,255,1) 100%)",
   },
   background: {
     position: "absolute",
@@ -51,7 +48,7 @@ const AlgoliaSearchFilters = ({ opened, handleClose, defaultRefinement }) => {
   const classes = useStyles();
   const { contextCategory } = useSearch();
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const filters = [
     { label: "CATEGORY", attribute: "category", default: contextCategory },
@@ -70,10 +67,6 @@ const AlgoliaSearchFilters = ({ opened, handleClose, defaultRefinement }) => {
         maxWidth="md"
       >
         <DialogContent className={classes.dialogContent}>
-          {/* <div className="algolia-filters">
-            <ClearRefinements defaultRefinement={defaultRefinement} />
-            <CustomRefinements clearsQuery />
-          </div> */}
           {filters.map((item, index) => (
             <CustomRefinementList
               key={item.attribute}
@@ -84,6 +77,16 @@ const AlgoliaSearchFilters = ({ opened, handleClose, defaultRefinement }) => {
             />
           ))}
         </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleClose}
+            color="secondary"
+            variant="contained"
+            fullWidth={fullScreen}
+          >
+            Show Results
+          </Button>
+        </DialogActions>
       </Dialog>
     </div>
   );

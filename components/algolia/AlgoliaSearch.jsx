@@ -1,92 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   InstantSearch,
   Hits,
   SearchBox,
-  Pagination,
   Stats,
   ClearRefinements,
-  Configure,
   PoweredBy,
-  connectRefinementList,
+  Configure,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import AlgoliaHit from "./AlgoliaHit";
 import { CustomRefinementList } from "./CustomRefinementList";
 import CustomRefinements from "./CustomRefinements";
-import {
-  Button,
-  useMediaQuery,
-  Container,
-  Badge,
-} from "@material/mui-components";
-import { TuneIcon } from "@material/mui-icons";
+import { useMediaQuery, Container, Button } from "@material/mui-components";
 import { useSearch } from "@contexts/searchContext";
-import AlgoliaSearchFilters from "./AlgoliaSearchFilters";
-import styles from "../../styles/Directory.module.scss";
+import * as styles from "styles/Directory.module.scss";
+import { CustomPagination } from "./CustomPagination";
+import { ExpandLessIcon, ExpandMoreIcon } from "@material/mui-icons";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API
 );
 
-const VirtualRefinementList = connectRefinementList(() => null);
-
 const AlgoliaSearch = () => {
-  const laptop = useMediaQuery("(min-width:1024px)");
+  const tabletAndUp = useMediaQuery("(min-width:768px)");
   const { contextCategory } = useSearch();
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [categoryState, setCategoryState] = React.useState([]);
-  const [locationState, setLocationState] = React.useState([]);
+  const [currentDropDown, setCurrentDropDown] = useState(0); //0, for no dropdowns
+
+  useEffect(() => {
+    if (tabletAndUp) setCurrentDropDown(1);
+    else setCurrentDropDown(0);
+  }, [tabletAndUp]);
+
+  const filters = [
+    { label: "CATEGORY", attribute: "category" },
+    { label: "LOCATION", attribute: "business_location" },
+  ];
 
   return (
     <>
       <div className="ais-InstantSearch">
-        <InstantSearch
-          indexName="Business"
-          searchClient={searchClient}
-          onSearchStateChange={(state) => {
-            console.log(state.refinementList);
-            if (dialogOpen && state.refinementList?.category) {
-              setCategoryState(state.refinementList?.category);
-            }
-            if (dialogOpen && state.refinementList?.location) {
-              setLocationState(state.refinementList?.location);
-            }
-          }}
-        >
-          {/* <PoweredBy /> */}
-          <div className={styles.sticky_search}>
-            <SearchBox defaultRefinement={contextCategory} />
-            <Badge
-              color="secondary"
-              badgeContent={9}
-              style={{ alignSelf: "center", cursor: "pointer" }}
-              onClick={() => setDialogOpen(true)}
-              variant="dot"
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-            >
-              <TuneIcon />
-            </Badge>
+        <InstantSearch indexName="Business" searchClient={searchClient}>
+          <div className={styles.search_div}>
+            <PoweredBy />
+            <SearchBox defaultRefinement={contextCategory} autoFocus />
+            <div className={styles.search_filters}>
+              {filters.map((item, index) => (
+                <Button
+                  key={item.label}
+                  className="refinementMobile"
+                  onClick={() =>
+                    currentDropDown !== index + 1
+                      ? setCurrentDropDown(index + 1)
+                      : setCurrentDropDown(0)
+                  }
+                  variant={
+                    currentDropDown === index + 1 ? "contained" : "outlined"
+                  }
+                  color={"secondary"}
+                  size="small"
+                >
+                  {item.label}
+                  {currentDropDown === index + 1 ? (
+                    <ExpandLessIcon />
+                  ) : (
+                    <ExpandMoreIcon />
+                  )}
+                </Button>
+              ))}
+            </div>
           </div>
-          <div className="cover"></div>
-          <Container maxWidth="lg" className="search-results">
-            <VirtualRefinementList
-              defaultRefinement={categoryState}
-              attribute="category"
+
+          {filters.map((item, index) => (
+            <CustomRefinementList
+              key={item.attribute}
+              attribute={item.attribute}
+              label={item.label}
+              hide={currentDropDown !== index + 1}
+              defaultRefinement={item.default ? [item.default] : []}
             />
+          ))}
+          <Configure hitsPerPage={12} />
+          <Container maxWidth="lg">
+            <div>
+              <ClearRefinements />
+              {tabletAndUp && <CustomRefinements clearsQuery />}
+            </div>
+
+            <div className="cover"></div>
             <Stats />
             <Hits hitComponent={AlgoliaHit} />
-            <Pagination />
+            <CustomPagination />
           </Container>
-          <AlgoliaSearchFilters
-            opened={dialogOpen}
-            handleClose={() => setDialogOpen(false)}
-            // defaultRefinement={categoryState}
-          />
         </InstantSearch>
       </div>
     </>

@@ -8,7 +8,7 @@ import {
 import { InstagramIcon, LinkedInIcon } from "@material/mui-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "../styles/Footer.module.scss";
+import styles from "styles/Footer.module.scss";
 import SubscribeForm from "./SubscribeForm";
 
 const Footer = () => {

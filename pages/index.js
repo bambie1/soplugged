@@ -6,7 +6,7 @@ import SEO from "@components/SEO";
 import TopCategories from "@components/TopCategories";
 import Image from "next/image";
 
-import styles from "../styles/Home.module.scss";
+import styles from "styles/Home.module.scss";
 
 import dynamic from "next/dynamic";
 const DynamicShopifyCollection = dynamic(() =>
@@ -23,7 +23,7 @@ export default function Home() {
       <main className={styles.main}>
         <HeroBanner />
         <div className={styles.body_content}>
-          <Box mb={10}>
+          <Box mb={5}>
             <Grid
               container
               spacing={2}
@@ -60,10 +60,10 @@ export default function Home() {
               </Grid>
             </Grid>
           </Box>
-          <Box mt={5} mb={10} textAlign="center">
+          <Box mt={5} mb={5} textAlign="center">
             <TopCategories />
           </Box>
-          <Box mt={5} mb={10}>
+          <Box mt={5} mb={5}>
             <Grid container spacing={2} className={`${styles.benefits_grid} `}>
               <Grid item xs={12} md={6}>
                 <Image
@@ -96,7 +96,7 @@ export default function Home() {
           </Box>
 
           <DynamicShopifyCollection />
-          <Box mb={10}>
+          <Box mb={5}>
             <Grid
               container
               spacing={2}

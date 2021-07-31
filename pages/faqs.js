@@ -35,7 +35,6 @@ const FAQs = () => {
           <Typography variant="h1" align="center">
             FAQs
           </Typography>
-          <br></br>
           <section className={classes.faqSection}>
             <Typography
               variant="h6"

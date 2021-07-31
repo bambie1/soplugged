@@ -37,9 +37,6 @@ const useStyles = makeStyles((theme) => ({
     opacity: "0.7",
     transition: "0.3s linear",
     backgroundColor: "#fffaf2",
-    // [theme.breakpoints.up("sm")]: {
-    //   margin: "2vh",
-    // },
     [theme.breakpoints.up("sm")]: {
       width: "160px",
       height: "160px",
@@ -69,9 +66,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "8px",
     textTransform: "uppercase",
     fontWeight: "bold",
-    // visibility: "hidden",
-    // opacity: "0",
-    // height: "0",
     transition: "visibility 0.3s, opacity 0.3s, border 0.3s linear",
     fontSize: "0.8rem",
   },
@@ -79,13 +73,13 @@ const useStyles = makeStyles((theme) => ({
 
 const TopCategories = () => {
   const classes = useStyles();
-  // const { setContextCategory } = useSearch();
+  const { setContextCategory } = useSearch();
   const router = useRouter();
   const theme = useTheme();
   const bigScreen = useMediaQuery(theme.breakpoints.up("lg"));
 
   const handleClick = (label) => {
-    // setContextCategory(label);
+    setContextCategory(label);
     router.push("/search");
   };
 

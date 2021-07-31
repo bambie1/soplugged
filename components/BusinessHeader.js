@@ -5,11 +5,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // marginBottom: "16px",
+    flexWrap: props.wrap ? "wrap" : "initial",
   }),
 }));
 
-const BusinessHeader = ({ children, props }) => {
+const BusinessHeader = ({ children, ...props }) => {
   const classes = useStyles(props);
   return <div className={classes.root}>{children}</div>;
 };

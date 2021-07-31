@@ -6,7 +6,7 @@ import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 import BusinessHeader from "../BusinessHeader";
 import { useAuth } from "@contexts/authContext";
-import styles from "../../styles/Directory.module.scss";
+import styles from "styles/Directory.module.scss";
 
 const AlgoliaHit = ({ hit }) => {
   const { user } = useAuth();
@@ -43,16 +43,16 @@ const AlgoliaHit = ({ hit }) => {
           >
             <Highlight attribute="category" hit={hit} />
           </Typography>
-          <Typography
-            variant="body2"
-            align="center"
-            style={{ marginBottom: "8px" }}
-          >
-            {/* <Snippet attribute="business_description" hit={hit} /> */}
-            Short description of the business's services and products maybe. Cap
-            this at a certain number of characters
-          </Typography>
-          <hr style={{ width: "20px", margin: "2px auto" }} />
+          <div className={styles.hide_on_mobile}>
+            <Typography
+              variant="body2"
+              align="center"
+              style={{ marginBottom: "8px" }}
+            >
+              <Snippet attribute="business_description" hit={hit} />
+            </Typography>
+            <hr style={{ width: "20px", margin: "2px auto" }} />
+          </div>
           <Typography className={styles.hit_business_location} align="center">
             {hit.business_location}
           </Typography>

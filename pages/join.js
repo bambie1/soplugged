@@ -7,7 +7,7 @@ import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
 import { NavigateBeforeIcon } from "@components/material-ui/mui-icons";
 import Image from "next/image";
-import styles from "../styles/Join.module.scss";
+import styles from "styles/Join.module.scss";
 
 const Join = ({ referrer }) => {
   return (

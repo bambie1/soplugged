@@ -1,5 +1,4 @@
 import {
-  Typography,
   Button,
   Snackbar,
   IconButton,
@@ -125,7 +124,7 @@ const FavoriteButton = ({
               size={mini ? "small" : "medium"}
               variant={mini ? "text" : "outlined"}
               color="secondary"
-              endIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               onClick={handleClick}
               style={{ marginTop: mini ? "auto" : "8px" }}
             >

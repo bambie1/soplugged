@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
     "& > *": {
-      marginTop: "16px",
-      marginBottom: "16px",
+      marginTop: "8px",
+      marginBottom: "8px",
     },
   },
   businessName: {
@@ -145,14 +145,14 @@ const BusinessPage = ({ business, user }) => {
           <Typography variant="h1" className={classes.businessName}>
             {business_name.toUpperCase()}
           </Typography>
-          {!verified && (
-            <span className={classes.unverified}>
-              <ErrorOutlineIcon fontSize="small" style={{ height: "0.9rem" }} />
-              This business hasn't been claimed by it's owner
-            </span>
-          )}
         </div>
       </BusinessHeader>
+      {!verified && (
+        <span className={classes.unverified}>
+          <ErrorOutlineIcon fontSize="small" style={{ height: "0.9rem" }} />
+          This business hasn't been claimed by it's owner
+        </span>
+      )}
 
       {category && (
         <Typography variant="h6" gutterBottom={true}>
@@ -295,15 +295,13 @@ const BusinessPage = ({ business, user }) => {
           style={{
             padding: "16px 40px",
             borderRadius: "5px",
-            background: "#fffaf2",
+            border: "1px solid #4e3505",
+            display: "inline-block",
           }}
         >
           <Typography>Are you the owner of this business?</Typography>
-          <br></br>
           <a href="mailto:hello@soplugged.com">
-            <Button variant="contained" color="secondary">
-              Let us know
-            </Button>
+            <Button color="secondary">Let us know</Button>
           </a>
         </div>
       )}

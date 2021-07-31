@@ -1,33 +1,31 @@
 import { Typography, Button } from "@material/mui-components";
-import { NavigateNextIcon, SearchIcon } from "@material/mui-icons";
+import { SearchIcon } from "@material/mui-icons";
+import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Hero.module.scss";
+import styles from "styles/Hero.module.scss";
 
 const HeroBanner = () => {
   return (
     <section className={styles.hero}>
-      <svg
-        className={styles.svg_left}
+      {/* <div className={styles.hero_image}>
+        <Image
+          src="/images/plug_illustrations.svg"
+          width={600}
+          height={600}
+          alt="Decorative plugs"
+        />
+      </div> */}
+      {/* <svg
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"
+        className={styles.hero_svg}
       >
         <path
-          fill="rgb(255,255,255, 0.2)"
-          d="M63.1,-22.9C68.9,-2.5,52,22.9,36.1,29.7C20.2,36.5,5.4,24.7,-10.1,13.5C-25.7,2.3,-41.9,-8.3,-40.3,-22.8C-38.7,-37.3,-19.4,-55.8,4.6,-57.3C28.6,-58.8,57.2,-43.3,63.1,-22.9Z"
+          fill="#FFF"
+          d="M28.4,-48.7C38.3,-43.4,48.9,-38.9,56.4,-30.9C63.9,-22.9,68.3,-11.5,66.5,-1.1C64.6,9.3,56.5,18.6,50.1,28.5C43.7,38.4,38.9,48.8,30.9,59.7C22.8,70.5,11.4,81.8,1.4,79.3C-8.5,76.8,-17.1,60.5,-24.9,49.6C-32.8,38.6,-40,33,-51.9,25.6C-63.7,18.2,-80.1,9.1,-85.9,-3.4C-91.8,-15.8,-87,-31.6,-75.5,-39.6C-64,-47.6,-45.8,-47.8,-32.1,-50.8C-18.4,-53.9,-9.2,-59.9,0,-59.9C9.2,-59.9,18.5,-53.9,28.4,-48.7Z"
           transform="translate(100 100)"
         />
-      </svg>
-      <svg
-        className={styles.svg_right}
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill="rgb(255,255,255, 0.2)"
-          d="M52.7,-70.3C68.5,-61,81.7,-45.9,85.1,-29.2C88.4,-12.4,81.9,6.1,70.5,17.3C59.1,28.5,42.8,32.5,30.3,36.7C17.7,40.8,8.9,45,-0.4,45.6C-9.7,46.2,-19.4,43.1,-25.1,36.7C-30.9,30.4,-32.7,20.8,-40.2,10.1C-47.7,-0.6,-61,-12.3,-59.1,-19.5C-57.2,-26.7,-40.2,-29.3,-27.8,-39.7C-15.4,-50.1,-7.7,-68.4,5.4,-75.7C18.4,-83.1,36.9,-79.6,52.7,-70.3Z"
-          transform="translate(100 100)"
-        />
-      </svg>
+      </svg> */}
 
       <div className={styles.hero_content}>
         <Typography variant="h1">
@@ -46,7 +44,7 @@ const HeroBanner = () => {
               className={styles.hero_cta_button}
               size="large"
             >
-              Find a hair-stylist, caterer, ...
+              Try "hair", or "food"
             </Button>
           </a>
         </Link>

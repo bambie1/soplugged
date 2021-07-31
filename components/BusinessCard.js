@@ -59,7 +59,8 @@ const BusinessCard = ({ mini, average, ...props }) => {
     street_address,
     slug,
   } = props.dbObject;
-  const images = sample_images.split(",");
+  const images = sample_images?.split(",") || [];
+
   return (
     <Link href={`/business/${slug}`}>
       <a className={classes.root}>
@@ -77,7 +78,7 @@ const BusinessCard = ({ mini, average, ...props }) => {
         </BusinessHeader>
 
         <Typography variant="body1" style={{ fontWeight: "bold" }}>
-          CATEGORY: {category}
+          {category}
         </Typography>
         <br></br>
         {!mini && (
