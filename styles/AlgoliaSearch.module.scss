@@ -39,6 +39,7 @@
   list-style: none;
   justify-content: center;
   padding: 0;
+  flex-wrap: wrap;
 
   .pagination_list_item {
     padding: 0.5rem 1rem;
@@ -49,6 +50,7 @@
     color: $secondary;
     cursor: pointer;
     font-size: 0.8rem;
+    display: flex;
 
     &.active {
       font-weight: bold;
