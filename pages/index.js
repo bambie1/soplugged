@@ -81,8 +81,7 @@ export default function Home() {
                   You can do so for <u>FREE!</u> Simply click the 'JOIN' button
                   to register, and follow the instructions to add your business
                   to our directory. Once complete, you can begin to field
-                  quotesand requests through your preferred means of
-                  communication.
+                  requests through your preferred means of communication.
                 </Typography>
                 <br></br>
                 <Link href="/my-business">
