@@ -1,6 +1,7 @@
 $primary: #cdb693;
 $secondary: #4e3505;
 
+// preset media queries
 @mixin mobile_only() {
   @media (max-width: 768px) {
     @content;
