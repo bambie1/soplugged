@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Button, Box } from "@material/mui-components";
 import Link from "next/link";
 import displayShopifyCollection from "../src/shopifyStore";
-import styles from "styles/Home.module.scss";
+import styles from "@components/HomePage/HomePageStyles.module.scss";
 
 const ShopifyMiniCollection = () => {
   return (

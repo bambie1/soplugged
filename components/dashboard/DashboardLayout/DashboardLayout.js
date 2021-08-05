@@ -8,10 +8,10 @@ import {
   Button,
   Typography,
 } from "@material/mui-components";
-import DashboardNav from "@components/dashboard/DashboardNav";
+import { DashboardNav } from "@components/index";
 import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "@material/mui-icons";
 import Link from "next/link";
-import SEO from "../SEO";
+import SEO from "../../SEO";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -13,7 +13,7 @@ import { EditIcon, FavoriteIcon } from "@material/mui-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { greetFunction } from "src/greeting";
-import BusinessCard from "../BusinessCard";
+import BusinessCard from "../../BusinessCard/BusinessCard";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useRouter } from "next/router";
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = ({ business }) => {
+const DashboardHome = ({ business }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const router = useRouter();
@@ -280,4 +280,4 @@ const Dashboard = ({ business }) => {
   );
 };
 
-export default Dashboard;
+export default DashboardHome;

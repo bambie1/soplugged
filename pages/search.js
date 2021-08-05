@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, makeStyles } from "@material/mui-components";
 import AlgoliaSearch from "@components/algolia/AlgoliaSearch";
 import Link from "next/link";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 
 const useStyles = makeStyles((theme) => ({
   page: {

@@ -10,7 +10,7 @@ import {
 import firebase from "firebase/app";
 import { useRouter } from "next/router";
 
-export default function AlertDialog({ handleClose }) {
+export default function SignOutAlert({ handleClose }) {
   const router = useRouter();
 
   const handleSignOut = async () => {

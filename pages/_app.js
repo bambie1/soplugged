@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Layout from "../components/Layout";
 import "../styles/_globals.css";
 import "../styles/_algolia.css";
 import "../styles/_animation.css";
@@ -10,7 +9,7 @@ import { BusinessFormProvider } from "@contexts/businessFormContext";
 import { AuthProvider } from "@contexts/authContext";
 import { useRouter } from "next/router";
 import { init } from "../utils/sentry";
-import SavingAnimation from "@components/SavingAnimation";
+import { SavingAnimation, Layout } from "@components/index";
 
 init();
 

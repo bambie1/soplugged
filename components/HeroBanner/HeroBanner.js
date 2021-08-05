@@ -1,7 +1,7 @@
 import { Typography } from "@material/mui-components";
 import { SearchIcon } from "@material/mui-icons";
 import Link from "next/link";
-import styles from "styles/Hero.module.scss";
+import styles from "./HeroBannerStyles.module.scss";
 
 const HeroBanner = () => {
   return (

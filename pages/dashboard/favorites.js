@@ -1,6 +1,5 @@
 import React from "react";
-import Favorites from "@components/dashboard/Favorites";
-import DashboardLayout from "@components/dashboard/DashboardLayout";
+import { Favorites, DashboardLayout } from "@components/index";
 import nookies from "nookies";
 import { verifyIdToken } from "../../utils/firebaseAdmin";
 

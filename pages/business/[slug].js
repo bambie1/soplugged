@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Container, makeStyles } from "@material/mui-components";
-import SEO from "@components/SEO";
-import BusinessPage from "@components/BusinessPage";
+import { SEO, BusinessPage } from "@components/index";
 import { useAuth } from "@contexts/authContext";
 import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";

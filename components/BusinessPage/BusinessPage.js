@@ -24,11 +24,13 @@ import ImageGallery from "react-image-gallery";
 import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import BusinessHeader from "./BusinessHeader";
+import BusinessHeader from "../BusinessHeader/BusinessHeader";
 import dynamic from "next/dynamic";
 
-const DynamicContact = dynamic(() => import("./ContactForm"));
-const DynamicFavorite = dynamic(() => import("./FavoriteButton"));
+const DynamicContact = dynamic(() => import("../ContactForm/ContactForm"));
+const DynamicFavorite = dynamic(() =>
+  import("../FavoriteButton/FavoriteButton")
+);
 
 const useStyles = makeStyles((theme) => ({
   root: {

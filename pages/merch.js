@@ -1,7 +1,7 @@
 import React from "react";
 import displayShopifyCollection from "../src/shopifyStore";
 import { Typography, makeStyles, Box } from "@material/mui-components";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 import dynamic from "next/dynamic";
 
 const DynamicProgress = dynamic(() =>

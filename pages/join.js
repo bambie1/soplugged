@@ -2,7 +2,7 @@ import React from "react";
 import FirebaseAuth from "../components/FirebaseAuth";
 import { Button, Typography, Container } from "@material/mui-components";
 import Link from "next/link";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
 import { NavigateBeforeIcon } from "@components/material-ui/mui-icons";

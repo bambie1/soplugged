@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { CheckIcon } from "@material/mui-icons";
 import Link from "next/link";
-import BusinessHeader from "./BusinessHeader";
+import BusinessHeader from "../BusinessHeader/BusinessHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {

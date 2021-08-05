@@ -1,6 +1,5 @@
 import React from "react";
-import Profile from "@components/dashboard/Profile";
-import DashboardLayout from "@components/dashboard/DashboardLayout";
+import { Profile, DashboardLayout } from "@components/index";
 import { editUser, addUser, getUser } from "src/handleDBUser";
 import { Snackbar, IconButton } from "@material/mui-components";
 import { CloseIcon } from "@material/mui-icons";

@@ -3,8 +3,8 @@ import { Typography, Avatar } from "@material/mui-components";
 import { CheckIcon } from "@material/mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
-import FavoriteButton from "../FavoriteButton";
-import BusinessHeader from "../BusinessHeader";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import BusinessHeader from "../BusinessHeader/BusinessHeader";
 import { useAuth } from "@contexts/authContext";
 import styles from "styles/Directory.module.scss";
 
