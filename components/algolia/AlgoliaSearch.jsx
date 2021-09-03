@@ -44,7 +44,7 @@ const AlgoliaSearch = () => {
         <InstantSearch indexName="Business" searchClient={searchClient}>
           <div className={styles.search_div}>
             <PoweredBy />
-            <SearchBox defaultRefinement={contextCategory} autoFocus />
+            <SearchBox defaultRefinement={contextCategory} />
             <div className={styles.search_filters}>
               {filters.map((item, index) => (
                 <Button
