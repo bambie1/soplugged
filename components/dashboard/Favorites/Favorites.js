@@ -6,8 +6,8 @@ import {
   useMediaQuery,
 } from "@material/mui-components";
 import Image from "next/image";
-import BusinessCard from "../BusinessCard";
-import PaginationBar from "../Pagination";
+import BusinessCard from "../../BusinessCard/BusinessCard";
+import PaginationBar from "../../Pagination";
 
 const useStyles = makeStyles((theme) => ({
   favorites: {

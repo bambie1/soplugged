@@ -6,7 +6,7 @@ import {
   makeStyles,
 } from "@material/mui-components";
 import Link from "next/link";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 import { NavigateBeforeIcon } from "@material/mui-icons";
 
 const useStyles = makeStyles((theme) => ({

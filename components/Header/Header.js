@@ -29,7 +29,7 @@ import {
   MoreVertIcon,
   LocalMallIcon,
 } from "@material/mui-icons";
-import SignOutAlert from "./SignOutAlert";
+import { SignOutAlert } from "@components/index";
 import { useAuth } from "@contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({

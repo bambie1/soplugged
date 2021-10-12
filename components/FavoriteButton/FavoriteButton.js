@@ -80,6 +80,7 @@ const FavoriteButton = ({
   };
   const handleClick = async () => {
     if (!user?.email || disabled) {
+      console.log("no user email");
       router.push("/join");
       return;
     }
@@ -112,6 +113,7 @@ const FavoriteButton = ({
               variant={mini ? "text" : "outlined"}
               color="secondary"
               startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              disabled={disabled}
               onClick={handleClick}
               style={{
                 marginTop: mini ? "auto" : "8px",
@@ -126,6 +128,7 @@ const FavoriteButton = ({
               color="secondary"
               startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               onClick={handleClick}
+              disabled={disabled}
               style={{ marginTop: mini ? "auto" : "8px" }}
             >
               -

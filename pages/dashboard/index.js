@@ -1,6 +1,5 @@
 import React from "react";
-import Dashboard from "@components/dashboard/Dashboard";
-import DashboardLayout from "@components/dashboard/DashboardLayout";
+import { DashboardHome, DashboardLayout } from "@components/index";
 import nookies from "nookies";
 import { verifyIdToken } from "../../utils/firebaseAdmin";
 
@@ -8,7 +7,7 @@ const DashboardPage = ({ business }) => {
   return (
     <>
       <DashboardLayout title="My Dashboard | SoPlugged" position={0}>
-        <Dashboard business={business} />
+        <DashboardHome business={business} />
       </DashboardLayout>
     </>
   );

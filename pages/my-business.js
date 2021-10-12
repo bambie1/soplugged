@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, makeStyles } from "@material/mui-components";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
 import { useBusinessFormContext } from "@contexts/businessFormContext";

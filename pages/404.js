@@ -6,7 +6,7 @@ import {
 } from "@material/mui-components";
 import Link from "next/link";
 import { ErrorIcon } from "@material/mui-icons";
-import SEO from "@components/SEO";
+import { SEO } from "@components/index";
 
 const useStyles = makeStyles((theme) => ({
   container: {
