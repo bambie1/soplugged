@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 const useStyles = makeStyles((theme) => ({
   page: {
     textAlign: "center",
-    // paddingTop: "60px",
     minHeight: "80vh",
     zIndex: "1",
     background: "white",
