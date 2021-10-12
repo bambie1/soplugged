@@ -107,6 +107,11 @@
   }
   p {
     width: 100%;
+    white-space: nowrap;
+    margin-left: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
   }
   &:hover {
     box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px;

@@ -1,23 +1,12 @@
 import React from "react";
 import { Typography, Avatar } from "@material/mui-components";
-import { CheckIcon } from "@material/mui-icons";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import BusinessHeader from "../BusinessHeader/BusinessHeader";
-import { useAuth } from "@contexts/authContext";
 import styles from "styles/Directory.module.scss";
 
 const AlgoliaHit = ({ hit }) => {
-  const { user } = useAuth();
-  const [likes, setLikes] = React.useState(0);
   let slug = hit.slug || "biz-slug";
-  let res = fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${hit.slug}`
-  )
-    .then((r) => r.json())
-    .then((business) => setLikes(business.number_of_likes));
-  const businessOwner = user?.email === hit.creator.email;
 
   return (
     <div className={styles.hit_root}>
@@ -58,21 +47,6 @@ const AlgoliaHit = ({ hit }) => {
           </Typography>
         </a>
       </Link>
-      <div className={styles.hit_footer}>
-        {!hit.fixed_to_one_location && (
-          <span className={styles.canada_wide}>
-            <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-            CANADA-WIDE
-          </span>
-        )}
-        <FavoriteButton
-          business_id={hit.id}
-          user={user}
-          numberOfLikes={likes}
-          disabled={businessOwner}
-          mini={true}
-        />
-      </div>
     </div>
   );
 };

@@ -5,6 +5,9 @@ import { useAuth } from "@contexts/authContext";
 import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 
+import nookies from "nookies";
+import { verifyIdToken } from "../../utils/firebaseAdmin";
+
 const useStyles = makeStyles((theme) => ({
   page: {
     textAlign: "center",
@@ -24,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessSlug = ({ business }) => {
+const BusinessSlug = ({ business, userLikedBusiness }) => {
   const classes = useStyles();
   const { user } = useAuth();
   const router = useRouter();
@@ -45,7 +48,13 @@ const BusinessSlug = ({ business }) => {
       />
       <Container className={classes.page} maxWidth="lg">
         <br></br>
-        {business && <BusinessPage business={business} user={user} />}
+        {business && (
+          <BusinessPage
+            business={business}
+            user={user}
+            userLikedBusiness={userLikedBusiness}
+          />
+        )}
         <div className={classes.buttonDiv}>
           <Button variant="contained" color="secondary" onClick={backToSearch}>
             {business?.category
@@ -65,14 +74,41 @@ export async function getServerSideProps(context) {
       `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
     );
     const business = await res.json();
+    let userLikedBusiness = false;
+
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
+
+    if (token?.email) {
+      const res = await fetch(fetchUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Firebase-Token": cookies.token,
+        },
+      });
+      if (res.ok) {
+        const favorites = await res.json();
+        for (let i = 0; i < favorites.length; i++) {
+          if (favorites[i].liked_business.id === business.id) {
+            userLikedBusiness = true;
+            break;
+          }
+        }
+      }
+    }
 
     if (!business) throw new Error("Business wasn't found");
     return {
       props: {
         business,
+        userLikedBusiness,
       },
     };
   } catch (error) {
+    console.log({ error });
     return {
       notFound: true,
     };

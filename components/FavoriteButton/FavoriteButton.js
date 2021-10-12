@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
 import { useRouter } from "next/router";
-import * as Sentry from "@sentry/node";
 
 const FavoriteButton = ({
   business_id,
@@ -21,39 +20,16 @@ const FavoriteButton = ({
   disabled,
   numberOfLikes,
   mini,
+  userLikedBusiness,
 }) => {
   const [snackPack, setSnackPack] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const [likes, setLikes] = React.useState(numberOfLikes);
   const [messageInfo, setMessageInfo] = React.useState(undefined);
-  const [favorites, setFavorites] = React.useState([]);
   const router = useRouter();
 
-  let userLikedBusiness = false;
-  React.useEffect(() => {
-    let token = user?.za || null;
-    if (token) {
-      fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`, {
-        method: "GET",
-        headers: {
-          "Firebase-Token": token,
-        },
-      })
-        .then((r) => r.json())
-        .then((data) => setFavorites(data))
-        .catch((err) => Sentry.captureException(err));
-    }
-  }, [user]);
-
-  favorites.map((item) => {
-    if (item.liked_business.id === business_id) userLikedBusiness = true;
-  });
-
+  console.log({ userLikedBusiness });
   const [liked, setLiked] = useState(userLikedBusiness);
-
-  React.useEffect(() => {
-    setLiked(userLikedBusiness);
-  }, [userLikedBusiness]);
 
   React.useEffect(() => {
     setLikes(numberOfLikes);
@@ -80,7 +56,6 @@ const FavoriteButton = ({
   };
   const handleClick = async () => {
     if (!user?.email || disabled) {
-      console.log("no user email");
       router.push("/join");
       return;
     }

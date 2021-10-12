@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BusinessPage = ({ business, user }) => {
+const BusinessPage = ({ business, user, userLikedBusiness }) => {
   const classes = useStyles();
   const { setContextCategory } = useSearch();
   const router = useRouter();
@@ -226,6 +226,7 @@ const BusinessPage = ({ business, user }) => {
                   user={user}
                   numberOfLikes={number_of_likes}
                   disabled={pageOwner}
+                  userLikedBusiness={userLikedBusiness}
                 />
               </div>
             )}
@@ -289,6 +290,7 @@ const BusinessPage = ({ business, user }) => {
             user={user}
             numberOfLikes={number_of_likes}
             disabled={pageOwner}
+            userLikedBusiness={userLikedBusiness}
           />
         </div>
       )}

@@ -17,7 +17,9 @@ const HeroBanner = () => {
           <a className={styles.hero_cta_link}>
             <div className={styles.hero_cta_button}>
               <SearchIcon />
-              <Typography>Try "hair", or "food"</Typography>
+              <Typography>
+                Search by business name, category, or location
+              </Typography>
             </div>
           </a>
         </Link>

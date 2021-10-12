@@ -24,8 +24,8 @@ h6 {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 ::selection {
-  color: white;
-  background: var(--dark);
+  color: var(--dark);
+  background: var(--light);
 }
 a {
   color: inherit;
