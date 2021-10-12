@@ -28,7 +28,6 @@ const FavoriteButton = ({
   const [messageInfo, setMessageInfo] = React.useState(undefined);
   const router = useRouter();
 
-  console.log({ userLikedBusiness });
   const [liked, setLiked] = useState(userLikedBusiness);
 
   React.useEffect(() => {
