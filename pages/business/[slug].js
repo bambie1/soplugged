@@ -69,38 +69,47 @@ const BusinessSlug = ({ business, userLikedBusiness }) => {
 
 export async function getServerSideProps(context) {
   let slug = context.query.slug;
+
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
     );
     const business = await res.json();
+
+    if (!business)
+      return {
+        notFound: true,
+      };
     let userLikedBusiness = false;
 
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-    const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
+    try {
+      const cookies = nookies.get(context);
+      const token = await verifyIdToken(cookies.token);
+      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
 
-    if (token?.email) {
-      const res = await fetch(fetchUrl, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Firebase-Token": cookies.token,
-        },
-      });
-      if (res.ok) {
-        const favorites = await res.json();
-        for (let i = 0; i < favorites.length; i++) {
-          if (favorites[i].liked_business.id === business.id) {
-            userLikedBusiness = true;
-            break;
+      if (token?.email) {
+        const res = await fetch(fetchUrl, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Firebase-Token": cookies.token,
+          },
+        });
+        if (res.ok) {
+          const favorites = await res.json();
+          for (let i = 0; i < favorites.length; i++) {
+            if (favorites[i].liked_business.id === business.id) {
+              userLikedBusiness = true;
+              break;
+            }
           }
         }
       }
+    } catch (err) {
+      // console.log({ err });
     }
 
-    if (!business) throw new Error("Business wasn't found");
     return {
       props: {
         business,
@@ -108,7 +117,6 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.log({ error });
     return {
       notFound: true,
     };
