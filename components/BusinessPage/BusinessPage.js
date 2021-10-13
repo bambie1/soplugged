@@ -218,7 +218,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
                 }}
               >
                 <Typography>
-                  Would you recommend this business? Give it a like!
+                  Want to save this business for later? Add it your favorites
                 </Typography>
                 <br></br>
                 <DynamicFavorite
@@ -283,7 +283,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
       {hasPreview && verified && (
         <div className={classes.favoriteDiv}>
           <Typography>
-            Would you recommend this business? Give it a like!
+            Want to save this business for later? Add it your favorites
           </Typography>
           <DynamicFavorite
             business_id={id}

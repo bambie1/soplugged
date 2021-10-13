@@ -1,9 +1,4 @@
-import {
-  Button,
-  Snackbar,
-  IconButton,
-  Tooltip,
-} from "@material/mui-components";
+import { Button, Snackbar, IconButton } from "@material/mui-components";
 import React, { useState } from "react";
 import {
   FavoriteBorderIcon,
@@ -14,25 +9,13 @@ import Link from "next/link";
 import { addFavorite, removeFavorite } from "src/addRemoveFavorite";
 import { useRouter } from "next/router";
 
-const FavoriteButton = ({
-  business_id,
-  user,
-  disabled,
-  numberOfLikes,
-  mini,
-  userLikedBusiness,
-}) => {
-  const [snackPack, setSnackPack] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const [likes, setLikes] = React.useState(numberOfLikes);
-  const [messageInfo, setMessageInfo] = React.useState(undefined);
+const FavoriteButton = ({ business_id, user, disabled, userLikedBusiness }) => {
+  const [snackPack, setSnackPack] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [messageInfo, setMessageInfo] = useState(undefined);
   const router = useRouter();
 
   const [liked, setLiked] = useState(userLikedBusiness);
-
-  React.useEffect(() => {
-    setLikes(numberOfLikes);
-  }, [numberOfLikes]);
 
   React.useEffect(() => {
     if (snackPack.length && !messageInfo) {
@@ -62,54 +45,38 @@ const FavoriteButton = ({
       let res = await removeFavorite(business_id, user);
       if (!res.error) {
         handleFavorite("Removed from favorites");
-        setLikes(likes - 1);
         setLiked(!liked);
       }
     } else {
       let res = await addFavorite(business_id, user);
       if (!res.error) {
         handleFavorite("Added to Favorites");
-        setLikes(likes + 1);
         setLiked(!liked);
       }
     }
   };
+
   const handleFavorite = (message) => {
     setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
   };
+
   return (
     <>
-      <Tooltip title={liked ? "Remove from Favorites" : "Add to Favorites"}>
-        <span style={{ marginLeft: mini ? "auto" : "initial" }}>
-          {likes > 0 ? (
-            <Button
-              size={mini ? "small" : "medium"}
-              variant={mini ? "text" : "outlined"}
-              color="secondary"
-              startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-              disabled={disabled}
-              onClick={handleClick}
-              style={{
-                marginTop: mini ? "auto" : "8px",
-              }}
-            >
-              {mini ? likes : `Likes - ${likes} `}
-            </Button>
-          ) : (
-            <Button
-              size={mini ? "small" : "medium"}
-              variant={mini ? "text" : "outlined"}
-              color="secondary"
-              startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-              onClick={handleClick}
-              disabled={disabled}
-              style={{ marginTop: mini ? "auto" : "8px" }}
-            >
-              -
-            </Button>
-          )}
-        </span>
-      </Tooltip>
+      <span style={{ marginLeft: "initial" }}>
+        <Button
+          size={"medium"}
+          variant={"outlined"}
+          color="secondary"
+          startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          disabled={disabled}
+          onClick={handleClick}
+          style={{
+            marginTop: "8px",
+          }}
+        >
+          {liked ? "Added to favorites" : "Add to favorites"}
+        </Button>
+      </span>
 
       <Snackbar
         key={messageInfo ? messageInfo.key : undefined}
