@@ -106,9 +106,7 @@ export async function getServerSideProps(context) {
           }
         }
       }
-    } catch (err) {
-      // console.log({ err });
-    }
+    } catch (err) {}
 
     return {
       props: {
