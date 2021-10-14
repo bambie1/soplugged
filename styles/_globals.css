@@ -50,6 +50,7 @@ img {
 }
 #content {
   min-height: 600px;
+  flex: 1;
   z-index: 1;
   background: white;
 }
@@ -67,6 +68,7 @@ img {
 .layout-div {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .line {
