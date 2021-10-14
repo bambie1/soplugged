@@ -49,7 +49,7 @@ img {
   background: white;
 }
 #content {
-  min-height: 85vh;
+  min-height: 600px;
   z-index: 1;
   background: white;
 }
