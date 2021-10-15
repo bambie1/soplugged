@@ -28,6 +28,7 @@ const PhoneNumberTextField = () => {
   return (
     <CustomTextField
       type="tel"
+      color="secondary"
       // value={formattedNumber}
       // onChange={handlePhoneNumber}
       {...configTextField}

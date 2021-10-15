@@ -59,10 +59,69 @@ const CustomTextField = withStyles({
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#4e3505",
+        borderRadius: "20px",
       },
     },
   },
 })(TextField);
+
+const CustomButton = withStyles((theme) => ({
+  root: {
+    fontSize: 16,
+    padding: ".5rem 1rem",
+    lineHeight: 1.5,
+    borderRadius: "20px",
+
+    "&.MuiButton-contained.MuiButton-containedSecondary": {
+      border: "none",
+      borderBottom: `3px solid transparent`,
+      boxShadow:
+        "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
+      padding: ".5rem 1rem calc(0.5rem - 3px)",
+
+      "&:hover": {
+        backgroundColor: "white",
+        color: theme.palette.secondary.main,
+      },
+
+      "&:active": {
+        boxShadow: "none",
+      },
+      "&:focus": {
+        boxShadow: `0px 0px 22px -5px ${theme.palette.primary.main}`,
+      },
+    },
+
+    "&.MuiButton-outlined.MuiButton-outlinedSecondary": {
+      boxShadow:
+        "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
+      border: "none",
+      borderBottom: "3px solid transparent",
+      padding: ".5rem 1rem calc(0.5rem - 3px)",
+
+      "&:hover": {
+        // border: "none",
+        borderBottom: `3px solid ${theme.palette.secondary.main}`,
+        // borderWidth: "3px",
+      },
+
+      "&:active": {
+        boxShadow: "none",
+      },
+      "&:focus": {
+        boxShadow: `0px 0px 22px -5px ${theme.palette.primary.main}`,
+      },
+    },
+  },
+}))(Button);
+
+const TextButton = withStyles((theme) => ({
+  root: {
+    fontSize: 16,
+    padding: ".5rem 1rem",
+    lineHeight: 1.5,
+  },
+}));
 
 export {
   InputLabel,
@@ -78,13 +137,15 @@ export {
   StepLabel,
   StepButton,
   StepContent,
-  Button,
+  // Button,
   Box,
   FormGroup,
   FormLabel,
   Menu,
   MenuItem,
   CustomTextField,
+  CustomButton as Button,
+  TextButton,
   Collapse,
   Tooltip,
   BottomNavigation,

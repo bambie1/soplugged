@@ -8,6 +8,7 @@ import {
   Typography,
   CircularProgress,
 } from "@material/mui-components";
+import { CloudUploadIcon } from "@material/mui-icons";
 import useImageUploader from "@hooks/useImageUploader";
 import { useFormikContext } from "formik";
 import FileDropzone from "../FileDropzone";
@@ -43,27 +44,33 @@ const BusinessFormStep4 = () => {
   return (
     <>
       <div className={classes.logoGroup}>
-        <InputLabel>Business logo:</InputLabel>
-        <input
-          accept="image/png, image/jpeg"
-          className={classes.input}
-          id="business-logo"
-          name="logoUrl"
-          type="file"
-          onChange={handleFileUpload}
-          value=""
-        />
-        <Box display="flex" mt={1}>
+        <Box display="flex" mt={1} alignItems="center">
+          <InputLabel>Business logo:</InputLabel>
+          <input
+            accept="image/png, image/jpeg"
+            className={classes.input}
+            id="business-logo"
+            name="logoUrl"
+            type="file"
+            onChange={handleFileUpload}
+            value=""
+          />
           <label htmlFor="business-logo">
             <Button
-              variant="outlined"
+              // variant="outlined"
               color="secondary"
               component="span"
               className={classes.button}
-              endIcon={uploading ? <CircularProgress size="1rem" /> : null}
+              startIcon={
+                uploading ? (
+                  <CircularProgress size="1rem" />
+                ) : (
+                  <CloudUploadIcon />
+                )
+              }
               disabled={uploading}
             >
-              {url || values.logoUrl ? "Change Logo" : "UploadLogo"}
+              {url || values.logoUrl ? "Change " : "Upload "}
             </Button>
           </label>
           {url && <Avatar src={url} variant="square" />}

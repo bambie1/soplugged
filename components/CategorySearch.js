@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField } from "@material/mui-components";
+import { CustomTextField } from "@material/mui-components";
 import { Autocomplete } from "@material/mui-lab";
 import { categories } from "../src/ListOfCategories";
 import { useFormikContext } from "formik";
@@ -25,7 +25,9 @@ const CategorySearch = ({ name, ...otherProps }) => {
         setInputValue(newInputValue);
       }}
       options={categories}
-      renderInput={(params) => <TextField {...params} {...otherProps} />}
+      renderInput={(params) => (
+        <CustomTextField color="secondary" {...params} {...otherProps} />
+      )}
     />
   );
 };

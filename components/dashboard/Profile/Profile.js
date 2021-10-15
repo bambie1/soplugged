@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Grid,
-  TextField,
+  CustomTextField,
   Typography,
   Button,
   makeStyles,
@@ -30,7 +30,8 @@ const Profile = ({ user, email, submitHandler }) => {
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={12} className={classes.grid}>
-            <TextField
+            <CustomTextField
+              color="secondary"
               name="full_name"
               label="Full Name"
               variant="outlined"
@@ -48,7 +49,8 @@ const Profile = ({ user, email, submitHandler }) => {
             />
           </Grid>
           <Grid item xs={12} className={classes.grid}>
-            <TextField
+            <CustomTextField
+              color="secondary"
               name="email"
               label="E-mail"
               variant="outlined"

@@ -5,7 +5,7 @@ import {
   Typography,
   makeStyles,
   Box,
-  TextField,
+  CustomTextField,
   Grid,
 } from "@material/mui-components";
 import { CheckIcon } from "@material/mui-icons";
@@ -58,7 +58,8 @@ const BusinessFormReview = () => {
   return (
     <Grid container spacing={2} style={{ marginTop: "8px" }}>
       <Grid item xs={12} sm={6}>
-        <TextField
+        <CustomTextField
+          color="secondary"
           disabled
           value={businessName.toUpperCase()}
           label="Business Name"
@@ -67,7 +68,8 @@ const BusinessFormReview = () => {
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TextField
+        <CustomTextField
+          color="secondary"
           disabled
           value={businessCategory}
           label="Business Category"
@@ -77,7 +79,8 @@ const BusinessFormReview = () => {
       </Grid>
       {businessUrl && (
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
+            color="secondary"
             disabled
             value={businessUrl}
             label="Business Website"
@@ -88,7 +91,8 @@ const BusinessFormReview = () => {
       )}
       {igHandle && (
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
+            color="secondary"
             disabled
             value={igHandle}
             label="IG Handle"
@@ -100,7 +104,8 @@ const BusinessFormReview = () => {
 
       {phoneNumber && (
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
+            color="secondary"
             disabled
             value={phoneNumber}
             label="Business Phone"
@@ -111,7 +116,8 @@ const BusinessFormReview = () => {
       )}
 
       <Grid item xs={12}>
-        <TextField
+        <CustomTextField
+          color="secondary"
           value={businessDescription.replace(/<[^>]*>?/gm, "")}
           multiline={true}
           label="Business Description"
@@ -124,7 +130,8 @@ const BusinessFormReview = () => {
       </Grid>
       {businessLocation && (
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
+            color="secondary"
             disabled
             value={businessLocation}
             label="Business Location"
@@ -135,7 +142,8 @@ const BusinessFormReview = () => {
       )}
       {streetAddress && (
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
+            color="secondary"
             disabled
             value={streetAddress}
             label="Street Address"

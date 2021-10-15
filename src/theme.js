@@ -61,4 +61,10 @@ export const theme = createTheme({
       fontSize: "1rem",
     },
   },
+  props: {
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
 });

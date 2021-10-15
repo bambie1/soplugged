@@ -4,7 +4,7 @@ import {
   Button,
   Typography,
   Grid,
-  TextField,
+  CustomTextField,
   Container,
   makeStyles,
 } from "@material/mui-components";
@@ -72,7 +72,8 @@ const SubscribeForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={1} className={classes.grid}>
             <Grid item xs={12} sm={6} md={4}>
-              <TextField
+              <CustomTextField
+                color="secondary"
                 variant="outlined"
                 id="firstName"
                 label="First Name"
@@ -91,7 +92,8 @@ const SubscribeForm = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <TextField
+              <CustomTextField
+                color="secondary"
                 variant="outlined"
                 label="Last Name"
                 id="lastName"
@@ -106,7 +108,8 @@ const SubscribeForm = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <TextField
+              <CustomTextField
+                color="secondary"
                 variant="outlined"
                 label="Email address"
                 name="email"

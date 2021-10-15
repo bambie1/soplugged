@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Button,
-  TextField,
+  CustomTextField,
   makeStyles,
   Typography,
 } from "@material/mui-components";
@@ -75,7 +75,8 @@ const ContactForm = ({ user, business_email }) => {
           An error occured while sending your message. Please try again later
         </Alert>
       )}
-      <TextField
+      <CustomTextField
+        color="secondary"
         name="userName"
         label="Full Name"
         variant="outlined"
@@ -86,7 +87,8 @@ const ContactForm = ({ user, business_email }) => {
         helperText={!!errors.userName && errors.userName.message}
         disabled={!user?.email}
       />
-      <TextField
+      <CustomTextField
+        color="secondary"
         name="userMessage"
         label="Message"
         variant="outlined"

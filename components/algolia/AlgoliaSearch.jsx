@@ -55,10 +55,10 @@ const AlgoliaSearch = () => {
                       ? setCurrentDropDown(index + 1)
                       : setCurrentDropDown(0)
                   }
-                  variant={
-                    currentDropDown === index + 1 ? "contained" : "outlined"
+                  variant={"outlined"}
+                  color={
+                    currentDropDown === index + 1 ? "secondary" : "default"
                   }
-                  color={"secondary"}
                   size="small"
                 >
                   {item.label}

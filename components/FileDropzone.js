@@ -178,7 +178,7 @@ const FileDropzone = () => {
         </Typography>
         <br></br>
         <Button
-          variant="outlined"
+          // variant="outlined"
           color="secondary"
           startIcon={
             uploading ? <CircularProgress size="1rem" /> : <CloudUploadIcon />

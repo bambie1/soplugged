@@ -4,7 +4,7 @@ import {
   Container,
   Typography,
   Grid,
-  TextField,
+  CustomTextField,
   Button,
 } from "@material/mui-components";
 import SEO from "@components/SEO";
@@ -18,7 +18,7 @@ const ProPage = () => {
 
   return (
     <>
-      <SEO title="Professional help for your business digital needs | SoPlugged-PRO" />
+      <SEO title="Professional help for your business digital needs | SoPluggedPRO" />
       <Container className={styles.page}>
         <Grid container spacing={3} className={styles.hero}>
           <Grid item xs={12} md={6}>
@@ -62,10 +62,11 @@ const ProPage = () => {
               <form className={styles.form}>
                 <Grid container spacing={1} className={styles.formGrid}>
                   <Grid item xs={12} sm={8}>
-                    <TextField
+                    <CustomTextField
+                      color="secondary"
                       variant="outlined"
                       color="secondary"
-                      placeholder="Email address"
+                      label="Email address"
                       fullWidth
                     />
                   </Grid>

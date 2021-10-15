@@ -12,7 +12,7 @@ import {
   FormControlLabel,
   Checkbox,
   FormGroup,
-  TextField,
+  CustomTextField,
 } from "@material/mui-components";
 import { Autocomplete } from "@material/mui-lab";
 import { useTheme } from "@material-ui/core/styles";
@@ -191,7 +191,8 @@ export default function BusinessTermsConditions({ handleAgree }) {
             getOptionLabel={(option) => option.label}
             style={{ maxWidth: 400, marginBottom: "16px", marginTop: "16px" }}
             renderInput={(params) => (
-              <TextField
+              <CustomTextField
+                color="secondary"
                 {...params}
                 label="How did you hear about us?"
                 variant="outlined"
@@ -215,7 +216,8 @@ export default function BusinessTermsConditions({ handleAgree }) {
               getOptionLabel={(option) => option.business_name}
               style={{ maxWidth: 400, marginBottom: "16px" }}
               renderInput={(params) => (
-                <TextField
+                <CustomTextField
+                  color="secondary"
                   {...params}
                   label="Name of Business that referred you"
                   variant="outlined"
