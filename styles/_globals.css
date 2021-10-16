@@ -189,6 +189,10 @@ img {
   object-fit: cover;
 }
 
+.image-gallery-slide div {
+  width: 100%;
+}
+
 .image-gallery-content.bottom
   .image-gallery-swipe
   .image-gallery-slide
