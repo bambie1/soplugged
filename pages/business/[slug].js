@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "400px",
     margin: "4rem auto 2rem",
     justifyContent: "center",
-    // borderTop: "1px solid",
     "& > *": {
       margin: "8px 16px",
     },
