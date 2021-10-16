@@ -56,10 +56,8 @@ const BusinessSlug = ({ business, userLikedBusiness }) => {
           />
         )}
         <div className={classes.buttonDiv}>
-          <Button variant="contained" color="secondary" onClick={backToSearch}>
-            {business?.category
-              ? "View business like this"
-              : "Back to directory"}
+          <Button variant="outlined" color="secondary" onClick={backToSearch}>
+            Back to search
           </Button>
         </div>
       </Container>

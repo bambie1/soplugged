@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
   Button,
+  useMediaQuery,
 } from "@material/mui-components";
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -26,6 +27,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import BusinessHeader from "../BusinessHeader/BusinessHeader";
 import dynamic from "next/dynamic";
+
+import styles from "./BusinessPage.module.scss";
 
 const DynamicContact = dynamic(() => import("../ContactForm/ContactForm"));
 const DynamicFavorite = dynamic(() =>
@@ -49,13 +52,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "8px 16px",
     border: `1px solid ${theme.palette.secondary.main}`,
     borderRadius: "50%",
-  },
-  sectionTitle: {
-    width: "100%",
-    textAlign: "center",
-    margin: "8px auto",
-    maxWidth: "500px",
-    fontWeight: "bold",
   },
   categorySpan: {
     cursor: "pointer",
@@ -128,10 +124,188 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
   let hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const pageOwner = user?.email === creator.email;
 
+  const matches = useMediaQuery("(min-width:960px)");
+  const fullView = hasPreview && verified && matches;
+
   const handleCategoryClick = () => {
     setContextCategory(category);
     router.push("/search");
   };
+
+  const renderFullView = () => (
+    <Grid container spacing={3} style={{ marginTop: "30px" }}>
+      <Grid item xs={12} md={7}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            maxWidth: "700px",
+            margin: "auto",
+          }}
+        >
+          <ImageGallery items={images} showPlayButton={false} />
+
+          <Typography variant="h6" color="secondary" align="left" gutterBottom>
+            ABOUT
+          </Typography>
+          <div
+            style={{ textAlign: "left" }}
+            dangerouslySetInnerHTML={{ __html: business_description }}
+          ></div>
+          <br></br>
+        </div>
+      </Grid>
+      <Grid id="contact" item xs={12} md={5}>
+        <div className={styles.contact}>
+          <Typography
+            variant="h6"
+            color="secondary"
+            align="center"
+            gutterBottom
+          >
+            CONTACT
+          </Typography>
+          <Box display="flex" justifyContent="center" flexWrap="wrap">
+            {phone_number && (
+              <a href={`tel:${phone_number}`} className={classes.button}>
+                <Tooltip title="Call Business" aria-label="call business">
+                  <IconButton>
+                    <CallIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {business_url && (
+              <a
+                href={business_url}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="Visit Website" aria-label="visit website">
+                  <IconButton>
+                    <LanguageIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {ig_handle && (
+              <a
+                href={`https://www.instagram.com/${ig_handle}`}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="View IG page" aria-label="view IG page">
+                  <IconButton>
+                    <InstagramIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+          </Box>
+          {verified && (
+            <DynamicContact user={user} business_email={creator.email} />
+          )}
+        </div>
+      </Grid>
+    </Grid>
+  );
+
+  const renderStackedView = () => (
+    <Grid container spacing={3} style={{ marginTop: "30px" }}>
+      <Grid item xs={12}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            maxWidth: "700px",
+            margin: "auto",
+          }}
+        >
+          {hasPreview && (
+            <>
+              <ImageGallery items={images} showPlayButton={false} />
+              <br></br>
+            </>
+          )}
+          {business_description && (
+            <>
+              <Typography
+                variant="h6"
+                color="secondary"
+                align="center"
+                gutterBottom
+              >
+                ABOUT
+              </Typography>
+              <div
+                className={classes.description}
+                dangerouslySetInnerHTML={{ __html: business_description }}
+              ></div>
+              <br></br>
+            </>
+          )}
+        </div>
+      </Grid>
+      <Grid id="contact" item xs={12}>
+        <div className={styles.contact}>
+          <Typography
+            variant="h6"
+            color="secondary"
+            align="center"
+            gutterBottom
+          >
+            CONTACT
+          </Typography>
+          <Box display="flex" justifyContent="center" flexWrap="wrap">
+            {phone_number && (
+              <a href={`tel:${phone_number}`} className={classes.button}>
+                <Tooltip title="Call Business" aria-label="call business">
+                  <IconButton>
+                    <CallIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {business_url && (
+              <a
+                href={business_url}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="Visit Website" aria-label="visit website">
+                  <IconButton>
+                    <LanguageIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+            {ig_handle && (
+              <a
+                href={`https://www.instagram.com/${ig_handle}`}
+                target="_blank"
+                rel="noopener"
+                className={classes.button}
+              >
+                <Tooltip title="View IG page" aria-label="view IG page">
+                  <IconButton>
+                    <InstagramIcon />
+                  </IconButton>
+                </Tooltip>
+              </a>
+            )}
+          </Box>
+          {verified && (
+            <DynamicContact user={user} business_email={creator.email} />
+          )}
+        </div>
+      </Grid>
+    </Grid>
+  );
 
   return (
     <div className={classes.root}>
@@ -178,122 +352,19 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
           </span>
         )}
       </Typography>
-      <Grid container spacing={2} style={{ marginTop: "30px" }}>
-        <Grid item xs={12} md={7}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-              maxWidth: "700px",
-              margin: "auto",
-            }}
-          >
-            {hasPreview && (
-              <>
-                <ImageGallery items={images} showPlayButton={false} />
-                <br></br>
-              </>
-            )}
-            {business_description && (
-              <>
-                <Typography variant="body1" className={classes.sectionTitle}>
-                  <span>ABOUT BUSINESS:</span>
-                </Typography>
-                <div
-                  className={classes.description}
-                  dangerouslySetInnerHTML={{ __html: business_description }}
-                ></div>
-                <br></br>
-              </>
-            )}
 
-            {!hasPreview && verified && (
-              <div
-                style={{
-                  marginTop: "40px",
-                  padding: "8px 40px 16px",
-                  borderRadius: "5px",
-                  background: "#fffaf2",
-                }}
-              >
-                <Typography>
-                  Want to save this business for later? Add it your favorites
-                </Typography>
-                <br></br>
-                <DynamicFavorite
-                  business_id={id}
-                  user={user}
-                  numberOfLikes={number_of_likes}
-                  disabled={pageOwner}
-                  userLikedBusiness={userLikedBusiness}
-                />
-              </div>
-            )}
-          </div>
-        </Grid>
-        <Grid id="contact" item xs={12} md={5}>
-          <Typography variant="body1" className={classes.sectionTitle}>
-            <span>CONTACT BUSINESS</span>
-          </Typography>
-          <Box display="flex" justifyContent="center" flexWrap="wrap">
-            {phone_number && (
-              <a href={`tel:${phone_number}`} className={classes.button}>
-                <Tooltip title="Call Business" aria-label="call business">
-                  <IconButton>
-                    <CallIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {business_url && (
-              <a
-                href={business_url}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="Visit Website" aria-label="visit website">
-                  <IconButton>
-                    <LanguageIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {ig_handle && (
-              <a
-                href={`https://www.instagram.com/${ig_handle}`}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="View IG page" aria-label="view IG page">
-                  <IconButton>
-                    <InstagramIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-          </Box>
-          {verified && (
-            <DynamicContact user={user} business_email={creator.email} />
-          )}
-        </Grid>
-      </Grid>
-      {hasPreview && verified && (
-        <div className={classes.favoriteDiv}>
-          <Typography>
-            Want to save this business for later? Add it your favorites
-          </Typography>
-          <DynamicFavorite
-            business_id={id}
-            user={user}
-            numberOfLikes={number_of_likes}
-            disabled={pageOwner}
-            userLikedBusiness={userLikedBusiness}
-          />
-        </div>
-      )}
+      {fullView ? renderFullView() : renderStackedView()}
+
+      <div className={classes.favoriteDiv}>
+        <DynamicFavorite
+          business_id={id}
+          user={user}
+          numberOfLikes={number_of_likes}
+          disabled={pageOwner}
+          userLikedBusiness={userLikedBusiness}
+        />
+      </div>
+
       {!verified && (
         <div
           style={{

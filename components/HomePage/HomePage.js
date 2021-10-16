@@ -130,7 +130,7 @@ const HomePage = () => {
           <Link href="/merch">
             <a className={styles.shop_more}>
               <Button variant="contained" color="secondary">
-                Shop More
+                Shop Now
               </Button>
             </a>
           </Link>

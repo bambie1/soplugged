@@ -14,8 +14,6 @@ import * as Sentry from "@sentry/node";
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: "8px",
-    maxWidth: "500px",
-    margin: "auto",
     "& > *": {
       width: "100%",
       margin: "5px 0px",
@@ -92,8 +90,8 @@ const ContactForm = ({ user, business_email }) => {
         name="userMessage"
         label="Message"
         variant="outlined"
-        rows={5}
-        rowsMax={7}
+        rows={8}
+        rowsMax={10}
         multiline
         inputRef={register({
           required: "You can't send an empty message",

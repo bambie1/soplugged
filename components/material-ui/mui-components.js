@@ -61,6 +61,36 @@ const CustomTextField = withStyles({
         borderColor: "#4e3505",
         borderRadius: "20px",
       },
+
+      "&.Mui-error fieldset": {
+        borderColor: "#f44336",
+        color: "#f44336",
+      },
+    },
+    "& label.Mui-focused.Mui-error": {
+      color: "#f44336",
+    },
+  },
+})(TextField);
+
+const CssTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "green",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "red",
+      },
+      "&:hover fieldset": {
+        borderColor: "yellow",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "green",
+      },
     },
   },
 })(TextField);

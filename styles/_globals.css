@@ -173,6 +173,10 @@ img {
   text-align: center;
 }
 
+.image-gallery {
+  margin-bottom: 2.5rem;
+}
+
 .image-gallery-content.bottom
   .image-gallery-swipe
   .image-gallery-slide
@@ -188,7 +192,7 @@ img {
   div
   .image-gallery-image {
   object-fit: contain;
-  max-height: calc(100vh - 80px);
+  /* max-height: calc(100vh - 80px); */
 }
 .image-gallery-icon:hover {
   color: var(--dark);
@@ -199,6 +203,9 @@ img {
 .image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
   max-height: 400px;
   overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
 }
 .image-gallery-content.bottom.fullscreen .image-gallery-slide-wrapper.bottom {
   max-height: 100%;
