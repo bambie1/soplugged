@@ -194,17 +194,15 @@ img {
   .image-gallery-slide
   div
   .image-gallery-image {
-  /* object-fit: cover; */
-  max-height: 400px;
-  padding: 5px;
+  object-fit: cover;
 }
 .image-gallery-content.bottom.fullscreen
   .image-gallery-swipe
   .image-gallery-slide
   div
   .image-gallery-image {
+  max-height: calc(100vh - 80px);
   object-fit: contain;
-  /* max-height: calc(100vh - 80px); */
 }
 .image-gallery-icon:hover {
   color: var(--dark);
