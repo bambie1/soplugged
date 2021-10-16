@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "8px",
     "& > *": {
       width: "100%",
-      margin: "5px 0px",
+      margin: "10px 0px",
     },
   },
 }));

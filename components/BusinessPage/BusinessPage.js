@@ -38,10 +38,10 @@ const DynamicFavorite = dynamic(() =>
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    "& > *": {
-      marginTop: "8px",
-      marginBottom: "8px",
-    },
+    // "& > *": {
+    //   marginTop: "8px",
+    //   marginBottom: "8px",
+    // },
   },
   businessName: {
     fontWeight: "normal",
@@ -214,8 +214,8 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
   );
 
   const renderStackedView = () => (
-    <Grid container spacing={3} style={{ marginTop: "30px" }}>
-      <Grid item xs={12}>
+    <>
+      <Box mt={6} mb={4}>
         <div
           style={{
             display: "flex",
@@ -249,62 +249,63 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
             </>
           )}
         </div>
-      </Grid>
-      <Grid id="contact" item xs={12}>
-        <div className={styles.contact}>
-          <Typography
-            variant="h6"
-            color="secondary"
-            align="center"
-            gutterBottom
-          >
-            CONTACT
-          </Typography>
-          <Box display="flex" justifyContent="center" flexWrap="wrap">
-            {phone_number && (
-              <a href={`tel:${phone_number}`} className={classes.button}>
-                <Tooltip title="Call Business" aria-label="call business">
-                  <IconButton>
-                    <CallIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {business_url && (
-              <a
-                href={business_url}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="Visit Website" aria-label="visit website">
-                  <IconButton>
-                    <LanguageIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {ig_handle && (
-              <a
-                href={`https://www.instagram.com/${ig_handle}`}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="View IG page" aria-label="view IG page">
-                  <IconButton>
-                    <InstagramIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-          </Box>
-          {verified && (
+      </Box>
+      <Box id="contact" mb={4}>
+        {verified && (
+          <div className={styles.contact}>
+            <Typography
+              variant="h6"
+              color="secondary"
+              align="center"
+              gutterBottom
+            >
+              CONTACT
+            </Typography>
+            <Box display="flex" justifyContent="center" flexWrap="wrap">
+              {phone_number && (
+                <a href={`tel:${phone_number}`} className={classes.button}>
+                  <Tooltip title="Call Business" aria-label="call business">
+                    <IconButton>
+                      <CallIcon />
+                    </IconButton>
+                  </Tooltip>
+                </a>
+              )}
+              {business_url && (
+                <a
+                  href={business_url}
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.button}
+                >
+                  <Tooltip title="Visit Website" aria-label="visit website">
+                    <IconButton>
+                      <LanguageIcon />
+                    </IconButton>
+                  </Tooltip>
+                </a>
+              )}
+              {ig_handle && (
+                <a
+                  href={`https://www.instagram.com/${ig_handle}`}
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.button}
+                >
+                  <Tooltip title="View IG page" aria-label="view IG page">
+                    <IconButton>
+                      <InstagramIcon />
+                    </IconButton>
+                  </Tooltip>
+                </a>
+              )}
+            </Box>
+
             <DynamicContact user={user} business_email={creator.email} />
-          )}
-        </div>
-      </Grid>
-    </Grid>
+          </div>
+        )}
+      </Box>
+    </>
   );
 
   return (
@@ -355,15 +356,17 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
 
       {fullView ? renderFullView() : renderStackedView()}
 
-      <div className={classes.favoriteDiv}>
-        <DynamicFavorite
-          business_id={id}
-          user={user}
-          numberOfLikes={number_of_likes}
-          disabled={pageOwner}
-          userLikedBusiness={userLikedBusiness}
-        />
-      </div>
+      {verified && (
+        <div className={classes.favoriteDiv}>
+          <DynamicFavorite
+            business_id={id}
+            user={user}
+            numberOfLikes={number_of_likes}
+            disabled={pageOwner}
+            userLikedBusiness={userLikedBusiness}
+          />
+        </div>
+      )}
 
       {!verified && (
         <div
@@ -372,6 +375,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
             borderRadius: "5px",
             border: "1px solid #4e3505",
             display: "inline-block",
+            backgroundColor: "rgb(205 182 147 / 23%)",
           }}
         >
           <Typography>Are you the owner of this business?</Typography>
