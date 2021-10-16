@@ -2,13 +2,25 @@ import { Typography, Button, Grid, Box } from "@material/mui-components";
 import Link from "next/link";
 import { HeroBanner, TopCategories } from "@components/index";
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import styles from "./HomePageStyles.module.scss";
 
-import dynamic from "next/dynamic";
-const DynamicShopifyCollection = dynamic(() =>
-  import("@components/ShopifyMiniCollection")
-);
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 const HomePage = () => {
   return (
@@ -87,7 +99,43 @@ const HomePage = () => {
           </Grid>
         </Box>
 
-        <DynamicShopifyCollection />
+        <Box textAlign="center" mt={5} mb={10} className={styles.merchDisplay}>
+          <Typography variant="h2" align="center" gutterBottom={true}>
+            Check out our merch collection
+          </Typography>
+          <Typography variant="body1" align="center" gutterBottom={true}>
+            Normalize <b>#buyingblack</b>, but make it fashionable
+          </Typography>
+          <Carousel responsive={responsive}>
+            <div className={styles.shopifyImage}>
+              <img
+                src="/images/shopify_crewneck.jpg"
+                alt="SoPlugged Black-owned crewneck"
+              />
+            </div>
+            <div className={styles.shopifyImage}>
+              <img
+                src="/images/shopify_buyblack_crewneck.jpg"
+                alt="SoPlugged Buy black crewneck"
+              />
+            </div>
+            <div className={styles.shopifyImage}>
+              <img
+                src="/images/shopify_entrepreneur_crewneck.jpg"
+                alt="SoPlugged enterpreneur crewneck"
+              />
+            </div>
+          </Carousel>
+
+          <Link href="/merch">
+            <a className={styles.shop_more}>
+              <Button variant="contained" color="secondary">
+                Shop More
+              </Button>
+            </a>
+          </Link>
+        </Box>
+
         <Box mb={5}>
           <Grid
             container

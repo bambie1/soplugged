@@ -21,6 +21,11 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
+          <link
+            href="//db.onlinewebfonts.com/c/0e979bd4a3c1c6ac788ed57ac569667f?family=revicons"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Head>
         <body>
           <Main />

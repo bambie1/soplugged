@@ -75,3 +75,18 @@
   font-style: italic;
   margin-top: 8px !important;
 }
+
+.merchDisplay {
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+}
+
+.shopifyImage {
+  display: flex;
+  img {
+    max-width: 100%;
+    max-height: 250px;
+    margin: auto;
+  }
+}
