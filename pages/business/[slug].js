@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
   buttonDiv: {
     display: "flex",
     maxWidth: "400px",
-    margin: "10px auto",
+    margin: "4rem auto 2rem",
     justifyContent: "center",
-    borderTop: "1px solid",
+    // borderTop: "1px solid",
     "& > *": {
       margin: "8px 16px",
     },

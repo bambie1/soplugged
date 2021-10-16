@@ -177,6 +177,18 @@ img {
   margin-bottom: 2.5rem;
 }
 
+.image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
+  display: flex;
+}
+
+.image-gallery-slides {
+  display: flex;
+}
+
+.image-gallery-slide .image-gallery-image {
+  object-fit: cover;
+}
+
 .image-gallery-content.bottom
   .image-gallery-swipe
   .image-gallery-slide
@@ -224,6 +236,7 @@ img {
 }
 .image-gallery-swipe {
   background: #e0e0e0;
+  width: 100%;
 }
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:hover,

@@ -38,13 +38,10 @@ const DynamicFavorite = dynamic(() =>
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    // "& > *": {
-    //   marginTop: "8px",
-    //   marginBottom: "8px",
-    // },
   },
   businessName: {
-    fontWeight: "normal",
+    fontSize: "2.5rem",
+    letterSpacing: "0.25rem",
     wordBreak: "break-word",
     margin: 0,
   },
@@ -64,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   favoriteDiv: {
-    padding: "8px 40px 0px",
+    marginTop: "2rem",
     display: "flex",
     flexDirection: "column",
   },
@@ -147,7 +144,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
           <ImageGallery items={images} showPlayButton={false} />
 
           <Typography variant="h6" color="secondary" align="left" gutterBottom>
-            ABOUT
+            About
           </Typography>
           <div
             style={{ textAlign: "left" }}
@@ -206,9 +203,22 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
             )}
           </Box>
           {verified && (
-            <DynamicContact user={user} business_email={creator.email} />
+            <>
+              <DynamicContact user={user} business_email={creator.email} />
+            </>
           )}
         </div>
+        {verified && (
+          <div className={classes.favoriteDiv}>
+            <DynamicFavorite
+              business_id={id}
+              user={user}
+              numberOfLikes={number_of_likes}
+              disabled={pageOwner}
+              userLikedBusiness={userLikedBusiness}
+            />
+          </div>
+        )}
       </Grid>
     </Grid>
   );
@@ -239,7 +249,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
                 align="center"
                 gutterBottom
               >
-                ABOUT
+                About
               </Typography>
               <div
                 className={classes.description}
@@ -250,7 +260,16 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
           )}
         </div>
       </Box>
-      <Box id="contact" mb={4}>
+      {verified && (
+        <DynamicFavorite
+          business_id={id}
+          user={user}
+          numberOfLikes={number_of_likes}
+          disabled={pageOwner}
+          userLikedBusiness={userLikedBusiness}
+        />
+      )}
+      <Box id="contact" mb={4} mt={3}>
         {verified && (
           <div className={styles.contact}>
             <Typography
@@ -259,7 +278,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
               align="center"
               gutterBottom
             >
-              CONTACT
+              Contact
             </Typography>
             <Box display="flex" justifyContent="center" flexWrap="wrap">
               {phone_number && (
@@ -324,6 +343,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
           </Typography>
         </div>
       </BusinessHeader>
+      <br />
       {!verified && (
         <span className={classes.unverified}>
           <ErrorOutlineIcon fontSize="small" style={{ height: "0.9rem" }} />
@@ -355,18 +375,6 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
       </Typography>
 
       {fullView ? renderFullView() : renderStackedView()}
-
-      {verified && (
-        <div className={classes.favoriteDiv}>
-          <DynamicFavorite
-            business_id={id}
-            user={user}
-            numberOfLikes={number_of_likes}
-            disabled={pageOwner}
-            userLikedBusiness={userLikedBusiness}
-          />
-        </div>
-      )}
 
       {!verified && (
         <div
