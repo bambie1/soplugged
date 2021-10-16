@@ -116,7 +116,7 @@ const HomePage = () => {
             <div className={styles.shopifyImage}>
               <img
                 src="/images/shopify_buyblack_crewneck.jpg"
-                alt="SoPlugged Buy black crewneck"
+                alt="SoPlugged Buy-black crewneck"
               />
             </div>
             <div className={styles.shopifyImage}>
