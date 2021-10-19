@@ -40,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "5px",
     },
   },
+  toolBar: {
+    maxWidth: "1400px",
+    margin: "auto",
+    width: "100%",
+  },
   list: {
     width: 250,
     minHeight: "100%",
@@ -254,7 +259,7 @@ const Header = (props) => {
             color="transparent"
             elevation={0}
           >
-            <Toolbar>
+            <Toolbar className={classes.toolBar}>
               <Link href="/">
                 <a>
                   <Image

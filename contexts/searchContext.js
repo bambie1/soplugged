@@ -7,10 +7,13 @@ export const useSearch = () => {
 
 export function SearchProvider({ children }) {
   const [contextCategory, setContextCategory] = useState();
+  const [contextLocation, setContextLocation] = useState();
 
   const value = {
     contextCategory,
+    contextLocation,
     setContextCategory,
+    setContextLocation,
   };
 
   return (

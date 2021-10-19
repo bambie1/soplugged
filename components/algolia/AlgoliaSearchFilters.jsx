@@ -8,9 +8,6 @@ import {
   IconButton,
   Button,
   Slide,
-  AppBar,
-  Toolbar,
-  Typography,
 } from "@material/mui-components";
 import { CloseIcon, SearchIcon } from "@material/mui-icons";
 import { useTheme } from "@material-ui/core/styles";
