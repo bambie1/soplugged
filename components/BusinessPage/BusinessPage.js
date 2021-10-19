@@ -1,24 +1,20 @@
+import React from "react";
+import dynamic from "next/dynamic";
+
 import {
   Grid,
   Typography,
   Avatar,
-  makeStyles,
   Box,
   Fab,
-  IconButton,
-  Tooltip,
   Button,
   useMediaQuery,
 } from "@material/mui-components";
-import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
   CheckIcon,
-  InstagramIcon,
-  LanguageIcon,
   EditIcon,
   TelegramIcon,
-  CallIcon,
   ErrorOutlineIcon,
 } from "@material/mui-icons";
 import ImageGallery from "react-image-gallery";
@@ -26,75 +22,15 @@ import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import BusinessHeader from "../BusinessHeader/BusinessHeader";
-import dynamic from "next/dynamic";
 
 import styles from "./BusinessPage.module.scss";
+import ContactLinks from "./ContactLinks";
 
-const DynamicContact = dynamic(() => import("../ContactForm/ContactForm"));
 const DynamicFavorite = dynamic(() =>
   import("../FavoriteButton/FavoriteButton")
 );
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "relative",
-  },
-  businessName: {
-    fontSize: "2.5rem",
-    letterSpacing: "0.25rem",
-    wordBreak: "break-word",
-    margin: 0,
-  },
-  button: {
-    margin: "8px 16px",
-    border: `1px solid ${theme.palette.secondary.main}`,
-    borderRadius: "50%",
-  },
-  categorySpan: {
-    cursor: "pointer",
-    borderBottom: "1px solid",
-    borderRadius: "5px",
-    padding: "1px",
-    color: theme.palette.secondary.main,
-    "&:hover": {
-      borderBottom: "none",
-    },
-  },
-  favoriteDiv: {
-    marginTop: "2rem",
-    display: "flex",
-    flexDirection: "column",
-  },
-  remote: {
-    fontWeight: "bold",
-    fontSize: "0.9rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  unverified: {
-    marginTop: "8px",
-    fontSize: "0.9rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "grey",
-  },
-  description: {
-    lineHeight: "1.5",
-    "& > ul": {
-      display: "table",
-      margin: "auto",
-    },
-    "& > ol": {
-      display: "table",
-      margin: "auto",
-    },
-  },
-}));
-
 const BusinessPage = ({ business, user, userLikedBusiness }) => {
-  const classes = useStyles();
   const { setContextCategory } = useSearch();
   const router = useRouter();
 
@@ -107,12 +43,9 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
     category,
     creator,
     business_description,
-    business_url,
     fixed_to_one_location,
     street_address,
-    ig_handle,
     number_of_likes,
-    phone_number,
     verified,
   } = business;
 
@@ -154,62 +87,10 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
         </div>
       </Grid>
       <Grid id="contact" item xs={12} md={5}>
-        <div className={styles.contact}>
-          <Typography
-            variant="h6"
-            color="secondary"
-            align="center"
-            gutterBottom
-          >
-            CONTACT
-          </Typography>
-          <Box display="flex" justifyContent="center" flexWrap="wrap">
-            {phone_number && (
-              <a href={`tel:${phone_number}`} className={classes.button}>
-                <Tooltip title="Call Business" aria-label="call business">
-                  <IconButton>
-                    <CallIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {business_url && (
-              <a
-                href={business_url}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="Visit Website" aria-label="visit website">
-                  <IconButton>
-                    <LanguageIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-            {ig_handle && (
-              <a
-                href={`https://www.instagram.com/${ig_handle}`}
-                target="_blank"
-                rel="noopener"
-                className={classes.button}
-              >
-                <Tooltip title="View IG page" aria-label="view IG page">
-                  <IconButton>
-                    <InstagramIcon />
-                  </IconButton>
-                </Tooltip>
-              </a>
-            )}
-          </Box>
-          {verified && (
-            <>
-              <DynamicContact user={user} business_email={creator.email} />
-            </>
-          )}
-        </div>
+        <ContactLinks business={business} user={user} />
+
         {verified && (
-          <div className={classes.favoriteDiv}>
+          <div className={styles.favoriteDiv}>
             <DynamicFavorite
               business_id={id}
               user={user}
@@ -225,40 +106,30 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
 
   const renderStackedView = () => (
     <>
-      <Box mt={6} mb={4}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            maxWidth: "700px",
-            margin: "auto",
-          }}
-        >
-          {hasPreview && (
-            <>
-              <ImageGallery items={images} showPlayButton={false} />
-              <br></br>
-            </>
-          )}
-          {business_description && (
-            <>
-              <Typography
-                variant="h6"
-                color="secondary"
-                align="center"
-                gutterBottom
-              >
-                About
-              </Typography>
-              <div
-                className={classes.description}
-                dangerouslySetInnerHTML={{ __html: business_description }}
-              ></div>
-              <br></br>
-            </>
-          )}
-        </div>
+      <Box className={styles.stackedView}>
+        {hasPreview && (
+          <>
+            <ImageGallery items={images} showPlayButton={false} />
+            <br></br>
+          </>
+        )}
+        {business_description && (
+          <>
+            <Typography
+              variant="h6"
+              color="secondary"
+              align="center"
+              gutterBottom
+            >
+              About
+            </Typography>
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: business_description }}
+            ></div>
+            <br></br>
+          </>
+        )}
       </Box>
       {verified && (
         <DynamicFavorite
@@ -270,65 +141,13 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
         />
       )}
       <Box id="contact" mb={4} mt={3}>
-        {verified && (
-          <div className={styles.contact}>
-            <Typography
-              variant="h6"
-              color="secondary"
-              align="center"
-              gutterBottom
-            >
-              Contact
-            </Typography>
-            <Box display="flex" justifyContent="center" flexWrap="wrap">
-              {phone_number && (
-                <a href={`tel:${phone_number}`} className={classes.button}>
-                  <Tooltip title="Call Business" aria-label="call business">
-                    <IconButton>
-                      <CallIcon />
-                    </IconButton>
-                  </Tooltip>
-                </a>
-              )}
-              {business_url && (
-                <a
-                  href={business_url}
-                  target="_blank"
-                  rel="noopener"
-                  className={classes.button}
-                >
-                  <Tooltip title="Visit Website" aria-label="visit website">
-                    <IconButton>
-                      <LanguageIcon />
-                    </IconButton>
-                  </Tooltip>
-                </a>
-              )}
-              {ig_handle && (
-                <a
-                  href={`https://www.instagram.com/${ig_handle}`}
-                  target="_blank"
-                  rel="noopener"
-                  className={classes.button}
-                >
-                  <Tooltip title="View IG page" aria-label="view IG page">
-                    <IconButton>
-                      <InstagramIcon />
-                    </IconButton>
-                  </Tooltip>
-                </a>
-              )}
-            </Box>
-
-            <DynamicContact user={user} business_email={creator.email} />
-          </div>
-        )}
+        <ContactLinks business={business} user={user} />
       </Box>
     </>
   );
 
   return (
-    <div className={classes.root}>
+    <div className={styles.root}>
       <BusinessHeader wrap={true}>
         <Avatar
           alt="Business Logo"
@@ -338,14 +157,14 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
           {business_name.toUpperCase().charAt(0)}
         </Avatar>
         <div>
-          <Typography variant="h1" className={classes.businessName}>
+          <Typography variant="h1" className={styles.businessName}>
             {business_name.toUpperCase()}
           </Typography>
         </div>
       </BusinessHeader>
       <br />
       {!verified && (
-        <span className={classes.unverified}>
+        <span className={styles.unverified}>
           <ErrorOutlineIcon fontSize="small" style={{ height: "0.9rem" }} />
           This business hasn't been claimed by it's owner
         </span>
@@ -354,7 +173,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
       {category && (
         <Typography variant="h6" gutterBottom={true}>
           CATEGORY:{" "}
-          <span className={classes.categorySpan} onClick={handleCategoryClick}>
+          <span className={styles.categorySpan} onClick={handleCategoryClick}>
             {category}
           </span>
         </Typography>
@@ -367,7 +186,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
         {street_address && fixed_to_one_location && <br></br>}
         {business_location}
         {!fixed_to_one_location && (
-          <span className={classes.remote}>
+          <span className={styles.remote}>
             <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
             CANADA-WIDE
           </span>
@@ -377,15 +196,7 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
       {fullView ? renderFullView() : renderStackedView()}
 
       {!verified && (
-        <div
-          style={{
-            padding: "16px 40px",
-            borderRadius: "5px",
-            border: "1px solid #4e3505",
-            display: "inline-block",
-            backgroundColor: "rgb(205 182 147 / 23%)",
-          }}
-        >
+        <div className={styles.claimBusiness}>
           <Typography>Are you the owner of this business?</Typography>
           <a href="mailto:hello@soplugged.com">
             <Button color="secondary">Let us know</Button>

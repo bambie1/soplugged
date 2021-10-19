@@ -1,43 +1,10 @@
-import {
-  Container,
-  Typography,
-  Button,
-  makeStyles,
-} from "@material/mui-components";
+import { Container, Typography, Button } from "@material/mui-components";
 import Link from "next/link";
 import { SEO } from "@components/index";
 
-const useStyles = makeStyles((theme) => ({
-  page: {
-    zIndex: "1",
-    background: "white",
-  },
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "80vh",
-    justifyContent: "center",
-    textAlign: "center",
-    paddingTop: theme.spacing(2),
-  },
-  text: {
-    lineHeight: "2",
-  },
-  link: {
-    color: theme.palette.primary.main,
-    textDecoration: "underline",
-  },
-  button: {
-    margin: "16px",
-  },
-  buttonDiv: {
-    marginTop: "32px",
-  },
-}));
+import styles from "styles/OurStory.module.scss";
 
 const OurStory = () => {
-  const classes = useStyles();
-
   return (
     <>
       <SEO
@@ -46,52 +13,42 @@ const OurStory = () => {
               search-friendly platform helps end-users connect to Black-owned
               businesses across Canada"
       />
-      <main className={classes.page}>
-        <Container className={classes.container} maxWidth="md">
-          <Typography variant="h1" align="center">
-            our story
-          </Typography>
-          <Typography className={classes.text}>
-            SoPlugged is an online platform that makes #buyingblack easy! Our
-            search-friendly platform helps end-users connect to Black-owned
-            businesses across Canada. When you{" "}
-            <a href="/my-business" className={classes.link}>
-              register
-            </a>{" "}
-            your business on our platform, you increase your brand visibility
-            and get access to a thriving community of people looking to support
-            Black-owned businesses.<br></br> At SoPlugged, our biggest
-            inspiration is supporting one another and growing our community.
-            It’s always a beautiful thing to see people join the movement to
-            support Black-owned businesses.<br></br> That’s our story and we
-            hope you become a part of it!
-          </Typography>
-          <div className={classes.buttonDiv}>
-            <Link href="/search">
-              <a>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  className={classes.button}
-                >
-                  Visit our directory
-                </Button>
-              </a>
-            </Link>
-            <Link href="/sponsors">
-              <a>
-                <Button
-                  color="secondary"
-                  variant="outlined"
-                  className={classes.button}
-                >
-                  Become a Sponsor
-                </Button>
-              </a>
-            </Link>
-          </div>
-        </Container>
-      </main>
+      <Container className={styles.container} maxWidth="md">
+        <Typography variant="h1" align="center">
+          our story
+        </Typography>
+        <Typography>
+          SoPlugged is an online platform that makes #buyingblack easy! Our
+          search-friendly platform helps end-users connect to Black-owned
+          businesses across Canada. When you{" "}
+          <a href="/my-business" className={styles.link}>
+            register
+          </a>{" "}
+          your business on our platform, you increase your brand visibility and
+          get access to a thriving community of people looking to support
+          Black-owned businesses.<br></br> At SoPlugged, our biggest inspiration
+          is supporting one another and growing our community. It’s always a
+          beautiful thing to see people join the movement to support Black-owned
+          businesses.<br></br> That’s our story and we hope you become a part of
+          it!
+        </Typography>
+        <div className={styles.buttonDiv}>
+          <Link href="/search">
+            <a>
+              <Button color="secondary" variant="contained">
+                Visit our directory
+              </Button>
+            </a>
+          </Link>
+          <Link href="/sponsors">
+            <a>
+              <Button color="secondary" variant="outlined">
+                Become a Sponsor
+              </Button>
+            </a>
+          </Link>
+        </div>
+      </Container>
     </>
   );
 };

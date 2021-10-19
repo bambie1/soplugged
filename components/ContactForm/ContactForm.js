@@ -91,7 +91,7 @@ const ContactForm = ({ user, business_email }) => {
         label="Message"
         variant="outlined"
         rows={8}
-        rowsMax={10}
+        maxRows={10}
         multiline
         inputRef={register({
           required: "You can't send an empty message",

@@ -8,12 +8,14 @@ import { verifyIdToken } from "../../utils/firebaseAdmin";
 
 const ProfilePage = ({ user, token, email }) => {
   const [open, setOpen] = React.useState(false);
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setOpen(false);
   };
+
   const handleSubmit = async (data) => {
     let res = null;
     data.email = email;
@@ -21,6 +23,7 @@ const ProfilePage = ({ user, token, email }) => {
     else res = await addUser(data, token);
     if (res && !res.error) setOpen(true);
   };
+
   return (
     <>
       <DashboardLayout title="My Profile | SoPlugged" position={2}>
@@ -64,7 +67,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         destination: "/join",
-        permanent: false,
+        permanent: true,
       },
     };
   }

@@ -199,6 +199,7 @@ img {
   div
   .image-gallery-image {
   object-fit: cover;
+  border-radius: 15px;
 }
 .image-gallery-content.bottom.fullscreen
   .image-gallery-swipe

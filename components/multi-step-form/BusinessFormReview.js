@@ -124,7 +124,7 @@ const BusinessFormReview = () => {
           disabled
           fullWidth
           variant="outlined"
-          rowsMax={5}
+          maxRows={5}
           helperText="This is a stripped-down version of the text. Any formatting pre-applied will persist upon save"
         />
       </Grid>

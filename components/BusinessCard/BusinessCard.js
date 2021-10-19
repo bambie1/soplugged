@@ -1,54 +1,14 @@
 import React from "react";
-import { Avatar, Typography, makeStyles } from "@material/mui-components";
+import { Avatar, Typography } from "@material/mui-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { CheckIcon } from "@material/mui-icons";
 import Link from "next/link";
 import BusinessHeader from "../BusinessHeader/BusinessHeader";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    border: `1px solid #f9f9f9`,
-    boxShadow: "2px 2px 6px #888888",
-    borderRadius: "5px",
-    flex: "1",
-    width: "100%",
-    height: "100%",
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    background: "#f9f9f9",
-    transition: "background 1s",
-    padding: "8px",
-    "&:hover": {
-      background: "white",
-      borderColor: `${theme.palette.primary.main}`,
-      transition: "borderColor 3s",
-    },
-    "& > *": {
-      margin: theme.spacing(1, 2),
-    },
-  },
-  tagsDiv: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  businessName: {
-    textTransform: "uppercase",
-    fontWeight: "normal",
-    marginLeft: theme.spacing(1),
-  },
-  btnGroup: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    borderTop: `1px solid ${theme.palette.primary.main}`,
-  },
-}));
+import styles from "./BusinessCard.module.scss";
 
 const BusinessCard = ({ mini, average, ...props }) => {
-  const classes = useStyles();
   const {
     business_name,
     business_location,
@@ -63,14 +23,15 @@ const BusinessCard = ({ mini, average, ...props }) => {
 
   return (
     <Link href={`/business/${slug}`}>
-      <a className={classes.root}>
+      <a className={styles.root}>
         <BusinessHeader>
           <Avatar alt="Business Logo" src={logo_url} variant="square">
             {business_name.toUpperCase().charAt(0)}
           </Avatar>
           <Typography
             variant="h6"
-            className={classes.businessName}
+            className={styles.businessName}
+            color="textSecondary"
             noWrap={true}
           >
             {business_name}
@@ -97,28 +58,18 @@ const BusinessCard = ({ mini, average, ...props }) => {
             )}
           </>
         )}
-        <Typography style={{ marginTop: "auto" }}>
-          {street_address &&
-            fixed_to_one_location &&
-            `LOCATION: ${street_address}`}
-          {street_address && fixed_to_one_location && <br></br>}
-          {business_location}
-          <br></br>
-          {!fixed_to_one_location && (
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "0.9rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
-              CANADA-WIDE
-            </span>
-          )}
-        </Typography>
+        {street_address && fixed_to_one_location && (
+          <Typography>LOCATION: ${street_address}</Typography>
+        )}
+
+        <Typography>{business_location}</Typography>
+
+        {!fixed_to_one_location && (
+          <Typography className={styles.canadaWide}>
+            <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
+            CANADA-WIDE
+          </Typography>
+        )}
       </a>
     </Link>
   );

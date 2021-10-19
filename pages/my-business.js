@@ -70,7 +70,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         destination: "/join",
-        permanent: false,
+        permanent: true,
       },
     };
   }
