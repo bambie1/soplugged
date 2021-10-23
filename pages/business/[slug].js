@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 import nookies from "nookies";
 import { verifyIdToken } from "../../utils/firebaseAdmin";
+import { fetchUserFavorites } from "../../utils/fetchUserFavorites";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -73,37 +74,25 @@ export async function getServerSideProps(context) {
     );
     const business = await res.json();
 
-    if (!business)
-      return {
-        notFound: true,
-      };
+    if (!business) throw new Error("no business found");
     let userLikedBusiness = false;
 
     try {
       const cookies = nookies.get(context);
       const token = await verifyIdToken(cookies.token);
-      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
+      if (!token.email) throw new Error("no email in token");
 
-      if (token?.email) {
-        const res = await fetch(fetchUrl, {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Firebase-Token": cookies.token,
-          },
-        });
-        if (res.ok) {
-          const favorites = await res.json();
-          for (let i = 0; i < favorites.length; i++) {
-            if (favorites[i].liked_business.id === business.id) {
-              userLikedBusiness = true;
-              break;
-            }
-          }
+      const { favorites } = await fetchUserFavorites(cookies.token);
+
+      for (let i = 0; i < favorites.length; i++) {
+        if (favorites[i].liked_business.id === business.id) {
+          userLikedBusiness = true;
+          break;
         }
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log({ err });
+    }
 
     return {
       props: {

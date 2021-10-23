@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { Alert } from "@material/mui-lab";
-import * as Sentry from "@sentry/node";
+import { sendEmail } from "utils/sendEmail";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,42 +27,26 @@ const ContactForm = ({ user, business_email }) => {
   const [showError, setShowError] = React.useState(false);
 
   const onSubmit = async (data) => {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/emails`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: {
-              from: "hello@soplugged.com",
-              to: business_email,
-              subject: `New Message on SoPlugged from ${
-                data.userName || "a customer"
-              }`,
-              content: data.userMessage,
-              reply_to: user.email,
-            },
-          }),
-        }
-      );
-      if (!res.ok) {
-        throw new Error("HTTP status " + res.status);
-      } else {
-        swal({
-          title: "Message sent!",
-          text: `Your message has been sent to the owner, and they will be in touch.\n\n Please keep an eye on ${user.email} `,
-          icon: "success",
-          button: "OK!",
-        });
-        reset();
-      }
-    } catch (error) {
+    const email = {
+      from: "hello@soplugged.com",
+      to: business_email,
+      subject: `New Message on SoPlugged from ${data.userName || "a customer"}`,
+      content: data.userMessage,
+      reply_to: user.email,
+    };
+
+    const res = await sendEmail(email);
+
+    if (res.error) {
       setShowError(true);
-      Sentry.captureException(error);
+    } else {
+      swal({
+        title: "Message sent!",
+        text: `Your message has been sent to the owner, and they will be in touch.\n\n Please keep an eye on ${user.email} `,
+        icon: "success",
+        button: "OK!",
+      });
+      reset();
     }
   };
 

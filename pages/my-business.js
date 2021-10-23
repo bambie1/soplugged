@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, makeStyles } from "@material/mui-components";
 import { SEO } from "@components/index";
 import nookies from "nookies";
 import { verifyIdToken } from "../utils/firebaseAdmin";
 import { useBusinessFormContext } from "@contexts/businessFormContext";
 import StyledBusinessForm from "@components/multi-step-form/StyledBusinessForm";
+import { fetchUserBusiness } from "utils/fetchUserBusiness";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,6 +26,7 @@ const EditBusiness = ({ business, token }) => {
     if (business) setBusiness(business);
   }, [business]);
 
+  if (!business) return null;
   if (business !== undefined) {
     return (
       <>
@@ -46,27 +48,13 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
-    const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`;
 
-    if (token?.email) {
-      const res = await fetch(fetchUrl, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Firebase-Token": cookies.token,
-        },
-      });
-      if (!res.ok) return { props: { business: null, token: cookies.token } };
-      const business = await res.json();
-      return {
-        props: {
-          business: business[0] || null,
-          token: cookies.token,
-        },
-      };
-    } else throw new Error("No token found");
+    if (!token.email) throw new Error("no email in token");
+
+    const response = await fetchUserBusiness(cookies.token);
+    return { props: response };
   } catch (error) {
+    console.log({ error });
     return {
       redirect: {
         destination: "/join",

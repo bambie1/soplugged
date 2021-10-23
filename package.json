@@ -9,6 +9,9 @@
     "test": "jest",
     "test:watch": "npm run test -- --watch"
   },
+  "browser": {
+    "child_process": false
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",

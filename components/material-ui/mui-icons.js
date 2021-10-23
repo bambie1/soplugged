@@ -37,12 +37,16 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import TuneIcon from "@material-ui/icons/Tune";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import HelpIcon from "@material-ui/icons/Help";
 
 export {
   CheckIcon,
   NavigateNextIcon,
   NavigateBeforeIcon,
+  PeopleAltIcon,
   TuneIcon,
+  HelpIcon,
   FilterListIcon,
   LocalMallIcon,
   TextFormatOutlinedIcon,

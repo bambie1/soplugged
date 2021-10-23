@@ -9,7 +9,7 @@ import {
   makeStyles,
 } from "@material/mui-components";
 import { Alert } from "@material/mui-lab";
-import * as Sentry from "@sentry/node";
+import { handleSubscription } from "utils/handleSubscription";
 
 // no external styles used here
 
@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   grid: { justifyContent: "center", marginBottom: "8px" },
   subscribe: {
     padding: "40px 8px",
-    // background: "#fffaf2",
     marginTop: "40px",
   },
   container: {
@@ -34,29 +33,12 @@ const SubscribeForm = () => {
   const { register, handleSubmit, errors, reset } = useForm();
   const [submitted, setSubmitted] = useState(false);
   const onSubmit = async (data, e) => {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/newsletter_subscriptions`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            subscription: data,
-          }),
-        }
-      );
-      if (!res.ok) {
-        throw new Error("HTTP status " + res.status);
-      } else {
-        setSubmitted(true);
-        e.target.reset();
-      }
-    } catch (error) {
-      Sentry.captureException(error);
-    }
+    const response = await handleSubscription(data, "newsletter");
+
+    if (response.error) console.log("an error occured");
+    else setSubmitted(true);
+
+    e.target.reset();
   };
 
   return (

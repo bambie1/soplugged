@@ -12,8 +12,6 @@ import {
   SwipeableDrawer,
   Divider,
   makeStyles,
-  Menu,
-  MenuItem,
   Slide,
 } from "@material/mui-components";
 import Link from "next/link";
@@ -26,8 +24,9 @@ import {
   SearchIcon,
   PowerIcon,
   HomeIcon,
-  MoreVertIcon,
   LocalMallIcon,
+  HelpIcon,
+  PeopleAltIcon,
 } from "@material/mui-icons";
 import { SignOutAlert } from "@components/index";
 import { useAuth } from "@contexts/authContext";
@@ -92,18 +91,7 @@ const Header = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [signOut, setSignOut] = useState(false);
 
-  // Sign out menu on desktop
-  const [signOutAnchorEl, setSignOutAnchorEl] = React.useState(null);
-  const signOutMenuOpen = Boolean(signOutAnchorEl);
-  const signOutMenuClick = (event) => {
-    setSignOutAnchorEl(event.currentTarget);
-  };
-  const signOutMenuClose = () => {
-    setSignOutAnchorEl(null);
-  };
-
   const isHomePage = router.pathname === "/";
-  const isDirectoryPage = router.pathname === "/search";
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -114,121 +102,64 @@ const Header = (props) => {
     }
     setDrawerOpen(open);
   };
+
+  const LaptopLink = ({ href, text, variant = "text" }) => (
+    <Link href={href}>
+      <a>
+        <Button color="inherit" variant={variant}>
+          {text}
+        </Button>
+      </a>
+    </Link>
+  );
+
+  const MobileLink = ({ href, icon, text, heading = false }) => {
+    return (
+      <ListItem
+        button
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+      >
+        <Link href={href}>
+          <a className={classes.mobileLink}>
+            <>
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText
+                primary={text}
+                primaryTypographyProps={{ variant: heading ? "h5" : "body1" }}
+              />
+            </>
+          </a>
+        </Link>
+      </ListItem>
+    );
+  };
+
   const list = () => (
     <div role="presentation" className={classes.navDiv}>
       <List className={classes.list}>
-        <ListItem onClick={toggleDrawer(false)}>
-          <Link href="/">
-            <a className={classes.mobileLink}>
-              <>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="SoPlugged"
-                  primaryTypographyProps={{ variant: "h5" }}
-                />
-              </>
-            </a>
-          </Link>
-        </ListItem>
+        <MobileLink href="/" text="SoPlugged" icon={<HomeIcon />} heading />
+        <MobileLink href="/search" text="DIRECTORY" icon={<SearchIcon />} />
         <Divider />
-        <ListItem
-          button
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <Link href="/search">
-            <a className={classes.mobileLink}>
-              <>
-                <ListItemIcon>
-                  <SearchIcon />
-                </ListItemIcon>
-                <ListItemText primary="DIRECTORY" />
-              </>
-            </a>
-          </Link>
-        </ListItem>
-        <ListItem
-          button
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <Link href="/merch">
-            <a className={classes.mobileLink}>
-              <>
-                <ListItemIcon>
-                  <LocalMallIcon />
-                </ListItemIcon>
-                <ListItemText primary="MERCH" />
-              </>
-            </a>
-          </Link>
-        </ListItem>
+        <MobileLink href="/merch" text="MERCH" icon={<LocalMallIcon />} />
+
+        <MobileLink href="/faqs" text="FAQs" icon={<HelpIcon />} />
+        <MobileLink href="/sponsors" text="SPONSORS" icon={<PeopleAltIcon />} />
+        <Divider />
         {user?.email ? (
           <>
             <div>
-              <ListItem
-                button
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
-              >
-                <Link href="/dashboard">
-                  <a className={classes.mobileLink}>
-                    <>
-                      <ListItemIcon>
-                        <BusinessCenterIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="MY DASHBOARD" />
-                    </>
-                  </a>
-                </Link>
-              </ListItem>
+              <MobileLink
+                href="/dashboard"
+                text="MY DASHBOARD"
+                icon={<BusinessCenterIcon />}
+              />
             </div>
             <Divider />
           </>
         ) : (
-          <ListItem
-            button
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
-          >
-            <Link href="/join">
-              <a className={classes.mobileLink}>
-                <>
-                  <ListItemIcon>
-                    <PowerIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="JOIN" />
-                </>
-              </a>
-            </Link>
-          </ListItem>
+          <MobileLink href="/join" text="JOIN" icon={<PowerIcon />} />
         )}
-        <Divider />
-
-        <ListItem
-          button
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <Link href="/faqs">
-            <a className={classes.mobileLink}>
-              <Button style={{ justifyContent: "start" }}>FAQs</Button>
-            </a>
-          </Link>
-        </ListItem>
-        <ListItem
-          button
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <Link href="/sponsors">
-            <a className={classes.mobileLink}>
-              <Button style={{ justifyContent: "start" }}>SPONSORS</Button>
-            </a>
-          </Link>
-        </ListItem>
 
         {user?.email && (
           <div style={{ position: "absolute", bottom: "0" }}>
@@ -250,111 +181,80 @@ const Header = (props) => {
     </div>
   );
 
-  return (
-    <>
-      {router.pathname != "/join" && (
-        <HideOnScroll {...props} home={isHomePage} directory={isDirectoryPage}>
-          <AppBar
-            position={isHomePage ? "fixed" : "static"}
-            color="transparent"
-            elevation={0}
-          >
-            <Toolbar className={classes.toolBar}>
-              <Link href="/">
-                <a>
-                  <Image
-                    src="/soplugged-logo.png"
-                    alt="SoPlugged Logo"
-                    width={40}
-                    height={40}
-                  />
-                </a>
-              </Link>
-              <div className="gap"></div>
-              <>
-                <div className="sectionDesktop">
-                  <Link href="/search">
-                    <a>
-                      <Button color="inherit">DIRECTORY</Button>
-                    </a>
-                  </Link>
-                  <Link href="/merch">
-                    <a>
-                      <Button color="inherit">MERCH</Button>
-                    </a>
-                  </Link>
-                  {user?.email ? (
-                    <>
-                      <Link href="/dashboard">
-                        <a>
-                          <Button color="inherit" variant="outlined">
-                            MY DASHBOARD
-                          </Button>
-                        </a>
-                      </Link>
-                      <IconButton
-                        aria-label="more"
-                        aria-controls="desktop-menu"
-                        aria-haspopup="true"
-                        onClick={signOutMenuClick}
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
-                      <Menu
-                        id="desktop-menu"
-                        anchorEl={signOutAnchorEl}
-                        open={signOutMenuOpen}
-                        onClose={signOutMenuClose}
-                      >
-                        <MenuItem
-                          onClick={() => {
-                            signOutMenuClose();
-                            setSignOut(true);
-                          }}
-                        >
-                          Sign Out
-                        </MenuItem>
-                      </Menu>
-                    </>
-                  ) : (
-                    <Link href="/join">
-                      <a>
-                        <Button color="inherit" variant="outlined">
-                          JOIN
-                        </Button>
-                      </a>
-                    </Link>
-                  )}
-                </div>
-                <div className="sectionMobile">
-                  <IconButton
-                    color="secondary"
-                    aria-label="open drawer"
-                    onClick={toggleDrawer(true)}
-                    edge="start"
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <SwipeableDrawer
-                    anchor="right"
-                    open={drawerOpen}
-                    onClose={toggleDrawer(false)}
-                    onOpen={toggleDrawer(true)}
-                  >
-                    {list()}
-                  </SwipeableDrawer>
-                </div>
-              </>
+  const renderAppBar = () => (
+    <AppBar
+      position={isHomePage ? "fixed" : "static"}
+      color="transparent"
+      elevation={0}
+    >
+      <Toolbar className={classes.toolBar}>
+        <Link href="/">
+          <a>
+            <Image
+              src="/soplugged-logo.png"
+              alt="SoPlugged Logo"
+              width={40}
+              height={40}
+            />
+          </a>
+        </Link>
+        <div className="gap"></div>
+        <>
+          <div className="sectionDesktop">
+            <LaptopLink href="/search" text="DIRECTORY" />
+            <LaptopLink href="/merch" text="MERCH" />
 
-              {signOut && (
-                <SignOutAlert handleClose={() => setSignOut(false)} />
-              )}
-            </Toolbar>
-          </AppBar>
-        </HideOnScroll>
-      )}
-    </>
+            {user?.email ? (
+              <>
+                <LaptopLink
+                  href="dashboard"
+                  text="MY DASHBOARD"
+                  variant="outlined"
+                />
+                <IconButton
+                  aria-label="Sign out"
+                  onClick={() => {
+                    signOutMenuClose();
+                    setSignOut(true);
+                  }}
+                >
+                  <ExitToAppIcon />
+                </IconButton>
+              </>
+            ) : (
+              <LaptopLink href="join" text="JOIN" variant="outlined" />
+            )}
+          </div>
+          <div className="sectionMobile">
+            <IconButton
+              color="secondary"
+              aria-label="open drawer"
+              onClick={toggleDrawer(true)}
+              edge="start"
+            >
+              <MenuIcon />
+            </IconButton>
+            <SwipeableDrawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={toggleDrawer(false)}
+              onOpen={toggleDrawer(true)}
+            >
+              {list()}
+            </SwipeableDrawer>
+          </div>
+        </>
+
+        {signOut && <SignOutAlert handleClose={() => setSignOut(false)} />}
+      </Toolbar>
+    </AppBar>
   );
+
+  if (router.pathname === "/join") return null;
+  if (isHomePage)
+    return <HideOnScroll {...props}>{renderAppBar()}</HideOnScroll>;
+
+  return renderAppBar();
 };
 
 export default Header;
