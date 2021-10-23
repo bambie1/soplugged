@@ -7,12 +7,30 @@ import {
   CustomTextField,
   Button,
 } from "@material/mui-components";
+import { Alert } from "@material/mui-lab";
 import SEO from "@components/SEO";
+import { useForm } from "react-hook-form";
+import { handleSubscription } from "../utils/handleSubscription";
 
 import styles from "styles/Pro.module.scss";
 
 const ProPage = () => {
   const [showMore, setShowMore] = useState(false);
+  const { register, handleSubmit, errors, reset } = useForm();
+  const [submitted, setSubmitted] = useState(true);
+
+  const onSubmit = async (data, e) => {
+    console.log({ data });
+    const response = await handleSubscription(
+      { ...data, first_name: "", last_name: "" },
+      "soplugged_for_business"
+    );
+
+    if (response.error) console.log("an error occured");
+    else setSubmitted(true);
+
+    e.target.reset();
+  };
 
   const handleShowMore = () => setShowMore(!showMore);
 
@@ -59,23 +77,47 @@ const ProPage = () => {
                 {showMore ? "Show Less" : "Read more..."}
               </Button>
 
-              <form className={styles.form}>
+              <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={1} className={styles.formGrid}>
                   <Grid item xs={12} sm={8}>
                     <CustomTextField
                       color="secondary"
                       variant="outlined"
-                      color="secondary"
                       label="Email address"
+                      name="email"
+                      id="emailAddress"
+                      inputRef={register({
+                        required: "Please enter your e-mail address",
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "Please enter a valid email address",
+                        },
+                      })}
+                      error={!!errors.email}
+                      helperText={!!errors.email && errors.email.message}
                       fullWidth
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
-                    <Button type="button" variant="contained" color="secondary">
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      style={{ maxHeight: "3.5rem" }}
+                    >
                       Sign Me Up!
                     </Button>
                   </Grid>
                 </Grid>
+                {submitted && (
+                  <Alert
+                    severity="success"
+                    variant="outlined"
+                    style={{ border: "none" }}
+                  >
+                    You'll receive an e-mail from us shortly
+                  </Alert>
+                )}
               </form>
             </section>
           </Grid>

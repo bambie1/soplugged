@@ -214,7 +214,6 @@ const Header = (props) => {
                 <IconButton
                   aria-label="Sign out"
                   onClick={() => {
-                    signOutMenuClose();
                     setSignOut(true);
                   }}
                 >

@@ -26,12 +26,16 @@ const useStyles = makeStyles((theme) => ({
     },
     textAlign: "center",
   },
+  alert: {
+    display: "inline-flex",
+    border: "none",
+  },
 }));
 
 const SubscribeForm = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors, reset } = useForm();
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(true);
   const onSubmit = async (data, e) => {
     const response = await handleSubscription(data, "newsletter");
 
@@ -116,7 +120,11 @@ const SubscribeForm = () => {
             </Grid>
           </Grid>
           {submitted && (
-            <Alert severity="info">
+            <Alert
+              severity="success"
+              variant="outlined"
+              className={classes.alert}
+            >
               Thanks for Plugging in! You'll receive an e-mail from us shortly
             </Alert>
           )}

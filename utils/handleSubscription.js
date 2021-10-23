@@ -11,7 +11,7 @@ export const handleSubscription = async (data, type) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          subscription: { ...data, type },
+          subscription: { ...data, subscription_type: type },
         }),
       }
     );
