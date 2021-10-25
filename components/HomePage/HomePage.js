@@ -44,12 +44,10 @@ const HomePage = () => {
                 communication.
               </Typography>
               <br></br>
-              <Link href="/search">
-                <a>
-                  <Button variant="contained" color="secondary">
-                    Find a Business
-                  </Button>
-                </a>
+              <Link href="/search" passHref>
+                <Button variant="contained" color="secondary">
+                  Find a Business
+                </Button>
               </Link>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -88,12 +86,10 @@ const HomePage = () => {
                 requests through your preferred means of communication.
               </Typography>
               <br></br>
-              <Link href="/my-business">
-                <a>
-                  <Button variant="contained" color="secondary">
-                    Add your Business
-                  </Button>
-                </a>
+              <Link href="/my-business" passHref>
+                <Button variant="contained" color="secondary">
+                  Add your Business
+                </Button>
               </Link>
             </Grid>
           </Grid>
@@ -127,12 +123,10 @@ const HomePage = () => {
             </div>
           </Carousel>
 
-          <Link href="/merch">
-            <a className={styles.shop_more}>
-              <Button variant="contained" color="secondary">
-                Shop Now
-              </Button>
-            </a>
+          <Link href="/merch" passHref>
+            <Button variant="contained" color="secondary">
+              Shop Now
+            </Button>
           </Link>
         </Box>
 
@@ -155,12 +149,10 @@ const HomePage = () => {
                 Black-owned businesses across Canada.
               </Typography>
               <br></br>
-              <Link href="/sponsors">
-                <a>
-                  <Button variant="contained" color="secondary">
-                    Show your support
-                  </Button>
-                </a>
+              <Link href="/sponsors" passHref>
+                <Button variant="contained" color="secondary">
+                  Show your support
+                </Button>
               </Link>
             </Grid>
             <Grid item xs={12} md={6}>

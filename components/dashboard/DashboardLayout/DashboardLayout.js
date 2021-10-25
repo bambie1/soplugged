@@ -118,20 +118,20 @@ const DashboardLayout = ({ title, children, position }) => {
           </div>
           <br></br>
           <div className={classes.desktop}>
-            <Link href="/search">
-              <a>
-                <Button variant="contained" color="secondary">
-                  Back to Directory
-                </Button>
-              </a>
+            <Link href="/search" passHref>
+              <Button variant="contained" color="secondary">
+                Back to Directory
+              </Button>
             </Link>
-            <a
+
+            <Button
+              color="secondary"
               href="https://soplugged.kampsite.co/"
               target="_blank"
               className={classes.link}
             >
-              <Button color="secondary">Make a suggestion</Button>
-            </a>
+              Make a suggestion
+            </Button>
           </div>
           <br></br>
         </Container>

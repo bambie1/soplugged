@@ -99,12 +99,10 @@ const ContactForm = ({ user, business_email }) => {
           </Typography>
         </>
       ) : (
-        <Link href="/join">
-          <a>
-            <Button variant="outlined" color="secondary">
-              Sign In to send Message
-            </Button>
-          </a>
+        <Link href="/join" passHref>
+          <Button variant="outlined" color="secondary">
+            Sign In to send Message
+          </Button>
         </Link>
       )}
     </form>

@@ -263,7 +263,7 @@ img {
     display: flex;
     align-items: center;
   }
-  .sectionDesktop > * {
+  .sectionDesktop a {
     margin: 0 8px;
   }
 }

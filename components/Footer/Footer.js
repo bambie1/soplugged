@@ -44,72 +44,66 @@ const Footer = () => {
             </a>
             <Typography style={{ paddingTop: "8px" }}>Follow Us:</Typography>
             <div className="social-media">
-              <a
+              <IconButton
+                aria-label="instagram"
+                edge="start"
                 href="https://www.instagram.com/sopluggd/"
                 target="_blank"
                 rel="noopener"
               >
-                <IconButton aria-label="instagram" edge="start">
-                  <InstagramIcon />
-                </IconButton>
-              </a>
-              <a
+                <InstagramIcon />
+              </IconButton>
+
+              <IconButton
+                aria-label="linkedin"
                 href="https://www.linkedin.com/company/soplugged/"
                 target="_blank"
                 rel="noopener"
               >
-                <IconButton aria-label="linkedin">
-                  <LinkedInIcon />
-                </IconButton>
-              </a>
+                <LinkedInIcon />
+              </IconButton>
             </div>
 
-            <a
+            <Button
+              variant="outlined"
+              color="secondary"
               href="https://soplugged.kampsite.co/"
               target="_blank"
               rel="noopener"
               style={{ display: "block" }}
             >
-              <Button variant="outlined" color="secondary">
-                Make a feature request
-              </Button>
-            </a>
+              Make a feature request
+            </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} className={styles.footer_links_div}>
-            <div>
-              <Link href="/faqs">
-                <a>
-                  <Button>FAQs</Button>
-                </a>
-              </Link>
-            </div>
+            <Link href="/faqs" passHref>
+              <Button color="secondary" variant="text">
+                FAQs
+              </Button>
+            </Link>
 
-            <div>
-              <Link href="https://soplugged.medium.com/">
-                <a target="_blank" rel="noopener">
-                  <Button>BLOG</Button>
-                </a>
-              </Link>
-            </div>
+            <Button
+              href="https://soplugged.medium.com/"
+              target="_blank"
+              rel="noopener"
+              color="secondary"
+              variant="text"
+            >
+              BLOG
+            </Button>
 
-            <div>
-              <Link href="/our-story">
-                <a>
-                  <Button>ABOUT US</Button>
-                </a>
-              </Link>
-            </div>
+            <Link href="/our-story" passHref>
+              <Button color="secondary" variant="text">
+                ABOUT US
+              </Button>
+            </Link>
 
-            <div>
-              <Link href="/sponsors">
-                <a>
-                  <Button variant="outlined" color="secondary">
-                    Sponsors
-                  </Button>
-                </a>
-              </Link>
-            </div>
+            <Link href="/sponsors" passHref>
+              <Button variant="outlined" color="secondary">
+                Sponsors
+              </Button>
+            </Link>
           </Grid>
         </Grid>
         <br></br>
@@ -117,20 +111,26 @@ const Footer = () => {
         <Typography variant="body2">
           Copyright&copy; {new Date().getFullYear()}, SoPlugged
         </Typography>
-        <a
+        <br />
+        <Button
           href="https://docs.google.com/document/d/1lq7Be0U3GTswo3kCZ2tHvZ20J_eJbqhQX3XiKAjih20/edit?usp=sharing"
           target="_blank"
           rel="noopener"
+          color="secondary"
+          variant="text"
         >
-          <Button>Privacy Policy</Button>
-        </a>
-        <a
+          Privacy Policy
+        </Button>
+
+        <Button
           href="https://docs.google.com/document/d/1l5OVYw8_WuVmhQDXkXdB7zBRYiLVhJ-lrGERdMQXlcc/edit?usp=sharing"
           target="_blank"
           rel="noopener"
+          color="secondary"
+          variant="text"
         >
-          <Button>Community Guidelines</Button>
-        </a>
+          Community Guidelines
+        </Button>
       </Container>
     </footer>
   );

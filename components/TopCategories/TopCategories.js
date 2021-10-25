@@ -49,16 +49,14 @@ const TopCategories = () => {
           </div>
         ))}
       </div>
-      <Link href="/search">
-        <a style={{ alignSelf: "center", marginBottom: "24px" }}>
-          <Button
-            variant="contained"
-            color="secondary"
-            endIcon={<NavigateNextIcon />}
-          >
-            Explore More
-          </Button>
-        </a>
+      <Link href="/search" passHref>
+        <Button
+          variant="contained"
+          color="secondary"
+          endIcon={<NavigateNextIcon />}
+        >
+          Explore More
+        </Button>
       </Link>
     </>
   );

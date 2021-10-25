@@ -199,7 +199,7 @@ const FileDropzone = () => {
               type="button"
               onClick={removeAll}
               style={{ alignSelf: "center", marginLeft: "8px" }}
-              variant="outlined"
+              variant="text"
               color="secondary"
               size="small"
             >

@@ -73,52 +73,35 @@ const CustomTextField = withStyles({
   },
 })(TextField);
 
-const CssTextField = withStyles({
-  root: {
-    "& label.Mui-focused": {
-      color: "green",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "red",
-      },
-      "&:hover fieldset": {
-        borderColor: "yellow",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "green",
-      },
-    },
-  },
-})(TextField);
-
 const CustomButton = withStyles((theme) => ({
   root: {
     fontSize: 16,
     padding: ".5rem 1rem",
     lineHeight: 1.5,
-    borderRadius: "20px",
+    borderRadius: "15px",
+
+    "&.MuiButton-text.MuiButton-textSecondary": {
+      "&:focus-visible": {
+        outline: `${theme.palette.secondary.main} solid 1.25px`,
+      },
+    },
 
     "&.MuiButton-contained.MuiButton-containedSecondary": {
       border: "none",
       borderBottom: `3px solid transparent`,
-      boxShadow:
-        "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
       padding: ".5rem 1rem calc(0.5rem - 3px)",
 
       "&:hover": {
-        backgroundColor: "white",
-        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.main,
+        boxShadow: "rgb(206 182 147) 3px 3px 7px 1px",
       },
 
       "&:active": {
         boxShadow: "none",
       },
-      "&:focus": {
-        boxShadow: `0px 0px 22px -5px ${theme.palette.primary.main}`,
+      "&:focus-visible": {
+        outline: `${theme.palette.secondary.main} solid 1.5px`,
+        outlineOffset: "3px",
       },
     },
 
@@ -130,16 +113,15 @@ const CustomButton = withStyles((theme) => ({
       padding: ".5rem 1rem calc(0.5rem - 3px)",
 
       "&:hover": {
-        // border: "none",
         borderBottom: `3px solid ${theme.palette.secondary.main}`,
-        // borderWidth: "3px",
       },
 
       "&:active": {
         boxShadow: "none",
       },
-      "&:focus": {
-        boxShadow: `0px 0px 22px -5px ${theme.palette.primary.main}`,
+      "&:focus-visible": {
+        outline: `${theme.palette.secondary.main} solid 1.5px`,
+        outlineOffset: "3px",
       },
     },
   },

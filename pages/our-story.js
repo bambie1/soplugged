@@ -33,19 +33,15 @@ const OurStory = () => {
           it!
         </Typography>
         <div className={styles.buttonDiv}>
-          <Link href="/search">
-            <a>
-              <Button color="secondary" variant="contained">
-                Visit our directory
-              </Button>
-            </a>
+          <Link href="/search" passHref>
+            <Button color="secondary" variant="contained">
+              Visit our directory
+            </Button>
           </Link>
-          <Link href="/sponsors">
-            <a>
-              <Button color="secondary" variant="outlined">
-                Become a Sponsor
-              </Button>
-            </a>
+          <Link href="/sponsors" passHref>
+            <Button color="secondary" variant="outlined">
+              Become a Sponsor
+            </Button>
           </Link>
         </div>
       </Container>

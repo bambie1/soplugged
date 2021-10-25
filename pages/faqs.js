@@ -50,12 +50,10 @@ const FAQs = () => {
               platform. Make sure to subscribe to our newsletters to be notified
               when we have new services featured on our website!
             </Typography>
-            <Link href="/search">
-              <a>
-                <Button color="secondary" variant="outlined">
-                  Browse Businesses
-                </Button>
-              </a>
+            <Link href="/search" passHref>
+              <Button color="secondary" variant="outlined">
+                Browse Businesses
+              </Button>
             </Link>
           </section>
           <section className={classes.faqSection}>
@@ -73,12 +71,10 @@ const FAQs = () => {
               questions, feel free to reach out to a member of our team, we
               would love to have your services featured on our platform.
             </Typography>
-            <Link href="/my-business">
-              <a>
-                <Button color="secondary" variant="outlined">
-                  Register
-                </Button>
-              </a>
+            <Link href="/my-business" passHref>
+              <Button color="secondary" variant="outlined">
+                Register
+              </Button>
             </Link>
           </section>
           <section className={classes.faqSection}>
@@ -99,12 +95,10 @@ const FAQs = () => {
               </a>
               .
             </Typography>
-            <Link href="/my-business">
-              <a>
-                <Button color="secondary" variant="outlined">
-                  Edit my business
-                </Button>
-              </a>
+            <Link href="/my-business" passHref>
+              <Button color="secondary" variant="outlined">
+                Edit my business
+              </Button>
             </Link>
           </section>
           <section

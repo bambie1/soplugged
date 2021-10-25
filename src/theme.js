@@ -66,5 +66,8 @@ export const theme = createTheme({
       // The properties to apply
       disableRipple: true, // No more ripple, on the whole application 💣!
     },
+    MuiIconButton: {
+      disableRipple: false,
+    },
   },
 });

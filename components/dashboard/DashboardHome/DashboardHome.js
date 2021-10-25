@@ -128,16 +128,14 @@ const DashboardHome = ({ business }) => {
                 <div className={classes.businessDiv}>
                   <BusinessCard dbObject={business} mini={true} />
                 </div>
-                <Link href="/my-business" className={classes.buttonLink}>
-                  <a>
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      startIcon={<EditIcon />}
-                    >
-                      Edit Business
-                    </Button>
-                  </a>
+                <Link href="/my-business" passHref>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    startIcon={<EditIcon />}
+                  >
+                    Edit Business
+                  </Button>
                 </Link>
               </Grid>
 
@@ -269,10 +267,8 @@ const DashboardHome = ({ business }) => {
           <Typography variant="body1" gutterBottom={true}>
             Are you an entrepreneur?
           </Typography>
-          <Link href="/my-business">
-            <a>
-              <Button variant="outlined">Add your business</Button>
-            </a>
+          <Link href="/my-business" passHref>
+            <Button variant="outlined">Add your business</Button>
           </Link>
         </div>
       )}

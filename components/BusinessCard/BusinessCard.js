@@ -59,7 +59,7 @@ const BusinessCard = ({ mini, average, ...props }) => {
           </>
         )}
         {street_address && fixed_to_one_location && (
-          <Typography>LOCATION: ${street_address}</Typography>
+          <Typography>LOCATION: {street_address}</Typography>
         )}
 
         <Typography>{business_location}</Typography>

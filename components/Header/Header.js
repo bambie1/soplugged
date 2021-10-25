@@ -104,12 +104,10 @@ const Header = (props) => {
   };
 
   const LaptopLink = ({ href, text, variant = "text" }) => (
-    <Link href={href}>
-      <a>
-        <Button color="inherit" variant={variant}>
-          {text}
-        </Button>
-      </a>
+    <Link href={href} passHref>
+      <Button color="secondary" variant={variant}>
+        {text}
+      </Button>
     </Link>
   );
 
