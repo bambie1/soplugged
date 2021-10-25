@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const SubscribeForm = () => {
   const classes = useStyles();
   const { register, handleSubmit, errors, reset } = useForm();
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const onSubmit = async (data, e) => {
     const response = await handleSubscription(data, "newsletter");
 

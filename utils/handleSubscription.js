@@ -1,6 +1,6 @@
 import * as Sentry from "@sentry/node";
 
-export const handleSubscription = async (data, type) => {
+export const handleSubscription = async (data, subscription_type) => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/subscriptions`,
@@ -11,7 +11,7 @@ export const handleSubscription = async (data, type) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          subscription: { ...data, subscription_type: type },
+          subscription: { ...data, subscription_type },
         }),
       }
     );
