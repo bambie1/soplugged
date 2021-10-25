@@ -26,7 +26,6 @@ const EditBusiness = ({ business, token }) => {
     if (business) setBusiness(business);
   }, [business]);
 
-  if (!business) return null;
   if (business !== undefined) {
     return (
       <>
