@@ -64,6 +64,7 @@ export async function getServerSideProps(context) {
   try {
     const cookies = nookies.get(context);
     const token = await verifyIdToken(cookies.token);
+
     if (token?.email) {
       return {
         redirect: {

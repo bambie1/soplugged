@@ -26,7 +26,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const handle = setInterval(async () => {
       const user = firebase.auth().currentUser;
-      if (user) await user.getIdToken(true);
+      if (user) {
+        const token = await user.getIdToken(true);
+        nookies.set(undefined, "token", token, {});
+      }
     }, 30 * 60 * 1000);
 
     // clean up setInterval
