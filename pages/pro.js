@@ -62,7 +62,7 @@ const ProPage = () => {
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <Typography variant="body2" gutterButtom>
                   If you'd like to know when you can access this feature, add
-                  your e-mail below to get notified
+                  your e-mail address below to get notified
                 </Typography>
                 <br />
                 <Grid container spacing={1} className={styles.formGrid}>
