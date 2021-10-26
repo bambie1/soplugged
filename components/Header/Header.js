@@ -205,7 +205,7 @@ const Header = (props) => {
             {user?.email ? (
               <>
                 <LaptopLink
-                  href="dashboard"
+                  href="/dashboard"
                   text="MY DASHBOARD"
                   variant="outlined"
                 />

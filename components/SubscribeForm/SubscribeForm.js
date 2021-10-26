@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   grid: { justifyContent: "center", marginBottom: "8px" },
   subscribe: {
     padding: "40px 8px",
-    marginTop: "40px",
   },
   container: {
     padding: "0px",

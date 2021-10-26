@@ -52,7 +52,7 @@ const ProPage = () => {
                 as a small to medium-sized business.
               </Typography>
 
-              <Typography gutterButtom>
+              <Typography>
                 From strategic recommendations to professional services
                 (personalized consultation, web design, and email marketing),
                 our team of experts is ready to work with you and provide all
@@ -60,7 +60,7 @@ const ProPage = () => {
               </Typography>
 
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="body2" gutterButtom>
+                <Typography variant="body2">
                   If you'd like to know when you can access this feature, add
                   your e-mail address below to get notified
                 </Typography>

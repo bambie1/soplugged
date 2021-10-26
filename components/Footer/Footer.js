@@ -35,6 +35,16 @@ const Footer = () => {
           ></path>
         </svg>
       </div>
+      <section className={styles.proSection}>
+        Psst..! SoPluggedPRO is on its way.
+        <Link href="/pro" passHref>
+          <Button variant="text" color="secondary">
+            <u>
+              <b>Join the waitlist to be notified</b>
+            </u>
+          </Button>
+        </Link>
+      </section>
       <SubscribeForm />
       <Container className={styles.footer_container}>
         <Grid container>
