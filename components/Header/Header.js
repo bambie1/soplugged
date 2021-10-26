@@ -219,7 +219,7 @@ const Header = (props) => {
                 </IconButton>
               </>
             ) : (
-              <LaptopLink href="join" text="JOIN" variant="outlined" />
+              <LaptopLink href="/join" text="JOIN" variant="outlined" />
             )}
           </div>
           <div className="sectionMobile">
