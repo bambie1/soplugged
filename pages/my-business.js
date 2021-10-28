@@ -53,7 +53,6 @@ export async function getServerSideProps(context) {
     const response = await fetchUserBusiness(cookies.token);
     return { props: response };
   } catch (error) {
-    console.log({ error });
     return {
       redirect: {
         destination: "/join",
