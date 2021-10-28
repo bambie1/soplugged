@@ -1,4 +1,6 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
+@import "styles/mixins";
+
 :root {
   --dark: #4e3505;
   --light: #cdb693;
@@ -69,6 +71,22 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+.body_content {
+  padding: 0.5rem 0.5rem 0;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile_xl() {
+    padding: 1.15rem 1.15rem 0;
+  }
+  @include desktop() {
+    max-width: 1400px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .line {

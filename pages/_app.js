@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../styles/_globals.css";
+import "../styles/_globals.scss";
 import "../styles/_algolia.css";
 import "../styles/_animation.css";
 import { ThemeProvider } from "@material-ui/core/styles";

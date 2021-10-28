@@ -92,6 +92,7 @@ const Header = (props) => {
   const [signOut, setSignOut] = useState(false);
 
   const isHomePage = router.pathname === "/";
+  const isProPage = router.pathname === "/pro-test";
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -181,7 +182,7 @@ const Header = (props) => {
 
   const renderAppBar = () => (
     <AppBar
-      position={isHomePage ? "fixed" : "static"}
+      position={isHomePage || isProPage ? "fixed" : "static"}
       color="transparent"
       elevation={0}
     >

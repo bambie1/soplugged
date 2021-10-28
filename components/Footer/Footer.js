@@ -18,10 +18,12 @@ const Footer = () => {
     router.pathname.startsWith("/join") ||
     router.pathname.startsWith("/dashboard");
 
+  const isProPage = router.pathname === "/pro-test";
+
   return hideFooter ? (
     <></>
   ) : (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isProPage && styles.pro}`}>
       <div className={styles.shape_divider_container}>
         <svg
           data-name="Layer 1"

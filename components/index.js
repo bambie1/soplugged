@@ -1,5 +1,5 @@
 import Header from "./Header/Header";
-import HeroBanner from "./HeroBanner/HeroBanner";
+import Hero from "./Hero/Hero";
 import TopCategories from "./TopCategories/TopCategories";
 import BusinessCard from "./BusinessCard/BusinessCard";
 import BusinessHeader from "./BusinessHeader/BusinessHeader";
@@ -18,10 +18,12 @@ import SubscribeForm from "./SubscribeForm/SubscribeForm";
 import SavingAnimation from "./SavingAnimation";
 import SEO from "./SEO";
 import Layout from "./Layout";
+import ProHero from "./ProHero/ProHero";
 
 export {
   Header,
-  HeroBanner,
+  Hero,
+  ProHero,
   TopCategories,
   BusinessCard,
   BusinessHeader,

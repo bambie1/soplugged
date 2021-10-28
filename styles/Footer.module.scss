@@ -6,15 +6,19 @@
   min-height: 5vh;
   text-align: center;
   background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(205, 182, 147, 1) 100%
-  );
-  /* z-index: 1; */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, $primary 100%);
   width: 100%;
   margin-top: auto;
 }
+
+.pro {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    $tertiary 100%
+  );
+}
+
 .footer_container {
   margin: 16px auto 0px;
 }

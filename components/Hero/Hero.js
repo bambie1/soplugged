@@ -1,9 +1,9 @@
 import { Typography } from "@material/mui-components";
 import { SearchIcon } from "@material/mui-icons";
 import Link from "next/link";
-import styles from "./HeroBannerStyles.module.scss";
+import styles from "./HeroStyles.module.scss";
 
-const HeroBanner = () => {
+const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.hero_content}>
@@ -42,4 +42,4 @@ const HeroBanner = () => {
   );
 };
 
-export default HeroBanner;
+export default Hero;

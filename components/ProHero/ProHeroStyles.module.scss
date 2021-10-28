@@ -1,0 +1,44 @@
+@import "styles/mixins";
+
+.hero {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  padding-block: 100px;
+  transition: background 2s ease;
+  text-decoration: none;
+  min-height: 35rem;
+  z-index: 1;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: $tertiary;
+  background: linear-gradient(180deg, $tertiary 0%, white 100%);
+}
+
+.grid {
+  max-width: 1400px;
+  padding-inline: 1rem;
+
+  @include tablet() {
+    padding-inline: 1.5rem;
+  }
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  .tagLine {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    max-width: 450px;
+  }
+}

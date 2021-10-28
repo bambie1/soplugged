@@ -1,6 +1,6 @@
 import { Typography, Button, Grid, Box } from "@material/mui-components";
 import Link from "next/link";
-import { HeroBanner, TopCategories } from "@components/index";
+import { Hero, TopCategories } from "@components/index";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -25,8 +25,8 @@ const responsive = {
 const HomePage = () => {
   return (
     <main className={styles.main}>
-      <HeroBanner />
-      <div className={styles.body_content}>
+      <Hero />
+      <div className="body_content">
         <Box mb={5}>
           <Grid
             container

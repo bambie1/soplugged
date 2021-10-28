@@ -1,5 +1,29 @@
 @import "styles/mixins";
 
+.sectionTitle {
+  position: relative;
+  display: flex !important;
+  align-self: center !important;
+  text-align: center !important;
+
+  &:before {
+    content: "";
+    border-bottom: 6px solid $secondary;
+    position: absolute;
+    bottom: -1rem;
+    height: 5px;
+    width: 6rem;
+    margin: 2em auto 0;
+    left: 25%;
+  }
+}
+
+.features {
+  max-width: 750px;
+  margin: auto;
+  margin-top: 3rem;
+}
+// Coming soon
 .page {
   padding-top: 60px;
   display: flex !important;
