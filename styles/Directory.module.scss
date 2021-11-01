@@ -91,6 +91,9 @@
 }
 
 .hide_on_mobile {
+  span {
+    line-height: 1.3rem;
+  }
   @include mobile_only() {
     display: none;
   }
