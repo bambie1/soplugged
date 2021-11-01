@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import {
-  Typography,
   makeStyles,
   useMediaQuery,
   Grid,
@@ -94,21 +93,17 @@ const StyledBusinessForm = ({ myBusiness, token }) => {
               <Image src="/images/office_icon.svg" width={70} height={70} />
               {myBusiness?.business_name ? (
                 <>
-                  <Typography
-                    variant="h4"
-                    style={{ marginTop: "16px" }}
-                    gutterBottom={true}
-                  >
+                  <h2 style={{ marginTop: "16px" }}>
                     Welcome back,{" "}
                     {myBusiness.creator?.full_name?.split(" ")[0] || "Boss"}
-                  </Typography>
-                  <Typography>Update your business info as you wish</Typography>
+                  </h2>
+                  <p>Update your business info as you wish</p>
                 </>
               ) : (
-                <Typography variant="h4" style={{ marginTop: "16px" }}>
+                <h4 style={{ marginTop: "16px" }}>
                   Hi Boss,
                   <br></br> Let's set up your<br></br> business page
-                </Typography>
+                </h4>
               )}
 
               <div className={classes.stepsContainer}>

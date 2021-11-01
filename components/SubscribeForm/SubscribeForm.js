@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Button,
-  Typography,
   Grid,
   CustomTextField,
   Container,
@@ -47,13 +46,11 @@ const SubscribeForm = () => {
   return (
     <div className={classes.subscribe}>
       <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h6" component="h3">
-          Stay Plugged-in
-        </Typography>
-        <Typography>
+        <h3>Stay Plugged-in</h3>
+        <p>
           Join our mailing list to receive news and updates on new service
           features, blog posts, and be in the know!
-        </Typography>
+        </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={1} className={classes.grid}>
             <Grid item xs={12} sm={6} md={4}>

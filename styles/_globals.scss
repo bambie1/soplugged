@@ -24,7 +24,16 @@ h5,
 h6 {
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: $secondary;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
+
+button {
+  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
 ::selection {
   color: var(--dark);
   background: var(--light);
@@ -44,6 +53,44 @@ fieldset {
 img {
   max-height: 100%;
 }
+
+h1 {
+  font-size: 3.1rem;
+}
+h2 {
+  font-size: 2.2rem;
+}
+p {
+  line-height: 2rem;
+}
+
+// utility
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.noMargin {
+  margin: 0 !important;
+}
+.mediumFont {
+  font-size: 0.875rem;
+  line-height: 0.9rem;
+}
+.smallFont {
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+}
+.secondary {
+  color: $secondary;
+}
+.error {
+  font-size: 0.875rem;
+  color: red;
+}
+
+// classes
 .page {
   margin: auto;
   min-height: 850px;

@@ -87,25 +87,23 @@ const FavoriteButton = ({ business_id, user, disabled, userLikedBusiness }) => {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        onExited={handleExited}
+        TransitionProps={handleExited}
         message={messageInfo ? messageInfo.message : undefined}
         action={
           <React.Fragment>
-            <Link href="/dashboard/favorites">
-              <a>
-                <Button color="primary" size="small" onClick={handleClose}>
-                  View All
-                </Button>
-                <IconButton
-                  size="small"
-                  aria-label="close"
-                  color="inherit"
-                  onClick={handleClose}
-                >
-                  <CloseIcon fontSize="small" />
-                </IconButton>
-              </a>
+            <Link href="/dashboard/favorites" passHref>
+              <Button color="primary" size="small" onClick={handleClose}>
+                View All
+              </Button>
             </Link>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
           </React.Fragment>
         }
       />

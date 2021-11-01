@@ -1,5 +1,3 @@
-import { Typography } from "@material/mui-components";
-
 const SavingAnimation = ({ message }) => {
   return (
     <div
@@ -15,7 +13,7 @@ const SavingAnimation = ({ message }) => {
             <div key={x}></div>
           ))}
         </div>
-        <Typography style={{ color: "white" }}>{message}</Typography>
+        <p style={{ color: "white" }}>{message}</p>
       </div>
     </div>
   );

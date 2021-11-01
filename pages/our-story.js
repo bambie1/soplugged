@@ -1,4 +1,4 @@
-import { Container, Typography, Button } from "@material/mui-components";
+import { Container, Button } from "@material/mui-components";
 import Link from "next/link";
 import { SEO } from "@components/index";
 
@@ -14,10 +14,8 @@ const OurStory = () => {
               businesses across Canada"
       />
       <Container className={styles.container} maxWidth="md">
-        <Typography variant="h1" align="center">
-          our story
-        </Typography>
-        <Typography>
+        <h1>our story</h1>
+        <p>
           SoPlugged is an online platform that makes #buyingblack easy! Our
           search-friendly platform helps end-users connect to Black-owned
           businesses across Canada. When you{" "}
@@ -31,7 +29,7 @@ const OurStory = () => {
           beautiful thing to see people join the movement to support Black-owned
           businesses.<br></br> That’s our story and we hope you become a part of
           it!
-        </Typography>
+        </p>
         <div className={styles.buttonDiv}>
           <Link href="/search" passHref>
             <Button color="secondary" variant="contained">

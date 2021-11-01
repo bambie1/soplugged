@@ -2,7 +2,6 @@ import React from "react";
 import {
   Grid,
   Paper,
-  Typography,
   Button,
   makeStyles,
   Box,
@@ -68,6 +67,21 @@ const useStyles = makeStyles((theme) => ({
   emptyImage: {
     opacity: "0.5",
   },
+  favorites: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "0.5rem",
+
+    "& > *": {
+      marginInline: "0.25rem",
+    },
+    "& > p": {
+      fontWeight: "bold",
+      fontSize: "3rem",
+      marginBlock: 0,
+    },
+  },
 }));
 
 const DashboardHome = ({ business }) => {
@@ -103,28 +117,15 @@ const DashboardHome = ({ business }) => {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom={true} align="center">
-        Home
-      </Typography>
+      <h1>Home</h1>
       {business ? (
         <>
-          <Typography variant="h5" gutterBottom={true} align="center">
-            {greetFunction(business.creator.full_name)}
-          </Typography>
-          <Typography gutterBottom={true} align="center">
-            Here's some important stuff we've outlined for you
-          </Typography>
+          <h3>{greetFunction(business.creator.full_name)}</h3>
+          <p>Here's some important stuff we've outlined for you</p>
           <div className={classes.grid}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  gutterBottom={true}
-                  align="center"
-                  style={{ fontWeight: "bold" }}
-                >
-                  YOUR BUSINESS:
-                </Typography>
+                <p style={{ fontWeight: "bold" }}>YOUR BUSINESS:</p>
                 <div className={classes.businessDiv}>
                   <BusinessCard dbObject={business} mini={true} />
                 </div>
@@ -140,14 +141,7 @@ const DashboardHome = ({ business }) => {
               </Grid>
 
               <Grid item xs={12} sm={6} id="suggestions">
-                <Typography
-                  variant="body1"
-                  gutterBottom={true}
-                  align="center"
-                  style={{ fontWeight: "bold" }}
-                >
-                  BUSINESS COMPLETION:
-                </Typography>
+                <p style={{ fontWeight: "bold" }}>BUSINESS COMPLETION:</p>
                 <Box
                   display="flex"
                   alignItems="center"
@@ -175,9 +169,7 @@ const DashboardHome = ({ business }) => {
                   </div>
                   <Box margin="8px">
                     {percentage === 100 ? (
-                      <Typography variant="body1">
-                        Looking great, Boss!
-                      </Typography>
+                      <p>Looking great, Boss!</p>
                     ) : (
                       <Button
                         variant="outlined"
@@ -205,7 +197,7 @@ const DashboardHome = ({ business }) => {
                 )}
                 {!hasImages && (
                   <MenuItem onClick={() => handleSuggestions(3)}>
-                    <Typography noWrap>Upload some images</Typography>
+                    <p>Upload some images</p>
                   </MenuItem>
                 )}
                 {!hasGoodDescription && (
@@ -221,30 +213,21 @@ const DashboardHome = ({ business }) => {
               </Menu>
 
               <Grid item xs={12}>
-                <Typography
-                  variant="body1"
-                  gutterBottom={true}
-                  align="center"
-                  style={{ fontWeight: "bold" }}
-                >
-                  BUSINESS NUMBERS:
-                </Typography>
+                <p style={{ fontWeight: "bold" }}>BUSINESS NUMBERS:</p>
                 <Box display="flex" justifyContent="center" flexWrap="wrap">
                   <Paper className={classes.activity}>
-                    <Typography variant="body1">Favorites</Typography>
-                    <Typography variant="h1" component="span">
-                      {business.number_of_likes}
-                    </Typography>
-                    <FavoriteIcon color="secondary" />
+                    <p className="noMargin">Favorites</p>
+                    <div className={classes.favorites}>
+                      <p>{business.number_of_likes}</p>
+                      <FavoriteIcon color="secondary" />
+                    </div>
                   </Paper>
                   <Paper
                     className={classes.activity}
                     style={{ opacity: "0.5" }}
                   >
-                    <Typography variant="body1" gutterBottom={true}>
-                      Messages
-                    </Typography>
-                    <Typography variant="body2">COMING SOON</Typography>
+                    <p className="noMargin">Messages</p>
+                    <p>COMING SOON</p>
                   </Paper>
                 </Box>
               </Grid>
@@ -260,13 +243,9 @@ const DashboardHome = ({ business }) => {
             height={300}
             className={classes.emptyImage}
           />
-          <Typography variant="h6">No business found</Typography>
-          <Typography variant="caption" gutterBottom={true}>
-            Just a nice beverage
-          </Typography>
-          <Typography variant="body1" gutterBottom={true}>
-            Are you an entrepreneur?
-          </Typography>
+          <h6>No business found</h6>
+          <h6>Just a nice beverage</h6>
+          <p>Are you an entrepreneur?</p>
           <Link href="/my-business" passHref>
             <Button variant="outlined">Add your business</Button>
           </Link>

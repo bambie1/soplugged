@@ -25,6 +25,11 @@
   border-radius: 50%;
 }
 
+.category {
+  font-weight: bold;
+  font-size: 1.25rem;
+  font-family: "Montserrat";
+}
 .categorySpan {
   color: $secondary;
   cursor: pointer;
@@ -35,6 +40,22 @@
   &:hover {
     border-bottom: none;
   }
+}
+
+.avatar {
+  margin: 0px 8px;
+}
+
+.gridContainer {
+  margin-top: 30px;
+}
+
+.leftDiv {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 700px;
+  margin: auto;
 }
 
 .favoriteDiv {

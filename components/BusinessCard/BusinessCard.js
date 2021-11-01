@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Typography } from "@material/mui-components";
+import { Avatar } from "@material/mui-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { CheckIcon } from "@material/mui-icons";
@@ -28,20 +28,10 @@ const BusinessCard = ({ mini, average, ...props }) => {
           <Avatar alt="Business Logo" src={logo_url} variant="square">
             {business_name.toUpperCase().charAt(0)}
           </Avatar>
-          <Typography
-            variant="h6"
-            className={styles.businessName}
-            color="textSecondary"
-            noWrap={true}
-          >
-            {business_name}
-          </Typography>
+          <h3 className={styles.businessName}>{business_name}</h3>
         </BusinessHeader>
 
-        <Typography variant="body1" style={{ fontWeight: "bold" }}>
-          {category}
-        </Typography>
-        <br></br>
+        <h4 className={styles.category}>{category}</h4>
         {!mini && (
           <>
             {images.length !== 0 && images[0].length !== 0 && (
@@ -58,17 +48,14 @@ const BusinessCard = ({ mini, average, ...props }) => {
             )}
           </>
         )}
-        {street_address && fixed_to_one_location && (
-          <Typography>LOCATION: {street_address}</Typography>
-        )}
 
-        <Typography>{business_location}</Typography>
+        <p>{business_location}</p>
 
         {!fixed_to_one_location && (
-          <Typography className={styles.canadaWide}>
+          <p className={styles.canadaWide}>
             <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
             CANADA-WIDE
-          </Typography>
+          </p>
         )}
       </a>
     </Link>

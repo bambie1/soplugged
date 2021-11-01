@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Button,
-  CustomTextField,
-  makeStyles,
-  Typography,
-} from "@material/mui-components";
+import { Button, CustomTextField, makeStyles } from "@material/mui-components";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
@@ -74,7 +69,7 @@ const ContactForm = ({ user, business_email }) => {
         name="userMessage"
         label="Message"
         variant="outlined"
-        rows={8}
+        minRows={8}
         maxRows={10}
         multiline
         inputRef={register({
@@ -94,9 +89,9 @@ const ContactForm = ({ user, business_email }) => {
           >
             Send Message
           </Button>
-          <Typography variant="caption">
+          <p className="smallFont noMargin">
             {user?.email && `Sending message as ${user.email}`}
-          </Typography>
+          </p>
         </>
       ) : (
         <Link href="/join" passHref>

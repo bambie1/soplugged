@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { useField } from "formik";
 import "react-quill/dist/quill.snow.css";
-import { Typography, InputAdornment } from "@material/mui-components";
+import { InputAdornment } from "@material/mui-components";
 import PhoneNumberTextField from "./PhoneNumberTextField";
 import { useBusinessFormContext } from "@contexts/businessFormContext";
 
@@ -39,11 +39,7 @@ const BusinessFormStep3 = () => {
           toolbar: toolbarOptions,
         }}
       />
-      {meta && meta.error && (
-        <Typography color="error" align="center" variant="caption">
-          {meta.error}
-        </Typography>
-      )}
+      {meta && meta.error && <p className="error">{meta.error}</p>}
 
       <FormikTextField
         name="businessUrl"

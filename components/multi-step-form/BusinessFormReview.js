@@ -2,7 +2,6 @@ import React from "react";
 import { useFormikContext } from "formik";
 import {
   Avatar,
-  Typography,
   makeStyles,
   Box,
   CustomTextField,
@@ -21,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   sectionTitle: {
     fontWeight: "bold",
     textTransform: "uppercase",
+    margin: 0,
   },
   description: {
     maxHeight: "250px",
@@ -154,22 +154,16 @@ const BusinessFormReview = () => {
       )}
       {canadaWide && (
         <Grid item xs={12}>
-          <Typography variant="body2" align="center">
+          <p className="noMargin">
             <CheckIcon fontSize="small" style={{ height: "0.9rem" }} />
             CANADA-WIDE
-          </Typography>
+          </p>
         </Grid>
       )}
       <Grid item xs={12}>
         {(sampleImagesArray.length > 0 || logoUrl) && (
           <>
-            <Typography
-              className={classes.sectionTitle}
-              gutterBottom={true}
-              align="center"
-            >
-              Logo and Sample Images:
-            </Typography>
+            <p className={classes.sectionTitle}>Logo and Sample Images:</p>
             <Box display="flex" justifyContent="center">
               <Avatar alt="Business Logo" src={logoUrl}>
                 {businessName.toUpperCase().charAt(0)}

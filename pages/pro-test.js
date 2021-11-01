@@ -1,16 +1,14 @@
 import React from "react";
 import SEO from "@components/SEO";
 import { ProHero } from "@components/index";
-import { Typography, Grid } from "@material/mui-components";
+import { Grid } from "@material/mui-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandshake } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "styles/Pro.module.scss";
 
 const SectionTitle = ({ title }) => (
-  <Typography variant="h5" color="secondary" className={styles.sectionTitle}>
-    {title}
-  </Typography>
+  <h5 className={styles.sectionTitle}>{title}</h5>
 );
 
 const Pro = () => {

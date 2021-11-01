@@ -1,6 +1,6 @@
 import React from "react";
 import { Highlight, connectRefinementList } from "react-instantsearch-dom";
-import { Typography, Button } from "@material/mui-components";
+import { Button } from "@material/mui-components";
 import * as styles from "styles/AlgoliaSearch.module.scss";
 
 const ITEMS_LIMIT = 5;

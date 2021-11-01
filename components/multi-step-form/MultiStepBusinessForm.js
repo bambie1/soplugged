@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, useMediaQuery } from "@material/mui-components";
+import { useMediaQuery } from "@material/mui-components";
 import BusinessFormStep1 from "./BusinessFormStep1";
 import BusinessFormStep2 from "./BusinessFormStep2";
 import BusinessFormStep3 from "./BusinessFormStep3";
@@ -83,8 +83,7 @@ const MultiStepBusinessForm = ({ token }) => {
               swal({
                 icon: "success",
                 title: "What next?",
-                text:
-                  "We'll send you a confirmation email shortly.\n\n In the meantime, we'll review your new business, and it will be added to our directory once ready.",
+                text: "We'll send you a confirmation email shortly.\n\n In the meantime, we'll review your new business, and it will be added to our directory once ready.",
                 button: "View Page",
               }).then((val) => {
                 if (val) router.push(`/business/${slug}`);
@@ -106,9 +105,7 @@ const MultiStepBusinessForm = ({ token }) => {
     <>
       {bigScreen && (
         <>
-          <Typography variant="h6" gutterBottom={true} align="center">
-            {formSteps[currentStep]?.title}
-          </Typography>
+          <h4>{formSteps[currentStep]?.title}</h4>
           <hr style={{ width: "20%" }}></hr>
         </>
       )}

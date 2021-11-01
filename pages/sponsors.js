@@ -1,35 +1,21 @@
-import {
-  Container,
-  Typography,
-  Button,
-  Grid,
-  makeStyles,
-} from "@material/mui-components";
+import { Container, Button, Grid, makeStyles } from "@material/mui-components";
 import Link from "next/link";
 import { SEO } from "@components/index";
 import { NavigateBeforeIcon } from "@material/mui-icons";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    zIndex: "1",
-    background: "white",
     paddingTop: theme.spacing(2),
+    textAlign: "center",
   },
   container: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     minHeight: "85vh",
-  },
-  title: {
-    margin: "32px 0px",
-    fontSize: "2rem",
-    textAlign: "center",
-  },
-  text: {
-    lineHeight: "2",
+    marginTop: "2rem",
   },
   textContent: {
-    textAlign: "center",
     maxWidth: "700px",
     marginLeft: "auto",
     marginRight: "auto",
@@ -62,30 +48,25 @@ const Sponsors = () => {
         description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
       />
       <main className={classes.page}>
-        <Typography variant="h1" align="center">
-          sponsors
-        </Typography>
+        <h1 className="center">sponsors</h1>
         <Container maxWidth="lg" className={classes.container}>
           <>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6} className={classes.textContent}>
-                <Typography className={classes.text}>
+                <p>
                   At SoPlugged, our biggest inspiration is supporting one
                   another and growing our community. Our goal is to normalize
                   buying black and we rely on amazing people like you to keep
                   our platform free and accessible to Black-owned businesses
                   across Canada.
-                </Typography>
+                </p>
                 <hr style={{ width: "100%", maxWidth: "150px" }}></hr>
-                <Typography
-                  // style={{ width: "80%", margin: "0 auto" }}
-                  className={classes.text}
-                >
+                <p>
                   <em>
                     All donations go towards maintaining our platform and
                     supporting Black-owned businesses across Canada.
                   </em>
-                </Typography>
+                </p>
               </Grid>
               <Grid item xs={12} md={6}>
                 <iframe
@@ -97,21 +78,14 @@ const Sponsors = () => {
                 ></iframe>
               </Grid>
             </Grid>
-            <Link href="/search">
-              <a
-                style={{
-                  alignSelf: "center",
-                  margin: "16px",
-                }}
+            <Link href="/search" passHref>
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<NavigateBeforeIcon />}
               >
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  startIcon={<NavigateBeforeIcon />}
-                >
-                  Back to Directory
-                </Button>
-              </a>
+                Back to Directory
+              </Button>
             </Link>
           </>
         </Container>

@@ -5,7 +5,6 @@ import {
   Button,
   InputLabel,
   makeStyles,
-  Typography,
   CircularProgress,
 } from "@material/mui-components";
 import { CloudUploadIcon } from "@material/mui-icons";
@@ -78,11 +77,7 @@ const BusinessFormStep4 = () => {
             <Avatar src={values.logoUrl} variant="square" />
           )}
         </Box>
-        {error && (
-          <Typography color="error" variant="caption" gutterBottom={true}>
-            {error}
-          </Typography>
-        )}
+        {error && <p className="error">{error}</p>}
       </div>
       <FileDropzone />
     </>

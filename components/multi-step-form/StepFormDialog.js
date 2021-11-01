@@ -11,7 +11,6 @@ import {
 import { CloseIcon } from "@material/mui-icons";
 import MultiStepBusinessForm from "./MultiStepBusinessForm";
 import { useBusinessFormContext } from "@contexts/businessFormContext";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
@@ -64,9 +63,7 @@ const StepFormDialog = ({ opened, handleClose, token }) => {
             >
               <CloseIcon />
             </IconButton>
-            <Typography variant="h6">
-              {formSteps[currentStep]?.title}
-            </Typography>
+            <h4>{formSteps[currentStep]?.title}</h4>
             <IconButton
               edge="end"
               color="inherit"

@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  makeStyles,
-  Tooltip,
-  FormControl,
-} from "@material/mui-components";
+import { makeStyles, Tooltip, FormControl } from "@material/mui-components";
 import Image from "next/image";
 import { categories } from "../../src/ListOfCategories";
 import { useFormikContext } from "formik";
@@ -16,6 +11,15 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "center",
     marginBottom: "24px",
+  },
+  categoryText: {
+    fontSize: "0.8rem",
+    lineHeight: "0.9rem",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    marginTop: "0.5rem",
+    marginBottom: 0,
   },
   categoryInput: {
     position: "absolute",
@@ -64,7 +68,7 @@ const BusinessFormStep2 = () => {
 
   return (
     <>
-      <Typography align="center">Please select a category below:</Typography>
+      <p>Please select a category below:</p>
       <FormControl component="fieldset">
         <div className={classes.categoriesWrapper}>
           {categories.map(({ tags, label, imageSrc }) => (
@@ -84,14 +88,7 @@ const BusinessFormStep2 = () => {
                   onClick={() => handleClick(label, tags)}
                 >
                   <Image src={imageSrc} width={40} height={40} />
-                  <Typography
-                    variant="caption"
-                    display="block"
-                    className={classes.categoryText}
-                    noWrap={true}
-                  >
-                    {label}
-                  </Typography>
+                  <p className={classes.categoryText}>{label}</p>
                 </div>
               </Tooltip>
             </label>
@@ -100,15 +97,10 @@ const BusinessFormStep2 = () => {
       </FormControl>
       {selectedCategory && (
         <>
-          <Typography align="center">
+          <p>
             <strong>Category selected: </strong> {selectedCategory}
-          </Typography>
-          <Typography
-            align="center"
-            style={{ fontStyle: "italic", fontSize: "0.7rem" }}
-          >
-            {tags}
-          </Typography>
+          </p>
+          <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>{tags}</p>
         </>
       )}
     </>

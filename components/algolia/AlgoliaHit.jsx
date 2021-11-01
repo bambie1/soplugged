@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Avatar } from "@material/mui-components";
+import { Avatar } from "@material/mui-components";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
 import BusinessHeader from "../BusinessHeader/BusinessHeader";
@@ -16,35 +16,23 @@ const AlgoliaHit = ({ hit }) => {
             <Avatar alt="Business Logo" src={hit.logo_url}>
               {hit.business_name.toUpperCase().charAt(0)}
             </Avatar>
-            <Typography
-              variant="h6"
-              className={styles.hit_business_name}
-              noWrap={true}
-            >
+            <h3 className={styles.hit_business_name}>
               <Highlight attribute="business_name" hit={hit} />
-            </Typography>
+            </h3>
           </BusinessHeader>
 
-          <Typography
-            variant="body1"
-            align="center"
-            className={styles.hit_business_category}
-          >
+          <p className={styles.hit_business_category}>
             <Highlight attribute="category" hit={hit} />
-          </Typography>
+          </p>
           <div className={styles.hide_on_mobile}>
-            <Typography
-              variant="body2"
-              align="center"
-              style={{ marginBottom: "8px" }}
-            >
+            <p className="mediumFont" style={{ marginBlock: "8px" }}>
               <Snippet attribute="business_description" hit={hit} />
-            </Typography>
+            </p>
             <hr style={{ width: "20px", margin: "2px auto" }} />
           </div>
-          <Typography className={styles.hit_business_location} align="center">
+          <p className={styles.hit_business_location}>
             {hit.business_location}
-          </Typography>
+          </p>
         </a>
       </Link>
     </div>

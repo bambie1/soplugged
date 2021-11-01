@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Typography,
-  makeStyles,
-  useMediaQuery,
-} from "@material/mui-components";
+import { Grid, makeStyles, useMediaQuery } from "@material/mui-components";
 import Image from "next/image";
 import BusinessCard from "../../BusinessCard/BusinessCard";
 import PaginationBar from "../../Pagination";
@@ -46,9 +41,7 @@ const Favorites = ({ data }) => {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom={true} align="center">
-        Favorites
-      </Typography>
+      <h1>Favorites</h1>
       <br></br>
       {data?.length > 0 ? (
         <div className={classes.favorites}>
@@ -80,12 +73,8 @@ const Favorites = ({ data }) => {
             height={300}
             className={classes.emptyImage}
           />
-          <Typography variant="h6" gutterBottom={true}>
-            No favorites found
-          </Typography>
-          <Typography variant="body1">
-            When you 'Like' a business, it will get added here.
-          </Typography>
+          <h1>No favorites found</h1>
+          <p>When you 'Like' a business, it will get added here.</p>
         </div>
       )}
     </>

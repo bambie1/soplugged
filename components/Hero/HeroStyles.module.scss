@@ -84,7 +84,7 @@
 .hero_cta_link {
   width: 100%;
   max-width: 500px;
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .hero_cta_button {
@@ -110,6 +110,7 @@
     width: 100%;
     white-space: nowrap;
     margin-left: 2rem;
+    margin-block: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;

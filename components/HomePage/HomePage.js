@@ -1,4 +1,4 @@
-import { Typography, Button, Grid, Box } from "@material/mui-components";
+import { Button, Grid, Box } from "@material/mui-components";
 import Link from "next/link";
 import { Hero, TopCategories } from "@components/index";
 import Image from "next/image";
@@ -34,16 +34,15 @@ const HomePage = () => {
             className={`${styles.benefits_grid} ${styles.second}`}
           >
             <Grid item xs={12} md={6}>
-              <Typography variant="h2">Want to #BuyBlack?</Typography>
-              <Typography variant="body1">
+              <h2>Want to #BuyBlack?</h2>
+              <p>
                 We have businesses based in Ottawa, Toronto, and across Canada
                 that you can choose from. Whether you're looking for a hair
                 stylist or a caterer for your next event, we've got you covered.
                 Once you find a business you like, you can contact them directly
                 on our platform, or through their preferred means of
                 communication.
-              </Typography>
-              <br></br>
+              </p>
               <Link href="/search" passHref>
                 <Button variant="contained" color="secondary">
                   Find a Business
@@ -78,14 +77,13 @@ const HomePage = () => {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="h2">Want to add your business?</Typography>
-              <Typography variant="body1">
+              <h2>Want to add your business?</h2>
+              <p>
                 You can do so for <u>FREE!</u> Simply click the 'JOIN' button to
                 register, and follow the instructions to add your business to
                 our directory. Once complete, you can begin to field quotesand
                 requests through your preferred means of communication.
-              </Typography>
-              <br></br>
+              </p>
               <Link href="/my-business" passHref>
                 <Button variant="contained" color="secondary">
                   Add your Business
@@ -96,12 +94,10 @@ const HomePage = () => {
         </Box>
 
         <Box textAlign="center" mt={5} mb={10} className={styles.merchDisplay}>
-          <Typography variant="h2" align="center" gutterBottom={true}>
-            Check out our merch collection
-          </Typography>
-          <Typography variant="body1" align="center" gutterBottom={true}>
+          <h2>Check out our merch collection</h2>
+          <p className="noMargin">
             Normalize <b>#buyingblack</b>, but make it fashionable
-          </Typography>
+          </p>
           <Carousel responsive={responsive}>
             <div className={styles.shopifyImage}>
               <img
@@ -137,18 +133,17 @@ const HomePage = () => {
             className={`${styles.benefits_grid} ${styles.second}`}
           >
             <Grid item xs={12} md={6}>
-              <Typography variant="h2">Become a Sponsor</Typography>
-              <Typography>
+              <h2>Become a Sponsor</h2>
+              <p>
                 At SoPlugged, our biggest inspiration is supporting one another
                 and growing our community. Our goal is to normalize buying black
                 and we rely on amazing people like you to keep our platform free
                 and accessible to Black-owned businesses across Canada.
-              </Typography>
-              <Typography variant="body2" className={styles.subText}>
+              </p>
+              <p className={styles.subText}>
                 All donations go towards maintaining our platform and supporting
                 Black-owned businesses across Canada.
-              </Typography>
-              <br></br>
+              </p>
               <Link href="/sponsors" passHref>
                 <Button variant="contained" color="secondary">
                   Show your support

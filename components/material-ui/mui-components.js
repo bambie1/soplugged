@@ -21,7 +21,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import List from "@material-ui/core/List";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Typography from "@material-ui/core/Typography";
 import InputLabel from "@material-ui/core/InputLabel";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -165,7 +164,6 @@ export {
   Grid,
   TextField,
   Container,
-  Typography,
   Snackbar,
   Fab,
   Paper,

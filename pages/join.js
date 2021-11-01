@@ -1,6 +1,6 @@
 import React from "react";
 import FirebaseAuth from "../components/FirebaseAuth";
-import { Button, Typography, Container } from "@material/mui-components";
+import { Button, Container } from "@material/mui-components";
 import Link from "next/link";
 import { SEO } from "@components/index";
 import nookies from "nookies";
@@ -26,11 +26,11 @@ const Join = ({ referrer }) => {
               height={60}
             />
           </div>
-          <Typography variant="h1">Join SoPlugged</Typography>
-          <Typography variant="body1">
+          <h1>Join SoPlugged</h1>
+          <p>
             Please verify your identity via one of the following sign-in
             methods:
-          </Typography>
+          </p>
           <div className={styles.firebase_auth_paper}>
             <FirebaseAuth referrer={referrer} />
           </div>

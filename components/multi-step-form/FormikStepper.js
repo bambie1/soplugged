@@ -3,7 +3,6 @@ import {
   makeStyles,
   Button,
   Box,
-  Typography,
   useMediaQuery,
 } from "@material/mui-components";
 import { useTheme } from "@material-ui/core/styles";
@@ -122,9 +121,7 @@ const FormikStepper = ({ children, ...props }) => {
             Back
           </Button>
           {!bigScreen && (
-            <Typography>{`Step ${currentStep + 1} / ${
-              formSteps.length
-            }`}</Typography>
+            <p>{`Step ${currentStep + 1} / ${formSteps.length}`}</p>
           )}
 
           <Button

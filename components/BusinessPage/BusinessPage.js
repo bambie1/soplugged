@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 
 import {
   Grid,
-  Typography,
   Avatar,
   Box,
   Fab,
@@ -63,27 +62,16 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
   };
 
   const renderFullView = () => (
-    <Grid container spacing={3} style={{ marginTop: "30px" }}>
+    <Grid container spacing={3} className={styles.gridContainer}>
       <Grid item xs={12} md={7}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            maxWidth: "700px",
-            margin: "auto",
-          }}
-        >
+        <div className={styles.leftDiv}>
           <ImageGallery items={images} showPlayButton={false} />
 
-          <Typography variant="h6" color="secondary" align="left" gutterBottom>
-            About
-          </Typography>
+          <h3 className="left">About</h3>
           <div
             style={{ textAlign: "left" }}
             dangerouslySetInnerHTML={{ __html: business_description }}
           ></div>
-          <br></br>
         </div>
       </Grid>
       <Grid id="contact" item xs={12} md={5}>
@@ -115,19 +103,11 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
         )}
         {business_description && (
           <>
-            <Typography
-              variant="h6"
-              color="secondary"
-              align="center"
-              gutterBottom
-            >
-              About
-            </Typography>
+            <h3>About</h3>
             <div
               className={styles.description}
               dangerouslySetInnerHTML={{ __html: business_description }}
             ></div>
-            <br></br>
           </>
         )}
       </Box>
@@ -149,37 +129,31 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
   return (
     <div className={styles.root}>
       <BusinessHeader wrap={true}>
-        <Avatar
-          alt="Business Logo"
-          src={logo_url}
-          style={{ margin: "0px 8px" }}
-        >
+        <Avatar alt="Business Logo" src={logo_url} className={styles.avatar}>
           {business_name.toUpperCase().charAt(0)}
         </Avatar>
         <div>
-          <Typography variant="h1" className={styles.businessName}>
-            {business_name.toUpperCase()}
-          </Typography>
+          <h1 className={styles.businessName}>{business_name.toUpperCase()}</h1>
         </div>
       </BusinessHeader>
       <br />
       {!verified && (
         <span className={styles.unverified}>
-          <ErrorOutlineIcon fontSize="small" style={{ height: "0.9rem" }} />
+          <ErrorOutlineIcon fontSize="small" />
           This business hasn't been claimed by it's owner
         </span>
       )}
 
       {category && (
-        <Typography variant="h6" gutterBottom={true}>
-          CATEGORY:{" "}
+        <p className={`noMargin ${styles.category}`}>
+          <b>CATEGORY:</b>{" "}
           <span className={styles.categorySpan} onClick={handleCategoryClick}>
             {category}
           </span>
-        </Typography>
+        </p>
       )}
 
-      <Typography variant="body1">
+      <p>
         {street_address &&
           fixed_to_one_location &&
           `LOCATION: ${street_address}`}
@@ -191,13 +165,13 @@ const BusinessPage = ({ business, user, userLikedBusiness }) => {
             CANADA-WIDE
           </span>
         )}
-      </Typography>
+      </p>
 
       {fullView ? renderFullView() : renderStackedView()}
 
       {!verified && (
         <div className={styles.claimBusiness}>
-          <Typography>Are you the owner of this business?</Typography>
+          <p>Are you the owner of this business?</p>
           <a href="mailto:hello@soplugged.com">
             <Button color="secondary">Let us know</Button>
           </a>

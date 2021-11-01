@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Typography,
   makeStyles,
   Card,
   CardActionArea,
@@ -138,16 +137,8 @@ const FormStepButton = ({ stepInfo, handleClick, active }) => {
         <Card color="inherit" raised={active}>
           <CardActionArea disableRipple={!unlocked || inactive}>
             <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                style={{ fontSize: "1rem" }}
-              >
-                {stepInfo.title}
-              </Typography>
-              <Typography variant="body2" component="p">
-                {stepInfo.text}
-              </Typography>
+              <h6 style={{ fontSize: "1rem" }}>{stepInfo.title}</h6>
+              <span className="noMargin">{stepInfo.text}</span>
             </CardContent>
           </CardActionArea>
         </Card>

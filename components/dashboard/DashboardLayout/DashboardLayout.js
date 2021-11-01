@@ -6,7 +6,6 @@ import {
   Box,
   IconButton,
   Button,
-  Typography,
 } from "@material/mui-components";
 import { DashboardNav } from "@components/index";
 import { FavoriteIcon, AccountCircleIcon, HomeIcon } from "@material/mui-icons";
@@ -18,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "1",
     background: "white",
     display: "flex",
+    textAlign: "center",
 
     [theme.breakpoints.down("sm")]: {
       minHeight: "100vh",
@@ -87,7 +87,7 @@ const DashboardLayout = ({ title, children, position }) => {
                   <IconButton aria-label="home" color="secondary">
                     <HomeIcon />
                   </IconButton>
-                  <Typography>Home</Typography>
+                  <p className="noMargin">Home</p>
                 </a>
               </Link>
               <Link href="/dashboard/favorites">
@@ -95,7 +95,7 @@ const DashboardLayout = ({ title, children, position }) => {
                   <IconButton aria-label="favorites" color="secondary">
                     <FavoriteIcon />
                   </IconButton>
-                  <Typography>Favorites</Typography>
+                  <p className="noMargin">Favorites</p>
                 </a>
               </Link>
               <Link href="/dashboard/profile">
@@ -103,7 +103,7 @@ const DashboardLayout = ({ title, children, position }) => {
                   <IconButton aria-label="profile" color="secondary">
                     <AccountCircleIcon />
                   </IconButton>
-                  <Typography>Profile</Typography>
+                  <p className="noMargin">Profile</p>
                 </a>
               </Link>
             </div>
@@ -113,7 +113,11 @@ const DashboardLayout = ({ title, children, position }) => {
           </Paper>
 
           <div className={classes.mobile}>
-            {children ? <>{children}</> : <p>Loading ...</p>}
+            {children ? (
+              <>{children}</>
+            ) : (
+              <p className="noMargin">Loading ...</p>
+            )}
             <DashboardNav position={position} fixed={true} />
           </div>
           <br></br>

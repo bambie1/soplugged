@@ -1,7 +1,7 @@
 import React from "react";
 import { categoryIcons } from "../../src/categoryIcons";
 import Image from "next/image";
-import { Typography, Button, useMediaQuery } from "@material/mui-components";
+import { Button, useMediaQuery } from "@material/mui-components";
 import { useSearch } from "@contexts/searchContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -23,9 +23,7 @@ const TopCategories = () => {
 
   return (
     <>
-      <Typography align="center" gutterBottom={true} variant="h2">
-        Top Categories
-      </Typography>
+      <h2>Top Categories</h2>
       <div className={styles.top_categories}>
         {categoryIcons.map((icon) => (
           <div
@@ -39,13 +37,7 @@ const TopCategories = () => {
               height={bigScreen ? 50 : 35}
               alt={`${icon.shortText}-icon`}
             />
-            <Typography
-              align="center"
-              className={styles.category_name}
-              variant="body1"
-            >
-              {icon.shortText}
-            </Typography>
+            <p className={styles.category_name}>{icon.shortText}</p>
           </div>
         ))}
       </div>

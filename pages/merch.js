@@ -1,6 +1,6 @@
 import React from "react";
 import displayShopifyCollection from "../src/shopifyStore";
-import { Typography, makeStyles, Box } from "@material/mui-components";
+import { makeStyles, Box } from "@material/mui-components";
 import { SEO } from "@components/index";
 import dynamic from "next/dynamic";
 
@@ -33,13 +33,17 @@ const Merch = () => {
         description="Custom tees, sweatshirts and accessories to spread the word"
         title="SoPlugged Merch"
       />
-      <Box pt={2} display="flex" flexDirection="column" className="page">
-        <Typography variant="h1" align="center" gutterBottom={true}>
-          merch
-        </Typography>
-        <Typography align="center" gutterBottom={true}>
+      <Box
+        pt={2}
+        display="flex"
+        flexDirection="column"
+        className="page"
+        textAlign="center"
+      >
+        <h1>merch</h1>
+        <p className="noMargin">
           Normalize <b>#buyingblack</b>, but make it fashionable
-        </Typography>
+        </p>
         <hr
           style={{ width: "40%", maxWidth: "170px", marginBottom: "40px" }}
         ></hr>

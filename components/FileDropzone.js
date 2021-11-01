@@ -2,7 +2,6 @@ import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   Button,
-  Typography,
   makeStyles,
   Avatar,
   CircularProgress,
@@ -173,12 +172,8 @@ const FileDropzone = () => {
     <>
       <div {...getRootProps({ style })} className={classes.dropZone}>
         <input {...getInputProps()} />
-        <Typography variant="body2">
-          Upload up to 3 images to showcase your services to customers.
-        </Typography>
-        <br></br>
+        <p>Upload up to 3 images to showcase your services to customers.</p>
         <Button
-          // variant="outlined"
           color="secondary"
           startIcon={
             uploading ? <CircularProgress size="1rem" /> : <CloudUploadIcon />
@@ -210,9 +205,7 @@ const FileDropzone = () => {
       )}
       {(fileRejections.length !== 0 || errorMessage) && (
         <aside>
-          <Typography variant="caption" color="error">
-            {errorMessage}
-          </Typography>
+          <p className="error">{errorMessage}</p>
         </aside>
       )}
     </>

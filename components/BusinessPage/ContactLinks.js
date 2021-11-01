@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-import { Typography, Box, IconButton, Tooltip } from "@material/mui-components";
+import { Box, IconButton, Tooltip } from "@material/mui-components";
 import { InstagramIcon, LanguageIcon, CallIcon } from "@material/mui-icons";
 
 const DynamicContact = dynamic(() => import("../ContactForm/ContactForm"));
@@ -15,14 +15,7 @@ const ContactLinks = ({ business, user }) => {
     <>
       {verified && (
         <div className={styles.contact}>
-          <Typography
-            variant="h6"
-            color="secondary"
-            align="center"
-            gutterBottom
-          >
-            Contact
-          </Typography>
+          <h3>Contact</h3>
           <Box display="flex" justifyContent="center" flexWrap="wrap">
             {phone_number && (
               <a href={`tel:${phone_number}`} className={styles.linkButton}>

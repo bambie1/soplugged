@@ -1,17 +1,16 @@
 @import "styles/mixins";
 
 .container {
-  display: flex;
+  display: flex !important;
   min-height: 80vh;
   text-align: center;
   padding-top: 1rem;
   flex-direction: column;
   justify-content: center;
-  line-height: 2rem;
 }
 
 .link {
-  color: $primary;
+  color: $secondary;
   text-decoration: underline;
 }
 

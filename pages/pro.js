@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import {
   Container,
-  Typography,
   Grid,
   CustomTextField,
   Button,
@@ -36,34 +35,32 @@ const ProPage = () => {
       <Container className={styles.page}>
         <Grid container spacing={3} className={styles.hero}>
           <Grid item xs={12} md={6}>
-            <Typography className={styles.comingSoon}>
-              COMING SOON...
-            </Typography>
-            <Typography variant="h1" className={styles.heading}>
+            <p className={styles.comingSoon}>COMING SOON...</p>
+            <h1 className={styles.heading}>
               SoPlugged<sup>PRO</sup>
-            </Typography>
-            <Typography className={styles.tagLine}>
+            </h1>
+            <p className={styles.tagLine}>
               Professional help for your business' digital needs
-            </Typography>
+            </p>
 
             <section className={styles.info}>
-              <Typography gutterBottom>
+              <p>
                 Everything you need to launch and improve your digital presence
                 as a small to medium-sized business.
-              </Typography>
+              </p>
 
-              <Typography>
+              <p>
                 From strategic recommendations to professional services
                 (personalized consultation, web design, and email marketing),
                 our team of experts is ready to work with you and provide all
                 the support you need to grow your business.
-              </Typography>
+              </p>
 
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="body2">
+                <p>
                   If you'd like to know when you can access this feature, add
                   your e-mail address below to get notified
-                </Typography>
+                </p>
                 <br />
                 <Grid container spacing={1} className={styles.formGrid}>
                   <Grid item xs={12} sm={8}>

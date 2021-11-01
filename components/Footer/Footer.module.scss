@@ -11,6 +11,14 @@
   margin-top: auto;
 }
 
+.socialMedia {
+  display: flex;
+  align-items: center;
+  a {
+    margin: 0.5rem;
+  }
+}
+
 .pro {
   background: linear-gradient(
     180deg,

@@ -1,14 +1,8 @@
-import {
-  Typography,
-  Container,
-  Grid,
-  Button,
-  IconButton,
-} from "@material/mui-components";
+import { Container, Grid, Button, IconButton } from "@material/mui-components";
 import { InstagramIcon, LinkedInIcon } from "@material/mui-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "styles/Footer.module.scss";
+import styles from "./Footer.module.scss";
 import SubscribeForm from "../SubscribeForm/SubscribeForm";
 
 const Footer = () => {
@@ -51,14 +45,13 @@ const Footer = () => {
       <Container className={styles.footer_container}>
         <Grid container>
           <Grid item xs={12} sm={6} className={styles.grid}>
-            <a href="mailto:hello@soplugged.com">
-              <Typography>hello@soplugged.com</Typography>
-            </a>
-            <Typography style={{ paddingTop: "8px" }}>Follow Us:</Typography>
-            <div className="social-media">
+            <Button color="secondary" href="mailto:hello@soplugged.com">
+              hello@soplugged.com
+            </Button>
+            <div className={styles.socialMedia}>
+              <span>Follow Us:</span>
               <IconButton
                 aria-label="instagram"
-                edge="start"
                 href="https://www.instagram.com/sopluggd/"
                 target="_blank"
                 rel="noopener"
@@ -118,12 +111,7 @@ const Footer = () => {
             </Link>
           </Grid>
         </Grid>
-        <br></br>
-        <br></br>
-        <Typography variant="body2">
-          Copyright&copy; {new Date().getFullYear()}, SoPlugged
-        </Typography>
-        <br />
+        <p>Copyright&copy; {new Date().getFullYear()}, SoPlugged</p>
         <Button
           href="https://docs.google.com/document/d/1lq7Be0U3GTswo3kCZ2tHvZ20J_eJbqhQX3XiKAjih20/edit?usp=sharing"
           target="_blank"

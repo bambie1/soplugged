@@ -2,7 +2,6 @@ import React from "react";
 import {
   Grid,
   CustomTextField,
-  Typography,
   Button,
   makeStyles,
 } from "@material/mui-components";
@@ -24,9 +23,7 @@ const Profile = ({ user, email, submitHandler }) => {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom={true} align="center">
-        Edit Profile
-      </Typography>
+      <h1>Edit Profile</h1>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={12} className={classes.grid}>
