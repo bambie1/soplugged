@@ -2,26 +2,54 @@
 
 .sectionTitle {
   position: relative;
-  display: flex !important;
-  align-self: center !important;
-  text-align: center !important;
+  display: flex;
+  align-self: center;
+  text-align: center;
+  margin-top: 2rem;
 
   &:before {
     content: "";
-    border-bottom: 6px solid $secondary;
+    border-bottom: 6px solid #4e3505;
     position: absolute;
     bottom: -1rem;
     height: 5px;
-    width: 6rem;
+    width: calc(100% - 2rem);
     margin: 2em auto 0;
-    left: 25%;
+    left: 1rem;
   }
 }
 
+.pageSection {
+  margin-bottom: 5rem;
+  margin-top: 1rem;
+}
+
 .features {
-  max-width: 750px;
+  max-width: 1200px;
   margin: auto;
   margin-top: 3rem;
+  text-align: center;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    width: 90%;
+    margin-inline: auto;
+  }
+}
+
+.featureIcon {
+  font-size: 3.5rem;
+  color: $secondary;
+}
+
+.stepArticle {
+  display: flex;
+  margin-block: 2rem;
 }
 // Coming soon
 .page {
