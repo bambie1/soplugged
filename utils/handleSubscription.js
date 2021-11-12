@@ -18,7 +18,6 @@ export const handleSubscription = async (data, subscription_type) => {
     if (!res.ok) {
       throw new Error("HTTP status " + res.status);
     } else {
-      // console.log({ res });
       return { status: "sent" };
     }
   } catch (error) {
