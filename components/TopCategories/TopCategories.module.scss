@@ -1,0 +1,29 @@
+.wrapper {
+  text-align: center;
+  margin-block: 3rem;
+}
+
+.iconsList {
+  display: flex;
+  flex-wrap: wrap;
+  // border: 1px solid;
+  justify-content: center;
+  margin-block: 1.5rem;
+}
+
+.categoryWrapper {
+  width: 75px;
+  cursor: pointer;
+  margin: 8px;
+  display: flex;
+  // opacity: 0.7;
+  transition: 0.3s linear;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  // border: 1px solid;
+
+  .categoryName {
+    margin-top: 0.5rem;
+  }
+}

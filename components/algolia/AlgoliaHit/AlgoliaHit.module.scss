@@ -1,0 +1,66 @@
+@import "styles/_mixins";
+
+.hitWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  transition: border 0.1s ease-in-out;
+  transition: box-shadow 0.3s;
+  border-radius: 10px;
+  box-shadow: #000 1px 1px 5px -1px;
+  height: 100%;
+
+  &:hover {
+    box-shadow: #000 1px 1px 18px -10px;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.businessName {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.businessCategory {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.businessLocation {
+  margin-bottom: 0;
+  margin-top: auto;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.businessDescription {
+  @include mobile_only() {
+    display: none;
+  }
+}
+
+.hit_footer {
+  display: flex;
+  justify-content: space-between;
+
+  .canada_wide {
+    font-weight: bold;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+  }
+}

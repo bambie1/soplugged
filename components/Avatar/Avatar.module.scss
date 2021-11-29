@@ -1,0 +1,14 @@
+@import "styles/_mixins";
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $lightSecondary;
+  color: $secondary;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}

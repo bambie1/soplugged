@@ -1,0 +1,28 @@
+@import "styles/_mixins";
+
+.pageSection {
+  text-align: center;
+  @include desktop {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.5rem;
+    align-items: center;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 0.5rem;
+  max-width: 500px;
+  margin: auto;
+
+  @include desktop {
+    margin: inherit;
+  }
+
+  button {
+    max-height: 1rem;
+  }
+}

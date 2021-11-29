@@ -1,0 +1,52 @@
+@import "styles/_mixins";
+
+.navLinks {
+  display: flex;
+}
+
+.navLink {
+  margin-inline: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+  border-radius: 8px;
+
+  &.active {
+    background-color: rgba(78, 53, 5, 0.04);
+  }
+}
+
+.loading {
+  width: 10ch;
+  height: 44px;
+  background-color: $lightSecondary;
+  border-radius: 8px;
+}
+
+.iconButton {
+  height: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $secondary;
+  border-radius: 8px;
+
+  &:hover,
+  &:active {
+    background-color: rgba(78, 53, 5, 0.04);
+  }
+
+  &:focus-visible {
+    outline: auto;
+  }
+}
+
+.mobileMenu {
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+  background: transparent;
+  backdrop-filter: blur(18px);
+  z-index: 10;
+}

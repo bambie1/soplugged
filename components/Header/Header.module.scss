@@ -1,0 +1,36 @@
+@import "styles/mixins";
+
+.headerWrapper {
+  position: fixed;
+  // background-color: transparent;
+  top: 0;
+  z-index: 1;
+  padding: 0.5rem;
+  z-index: 10;
+  width: 100vw;
+  backdrop-filter: blur(30px);
+
+  &.transparent {
+    background-color: #ffffff66;
+  }
+
+  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    background-color: rgba(255, 255, 255, 0.95);
+
+    &.brown {
+      background-color: rgb(205, 182, 147, 0.9);
+    }
+    &.blue {
+      background-color: rgb(147, 170, 205, 0.9);
+    }
+    &.transparent {
+      background-color: transparent;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+@import "styles/_mixins";
+
+.subscribeForm {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 960px;
+  margin-inline: auto;
+  width: 100%;
+
+  @include mobile_xl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}
+
+.wrapper {
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}

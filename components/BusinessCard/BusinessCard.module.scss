@@ -1,37 +1,52 @@
-@import "styles/mixins";
+@import "styles/_mixins";
 
 .root {
-  flex: 1;
-  width: 100%;
-  border: 1px solid #f9f9f9;
-  height: 100%;
-  display: flex;
-  padding: 8px;
-  background: #f9f9f9;
-  box-shadow: 2px 2px 6px #888888;
+  display: inline-grid;
   text-align: center;
-  transition: background 0.5s;
-  border-radius: 5px;
   flex-direction: column;
+  box-shadow: 0 2px 7px 0 rgb(78 56 10 / 39%);
+  width: clamp(10rem, 90%, 22rem);
+  margin-inline: auto;
+  align-items: center;
+  justify-items: center;
+
+  padding: 1rem 0.5rem;
+  transition: box-shadow 0.3s;
+  border-radius: 10px;
 
   &:hover {
-    background: white;
-    border-color: $primary;
-    transition: border-color 0.5s;
+    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
   }
 }
 
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .businessName {
-  margin-left: 8px !important;
+  font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 0.125rem;
+  margin-bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .category {
+  font-weight: bold;
+  font-size: 0.9rem;
   margin-block: 0.5rem;
-  color: gray;
-  font-weight: initial;
-  font-style: italic;
+}
+
+.businessDescription {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 90%;
+  text-overflow: ellipsis;
+  margin-block: 1rem;
 }
 
 .canadaWide {
@@ -41,4 +56,5 @@
   align-items: center;
   justify-content: center;
   margin-block: 0;
+  color: grey;
 }

@@ -1,0 +1,47 @@
+@import "styles/_mixins";
+
+.bgLeft {
+  @include mobile_only() {
+    display: none;
+  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: clamp(100vh, 100%, 100%);
+  background: #f9f6f1;
+  width: 45%;
+  z-index: -1;
+}
+
+.pageWrapper {
+  position: relative;
+  padding-top: 5rem;
+}
+
+.grid {
+  padding-bottom: 2rem;
+  @include tablet() {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    column-gap: 2rem;
+    padding-top: 5rem;
+    align-items: center;
+    height: 500px;
+  }
+}
+
+.stepInfo {
+  @include mobile_only() {
+    display: none;
+  }
+}
+
+.prevButton {
+  cursor: pointer;
+  display: inline-grid;
+
+  &.disabled {
+    cursor: not-allowed;
+    color: lightgrey;
+  }
+}

@@ -1,0 +1,41 @@
+@import "styles/_mixins";
+
+.grid {
+  display: grid;
+  row-gap: 4rem;
+  margin-top: 2rem;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "info insights"
+      "plugs plugs";
+  }
+}
+
+.plugs {
+  @include tablet {
+    grid-area: plugs;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.sectionTitle {
+  color: grey;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.plug {
+  font-size: 3rem;
+  font-weight: bold;
+  color: $secondary;
+  margin-block: 0.5rem;
+}

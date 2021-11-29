@@ -1,0 +1,17 @@
+.page {
+  position: relative;
+  min-height: 40rem;
+  padding-top: 5rem;
+  margin-bottom: 5rem;
+
+  &.withHero {
+    padding-top: 0;
+  }
+
+  &.center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}

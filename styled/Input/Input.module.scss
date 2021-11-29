@@ -1,0 +1,46 @@
+@import "styles/_mixins";
+
+.input {
+  font-size: 16px;
+  font-family: inherit;
+  background-color: $offWhite;
+  border: 1.5px solid $secondary;
+  border-radius: 12px;
+  transition: 180ms box-shadow ease-in-out;
+
+  width: 100%;
+  padding: 16px;
+}
+
+// .input:not(textarea) {
+//   line-height: 1;
+//   height: 2.25rem;
+// }
+
+.input[readonly] {
+  border-style: dotted;
+  cursor: not-allowed;
+  color: #777;
+}
+
+.input[disabled] {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.input:focus {
+  border-color: $secondary;
+  box-shadow: 0 0 0 3px $lightSecondary;
+  outline: 3px solid transparent;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left !important;
+}
+
+.label {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}

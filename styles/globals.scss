@@ -1,0 +1,191 @@
+@import "styles/mixins";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: $secondary;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+::selection {
+  color: var(--dark);
+  background: var(--light);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+button {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+fieldset {
+  border: none;
+  outline: none;
+}
+
+input[type="file"] {
+  font-size: 0.9em;
+  padding-top: 0.35rem;
+}
+textarea.input {
+  resize: vertical;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// app.tsx
+.layout-div {
+  min-height: 100vh;
+  display: grid;
+}
+
+// utility classes
+
+.container {
+  width: 100%;
+  display: block;
+  margin-inline: auto;
+  padding-inline: 16px;
+  max-width: 1280px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.marginless {
+  margin: 0;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mobileOnly {
+  @include tablet {
+    display: none !important;
+  }
+}
+.hideOnMobile {
+  display: none !important;
+
+  @include tablet {
+    display: block !important;
+  }
+}
+
+// html elements
+
+.button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: $secondary;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.25em 0.75em;
+  text-align: center;
+
+  height: 2.81rem;
+  line-height: 2.8rem;
+  transition: 220ms all ease-in-out;
+
+  &.text {
+    position: relative;
+
+    &:hover,
+    &:active {
+      background-color: rgba(78, 53, 5, 0.04);
+    }
+  }
+
+  &.filled {
+    min-width: 10ch;
+    min-height: 44px;
+    background-color: $secondary;
+    color: #fff;
+
+    background-color: rgb(78 53 5);
+    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgb(78 56 10 / 23%);
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &.outlined {
+    border: 1px solid $secondary;
+    color: $secondary;
+
+    &:hover {
+      background-color: $lightGrey;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

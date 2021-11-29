@@ -1,0 +1,14 @@
+@import "styles/_mixins";
+
+.paper {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+
+  span,
+  p {
+    margin-inline: auto;
+  }
+}

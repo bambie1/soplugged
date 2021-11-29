@@ -1,0 +1,74 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery {
+  margin-bottom: 2.5rem;
+}
+
+.image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
+  display: flex;
+}
+
+.image-gallery-slides {
+  display: flex;
+}
+
+.image-gallery-slide .image-gallery-image {
+  object-fit: cover;
+}
+
+.image-gallery-slide div {
+  width: 100%;
+}
+
+.image-gallery-content.bottom
+  .image-gallery-swipe
+  .image-gallery-slide
+  div
+  .image-gallery-image {
+  object-fit: cover;
+  border-radius: 15px;
+}
+.image-gallery-content.bottom.fullscreen
+  .image-gallery-swipe
+  .image-gallery-slide
+  div
+  .image-gallery-image {
+  max-height: calc(100vh - 80px);
+  object-fit: contain;
+}
+.image-gallery-icon:hover {
+  color: var(--dark);
+}
+.image-gallery-icon:focus {
+  outline: 2px solid var(--dark);
+}
+.image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+.image-gallery-content.bottom.fullscreen .image-gallery-slide-wrapper.bottom {
+  max-height: 100%;
+}
+.image-gallery-thumbnails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  vertical-align: middle;
+  width: auto;
+  max-height: 30px;
+  line-height: 0;
+}
+.image-gallery-swipe {
+  background: #e0e0e0;
+  width: 100%;
+}
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:hover,
+.image-gallery-thumbnail:focus {
+  border-color: var(--dark);
+}

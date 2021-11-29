@@ -1,0 +1,51 @@
+@import "styles/_mixins";
+
+.form {
+  // max-width: 550px;
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: 1.5rem;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  opacity: 0;
+  position: absolute;
+
+  &:checked ~ .categoryImage {
+    background: $primary;
+    border-color: $secondary;
+  }
+}
+
+.categoryImage {
+  border: 1px solid #cdb693;
+  cursor: pointer;
+  margin: 0.25rem;
+  padding: 0.25rem;
+  width: 10rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  span {
+    flex-shrink: 0;
+  }
+
+  p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.suggestions {
+  display: block;
+}

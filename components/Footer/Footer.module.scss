@@ -1,62 +1,44 @@
-@import "styles/mixins";
+@import "styles/_mixins";
 
 .footer {
-  padding: 16px 0px 8px 0px;
+  padding: 8rem 0px 8px;
   position: relative;
-  min-height: 5vh;
+  min-height: 20rem;
   text-align: center;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, $primary 100%);
+  background: linear-gradient(180deg, white 0%, $primary 100%);
   width: 100%;
   margin-top: auto;
 }
 
-.socialMedia {
+.container {
+  display: grid;
+  gap: 3rem;
+}
+
+.linksGrid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.guidelines {
   display: flex;
-  align-items: center;
-  a {
-    margin: 0.5rem;
-  }
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.pro {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    $tertiary 100%
-  );
-}
-
-.footer_container {
-  margin: 16px auto 0px;
-}
-.footer_links_div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  a {
-    margin-bottom: 0.5rem;
-  }
-}
-
-.proSection {
-  margin-top: 7rem;
-
-  a {
-    padding-inline: 0.5rem;
-  }
-}
-
-.grid {
-  display: flex;
-  flex-direction: column;
-
-  * {
-    align-self: center;
-  }
-}
-
+// shape divider
 .shape_divider_container {
   position: absolute;
   top: 0;

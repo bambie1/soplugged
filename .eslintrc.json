@@ -1,0 +1,27 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-debugger": 0,
+    "no-alert": 1,
+    "no-await-in-loop": 1,
+    "consistent-return": 0,
+    "global-require": 0,
+    "import/imports-first": 1,
+    "import/no-extraneous-dependencies": 1,
+    "import/no-unresolved": 1,
+    "max-len": [2, 250],
+    "no-console": 1,
+    "no-param-reassign": ["error", { "props": true }],
+    "no-return-assign": 1,
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": 0,
+    "no-useless-escape": 0,
+    "object-shorthand": 1,
+    "prefer-rest-params": 0,
+    "react/require-extension": 0,
+    "spaced-comment": 0,
+    "strict": 1,
+    "no-else-return": 0,
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
+  }
+}
