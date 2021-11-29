@@ -38,7 +38,7 @@ const HomePage = () => {
                 communication.
               </p>
               <ButtonLink variant="filled" href="/search">
-                Register
+                Search
               </ButtonLink>
             </aside>
             <aside>

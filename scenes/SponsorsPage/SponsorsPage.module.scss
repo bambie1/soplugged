@@ -6,7 +6,7 @@
   max-width: 900px;
   margin-inline: auto;
   grid-template-rows: auto;
-  row-gap: 0.5rem;
+  gap: 1rem;
   text-align: center;
 
   @include mobile_only {
@@ -22,6 +22,5 @@
 
   @include tablet {
     grid-template-columns: 1fr 1fr;
-    column-gap: 0.5rem;
   }
 }

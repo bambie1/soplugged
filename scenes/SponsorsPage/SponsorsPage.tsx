@@ -17,8 +17,8 @@ const SponsorsPage = () => {
         description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
       />
       <Header />
-      <PageWrapper>
-        <h1 className="center">sponsors</h1>
+      <PageWrapper center>
+        <h1>sponsors</h1>
         <section className={styles.section}>
           <aside>
             <p>
