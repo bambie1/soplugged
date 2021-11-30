@@ -67,9 +67,8 @@
 }
 
 .content {
-  padding: 1rem;
-
   @include tablet {
+    padding: 1rem;
     margin-left: 5rem;
   }
 }

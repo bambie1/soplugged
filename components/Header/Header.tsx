@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Dialog } from "@reach/dialog";
 
 import styles from "./Header.module.scss";
 import { NavLinks } from "../NavLinks";
@@ -9,6 +10,10 @@ interface Props {
 }
 
 const Header: FC<Props> = ({ color }) => {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const toggleMenu = () => setOpenMenu(!openMenu);
+
   const wrapperStyles = () => {
     let colorStyle = "";
 
@@ -16,7 +21,9 @@ const Header: FC<Props> = ({ color }) => {
     else if (color === "brown") colorStyle = styles.brown;
     else if (color === "transparent") colorStyle = styles.transparent;
 
-    return `${styles.headerWrapper} ${colorStyle}`;
+    return `${styles.headerWrapper} ${colorStyle} ${
+      openMenu ? styles.withModal : ""
+    }`;
   };
 
   return (
@@ -33,7 +40,19 @@ const Header: FC<Props> = ({ color }) => {
           </a>
         </Link>
 
-        <NavLinks />
+        <div className="hideOnMobile">
+          <NavLinks />
+        </div>
+
+        <button className={`button ${styles.menuBtn}`} onClick={toggleMenu}>
+          <div className={`${styles.burger} ${openMenu && styles.open}`}></div>
+        </button>
+
+        {openMenu && (
+          <Dialog aria-label="Mobile menu" className={styles.mobileMenu}>
+            <NavLinks />
+          </Dialog>
+        )}
       </header>
     </div>
   );

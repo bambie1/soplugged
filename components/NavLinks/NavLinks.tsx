@@ -18,19 +18,6 @@ const openNavLinks = [
 const NavLinks: FC = () => {
   const { user, loading, signOutUser } = useAuth();
   const router = useRouter();
-  const [openMenu, setOpenMenu] = useState(false);
-
-  const toggleMenu = () => setOpenMenu(!openMenu);
-
-  if (openMenu)
-    return (
-      <Dialog aria-label="Mobile menu" className={styles.mobileMenu}>
-        <NavLinks />
-        <button className="mobileOnly" onClick={toggleMenu}>
-          Close
-        </button>
-      </Dialog>
-    );
 
   const renderAuthButton = () => {
     if (loading) return <div className={styles.loading} />;
@@ -69,8 +56,8 @@ const NavLinks: FC = () => {
   };
 
   return (
-    <div>
-      <nav className="hideOnMobile">
+    <>
+      <nav>
         <ul className={styles.navLinks}>
           {openNavLinks.map(({ id, text, link }) => (
             <li key={id} className={buildStyles(link)}>
@@ -80,10 +67,7 @@ const NavLinks: FC = () => {
           {renderAuthButton()}
         </ul>
       </nav>
-      <button className="button mobileOnly" title="Menu" onClick={toggleMenu}>
-        <FontAwesomeIcon icon={faBars} />
-      </button>
-    </div>
+    </>
   );
 };
 

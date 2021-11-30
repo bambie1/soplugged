@@ -2,6 +2,13 @@
 
 .navLinks {
   display: flex;
+
+  @include mobile_only {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    font-size: 1.25em;
+  }
 }
 
 .navLink {
@@ -40,13 +47,4 @@
   &:focus-visible {
     outline: auto;
   }
-}
-
-.mobileMenu {
-  height: 100vh;
-  margin: 0;
-  width: 100vw;
-  background: transparent;
-  backdrop-filter: blur(18px);
-  z-index: 10;
 }

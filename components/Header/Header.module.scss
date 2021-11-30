@@ -26,6 +26,10 @@
     &.transparent {
       background-color: transparent;
     }
+
+    &.withModal {
+      background-color: transparent !important;
+    }
   }
 }
 
@@ -33,4 +37,79 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.mobileMenu {
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+  background: #ffffffc7;
+  backdrop-filter: blur(20px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    background: #fff;
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+@mixin burgerLine {
+  width: 1.5rem;
+  height: 0.1rem;
+  background: $secondary;
+  border-radius: 1rem;
+}
+
+.menuBtn {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+  .burger {
+    @include burgerLine();
+    width: 0.75rem;
+    transition: all 0.5s ease-in-out;
+
+    &.open {
+      transform: translateX(-1rem);
+      background: transparent;
+      width: 0.5rem;
+    }
+  }
+
+  .burger::before,
+  .burger::after {
+    content: "";
+    position: absolute;
+    @include burgerLine();
+  }
+
+  .burger::before {
+    transform: translate(-0.75rem, -0.5rem);
+  }
+  .burger::after {
+    transform: translate(-0.75rem, 0.5rem);
+  }
+
+  .burger.open::before {
+    transform: rotate(-45deg) translate(0.25rem, 0.25rem);
+  }
+  .burger.open::after {
+    transform: rotate(45deg) translate(0.25rem, -0.25rem);
+  }
+
+  @media (min-width: 48rem) {
+    display: none;
+  }
 }

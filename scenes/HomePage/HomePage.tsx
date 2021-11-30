@@ -25,7 +25,7 @@ const HomePage = () => {
       <Header color="brown" />
       <Hero />
       <PageWrapper hasHero>
-        <div className="container flex-column">
+        <div className="flex-column">
           <section className={`${styles.pageSection} ${styles.reverse}`}>
             <aside>
               <h2>Want to #BuyBlack?</h2>

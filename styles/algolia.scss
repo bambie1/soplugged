@@ -41,6 +41,9 @@
   box-shadow: none;
   transition: border-color 0.2s ease-in-out;
 }
+.ais-SearchBox-submit {
+  z-index: 0;
+}
 .ais-SearchBox-input:hover {
   border-color: var(--dark);
 }
