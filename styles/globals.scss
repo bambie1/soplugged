@@ -26,10 +26,6 @@ h6 {
 
 h1 {
   font-size: 2.6rem;
-
-  // @include large_tablet_down {
-  //   font-size: 2.1rem;
-  // }
 }
 
 ::selection {
@@ -135,6 +131,9 @@ ul {
   }
 }
 
+[data-reach-dialog-overlay] {
+  z-index: 5;
+}
 // html elements
 
 .button {

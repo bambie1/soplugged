@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
+import ReactImageGallery from "react-image-gallery";
 
 import { Button } from "@/styled/Button";
 import { PageWrapper } from "@/components/PageWrapper";
@@ -13,7 +14,6 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
 
-const ImageGallery = dynamic(() => import("react-image-gallery"));
 const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
   () => import("../../components/FavoriteButton/FavoriteButton")
@@ -52,7 +52,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const renderFullView = () => (
     <section className={styles.fullView}>
       <aside className={styles.infoBlock}>
-        <ImageGallery items={images} showPlayButton={false} />
+        <ReactImageGallery items={images} showPlayButton={false} />
 
         <div>
           <h3>About</h3>
@@ -76,7 +76,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const renderStackedView = () => (
     <>
       <div className={styles.stackedView}>
-        {hasPreview && <ImageGallery items={images} showPlayButton={false} />}
+        {hasPreview && (
+          <ReactImageGallery items={images} showPlayButton={false} />
+        )}
         {business_description && (
           <div>
             <h3>About</h3>
