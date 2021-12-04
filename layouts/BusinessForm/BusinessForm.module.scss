@@ -1,47 +1,100 @@
 @import "styles/_mixins";
 
-.bgLeft {
-  @include mobile_only() {
-    display: none;
-  }
+.background {
   position: absolute;
-  left: 0;
-  top: 0;
-  height: clamp(100vh, 100%, 100%);
-  background: #f9f6f1;
-  width: 45%;
+  height: 100%;
+  width: 50%;
+  background: rgb(205, 182, 147);
+  background: linear-gradient(
+    180deg,
+    rgba(205, 182, 147, 1) 0%,
+    rgba(147, 170, 205, 1) 100%
+  );
   z-index: -1;
 }
 
-.pageWrapper {
-  position: relative;
-  padding-top: 5rem;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "blank content";
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
-.grid {
-  padding-bottom: 2rem;
-  @include tablet() {
-    display: grid;
-    grid-template-columns: 0.8fr 1fr;
-    column-gap: 2rem;
-    padding-top: 5rem;
-    align-items: center;
-    height: 500px;
+.container {
+  position: relative;
+  height: 100vh;
+  grid-area: content;
+
+  @include mobile_only {
+    height: calc(100% - 2rem);
+    overflow-y: auto;
   }
 }
 
 .stepInfo {
-  @include mobile_only() {
-    display: none;
+  @include mobile_only {
+    text-align: center;
+    padding: 5rem 1rem;
+    background: rgb(205, 182, 147);
+    background: linear-gradient(
+      180deg,
+      rgba(205, 182, 147, 1) 0%,
+      rgba(147, 170, 205, 1) 100%
+    );
+  }
+
+  @include tablet {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    * {
+      max-width: 40%;
+    }
   }
 }
 
-.prevButton {
-  cursor: pointer;
-  display: inline-grid;
+.content {
+  overflow-y: auto;
+  padding-top: 7rem;
+  height: calc(100% - 4rem);
+}
 
-  &.disabled {
-    cursor: not-allowed;
-    color: lightgrey;
+.mobileWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.mobileContent {
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+
+  padding: 2rem 0.5rem;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  // border-top: 1px solid $secondary;
+  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+
+  background-color: white;
+
+  @include mobile_only {
+    position: fixed;
   }
 }

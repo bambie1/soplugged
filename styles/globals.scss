@@ -63,6 +63,10 @@ input[type="file"] {
 textarea.input {
   resize: vertical;
 }
+label {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
 
 ul {
   list-style: none;
@@ -91,7 +95,7 @@ ul {
   display: flex;
 }
 
-.flex-column {
+.column {
   display: flex;
   flex-direction: column;
 }
@@ -133,6 +137,7 @@ ul {
 
 [data-reach-dialog-overlay] {
   z-index: 5;
+  display: flex;
 }
 // html elements
 
@@ -152,6 +157,11 @@ ul {
   height: 2.81rem;
   line-height: 2.8rem;
   transition: 220ms all ease-in-out;
+
+  &.withIcon {
+    display: flex;
+    gap: 0.5rem;
+  }
 
   &.text {
     position: relative;

@@ -6,9 +6,16 @@ type Props = {
 } & React.ComponentProps<"button">;
 
 const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ children, ...props }, ref: any) => {
+  ({ variant, children, ...props }, ref: any) => {
+    const buttonStyles = () => {
+      if (variant === "text") return "button ";
+      if (variant === "outlined") return "button outlined";
+
+      return "button filled";
+    };
+
     return (
-      <button className="button filled" {...props}>
+      <button className={buttonStyles()} {...props}>
         {children}
       </button>
     );

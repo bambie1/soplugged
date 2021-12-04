@@ -31,8 +31,13 @@
   position: relative;
   display: grid;
   grid-template-columns: auto 400px;
-  column-gap: 5rem;
+  column-gap: 3rem;
   margin-top: 3rem;
+
+  .buttonGroup {
+    display: grid;
+    gap: 1rem;
+  }
 }
 
 .infoBlock {
@@ -71,8 +76,25 @@
   justify-items: center;
   gap: 2rem;
   margin-top: 2rem;
+
+  .buttonGroup {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 }
 
 .backToSearch {
   margin-top: 4rem;
+}
+
+.unverified {
+  color: grey;
+  gap: 0.5rem;
+}
+
+.claimBusiness {
+  margin-top: 3rem;
+  padding: 1rem;
+  background: #80808021;
 }

@@ -7,15 +7,18 @@ import styles from "./Header.module.scss";
 import { NavLinks } from "../NavLinks";
 interface Props {
   color?: "brown" | "blue" | "transparent";
+  hideLinks?: boolean;
 }
 
-const Header: FC<Props> = ({ color }) => {
+const Header: FC<Props> = ({ color, hideLinks }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const toggleMenu = () => setOpenMenu(!openMenu);
 
   const wrapperStyles = () => {
     let colorStyle = "";
+
+    if (hideLinks) return `${styles.headerWrapper} ${styles.hideLinks}`;
 
     if (color === "blue") colorStyle = styles.blue;
     else if (color === "brown") colorStyle = styles.brown;
@@ -40,19 +43,23 @@ const Header: FC<Props> = ({ color }) => {
           </a>
         </Link>
 
-        <div className="hideOnMobile">
-          <NavLinks />
-        </div>
+        {!hideLinks && (
+          <div className="hideOnMobile">
+            <NavLinks />
+          </div>
+        )}
 
         <button className={`button ${styles.menuBtn}`} onClick={toggleMenu}>
           <div className={`${styles.burger} ${openMenu && styles.open}`}></div>
         </button>
 
-        {openMenu && (
-          <Dialog aria-label="Mobile menu" className={styles.mobileMenu}>
-            <NavLinks />
-          </Dialog>
-        )}
+        <Dialog
+          isOpen={openMenu}
+          aria-label="Mobile menu"
+          className={styles.mobileMenu}
+        >
+          <NavLinks />
+        </Dialog>
       </header>
     </div>
   );

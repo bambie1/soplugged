@@ -33,8 +33,7 @@ export const editDBUser = async (user: IUser, token: string) => {
 
 export const addDBUser = async (user: IUser, token: string) => {
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/users`;
-  await updateDBUser(fetchUrl, "POST", user, token);
-  return getDBUser(token);
+  return updateDBUser(fetchUrl, "POST", user, token);
 };
 
 export const getDBUser = async (fbUser: any) => {
@@ -51,11 +50,12 @@ export const getDBUser = async (fbUser: any) => {
       },
     });
     if (!res.ok) throw new Error("HTTP status " + res.status);
+
     let dbUser = await res.json();
 
-    if (!dbUser)
-      dbUser = addDBUser({ email: fbUser.email, full_name: "" }, token);
-    return dbUser;
+    if (!dbUser) await addDBUser({ email: fbUser.email, full_name: "" }, token);
+
+    return dbUser || { email: fbUser.email, full_name: "" };
   } catch (error) {
     return null;
   }

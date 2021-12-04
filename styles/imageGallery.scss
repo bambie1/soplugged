@@ -1,6 +1,7 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 .image-gallery {
+  width: clamp(300px, 100%, 750px);
   margin-bottom: 2.5rem;
 }
 

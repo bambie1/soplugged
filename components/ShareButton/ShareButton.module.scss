@@ -1,0 +1,42 @@
+@import "styles/_mixins";
+
+.dialog {
+  width: clamp(50vw, 90%, 700px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+
+  div {
+    width: clamp(300px, 90%, 500px);
+  }
+}
+
+.iconButton {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $secondary;
+
+  &.close {
+    align-self: flex-end;
+  }
+
+  &.copy {
+    align-self: center;
+  }
+
+  &:hover,
+  &:active {
+    background-color: rgba(78, 53, 5, 0.04);
+  }
+
+  &:focus-visible {
+    outline: auto;
+  }
+}

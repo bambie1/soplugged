@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 
-import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
+import { BusinessForm } from "layouts/BusinessForm";
 
 import { updateAction } from "./littleStateMachine/updateAction";
 
@@ -46,22 +46,31 @@ const StepThreePage = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <ReactQuill
-          placeholder="Enter a description for your business (the more, the better)"
-          value={editorContent}
-          onChange={onEditorStateChange}
-          modules={{
-            clipboard: {
-              matchVisual: false,
-            },
-            toolbar: toolbarOptions,
-          }}
-        />
-        <Input label="Business Url" {...register("business_url")} />
-        <Input label="IG Handle" {...register("ig_handle")} />
-        <Input label="Phone number" {...register("phone_number")} />
-        <Button type="submit">Next</Button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <BusinessForm>
+          <section className={styles.form}>
+            <div className="quillFormGroup">
+              <label htmlFor="business_description" className="label">
+                Business Description
+              </label>
+              <ReactQuill
+                placeholder="Enter a description for your business (the more, the better)"
+                value={editorContent}
+                onChange={onEditorStateChange}
+                id="business_description"
+                modules={{
+                  clipboard: {
+                    matchVisual: false,
+                  },
+                  toolbar: toolbarOptions,
+                }}
+              />
+            </div>
+            <Input label="Business Url" {...register("business_url")} />
+            <Input label="IG Handle" {...register("ig_handle")} />
+            <Input label="Phone number" {...register("phone_number")} />
+          </section>
+        </BusinessForm>
       </form>
     </>
   );

@@ -13,11 +13,14 @@
   min-height: 150px;
   max-height: 300px;
   font-family: "Raleway";
-  padding: 0.5rem !important;
+  font-size: 1rem;
+  padding: 1rem !important;
+  background-color: $offWhite;
 }
 .ql-snow {
   border-color: $secondary !important;
-  border-radius: 4px !important;
+  border-radius: 10px !important;
+  border-width: 1.5px !important;
 
   &.ql-toolbar {
     border-bottom-left-radius: 0 !important;
@@ -27,5 +30,15 @@
   &.ql-container {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+  }
+}
+
+// manual classes
+.quillFormGroup {
+  display: grid;
+  gap: 0.25rem;
+
+  .label {
+    font-size: 0.8rem;
   }
 }

@@ -1,31 +1,32 @@
 import { getDBUser } from "@/utils/dbUser";
+import { parseCookies } from "nookies";
 
-export const addFavorite = async (business_id: any, user: any) => {
+export const addFavorite = async (business_id: number, user: any) => {
   try {
-    let token = await user.getIdToken();
-    let dbUser = await getDBUser(user);
+    const { token } = parseCookies();
+    const dbUser = await getDBUser(user);
 
-    console.log({ dbUser });
-    if (dbUser) {
-      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
-      const res = await fetch(fetchUrl, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Firebase-Token": token,
-        },
-        body: JSON.stringify({
-          business_id,
-        }),
-      });
+    if (!dbUser) throw new Error("No db user");
 
-      if (!res.ok) {
-        throw new Error("HTTP status " + res.status);
-      }
-      return res;
+    const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
+    const res = await fetch(fetchUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Firebase-Token": token,
+      },
+      body: JSON.stringify({
+        business_id,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("HTTP status " + res.status);
     }
+    return res;
   } catch (error) {
+    console.log({ error });
     return { error };
   }
 };

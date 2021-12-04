@@ -2,6 +2,12 @@ import dynamic from "next/dynamic";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 import ReactImageGallery from "react-image-gallery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInfoCircle,
+  faMapMarkerAlt,
+  faShapes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/styled/Button";
 import { PageWrapper } from "@/components/PageWrapper";
@@ -11,8 +17,8 @@ import styles from "./BusinessPage.module.scss";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
 import { ButtonLink } from "@/styled/ButtonLink";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
+import { IBusiness } from "@/types/Business";
+import { ShareButton } from "@/components/ShareButton";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
@@ -23,7 +29,7 @@ const ContactForm = dynamic(
 );
 
 interface Props {
-  business: any;
+  business: IBusiness;
 }
 
 const BusinessPage: FC<Props> = ({ business }) => {
@@ -37,7 +43,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
     category,
     business_description,
     fixed_to_one_location,
-    street_address,
     verified,
   } = business;
 
@@ -67,7 +72,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
             <h3 className="center">Contact</h3>
             <ContactForm />
           </div>
-          <FavoriteButton businessId={id} />
+          <div className={styles.buttonGroup}>
+            <FavoriteButton businessId={id} />
+            <ShareButton />
+          </div>
         </div>
       </aside>
     </section>
@@ -90,7 +98,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
         )}
         {verified && (
           <>
-            <FavoriteButton businessId={id} />
+            <div className={styles.buttonGroup}>
+              <FavoriteButton businessId={id} />
+              <ShareButton />
+            </div>
             <div className={styles.contactForm}>
               <h3>Contact</h3>
               <ContactForm />
@@ -117,9 +128,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
             </h1>
           </div>
           {!verified && (
-            <p className={styles.unverified}>
+            <div className={`flex-center ${styles.unverified}`}>
+              <FontAwesomeIcon icon={faInfoCircle} />
               This business hasn't been claimed by it's owner
-            </p>
+            </div>
           )}
 
           <div className={styles.info}>

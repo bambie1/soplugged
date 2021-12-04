@@ -1,15 +1,19 @@
 @import "styles/_mixins";
 
 .form {
-  // max-width: 550px;
   display: grid;
-  grid-template-rows: auto;
-  row-gap: 1.5rem;
+  row-gap: 0.75rem;
+  width: clamp(200px, 90%, 500px);
+  margin: auto;
+  max-height: 100%;
 }
 
 .categories {
   display: flex;
   flex-wrap: wrap;
+  padding: 0.5rem;
+  justify-content: center;
+  max-height: 100%;
 }
 
 .input {
@@ -18,16 +22,16 @@
 
   &:checked ~ .categoryImage {
     background: $primary;
-    border-color: $secondary;
+    border-color: $primary;
   }
 }
 
 .categoryImage {
-  border: 1px solid #cdb693;
+  border: 1px solid $secondary;
+  color: $secondary;
   cursor: pointer;
   margin: 0.25rem;
-  padding: 0.25rem;
-  width: 10rem;
+  padding: 0.5rem;
   text-align: center;
   border-radius: 0.5rem;
   word-break: break-word;
@@ -43,9 +47,31 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    margin: 0;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  @include tablet {
+    margin: 0.5rem;
+    padding: 0.75rem;
   }
 }
 
 .suggestions {
   display: block;
+}
+
+.logoInput {
+  .input {
+    display: none;
+  }
+}
+
+.labelButton {
+  cursor: pointer;
+  font-size: 1rem;
+  width: max-content;
 }

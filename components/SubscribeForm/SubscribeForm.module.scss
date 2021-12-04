@@ -6,12 +6,11 @@
   max-width: 960px;
   margin-inline: auto;
   width: 100%;
+  margin-bottom: 1rem;
 
-  @include mobile_xl {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
