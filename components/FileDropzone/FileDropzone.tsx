@@ -1,46 +1,157 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useCallback, useState, useEffect, useMemo, FC } from "react";
 import { useDropzone } from "react-dropzone";
+import Image from "next/image";
 
-const FileDropzone = () => {
-  const [files, setFiles] = useState([]);
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/*",
-    onDrop: (acceptedFiles: any) => {
-      setFiles(
-        acceptedFiles.map((file: any) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
+import useImageUploader from "hooks/useImageUploader";
+
+import styles from "./FileDropzone.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
+
+const MAX_FILES = 3; //file upload limit
+
+interface Props {
+  images: string;
+  updateImages: Function;
+}
+
+const FileDropzone: FC<Props> = ({ images, updateImages }) => {
+  let currentImages: any = [];
+  if (images !== "") currentImages = images.split(",");
+  const [myFiles, setMyFiles] = useState(currentImages);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { url, error, uploadImage, uploading } = useImageUploader();
+
+  useEffect(() => {
+    if (url) {
+      if (myFiles.length + 1 <= MAX_FILES) {
+        setMyFiles([...myFiles, url]);
+        setErrorMessage("");
+      } else {
+        setErrorMessage(
+          "You have reached the max number of allowed images (3)"
+        );
+      }
+    }
+    if (error) setErrorMessage(error);
+  }, [url, error]);
+
+  useEffect(() => {
+    updateImages(myFiles.join());
+  }, [myFiles]);
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      acceptedFiles.map(async (file: File) => {
+        uploadImage(file, "business_images");
+      });
     },
+    [myFiles]
+  );
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+    fileRejections,
+    open,
+  } = useDropzone({
+    noClick: true,
+    noKeyboard: true,
+    onDrop,
+    accept: "image/jpeg, image/png",
+    maxFiles: MAX_FILES,
   });
 
-  const thumbs = files.map((file: any) => (
-    <div key={file.name}>
-      <div>
-        <Image src={file.preview} alt="preview" width={30} height={40} />
-      </div>
-    </div>
-  ));
+  const buildContainerStyles = () => {
+    let build = `${styles.baseStyle}`;
+    if (isDragActive) build += ` ${styles.activeStyle}`;
+    if (isDragAccept) build += ` ${styles.acceptStyle}`;
+    if (isDragReject) build += ` ${styles.rejectStyle}`;
+
+    return build;
+  };
+
+  const removeFile = (file: any) => () => {
+    let filtered = myFiles.filter((item: any) => item !== file);
+
+    setMyFiles(filtered);
+    setErrorMessage("");
+  };
+
+  const removeAll = () => {
+    setMyFiles([]);
+    setErrorMessage("");
+  };
+
+  const files = myFiles.map((file: any, index: any) => {
+    if (file == "") return null;
+    return (
+      <React.Fragment key={index}>
+        <div key={index} className={styles.thumb}>
+          <Image src={file} width={40} height={40} alt="sample images" />
+          <button
+            type="button"
+            onClick={removeFile(file)}
+            className={styles.removeButton}
+          >
+            x
+          </button>
+        </div>
+      </React.Fragment>
+    );
+  });
 
   useEffect(
     () => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
       files.forEach((file: any) => URL.revokeObjectURL(file.preview));
     },
-    [files]
+    [myFiles]
   );
 
   return (
-    <section className="container">
-      <div {...getRootProps({ className: "dropzone" })}>
+    <>
+      <div {...getRootProps()} className={buildContainerStyles()}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
+        <p className={styles.uploadText}>
+          Upload up to 3 images to showcase your services to customers.
+        </p>
+        <button
+          type="button"
+          color="secondary"
+          disabled={uploading}
+          onClick={open}
+          className="button outlined withIcon"
+        >
+          <FontAwesomeIcon icon={faUpload} />
+          Click to upload images
+        </button>
       </div>
-      <aside>{thumbs}</aside>
-    </section>
+
+      {files.length > 0 && (
+        <>
+          <aside className={styles.thumbsContainer}>
+            {files}
+
+            <button
+              type="button"
+              onClick={removeAll}
+              className={`button text withIcon ${styles.removeAll}`}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+              Remove All
+            </button>
+          </aside>
+        </>
+      )}
+      {(fileRejections.length !== 0 || errorMessage) && (
+        <aside>
+          <p className="error">{errorMessage}</p>
+        </aside>
+      )}
+    </>
   );
 };
 

@@ -66,6 +66,7 @@ textarea.input {
 label {
   font-size: 0.8rem;
   margin-bottom: 0.25rem;
+  display: block;
 }
 
 ul {
@@ -133,6 +134,12 @@ ul {
   @include tablet {
     display: block !important;
   }
+}
+
+.error {
+  font-size: 0.7rem;
+  color: red;
+  margin-top: 0.125rem;
 }
 
 [data-reach-dialog-overlay] {

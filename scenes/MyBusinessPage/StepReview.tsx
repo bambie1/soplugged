@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 
-import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
 
@@ -22,8 +21,8 @@ const StepReviewPage = () => {
   });
 
   const onSubmit = async (data: any) => {
-    const token = await user.getIdToken();
-    const res = await updateBusiness(data, false, token);
+    const res = await updateBusiness(data, false);
+    // console.log({ res });
   };
 
   return (

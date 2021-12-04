@@ -26,7 +26,7 @@ export const addFavorite = async (business_id: number, user: any) => {
     }
     return res;
   } catch (error) {
-    console.log({ error });
+    // console.log({ error });
     return { error };
   }
 };

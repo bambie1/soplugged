@@ -78,6 +78,7 @@
   border-top-right-radius: 20px;
   margin-top: -2rem;
   margin-bottom: 3rem;
+  box-shadow: 0 -14px 14px -12px rgb(78 56 10 / 39%);
 
   padding: 2rem 0.5rem;
 }
@@ -89,7 +90,6 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
-  // border-top: 1px solid $secondary;
   box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
 
   background-color: white;
@@ -97,4 +97,8 @@
   @include mobile_only {
     position: fixed;
   }
+}
+
+.labelButton {
+  display: inline-flex;
 }

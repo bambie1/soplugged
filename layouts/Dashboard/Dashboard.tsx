@@ -33,25 +33,27 @@ const Dashboard: FC = ({ children }) => {
   return (
     <>
       <Header />
-      <PageWrapper center>
-        <div className={styles.wrapper}>
-          <nav className={styles.nav}>
-            <ul>
-              {dashboardLinks.map((link) => (
-                <li key={link.id}>
-                  <Link href={link.href}>
-                    <a className={linkStyles(link.href)}>
-                      <FontAwesomeIcon icon={link.icon} />
-                      <span>{link.text}</span>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className={styles.content}>{children}</div>
-        </div>
-      </PageWrapper>
+      <div className={styles.body}>
+        <PageWrapper center>
+          <div className={styles.wrapper}>
+            <nav className={styles.nav}>
+              <ul>
+                {dashboardLinks.map((link) => (
+                  <li key={link.id}>
+                    <Link href={link.href}>
+                      <a className={linkStyles(link.href)}>
+                        <FontAwesomeIcon icon={link.icon} />
+                        <span>{link.text}</span>
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className={styles.content}>{children}</div>
+          </div>
+        </PageWrapper>
+      </div>
     </>
   );
 };

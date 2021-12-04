@@ -1,0 +1,72 @@
+@import "styles/_mixins";
+
+.baseStyle {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: rgb(78, 53, 5);
+  // border-style: dashed;
+  background-color: $lightLight;
+  color: rgb(78, 53, 5);
+  outline: none;
+  transition: border 0.24s ease-in-out 0s;
+  margin-bottom: 8px;
+  cursor: default;
+}
+
+.thumbsContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    border-radius: 50%;
+  }
+
+  .removeAll {
+    margin-left: 1rem;
+    color: red;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.thumb {
+  display: inline-flex;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  padding: 4px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.removeButton {
+  align-self: start;
+  margin-right: 8px;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  cursor: pointer;
+}
+
+.activeStyle {
+  border-color: #2196f3;
+}
+.acceptStyle {
+  border-color: #00e676;
+}
+.rejectStyle {
+  border-color: #ff1744;
+}
+
+.uploadText {
+  color: grey;
+}

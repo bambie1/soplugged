@@ -35,7 +35,11 @@ const BusinessForm: FC = ({ children }) => {
 
         <aside className={styles.mobileContent}>{children}</aside>
         <div className={styles.navigation}>
-          <button onClick={handlePrevious} className={renderStyle()}>
+          <button
+            type="button"
+            onClick={handlePrevious}
+            className={renderStyle()}
+          >
             Go Back
           </button>
           <Button type="submit">Next</Button>
@@ -57,7 +61,11 @@ const BusinessForm: FC = ({ children }) => {
           </div>
 
           <div className={styles.navigation}>
-            <button onClick={handlePrevious} className={renderStyle()}>
+            <button
+              type="button"
+              onClick={handlePrevious}
+              className={renderStyle()}
+            >
               Go Back
             </button>
             <Button type="submit">Next</Button>

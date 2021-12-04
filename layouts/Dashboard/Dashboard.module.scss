@@ -1,5 +1,18 @@
 @import "styles/_mixins";
 
+.body {
+  min-height: 100vh;
+  background: $lightLight;
+
+  @include tablet {
+    background: rgb(205, 182, 147);
+    background: linear-gradient(
+      180deg,
+      rgba(205, 182, 147, 1) 0%,
+      rgba(147, 170, 205, 1) 100%
+    );
+  }
+}
 .wrapper {
   border-radius: 8px;
   min-height: 30rem;
@@ -8,15 +21,26 @@
   margin-bottom: 4rem;
 
   @include tablet {
-    margin-top: 4rem;
+    background: $lightLight;
+    margin-top: 3rem;
+    margin-bottom: 0;
     box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+    height: clamp(30rem, 70vh, 80rem);
+  }
+
+  @include desktop {
+    height: clamp(30rem, 80vh, 80rem);
   }
 }
 
 .nav {
   position: fixed;
   left: 0;
-  background-color: $primary;
+  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+  background-color: $lightLight;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+
   bottom: 0;
   height: clamp(3rem, 100%, 4rem);
   width: 100%;
@@ -62,7 +86,8 @@
   }
 
   &.active {
-    background-color: $darkPrimary;
+    background-color: $lightSecondary;
+    color: $secondary;
   }
 }
 
@@ -70,5 +95,7 @@
   @include tablet {
     padding: 1rem;
     margin-left: 5rem;
+    overflow-y: auto;
+    max-height: 100%;
   }
 }

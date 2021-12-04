@@ -1,22 +1,16 @@
+import { parseCookies } from "nookies";
+
 import { IBusiness } from "@/types/Business";
 
-interface Args {
-  data: IBusiness;
-  isNew: boolean;
-  token: any;
-}
-
-export const updateBusiness = async (
-  data: IBusiness,
-  isNew: boolean,
-  token: any
-) => {
+export const updateBusiness = async (data: IBusiness, isNew: boolean) => {
   const fetchUrl = isNew
     ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
     : `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${data.slug}`;
   const fetchMethod = isNew ? "POST" : "PATCH";
 
   try {
+    const { token } = parseCookies();
+
     const res = await fetch(fetchUrl, {
       method: fetchMethod,
       headers: {

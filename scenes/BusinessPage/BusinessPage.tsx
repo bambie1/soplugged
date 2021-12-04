@@ -142,10 +142,13 @@ const BusinessPage: FC<Props> = ({ business }) => {
               </button>
             )}
 
-            <button className={`button text ${styles.iconText}`}>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-              {business_location}
-            </button>
+            {business_location && (
+              <button className={`button text ${styles.iconText}`}>
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                {business_location}
+              </button>
+            )}
+
             {!fixed_to_one_location && (
               <button className="button">CANADA-WIDE</button>
             )}
