@@ -7,6 +7,7 @@ import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
+import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleton";
 
 const Favorites: NextPage = () => {
   const { data: favorites, error } = useSWR(
@@ -15,7 +16,7 @@ const Favorites: NextPage = () => {
   );
 
   const renderPage = () => {
-    if (!favorites) return <p>Loading...</p>;
+    if (!favorites) return <FavoritesSkeleton />;
     return <FavoritesPage favorites={favorites} />;
   };
 

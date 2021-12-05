@@ -22,23 +22,28 @@ const BusinessForm: FC = ({ children }) => {
     });
   };
 
-  const renderStyle = () =>
+  const buildStyle = () =>
     `${styles.prevButton} ${current === 0 && styles.disabled} button`;
+
+  const renderStepInfo = () => {
+    return (
+      <aside className={`${styles.stepInfo} container`}>
+        <h1>{steps[current].name}</h1>
+        <p>{steps[current].description}</p>
+      </aside>
+    );
+  };
 
   if (isMobile)
     return (
       <div className={styles.mobileWrapper}>
-        <aside className={`${styles.stepInfo} container`}>
-          <h1>{steps[current].name}</h1>
-          <p>{steps[current].description}</p>
-        </aside>
-
+        {renderStepInfo()}
         <aside className={styles.mobileContent}>{children}</aside>
         <div className={styles.navigation}>
           <button
             type="button"
             onClick={handlePrevious}
-            className={renderStyle()}
+            className={buildStyle()}
           >
             Go Back
           </button>
@@ -50,10 +55,7 @@ const BusinessForm: FC = ({ children }) => {
   return (
     <>
       <div className={styles.background}></div>
-      <aside className={`${styles.stepInfo} container`}>
-        <h1>{steps[current].name}</h1>
-        <p>{steps[current].description}</p>
-      </aside>
+      {renderStepInfo()}
       <section className={styles.grid}>
         <aside className={styles.container}>
           <div className={`${styles.content} column flex-center`}>
@@ -64,7 +66,7 @@ const BusinessForm: FC = ({ children }) => {
             <button
               type="button"
               onClick={handlePrevious}
-              className={renderStyle()}
+              className={buildStyle()}
             >
               Go Back
             </button>

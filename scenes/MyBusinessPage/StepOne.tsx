@@ -53,7 +53,7 @@ const StepOnePage = () => {
               getSuggestionItemProps,
               loading,
             }) => (
-              <div>
+              <>
                 <Input
                   label="Business Location"
                   {...getInputProps({
@@ -80,7 +80,7 @@ const StepOnePage = () => {
                     );
                   })}
                 </div>
-              </div>
+              </>
             )}
           </PlacesAutocomplete>
           <Input label="Street Address" {...register("street_address")} />

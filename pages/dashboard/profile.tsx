@@ -3,6 +3,7 @@ import nookies from "nookies";
 import useSWR from "swr";
 
 import { ProfilePage } from "@/scenes/dashboard/ProfilePage";
+import ProfileSkeleton from "@/scenes/dashboard/ProfilePage/ProfileSkeleton";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
@@ -15,7 +16,7 @@ const Profile: NextPage = () => {
   );
 
   const renderPage = () => {
-    if (!dbUser) return <p>Loading...</p>;
+    if (!dbUser) return <ProfileSkeleton />;
     return <ProfilePage dbUser={dbUser} />;
   };
 

@@ -40,7 +40,7 @@
   background-color: $lightLight;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-
+  z-index: 1;
   bottom: 0;
   height: clamp(3rem, 100%, 4rem);
   width: 100%;

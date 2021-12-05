@@ -7,6 +7,7 @@
   overflow-y: auto;
   gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
 
   @include tablet {
     flex-direction: row;

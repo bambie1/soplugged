@@ -7,6 +7,7 @@ import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
+import BusinessInfoSkeleton from "@/scenes/dashboard/BusinessInfoPage/BusinessInfoSkeleton";
 
 const DashboardHome: NextPage = () => {
   const { data: businesses, error } = useSWR(
@@ -15,7 +16,7 @@ const DashboardHome: NextPage = () => {
   );
 
   const renderPage = () => {
-    if (!businesses) return <p>Loading...</p>;
+    if (!businesses) return <BusinessInfoSkeleton />;
     return <BusinessInfoPage business={businesses[0]} />;
   };
 

@@ -8,6 +8,7 @@ import "../styles/globals.scss";
 import "../styles/algolia.scss";
 import "../styles/imageGallery.scss";
 import "../styles/quill.scss";
+import "../styles/autocomplete.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
 import "@reach/tooltip/styles.css";

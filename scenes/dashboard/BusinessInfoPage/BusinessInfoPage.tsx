@@ -15,7 +15,7 @@ interface Props {
 
 const BusinessInfoPage: FC<Props> = ({ business }) => {
   const { user } = useAuth();
-  const userName = business.creator?.full_name || user?.displayName;
+  const userName = business?.creator?.full_name || user?.displayName;
 
   const renderBusinessInfo = () => {
     if (!business)

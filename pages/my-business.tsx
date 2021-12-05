@@ -7,10 +7,11 @@ import useSWR from "swr";
 
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 
-import { verifyIdToken } from "../../firebase/firebaseAdmin";
+import { verifyIdToken } from "../firebase/firebaseAdmin";
+import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
 const MyBusinessPage = dynamic(
-  () => import("../../scenes/MyBusinessPage/MyBusinessPage")
+  () => import("../scenes/MyBusinessPage/MyBusinessPage")
 );
 
 const MyBusiness: NextPage = () => {
@@ -21,7 +22,7 @@ const MyBusiness: NextPage = () => {
     swrFetchWithToken
   );
 
-  if (!businesses) return <p>Loading...</p>;
+  if (!businesses) return <MyBusinessSkeleton />;
 
   return (
     <>
