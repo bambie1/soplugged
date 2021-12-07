@@ -88,7 +88,10 @@ const StepFourPage = () => {
 
               {error && <p className="error">{error}</p>}
             </div>
-            <FileDropzone images={sampleImages} updateImages={updateImages} />
+            <FileDropzone
+              images={sampleImages || ""}
+              updateImages={updateImages}
+            />
           </section>
         </BusinessForm>
       </form>

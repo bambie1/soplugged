@@ -5,7 +5,7 @@ import styles from "./Input.module.scss";
 type Props = { label: string; error?: string } & React.ComponentProps<"input">;
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, error, ...props }, ref: any) => {
+  ({ label, error, required, ...props }, ref: any) => {
     const renderHelperText = () => {
       if (error) return <span className={styles.errorMsg}>{error}</span>;
 

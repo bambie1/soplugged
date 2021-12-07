@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Script from "next/script";
 import { FC } from "react";
 import { StateMachineProvider, createStore } from "little-state-machine";
 import { useWindowSize } from "@reach/window-size";
@@ -53,10 +52,6 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
       />
       <Header hideLinks={width >= 768} />
       <StateMachineProvider>{renderStep()}</StateMachineProvider>
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`}
-        strategy="beforeInteractive"
-      />
     </>
   );
 };

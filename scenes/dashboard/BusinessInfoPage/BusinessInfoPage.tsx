@@ -6,6 +6,7 @@ import { SEO } from "@/components/SEO";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { useAuth } from "@/context/authContext";
 import { IBusiness } from "@/types/Business";
+import { greetFunction } from "@/utils/greeting";
 
 import styles from "./BusinessInfoPage.module.scss";
 
@@ -38,6 +39,8 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
 
     return (
       <>
+        <h3>{greetFunction(userName)}</h3>
+
         <p>Here's some important stuff we've outlined for you</p>
 
         <div className={styles.grid}>
@@ -80,7 +83,6 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
       />
 
       <h1>Business</h1>
-      <h3>Good morning {userName}</h3>
 
       {renderBusinessInfo()}
     </>

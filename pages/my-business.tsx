@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import Script from "next/script";
 import nookies from "nookies";
 import useSWR from "swr";
 
@@ -27,10 +26,6 @@ const MyBusiness: NextPage = () => {
   return (
     <>
       <MyBusinessPage business={businesses[0]} step={query.step} />
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`}
-        strategy="beforeInteractive"
-      />
     </>
   );
 };

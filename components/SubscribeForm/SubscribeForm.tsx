@@ -22,9 +22,6 @@ const SubscribeForm: FC = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const response = await handleSubscription(data, "newsletter");
-
-    if (response.error) console.log("an error occured");
-    else console.log({ response });
   };
 
   return (

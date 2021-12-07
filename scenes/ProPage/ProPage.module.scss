@@ -1,28 +1,52 @@
 @import "styles/_mixins";
 
+.pageWrapper {
+}
+
 .pageSection {
-  text-align: center;
-  @include desktop {
-    text-align: left;
-    display: grid;
+  margin-bottom: 3rem;
+}
+
+.features {
+  display: grid;
+  gap: 1rem;
+  margin-inline: auto;
+  margin-top: 1.5rem;
+  max-width: min(80vw, 70rem);
+
+  @include tablet {
+    gap: 2rem;
     grid-template-columns: 1fr 1fr;
-    column-gap: 3.5rem;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     align-items: center;
+    width: 100%;
+    padding: 1rem;
+    margin-inline: auto;
+    // border: 1px solid;
+    border-radius: 10px;
+    text-align: center;
+
+    @include tablet {
+      gap: 1rem;
+      flex-direction: row;
+      text-align: left;
+    }
   }
 }
 
-.form {
+.step {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 0.5rem;
-  max-width: 500px;
-  margin: auto;
+  align-items: center;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
 
-  @include desktop {
-    margin: inherit;
-  }
-
-  button {
-    max-height: 1rem;
+  .image {
+    display: flex;
+    justify-content: center;
   }
 }

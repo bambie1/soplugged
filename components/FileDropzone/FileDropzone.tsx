@@ -17,10 +17,12 @@ interface Props {
 
 const FileDropzone: FC<Props> = ({ images, updateImages }) => {
   let currentImages: any = [];
-  if (images !== "") currentImages = images.split(",");
+  if (images !== "") currentImages = images?.split(",");
   const [myFiles, setMyFiles] = useState(currentImages);
   const [errorMessage, setErrorMessage] = useState("");
   const { url, error, uploadImage, uploading } = useImageUploader();
+
+  console.log({ myFiles });
 
   useEffect(() => {
     if (url) {
@@ -86,7 +88,7 @@ const FileDropzone: FC<Props> = ({ images, updateImages }) => {
     setErrorMessage("");
   };
 
-  const files = myFiles.map((file: any, index: any) => {
+  const files = myFiles?.map((file: any, index: any) => {
     if (file == "") return null;
     return (
       <React.Fragment key={index}>

@@ -4,11 +4,14 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./Footer.module.scss";
 import SubscribeForm from "../SubscribeForm/SubscribeForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Footer: FC = () => {
+interface Props {
+  tertiary?: boolean;
+}
+
+const Footer: FC<Props> = ({ tertiary }) => {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${tertiary && styles.blue}`}>
       <div className={styles.shape_divider_container}>
         <svg
           data-name="Layer 1"

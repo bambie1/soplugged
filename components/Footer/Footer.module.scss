@@ -8,6 +8,10 @@
   background: linear-gradient(180deg, white 0%, $primary 100%);
   width: 100%;
   margin-top: auto;
+
+  &.blue {
+    background: linear-gradient(180deg, white 0%, $tertiary 100%);
+  }
 }
 
 .container {

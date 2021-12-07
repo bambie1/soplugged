@@ -55,7 +55,7 @@ const StepThreePage = () => {
               </label>
               <ReactQuill
                 placeholder="Enter a description for your business (the more, the better)"
-                value={editorContent}
+                value={editorContent || ""}
                 onChange={onEditorStateChange}
                 id="business_description"
                 modules={{
