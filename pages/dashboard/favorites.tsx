@@ -3,11 +3,12 @@ import nookies from "nookies";
 import useSWR from "swr";
 
 import { FavoritesPage } from "@/scenes/dashboard/FavoritesPage";
+import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleton";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
+import { SEO } from "@/components/SEO";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
-import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleton";
 
 const Favorites: NextPage = () => {
   const { data: favorites, error } = useSWR(
@@ -22,6 +23,10 @@ const Favorites: NextPage = () => {
 
   return (
     <>
+      <SEO
+        title="Favorites | My SoPlugged dashboard"
+        description="Manage your business, favorites and profile."
+      />
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );

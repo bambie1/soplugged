@@ -4,13 +4,13 @@ import { useStateMachine } from "little-state-machine";
 
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
-
-import { updateAction } from "./littleStateMachine/updateAction";
-import styles from "./MyBusinessPage.module.scss";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { updateBusiness } from "@/utils/updateBusiness";
 import { useAuth } from "@/context/authContext";
+
+import { updateAction } from "../littleStateMachine/updateAction";
 import { BusinessForm } from "layouts/BusinessForm";
+
+import styles from "../MyBusinessPage.module.scss";
 
 const StepReviewPage = () => {
   const router = useRouter();

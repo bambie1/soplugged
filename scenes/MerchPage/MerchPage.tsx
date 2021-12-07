@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -10,10 +9,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const MerchPage = () => {
   return (
     <>
-      <SEO
-        description="Custom tees, sweatshirts and accessories to look fashionable while buying black"
-        title="SoPlugged Merch"
-      />
       <Header />
       <PageWrapper center>
         <h1>merch</h1>

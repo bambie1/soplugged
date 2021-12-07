@@ -2,6 +2,8 @@ import type { GetServerSideProps, NextPage } from "next";
 import nookies from "nookies";
 import dynamic from "next/dynamic";
 
+import { SEO } from "@/components/SEO";
+
 import { verifyIdToken } from "../firebase/firebaseAdmin";
 
 const JoinPage = dynamic(() => import("../scenes/JoinPage/JoinPage"));
@@ -9,6 +11,10 @@ const JoinPage = dynamic(() => import("../scenes/JoinPage/JoinPage"));
 const Join: NextPage = () => {
   return (
     <>
+      <SEO
+        description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
+        title="Join SoPlugged"
+      />
       <JoinPage />
     </>
   );

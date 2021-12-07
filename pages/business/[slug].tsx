@@ -1,7 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import { BusinessPage } from "@/scenes/BusinessPage";
 
+import { BusinessPage } from "@/scenes/BusinessPage";
+import { SEO } from "@/components/SEO";
 import { fetchBusinessBySlug } from "@/utils/fetchBusinessBySlug";
 import { getAllSlugs } from "@/utils/getAllSlugs";
 
@@ -11,13 +12,17 @@ interface Props {
 
 const Business: NextPage<Props> = ({ business }) => {
   const router = useRouter();
-
+  const { business_name } = business;
   // TODO: Update loading state
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
   return (
     <>
+      <SEO
+        description={`SoPlugged page for ${business_name || "a business"}`}
+        title={`${business_name.toUpperCase() || ""} | SoPlugged`}
+      />
       <BusinessPage business={business} />
     </>
   );

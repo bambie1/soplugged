@@ -1,7 +1,6 @@
 import { FC } from "react";
 
 import { ProfileForm } from "@/components/ProfileForm";
-import { SEO } from "@/components/SEO";
 import { useAuth } from "@/context/authContext";
 import { IUser } from "@/types/User";
 
@@ -15,10 +14,6 @@ const ProfilePage: FC<Props> = ({ dbUser }) => {
 
   return (
     <>
-      <SEO
-        title="My Favorites | My SoPlugged dashboard"
-        description="Manage your business, favorites and profile."
-      />
       <h1 className="center">profile</h1>
       <ProfileForm userName={userName} email={user.email} />
     </>

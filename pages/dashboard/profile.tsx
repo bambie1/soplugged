@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { ProfilePage } from "@/scenes/dashboard/ProfilePage";
 import ProfileSkeleton from "@/scenes/dashboard/ProfilePage/ProfileSkeleton";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
+import { SEO } from "@/components/SEO";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
@@ -22,6 +23,10 @@ const Profile: NextPage = () => {
 
   return (
     <>
+      <SEO
+        title="My Favorites | My SoPlugged dashboard"
+        description="Manage your business, favorites and profile."
+      />
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );

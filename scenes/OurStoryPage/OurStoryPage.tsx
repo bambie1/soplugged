@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -10,12 +9,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const OurStoryPage = () => {
   return (
     <>
-      <SEO
-        title="Our Story | SoPlugged"
-        description="SoPlugged is an online platform that makes #buyingblack easy! Our
-              search-friendly platform helps end-users connect to Black-owned
-              businesses across Canada"
-      />
       <Header />
       <PageWrapper>
         <h1>our story</h1>

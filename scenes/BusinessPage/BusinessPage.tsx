@@ -11,7 +11,6 @@ import {
 
 import { Button } from "@/styled/Button";
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 
 import styles from "./BusinessPage.module.scss";
 import { Footer } from "@/components/Footer";
@@ -114,10 +113,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <SEO
-        description={`SoPlugged page for ${business_name || "a business"}`}
-        title={`${business_name.toUpperCase() || ""} | SoPlugged`}
-      />
       <Header color="transparent" />
       <PageWrapper center={!fullView}>
         <section className="center">

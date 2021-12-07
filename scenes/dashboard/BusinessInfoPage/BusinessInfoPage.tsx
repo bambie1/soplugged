@@ -2,7 +2,6 @@ import Image from "next/image";
 import { FC } from "react";
 
 import { BusinessCard } from "@/components/BusinessCard";
-import { SEO } from "@/components/SEO";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { useAuth } from "@/context/authContext";
 import { IBusiness } from "@/types/Business";
@@ -77,11 +76,6 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <SEO
-        title="Business Info | My SoPlugged dashboard"
-        description="Manage your business, favorites and profile."
-      />
-
       <h1>Business</h1>
 
       {renderBusinessInfo()}

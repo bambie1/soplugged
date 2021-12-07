@@ -3,11 +3,12 @@ import nookies from "nookies";
 import useSWR from "swr";
 
 import { BusinessInfoPage } from "@/scenes/dashboard/BusinessInfoPage";
+import BusinessInfoSkeleton from "@/scenes/dashboard/BusinessInfoPage/BusinessInfoSkeleton";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
+import { SEO } from "@/components/SEO";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
-import BusinessInfoSkeleton from "@/scenes/dashboard/BusinessInfoPage/BusinessInfoSkeleton";
 
 const DashboardHome: NextPage = () => {
   const { data: businesses, error } = useSWR(
@@ -22,6 +23,10 @@ const DashboardHome: NextPage = () => {
 
   return (
     <>
+      <SEO
+        title="Business Info | My SoPlugged dashboard"
+        description="Manage your business, favorites and profile."
+      />
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );

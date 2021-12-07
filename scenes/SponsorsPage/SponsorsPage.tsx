@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./SponsorsPage.module.scss";
@@ -12,10 +11,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const SponsorsPage = () => {
   return (
     <>
-      <SEO
-        title="Become a Sponsor | SoPlugged"
-        description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
-      />
       <Header />
       <PageWrapper center>
         <h1>sponsors</h1>

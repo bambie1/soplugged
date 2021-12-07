@@ -2,18 +2,13 @@ import Image from "next/image";
 
 import { FirebaseAuth } from "@/components/FirebaseAuth";
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./JoinPage.module.scss";
-import { ButtonLink } from "@/styled/ButtonLink";
 
 const JoinPage = () => {
   return (
     <>
-      <SEO
-        description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
-        title="Join SoPlugged"
-      />
       <PageWrapper center>
         <div className={styles.logoCircle}>
           <Image

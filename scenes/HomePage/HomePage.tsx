@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 
 import { Hero } from "@/components/Hero";
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { rgbDataURL } from "@/lib/dataUrl";
 
@@ -18,10 +17,6 @@ const TopCategories = dynamic(
 const HomePage = () => {
   return (
     <>
-      <SEO
-        description="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform or join our mailing list to stay plugged in."
-        title="We have the Black-Owned Businesses for your needs | SoPlugged"
-      />
       <Header color="brown" />
       <Hero />
       <PageWrapper hasHero>

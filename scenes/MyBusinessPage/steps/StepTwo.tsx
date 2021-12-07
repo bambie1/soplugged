@@ -6,10 +6,11 @@ import { useStateMachine } from "little-state-machine";
 
 import { categories } from "@/lib/categoryList";
 import { IBusiness } from "@/types/Business";
-import { BusinessForm } from "layouts/BusinessForm";
 
-import { updateAction } from "./littleStateMachine/updateAction";
-import styles from "./MyBusinessPage.module.scss";
+import { BusinessForm } from "layouts/BusinessForm";
+import { updateAction } from "../littleStateMachine/updateAction";
+
+import styles from "../MyBusinessPage.module.scss";
 
 const StepTwoPage = () => {
   const router = useRouter();

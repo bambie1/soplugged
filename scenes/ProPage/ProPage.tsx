@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 import { ProHero } from "@/components/ProHero";
 import { rgbDataURL } from "@/lib/dataUrl";
 import { proFeatures } from "@/lib/proFeatures";
@@ -16,8 +15,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const ProPage = () => {
   return (
     <>
-      <SEO title="Professional help for your business' digital needs | SoPluggedPRO" />
-
       <Header color="blue" />
       <ProHero />
       <div>

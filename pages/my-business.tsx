@@ -5,9 +5,10 @@ import nookies from "nookies";
 import useSWR from "swr";
 
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
+import { SEO } from "@/components/SEO";
+import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
 import { verifyIdToken } from "../firebase/firebaseAdmin";
-import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
 const MyBusinessPage = dynamic(
   () => import("../scenes/MyBusinessPage/MyBusinessPage")
@@ -25,6 +26,10 @@ const MyBusiness: NextPage = () => {
 
   return (
     <>
+      <SEO
+        description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
+        title="My Business | SoPlugged"
+      />
       <MyBusinessPage business={businesses[0]} step={query.step} />
     </>
   );

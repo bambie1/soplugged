@@ -6,11 +6,11 @@ import { useStateMachine } from "little-state-machine";
 
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
+
 import { BusinessForm } from "layouts/BusinessForm";
+import { updateAction } from "../littleStateMachine/updateAction";
 
-import { updateAction } from "./littleStateMachine/updateAction";
-
-import styles from "./MyBusinessPage.module.scss";
+import styles from "../MyBusinessPage.module.scss";
 import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });

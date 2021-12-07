@@ -3,13 +3,13 @@ import { FC } from "react";
 import { StateMachineProvider, createStore } from "little-state-machine";
 import { useWindowSize } from "@reach/window-size";
 
-import { SEO } from "@/components/SEO";
-
-import StepOnePage from "./StepOne";
-import StepTwoPage from "./StepTwo";
-import StepThreePage from "./StepThree";
-import StepFourPage from "./StepFour";
-import StepReviewPage from "./StepReview";
+import StepOnePage from "./steps/StepOne";
+import StepTwoPage from "./steps/StepTwo";
+import StepThreePage from "./steps/StepThree";
+import StepFourPage from "./steps/StepFour";
+import StepReviewPage from "./steps/StepReview";
+import { useBusinessFormContext } from "@/context/businessFormContext";
+import StepAgreement from "./steps/StepAgreement";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -20,6 +20,7 @@ interface Props {
 
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
   const { width } = useWindowSize();
+  const { agreementSigned } = useBusinessFormContext();
 
   createStore(
     {
@@ -29,6 +30,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
   );
 
   const renderStep = () => {
+    if (!business && !agreementSigned) return <StepAgreement />;
     switch (step) {
       case "two":
         return <StepTwoPage />;
@@ -46,10 +48,6 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
 
   return (
     <>
-      <SEO
-        description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
-        title="My Business | SoPlugged"
-      />
       <Header hideLinks={width >= 768} />
       <StateMachineProvider>{renderStep()}</StateMachineProvider>
     </>

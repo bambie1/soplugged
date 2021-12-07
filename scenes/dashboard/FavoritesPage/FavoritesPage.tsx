@@ -3,10 +3,9 @@ import Image from "next/image";
 
 import { IFavorite } from "@/types/Favorite";
 import { BusinessCard } from "@/components/BusinessCard";
-import { SEO } from "@/components/SEO";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./FavoritesPage.module.scss";
-import { ButtonLink } from "@/styled/ButtonLink";
 
 interface Props {
   favorites: IFavorite[];
@@ -41,10 +40,6 @@ const FavoritesPage: FC<Props> = ({ favorites }) => {
   };
   return (
     <>
-      <SEO
-        title="Favorites | My SoPlugged dashboard"
-        description="Manage your business, favorites and profile."
-      />
       <h1 className="center">favorites</h1>
       {renderFavorites()}
     </>

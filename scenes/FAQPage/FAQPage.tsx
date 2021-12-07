@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { SEO } from "@/components/SEO";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./FAQPage.module.scss";
@@ -12,10 +11,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const FAQPage = () => {
   return (
     <>
-      <SEO
-        title="Frequently Asked Questions | SoPlugged"
-        description="The SoPlugged team has answers ready for questions you might have. If we missed anything, please send us an email"
-      />
       <Header />
       <PageWrapper>
         <h1 className="center">FAQs</h1>

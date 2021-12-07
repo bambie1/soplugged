@@ -8,8 +8,8 @@ import PlacesAutocomplete from "react-places-autocomplete";
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
 
-import { updateAction } from "./littleStateMachine/updateAction";
-import styles from "./MyBusinessPage.module.scss";
+import { updateAction } from "../littleStateMachine/updateAction";
+import styles from "../MyBusinessPage.module.scss";
 import { BusinessForm } from "layouts/BusinessForm";
 
 const StepOnePage = () => {
