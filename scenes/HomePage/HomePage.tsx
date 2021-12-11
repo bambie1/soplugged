@@ -39,12 +39,13 @@ const HomePage = () => {
             </aside>
             <aside>
               <Image
-                placeholder="blur"
-                blurDataURL={rgbDataURL(247, 244, 244)}
+                // placeholder="blur"
+                // blurDataURL={rgbDataURL(247, 244, 244)}
                 src="/images/search_businesses_tiny.png"
                 width={400}
                 height={272}
                 alt="Search for businesses"
+                priority
               />
             </aside>
           </section>

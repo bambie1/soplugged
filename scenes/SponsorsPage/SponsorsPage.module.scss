@@ -1,11 +1,9 @@
 @import "styles/_mixins";
 
 .section {
-  display: grid;
   margin-block: 3rem;
   max-width: 900px;
   margin-inline: auto;
-  grid-template-rows: auto;
   gap: 1rem;
   text-align: center;
 
@@ -19,8 +17,21 @@
       }
     }
   }
+}
 
-  @include tablet {
-    grid-template-columns: 1fr 1fr;
+// .dialogOverlay {
+//   transition: 1s;
+// }
+
+.dialogContent {
+  box-shadow: 0px 10px 50px hsla(0, 0%, 0%, 0.33);
+  width: 90%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+
+  @include mobile_only {
+    padding: 0rem;
+    overflow-y: scroll;
   }
 }

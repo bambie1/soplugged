@@ -20,8 +20,8 @@ const ProHero: FC = () => {
         </aside>
         <aside className={styles.image}>
           <Image
-            placeholder="blur"
-            blurDataURL={rgbDataURL(207, 207, 207)}
+            // placeholder="blur"
+            // blurDataURL={rgbDataURL(207, 207, 207)}
             src="/images/soplugged_pro.png"
             alt="Business consult session"
             width={400}

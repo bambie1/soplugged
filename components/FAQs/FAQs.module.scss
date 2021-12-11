@@ -11,14 +11,11 @@
 }
 
 .accordion {
-  // background-color: #eee;
   background-color: transparent;
-  // box-shadow: 0 0px 7px 0 rgb(78 56 10 / 39%);
   box-shadow: 0 6px 20px rgb(78 56 10 / 10%);
 
   color: #444;
   border-radius: 10px;
-  // color: $secondary;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -35,14 +32,11 @@
   justify-content: space-between;
 
   &:hover {
-    // background-color: #ccc;
     box-shadow: 0 4px 14px 0 rgb(78 56 10 / 20%);
   }
 }
 
 .panel {
   padding: 0 18px;
-  // display: none;
-  // background-color: white;
   overflow: hidden;
 }

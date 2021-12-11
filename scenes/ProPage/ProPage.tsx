@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-import { PageWrapper } from "@/components/PageWrapper";
 import { ProHero } from "@/components/ProHero";
 import { rgbDataURL } from "@/lib/dataUrl";
 import { proFeatures } from "@/lib/proFeatures";

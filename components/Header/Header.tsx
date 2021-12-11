@@ -30,38 +30,43 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
   };
 
   return (
-    <div className={wrapperStyles()}>
-      <header className={`${styles.header} container`}>
-        <Link href="/">
-          <a>
-            <Image
-              src="/soplugged-logo.png"
-              alt="SoPlugged Logo"
-              width={40}
-              height={40}
-            />
-          </a>
-        </Link>
+    <>
+      {/* <p>PROOO</p> */}
+      <div className={wrapperStyles()}>
+        <header className={`${styles.header} container`}>
+          <Link href="/">
+            <a>
+              <Image
+                src="/soplugged-logo.png"
+                alt="SoPlugged Logo"
+                width={40}
+                height={40}
+              />
+            </a>
+          </Link>
 
-        {!hideLinks && (
-          <div className="hideOnMobile">
+          {!hideLinks && (
+            <div className="hideOnMobile">
+              <NavLinks />
+            </div>
+          )}
+
+          <button className={`button ${styles.menuBtn}`} onClick={toggleMenu}>
+            <div
+              className={`${styles.burger} ${openMenu && styles.open}`}
+            ></div>
+          </button>
+
+          <Dialog
+            isOpen={openMenu}
+            aria-label="Mobile menu"
+            className={styles.mobileMenu}
+          >
             <NavLinks />
-          </div>
-        )}
-
-        <button className={`button ${styles.menuBtn}`} onClick={toggleMenu}>
-          <div className={`${styles.burger} ${openMenu && styles.open}`}></div>
-        </button>
-
-        <Dialog
-          isOpen={openMenu}
-          aria-label="Mobile menu"
-          className={styles.mobileMenu}
-        >
-          <NavLinks />
-        </Dialog>
-      </header>
-    </div>
+          </Dialog>
+        </header>
+      </div>
+    </>
   );
 };
 

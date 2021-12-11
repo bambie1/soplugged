@@ -23,7 +23,7 @@ const MerchPage = () => {
           <div id="collection-component-1622397974663"></div>
           <section className={styles.loader}>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-              <Skeleton key={num} type="box" />
+              <Skeleton key={num} type="merch" />
             ))}
           </section>
         </div>

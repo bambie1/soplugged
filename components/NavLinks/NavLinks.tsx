@@ -79,7 +79,11 @@ const NavLinks: FC = () => {
         </ul>
       </nav>
       {showSignOut && (
-        <AlertDialog leastDestructiveRef={cancelRef} className={styles.dialog}>
+        <AlertDialog
+          leastDestructiveRef={cancelRef}
+          className={styles.dialog}
+          onDismiss={close}
+        >
           <AlertDialogLabel className={styles.label}>
             Please Confirm
           </AlertDialogLabel>

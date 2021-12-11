@@ -1,20 +1,29 @@
 import dynamic from "next/dynamic";
+import { DialogOverlay, DialogContent } from "@reach/dialog";
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { Button } from "@/styled/Button";
 
 import styles from "./SponsorsPage.module.scss";
+import { useState } from "react";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const SponsorsPage = () => {
+  const [showKweeve, setShowKweeve] = useState(false);
+
+  const closeModal = () => {
+    setShowKweeve(false);
+  };
+
   return (
     <>
       <Header />
       <PageWrapper center>
         <h1>sponsors</h1>
-        <section className={styles.section}>
+        <section className={`${styles.section} flex-center column`}>
           <aside>
             <p>
               At SoPlugged, our biggest inspiration is supporting one another
@@ -30,7 +39,19 @@ const SponsorsPage = () => {
               </em>
             </p>
           </aside>
-          <aside>
+
+          <Button onClick={() => setShowKweeve(true)}>Show your support</Button>
+        </section>
+        <ButtonLink href="/search" variant="outlined">
+          Back to Directory
+        </ButtonLink>
+
+        <DialogOverlay
+          className={styles.dialogOverlay}
+          isOpen={showKweeve}
+          onDismiss={closeModal}
+        >
+          <DialogContent className={styles.dialogContent}>
             <iframe
               src="https://kweeve.page/soplugged/embed"
               style={{ border: "none" }}
@@ -38,11 +59,9 @@ const SponsorsPage = () => {
               height="700px"
               allow="payment"
             ></iframe>
-          </aside>
-        </section>
-        <ButtonLink href="/search" variant="outlined">
-          Back to Directory
-        </ButtonLink>
+            {/* <button onClick={close}>Very nice.</button> */}
+          </DialogContent>
+        </DialogOverlay>
       </PageWrapper>
       <Footer />
     </>
