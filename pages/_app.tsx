@@ -1,8 +1,10 @@
 import type { AppProps } from "next/app";
 import Router from "next/router";
 import nProgress from "nprogress";
+import { Toaster } from "react-hot-toast";
 
-import { AuthProvider } from "../context/authContext";
+import { AuthProvider } from "@/context/authContext";
+import { BusinessFormProvider } from "@/context/businessFormContext";
 
 import "../styles/globals.scss";
 import "../styles/algolia.scss";
@@ -20,9 +22,12 @@ Router.events.on("routeChangeComplete", nProgress.done);
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <div className="layout-div">
-        <Component {...pageProps} />
-      </div>
+      <BusinessFormProvider>
+        <div className="layout-div">
+          <Component {...pageProps} />
+          <Toaster position="bottom-left" />
+        </div>
+      </BusinessFormProvider>
     </AuthProvider>
   );
 }

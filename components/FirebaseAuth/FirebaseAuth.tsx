@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
+import toast from "react-hot-toast";
 
 const StyledFirebaseAuth = dynamic(
   () => import("react-firebaseui/StyledFirebaseAuth"),
@@ -43,6 +44,8 @@ const FirebaseAuth = ({ referrer }: any) => {
           window.location.href = getSession;
           localStorage.removeItem("redirectRef");
         } else router.push("/dashboard");
+        toast.success("Successfully signed in");
+
         return false;
       },
     },

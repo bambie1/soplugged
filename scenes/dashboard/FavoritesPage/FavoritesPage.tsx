@@ -33,7 +33,7 @@ const FavoritesPage: FC<Props> = ({ favorites }) => {
     return (
       <div className={styles.favorites}>
         {favorites.map(({ liked_business, created_at }) => (
-          <BusinessCard key={created_at} business={liked_business} />
+          <BusinessCard key={created_at} business={liked_business} mini />
         ))}
       </div>
     );

@@ -1,33 +1,40 @@
 export const stepsObject: any = {
-  one: 1,
-  two: 2,
-  three: 3,
-  four: 4,
+  welcome: 0,
+  name_location: 1,
+  category: 2,
+  description_contact: 3,
+  images: 4,
   review: 5,
 };
 
 export const steps = [
   {
+    number: 0,
+    step: "welcome",
+    name: "Welcome",
+    description: "Terms and conditions",
+  },
+  {
     number: 1,
-    step: "one",
+    step: "name_location",
     name: "Name & Location",
     description: "Important details of your business",
   },
   {
     number: 2,
-    step: "two",
+    step: "category",
     name: "Category",
     description: "Select the category that your business falls under",
   },
   {
     number: 3,
-    step: "three",
+    step: "description_contact",
     name: "Description & Contact",
     description: "More details about your business and contact links",
   },
   {
     number: 4,
-    step: "four",
+    step: "images",
     name: "Images",
     description:
       "The most important part of your business page. Upload a logo and sample images",

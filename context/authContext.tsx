@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import nookies from "nookies";
 import firebase from "firebase/app";
 import "firebase/auth";
+import toast from "react-hot-toast";
+
 import firebaseClient from "../firebase/firebaseClient";
 
 const AuthContext = createContext<any>({});
@@ -45,6 +47,7 @@ export const AuthProvider: FC = ({ children }) => {
   const signOutUser = async () => {
     await firebase.auth().signOut();
     router.reload();
+    toast.success("Sign out successful");
   };
 
   return (

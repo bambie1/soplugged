@@ -26,6 +26,7 @@ const ProHero: FC = () => {
             alt="Business consult session"
             width={400}
             height={400}
+            priority
           />
         </aside>
       </div>

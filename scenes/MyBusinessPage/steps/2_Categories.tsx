@@ -12,7 +12,7 @@ import { updateAction } from "../littleStateMachine/updateAction";
 
 import styles from "../MyBusinessPage.module.scss";
 
-const StepTwoPage = () => {
+const Categories = () => {
   const router = useRouter();
 
   const { state, actions } = useStateMachine({ updateAction });
@@ -24,13 +24,15 @@ const StepTwoPage = () => {
     actions.updateAction({
       businessDetails: data,
     });
-    router.push("/my-business?step=three", undefined, { shallow: true });
+    router.push("/my-business?step=description_contact", undefined, {
+      shallow: true,
+    });
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BusinessForm>
+        <BusinessForm current={2}>
           <div className={`${styles.categories}`}>
             {categories.map(({ tags, label, value, imageSrc }) => (
               <Fragment key={label}>
@@ -57,4 +59,4 @@ const StepTwoPage = () => {
   );
 };
 
-export default StepTwoPage;
+export default Categories;

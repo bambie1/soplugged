@@ -2,6 +2,9 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import { PageWrapper } from "@/components/PageWrapper";
+import Skeleton from "@/components/skeletons/Skeleton";
+
+import styles from "./MerchPage.module.scss";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -15,7 +18,15 @@ const MerchPage = () => {
         <p className="noMargin">
           Normalize <b>#buyingblack</b>, but make it fashionable
         </p>
-        <div id="collection-component-1622397974663"></div>
+
+        <div className={styles.iframeWrapper}>
+          <div id="collection-component-1622397974663"></div>
+          <section className={styles.loader}>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+              <Skeleton key={num} type="box" />
+            ))}
+          </section>
+        </div>
       </PageWrapper>
       <Footer />
 

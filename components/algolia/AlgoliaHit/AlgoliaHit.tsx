@@ -3,7 +3,6 @@ import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
 
 import Avatar from "@/components/Avatar/Avatar";
-import { IBusiness } from "@/types/Business";
 
 import styles from "./AlgoliaHit.module.scss";
 interface Props {

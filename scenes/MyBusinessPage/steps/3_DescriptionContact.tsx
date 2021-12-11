@@ -20,7 +20,7 @@ const toolbarOptions = [
   [{ list: "ordered" }, { list: "bullet" }],
 ];
 
-const StepThreePage = () => {
+const DescriptionContact = () => {
   const router = useRouter();
 
   const { state, actions } = useStateMachine({ updateAction });
@@ -41,13 +41,13 @@ const StepThreePage = () => {
     actions.updateAction({
       businessDetails: data,
     });
-    router.push("/my-business?step=four", undefined, { shallow: true });
+    router.push("/my-business?step=images", undefined, { shallow: true });
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BusinessForm>
+        <BusinessForm current={3}>
           <section className={styles.form}>
             <div className="quillFormGroup">
               <label htmlFor="business_description" className="label">
@@ -76,4 +76,4 @@ const StepThreePage = () => {
   );
 };
 
-export default StepThreePage;
+export default DescriptionContact;

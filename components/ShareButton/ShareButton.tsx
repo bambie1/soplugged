@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShareAlt,
@@ -15,11 +15,16 @@ import styles from "./ShareButton.module.scss";
 const ShareButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [textCopied, setTextCopied] = useState(false);
+  const [businessUrl, setBusinessUrl] = useState("");
+
+  useEffect(() => {
+    setBusinessUrl(window.location.href);
+  }, []);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const copyUrl = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(businessUrl);
     setTextCopied(true);
 
     setTimeout(() => setTextCopied(false), 2000);
@@ -62,11 +67,7 @@ const ShareButton = () => {
         >
           <FontAwesomeIcon icon={faTimes} onClick={toggleModal} />
         </button>
-        <Input
-          disabled
-          label=""
-          value={"soplugged.com/business/mazic-beauty"}
-        />
+        <Input disabled label="" value={businessUrl} />
 
         {renderCopyButton()}
       </Dialog>

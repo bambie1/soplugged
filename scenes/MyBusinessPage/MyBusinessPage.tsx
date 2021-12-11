@@ -1,15 +1,17 @@
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import { StateMachineProvider, createStore } from "little-state-machine";
 import { useWindowSize } from "@reach/window-size";
 
-import StepOnePage from "./steps/StepOne";
-import StepTwoPage from "./steps/StepTwo";
-import StepThreePage from "./steps/StepThree";
-import StepFourPage from "./steps/StepFour";
-import StepReviewPage from "./steps/StepReview";
+import {
+  NameLocation,
+  Images,
+  Categories,
+  DescriptionContact,
+  Review,
+} from "./steps";
 import { useBusinessFormContext } from "@/context/businessFormContext";
-import StepAgreement from "./steps/StepAgreement";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -19,8 +21,11 @@ interface Props {
 }
 
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
+  const router = useRouter();
   const { width } = useWindowSize();
   const { agreementSigned } = useBusinessFormContext();
+
+  if (!business && !agreementSigned) router.push("/my-business/welcome");
 
   createStore(
     {
@@ -30,19 +35,18 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
   );
 
   const renderStep = () => {
-    if (!business && !agreementSigned) return <StepAgreement />;
     switch (step) {
-      case "two":
-        return <StepTwoPage />;
-      case "three":
-        return <StepThreePage />;
-      case "four":
-        return <StepFourPage />;
+      case "category":
+        return <Categories />;
+      case "description_contact":
+        return <DescriptionContact />;
+      case "images":
+        return <Images />;
       case "review":
-        return <StepReviewPage />;
+        return <Review />;
 
       default:
-        return <StepOnePage />;
+        return <NameLocation />;
     }
   };
 

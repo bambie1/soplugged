@@ -1,9 +1,9 @@
 import { FC } from "react";
 
 import { ButtonLink } from "@/styled/ButtonLink";
+import SubscribeForm from "../SubscribeForm/SubscribeForm";
 
 import styles from "./Footer.module.scss";
-import SubscribeForm from "../SubscribeForm/SubscribeForm";
 
 interface Props {
   tertiary?: boolean;
@@ -85,14 +85,8 @@ const Footer: FC<Props> = ({ tertiary }) => {
             >
               Privacy Policy
             </a>
-            <a
-              href="https://docs.google.com/document/d/1l5OVYw8_WuVmhQDXkXdB7zBRYiLVhJ-lrGERdMQXlcc/edit?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="button text"
-            >
-              Community Guidelines
-            </a>
+
+            <ButtonLink href="/guidelines">Community Guidelines</ButtonLink>
           </section>
         </div>
       </div>

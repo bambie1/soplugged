@@ -37,7 +37,7 @@ const Dashboard: FC = ({ children }) => {
         <PageWrapper center>
           <div className={styles.wrapper}>
             <nav className={styles.nav}>
-              <ul>
+              <ul className="list">
                 {dashboardLinks.map((link) => (
                   <li key={link.id}>
                     <Link href={link.href}>

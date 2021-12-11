@@ -3,12 +3,12 @@ import useSWR from "swr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
 
 import { useAuth } from "@/context/authContext";
 import { addFavorite } from "@/utils/addFavorite";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 
-import styles from "./FavoriteButton.module.scss";
 import { removeFavorite } from "@/utils/removeFavorite";
 
 interface Props {
@@ -41,21 +41,39 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
     setUserLikesBusiness(!userLikesBusiness);
     if (userLikesBusiness) {
       const res = await removeFavorite(businessId, user);
+      if (res.ok) {
+        toast.success("Removed from favorites");
+      } else {
+        toast.error("An error occurred");
+      }
     } else {
       const res = await addFavorite(businessId, user);
+      if (res.ok) {
+        toast.success("Added to favorites");
+      } else {
+        toast.error("An error occurred");
+      }
     }
   };
 
   if (userLikesBusiness)
     return (
-      <button onClick={handleClick} className="button outlined withIcon">
+      <button
+        onClick={handleClick}
+        className="button outlined withIcon"
+        disabled={!user}
+      >
         <FontAwesomeIcon icon={faHeartFilled} />
         Added to Favorites
       </button>
     );
 
   return (
-    <button onClick={handleClick} className="button outlined withIcon">
+    <button
+      onClick={handleClick}
+      className="button outlined withIcon"
+      disabled={!user}
+    >
       <FontAwesomeIcon icon={faHeart} />
       Add to Favorites
     </button>

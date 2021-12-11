@@ -31,8 +31,8 @@ const AlgoliaSearch = () => {
         </div>
 
         <Configure hitsPerPage={12} />
-        <CustomRefinementList attribute={"category"} />
-        <CustomRefinementList attribute={"business_location"} />
+        <CustomRefinementList operator="or" attribute={"category"} />
+        <CustomRefinementList operator="or" attribute={"business_location"} />
         <ClearRefinements />
 
         <div className="cover"></div>

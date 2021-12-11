@@ -16,7 +16,7 @@ const MyRefinementList: FC = ({
 
   return (
     <>
-      <ul className={styles.refinementList}>
+      <ul className={`list ${styles.refinementList}`}>
         {items.map(
           (item: any, index: any) =>
             index < ITEMS_LIMIT && (

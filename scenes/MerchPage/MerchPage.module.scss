@@ -1,0 +1,17 @@
+.iframeWrapper {
+  background: white;
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

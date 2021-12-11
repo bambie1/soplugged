@@ -8,14 +8,14 @@ import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
-import { verifyIdToken } from "../firebase/firebaseAdmin";
+import { verifyIdToken } from "../../firebase/firebaseAdmin";
 
 const MyBusinessPage = dynamic(
-  () => import("../scenes/MyBusinessPage/MyBusinessPage")
+  () => import("../../scenes/MyBusinessPage/MyBusinessPage")
 );
 
 const MyBusiness: NextPage = () => {
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
   const { data: businesses, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,

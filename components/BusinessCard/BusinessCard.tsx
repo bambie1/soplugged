@@ -8,9 +8,10 @@ import styles from "./BusinessCard.module.scss";
 
 interface Props {
   business: IBusiness;
+  mini?: boolean;
 }
 
-const BusinessCard: FC<Props> = ({ business }) => {
+const BusinessCard: FC<Props> = ({ business, mini }) => {
   const {
     business_name,
     business_location,
@@ -37,10 +38,15 @@ const BusinessCard: FC<Props> = ({ business }) => {
             __html: business_description?.replace(/<[^>]*>?/gm, ""),
           }}
         ></div>
-        <p>{business_location}</p>
 
-        {!fixed_to_one_location && (
-          <p className={styles.canadaWide}>CANADA-WIDE</p>
+        {!mini && (
+          <>
+            <p>{business_location}</p>
+
+            {!fixed_to_one_location && (
+              <p className={styles.canadaWide}>CANADA-WIDE</p>
+            )}
+          </>
         )}
       </a>
     </Link>

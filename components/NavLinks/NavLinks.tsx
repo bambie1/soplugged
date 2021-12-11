@@ -1,11 +1,16 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt, faBars } from "@fortawesome/free-solid-svg-icons";
-import { Dialog } from "@reach/dialog";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  AlertDialog,
+  AlertDialogLabel,
+  AlertDialogDescription,
+} from "@reach/alert-dialog";
 
 import { useAuth } from "@/context/authContext";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { Button } from "@/styled/Button";
 
 import styles from "./NavLinks.module.scss";
 
@@ -18,6 +23,12 @@ const openNavLinks = [
 const NavLinks: FC = () => {
   const { user, loading, signOutUser } = useAuth();
   const router = useRouter();
+  const [showSignOut, setShowSignOut] = useState(false);
+
+  const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
+
+  const open = () => setShowSignOut(true);
+  const close = () => setShowSignOut(false);
 
   const renderAuthButton = () => {
     if (loading) return <div className={styles.loading} />;
@@ -32,7 +43,7 @@ const NavLinks: FC = () => {
           <li className={styles.navLink}>
             <button
               title="Sign Out"
-              onClick={signOutUser}
+              onClick={open}
               className={styles.iconButton}
             >
               <FontAwesomeIcon icon={faSignOutAlt} />
@@ -58,7 +69,7 @@ const NavLinks: FC = () => {
   return (
     <>
       <nav>
-        <ul className={styles.navLinks}>
+        <ul className={`list ${styles.navLinks}`}>
           {openNavLinks.map(({ id, text, link }) => (
             <li key={id} className={buildStyles(link)}>
               <ButtonLink href={link}>{text}</ButtonLink>
@@ -67,6 +78,26 @@ const NavLinks: FC = () => {
           {renderAuthButton()}
         </ul>
       </nav>
+      {showSignOut && (
+        <AlertDialog leastDestructiveRef={cancelRef} className={styles.dialog}>
+          <AlertDialogLabel className={styles.label}>
+            Please Confirm
+          </AlertDialogLabel>
+
+          <AlertDialogDescription>
+            Are you sure you want to sign out?
+          </AlertDialogDescription>
+
+          <div className={styles.actionButtons}>
+            <Button variant="text" ref={cancelRef} onClick={close}>
+              No, go back
+            </Button>
+            <Button variant="outlined" onClick={signOutUser}>
+              Yes, Sign me out
+            </Button>
+          </div>
+        </AlertDialog>
+      )}
     </>
   );
 };

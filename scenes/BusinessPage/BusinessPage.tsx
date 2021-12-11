@@ -10,14 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/styled/Button";
+import { ButtonLink } from "@/styled/ButtonLink";
 import { PageWrapper } from "@/components/PageWrapper";
-
-import styles from "./BusinessPage.module.scss";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { IBusiness } from "@/types/Business";
-import { ShareButton } from "@/components/ShareButton";
+
+import styles from "./BusinessPage.module.scss";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
@@ -25,6 +24,9 @@ const FavoriteButton = dynamic(
 );
 const ContactForm = dynamic(
   () => import("../../components/ContactForm/ContactForm")
+);
+const ShareButton = dynamic(
+  () => import("../../components/ShareButton/ShareButton")
 );
 
 interface Props {
@@ -43,6 +45,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     business_description,
     fixed_to_one_location,
     verified,
+    creator,
   } = business;
 
   const rawImages = sample_images?.split(",") || [];
@@ -68,8 +71,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
           <div className={styles.contactForm}>
-            <h3 className="center">Contact</h3>
-            <ContactForm />
+            <ContactForm businessEmail={creator?.email || ""} />
           </div>
           <div className={styles.buttonGroup}>
             <FavoriteButton businessId={id} />
@@ -102,8 +104,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               <ShareButton />
             </div>
             <div className={styles.contactForm}>
-              <h3>Contact</h3>
-              <ContactForm />
+              <ContactForm businessEmail={creator?.email || ""} />
             </div>
           </>
         )}

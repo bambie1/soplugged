@@ -12,7 +12,7 @@ import { updateAction } from "../littleStateMachine/updateAction";
 import styles from "../MyBusinessPage.module.scss";
 import { BusinessForm } from "layouts/BusinessForm";
 
-const StepOnePage = () => {
+const NameLocation = () => {
   const router = useRouter();
 
   const { state, actions } = useStateMachine({ updateAction });
@@ -38,7 +38,7 @@ const StepOnePage = () => {
     actions.updateAction({
       businessDetails: data,
     });
-    router.push("/my-business?step=two", undefined, { shallow: true });
+    router.push("/my-business?step=category", undefined, { shallow: true });
   };
 
   return (
@@ -133,4 +133,4 @@ const StepOnePage = () => {
   );
 };
 
-export default StepOnePage;
+export default NameLocation;

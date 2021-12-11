@@ -7,6 +7,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import { rgbDataURL } from "@/lib/dataUrl";
 
 import styles from "./HomePage.module.scss";
+import { FAQs } from "@/components/FAQs";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -101,6 +102,8 @@ const HomePage = () => {
               />
             </aside>
           </section>
+
+          <FAQs />
         </div>
       </PageWrapper>
       <Footer />

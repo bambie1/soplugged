@@ -12,7 +12,7 @@ import { BusinessForm } from "layouts/BusinessForm";
 
 import styles from "../MyBusinessPage.module.scss";
 
-const StepReviewPage = () => {
+const Review = () => {
   const router = useRouter();
   const { user } = useAuth();
   const { state, actions } = useStateMachine({ updateAction });
@@ -28,7 +28,7 @@ const StepReviewPage = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BusinessForm>
+        <BusinessForm current={5}>
           <section className={styles.form}>
             <Input
               disabled
@@ -63,4 +63,4 @@ const StepReviewPage = () => {
   );
 };
 
-export default StepReviewPage;
+export default Review;

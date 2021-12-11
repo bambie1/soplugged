@@ -1,0 +1,43 @@
+@import "styles/mixins";
+
+.content {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.checkboxes {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 1rem;
+}
+
+.link {
+  color: $secondary;
+  text-decoration: underline;
+}
+
+.checkbox {
+  display: flex;
+  gap: 1rem;
+  margin-block: 0.5rem;
+  text-align: left;
+}
+
+.action {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem;
+  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+
+  @include desktop {
+    justify-content: center;
+  }
+}

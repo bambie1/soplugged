@@ -3,5 +3,7 @@ export const getAllSlugs = async () => {
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
   );
   const businesses = await res.json();
-  return businesses.map((business: any) => `/business/${business.slug}`);
+  return businesses.map(
+    (business: any) => `/business/${business.slug || "business"}`
+  );
 };

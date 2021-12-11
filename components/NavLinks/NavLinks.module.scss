@@ -48,3 +48,32 @@
     outline: auto;
   }
 }
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-self: baseline;
+  border-radius: 10px;
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 500px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  justify-content: space-between;
+
+  @include tablet {
+    justify-content: flex-end;
+    column-gap: 3rem;
+  }
+}
+
+.label {
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: $secondary;
+  font-size: 1.25rem;
+}

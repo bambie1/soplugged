@@ -1,10 +1,6 @@
-import React, { FC, useState, createContext, useContext } from "react";
+import { FC, useState, createContext, useContext } from "react";
 
 const BusinessFormContext = createContext<any>({});
-
-export const useBusinessFormContext = () => {
-  return useContext(BusinessFormContext);
-};
 
 export const BusinessFormProvider: FC = ({ children }) => {
   const [agreementSigned, setAgreementSigned] = useState(false);
@@ -19,4 +15,8 @@ export const BusinessFormProvider: FC = ({ children }) => {
       {children}
     </BusinessFormContext.Provider>
   );
+};
+
+export const useBusinessFormContext = () => {
+  return useContext(BusinessFormContext);
 };

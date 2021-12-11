@@ -12,11 +12,13 @@ interface Props {
 
 const Business: NextPage<Props> = ({ business }) => {
   const router = useRouter();
-  const { business_name } = business;
   // TODO: Update loading state
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
+  const { business_name } = business;
+
   return (
     <>
       <SEO

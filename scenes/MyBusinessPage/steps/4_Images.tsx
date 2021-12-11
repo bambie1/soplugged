@@ -15,7 +15,7 @@ import { updateAction } from "../littleStateMachine/updateAction";
 
 import styles from "../MyBusinessPage.module.scss";
 
-const StepFourPage = () => {
+const Images = () => {
   const router = useRouter();
   const { url, error, uploadImage, uploading } = useImageUploader();
 
@@ -52,7 +52,7 @@ const StepFourPage = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BusinessForm>
+        <BusinessForm current={4}>
           <section className={styles.form}>
             <div className={styles.logoInput}>
               <label htmlFor="business-logo">Business logo:</label>
@@ -99,4 +99,4 @@ const StepFourPage = () => {
   );
 };
 
-export default StepFourPage;
+export default Images;

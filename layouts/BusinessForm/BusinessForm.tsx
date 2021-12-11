@@ -7,12 +7,13 @@ import { steps } from "@/lib/stepsObject";
 
 import styles from "./BusinessForm.module.scss";
 
-const BusinessForm: FC = ({ children }) => {
+interface Props {
+  current?: number;
+}
+
+const BusinessForm: FC<Props> = ({ current = 1, children }) => {
   const router = useRouter();
   const { width } = useWindowSize();
-
-  const queryStep = router.query.step || "one";
-  const current = steps.findIndex(({ step }) => step == queryStep) || 0;
 
   const isMobile = width < 768;
 
@@ -22,8 +23,7 @@ const BusinessForm: FC = ({ children }) => {
     });
   };
 
-  const buildStyle = () =>
-    `${styles.prevButton} ${current === 0 && styles.disabled} button`;
+  const buildStyle = () => `${styles.prevButton}  button`;
 
   const renderStepInfo = () => {
     return (
@@ -44,6 +44,7 @@ const BusinessForm: FC = ({ children }) => {
             type="button"
             onClick={handlePrevious}
             className={buildStyle()}
+            disabled={current <= 1}
           >
             Go Back
           </button>
@@ -67,6 +68,7 @@ const BusinessForm: FC = ({ children }) => {
               type="button"
               onClick={handlePrevious}
               className={buildStyle()}
+              disabled={current <= 1}
             >
               Go Back
             </button>
