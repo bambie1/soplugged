@@ -1,5 +1,9 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { FC } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle, faPen } from "@fortawesome/free-solid-svg-icons";
+import Tooltip from "@reach/tooltip";
 
 import { BusinessCard } from "@/components/BusinessCard";
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -14,8 +18,69 @@ interface Props {
 }
 
 const BusinessInfoPage: FC<Props> = ({ business }) => {
+  const router = useRouter();
   const { user } = useAuth();
   const userName = business?.creator?.full_name || user?.displayName;
+
+  const hasLogo = business?.logo_url !== "";
+  const hasGoodDescription = business?.business_description.length > 150;
+  const hasImages = !!business?.sample_images.split(",")[0];
+
+  const suggestionsCount = [hasLogo, hasGoodDescription, hasImages].filter(
+    Boolean
+  ).length;
+  const percentage = (7 + suggestionsCount) * 10;
+
+  const suggestionHandler = (step: string) => {
+    router.push(`/my-business?step=${step}`);
+  };
+
+  const renderInsights = () => {
+    if (percentage === 100) {
+      return <p>Looking great, boss! Keep being awesome</p>;
+    }
+
+    return (
+      <>
+        {!hasLogo && (
+          <div className={styles.suggestion}>
+            <p>Add a logo</p>
+            <button
+              className="button  withIcon"
+              onClick={() => suggestionHandler("images")}
+            >
+              <FontAwesomeIcon icon={faPen} />
+              Fix
+            </button>
+          </div>
+        )}
+        {!hasImages && (
+          <div className={styles.suggestion}>
+            <p>Upload sample images</p>
+            <button
+              className="button  withIcon"
+              onClick={() => suggestionHandler("images")}
+            >
+              <FontAwesomeIcon icon={faPen} />
+              Fix
+            </button>
+          </div>
+        )}
+        {!hasGoodDescription && (
+          <div className={styles.suggestion}>
+            <p>Describe your business more</p>
+            <button
+              className="button  withIcon"
+              onClick={() => suggestionHandler("description_contact")}
+            >
+              <FontAwesomeIcon icon={faPen} />
+              Fix
+            </button>
+          </div>
+        )}
+      </>
+    );
+  };
 
   const renderBusinessInfo = () => {
     if (!business)
@@ -30,7 +95,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           />
           <p>No business found. Just a nice beverage!</p>
           <p>Are you an entrepreneur?</p>
-          <ButtonLink href="/my-business" variant="outlined">
+          <ButtonLink href="/my-business" variant="filled">
             Add your business
           </ButtonLink>
         </div>
@@ -60,13 +125,28 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             </div>
           </section>
 
-          <section className={styles.insights}>
-            <h3 className={styles.sectionTitle}>Business Insights</h3>
-            <p>No insights this month</p>
+          <section className={styles.insightsDiv}>
+            <article className={styles.sectionTitle}>
+              <h3>Business Insights</h3>
+              <Tooltip label="Suggestions to improve your SoPlugged business page">
+                <div>
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                </div>
+              </Tooltip>
+            </article>
+
+            <div className={styles.insights}>{renderInsights()}</div>
           </section>
 
           <section className={styles.plugs}>
-            <h3 className={styles.sectionTitle}>Plugs</h3>
+            <article className={styles.sectionTitle}>
+              <h3>Plugs</h3>
+              <Tooltip label="Number of people who have added your business to their favorites">
+                <div>
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                </div>
+              </Tooltip>
+            </article>
             <p className={styles.plug}>{business.number_of_likes}</p>
           </section>
         </div>
@@ -77,7 +157,6 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   return (
     <>
       <h1>Business</h1>
-
       {renderBusinessInfo()}
     </>
   );

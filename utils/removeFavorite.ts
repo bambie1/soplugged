@@ -1,12 +1,11 @@
 import { getDBUser } from "@/utils/dbUser";
 import { parseCookies } from "nookies";
 
-export const removeFavorite = async (business_id: number, user: any) => {
-  // try {
+export const removeFavorite = async (business_id: number, email: string) => {
   const { token } = parseCookies();
-  const dbUser = await getDBUser(user);
+  const dbUser = await getDBUser(email);
 
-  if (!dbUser) throw new Error("No db user");
+  if (!dbUser) return null;
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorite`,
@@ -23,12 +22,5 @@ export const removeFavorite = async (business_id: number, user: any) => {
     }
   );
 
-  // if (!res.ok) {
-  //   throw new Error("HTTP status " + res.status);
-  // }
   return res;
-  // } catch (error) {
-  //   console.log({ error });
-  //   return { error };
-  // }
 };

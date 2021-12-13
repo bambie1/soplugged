@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Link from "next/link";
 
 import { faqs } from "@/lib/faqs";
 
@@ -42,6 +43,10 @@ const FAQs: FC = () => {
       {faqs.map(({ question, answer }) => (
         <Accordion key={question} question={question} answer={answer} />
       ))}
+
+      <p className={styles.faqLink}>
+        Got more questions? Visit our <Link href="/faqs">FAQ page</Link>
+      </p>
     </section>
   );
 };

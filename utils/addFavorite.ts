@@ -6,7 +6,7 @@ export const addFavorite = async (business_id: number, user: any) => {
   const { token } = parseCookies();
   const dbUser = await getDBUser(user);
 
-  if (!dbUser) throw new Error("No db user");
+  if (!dbUser) return null;
 
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`;
   const res = await fetch(fetchUrl, {

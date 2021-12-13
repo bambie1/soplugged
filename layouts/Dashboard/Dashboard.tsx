@@ -12,6 +12,7 @@ import {
 import { PageWrapper } from "@/components/PageWrapper";
 
 import styles from "./Dashboard.module.scss";
+import { Button } from "@/styled/Button";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -51,6 +52,9 @@ const Dashboard: FC = ({ children }) => {
               </ul>
             </nav>
             <div className={styles.content}>{children}</div>
+          </div>
+          <div className={styles.buttons}>
+            <Button variant="outlined">Leave feedback</Button>
           </div>
         </PageWrapper>
       </div>

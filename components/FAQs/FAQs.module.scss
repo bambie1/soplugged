@@ -40,3 +40,13 @@
   padding: 0 18px;
   overflow: hidden;
 }
+
+.faqLink {
+  text-align: center;
+  margin-top: 2rem;
+
+  a {
+    color: $secondary;
+    text-decoration: underline;
+  }
+}

@@ -40,15 +40,17 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
   const handleClick = async () => {
     setUserLikesBusiness(!userLikesBusiness);
     if (userLikesBusiness) {
-      const res = await removeFavorite(businessId, user);
-      if (res.ok) {
+      const res = await removeFavorite(businessId, user.email);
+
+      if (res?.ok) {
         toast.success("Removed from favorites");
       } else {
         toast.error("An error occurred");
       }
     } else {
-      const res = await addFavorite(businessId, user);
-      if (res.ok) {
+      const res = await addFavorite(businessId, user.email);
+
+      if (res?.ok) {
         toast.success("Added to favorites");
       } else {
         toast.error("An error occurred");

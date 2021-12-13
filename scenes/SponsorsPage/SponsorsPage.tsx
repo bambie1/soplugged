@@ -40,11 +40,15 @@ const SponsorsPage = () => {
             </p>
           </aside>
 
-          <Button onClick={() => setShowKweeve(true)}>Show your support</Button>
+          <div className="pageButtons">
+            <Button onClick={() => setShowKweeve(true)}>
+              Show your support
+            </Button>
+            <ButtonLink href="/search" variant="outlined">
+              Back to Directory
+            </ButtonLink>
+          </div>
         </section>
-        <ButtonLink href="/search" variant="outlined">
-          Back to Directory
-        </ButtonLink>
 
         <DialogOverlay
           className={styles.dialogOverlay}

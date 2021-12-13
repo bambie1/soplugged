@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { FC } from "react";
 import { StateMachineProvider, createStore } from "little-state-machine";
 import { useWindowSize } from "@reach/window-size";
@@ -11,7 +10,6 @@ import {
   DescriptionContact,
   Review,
 } from "./steps";
-import { useBusinessFormContext } from "@/context/businessFormContext";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -21,11 +19,7 @@ interface Props {
 }
 
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
-  const router = useRouter();
   const { width } = useWindowSize();
-  const { agreementSigned } = useBusinessFormContext();
-
-  if (!business && !agreementSigned) router.push("/my-business/welcome");
 
   createStore(
     {

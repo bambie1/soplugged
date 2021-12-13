@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
+import toast from "react-hot-toast";
 
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
 import { updateBusiness } from "@/utils/updateBusiness";
 import { useAuth } from "@/context/authContext";
+import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import { updateAction } from "../littleStateMachine/updateAction";
 import { BusinessForm } from "layouts/BusinessForm";
@@ -19,10 +21,16 @@ const Review = () => {
   const { handleSubmit, register } = useForm<IBusiness>({
     defaultValues: state.businessDetails,
   });
+  const { isNew } = useBusinessFormContext();
 
   const onSubmit = async (data: any) => {
-    const res = await updateBusiness(data, false);
-    // console.log({ res });
+    const res = await updateBusiness(data, isNew);
+
+    if (res.ok) {
+      toast.success("Business updated successfully");
+    } else {
+      toast.error("An error occurred");
+    }
   };
 
   return (

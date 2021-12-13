@@ -66,7 +66,7 @@ const Footer: FC<Props> = ({ tertiary }) => {
           </aside>
           <aside className={styles.internalLinks}>
             <ButtonLink href="/faqs">FAQs</ButtonLink>
-            <ButtonLink href="/blog">Blog</ButtonLink>
+            {/* <ButtonLink href="/blog">Blog</ButtonLink> */}
             <ButtonLink href="/our-story">About Us</ButtonLink>
             <ButtonLink href="/sponsors">Sponsors</ButtonLink>
           </aside>

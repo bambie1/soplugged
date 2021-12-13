@@ -8,6 +8,8 @@
   width: 100%;
 
   @include tablet {
+    row-gap: 2rem;
+
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
@@ -30,14 +32,52 @@
 }
 
 .sectionTitle {
-  color: grey;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+  margin-bottom: 1rem !important;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: $secondary;
+    cursor: pointer;
+  }
+
+  &,
+  h3 {
+    font-size: 0.9rem;
+    color: grey;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 }
 
 .plug {
   font-size: 3rem;
   font-weight: bold;
   color: $secondary;
+  margin: 0rem;
+  line-height: 1;
+}
+
+.insights {
+  background-color: $lightGrey;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.suggestion {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   margin-block: 0.5rem;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+    text-align: left;
+  }
 }

@@ -7,6 +7,7 @@ import useSWR from "swr";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
+import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import { verifyIdToken } from "../../firebase/firebaseAdmin";
 
@@ -16,6 +17,7 @@ const MyBusinessPage = dynamic(
 
 const MyBusiness: NextPage = () => {
   const { query, push } = useRouter();
+  const { agreementSigned, setIsNew } = useBusinessFormContext();
 
   const { data: businesses, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
@@ -23,6 +25,11 @@ const MyBusiness: NextPage = () => {
   );
 
   if (!businesses) return <MyBusinessSkeleton />;
+
+  if (!businesses[0] && !agreementSigned) {
+    setIsNew(true);
+    push("/my-business/welcome");
+  }
 
   return (
     <>

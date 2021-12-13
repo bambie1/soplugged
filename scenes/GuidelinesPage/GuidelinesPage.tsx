@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import { PageWrapper } from "@/components/PageWrapper";
 
 import styles from "./GuidelinesPage.module.scss";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -12,7 +14,7 @@ const GuidelinesPage: FC = () => {
   return (
     <>
       <Header />
-      <PageWrapper>
+      <PageWrapper isSlim>
         <h1 className="center">Community Guidelines</h1>
 
         <p>
@@ -22,7 +24,6 @@ const GuidelinesPage: FC = () => {
           meets their needs.
         </p>
 
-        {/* eslint-disable-next-line max-len */}
         <p>
           In order to maintain a respectful, inclusive, and safe environment for
           everyone, we’ve created a set of community guidelines to serve as a
@@ -55,6 +56,32 @@ const GuidelinesPage: FC = () => {
             members.
           </li>
         </ul>
+
+        <p>
+          <b>CONSEQUENCES:</b> We will take action when we see someone violating
+          these guidelines or if your business is flagged as non-Black owned.
+          Sometimes that just means giving someone a warning; other times it
+          means revoking certain privileges or removing your business from our
+          site. We ask that all community members reach out to a member of our
+          team to report any actions that violate these guidelines.
+        </p>
+        <p>
+          <b>AGREEMENT:</b> Just like our community, these standards will
+          continue to grow, evolve, and change. By continuing to engage with,
+          and/or follow this page or posts on this page, you are considered to
+          be in agreement with the community guidelines noted above. As always
+          please reach out to a member of our team with any questions or
+          concerns.
+        </p>
+        <br />
+        <div className="pageButtons flex-center">
+          <ButtonLink href="/search" variant="filled">
+            Begin your search
+          </ButtonLink>
+          <ButtonLink href="/my-business" variant="outlined">
+            Add your business
+          </ButtonLink>
+        </div>
       </PageWrapper>
       <Footer />
     </>

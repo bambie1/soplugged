@@ -32,6 +32,10 @@ h1 {
   }
 }
 
+p {
+  line-height: 2;
+}
+
 ::selection {
   color: var(--dark);
   background: var(--light);
@@ -159,6 +163,13 @@ ul.list {
   display: flex;
 }
 
+.pageButtons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
 // html elements
 
 .button {
@@ -235,5 +246,25 @@ ul.list {
     &:hover {
       box-shadow: none;
     }
+  }
+}
+
+.iconButton {
+  height: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $secondary;
+  border-radius: 8px;
+
+  &:hover,
+  &:active {
+    background-color: rgba(78, 53, 5, 0.04);
+  }
+
+  &:focus-visible {
+    outline: auto;
   }
 }

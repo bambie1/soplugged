@@ -99,3 +99,13 @@
     max-height: 100%;
   }
 }
+
+.buttons {
+  display: none;
+
+  @include tablet {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+}

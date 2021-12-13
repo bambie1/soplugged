@@ -43,7 +43,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
 
     const res = await sendEmail(email);
 
-    if (res.ok) {
+    if (res?.ok) {
       toast.success("Message sent");
       reset();
       setMessageSent(true);
@@ -78,9 +78,6 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
         {...register("message", { required: true })}
       />
     );
-    {
-      renderButton();
-    }
   };
 
   return (
@@ -90,6 +87,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
       <Input label="Email address" value={user?.email || ""} disabled />
 
       {renderContent()}
+      {renderButton()}
     </form>
   );
 };
