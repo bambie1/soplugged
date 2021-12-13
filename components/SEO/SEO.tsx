@@ -24,6 +24,10 @@ const SEO: FC<Props> = ({ description, title }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />
       <meta property="og:url" content={url} />
+      <meta
+        httpEquiv="Content-Security-Policy"
+        content="upgrade-insecure-requests"
+      />
 
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/favicon.ico" />
