@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 
-import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
 
 import { BusinessForm } from "layouts/BusinessForm";
@@ -41,7 +40,7 @@ const DescriptionContact = () => {
     actions.updateAction({
       businessDetails: data,
     });
-    router.push("/my-business?step=images", undefined, { shallow: true });
+    router.push("/my-business?step=contact", undefined, { shallow: true });
   };
 
   return (
@@ -50,7 +49,10 @@ const DescriptionContact = () => {
         <BusinessForm current={3}>
           <section className={styles.form}>
             <div className="quillFormGroup">
-              <label htmlFor="business_description" className="label">
+              <label
+                htmlFor="business_description"
+                className={styles.descriptionLabel}
+              >
                 Business Description
               </label>
               <ReactQuill
@@ -66,9 +68,6 @@ const DescriptionContact = () => {
                 }}
               />
             </div>
-            <Input label="Business Url" {...register("business_url")} />
-            <Input label="IG Handle" {...register("ig_handle")} />
-            <Input label="Phone number" {...register("phone_number")} />
           </section>
         </BusinessForm>
       </form>

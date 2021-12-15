@@ -28,19 +28,26 @@ export const steps = [
   },
   {
     number: 3,
-    step: "description_contact",
-    name: "Description & Contact",
-    description: "More details about your business and contact links",
+    step: "description",
+    name: "Description",
+    description:
+      "Detailed description about your business and the services you provide",
   },
   {
     number: 4,
+    step: "contact",
+    name: "Contact",
+    description: "Contact links",
+  },
+  {
+    number: 5,
     step: "images",
     name: "Images",
     description:
       "The most important part of your business page. Upload a logo and sample images",
   },
   {
-    number: 5,
+    number: 6,
     step: "review",
     name: "Review",
     description: "Confirm your changes",

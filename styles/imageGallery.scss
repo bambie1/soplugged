@@ -35,7 +35,6 @@
   div
   .image-gallery-image {
   max-height: calc(100vh - 80px);
-  object-fit: contain;
 }
 .image-gallery-icon:hover {
   color: var(--dark);
@@ -72,4 +71,10 @@
 .image-gallery-thumbnail:hover,
 .image-gallery-thumbnail:focus {
   border-color: var(--dark);
+}
+
+.fullscreen {
+  .image-gallery-image {
+    object-fit: contain;
+  }
 }

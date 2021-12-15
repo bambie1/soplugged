@@ -116,6 +116,7 @@ const NameLocation = () => {
                   )}
                 </PlacesAutocomplete>
               )}
+              rules={{ required: true }}
             />
 
             <Input

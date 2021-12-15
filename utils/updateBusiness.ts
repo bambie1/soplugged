@@ -27,7 +27,7 @@ export const updateBusiness = async (data: IBusiness, isNew: boolean) => {
   const fetchUrl = isNew
     ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
     : `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${
-        businessObject.slug || ""
+        data.slug || ""
       }`;
   const fetchMethod = isNew ? "POST" : "PATCH";
 

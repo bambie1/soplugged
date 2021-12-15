@@ -52,7 +52,7 @@ const Images = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BusinessForm current={4}>
+        <BusinessForm current={5}>
           <section className={styles.form}>
             <div className={styles.logoInput}>
               <label htmlFor="business-logo">Business logo:</label>

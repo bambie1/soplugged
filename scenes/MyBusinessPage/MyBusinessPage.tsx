@@ -7,7 +7,8 @@ import {
   NameLocation,
   Images,
   Categories,
-  DescriptionContact,
+  Description,
+  Contact,
   Review,
 } from "./steps";
 
@@ -32,8 +33,10 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
     switch (step) {
       case "category":
         return <Categories />;
-      case "description_contact":
-        return <DescriptionContact />;
+      case "description":
+        return <Description />;
+      case "contact":
+        return <Contact />;
       case "images":
         return <Images />;
       case "review":

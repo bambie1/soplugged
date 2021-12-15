@@ -39,12 +39,10 @@ const BusinessCard: FC<Props> = ({ business, mini }) => {
           }}
         ></div>
 
-        {!mini && (
+        {mini && (
           <>
-            <p>{business_location}</p>
-
-            {!fixed_to_one_location && (
-              <p className={styles.canadaWide}>CANADA-WIDE</p>
+            {business_location && (
+              <p className={styles.businessLocation}>{business_location}</p>
             )}
           </>
         )}

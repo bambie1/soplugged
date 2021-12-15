@@ -24,7 +24,7 @@ const Categories = () => {
     actions.updateAction({
       businessDetails: data,
     });
-    router.push("/my-business?step=description_contact", undefined, {
+    router.push("/my-business?step=description", undefined, {
       shallow: true,
     });
   };

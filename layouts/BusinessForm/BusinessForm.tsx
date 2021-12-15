@@ -34,22 +34,30 @@ const BusinessForm: FC<Props> = ({ current = 1, children }) => {
     );
   };
 
+  const renderButtons = () => {
+    return (
+      <>
+        <button
+          type="button"
+          onClick={handlePrevious}
+          className={buildStyle()}
+          disabled={current <= 1}
+        >
+          Go Back
+        </button>
+        <Button type="submit">
+          {current === steps.length - 1 ? "Submit" : "Next"}
+        </Button>
+      </>
+    );
+  };
+
   if (isMobile)
     return (
       <div className={styles.mobileWrapper}>
         {renderStepInfo()}
         <aside className={styles.mobileContent}>{children}</aside>
-        <div className={styles.navigation}>
-          <button
-            type="button"
-            onClick={handlePrevious}
-            className={buildStyle()}
-            disabled={current <= 1}
-          >
-            Go Back
-          </button>
-          <Button type="submit">Next</Button>
-        </div>
+        <div className={styles.navigation}>{renderButtons()}</div>
       </div>
     );
 
@@ -63,17 +71,7 @@ const BusinessForm: FC<Props> = ({ current = 1, children }) => {
             {children}
           </div>
 
-          <div className={styles.navigation}>
-            <button
-              type="button"
-              onClick={handlePrevious}
-              className={buildStyle()}
-              disabled={current <= 1}
-            >
-              Go Back
-            </button>
-            <Button type="submit">Next</Button>
-          </div>
+          <div className={styles.navigation}>{renderButtons()}</div>
         </aside>
       </section>
     </>
