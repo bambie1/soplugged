@@ -8,12 +8,12 @@ import toast from "react-hot-toast";
 import { useAuth } from "@/context/authContext";
 import { addFavorite } from "@/utils/addFavorite";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
-
 import { removeFavorite } from "@/utils/removeFavorite";
 
 interface Props {
   businessId: any;
 }
+
 const FavoriteButton: FC<Props> = ({ businessId }) => {
   const { user } = useAuth();
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);

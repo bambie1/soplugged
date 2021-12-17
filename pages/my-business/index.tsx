@@ -8,8 +8,7 @@ import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 import { useBusinessFormContext } from "@/context/businessFormContext";
-
-import { verifyIdToken } from "../../firebase/firebaseAdmin";
+import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 
 const MyBusinessPage = dynamic(
   () => import("../../scenes/MyBusinessPage/MyBusinessPage")

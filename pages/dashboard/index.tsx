@@ -7,7 +7,7 @@ import BusinessInfoSkeleton from "@/scenes/dashboard/BusinessInfoPage/BusinessIn
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 
-import { verifyIdToken } from "../../firebase/firebaseAdmin";
+import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
 
 const DashboardHome: NextPage = () => {

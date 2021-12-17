@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import toast from "react-hot-toast";
 
-import firebaseClient from "../firebase/firebaseClient";
+import firebaseClient from "@/src/firebase/firebaseClient";
 
 const AuthContext = createContext<any>({});
 

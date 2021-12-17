@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect, useMemo, FC } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 
-import useImageUploader from "hooks/useImageUploader";
+import useImageUploader from "@/hooks/useImageUploader";
 
 import styles from "./FileDropzone.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 
-import { faqs } from "@/lib/faqs";
+import { faqs } from "@/src/lib/faqs";
 
 import styles from "./FAQs.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

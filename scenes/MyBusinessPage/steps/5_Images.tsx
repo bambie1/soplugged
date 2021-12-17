@@ -10,7 +10,7 @@ import { IBusiness } from "@/types/Business";
 import { FileDropzone } from "@/components/FileDropzone";
 
 import { BusinessForm } from "layouts/BusinessForm";
-import useImageUploader from "hooks/useImageUploader";
+import useImageUploader from "@/hooks/useImageUploader";
 import { updateAction } from "../littleStateMachine/updateAction";
 
 import styles from "../MyBusinessPage.module.scss";

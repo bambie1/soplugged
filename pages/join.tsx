@@ -3,8 +3,7 @@ import nookies from "nookies";
 import dynamic from "next/dynamic";
 
 import { SEO } from "@/components/SEO";
-
-import { verifyIdToken } from "../firebase/firebaseAdmin";
+import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 
 const JoinPage = dynamic(() => import("../scenes/JoinPage/JoinPage"));
 

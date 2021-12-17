@@ -7,7 +7,7 @@ import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleto
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 
-import { verifyIdToken } from "../../firebase/firebaseAdmin";
+import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
 
 const Favorites: NextPage = () => {
