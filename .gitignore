@@ -49,3 +49,6 @@ setupTests.js
 .babelrc
 babel.config.js
 jest.config.js
+
+# Sentry
+.sentryclirc

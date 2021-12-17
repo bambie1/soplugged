@@ -3,7 +3,11 @@ import type { NextPage } from "next";
 import { HomePage } from "@/scenes/HomePage";
 import { SEO } from "@/components/SEO";
 
+import logger from "../logger/logger";
+
 const Home: NextPage = () => {
+  logger.info("Client side logging. Logged with pino-logflare.");
+
   return (
     <>
       <SEO
