@@ -2,9 +2,10 @@ export const stepsObject: any = {
   welcome: 0,
   name_location: 1,
   category: 2,
-  description_contact: 3,
-  images: 4,
-  review: 5,
+  description: 3,
+  contact: 4,
+  images: 5,
+  review: 6,
 };
 
 export const steps = [

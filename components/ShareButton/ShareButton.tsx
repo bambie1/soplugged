@@ -42,7 +42,7 @@ const ShareButton = () => {
     return (
       <button className="button text withIcon" onClick={copyUrl}>
         <FontAwesomeIcon icon={faCopy} />
-        Copy Url
+        Copy Link
       </button>
     );
   };
@@ -67,9 +67,11 @@ const ShareButton = () => {
         >
           <FontAwesomeIcon icon={faTimes} onClick={toggleModal} />
         </button>
-        <Input disabled label="" value={businessUrl} />
+        <div className={styles.content}>
+          <Input disabled label="" value={businessUrl} />
 
-        {renderCopyButton()}
+          {renderCopyButton()}
+        </div>
       </Dialog>
     </>
   );

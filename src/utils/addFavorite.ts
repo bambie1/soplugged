@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/nextjs";
+
 import { getDBUser } from "@/utils/dbUser";
 import { parseCookies } from "nookies";
 
@@ -21,5 +23,8 @@ export const addFavorite = async (business_id: number, user: any) => {
     }),
   });
 
+  if (!res.ok) {
+    Sentry.captureException(res);
+  }
   return res;
 };

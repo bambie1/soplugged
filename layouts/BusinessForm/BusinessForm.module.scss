@@ -18,7 +18,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "blank content";
   align-items: center;
-  z-index: 1;
+  // z-index: 1;
   position: absolute;
   top: 0;
   width: 100%;
@@ -36,6 +36,8 @@
 }
 
 .stepInfo {
+  // animation: 1s ease-out 0s 1 slideInFromLeft;
+
   @include mobile_only {
     text-align: center;
     padding: 5rem 1rem;
@@ -101,4 +103,13 @@
 
 .labelButton {
   display: inline-flex;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

@@ -46,9 +46,9 @@ const Review = () => {
     }
   };
 
-  // if (isSubmitted) {
-  return <Success />;
-  // }
+  if (isSubmitted) {
+    return <Success />;
+  }
 
   return (
     <>

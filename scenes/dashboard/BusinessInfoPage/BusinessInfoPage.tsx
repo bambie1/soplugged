@@ -46,7 +46,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           <div className={styles.suggestion}>
             <p>Add a logo</p>
             <button
-              className="button  withIcon"
+              className="button withIcon"
               onClick={() => suggestionHandler("images")}
             >
               <FontAwesomeIcon icon={faPen} />
@@ -71,7 +71,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             <p>Describe your business more</p>
             <button
               className="button  withIcon"
-              onClick={() => suggestionHandler("description_contact")}
+              onClick={() => suggestionHandler("description")}
             >
               <FontAwesomeIcon icon={faPen} />
               Fix

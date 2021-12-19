@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import Link from "next/link";
 
 type IProps = {
-  variant?: "outlined" | "filled";
+  variant?: "outlined" | "filled" | "text";
 } & React.ComponentProps<"a">;
 
 const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(

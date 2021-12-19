@@ -4,6 +4,8 @@ import Script from "next/script";
 import { useForm, Controller } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 import PlacesAutocomplete from "react-places-autocomplete";
+import { yupResolver } from "@hookform/resolvers/yup";
+import yup from "yup";
 
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
@@ -11,6 +13,14 @@ import { IBusiness } from "@/types/Business";
 import { updateAction } from "../littleStateMachine/updateAction";
 import styles from "../MyBusinessPage.module.scss";
 import { BusinessForm } from "layouts/BusinessForm";
+
+const schema = yup
+  .object()
+  .shape({
+    business_name: yup.string().required(),
+    business_location: yup.string().required(),
+  })
+  .required();
 
 const NameLocation = () => {
   const router = useRouter();
@@ -25,14 +35,22 @@ const NameLocation = () => {
     formState: { errors },
   } = useForm<IBusiness>({
     defaultValues: state.businessDetails,
+
+    resolver: yupResolver(schema),
   });
 
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(
+    state.businessDetails.business_location
+  );
 
   const handleSelect = async (value: any) => {
     setAddress(value);
     setValue("business_location", value);
   };
+
+  // const handleChange = (e: any) => {
+  //   setAddress(e.target.value);
+  // };
 
   const onSubmit = (data: any) => {
     actions.updateAction({
@@ -59,9 +77,9 @@ const NameLocation = () => {
             <Controller
               name="business_location"
               control={control}
-              render={({ field }) => (
+              render={({ ...props }) => (
                 <PlacesAutocomplete
-                  {...field}
+                  {...props}
                   value={address}
                   onChange={setAddress}
                   onSelect={handleSelect}
@@ -116,6 +134,7 @@ const NameLocation = () => {
                   )}
                 </PlacesAutocomplete>
               )}
+              defaultValue={state.businessDetails.business_location}
               rules={{ required: true }}
             />
 

@@ -25,11 +25,15 @@ h6 {
 }
 
 h1 {
-  font-size: 2.6rem;
+  font-size: 3.1rem;
 
   @include large_tablet_down {
-    font-size: 2.1rem;
+    font-size: 2.6rem;
   }
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 p {
@@ -159,7 +163,7 @@ ul.list {
 }
 
 [data-reach-dialog-overlay] {
-  z-index: 5;
+  z-index: 10;
   display: flex;
 }
 
@@ -168,6 +172,7 @@ ul.list {
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 // html elements
@@ -184,6 +189,7 @@ ul.list {
   border-radius: 8px;
   padding: 0.25em 0.75em;
   text-align: center;
+  white-space: nowrap;
 
   height: 2.81rem;
   line-height: 2.8rem;

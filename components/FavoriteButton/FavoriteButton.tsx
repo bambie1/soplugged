@@ -11,12 +11,18 @@ import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { removeFavorite } from "@/utils/removeFavorite";
 
 interface Props {
-  businessId: any;
+  business: any;
 }
 
-const FavoriteButton: FC<Props> = ({ businessId }) => {
+const FavoriteButton: FC<Props> = ({ business }) => {
   const { user } = useAuth();
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);
+
+  const {
+    creator: { id, email },
+  } = business;
+
+  const disabled = !user || user.email === email;
 
   const { data: favorites, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`,
@@ -28,19 +34,19 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
 
     if (favorites) {
       for (let i = 0; i < favorites.length; i++) {
-        if (favorites[i].liked_business.id === businessId) {
+        if (favorites[i].liked_business.id === id) {
           userLikedBusiness = true;
           break;
         }
       }
       setUserLikesBusiness(userLikedBusiness);
     }
-  }, [favorites, businessId]);
+  }, [favorites, id]);
 
   const handleClick = async () => {
     setUserLikesBusiness(!userLikesBusiness);
     if (userLikesBusiness) {
-      const res = await removeFavorite(businessId, user.email);
+      const res = await removeFavorite(id, user.email);
 
       if (res?.ok) {
         toast.success("Removed from favorites");
@@ -48,7 +54,7 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
         toast.error("An error occurred");
       }
     } else {
-      const res = await addFavorite(businessId, user.email);
+      const res = await addFavorite(id, user.email);
 
       if (res?.ok) {
         toast.success("Added to favorites");
@@ -63,7 +69,7 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
       <button
         onClick={handleClick}
         className="button outlined withIcon"
-        disabled={!user}
+        disabled={disabled}
       >
         <FontAwesomeIcon icon={faHeartFilled} />
         Added to Favorites
@@ -74,7 +80,7 @@ const FavoriteButton: FC<Props> = ({ businessId }) => {
     <button
       onClick={handleClick}
       className="button outlined withIcon"
-      disabled={!user}
+      disabled={disabled}
     >
       <FontAwesomeIcon icon={faHeart} />
       Add to Favorites

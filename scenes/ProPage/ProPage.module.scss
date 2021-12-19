@@ -38,13 +38,52 @@
 }
 
 .step {
-  display: grid;
   align-items: center;
-  gap: 2rem;
-  grid-template-columns: 1fr 1fr;
+  margin-bottom: 3rem;
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  // max-width: 969px;
+  margin-inline: auto;
+
+  @include tablet {
+    gap: 2rem;
+    text-align: left;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .text {
+    max-width: 500px;
+    margin-right: auto;
+  }
+
+  &.reverse {
+    .text {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  @include mobile_only {
+    margin-bottom: 5rem;
+    &.reverse {
+      aside:nth-of-type(2) {
+        order: 1;
+      }
+      aside:nth-of-type(1) {
+        order: 2;
+      }
+    }
+  }
 
   .image {
     display: flex;
     justify-content: center;
+
+    @include mobile_only {
+      max-width: 39vw;
+      margin-inline: auto;
+    }
   }
 }

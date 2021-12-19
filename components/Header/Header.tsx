@@ -3,8 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Dialog } from "@reach/dialog";
 
-import styles from "./Header.module.scss";
+import { ButtonLink } from "@/styled/ButtonLink";
 import { NavLinks } from "../NavLinks";
+
+import styles from "./Header.module.scss";
 interface Props {
   color?: "brown" | "blue" | "transparent";
   hideLinks?: boolean;
@@ -35,7 +37,7 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
       <div className={wrapperStyles()}>
         <header className={`${styles.header} container`}>
           <Link href="/">
-            <a>
+            <a className={styles.logo}>
               <Image
                 src="/soplugged-logo.png"
                 alt="SoPlugged Logo"
@@ -45,7 +47,11 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
             </a>
           </Link>
 
-          {!hideLinks && (
+          {hideLinks ? (
+            <ButtonLink variant="text" href="/dashboard">
+              Back to dashboard
+            </ButtonLink>
+          ) : (
             <div className="hideOnMobile">
               <NavLinks />
             </div>

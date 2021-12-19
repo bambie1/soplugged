@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faHashtag } from "@fortawesome/free-solid-svg-icons";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import SubscribeForm from "../SubscribeForm/SubscribeForm";
@@ -30,45 +32,41 @@ const Footer: FC<Props> = ({ tertiary }) => {
         <SubscribeForm />
         <section className={styles.linksGrid}>
           <aside className={styles.externalLinks}>
-            <a href="mailto:hello@soplugged.com" className="button text">
-              hello@soplugged.com
-            </a>
+            <p>Contact us:</p>
 
             <section className={styles.socials}>
-              <a
-                aria-label="linkedin"
-                href="https://www.linkedin.com/company/soplugged/"
-                target="_blank"
-                rel="noreferrer"
-                className="button text"
-              >
-                LinkedIn
-              </a>
-              <a
-                aria-label="instagram"
-                href="https://www.instagram.com/sopluggd/"
-                target="_blank"
-                rel="noreferrer"
-                className="button text"
-              >
-                IG
-              </a>
+              <button className="iconButton">
+                <a href="mailto:hello@soplugged.com">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+              </button>
+              <button className="iconButton">
+                <a
+                  aria-label="instagram"
+                  href="https://www.instagram.com/sopluggd/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon icon={faHashtag} />
+                </a>
+              </button>
             </section>
 
+            <ButtonLink href="/sponsors" variant="outlined">
+              Become a sponsor
+            </ButtonLink>
+          </aside>
+          <aside className={styles.internalLinks}>
+            <ButtonLink href="/faqs">FAQs</ButtonLink>
+            <ButtonLink href="/our-story">About Us</ButtonLink>
             <a
               href="https://soplugged.kampsite.co/"
               target="_blank"
               rel="noreferrer"
-              className="button outlined"
+              className="button "
             >
               Make a feature request
             </a>
-          </aside>
-          <aside className={styles.internalLinks}>
-            <ButtonLink href="/faqs">FAQs</ButtonLink>
-            {/* <ButtonLink href="/blog">Blog</ButtonLink> */}
-            <ButtonLink href="/our-story">About Us</ButtonLink>
-            <ButtonLink href="/sponsors">Sponsors</ButtonLink>
           </aside>
         </section>
 

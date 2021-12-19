@@ -35,10 +35,10 @@ const Success: FC = () => {
             <Image
               placeholder="blur"
               blurDataURL={rgbDataURL(247, 244, 244)}
-              src="/images/support_team.png"
+              src="/images/success_celebrate.png"
               alt="Become a sponsor"
-              width={400}
-              height={400}
+              width={570}
+              height={500}
             />
           </aside>
           <aside className={styles.text}>

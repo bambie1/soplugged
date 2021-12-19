@@ -14,6 +14,18 @@
   }
 }
 
+.externalLinks {
+  p {
+    margin-bottom: 0.25rem;
+  }
+
+  .socials {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
 .container {
   display: grid;
   gap: 3rem;

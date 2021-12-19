@@ -9,10 +9,10 @@ export const proFeatures = [
   },
   {
     image: "/images/teach.png",
-    text: "FREE guides on how build or improve your digital presence",
+    text: "FREE guides on how to build or improve your digital presence",
   },
   {
     image: "/images/writing.png",
-    text: "More FREE guides on how build or improve your digital presence",
+    text: "On-the-go support to grow your business",
   },
 ];

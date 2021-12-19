@@ -1,13 +1,14 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 .image-gallery {
-  width: clamp(300px, 100%, 750px);
+  // width: clamp(300px, 100%, 750px);
   margin-bottom: 2.5rem;
 }
 
-.image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
-  display: flex;
-}
+// .image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
+//   display: flex;
+//   width: 100%;
+// }
 
 .image-gallery-slides {
   display: flex;

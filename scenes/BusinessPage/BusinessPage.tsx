@@ -36,7 +36,6 @@ interface Props {
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
   const {
-    id,
     business_name,
     business_location,
     logo_url,
@@ -58,7 +57,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderFullView = () => (
     <section className={styles.fullView}>
-      <aside className={styles.infoBlock}>
+      <div className={styles.infoBlock}>
         <ReactImageGallery items={images} showPlayButton={false} />
 
         <div>
@@ -67,14 +66,14 @@ const BusinessPage: FC<Props> = ({ business }) => {
             dangerouslySetInnerHTML={{ __html: business_description }}
           ></section>
         </div>
-      </aside>
+      </div>
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
           <div className={styles.contactForm}>
             <ContactForm businessEmail={creator?.email || ""} />
           </div>
           <div className={styles.buttonGroup}>
-            <FavoriteButton businessId={id} />
+            <FavoriteButton business={business} />
             <ShareButton />
           </div>
         </div>
@@ -100,7 +99,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
         {verified && (
           <>
             <div className={styles.buttonGroup}>
-              <FavoriteButton businessId={id} />
+              <FavoriteButton business={business} />
               <ShareButton />
             </div>
             <div className={styles.contactForm}>

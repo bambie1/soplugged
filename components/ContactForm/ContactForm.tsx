@@ -32,6 +32,8 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     reset,
   } = useForm<IFormInput>();
 
+  const disabled = !user || user.email === businessEmail;
+
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const email = {
       from: "hello@soplugged.com",
@@ -51,7 +53,12 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
   };
 
   const renderButton = () => {
-    if (user) return <Button type="submit">Send Message</Button>;
+    if (user)
+      return (
+        <Button type="submit" disabled={disabled}>
+          Send Message
+        </Button>
+      );
 
     return (
       <ButtonLink href="/join" variant="outlined">
@@ -74,7 +81,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
         placeholder="Hi there! I would like to employ your services"
         label="Message"
         rows={7}
-        disabled={!user}
+        disabled={disabled}
         {...register("message", { required: true })}
       />
     );

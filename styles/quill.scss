@@ -3,17 +3,20 @@
 .quill {
   display: flex;
   flex-direction: column;
+  transition: 180ms box-shadow ease-in-out;
+  border-radius: 10px;
 
   &:focus,
-  &:focus-visible {
-    border: 2px solid $secondary !important;
+  &:focus-visible,
+  &:focus-within {
+    box-shadow: 0 0 0 3px $lightSecondary;
   }
 }
 .ql-editor {
-  min-height: 150px;
-  max-height: 300px;
+  min-height: 250px;
+  max-height: 350px;
   font-family: "Raleway";
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 1rem !important;
   background-color: $offWhite;
 }

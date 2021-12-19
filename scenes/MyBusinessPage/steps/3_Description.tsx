@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 
 import { IBusiness } from "@/types/Business";
@@ -23,7 +23,14 @@ const DescriptionContact = () => {
   const router = useRouter();
 
   const { state, actions } = useStateMachine({ updateAction });
-  const { handleSubmit, register, watch, setValue } = useForm<IBusiness>({
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+    setValue,
+    setError,
+  } = useForm<IBusiness>({
     defaultValues: state.businessDetails,
   });
 
@@ -33,6 +40,13 @@ const DescriptionContact = () => {
 
   const onEditorStateChange = (editorState: any) => {
     setValue("business_description", editorState);
+
+    if (!editorState.replace(/<p><br><\/p>/g, "")) {
+      setError("business_description", {
+        type: "manual",
+        message: "Please enter a description for your business",
+      });
+    }
   };
   const editorContent = watch("business_description");
 
@@ -55,6 +69,7 @@ const DescriptionContact = () => {
               >
                 Business Description
               </label>
+
               <ReactQuill
                 placeholder="Enter a description for your business (the more, the better)"
                 value={editorContent || ""}
@@ -67,6 +82,10 @@ const DescriptionContact = () => {
                   toolbar: toolbarOptions,
                 }}
               />
+
+              {errors.business_description && (
+                <p className="error label">Please enter a description</p>
+              )}
             </div>
           </section>
         </BusinessForm>

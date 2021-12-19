@@ -11,7 +11,7 @@ const ProHero: FC = () => {
     <section className={styles.hero}>
       <div className={`container ${styles.hero_content}`}>
         <aside>
-          <h1>Increase visibility, reduce stress</h1>
+          <h1>Professional help for your business' digital needs</h1>
           <p>
             Everything you need to launch and improve your digital presence as a
             small to medium-sized business

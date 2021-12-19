@@ -7,6 +7,7 @@ import {
   AlertDialogLabel,
   AlertDialogDescription,
 } from "@reach/alert-dialog";
+import { useWindowSize } from "@reach/window-size";
 
 import { useAuth } from "@/context/authContext";
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -24,6 +25,7 @@ const NavLinks: FC = () => {
   const { user, loading, signOutUser } = useAuth();
   const router = useRouter();
   const [showSignOut, setShowSignOut] = useState(false);
+  const { width } = useWindowSize();
 
   const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
 
@@ -75,6 +77,13 @@ const NavLinks: FC = () => {
               <ButtonLink href={link}>{text}</ButtonLink>
             </li>
           ))}
+
+          {width < 768 && (
+            <li className={buildStyles("/sponsors")}>
+              <ButtonLink href="/sponsors">Sponsors</ButtonLink>
+            </li>
+          )}
+
           {renderAuthButton()}
         </ul>
       </nav>

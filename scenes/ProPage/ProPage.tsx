@@ -4,9 +4,9 @@ import Image from "next/image";
 import { ProHero } from "@/components/ProHero";
 import { rgbDataURL } from "@/lib/dataUrl";
 import { proFeatures } from "@/lib/proFeatures";
+import { Button } from "@/styled/Button";
 
 import styles from "./ProPage.module.scss";
-import { Button } from "@/styled/Button";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -38,13 +38,13 @@ const ProPage = () => {
                 <Image
                   placeholder="blur"
                   blurDataURL={rgbDataURL(207, 207, 207)}
-                  src="/images/soplugged_pro.png"
+                  src="/images/meet_team.png"
                   alt="Business consult session"
-                  width={400}
+                  width={470}
                   height={400}
                 />
               </aside>
-              <aside>
+              <aside className={styles.text}>
                 <h3>Book a FREE consultation</h3>
 
                 <p>
@@ -57,8 +57,8 @@ const ProPage = () => {
             </article>
           </div>
           <div>
-            <article className={`container ${styles.step}`}>
-              <aside>
+            <article className={`container ${styles.step} ${styles.reverse}`}>
+              <aside className={styles.text}>
                 <h3>We get to work</h3>
 
                 <p>
@@ -73,9 +73,9 @@ const ProPage = () => {
                 <Image
                   placeholder="blur"
                   blurDataURL={rgbDataURL(207, 207, 207)}
-                  src="/images/soplugged_pro.png"
+                  src="/images/we_get_to_work.png"
                   alt="Business consult session"
-                  width={400}
+                  width={450}
                   height={400}
                 />
               </aside>
@@ -88,13 +88,13 @@ const ProPage = () => {
                 <Image
                   placeholder="blur"
                   blurDataURL={rgbDataURL(207, 207, 207)}
-                  src="/images/soplugged_pro.png"
+                  src="/images/go_live.png"
                   alt="Business consult session"
-                  width={400}
+                  width={450}
                   height={400}
                 />
               </aside>
-              <aside>
+              <aside className={styles.text}>
                 <h3>Ready to go Live!</h3>
 
                 <p>

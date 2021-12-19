@@ -40,3 +40,11 @@
     outline: auto;
   }
 }
+
+.content {
+  display: flex;
+  // gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
