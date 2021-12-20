@@ -14,6 +14,7 @@
   padding: 0.5rem;
   justify-content: center;
   max-height: 100%;
+  max-width: 500px;
 }
 
 .input {
@@ -30,7 +31,7 @@
   border: 1px solid $secondary;
   color: $secondary;
   cursor: pointer;
-  margin: 0.25rem;
+  margin: 0.25rem 0.125rem;
   padding: 0.5rem;
   text-align: center;
   border-radius: 0.5rem;
@@ -55,7 +56,7 @@
   }
 
   @include tablet {
-    margin: 0.5rem;
+    margin: 0.125rem 0.25rem;
     padding: 0.75rem;
   }
 }

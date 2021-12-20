@@ -4,8 +4,6 @@ import Script from "next/script";
 import { useForm, Controller } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { yupResolver } from "@hookform/resolvers/yup";
-import yup from "yup";
 
 import { Input } from "@/styled/Input";
 import { IBusiness } from "@/types/Business";
@@ -13,14 +11,6 @@ import { IBusiness } from "@/types/Business";
 import { updateAction } from "../littleStateMachine/updateAction";
 import styles from "../MyBusinessPage.module.scss";
 import { BusinessForm } from "layouts/BusinessForm";
-
-const schema = yup
-  .object()
-  .shape({
-    business_name: yup.string().required(),
-    business_location: yup.string().required(),
-  })
-  .required();
 
 const NameLocation = () => {
   const router = useRouter();
@@ -35,8 +25,6 @@ const NameLocation = () => {
     formState: { errors },
   } = useForm<IBusiness>({
     defaultValues: state.businessDetails,
-
-    resolver: yupResolver(schema),
   });
 
   const [address, setAddress] = useState(

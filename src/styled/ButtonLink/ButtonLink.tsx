@@ -15,7 +15,7 @@ const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
     };
 
     return (
-      <Link href={href || ""}>
+      <Link href={href || "#"}>
         <a {...props} className={linkStyles()}>
           {children}
         </a>

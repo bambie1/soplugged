@@ -35,22 +35,20 @@ const Categories = () => {
         <BusinessForm current={2}>
           <div className={`${styles.categories}`}>
             {categories.map(({ tags, label, value, imageSrc }) => (
-              <Fragment key={label}>
-                <label htmlFor={value} key={label} className={styles.label}>
-                  <input
-                    type="radio"
-                    value={label}
-                    aria-label={label}
-                    id={value}
-                    className={styles.input}
-                    {...register("category")}
-                  />
-                  <div className={styles.categoryImage}>
-                    <Image src={imageSrc} width={20} height={20} alt={label} />
-                    <p>{label}</p>
-                  </div>
-                </label>
-              </Fragment>
+              <label htmlFor={value} key={label} className={styles.label}>
+                <input
+                  type="radio"
+                  value={label}
+                  aria-label={label}
+                  id={value}
+                  className={styles.input}
+                  {...register("category")}
+                />
+                <div className={styles.categoryImage}>
+                  <Image src={imageSrc} width={20} height={20} alt={label} />
+                  <p>{label}</p>
+                </div>
+              </label>
             ))}
           </div>
         </BusinessForm>
