@@ -18,7 +18,6 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "blank content";
   align-items: center;
-  // z-index: 1;
   position: absolute;
   top: 0;
   width: 100%;
@@ -36,8 +35,6 @@
 }
 
 .stepInfo {
-  // animation: 1s ease-out 0s 1 slideInFromLeft;
-
   @include mobile_only {
     text-align: center;
     padding: 5rem 1rem;
@@ -56,6 +53,7 @@
     justify-content: center;
 
     * {
+      z-index: 1;
       max-width: 40%;
     }
   }
@@ -64,7 +62,8 @@
 .content {
   overflow-y: auto;
   padding-top: 7rem;
-  height: calc(100% - 4rem);
+  // height: calc(100% - 4rem);
+  height: 100%;
 }
 
 .mobileWrapper {

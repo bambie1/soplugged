@@ -1,16 +1,25 @@
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { FC } from "react";
-import { StateMachineProvider, createStore } from "little-state-machine";
 import { useWindowSize } from "@reach/window-size";
+import { Form, Formik, useFormikContext } from "formik";
+import toast from "react-hot-toast";
 
-import {
-  NameLocation,
-  Images,
-  Categories,
-  Description,
-  Contact,
-  Review,
-} from "./steps";
+import { BusinessForm } from "layouts/BusinessForm";
+import { businessFormSchema } from "@/components/formik";
+import NameLocation from "@/components/BusinessForm/forms/1_NameLocation";
+import Categories from "@/components/BusinessForm/forms/2_Categories";
+import Description from "@/components/BusinessForm/forms/3_Description";
+import Contact from "@/components/BusinessForm/forms/4_Contact";
+import Images from "@/components/BusinessForm/forms/5_Images";
+import Review from "@/components/BusinessForm/forms/6_Review";
+import { steps, stepsObject } from "@/lib/stepsObject";
+import { useBusinessFormContext } from "@/context/businessFormContext";
+import { updateBusiness } from "@/utils/updateBusiness";
+import { Button } from "@/styled/Button";
+
+import styles from "./MyBusinessPage.module.scss";
+import slugify from "slugify";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -19,17 +28,17 @@ interface Props {
   step?: any;
 }
 
+interface Values {}
+
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
   const { width } = useWindowSize();
+  const router = useRouter();
+  const { isNew } = useBusinessFormContext();
 
-  createStore(
-    {
-      businessDetails: { ...business },
-    },
-    {}
-  );
+  const current = stepsObject[step] || 1;
+  const isLastStep = current === steps.length - 1;
 
-  const renderStep = () => {
+  function _renderStepContent() {
     switch (step) {
       case "category":
         return <Categories />;
@@ -41,16 +50,84 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
         return <Images />;
       case "review":
         return <Review />;
-
       default:
         return <NameLocation />;
     }
+  }
+
+  const renderButtons = () => {
+    return (
+      <>
+        <Button
+          type="button"
+          variant="text"
+          onClick={handleBack}
+          disabled={current <= 1}
+        >
+          Go Back
+        </Button>
+        <Button type="submit">
+          {current === steps.length - 1
+            ? isNew
+              ? "Complete setup"
+              : "Submit and view page"
+            : "Next"}
+        </Button>
+      </>
+    );
   };
+
+  async function _submitForm(values: any, actions: any) {
+    const res = await updateBusiness(values, isNew);
+
+    if (res.ok) {
+      toast.success("Business updated successfully");
+      const slug = slugify(values.business_name.trim(), {
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      });
+      router.push(`/business/${slug}`);
+    } else {
+      toast.error("An error occurred");
+    }
+
+    actions.setSubmitting(false);
+  }
+
+  function _handleSubmit(values: any, actions: any) {
+    if (isLastStep) {
+      _submitForm(values, actions);
+    } else {
+      router.push(`/my-business?step=${steps[current + 1].step}`, undefined, {
+        shallow: true,
+      });
+
+      actions.setTouched({});
+      actions.setSubmitting(false);
+    }
+  }
+
+  function handleBack() {
+    router.push(`/my-business?step=${steps[current - 1]["step"]}`, undefined, {
+      shallow: true,
+    });
+  }
 
   return (
     <>
       <Header hideLinks={width >= 768} />
-      <StateMachineProvider>{renderStep()}</StateMachineProvider>
+      <BusinessForm>
+        <Formik
+          initialValues={{ ...business }}
+          validationSchema={businessFormSchema[current - 1]}
+          onSubmit={_handleSubmit}
+        >
+          <Form id="businessForm" className={styles.form}>
+            {_renderStepContent()}
+            <div className={styles.navigation}>{renderButtons()}</div>
+          </Form>
+        </Formik>
+      </BusinessForm>
     </>
   );
 };

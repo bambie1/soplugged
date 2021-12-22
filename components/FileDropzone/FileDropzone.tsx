@@ -1,28 +1,25 @@
 import React, { useCallback, useState, useEffect, useMemo, FC } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { useFormikContext } from "formik";
 
 import useImageUploader from "@/hooks/useImageUploader";
 
 import styles from "./FileDropzone.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
 
 const MAX_FILES = 3; //file upload limit
 
-interface Props {
-  images: string;
-  updateImages: Function;
-}
+const FileDropzone: FC = () => {
+  const { setFieldValue, values } = useFormikContext<any>();
 
-const FileDropzone: FC<Props> = ({ images, updateImages }) => {
   let currentImages: any = [];
-  if (images !== "") currentImages = images?.split(",");
+  if (values.sample_images !== "")
+    currentImages = values.sample_images?.split(",");
   const [myFiles, setMyFiles] = useState(currentImages);
   const [errorMessage, setErrorMessage] = useState("");
   const { url, error, uploadImage, uploading } = useImageUploader();
-
-  console.log({ myFiles });
 
   useEffect(() => {
     if (url) {
@@ -39,7 +36,7 @@ const FileDropzone: FC<Props> = ({ images, updateImages }) => {
   }, [url, error]);
 
   useEffect(() => {
-    updateImages(myFiles.join());
+    setFieldValue("sample_images", myFiles.join());
   }, [myFiles]);
 
   const onDrop = useCallback(
