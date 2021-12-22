@@ -1,3 +1,5 @@
+@import "styles/mixins";
+
 .businessHeader {
   display: flex;
   justify-content: center;
@@ -98,4 +100,27 @@
   margin-top: 3rem;
   padding: 1rem;
   background: #80808021;
+}
+
+.editButton {
+  position: fixed;
+  display: inline-flex;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: $secondary;
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: $secondary;
+  }
+
+  svg {
+    color: white;
+  }
 }

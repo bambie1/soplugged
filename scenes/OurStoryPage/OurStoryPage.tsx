@@ -19,9 +19,9 @@ const OurStoryPage = () => {
           SoPlugged is an online platform that makes #buyingblack easy! Our
           search-friendly platform helps end-users connect to Black-owned
           businesses across Canada. When you{" "}
-          <Link href="/guidelines">
+          <Link href="/my-business">
             <a target="_blank" className={styles.link}>
-              register
+              add
             </a>
           </Link>{" "}
           your business on our platform, you increase your brand visibility and
@@ -34,10 +34,10 @@ const OurStoryPage = () => {
         </p>
         <div className="pageButtons">
           <ButtonLink href="/search" variant="filled">
-            Directory
+            Find a business
           </ButtonLink>
           <ButtonLink href="/sponsors" variant="outlined">
-            Sponsors
+            Become a sponsor
           </ButtonLink>
         </div>
       </PageWrapper>

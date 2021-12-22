@@ -34,13 +34,13 @@ const HomePage = () => {
                 communication.
               </p>
               <ButtonLink variant="filled" href="/search">
-                Search
+                Find a business
               </ButtonLink>
             </aside>
             <aside>
               <Image
-                // placeholder="blur"
-                // blurDataURL={rgbDataURL(247, 244, 244)}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(247, 244, 244)}
                 src="/images/search_businesses_tiny.png"
                 width={400}
                 height={272}
@@ -71,7 +71,7 @@ const HomePage = () => {
                 requests through your preferred means of communication.
               </p>
               <ButtonLink variant="filled" href="/my-business">
-                Register
+                Add your business
               </ButtonLink>
             </aside>
           </section>

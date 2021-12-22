@@ -19,7 +19,8 @@ const FavoriteButton: FC<Props> = ({ business }) => {
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);
 
   const {
-    creator: { id, email },
+    id,
+    creator: { email },
   } = business;
 
   const disabled = !user || user.email === email;
@@ -30,16 +31,13 @@ const FavoriteButton: FC<Props> = ({ business }) => {
   );
 
   useEffect(() => {
-    let userLikedBusiness = false;
-
-    if (favorites) {
+    if (favorites?.length) {
       for (let i = 0; i < favorites.length; i++) {
         if (favorites[i].liked_business.id === id) {
-          userLikedBusiness = true;
+          setUserLikesBusiness(true);
           break;
         }
       }
-      setUserLikesBusiness(userLikedBusiness);
     }
   }, [favorites, id]);
 

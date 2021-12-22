@@ -29,16 +29,16 @@ const FAQPage = () => {
         </section>
 
         <section className={styles.faqSection}>
-          <h2>How do I register?</h2>
+          <h2>How do I add my business?</h2>
           <p>
-            Registering your business is free, quick and easy. Please click the
+            Adding your business is free, quick and easy. Please click the
             button below to get started (you'll need to be signed in to add a
             business). If you encounter any issues or have any questions, feel
             free to reach out to a member of our team, we would love to have
             your services featured on our platform.
           </p>
           <ButtonLink variant="outlined" href="/my-business">
-            Register
+            Add your business
           </ButtonLink>
         </section>
         <section className={styles.faqSection}>
@@ -54,7 +54,7 @@ const FAQPage = () => {
             .
           </p>
           <ButtonLink variant="outlined" href="/my-business">
-            Register
+            Edit your business
           </ButtonLink>
         </section>
         <section className={styles.faqSection}>
@@ -64,6 +64,9 @@ const FAQPage = () => {
             well as different payment schedules. We recommend getting in touch
             with the business to find out their preference.
           </p>
+          <ButtonLink variant="outlined" href="/search">
+            Browse Businesses
+          </ButtonLink>
         </section>
       </PageWrapper>
       <Footer />

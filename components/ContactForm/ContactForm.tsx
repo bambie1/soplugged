@@ -23,7 +23,6 @@ interface Props {
 
 const ContactForm: FC<Props> = ({ businessEmail }) => {
   const { user } = useAuth();
-  const [showError, setShowError] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const {
     register,

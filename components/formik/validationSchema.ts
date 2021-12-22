@@ -9,9 +9,9 @@ export const businessFormSchema = [
       .required("Please enter a name for your business"),
 
     fixed_to_one_location: Yup.boolean(),
-    // business_location: Yup.string().required(
-    //   "Please select a location for your business"
-    // ),
+    business_location: Yup.string().required(
+      "Please select a location for your business"
+    ),
   }),
 
   // category

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 import ReactImageGallery from "react-image-gallery";
@@ -6,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfoCircle,
   faMapMarkerAlt,
+  faPen,
   faShapes,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,6 +17,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
 import { IBusiness } from "@/types/Business";
+import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
 
@@ -35,6 +38,7 @@ interface Props {
 
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
+  const { user } = useAuth();
   const {
     business_name,
     business_location,
@@ -165,6 +169,16 @@ const BusinessPage: FC<Props> = ({ business }) => {
             Back to search
           </ButtonLink>
         </div>
+
+        {user?.email === creator?.email && (
+          <Link href="/my-business">
+            <a>
+              <button className={`iconButton ${styles.editButton}`}>
+                <FontAwesomeIcon icon={faPen} />
+              </button>
+            </a>
+          </Link>
+        )}
       </PageWrapper>
       <Footer />
     </>

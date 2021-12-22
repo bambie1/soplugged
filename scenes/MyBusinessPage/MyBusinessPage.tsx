@@ -55,7 +55,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
     }
   }
 
-  const renderButtons = () => {
+  const renderButtons = (isSubmitting: boolean) => {
     return (
       <>
         <Button
@@ -122,10 +122,16 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
           validationSchema={businessFormSchema[current - 1]}
           onSubmit={_handleSubmit}
         >
-          <Form id="businessForm" className={styles.form}>
-            {_renderStepContent()}
-            <div className={styles.navigation}>{renderButtons()}</div>
-          </Form>
+          {({ isSubmitting }) => (
+            <>
+              <Form id="businessForm" className={styles.form}>
+                {_renderStepContent()}
+                <div className={styles.navigation}>
+                  {renderButtons(isSubmitting)}
+                </div>
+              </Form>
+            </>
+          )}
         </Formik>
       </BusinessForm>
     </>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faPen } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,7 @@ import { IBusiness } from "@/types/Business";
 import { greetFunction } from "@/utils/greeting";
 
 import styles from "./BusinessInfoPage.module.scss";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
 
 interface Props {
   business: IBusiness;
@@ -113,15 +115,22 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             <BusinessCard business={business} />
 
             <div className={styles.buttons}>
-              <ButtonLink href="/my-business" variant="outlined">
-                Edit
-              </ButtonLink>
-              <ButtonLink
-                href={`/business/${business.slug}`}
-                variant="outlined"
-              >
-                View
-              </ButtonLink>
+              <Link href="/my-business">
+                <a>
+                  <button className="button outlined withIcon">
+                    <FontAwesomeIcon icon={faPen} />
+                    Edit
+                  </button>
+                </a>
+              </Link>
+              <Link href={`/business/${business.slug}`}>
+                <a>
+                  <button className="button text withIcon">
+                    <FontAwesomeIcon icon={faEye} />
+                    View
+                  </button>
+                </a>
+              </Link>
             </div>
           </section>
 
