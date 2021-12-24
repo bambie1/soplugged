@@ -1,6 +1,10 @@
 .wrapper {
   text-align: center;
-  margin-block: 3rem;
+  margin-block: 5rem;
+  display: grid;
+  justify-items: center;
+  min-height: 350px;
+  align-content: center;
 }
 
 .iconsList {
