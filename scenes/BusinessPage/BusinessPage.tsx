@@ -13,6 +13,7 @@ import {
 
 import { Button } from "@/styled/Button";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
@@ -20,6 +21,7 @@ import { IBusiness } from "@/types/Business";
 import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
+import { useRouter } from "next/router";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
@@ -39,6 +41,8 @@ interface Props {
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
   const { user } = useAuth();
+  const { setCategory, setLocation } = useAlgoliaSearch();
+  const router = useRouter();
   const {
     business_name,
     business_location,
@@ -58,6 +62,16 @@ const BusinessPage: FC<Props> = ({ business }) => {
   }));
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const fullView = hasPreview && verified && width > 960;
+
+  const handleCategoryClick = () => {
+    setCategory(category);
+    router.push("/search");
+  };
+
+  const handleLocationClick = () => {
+    setLocation(business_location);
+    router.push("/search");
+  };
 
   const renderFullView = () => (
     <section className={styles.fullView}>
@@ -135,14 +149,20 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
           <div className={styles.info}>
             {category && (
-              <button className={`button text ${styles.iconText}`}>
+              <button
+                className={`button text ${styles.iconText}`}
+                onClick={handleCategoryClick}
+              >
                 <FontAwesomeIcon icon={faShapes} />
                 {category}
               </button>
             )}
 
             {business_location && (
-              <button className={`button text ${styles.iconText}`}>
+              <button
+                className={`button text ${styles.iconText}`}
+                onClick={handleLocationClick}
+              >
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
                 {business_location}
               </button>

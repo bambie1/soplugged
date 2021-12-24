@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
+import { AlgoliaSearchProvider } from "@/context/algoliaSearchContext";
 
 import "../styles/globals.scss";
 import "../styles/algolia.scss";
@@ -22,12 +23,14 @@ Router.events.on("routeChangeComplete", nProgress.done);
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <BusinessFormProvider>
-        <div className="layout-div">
-          <Component {...pageProps} />
-          <Toaster position="bottom-left" />
-        </div>
-      </BusinessFormProvider>
+      <AlgoliaSearchProvider>
+        <BusinessFormProvider>
+          <div className="layout-div">
+            <Component {...pageProps} />
+            <Toaster position="bottom-left" />
+          </div>
+        </BusinessFormProvider>
+      </AlgoliaSearchProvider>
     </AuthProvider>
   );
 }

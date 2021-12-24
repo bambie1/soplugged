@@ -82,11 +82,14 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
 
     if (res.ok) {
       toast.success("Business updated successfully");
-      const slug = slugify(values.business_name.trim(), {
-        lower: true,
-        remove: /[*+~.()'"!:@]/g,
-      });
-      router.push(`/business/${slug}`);
+      if (isNew) {
+        const slug = slugify(values.business_name.trim(), {
+          lower: true,
+          remove: /[*+~.()'"!:@]/g,
+        });
+        router.push(`/business/${slug}`);
+      } else {
+      }
     } else {
       toast.error("An error occurred");
     }

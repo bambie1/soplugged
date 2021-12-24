@@ -1,9 +1,11 @@
 @import "styles/mixins";
 
 .content {
+  position: relative;
   display: grid;
   gap: 1.5rem;
-  margin-top: 2.5rem;
+  align-content: center;
+  height: 100%;
 }
 
 .checkboxes {
@@ -25,6 +27,7 @@
   gap: 1rem;
   margin-block: 0.5rem;
   text-align: left;
+  align-items: center;
 
   * {
     cursor: pointer;
@@ -32,16 +35,21 @@
 }
 
 .action {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   padding: 0.5rem;
-  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
-  background-color: white;
-  display: flex;
-  justify-content: flex-end;
 
-  @include desktop {
+  button {
+    width: 100%;
+  }
+
+  @include mobile_only {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+    background-color: $lightLight;
+    display: flex;
     justify-content: center;
   }
 }
@@ -52,8 +60,69 @@
   grid-template-columns: 1fr 1fr;
   margin-top: 2rem;
 
-  @include mobile_only {
+  .illustration {
+    opacity: 0.8;
+  }
+
+  @include large_tablet_down {
     grid-template-columns: 1fr;
+
     margin-top: 0;
+
+    .illustration {
+      grid-row: 2;
+    }
+  }
+}
+
+.selectLabel {
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 0.5rem;
+
+  select {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    line-height: inherit;
+
+    display: block;
+    padding: 0.75rem;
+    font-size: inherit;
+    border-radius: 10px;
+    border: 1.5px solid $secondary;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px $lightSecondary;
+      outline: 3px solid transparent;
+    }
+
+    option {
+      &:hover {
+        background-color: grey;
+      }
+    }
+  }
+}
+
+.selectWrapper {
+  width: 100%;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  padding-left: 0;
+  position: relative;
+  margin-top: 0.25rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 1.5rem;
+    top: 40%;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: grey;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
 }

@@ -9,13 +9,26 @@
   width: 90%;
   margin: auto;
   max-width: 700px;
+}
 
-  .search_filters {
-    display: flex;
-    justify-content: center;
+.searchFilters {
+  display: inline-flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-block: 0.75rem;
+  border-bottom: 0.5px solid grey;
 
-    button {
-      margin: 5px;
+  button {
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    padding-inline: 0;
+
+    &.activeFilter {
+      border-color: $secondary;
+    }
+
+    &:hover {
+      border-color: grey;
     }
   }
 }

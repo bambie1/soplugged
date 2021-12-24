@@ -7,6 +7,17 @@
   padding: 0;
   list-style: none;
   margin-top: 0;
+  max-height: 20rem;
+
+  @include desktop {
+    transition: max-height 0.3s linear;
+  }
+
+  &.hideList {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0s linear;
+  }
 }
 
 .refinementListItem {
@@ -20,6 +31,7 @@
 
   &:hover {
     opacity: 0.8;
+    color: grey;
   }
 
   &.isRefined {

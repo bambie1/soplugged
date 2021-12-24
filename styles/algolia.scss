@@ -73,8 +73,11 @@ input.ais-SearchBox-input:focus {
 .ais-Pagination {
   margin-top: 16px;
 }
+
 .ais-ClearRefinements {
   display: flex;
+  margin-top: 1rem;
+  // display: none;
 }
 .ais-ClearRefinements-button[disabled] {
   display: none;
@@ -84,19 +87,20 @@ input.ais-SearchBox-input:focus {
   display: inline-flex;
   margin-top: 8px;
   font-size: 0.8rem;
+
+  &:hover {
+    background-color: var(--light);
+    color: var(--dark);
+  }
+
+  &:focus-visible,
+  &:focus {
+    box-shadow: 0 0 0 3px $lightSecondary;
+    background-color: var(--light);
+    color: var(--dark);
+  }
 }
-.ais-ClearRefinements-button:hover {
-  background-color: var(--light);
-  color: var(--dark);
-}
-.ais-Stats-text {
-  font-size: 0.8rem;
-  display: flex;
-  margin: 1rem auto 0.1rem;
-}
-.ais-CurrentRefinements {
-  margin: 2px 0px 16px;
-}
+
 /* highlight: matching letters/words */
 ais-highlight-0000000000,
 .ais-Highlight-highlighted,
@@ -105,29 +109,6 @@ ais-highlight-0000000000,
   background-color: transparent;
   font-style: inherit;
   color: $secondary;
-}
-li.ais-CurrentRefinements-item {
-  font-size: 0.7rem;
-  flex-wrap: wrap;
-  background-color: transparent;
-  padding: 0;
-}
-
-.ais-CurrentRefinements-category {
-  margin-right: 0.3em;
-  margin-left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: var(--light);
-  padding: 0.2rem 0.5rem;
-  border-radius: 7px;
-}
-
-.ais-refinement-query {
-  border: 1px solid var(--dark);
-  border-radius: 5px;
-  padding: 0.1rem 0.5rem 0.3rem;
 }
 
 @media only screen and (min-width: 600px) {
