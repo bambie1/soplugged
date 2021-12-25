@@ -3,15 +3,20 @@ import { forwardRef } from "react";
 type Props = {
   variant?: string;
   color?: string;
+  big?: boolean;
 } & React.ComponentProps<"button">;
 
 const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ variant, children, ...props }, ref: any) => {
+  ({ variant, big, children, ...props }, ref: any) => {
     const buttonStyles = () => {
-      if (variant === "text") return "button ";
-      if (variant === "outlined") return "button outlined";
+      let styleStr = "button";
+      if (variant === "outlined") styleStr += " outlined";
+      else if (variant === "text") styleStr += " text";
+      else styleStr += " filled";
 
-      return "button filled";
+      if (big) styleStr += " big";
+
+      return styleStr;
     };
 
     return (

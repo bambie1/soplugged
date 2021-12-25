@@ -241,6 +241,15 @@ ul.list {
     }
   }
 
+  &.big {
+    padding: 1.75rem;
+    text-transform: uppercase;
+
+    // @include desktop {
+    //   font-size: 1.2rem;
+    // }
+  }
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;

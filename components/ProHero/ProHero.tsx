@@ -1,34 +1,29 @@
 import { FC } from "react";
-import Image from "next/image";
 
-import { rgbDataURL } from "@/lib/dataUrl";
-
-import styles from "./ProHero.module.scss";
 import { Button } from "@/styled/Button";
 
-const ProHero: FC = () => {
+import styles from "./ProHero.module.scss";
+
+interface Props {
+  ctaHandler: any;
+}
+
+const ProHero: FC<Props> = ({ ctaHandler }) => {
   return (
     <section className={styles.hero}>
       <div className={`container ${styles.hero_content}`}>
-        <aside>
-          <h1>Professional help for your business' digital needs</h1>
-          <p>
-            Everything you need to launch and improve your digital presence as a
-            small to medium-sized business
+        <aside className={styles.text}>
+          <h3 className={styles.tagLine}>SoPlugged PRO</h3>
+          <h1>Scale your business with ease</h1>
+          <p className={styles.subTitle}>
+            Professional help for your website design, marketing and overall
+            growth needs.
           </p>
-          <Button>Let's Talk</Button>
+          <Button big onClick={ctaHandler}>
+            Let's Talk
+          </Button>
         </aside>
-        <aside className={styles.image}>
-          <Image
-            // placeholder="blur"
-            // blurDataURL={rgbDataURL(207, 207, 207)}
-            src="/images/soplugged_pro.png"
-            alt="Business consult session"
-            width={400}
-            height={400}
-            priority
-          />
-        </aside>
+        <aside className={styles.image}></aside>
       </div>
     </section>
   );

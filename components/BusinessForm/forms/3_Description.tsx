@@ -5,7 +5,10 @@ import { useFormikContext, useField } from "formik";
 import styles from "../BusinessForm.module.scss";
 import "react-quill/dist/quill.snow.css";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <p>...</p>,
+});
 
 const toolbarOptions = [
   ["bold", "italic", "underline"],
