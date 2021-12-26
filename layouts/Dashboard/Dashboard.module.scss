@@ -6,6 +6,7 @@
 
   @include tablet {
     background: rgb(205, 182, 147);
+    // min-height: 80vh;
     background: linear-gradient(
       180deg,
       rgba(205, 182, 147, 1) 0%,
@@ -97,15 +98,5 @@
     margin-left: 5rem;
     overflow-y: auto;
     max-height: 100%;
-  }
-}
-
-.buttons {
-  display: none;
-
-  @include tablet {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: flex-start;
   }
 }

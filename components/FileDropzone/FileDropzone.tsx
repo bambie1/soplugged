@@ -1,4 +1,5 @@
-import React, { useCallback, useState, useEffect, useMemo, FC } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useState, useEffect, FC, Fragment } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,7 +24,7 @@ const FileDropzone: FC = () => {
 
   useEffect(() => {
     if (url) {
-      if (myFiles.length + 1 <= MAX_FILES) {
+      if (myFiles?.length + 1 <= MAX_FILES) {
         setMyFiles([...myFiles, url]);
         setErrorMessage("");
       } else {
@@ -36,7 +37,7 @@ const FileDropzone: FC = () => {
   }, [url, error]);
 
   useEffect(() => {
-    setFieldValue("sample_images", myFiles.join());
+    setFieldValue("sample_images", myFiles?.join());
   }, [myFiles]);
 
   const onDrop = useCallback(
@@ -88,7 +89,7 @@ const FileDropzone: FC = () => {
   const files = myFiles?.map((file: any, index: any) => {
     if (file == "") return null;
     return (
-      <React.Fragment key={index}>
+      <Fragment key={index}>
         <div key={index} className={styles.thumb}>
           <Image src={file} width={40} height={40} alt="sample images" />
           <button
@@ -99,13 +100,13 @@ const FileDropzone: FC = () => {
             x
           </button>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   });
 
   useEffect(
     () => () => {
-      files.forEach((file: any) => URL.revokeObjectURL(file.preview));
+      files?.forEach((file: any) => URL.revokeObjectURL(file.preview));
     },
     [myFiles]
   );
@@ -129,7 +130,7 @@ const FileDropzone: FC = () => {
         </button>
       </div>
 
-      {files.length > 0 && (
+      {files?.length > 0 && (
         <>
           <aside className={styles.thumbsContainer}>
             {files}

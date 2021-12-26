@@ -18,8 +18,9 @@ const ProPage = () => {
 
   const openCalendly = () => {
     if (width < 768) {
-      location.assign(
-        "https://calendly.com/benaiahbarango/website-consult?month=2021-12"
+      window.open(
+        "https://calendly.com/benaiahbarango/website-consult?month=2021-12",
+        "_blank"
       );
     } else {
       openPopupWidget({

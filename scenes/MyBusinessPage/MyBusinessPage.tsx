@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
-import { Form, Formik, useFormikContext } from "formik";
+import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
 
 import { BusinessForm } from "layouts/BusinessForm";
@@ -27,8 +27,6 @@ interface Props {
   business: any;
   step?: any;
 }
-
-interface Values {}
 
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
   const { width } = useWindowSize();
@@ -57,7 +55,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
 
   const renderButtons = (isSubmitting: boolean) => {
     return (
-      <>
+      <div className={styles.buttons}>
         <Button
           type="button"
           variant="text"
@@ -73,7 +71,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
               : "Submit and view page"
             : "Next"}
         </Button>
-      </>
+      </div>
     );
   };
 
@@ -130,6 +128,13 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
               <Form id="businessForm" className={styles.form}>
                 {_renderStepContent()}
                 <div className={styles.navigation}>
+                  <progress
+                    value={(current / (steps.length - 1)) * 100}
+                    max="100"
+                    className={styles.progress}
+                  >
+                    {(current / (steps.length - 1)) * 100}%
+                  </progress>
                   {renderButtons(isSubmitting)}
                 </div>
               </Form>

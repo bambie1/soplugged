@@ -17,12 +17,14 @@ const toolbarOptions = [
 
 const Description = () => {
   const { setFieldValue, values } = useFormikContext<any>();
-  const [content, setContent] = useState(values.business_description);
-  const [field, meta] = useField("business_description");
+  const [content, setContent] = useState(values.business_description || "");
+  const [_, meta] = useField("business_description");
 
-  const handleUpdate = (newContent: string) => {
-    setContent(newContent);
-    setFieldValue("business_description", newContent);
+  const handleUpdate = (content: any) => {
+    if (typeof content === "string") {
+      setContent(content);
+      setFieldValue("business_description", content);
+    }
   };
 
   return (

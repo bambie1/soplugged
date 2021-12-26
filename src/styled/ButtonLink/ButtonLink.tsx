@@ -3,15 +3,20 @@ import Link from "next/link";
 
 type IProps = {
   variant?: "outlined" | "filled" | "text";
+  big?: boolean;
 } & React.ComponentProps<"a">;
 
 const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
-  ({ variant, href, type, children, ...props }, ref: any) => {
+  ({ variant, big, href, type, children, ...props }, ref: any) => {
     const linkStyles = () => {
-      if (variant === "filled") return "button filled";
-      if (variant === "outlined") return "button outlined";
+      let styleStr = "button";
+      if (variant === "outlined") styleStr += " outlined";
+      else if (variant === "filled") styleStr += " filled";
+      else styleStr += " text";
 
-      return "button text";
+      if (big) styleStr += " big";
+
+      return styleStr;
     };
 
     return (

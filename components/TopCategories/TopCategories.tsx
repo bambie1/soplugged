@@ -20,9 +20,10 @@ const TopCategories = () => {
       <h2>Top Categories</h2>
       <div className={styles.iconsList}>
         {categoryIcons.map((icon) => (
-          <div
+          <button
             key={icon.imageSrc}
             className={styles.categoryWrapper}
+            title={icon.categoryText}
             onClick={() => handleClick(icon.categoryText)}
           >
             <div className={styles.image}>
@@ -34,7 +35,7 @@ const TopCategories = () => {
               />
             </div>
             <span className={styles.categoryName}>{icon.shortText}</span>
-          </div>
+          </button>
         ))}
       </div>
       <ButtonLink href="/search" variant="filled">

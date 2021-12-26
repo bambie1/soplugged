@@ -150,7 +150,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <div className={styles.info}>
             {category && (
               <button
-                className={`button text ${styles.iconText}`}
+                className="button text withIcon"
                 onClick={handleCategoryClick}
               >
                 <FontAwesomeIcon icon={faShapes} />
@@ -160,7 +160,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
             {business_location && (
               <button
-                className={`button text ${styles.iconText}`}
+                className="button text withIcon"
                 onClick={handleLocationClick}
               >
                 <FontAwesomeIcon icon={faMapMarkerAlt} />

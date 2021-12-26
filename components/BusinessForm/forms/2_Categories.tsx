@@ -1,13 +1,17 @@
 import Image from "next/image";
-import { Field } from "formik";
+import { Field, useField } from "formik";
 
 import { categories } from "@/lib/categoryList";
 
 import styles from "../BusinessForm.module.scss";
 
 const Categories = () => {
+  const [_, meta] = useField("category");
+
   return (
     <>
+      {meta && meta.error && <p className={styles.formError}>{meta.error}</p>}
+
       <div
         role="group"
         aria-labelledby="categories-group"

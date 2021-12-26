@@ -40,11 +40,11 @@ const SponsorsPage = () => {
             </p>
           </aside>
 
-          <div className="pageButtons">
-            <Button onClick={() => setShowKweeve(true)}>
+          <div className="pageButtons column">
+            <Button big onClick={() => setShowKweeve(true)}>
               Show your support
             </Button>
-            <ButtonLink href="/search" variant="outlined">
+            <ButtonLink href="/search" variant="text">
               Back to Directory
             </ButtonLink>
           </div>
@@ -63,7 +63,6 @@ const SponsorsPage = () => {
               height="700px"
               allow="payment"
             ></iframe>
-            {/* <button onClick={close}>Very nice.</button> */}
           </DialogContent>
         </DialogOverlay>
       </PageWrapper>

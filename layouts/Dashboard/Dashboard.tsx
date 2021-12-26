@@ -53,9 +53,6 @@ const Dashboard: FC = ({ children }) => {
             </nav>
             <div className={styles.content}>{children}</div>
           </div>
-          <div className={styles.buttons}>
-            <Button variant="outlined">Leave feedback</Button>
-          </div>
         </PageWrapper>
       </div>
     </>

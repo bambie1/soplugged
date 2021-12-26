@@ -1,5 +1,14 @@
 @import "styles/mixins";
 
+.formError {
+  color: red;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .categories {
   display: flex;
   flex-wrap: wrap;
