@@ -125,7 +125,7 @@
     transform: rotate(45deg) translate(0.25rem, -0.25rem);
   }
 
-  @media (min-width: 48rem) {
+  @include tablet {
     display: none;
   }
 }

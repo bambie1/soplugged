@@ -55,7 +55,10 @@ const SponsorsPage = () => {
           isOpen={showKweeve}
           onDismiss={closeModal}
         >
-          <DialogContent className={styles.dialogContent}>
+          <DialogContent
+            className={styles.dialogContent}
+            aria-label="Kweeve donation form"
+          >
             <iframe
               src="https://kweeve.page/soplugged/embed"
               style={{ border: "none" }}

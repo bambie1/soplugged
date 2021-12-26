@@ -9,6 +9,7 @@ import { Button } from "@/styled/Button";
 
 import styles from "./ProPage.module.scss";
 import { FAQs } from "@/components/FAQs";
+import { rgbDataURL } from "@/lib/dataUrl";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -40,7 +41,7 @@ const ProPage = () => {
     <>
       <Header color="blue" />
       <ProHero ctaHandler={openCalendly} />
-      <div>
+      <div className={styles.wrapper}>
         <section className={styles.pageSection}>
           <h2 className="center"> How It Works</h2>
 
@@ -58,8 +59,8 @@ const ProPage = () => {
 
               <p>
                 You’ll be meeting with both our marketing specialist, and
-                developer consultant. During this meeting, we’ll go over
-                deliverables, and invoicing.
+                developer consultant. This is to understand your business needs
+                and room for growth.
               </p>
             </div>
 
@@ -99,18 +100,63 @@ const ProPage = () => {
         </section>
 
         <section className={`${styles.pageSection} container`}>
-          <h2 className="center">Pro Features</h2>
+          <h2 className="center">And there's more...</h2>
+
           <div className={styles.features}>
-            {proFeatures.map(({ text, image }) => (
-              <div key={text} className={styles.feature}>
-                <Image src={image} width={40} height={40} alt="" />
-                <span>{text}</span>
+            <div className={`container ${styles.feature} ${styles.reverse}`}>
+              <div className={styles.text}>
+                <h3>ON-THE-GO SUPPORT</h3>
+
+                <p>
+                  Discussions have been had, agreements have been made. Now, our
+                  team of experts roll up their sleeves to surpass your
+                  expectations! You just have to carry on being an amazing
+                  entrepreneur, and we’ll check in with you if needed.
+                </p>
+                <Button big onClick={openCalendly}>
+                  Let's Talk
+                </Button>
               </div>
-            ))}
+              <aside className={styles.image}>
+                <Image
+                  placeholder="blur"
+                  blurDataURL={rgbDataURL(207, 207, 207)}
+                  src="/images/support_team.png"
+                  alt="Business consult session"
+                  width={300}
+                  height={300}
+                />
+              </aside>
+            </div>
+            <div className={`container ${styles.feature} ${styles.reverse}`}>
+              <aside className={styles.image}>
+                <Image
+                  placeholder="blur"
+                  blurDataURL={rgbDataURL(207, 207, 207)}
+                  src="/images/support_team.png"
+                  alt="Business consult session"
+                  width={300}
+                  height={300}
+                />
+              </aside>
+              <div className={styles.text}>
+                <h3>FREE GUIDES ON BEST-PRACTICES</h3>
+
+                <p>
+                  Discussions have been had, agreements have been made. Now, our
+                  team of experts roll up their sleeves to surpass your
+                  expectations! You just have to carry on being an amazing
+                  entrepreneur, and we’ll check in with you if needed.
+                </p>
+                <Button big>Start reading</Button>
+              </div>
+            </div>
           </div>
         </section>
 
-        <FAQs />
+        <section className={`${styles.pageSection} container`}>
+          <FAQs isPro />
+        </section>
       </div>
       <Footer tertiary />
     </>

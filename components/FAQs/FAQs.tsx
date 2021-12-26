@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import Link from "next/link";
 
 import { faqs } from "@/src/lib/faqs";
+import { proFaqs } from "@/src/lib/proFaqs";
 
 import styles from "./FAQs.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,12 +36,18 @@ const Accordion: FC<Props> = ({ question, answer }) => {
   );
 };
 
-const FAQs: FC = () => {
+interface PageProps {
+  isPro?: boolean;
+}
+
+const FAQs: FC<PageProps> = ({ isPro }) => {
+  const list = isPro ? proFaqs : faqs;
+
   return (
     <section className={styles.faqs}>
       <h2 className="center">FAQs</h2>
 
-      {faqs.map(({ question, answer }) => (
+      {list.map(({ question, answer }) => (
         <Accordion key={question} question={question} answer={answer} />
       ))}
 

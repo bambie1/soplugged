@@ -1,9 +1,11 @@
 @import "styles/_mixins";
 
-.pageSection {
-  margin-top: 5rem;
-  margin-bottom: 10rem;
+.wrapper {
+  display: grid;
+}
 
+.pageSection {
+  margin-block: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,32 +13,21 @@
 
 .features {
   display: grid;
-  gap: 1rem;
-  margin-inline: auto;
-  margin-top: 1.5rem;
-  max-width: min(80vw, 70rem);
+  gap: 3rem;
+  margin-top: 2rem;
+}
 
-  @include tablet {
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr;
-  }
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 
-  .feature {
+  aside {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    margin-inline: auto;
-    // border: 1px solid;
-    border-radius: 10px;
-    text-align: center;
+    justify-content: center;
 
-    @include tablet {
-      gap: 1rem;
-      flex-direction: row;
-      text-align: left;
+    @include mobile_only {
+      display: none;
     }
   }
 }

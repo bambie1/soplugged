@@ -2,6 +2,10 @@
 
 .navLinks {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  font-size: 1.025em;
 }
 
 .navLink {
@@ -27,6 +31,11 @@
   &.dashboardActive {
     box-shadow: 0 0 0 3px $lightSecondary;
   }
+}
+
+.mobileSeparator {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
 }
 
 .loading {

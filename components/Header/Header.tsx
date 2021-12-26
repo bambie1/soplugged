@@ -5,6 +5,7 @@ import { Dialog } from "@reach/dialog";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import { NavLinks } from "../NavLinks";
+import { MobileNav } from "../MobileNav";
 
 import styles from "./Header.module.scss";
 interface Props {
@@ -33,7 +34,6 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
 
   return (
     <>
-      {/* <p>PROOO</p> */}
       <div className={wrapperStyles()}>
         <header className={`${styles.header} container`}>
           <Link href="/">
@@ -68,7 +68,7 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
             aria-label="Mobile menu"
             className={styles.mobileMenu}
           >
-            <NavLinks />
+            <MobileNav />
           </Dialog>
         </header>
       </div>
