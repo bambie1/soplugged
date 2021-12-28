@@ -7,7 +7,7 @@ const FormikInput = ({ label, ...props }: any) => {
   const { errorText, ...rest } = props;
   const [field, meta] = useField(props);
 
-  const isError = meta.error;
+  const isError = meta.touched && meta.error;
 
   return (
     <>

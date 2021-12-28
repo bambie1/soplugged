@@ -12,7 +12,7 @@ const ProHero: FC<Props> = ({ ctaHandler }) => {
   return (
     <section className={styles.hero}>
       <div className={`container ${styles.hero_content}`}>
-        <aside className={styles.text}>
+        <div className={styles.text}>
           <h3 className={styles.tagLine}>SoPlugged PRO</h3>
           <h1>Scale your business with ease</h1>
           <p className={styles.subTitle}>
@@ -22,7 +22,7 @@ const ProHero: FC<Props> = ({ ctaHandler }) => {
           <Button big onClick={ctaHandler}>
             Let's Talk
           </Button>
-        </aside>
+        </div>
         <aside className={styles.image}></aside>
       </div>
     </section>

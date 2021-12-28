@@ -121,6 +121,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
         <Formik
           initialValues={{ ...business }}
           validationSchema={businessFormSchema[current - 1]}
+          validateOnChange={false}
           onSubmit={_handleSubmit}
         >
           {({ isSubmitting }) => (

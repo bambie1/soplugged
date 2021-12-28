@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import Script from "next/script";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { useField, useFormikContext } from "formik";
@@ -8,9 +8,9 @@ import styles from "./FormikInput.module.scss";
 const FormikLocation = ({ label, ...props }: any) => {
   const { setFieldValue, values } = useFormikContext<any>();
   const [address, setAddress] = useState(values.business_location);
-  const [field, meta] = useField(props);
+  const [_, meta] = useField(props);
 
-  const isError = meta.error;
+  const isError = meta.touched && meta.error;
 
   const handleSelect = (value: string) => {
     setAddress(value);

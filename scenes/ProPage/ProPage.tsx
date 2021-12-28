@@ -1,21 +1,23 @@
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { openPopupWidget } from "react-calendly";
 import { useWindowSize } from "@reach/window-size";
 
+import { ComingSoon } from ".";
 import { ProHero } from "@/components/ProHero";
-import { proFeatures } from "@/lib/proFeatures";
 import { Button } from "@/styled/Button";
-
-import styles from "./ProPage.module.scss";
 import { FAQs } from "@/components/FAQs";
 import { rgbDataURL } from "@/lib/dataUrl";
+
+import styles from "./ProPage.module.scss";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const ProPage = () => {
   const { width } = useWindowSize();
+  const [isLive, setIsLive] = useState(false);
 
   const openCalendly = () => {
     if (width < 768) {
@@ -36,6 +38,13 @@ const ProPage = () => {
       });
     }
   };
+
+  if (!isLive)
+    return (
+      <>
+        <ComingSoon />
+      </>
+    );
 
   return (
     <>

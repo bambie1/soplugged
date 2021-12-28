@@ -23,7 +23,15 @@
 
   h1 {
     font-weight: normal;
-    font-size: 2.6rem;
+    font-size: 2.1rem;
+
+    @include tablet {
+      font-size: 2.4rem;
+    }
+
+    @include desktop {
+      font-size: 2.6rem;
+    }
   }
 
   .line_break {

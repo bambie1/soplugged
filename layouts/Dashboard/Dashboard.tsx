@@ -33,7 +33,7 @@ const Dashboard: FC = ({ children }) => {
 
   return (
     <>
-      <Header />
+      <Header color="brown" />
       <div className={styles.body}>
         <PageWrapper center>
           <div className={styles.wrapper}>

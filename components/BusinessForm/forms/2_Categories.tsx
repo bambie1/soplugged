@@ -17,8 +17,8 @@ const Categories = () => {
         aria-labelledby="categories-group"
         className={`${styles.categories}`}
       >
-        {categories.map(({ label, value, imageSrc }) => (
-          <label htmlFor={value} key={label} className={styles.label}>
+        {categories.map(({ label, imageSrc }) => (
+          <label key={label} className={styles.label}>
             <Field
               name="category"
               value={label}

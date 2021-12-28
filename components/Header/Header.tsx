@@ -27,9 +27,7 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
     else if (color === "brown") colorStyle = styles.brown;
     else if (color === "transparent") colorStyle = styles.transparent;
 
-    return `${styles.headerWrapper} ${colorStyle} ${
-      openMenu ? styles.withModal : ""
-    }`;
+    return `${styles.headerWrapper} ${colorStyle}`;
   };
 
   return (

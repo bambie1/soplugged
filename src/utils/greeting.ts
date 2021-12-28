@@ -5,9 +5,9 @@ export function greetFunction(name: string) {
   if (time < 10) {
     greeting = `Good morning, ${displayName}`;
   } else if (time < 16) {
-    greeting = `Good day, ${displayName}`;
+    greeting = `Good day ${displayName},`;
   } else {
-    greeting = `Good evening, ${displayName}`;
+    greeting = `Good evening ${displayName},`;
   }
   return greeting;
 }
