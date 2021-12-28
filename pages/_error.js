@@ -2,13 +2,22 @@ import NextErrorComponent from "next/error";
 import * as Sentry from "@sentry/nextjs";
 
 import { ErrorPage } from "@/scenes/ErrorPage";
+import { SEO } from "@/components/SEO";
 
 const MyError = ({ err }) => {
   if (err) {
     Sentry.captureException(err);
   }
 
-  return <ErrorPage />;
+  return (
+    <>
+      <SEO
+        title="500 Server Error | SoPlugged"
+        description="Something went wrong"
+      />
+      <ErrorPage />;
+    </>
+  );
 };
 
 MyError.getInitialProps = async ({ res, err, asPath }) => {
