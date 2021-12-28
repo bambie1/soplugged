@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
 
 import { Input } from "@/styled/Input";
 import { Button } from "@/styled/Button";
@@ -21,7 +22,11 @@ const SubscribeForm: FC = () => {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const response = await handleSubscription(data, "newsletter");
+    const res = await handleSubscription(data, "newsletter");
+
+    if (res.ok) {
+      toast.success("Successfully subscribed");
+    } else toast.error("An error occurred");
   };
 
   return (

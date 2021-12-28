@@ -20,10 +20,10 @@ export const handleSubscription = async (
     );
     if (!res.ok) throw new Error("HTTP status " + res.status);
 
-    return { res };
+    return res;
   } catch (error) {
     Sentry.captureException(error);
 
-    return { error };
+    return { error, ok: false };
   }
 };

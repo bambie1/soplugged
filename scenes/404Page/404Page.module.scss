@@ -1,0 +1,17 @@
+@import "styles/mixins";
+
+.content {
+  display: grid;
+  gap: 1rem;
+  padding-top: 3rem;
+
+  .errorIcon {
+    font-size: 3rem;
+    color: $secondary;
+    justify-self: center;
+  }
+
+  h1 {
+    margin-bottom: 0rem;
+  }
+}
