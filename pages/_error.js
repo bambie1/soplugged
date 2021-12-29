@@ -5,9 +5,7 @@ import { ErrorPage } from "@/scenes/ErrorPage";
 import { SEO } from "@/components/SEO";
 
 const MyError = ({ err }) => {
-  if (err) {
-    Sentry.captureException(err);
-  }
+  if (err) Sentry.captureException(err);
 
   return (
     <>
