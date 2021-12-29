@@ -13,16 +13,11 @@ export const updateBusiness = async (data: IBusiness, isNew: boolean) => {
       lower: true,
       remove: /[*+~.()'"!:@]/g,
     }),
-    business_url: data.business_url.trim(),
+    business_url: data.business_url?.trim(),
     fixed_to_one_location: false,
     tags: "",
     business_description: data.business_description.trim(),
   };
-
-  if (isNew) {
-    businessObject.referral_source = "Business";
-    businessObject.referral_business_slug = "jam-tutor";
-  }
 
   const fetchUrl = isNew
     ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`

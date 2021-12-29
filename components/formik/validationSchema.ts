@@ -34,9 +34,9 @@ export const businessFormSchema = [
 
   // contact links
   Yup.object().shape({
-    business_url: Yup.string().url(
-      "Please enter a valid url (e.g. https://www.soplugged.com)"
-    ),
+    business_url: Yup.string()
+      .nullable()
+      .url("Please enter a valid url (e.g. https://www.soplugged.com)"),
     ig_handle: Yup.string()
       .matches(/^[a-zA-Z0-9_.]+([-.][a-zA-Z0-9_]+)*$/, {
         message: "Your IG handle can't contain special characters or spaces",

@@ -2,10 +2,14 @@ import { forwardRef } from "react";
 
 import styles from "./Input.module.scss";
 
-type Props = { label: string; error?: string } & React.ComponentProps<"input">;
+type Props = {
+  label: string;
+  error?: string;
+  noHelper?: boolean;
+} & React.ComponentProps<"input">;
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, error, required, ...props }, ref: any) => {
+  ({ label, error, noHelper, required, ...props }, ref: any) => {
     const renderHelperText = () => {
       if (error) return <span className={styles.errorMsg}>{error}</span>;
 
@@ -25,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           {...props}
           className={`${styles.input} ${!!error && styles.error}`}
         />
-        {renderHelperText()}
+        {!noHelper && renderHelperText()}
       </div>
     );
   }

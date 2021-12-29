@@ -158,7 +158,7 @@ ul.list {
 }
 
 .error {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: red;
   margin-top: 0.125rem;
 }
@@ -250,7 +250,8 @@ ul.list {
     // }
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     cursor: not-allowed;
     opacity: 0.5;
 

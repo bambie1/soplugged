@@ -21,7 +21,7 @@ const ComingSoon = () => {
     values: Values,
     { setSubmitting, resetForm }: FormikHelpers<Values>
   ) => {
-    const res = await handleSubscription(values, "newsletter");
+    const res = await handleSubscription(values, "soplugged_for_business");
 
     if (res.ok) {
       toast.success("Successfully added to waitlist!");

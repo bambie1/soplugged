@@ -1,16 +1,16 @@
+import useSWR from "swr";
 import { FC, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useWindowSize } from "@reach/window-size";
 
+import { PreBusinessForm } from "layouts/BusinessForm";
 import { swrFetcher } from "@/utils/swrFetcher";
 import { Button } from "@/styled/Button";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import styles from "./MyBusinessWelcome.module.scss";
-import { PreBusinessForm } from "layouts/BusinessForm";
-import useSWR from "swr";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -26,7 +26,12 @@ const MyBusinessWelcome: FC = () => {
   const router = useRouter();
   const { width } = useWindowSize();
 
-  const { agreementSigned, setAgreementSigned } = useBusinessFormContext();
+  const {
+    agreementSigned,
+    setAgreementSigned,
+    setReferralSource,
+    setReferringBusiness,
+  } = useBusinessFormContext();
 
   if (agreementSigned) {
     router.push("/my-business?step=name_location");
@@ -35,16 +40,27 @@ const MyBusinessWelcome: FC = () => {
   const [adhereCheck, setAdhereCheck] = useState(false);
   const [blackBusiness, setBlackBusiness] = useState(false);
   const [canadaResident, setCanadaResident] = useState(false);
-  const [referralSource, setReferralSource] = useState<string>("");
-  const [referringBusiness, setReferringBusiness] = useState<string>("");
+  const [referralInput, setReferralInput] = useState<string>("");
+  const [refBusiness, setRefBusiness] = useState<string>("");
 
   const { data: businesses, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
     swrFetcher
   );
 
+  const orderedBusinesses =
+    businesses
+      ?.filter((business: any) => business.verified === true)
+      .sort((a: any, b: any) =>
+        a.business_name
+          .toLowerCase()
+          .localeCompare(b.business_name.toLowerCase())
+      ) || [];
+
   const handleConfirm = () => {
     setAgreementSigned(true);
+    setReferralSource(referralInput);
+    setReferringBusiness(refBusiness);
   };
 
   return (
@@ -107,7 +123,7 @@ const MyBusinessWelcome: FC = () => {
               <select
                 name="referralSource"
                 id="referral-source"
-                onChange={(e) => setReferralSource(e.target.value)}
+                onChange={(e) => setReferralInput(e.target.value)}
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -122,20 +138,20 @@ const MyBusinessWelcome: FC = () => {
             </div>
           </label>
 
-          {referralSource == "Business" && businesses.length && (
+          {referralInput === "Business" && businesses?.length && (
             <label htmlFor="referral-source" className={styles.selectLabel}>
               Please select business that referred you:
               <div className={styles.selectWrapper}>
                 <select
                   name="referralSource"
                   id="referral-source"
-                  onChange={(e) => setReferringBusiness(e.target.value)}
+                  onChange={(e) => setRefBusiness(e.target.value)}
                   defaultValue=""
                 >
                   <option value="" disabled>
                     Select a business
                   </option>
-                  {businesses.map(({ business_name, slug }: any) => (
+                  {orderedBusinesses.map(({ business_name, slug }: any) => (
                     <option key={slug} value={slug}>
                       {business_name}
                     </option>
@@ -152,8 +168,8 @@ const MyBusinessWelcome: FC = () => {
                   adhereCheck &&
                   blackBusiness &&
                   canadaResident &&
-                  referralSource &&
-                  (referralSource == "Business" ? referringBusiness : true)
+                  referralInput &&
+                  (referralInput == "Business" ? refBusiness : true)
                 )
               }
               onClick={handleConfirm}

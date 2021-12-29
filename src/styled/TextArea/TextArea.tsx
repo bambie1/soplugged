@@ -2,16 +2,23 @@ import { forwardRef } from "react";
 
 import styles from "./TextArea.module.scss";
 
-type Props = { label: string } & React.ComponentProps<"textarea">;
+type Props = {
+  label: string;
+  noScroll?: boolean;
+} & React.ComponentProps<"textarea">;
 
 const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ label, ...props }, ref: any) => {
+  ({ label, noScroll, ...props }, ref: any) => {
     return (
       <div className={styles.formGroup}>
         <label htmlFor="" className={styles.label}>
           {label}
         </label>
-        <textarea ref={ref} {...props} className={styles.input} />
+        <textarea
+          ref={ref}
+          {...props}
+          className={`${styles.input} ${noScroll ? styles.noScroll : ""}`}
+        />
       </div>
     );
   }

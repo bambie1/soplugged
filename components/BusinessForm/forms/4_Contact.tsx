@@ -1,13 +1,11 @@
 import { FormikInput } from "@/components/formik";
 
-import styles from "../BusinessForm.module.scss";
-
 const Contact = () => {
   return (
     <>
       <FormikInput
         label="Website Url"
-        placeholder="www.soplugged.com"
+        placeholder="https://www.soplugged.com"
         name="business_url"
       />
       <FormikInput

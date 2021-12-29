@@ -18,7 +18,9 @@ const FormikInput = ({ label, ...props }: any) => {
           {...props}
           className={`${styles.input} ${isError && styles.error}`}
         />
-        {isError ? <div className="error">{meta.error}</div> : null}
+        {isError ? (
+          <div className={`error ${styles.errorMsg}`}>{meta.error}</div>
+        ) : null}
       </label>
     </>
   );

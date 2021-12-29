@@ -17,7 +17,7 @@ const FileDropzone: FC = () => {
 
   let currentImages: any = [];
   if (values.sample_images !== "")
-    currentImages = values.sample_images?.split(",");
+    currentImages = values.sample_images?.split(",") || [];
   const [myFiles, setMyFiles] = useState(currentImages);
   const [errorMessage, setErrorMessage] = useState("");
   const { url, error, uploadImage, uploading } = useImageUploader();

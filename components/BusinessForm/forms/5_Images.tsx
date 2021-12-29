@@ -27,7 +27,6 @@ const Images = () => {
 
   return (
     <>
-      {/* <section className={styles.form}> */}
       <div className={styles.logoInput}>
         <label htmlFor="business-logo">Business logo:</label>
         <input
@@ -38,13 +37,15 @@ const Images = () => {
           type="file"
           onChange={handleFileUpload}
           value=""
-          disabled={!!uploading}
+          disabled={uploading}
         />
 
         <div className={styles.logoAndPreview}>
           <label
             htmlFor="business-logo"
-            className={`button outlined withIcon ${styles.labelButton}`}
+            className={`button outlined withIcon ${styles.labelButton} ${
+              uploading && "disabled"
+            }`}
           >
             <FontAwesomeIcon icon={faCloudUploadAlt} />
             {values.logo_url ? "Change Logo" : "Upload Logo"}
@@ -63,7 +64,6 @@ const Images = () => {
         {error && <p className="error">{error}</p>}
       </div>
       <FileDropzone />
-      {/* </section> */}
     </>
   );
 };

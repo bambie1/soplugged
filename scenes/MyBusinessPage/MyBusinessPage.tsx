@@ -31,7 +31,7 @@ interface Props {
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
   const { width } = useWindowSize();
   const router = useRouter();
-  const { isNew } = useBusinessFormContext();
+  const { isNew, referralSource, referringBusiness } = useBusinessFormContext();
 
   const current = stepsObject[step] || 1;
   const isLastStep = current === steps.length - 1;
@@ -64,7 +64,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
         >
           Go Back
         </Button>
-        <Button type="submit">
+        <Button type="submit" disabled={isSubmitting}>
           {current === steps.length - 1
             ? isNew
               ? "Complete setup"
@@ -76,18 +76,27 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
   };
 
   async function _submitForm(values: any, actions: any) {
-    const res = await updateBusiness(values, isNew);
+    const businessObj = isNew
+      ? {
+          ...values,
+          referral_source: referralSource,
+          referral_business_slug: referringBusiness,
+        }
+      : { ...values };
+
+    const res = await updateBusiness(businessObj, isNew);
 
     if (res.ok) {
-      toast.success("Business updated successfully");
-      if (isNew) {
-        const slug = slugify(values.business_name.trim(), {
-          lower: true,
-          remove: /[*+~.()'"!:@]/g,
-        });
-        router.push(`/business/${slug}`);
-      } else {
-      }
+      toast.success(
+        isNew
+          ? "Business created successfully"
+          : "Business updated successfully"
+      );
+      const slug = slugify(values.business_name.trim(), {
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      });
+      router.push(`/business/${slug}`);
     } else {
       toast.error("An error occurred");
     }
