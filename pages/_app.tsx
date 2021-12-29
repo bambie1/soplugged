@@ -7,6 +7,8 @@ import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
 import { AlgoliaSearchProvider } from "@/context/algoliaSearchContext";
 
+import "../flags.config";
+
 import "../styles/globals.scss";
 import "../styles/algolia.scss";
 import "../styles/imageGallery.scss";
