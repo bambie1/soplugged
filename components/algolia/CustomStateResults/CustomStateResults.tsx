@@ -7,7 +7,6 @@ import { AlgoliaHit } from "../AlgoliaHit";
 import styles from "./CustomStateResults.module.scss";
 
 const StateResults = ({ searchResults }: any) => {
-  // console.log({ searchResults });
   const hasResults = searchResults && searchResults.nbHits !== 0;
   const nbHits = searchResults && searchResults.nbHits;
 
