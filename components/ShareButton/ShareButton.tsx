@@ -20,7 +20,11 @@ const ShareButton = () => {
 
   return (
     <>
-      <button className="button text withIcon" onClick={copyUrl}>
+      <button
+        className="button text withIcon"
+        onClick={copyUrl}
+        disabled={textCopied}
+      >
         <FontAwesomeIcon icon={textCopied ? faCopyFilled : faCopy} />
         {textCopied ? "Copied!" : "Copy Link"}
       </button>

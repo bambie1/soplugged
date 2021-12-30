@@ -65,11 +65,14 @@
   border-radius: 10px;
 
   * {
-    opacity: 0.6;
+    opacity: 0.8;
   }
+
   svg {
     position: absolute;
+    font-size: 1.25rem;
   }
+
   p {
     width: 100%;
     white-space: nowrap;

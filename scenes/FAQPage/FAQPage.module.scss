@@ -3,4 +3,11 @@
   max-width: 700px;
   margin-inline: auto;
   text-align: center;
+
+  h2 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    line-height: 1.5;
+    // font-weight: normal;
+  }
 }

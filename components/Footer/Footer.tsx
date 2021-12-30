@@ -35,12 +35,12 @@ const Footer: FC<Props> = ({ tertiary }) => {
             <p>Contact us:</p>
 
             <section className={styles.socials}>
-              <button className="iconButton">
-                <a href="mailto:hello@soplugged.com">
+              <button className="iconButton" aria-label="Email icon">
+                <a href="mailto:hello@soplugged.com" aria-label="email contact">
                   <FontAwesomeIcon icon={faEnvelope} />
                 </a>
               </button>
-              <button className="iconButton">
+              <button className="iconButton" aria-label="Instagram icon">
                 <a
                   aria-label="instagram"
                   href="https://www.instagram.com/sopluggd/"
