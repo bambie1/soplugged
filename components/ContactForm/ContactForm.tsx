@@ -42,13 +42,13 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
       reply_to: user.email,
     };
 
-    // const res = await sendEmail(email);
+    const res = await sendEmail(email);
 
-    // if (res?.ok) {
-    toast.success("Message sent");
-    reset();
-    setMessageSent(true);
-    // } else toast.error("An error occurred");
+    if (res?.ok) {
+      toast.success("Message sent");
+      reset();
+      setMessageSent(true);
+    } else toast.error("An error occurred");
   };
 
   const renderButton = () => {
