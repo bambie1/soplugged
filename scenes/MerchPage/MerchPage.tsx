@@ -98,8 +98,12 @@ const MerchPage = () => {
                             "font-family": "Montserrat, sans-serif",
                             ":hover": {
                               "background-color": "#463005",
+                              "color": "#fff"
                             },
-                            "background-color": "#4e3505",
+                            "background-color": "#fff",
+                            "border": "1px solid #4e3505",
+                            "color": "#4e3505",
+
                             ":focus": {
                               "background-color": "#463005",
                             },

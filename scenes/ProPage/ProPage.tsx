@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { openPopupWidget } from "react-calendly";
@@ -70,8 +71,9 @@ const ProPage = () => {
               <h3>We get to work</h3>
 
               <p>
-                Our team of experts roll up their sleeves to surpass your
-                expectations, while you carry on being an amazing entrepreneur.
+                It is now time for our experts to roll up their sleeves to
+                exceed your expectations! All you need to do, is keep on being
+                an amazing entrepreneur, and we'll check in with you if needed.
               </p>
             </div>
 
@@ -107,10 +109,8 @@ const ProPage = () => {
                 <h3>ON-THE-GO SUPPORT</h3>
 
                 <p>
-                  Discussions have been had, agreements have been made. Now, our
-                  team of experts roll up their sleeves to surpass your
-                  expectations! You just have to carry on being an amazing
-                  entrepreneur, and we’ll check in with you if needed.
+                  With our team of experts by your side, you’ll have all the
+                  support you need to grow your business.
                 </p>
                 <Button big onClick={openCalendly}>
                   Let's Talk
@@ -142,10 +142,9 @@ const ProPage = () => {
                 <h3>FREE GUIDES ON BEST-PRACTICES</h3>
 
                 <p>
-                  Discussions have been had, agreements have been made. Now, our
-                  team of experts roll up their sleeves to surpass your
-                  expectations! You just have to carry on being an amazing
-                  entrepreneur, and we’ll check in with you if needed.
+                  You've come to the right place. Explore our free guides and
+                  resources that we've compiled to help you grow your business
+                  with ease.
                 </p>
                 <Button big>Start reading</Button>
               </div>

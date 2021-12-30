@@ -31,7 +31,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     reset,
   } = useForm<IFormInput>();
 
-  const disabled = !user || user.email === businessEmail;
+  const disabled = !user || user.email === businessEmail || messageSent;
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const email = {

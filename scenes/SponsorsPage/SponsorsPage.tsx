@@ -41,7 +41,7 @@ const SponsorsPage = () => {
           </aside>
 
           <div className="pageButtons column">
-            <Button big onClick={() => setShowKweeve(true)}>
+            <Button onClick={() => setShowKweeve(true)}>
               Show your support
             </Button>
             <ButtonLink href="/search" variant="text">
