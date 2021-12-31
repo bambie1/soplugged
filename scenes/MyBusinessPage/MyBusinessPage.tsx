@@ -33,7 +33,8 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
   const { mutate } = useSWRConfig();
   const { width } = useWindowSize();
   const router = useRouter();
-  const { isNew, referralSource, referringBusiness } = useBusinessFormContext();
+  const { isNew, setIsNew, referralSource, referringBusiness } =
+    useBusinessFormContext();
 
   const current = stepsObject[step] || 1;
   const isLastStep = current === steps.length - 1;
@@ -95,6 +96,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
           : "Business updated successfully"
       );
       mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`);
+      setIsNew(false);
       const slug = slugify(values.business_name.trim(), {
         lower: true,
         remove: /[*+~.()'"!:@]/g,

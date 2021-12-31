@@ -47,7 +47,7 @@ const ProfilePage: FC<Props> = ({ dbUser }) => {
       <h1 className="center">profile</h1>
       <form className={styles.paper} onSubmit={handleSubmit(onSubmit)}>
         <Avatar name={userName} />
-        <p>{user.email}</p>
+        <p>{user?.email || ""}</p>
         <Input
           {...register("full_name", { required: true })}
           label="Display Name"
