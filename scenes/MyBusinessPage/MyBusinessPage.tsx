@@ -4,6 +4,8 @@ import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
+import slugify from "slugify";
+import { useSWRConfig } from "swr";
 
 import { BusinessForm } from "layouts/BusinessForm";
 import { businessFormSchema } from "@/components/formik";
@@ -19,7 +21,6 @@ import { updateBusiness } from "@/utils/updateBusiness";
 import { Button } from "@/styled/Button";
 
 import styles from "./MyBusinessPage.module.scss";
-import slugify from "slugify";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const MyBusinessPage: FC<Props> = ({ business, step }) => {
+  const { mutate } = useSWRConfig();
   const { width } = useWindowSize();
   const router = useRouter();
   const { isNew, referralSource, referringBusiness } = useBusinessFormContext();
@@ -92,6 +94,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
           ? "Business created successfully"
           : "Business updated successfully"
       );
+      mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`);
       const slug = slugify(values.business_name.trim(), {
         lower: true,
         remove: /[*+~.()'"!:@]/g,

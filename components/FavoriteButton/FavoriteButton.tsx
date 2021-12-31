@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,7 @@ interface Props {
 
 const FavoriteButton: FC<Props> = ({ business }) => {
   const { user } = useAuth();
+  const { mutate } = useSWRConfig();
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);
 
   const {
@@ -60,6 +61,8 @@ const FavoriteButton: FC<Props> = ({ business }) => {
         toast.error("An error occurred");
       }
     }
+
+    mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`);
   };
 
   if (userLikesBusiness)
