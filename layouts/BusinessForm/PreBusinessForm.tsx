@@ -19,7 +19,7 @@ const PreBusinessForm: FC<Props> = ({ children }) => {
     return (
       <aside className={`${styles.stepInfo} container`}>
         <h1 className={styles.stepName}>
-          Hi {user?.displayName.split(" ")[0] || ""},
+          Hi {user?.displayName?.split(" ")[0] || "there"},
         </h1>
         <h2 className={styles.stepDescription}>
           Welcome to your SoPlugged business page builder{" "}
