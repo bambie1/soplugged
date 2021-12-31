@@ -1,25 +1,22 @@
 import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import algoliasearch from "algoliasearch/lite";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   InstantSearch,
-  Hits,
   SearchBox,
-  Stats,
   ClearRefinements,
   PoweredBy,
   Configure,
   Pagination,
 } from "react-instantsearch-dom";
 import { useWindowSize } from "@reach/window-size";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
-import { AlgoliaHit } from "../AlgoliaHit";
 import { CustomRefinementList } from "../CustomRefinementList/CustomRefinementList";
 import { CustomRefinements } from "../CustomRefinements";
 
 import styles from "./AlgoliaSearch.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { CustomStateResults } from "../CustomStateResults";
 
 const searchClient = algoliasearch(
