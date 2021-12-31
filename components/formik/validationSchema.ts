@@ -56,8 +56,5 @@ export const businessFormSchema = [
       .min(3, "Business name is too short!")
       .max(30, "Business name is too long!")
       .required("Please enter a name for your business"),
-    business_url: Yup.string().url(
-      "Please enter a valid url (e.g. https://www.soplugged.com)"
-    ),
   }),
 ];

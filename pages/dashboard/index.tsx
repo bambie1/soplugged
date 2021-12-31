@@ -17,6 +17,7 @@ const DashboardHome: NextPage = () => {
   );
 
   const renderPage = () => {
+    if (error) return <BusinessInfoPage business={null} />;
     if (!businesses) return <BusinessInfoSkeleton />;
     return <BusinessInfoPage business={businesses[0]} />;
   };

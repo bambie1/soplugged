@@ -16,12 +16,12 @@ interface IFormInput {
 }
 
 interface Props {
-  dbUser: IUser;
+  dbUser: IUser | null;
 }
 
 const ProfilePage: FC<Props> = ({ dbUser }) => {
   const { user } = useAuth();
-  const userName = dbUser.full_name || user?.displayName;
+  const userName = dbUser?.full_name || user?.displayName;
 
   const {
     register,
