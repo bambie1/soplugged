@@ -5,8 +5,13 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./JoinPage.module.scss";
+import { FC } from "react";
 
-const JoinPage = () => {
+interface Props {
+  referrer: any;
+}
+
+const JoinPage: FC<Props> = ({ referrer }) => {
   return (
     <>
       <PageWrapper center>
@@ -23,7 +28,7 @@ const JoinPage = () => {
           Please verify your identity via one of the following sign-in methods:
         </p>
         <div className={styles.authDiv}>
-          <FirebaseAuth />
+          <FirebaseAuth referrer={referrer} />
         </div>
         <ButtonLink href="/search" variant="outlined">
           I'm just browsing

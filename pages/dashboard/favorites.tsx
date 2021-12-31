@@ -17,6 +17,7 @@ const Favorites: NextPage = () => {
   );
 
   const renderPage = () => {
+    if (error) return <FavoritesPage favorites={[]} />;
     if (!favorites) return <FavoritesSkeleton />;
     return <FavoritesPage favorites={favorites} />;
   };

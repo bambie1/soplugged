@@ -23,10 +23,12 @@ const updateDBUser = async (
 };
 
 export const editDBUser = async (user: IUser) => {
-  await getDBUser(user.email);
+  const dbUser = await getDBUser(user.email);
 
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/user`;
-  return updateDBUser(fetchUrl, "PUT", user);
+  if (dbUser !== null) {
+    return updateDBUser(fetchUrl, "PUT", user);
+  } else return addDBUser(user);
 };
 
 export const addDBUser = async (user: IUser) => {

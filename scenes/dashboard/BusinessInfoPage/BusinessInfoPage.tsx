@@ -16,7 +16,7 @@ import { greetFunction } from "@/utils/greeting";
 import styles from "./BusinessInfoPage.module.scss";
 
 interface Props {
-  business: IBusiness;
+  business: IBusiness | null;
 }
 
 const BusinessInfoPage: FC<Props> = ({ business }) => {

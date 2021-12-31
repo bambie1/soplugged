@@ -20,12 +20,6 @@ const Review = () => {
     },
   } = useFormikContext<any>();
 
-  if (
-    !(business_location && business_name && business_description && category)
-  ) {
-    router.push("/my-business?step=name_location");
-  }
-
   return (
     <>
       <Input noHelper value={business_name} label="Business Name" disabled />
@@ -49,7 +43,7 @@ const Review = () => {
       )}
 
       <TextArea
-        value={business_description.replace(/<[^>]*>?/gm, "")}
+        value={business_description?.replace(/<[^>]*>?/gm, "") || ""}
         label="Description"
         noScroll
         disabled

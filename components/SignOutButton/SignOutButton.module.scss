@@ -35,7 +35,12 @@
   flex-wrap: wrap;
   margin-top: 1rem;
   justify-content: flex-end;
-  column-gap: 3rem;
+  column-gap: 0.75rem;
+  row-gap: 1rem;
+
+  @include tablet {
+    column-gap: 3rem;
+  }
 }
 
 .label {
