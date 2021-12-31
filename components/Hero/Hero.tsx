@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { config } from "@fortawesome/fontawesome-svg-core";
 
+// This ensures that the icon CSS is loaded immediately before attempting to render icons
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import styles from "./Hero.module.scss";
+
+// Prevent fontawesome from dynamically adding its css since we did it manually above
+config.autoAddCss = false;
 
 const Hero = () => {
   return (
