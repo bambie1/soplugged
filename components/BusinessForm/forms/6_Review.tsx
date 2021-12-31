@@ -1,11 +1,9 @@
-import { useRouter } from "next/router";
 import { useFormikContext } from "formik";
 
 import { Input } from "@/styled/Input";
 import TextArea from "@/styled/TextArea/TextArea";
 
 const Review = () => {
-  const router = useRouter();
   const {
     values: {
       business_description,
@@ -18,7 +16,10 @@ const Review = () => {
       logo_url,
       sample_images,
     },
+    isSubmitting,
   } = useFormikContext<any>();
+
+  // if (isSubmitting) return <p>Submitting this</p>;
 
   return (
     <>

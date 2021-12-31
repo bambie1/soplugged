@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, createContext, FC } from "react";
-import { useRouter } from "next/router";
 import nookies from "nookies";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -10,8 +9,6 @@ import firebaseClient from "@/src/firebase/firebaseClient";
 const AuthContext = createContext<any>({});
 
 export const AuthProvider: FC = ({ children }) => {
-  const router = useRouter();
-
   firebaseClient();
   const [user, setUser] = useState<firebase.User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -46,7 +43,6 @@ export const AuthProvider: FC = ({ children }) => {
 
   const signOutUser = async () => {
     await firebase.auth().signOut();
-    router.reload();
     toast.success("Sign out successful");
   };
 

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FC, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
@@ -8,12 +9,12 @@ import {
 } from "@reach/alert-dialog";
 
 import { useAuth } from "@/context/authContext";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { Button } from "@/styled/Button";
 
 import styles from "./SignOutButton.module.scss";
 
 const SignOutButton: FC = () => {
+  const router = useRouter();
   const { signOutUser } = useAuth();
   const [showSignOut, setShowSignOut] = useState(false);
 
@@ -21,6 +22,11 @@ const SignOutButton: FC = () => {
 
   const open = () => setShowSignOut(true);
   const close = () => setShowSignOut(false);
+
+  const handleSignOut = () => {
+    signOutUser();
+    router.reload();
+  };
 
   return (
     <>
@@ -45,7 +51,7 @@ const SignOutButton: FC = () => {
             <Button variant="text" ref={cancelRef} onClick={close}>
               No, go back
             </Button>
-            <Button variant="outlined" onClick={signOutUser}>
+            <Button variant="outlined" onClick={handleSignOut}>
               Yes, Sign me out
             </Button>
           </div>

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useSWRConfig } from "swr";
 
 import { Avatar } from "@/components/Avatar";
 import { useAuth } from "@/context/authContext";
@@ -20,8 +21,9 @@ interface Props {
 }
 
 const ProfilePage: FC<Props> = ({ dbUser }) => {
+  const { mutate } = useSWRConfig();
   const { user } = useAuth();
-  const userName = dbUser?.full_name || user?.displayName;
+  const userName = dbUser?.full_name || user?.displayName || "";
 
   const {
     register,
@@ -34,6 +36,7 @@ const ProfilePage: FC<Props> = ({ dbUser }) => {
 
     if (res?.ok) {
       toast.success("Profile updated successfully");
+      mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/user`);
     } else {
       toast.error("An error occurred");
     }
@@ -44,7 +47,7 @@ const ProfilePage: FC<Props> = ({ dbUser }) => {
       <h1 className="center">profile</h1>
       <form className={styles.paper} onSubmit={handleSubmit(onSubmit)}>
         <Avatar name={userName} />
-        <p>{user.email}</p>
+        <p>{user?.email || ""}</p>
         <Input
           {...register("full_name", { required: true })}
           label="Display Name"

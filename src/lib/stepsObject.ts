@@ -38,7 +38,7 @@ export const steps = [
     number: 4,
     step: "contact",
     name: "Contact",
-    description: "Contact links",
+    description: "Alternative ways that your potential customer can reach you",
   },
   {
     number: 5,

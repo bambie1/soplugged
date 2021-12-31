@@ -36,7 +36,7 @@ const MyBusiness: NextPage = () => {
     swrFetchWithToken
   );
 
-  if (error && !agreementSigned) {
+  if (!businesses?.length && !agreementSigned) {
     setIsNew(true);
     push("/my-business/welcome");
   }
