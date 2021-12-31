@@ -22,7 +22,21 @@ const Description = () => {
 
   const handleUpdate = (content: any) => {
     if (typeof content === "string") {
-      setContent(content);
+      setContent(
+        content
+          .replace(/<h1>/, "<p>")
+          .replace(/<\/h1>/, "</p>")
+          .replace(/<h2>/, "<p>")
+          .replace(/<\/h2>/, "</p>")
+          .replace(/<h3>/, "<p>")
+          .replace(/<\/h3>/, "</p>")
+          .replace(/<h4>/, "<p>")
+          .replace(/<\/h4>/, "</p>")
+          .replace(/<h5>/, "<p>")
+          .replace(/<\/h5>/, "</p>")
+          .replace(/<h6>/, "<p>")
+          .replace(/<\/h6>/, "</p>")
+      );
       setFieldValue("business_description", content);
     }
   };
@@ -39,7 +53,7 @@ const Description = () => {
           </label>
 
           <ReactQuill
-            placeholder="Enter a description for your business (the more, the better)"
+            placeholder="Enter a description for your business (the lengthier, the better)"
             value={content}
             onChange={handleUpdate}
             id="business_description"

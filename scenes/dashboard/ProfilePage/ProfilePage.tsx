@@ -23,7 +23,7 @@ interface Props {
 const ProfilePage: FC<Props> = ({ dbUser }) => {
   const { mutate } = useSWRConfig();
   const { user } = useAuth();
-  const userName = dbUser?.full_name || user?.displayName;
+  const userName = dbUser?.full_name || user?.displayName || "";
 
   const {
     register,
