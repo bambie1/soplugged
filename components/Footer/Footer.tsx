@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faHashtag } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import SubscribeForm from "../SubscribeForm/SubscribeForm";
@@ -47,7 +48,7 @@ const Footer: FC<Props> = ({ tertiary }) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FontAwesomeIcon icon={faHashtag} />
+                  <FontAwesomeIcon icon={faInstagram} />
                 </a>
               </button>
             </section>
