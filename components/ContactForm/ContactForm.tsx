@@ -9,9 +9,9 @@ import { Button } from "@/styled/Button";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { Input } from "@/styled/Input";
 import TextArea from "@/styled/TextArea/TextArea";
+import { sendEmail } from "@/utils/sendEmail";
 
 import styles from "./ContactForm.module.scss";
-import { sendEmail } from "@/utils/sendEmail";
 
 interface IFormInput {
   message: string;

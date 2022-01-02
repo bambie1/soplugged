@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 import ReactImageGallery from "react-image-gallery";
@@ -15,13 +16,13 @@ import { Button } from "@/styled/Button";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import { PageWrapper } from "@/components/PageWrapper";
+import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
 import { IBusiness } from "@/types/Business";
 import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
-import { useRouter } from "next/router";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
@@ -53,6 +54,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
     fixed_to_one_location,
     verified,
     creator,
+    ig_handle,
+    phone_number,
+    business_url,
   } = business;
 
   const rawImages = sample_images?.split(",") || [];
@@ -62,6 +66,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   }));
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const fullView = hasPreview && verified && width > 960;
+  const hasContactLinks = ig_handle || phone_number || business_url;
 
   const handleCategoryClick = () => {
     setCategory(category);
@@ -90,6 +95,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <div className={styles.contactForm}>
             <ContactForm businessEmail={creator?.email || ""} />
           </div>
+          {hasContactLinks && <SocialLinks business={business} />}
           <div className={styles.buttonGroup}>
             <FavoriteButton business={business} />
             <ShareButton />
@@ -114,6 +120,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             ></section>
           </div>
         )}
+        <SocialLinks business={business} />
         {verified && (
           <>
             <div className={styles.buttonGroup}>
@@ -132,7 +139,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header color="transparent" />
-      <PageWrapper center={!fullView}>
+      <PageWrapper>
         <section className="center">
           <div className={styles.businessHeader}>
             <Avatar name={business_name} url={logo_url} />
@@ -169,7 +176,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             )}
 
             {!fixed_to_one_location && (
-              <button className="button">CANADA-WIDE</button>
+              <button className="button noPointer">CANADA-WIDE</button>
             )}
           </div>
         </section>

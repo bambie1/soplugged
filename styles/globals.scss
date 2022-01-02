@@ -144,6 +144,10 @@ ul.list {
   margin: 0 !important;
 }
 
+.noPointer {
+  cursor: default;
+}
+
 .mobileOnly {
   @include tablet {
     display: none !important;
