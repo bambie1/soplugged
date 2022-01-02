@@ -132,7 +132,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header color="transparent" />
-      <PageWrapper center={!fullView}>
+      <PageWrapper>
         <section className="center">
           <div className={styles.businessHeader}>
             <Avatar name={business_name} url={logo_url} />
