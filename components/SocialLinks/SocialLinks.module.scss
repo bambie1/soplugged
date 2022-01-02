@@ -1,0 +1,14 @@
+@import "styles/mixins";
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-block: 2.5rem;
+}
+
+.icons {
+  border: 1px solid;
+  border-radius: 50%;
+  padding: 0.5rem 0.75rem;
+}
