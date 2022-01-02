@@ -18,6 +18,14 @@ import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
 import "@reach/tooltip/styles.css";
 
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+// This ensures that the icon CSS is loaded immediately before attempting to render icons
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
+// Prevent fontawesome from dynamically adding its css since we did it manually above
+config.autoAddCss = false;
+
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
