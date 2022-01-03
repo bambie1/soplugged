@@ -106,6 +106,7 @@ const MerchPage = () => {
 
                             ":focus": {
                               "background-color": "#463005",
+                              "color": "#fff"
                             },
                           },
                           price: {
@@ -157,6 +158,7 @@ const MerchPage = () => {
                               "background-color": "#463005",
                             },
                             "background-color": "#4e3505",
+                            "color": "#fff",
                             ":focus": {
                               "background-color": "#463005",
                             },
