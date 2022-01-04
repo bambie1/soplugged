@@ -10,7 +10,7 @@ import styles from "./ErrorPage.module.scss";
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
-const FAQPage = () => {
+const ErrorPage = () => {
   return (
     <>
       <Header />
@@ -38,4 +38,4 @@ const FAQPage = () => {
   );
 };
 
-export default FAQPage;
+export default ErrorPage;

@@ -68,7 +68,6 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   }
 
   const renderButtons = (isSubmitting: boolean, isValid: boolean) => {
-    console.log({ isValid });
     return (
       <div className={styles.buttons}>
         <Button
@@ -101,8 +100,6 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
     const res = await updateBusiness(businessObj, !business);
 
-    console.log({ businessObj, isNew: !business });
-
     if (res.ok) {
       toast.success(
         !business
@@ -114,6 +111,9 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         lower: true,
         remove: /[*+~.()'"!:@]/g,
       });
+      mutate(
+        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
+      );
       router.push(`/business/${slug}`);
     } else {
       toast.error("An error occurred");
@@ -142,7 +142,6 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           initialValues={{ ...business }}
           validationSchema={businessFormSchema[currentStep]}
           validateOnMount={true}
-          // isInitialValid={false}
           onSubmit={_handleSubmit}
         >
           {({ isSubmitting, isValid }) => (
