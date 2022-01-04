@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const business = await fetchBusinessBySlug(params.slug);
       return {
         props: { business },
-        revalidate: 30,
+        revalidate: 5,
       };
     } else throw new Error("weird slug");
   } catch (error) {

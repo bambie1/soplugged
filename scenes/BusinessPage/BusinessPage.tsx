@@ -198,7 +198,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
         </div>
 
         {user?.email === creator?.email && (
-          <Link href="/my-business">
+          <Link href="/my-business?start=0">
             <a>
               <button className={`iconButton ${styles.editButton}`}>
                 <FontAwesomeIcon icon={faPen} />

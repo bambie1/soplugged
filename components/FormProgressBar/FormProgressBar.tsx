@@ -1,4 +1,4 @@
-import { stepsObject } from "@/lib/stepsObject";
+import { useBusinessFormContext } from "@/context/businessFormContext";
 import { useRouter } from "next/router";
 import { FC } from "react";
 
@@ -7,20 +7,15 @@ import styles from "./FormProgressBar.module.scss";
 interface Step {
   number: number;
   step: string;
-  name: string;
+  title: string;
 }
 interface Props {
   steps: Step[];
 }
 
-const FormProgressBar: FC<Props> = ({ steps }) => {
+const FormProgressBar: FC<Props> = () => {
   const router = useRouter();
-  const currentStep =
-    !router.query || typeof router.query.step != "string"
-      ? "one"
-      : router.query.step;
-
-  const currentNumber = stepsObject[currentStep];
+  const { currentStep, formSteps } = useBusinessFormContext();
 
   const handleStepClick = (step: Step) => {
     router.push(`/my-business?step=${step.step}`, undefined, { shallow: true });
@@ -29,22 +24,22 @@ const FormProgressBar: FC<Props> = ({ steps }) => {
   const buildStyles = (step: Step) => {
     let styleStr = `${styles.formStep}`;
 
-    if (step.step == currentStep) styleStr += ` ${styles.active}`;
-    if (step.number < currentNumber) styleStr += ` ${styles.completed}`;
+    if (step.number === currentStep) styleStr += ` ${styles.active}`;
+    if (step.number < currentStep) styleStr += ` ${styles.completed}`;
 
     return styleStr;
   };
 
   return (
     <div className={styles.wrapper}>
-      {steps.map((step: Step) => (
+      {formSteps.map((step: Step) => (
         <div
           key={step.number}
           className={buildStyles(step)}
           onClick={() => handleStepClick(step)}
         >
-          <div className={styles.formStepNumber}>{step.number}</div>
-          <div className={styles.formStepName}>{step.name}</div>
+          <div className={styles.formStepNumber}>{step.number + 1}</div>
+          <div className={styles.formStepName}>{step.title}</div>
         </div>
       ))}
     </div>

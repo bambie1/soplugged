@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 
-import { steps, stepsObject } from "@/lib/stepsObject";
+import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import styles from "./BusinessForm.module.scss";
 
@@ -11,20 +10,19 @@ interface Props {
 }
 
 const BusinessForm: FC<Props> = ({ children }) => {
-  const { query } = useRouter();
   const { width } = useWindowSize();
 
-  const step = typeof query.step == "string" ? query.step : "name_location";
+  const { currentStep, formSteps } = useBusinessFormContext();
 
-  const currentStep = steps[stepsObject[step]];
+  const step = formSteps[currentStep];
 
   const isMobile = width < 768;
 
   const renderStepInfo = () => {
     return (
       <aside className={`${styles.stepInfo} container`}>
-        <h1 className={styles.stepName}>{currentStep.name}</h1>
-        <h2 className={styles.stepDescription}>{currentStep.description}</h2>
+        <h1 className={styles.stepName}>{step.title}</h1>
+        <h2 className={styles.stepDescription}>{step.description}</h2>
       </aside>
     );
   };

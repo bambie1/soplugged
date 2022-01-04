@@ -37,7 +37,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           />
           <p>No business found. Just a nice beverage!</p>
           <p>Are you an entrepreneur?</p>
-          <ButtonLink href="/my-business" variant="filled">
+          <ButtonLink href="/my-business?start=0" variant="filled">
             Add your business
           </ButtonLink>
         </div>
@@ -55,8 +55,8 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   ).length;
   const percentage = (7 + suggestionsCount) * 10;
 
-  const suggestionHandler = (step: string) => {
-    router.push(`/my-business?step=${step}`);
+  const suggestionHandler = (step: number) => {
+    router.push(`/my-business?start=${step}`);
   };
 
   const renderInsights = () => {
@@ -71,7 +71,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             <p>Add a logo</p>
             <button
               className="button withIcon"
-              onClick={() => suggestionHandler("images")}
+              onClick={() => suggestionHandler(4)}
             >
               <FontAwesomeIcon icon={faPen} />
               Fix
@@ -83,7 +83,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             <p>Upload sample images</p>
             <button
               className="button  withIcon"
-              onClick={() => suggestionHandler("images")}
+              onClick={() => suggestionHandler(4)}
             >
               <FontAwesomeIcon icon={faPen} />
               Fix
@@ -95,7 +95,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             <p>Describe your business more</p>
             <button
               className="button  withIcon"
-              onClick={() => suggestionHandler("description")}
+              onClick={() => suggestionHandler(2)}
             >
               <FontAwesomeIcon icon={faPen} />
               Fix
