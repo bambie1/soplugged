@@ -29,9 +29,13 @@ const useImageUploader = () => {
       setUrl(data.url);
     } catch (error: any) {
       if (error.name === "AbortError")
-        setError("Request error timeout. Please try again");
+        setError(
+          "Request error timeout. Please try again using images under 3MB"
+        );
       else
-        setError("The selected image is too large. Please use a smaller image");
+        setError(
+          "The selected image is too large. Please use a smaller image under 3MB"
+        );
     }
     setUploading(false);
   };

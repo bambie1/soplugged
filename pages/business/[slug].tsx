@@ -1,57 +1,41 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 import { BusinessPage } from "@/scenes/BusinessPage";
 import { SEO } from "@/components/SEO";
-import { fetchBusinessBySlug } from "@/utils/fetchBusinessBySlug";
-import { getAllSlugs } from "@/utils/getAllSlugs";
+import { swrFetcher } from "@/utils/swrFetcher";
+import { PageNotFound } from "@/scenes/404Page";
+import BusinessPageSkeleton from "@/scenes/BusinessPage/BusinessPageSkeleton";
 
-interface Props {
-  business: any;
-}
-
-const Business: NextPage<Props> = ({ business }) => {
+const Business: NextPage = () => {
   const router = useRouter();
-  // TODO: Update loading state
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  const { slug } = router.query;
 
-  const { business_name } = business;
+  const { data: business, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`,
+    swrFetcher
+  );
+
+  if (error) return <PageNotFound />;
+
+  const renderContent = () => {
+    if (!business) return <BusinessPageSkeleton />;
+
+    return <BusinessPage business={business} />;
+  };
 
   return (
     <>
       <SEO
-        description={`SoPlugged page for ${business_name || "a business"}`}
-        title={`${business_name.toUpperCase() || ""} | SoPlugged`}
+        description={`SoPlugged page for ${
+          business?.business_name || "a business"
+        }`}
+        title={`${business?.business_name.toUpperCase() || ""} | SoPlugged`}
       />
-      <BusinessPage business={business} />
+      {renderContent()}
     </>
   );
 };
 
 export default Business;
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  try {
-    if (params?.slug && typeof params.slug === "string") {
-      const business = await fetchBusinessBySlug(params.slug);
-      return {
-        props: { business },
-        revalidate: 5,
-      };
-    } else throw new Error("weird slug");
-  } catch (error) {
-    return {
-      notFound: true,
-    };
-  }
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getAllSlugs();
-  return {
-    paths,
-    fallback: true,
-  };
-};
