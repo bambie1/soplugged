@@ -1,4 +1,5 @@
 import { parseCookies } from "nookies";
+import * as Sentry from "@sentry/nextjs";
 
 export const swrFetchWithToken = async (url: string) => {
   const { token } = parseCookies();
@@ -17,6 +18,9 @@ export const swrFetchWithToken = async (url: string) => {
     // Attach extra info to the error object.
     error.info = await res.json();
     error.status = res.status;
+
+    Sentry.captureException(error);
+
     throw error;
   }
 
