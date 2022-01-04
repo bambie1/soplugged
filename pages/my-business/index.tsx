@@ -9,13 +9,14 @@ import { SEO } from "@/components/SEO";
 import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
+import { useEffect } from "react";
 
 const MyBusinessPage = dynamic(
   () => import("../../scenes/MyBusinessPage/MyBusinessPage")
 );
 
 const MyBusiness: NextPage = () => {
-  const { push } = useRouter();
+  const router = useRouter();
   const { agreementSigned } = useBusinessFormContext();
 
   const { data: businesses, error } = useSWR(
@@ -23,9 +24,11 @@ const MyBusiness: NextPage = () => {
     swrFetchWithToken
   );
 
-  if (!businesses?.length && !agreementSigned) {
-    push("/my-business/welcome");
-  }
+  useEffect(() => {
+    if (error && !agreementSigned) {
+      router.push("/my-business/welcome");
+    }
+  }, [error, agreementSigned]);
 
   if (error)
     return (
@@ -66,12 +69,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return { props: {} };
   } catch (error) {
-    return {
-      redirect: {
-        destination: "/join",
-        permanent: false,
-      },
-    };
+    context.res.writeHead(302, { Location: "/join" });
+    context.res.end();
+
+    return { props: {} as never };
   }
 };
 

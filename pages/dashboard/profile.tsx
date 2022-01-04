@@ -44,12 +44,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {},
     };
   } catch (error) {
-    return {
-      redirect: {
-        destination: "/join",
-        permanent: false,
-      },
-    };
+    context.res.writeHead(302, { Location: "/join" });
+    context.res.end();
+
+    return { props: {} as never };
   }
 };
 

@@ -17,14 +17,14 @@ export const AuthProvider: FC = ({ children }) => {
     return firebase.auth().onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null);
-        nookies.set(undefined, "token", "", {});
+        nookies.set(undefined, "token", "", { path: "/" });
         setLoading(false);
-        return;
+      } else {
+        const token = await user.getIdToken();
+        setUser(user);
+        nookies.set(undefined, "token", token, { path: "/" });
+        setLoading(false);
       }
-      const token = await user.getIdToken();
-      setUser(user);
-      nookies.set(undefined, "token", token, {});
-      setLoading(false);
     });
   }, []);
 
@@ -33,7 +33,7 @@ export const AuthProvider: FC = ({ children }) => {
       const user = firebase.auth().currentUser;
       if (user) {
         const token = await user.getIdToken(true);
-        nookies.set(undefined, "token", token, {});
+        // nookies.set(undefined, "token", token, { path: "/" });
       }
     }, 30 * 60 * 1000);
 
