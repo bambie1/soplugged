@@ -34,7 +34,7 @@ const MyBusinessWelcome: FC = () => {
   } = useBusinessFormContext();
 
   if (agreementSigned) {
-    router.push("/my-business?step=name_location");
+    router.push("/my-business");
   }
 
   const [adhereCheck, setAdhereCheck] = useState(false);

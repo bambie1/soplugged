@@ -14,22 +14,9 @@ const MyBusinessPage = dynamic(
   () => import("../../scenes/MyBusinessPage/MyBusinessPage")
 );
 
-const emptyBusiness = {
-  phone_number: "",
-  business_name: "",
-  business_url: "",
-  ig_handle: "",
-  street_address: "",
-  business_location: "",
-  business_description: "",
-  logo_url: "",
-  sample_images: "",
-  category: "",
-};
-
 const MyBusiness: NextPage = () => {
-  const { query, push } = useRouter();
-  const { agreementSigned, isNew, setIsNew } = useBusinessFormContext();
+  const { push } = useRouter();
+  const { agreementSigned } = useBusinessFormContext();
 
   const { data: businesses, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
@@ -37,19 +24,26 @@ const MyBusiness: NextPage = () => {
   );
 
   if (!businesses?.length && !agreementSigned) {
-    setIsNew(true);
     push("/my-business/welcome");
   }
 
-  if (isNew) return <MyBusinessPage business={null} step={query.step} />;
+  if (error)
+    return (
+      <>
+        <SEO
+          description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
+          title="My Business | SoPlugged"
+        />
+        <MyBusinessPage business={null} />
+      </>
+    );
 
   const renderPage = () => {
     if (!businesses) return <MyBusinessSkeleton />;
 
-    if (error)
-      return <MyBusinessPage business={emptyBusiness} step={query.step} />;
+    if (!businesses?.length) return <MyBusinessPage business={null} />;
 
-    return <MyBusinessPage business={businesses[0]} step={query.step} />;
+    return <MyBusinessPage business={businesses[0]} />;
   };
 
   return (

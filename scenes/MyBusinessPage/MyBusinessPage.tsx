@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useWindowSize } from "@reach/window-size";
 import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
@@ -15,7 +15,6 @@ import Description from "@/components/BusinessForm/forms/3_Description";
 import Contact from "@/components/BusinessForm/forms/4_Contact";
 import Images from "@/components/BusinessForm/forms/5_Images";
 import Review from "@/components/BusinessForm/forms/6_Review";
-import { steps, stepsObject } from "@/lib/stepsObject";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 import { updateBusiness } from "@/utils/updateBusiness";
 import { Button } from "@/styled/Button";
@@ -29,47 +28,60 @@ interface Props {
   step?: any;
 }
 
-const MyBusinessPage: FC<Props> = ({ business, step }) => {
+const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const { width } = useWindowSize();
   const router = useRouter();
-  const { isNew, setIsNew, referralSource, referringBusiness } =
-    useBusinessFormContext();
+  const {
+    referralSource,
+    referringBusiness,
+    currentStep,
+    setCurrentStep,
+    formSteps,
+  } = useBusinessFormContext();
 
-  const current = stepsObject[step] || 1;
-  const isLastStep = current === steps.length - 1;
+  const isLastStep = currentStep === formSteps.length - 1;
+
+  const queryStep = parseInt(
+    typeof router.query?.start === "string" ? router.query.start : "-1"
+  );
+
+  useEffect(() => {
+    if (queryStep !== -1) setCurrentStep(queryStep);
+  }, []);
 
   function _renderStepContent() {
-    switch (step) {
-      case "category":
+    switch (currentStep) {
+      case 1:
         return <Categories />;
-      case "description":
+      case 2:
         return <Description />;
-      case "contact":
+      case 3:
         return <Contact />;
-      case "images":
+      case 4:
         return <Images />;
-      case "review":
+      case 5:
         return <Review />;
       default:
         return <NameLocation />;
     }
   }
 
-  const renderButtons = (isSubmitting: boolean) => {
+  const renderButtons = (isSubmitting: boolean, isValid: boolean) => {
+    console.log({ isValid });
     return (
       <div className={styles.buttons}>
         <Button
           type="button"
           variant="text"
           onClick={handleBack}
-          disabled={current <= 1}
+          disabled={currentStep === 0}
         >
           Go Back
         </Button>
-        <Button type="submit" disabled={isSubmitting}>
-          {current === steps.length - 1
-            ? isNew
+        <Button type="submit" disabled={!isValid}>
+          {currentStep === formSteps.length - 1
+            ? !business
               ? "Complete setup"
               : "Submit and view page"
             : "Next"}
@@ -79,7 +91,7 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
   };
 
   async function _submitForm(values: any, actions: any) {
-    const businessObj = isNew
+    const businessObj = !business
       ? {
           ...values,
           referral_source: referralSource,
@@ -87,16 +99,17 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
         }
       : { ...values };
 
-    const res = await updateBusiness(businessObj, isNew);
+    const res = await updateBusiness(businessObj, !business);
+
+    console.log({ businessObj, isNew: !business });
 
     if (res.ok) {
       toast.success(
-        isNew
+        !business
           ? "Business created successfully"
           : "Business updated successfully"
       );
       mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`);
-      setIsNew(false);
       const slug = slugify(values.business_name.trim(), {
         lower: true,
         remove: /[*+~.()'"!:@]/g,
@@ -113,20 +126,13 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
     if (isLastStep) {
       _submitForm(values, actions);
     } else {
-      router.push(`/my-business?step=${steps[current + 1].step}`, undefined, {
-        shallow: true,
-      });
-
-      actions.setTouched({});
-      actions.setSubmitting(false);
+      setCurrentStep((prevStep: number) => prevStep + 1);
     }
   }
 
-  function handleBack() {
-    router.push(`/my-business?step=${steps[current - 1]["step"]}`, undefined, {
-      shallow: true,
-    });
-  }
+  const handleBack = () => {
+    setCurrentStep((prevStep: number) => prevStep - 1);
+  };
 
   return (
     <>
@@ -134,23 +140,24 @@ const MyBusinessPage: FC<Props> = ({ business, step }) => {
       <BusinessForm>
         <Formik
           initialValues={{ ...business }}
-          validationSchema={businessFormSchema[current - 1]}
-          validateOnChange={false}
+          validationSchema={businessFormSchema[currentStep]}
+          validateOnMount={true}
+          // isInitialValid={false}
           onSubmit={_handleSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, isValid }) => (
             <>
               <Form id="businessForm" className={styles.form}>
                 {_renderStepContent()}
                 <div className={styles.navigation}>
                   <progress
-                    value={(current / (steps.length - 1)) * 100}
+                    value={(currentStep / (formSteps.length - 1)) * 100}
                     max="100"
                     className={styles.progress}
                   >
-                    {(current / (steps.length - 1)) * 100}%
+                    {(currentStep / (formSteps.length - 1)) * 100}%
                   </progress>
-                  {renderButtons(isSubmitting)}
+                  {renderButtons(isSubmitting, isValid)}
                 </div>
               </Form>
             </>
