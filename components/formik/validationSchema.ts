@@ -35,7 +35,7 @@ export const businessFormSchema = [
   // contact links
   Yup.object().shape({
     business_url: Yup.string().matches(
-      /^(www.)[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+      /^(www\.)[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
       {
         message: "Please enter a valid url (e.g. www.soplugged.com)",
       }
