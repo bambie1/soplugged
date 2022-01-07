@@ -4,10 +4,11 @@ import { useFormikContext, useField } from "formik";
 
 import styles from "../BusinessForm.module.scss";
 import "react-quill/dist/quill.snow.css";
+import Skeleton from "@/components/skeletons/Skeleton";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
-  loading: () => <p>...</p>,
+  loading: () => <Skeleton type="box" />,
 });
 
 const toolbarOptions = [
@@ -19,6 +20,8 @@ const Description = () => {
   const { setFieldValue, values } = useFormikContext<any>();
   const [content, setContent] = useState(values.business_description || "");
   const [_, meta] = useField("business_description");
+
+  const isError = meta && meta.error;
 
   const handleUpdate = (content: any) => {
     if (typeof content === "string") {
@@ -45,10 +48,7 @@ const Description = () => {
     <>
       <section className={styles.form}>
         <div className="quillFormGroup">
-          <label
-            htmlFor="business_description"
-            className={styles.descriptionLabel}
-          >
+          <label htmlFor="business_description" className={isError && "error"}>
             Business Description
           </label>
 
@@ -57,6 +57,7 @@ const Description = () => {
             value={content}
             onChange={handleUpdate}
             id="business_description"
+            className={isError && "quillError"}
             modules={{
               clipboard: {
                 matchVisual: false,
@@ -64,7 +65,7 @@ const Description = () => {
               toolbar: toolbarOptions,
             }}
           />
-          {meta && meta.error && <p className="error">{meta.error}</p>}
+          {isError && <p className="error">{meta.error}</p>}
         </div>
       </section>
     </>

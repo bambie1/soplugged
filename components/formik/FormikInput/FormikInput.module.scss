@@ -1,10 +1,8 @@
 @import "styles/_mixins";
 
 .input {
-  font-size: 16px;
-  font-family: inherit;
   background-color: $offWhite;
-  border: 1.5px solid $secondary;
+  border: 1px solid $secondary;
   border-radius: 12px;
   transition: 180ms box-shadow ease-in-out;
   display: block;
@@ -55,6 +53,11 @@
   &.error {
     color: red;
   }
+
+  .optional {
+    font-weight: normal;
+    text-transform: none;
+  }
 }
 
 .helperText {
@@ -78,7 +81,6 @@
     width: 100%;
     background-color: white;
     z-index: 1;
-    // border: 1px solid;
     border-radius: 10px;
     box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
       0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
@@ -92,4 +94,33 @@
 
 .activeSuggestion {
   background-color: $lightPrimary;
+}
+
+.inputBox {
+  display: flex;
+  background-color: $offWhite;
+  border: 0.5px solid $secondary;
+  border-radius: 12px;
+  padding-left: 1rem;
+  align-items: center;
+
+  &.error {
+    border-color: red;
+  }
+
+  .prefix {
+    text-transform: lowercase;
+    font-size: 1rem;
+    color: grey;
+    font-weight: normal;
+    padding-right: 0.75rem;
+  }
+
+  input {
+    flex: 1;
+    border-radius: 0 12px 12px 0;
+    border: 1px solid $secondary;
+    // border-left: 0;
+    padding-inline: 0.5rem;
+  }
 }

@@ -69,6 +69,18 @@ fieldset {
   outline: none;
 }
 
+input {
+  font-size: 16px;
+  font-family: inherit;
+  border: none;
+  background-color: transparent;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
 input[type="file"] {
   font-size: 0.9em;
   padding-top: 0.35rem;

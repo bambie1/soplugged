@@ -5,15 +5,25 @@ const Contact = () => {
     <>
       <FormikInput
         label="Website Url"
-        placeholder="https://www.soplugged.com"
+        prefix="https://"
+        placeholder="www.soplugged.com"
         name="business_url"
+        optional
       />
       <FormikInput
         label="Phone Number"
+        prefix="+1"
         placeholder="6131234567"
         name="phone_number"
+        optional
       />
-      <FormikInput label="IG Handle" placeholder="sopluggd" name="ig_handle" />
+      <FormikInput
+        label="IG Handle"
+        prefix="@"
+        placeholder="sopluggd"
+        name="ig_handle"
+        optional
+      />
     </>
   );
 };

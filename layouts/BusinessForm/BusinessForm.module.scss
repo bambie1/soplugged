@@ -29,8 +29,8 @@
   grid-area: content;
 
   @include mobile_only {
-    height: calc(100% - 2rem);
     overflow-y: auto;
+    height: calc(100% - 2rem);
   }
 }
 
@@ -78,10 +78,9 @@
 }
 
 .content {
-  overflow-y: auto;
   padding-top: 7rem;
-  // height: calc(100% - 4rem);
-  height: 100%;
+  height: calc(100% - 4rem);
+  overflow-y: auto;
 }
 
 .mobileWrapper {

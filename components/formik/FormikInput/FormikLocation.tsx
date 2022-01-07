@@ -10,7 +10,7 @@ const FormikLocation = ({ label, ...props }: any) => {
   const [address, setAddress] = useState(values.business_location);
   const [_, meta] = useField(props);
 
-  const isError = meta.touched && meta.error;
+  const isError = (meta.touched || !meta.initialValue) && meta.error;
 
   const handleSelect = (value: string) => {
     setAddress(value);
