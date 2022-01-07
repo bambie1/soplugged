@@ -4,10 +4,11 @@ import { useFormikContext, useField } from "formik";
 
 import styles from "../BusinessForm.module.scss";
 import "react-quill/dist/quill.snow.css";
+import Skeleton from "@/components/skeletons/Skeleton";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
-  loading: () => <p>...</p>,
+  loading: () => <Skeleton type="box" />,
 });
 
 const toolbarOptions = [
