@@ -67,7 +67,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     }
   }
 
-  const renderButtons = (isSubmitting: boolean, isValid: boolean) => {
+  const renderButtons = () => {
     return (
       <div className={styles.buttons}>
         <Button
@@ -78,7 +78,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         >
           Go Back
         </Button>
-        <Button type="submit" disabled={!isValid}>
+        <Button type="submit">
           {currentStep === formSteps.length - 1
             ? !business
               ? "Complete setup"
@@ -93,10 +93,11 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     const businessObj = !business
       ? {
           ...values,
+          business_url: "https://" + values.business_url,
           referral_source: referralSource,
           referral_business_slug: referringBusiness,
         }
-      : { ...values };
+      : { ...values, business_url: "https://" + values.business_url };
 
     const res = await updateBusiness(businessObj, !business);
 
@@ -139,12 +140,16 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       <Header hideLinks={width >= 768} />
       <BusinessForm>
         <Formik
-          initialValues={{ ...business }}
+          initialValues={{
+            ...business,
+            business_url: business?.business_url
+              ?.replace("https://", "")
+              .replace("https://", ""),
+          }}
           validationSchema={businessFormSchema[currentStep]}
-          validateOnMount={true}
           onSubmit={_handleSubmit}
         >
-          {({ isSubmitting, isValid }) => (
+          {() => (
             <>
               <Form id="businessForm" className={styles.form}>
                 {_renderStepContent()}
@@ -156,7 +161,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
                   >
                     {(currentStep / (formSteps.length - 1)) * 100}%
                   </progress>
-                  {renderButtons(isSubmitting, isValid)}
+                  {renderButtons()}
                 </div>
               </Form>
             </>

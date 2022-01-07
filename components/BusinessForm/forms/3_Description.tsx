@@ -21,6 +21,8 @@ const Description = () => {
   const [content, setContent] = useState(values.business_description || "");
   const [_, meta] = useField("business_description");
 
+  const isError = meta && meta.error;
+
   const handleUpdate = (content: any) => {
     if (typeof content === "string") {
       setContent(
@@ -46,10 +48,7 @@ const Description = () => {
     <>
       <section className={styles.form}>
         <div className="quillFormGroup">
-          <label
-            htmlFor="business_description"
-            className={styles.descriptionLabel}
-          >
+          <label htmlFor="business_description" className={isError && "error"}>
             Business Description
           </label>
 
@@ -58,6 +57,7 @@ const Description = () => {
             value={content}
             onChange={handleUpdate}
             id="business_description"
+            className={isError && "quillError"}
             modules={{
               clipboard: {
                 matchVisual: false,
@@ -65,7 +65,7 @@ const Description = () => {
               toolbar: toolbarOptions,
             }}
           />
-          {meta && meta.error && <p className="error">{meta.error}</p>}
+          {isError && <p className="error">{meta.error}</p>}
         </div>
       </section>
     </>

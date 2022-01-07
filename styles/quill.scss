@@ -11,6 +11,18 @@
   &:focus-within {
     box-shadow: 0 0 0 3px $lightSecondary;
   }
+
+  &.quillError {
+    .ql-snow {
+      border-color: red !important;
+    }
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      box-shadow: 0 0 0 3px #ff00002e;
+    }
+  }
 }
 .ql-editor {
   min-height: 250px;
@@ -41,7 +53,11 @@
   display: grid;
   gap: 0.25rem;
 
-  .label {
+  label {
     font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 }

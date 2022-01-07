@@ -42,6 +42,9 @@ const Review = () => {
       {phone_number && (
         <Input noHelper value={phone_number} label="Phone Number" disabled />
       )}
+      {business_url && (
+        <Input noHelper value={business_url} label="Business Url" disabled />
+      )}
 
       <TextArea
         value={business_description?.replace(/<[^>]*>?/gm, "") || ""}
