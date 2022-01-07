@@ -16,15 +16,18 @@ const Input = forwardRef<HTMLInputElement, Props>(
       return <span className={`${styles.helperText} ${styles.hidden}`}>.</span>;
     };
 
+    const inputID = label.toLowerCase().replace(" ", "-");
+
     return (
       <div className={styles.formGroup}>
         <label
-          htmlFor=""
+          id={inputID}
           className={`${styles.label} ${!!error && styles.error}`}
         >
           {label}
         </label>
         <input
+          aria-labelledby={inputID}
           ref={ref}
           {...props}
           className={`${styles.input} ${!!error && styles.error}`}
