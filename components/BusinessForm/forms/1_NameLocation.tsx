@@ -11,7 +11,10 @@ const NameLocation: FC = () => {
         name="business_name"
       />
 
-      <FormikLocation name="business_location" label="Business Location" />
+      <FormikLocation
+        name="business_location"
+        label="Business Location (City)"
+      />
 
       <FormikInput
         label="Street Address"
