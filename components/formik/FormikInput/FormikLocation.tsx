@@ -79,7 +79,7 @@ const FormikLocation = ({ label, ...props }: any) => {
       </PlacesAutocomplete>
 
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places&callback=myCallbackFunc`}
+        src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqMtZjTrCMfn7U4OHk00_wte02pcuaHs&libraries=places&callback=myCallbackFunc`}
       />
     </>
   );
