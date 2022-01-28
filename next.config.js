@@ -9,6 +9,7 @@ module.exports = {
       "firebasestorage.googleapis.com",
       "res.cloudinary.com",
       "cdn.shopify.com",
+      "media.graphcms.com",
     ],
   },
 };

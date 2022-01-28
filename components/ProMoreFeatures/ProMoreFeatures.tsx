@@ -4,9 +4,9 @@ import Image from "next/image";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { rgbDataURL } from "@/lib/dataUrl";
 
-import styles from "./ProGuides.module.scss";
+import styles from "./ProMoreFeatures.module.scss";
 
-const ProGuides: FC = () => {
+const ProMoreFeatures: FC = () => {
   return (
     <>
       <h2 className="center">WAIT! THERE'S MORE...</h2>
@@ -20,7 +20,7 @@ const ProGuides: FC = () => {
             resources that we've compiled to help you grow your business with
             ease.
           </p>
-          <ButtonLink big variant="filled" href="/search">
+          <ButtonLink big variant="filled" href="/pro/guides">
             Start reading
           </ButtonLink>
         </div>
@@ -40,4 +40,4 @@ const ProGuides: FC = () => {
   );
 };
 
-export default ProGuides;
+export default ProMoreFeatures;

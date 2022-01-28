@@ -7,7 +7,7 @@ import { ProHero } from "@/components/ProHero";
 import { FAQs } from "@/components/FAQs";
 import { ProHowItWorks } from "@/components/ProHowItWorks";
 import { ProPersonas } from "@/components/ProPersonas";
-import { ProGuides } from "@/components/ProGuides";
+import { ProMoreFeatures } from "@/components/ProMoreFeatures";
 
 import styles from "./ProPage.module.scss";
 
@@ -49,7 +49,7 @@ const ProPage = () => {
           <ProHowItWorks ctaHandler={openCalendly} />
         </section>
         <section className={styles.pageSection}>
-          <ProGuides />
+          <ProMoreFeatures />
         </section>
 
         <section className={`container`}>
