@@ -10,7 +10,7 @@ $darkPrimary: #b19d7f;
 
 $lightLight: #f9f6f1;
 
-// preset media queries
+// media queries
 @mixin mobile_only() {
   @media (max-width: 767px) {
     @content;
