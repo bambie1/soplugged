@@ -1,0 +1,33 @@
+@import "styles/_mixins";
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin-block: 2.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20rem);
+  justify-content: center;
+  grid-gap: 5rem;
+}
+
+.postPreview {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  gap: 1rem;
+  text-align: center;
+
+  * {
+    margin: 0;
+  }
+}
+
+.coverPhoto {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  height: 150px;
+}

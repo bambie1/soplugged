@@ -9,6 +9,8 @@
   text-decoration: none;
   min-height: 80vh;
   justify-content: center;
+  background-color: $lightTertiary;
+  background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
 }
 
 .hero_content {
@@ -31,14 +33,17 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 100%;
-      background-image: url("/images/pro-bg.svg");
+      // max-width: 200px;
+      // height: 100%;
+      // background-image: url("/images/plant-growth.png");
       background-repeat: no-repeat;
+      background-position: bottom;
       background-size: cover;
       position: absolute;
       top: 0;
       right: 0;
-      max-width: 70%;
+      z-index: -1;
+      filter: opacity(0.5);
     }
   }
 }
@@ -47,4 +52,27 @@
   font-size: 1.25rem;
   line-height: 1.3;
   margin-bottom: 3rem;
+}
+
+// divider
+
+.divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 59px;
+  }
+
+  .shapeFill {
+    fill: #ffffff;
+  }
 }
