@@ -15,6 +15,7 @@ class MyDocument extends Document {
             integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
             crossOrigin="anonymous"
           />
+          <script defer src="https://cdn.splitbee.io/sb.js"></script>
         </Head>
         <body>
           <Main />
