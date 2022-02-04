@@ -16,9 +16,12 @@
   }
 
   .image {
-    span {
-      border-radius: 10px;
-      overflow: hidden;
+    position: relative;
+    height: 250px;
+    border-radius: 10px;
+
+    @include desktop {
+      height: 400px;
     }
   }
 

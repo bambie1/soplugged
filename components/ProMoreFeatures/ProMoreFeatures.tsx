@@ -28,11 +28,10 @@ const ProMoreFeatures: FC = () => {
           <Image
             placeholder="blur"
             blurDataURL={rgbDataURL(247, 244, 244)}
-            src="/images/book.jpg"
-            width={400}
-            height={272}
-            alt="Search for businesses"
-            priority
+            src="/images/BOOK_LOVE.png"
+            layout="fill"
+            objectFit="cover"
+            alt="Free guides"
           />
         </aside>
       </section>

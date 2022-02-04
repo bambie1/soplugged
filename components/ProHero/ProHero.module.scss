@@ -2,15 +2,19 @@
 
 .hero {
   position: relative;
-  display: -webkit-box;
   display: flex;
-  padding: 1.15rem;
-  padding-top: 8rem;
+  padding: 8rem 0 1.15rem;
   text-decoration: none;
-  min-height: 80vh;
   justify-content: center;
   background-color: $lightTertiary;
   background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
+  overflow: hidden;
+  min-height: min(80vh, 35rem);
+
+  @include desktop {
+    min-height: min(80vh, 50rem);
+    margin-bottom: 3.5rem;
+  }
 }
 
 .hero_content {
@@ -20,30 +24,34 @@
   z-index: 1;
 
   .text {
+    // align-self: center;
     max-width: 600px;
   }
 
-  @include tablet {
+  .image {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/FUNDING.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    z-index: -1;
+    filter: opacity(0.1);
+  }
+
+  @include desktop {
     display: grid;
     align-items: center;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     text-align: left;
 
     .image {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      // max-width: 200px;
-      // height: 100%;
-      // background-image: url("/images/plant-growth.png");
-      background-repeat: no-repeat;
-      background-position: bottom;
-      background-size: cover;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: -1;
-      filter: opacity(0.5);
+      position: relative;
+      right: auto;
+      filter: opacity(0.8);
     }
   }
 }

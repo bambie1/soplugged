@@ -1,5 +1,11 @@
 @import "styles/mixins";
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
