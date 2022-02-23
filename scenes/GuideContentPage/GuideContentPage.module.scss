@@ -1,0 +1,16 @@
+@import "styles/_mixins";
+
+.hero {
+  position: relative;
+  display: flex;
+  padding: 8rem 0 1.15rem;
+  text-decoration: none;
+  justify-content: center;
+  background-color: $lightTertiary;
+  background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
+  overflow: hidden;
+
+  @include desktop {
+    margin-bottom: 3.5rem;
+  }
+}

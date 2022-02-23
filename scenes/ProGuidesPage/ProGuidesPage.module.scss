@@ -1,5 +1,20 @@
 @import "styles/_mixins";
 
+.hero {
+  position: relative;
+  display: flex;
+  padding: 8rem 0 1.15rem;
+  text-decoration: none;
+  justify-content: center;
+  background-color: $lightTertiary;
+  background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
+  overflow: hidden;
+
+  @include desktop {
+    margin-bottom: 3.5rem;
+  }
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -17,10 +32,8 @@
   width: 20rem;
   gap: 1rem;
   text-align: center;
-
-  * {
-    margin: 0;
-  }
+  box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 48%);
+  border-radius: 15px;
 }
 
 .coverPhoto {
@@ -30,4 +43,16 @@
   overflow: hidden;
   position: relative;
   height: 150px;
+}
+
+.info {
+  padding-inline: 1.5rem;
+  min-height: 150px;
+
+  h3 {
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
