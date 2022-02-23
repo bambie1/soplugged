@@ -1,7 +1,17 @@
 @import "styles/mixins";
 
+.grid {
+  display: grid;
+  gap: 2rem;
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .mainImage {
   position: relative;
-  width: 50%;
-  height: 250px;
+  width: 100%;
+  min-height: 250px;
+  max-height: 500px;
 }

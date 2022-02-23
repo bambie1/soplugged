@@ -33,12 +33,14 @@ const MerchPage: FC<Props> = ({ products }) => {
               <Link key={product.handle} href={`/merch/${product.handle}`}>
                 <a className={styles.product}>
                   <div className={styles.productImage}>
-                    <Image
-                      src={image.url}
-                      alt="Placeholder"
-                      layout="fill"
-                      objectFit="contain"
-                    />
+                    <div>
+                      <Image
+                        src={image.url}
+                        alt="Placeholder"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
                   </div>
 
                   <div className={styles.productInfo}>

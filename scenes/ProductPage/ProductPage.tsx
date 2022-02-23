@@ -21,18 +21,20 @@ const ProductPage: FC<Props> = ({ product }) => {
     <>
       <Header />
       <PageWrapper>
-        <div className={styles.mainImage}>
-          <Image
-            src={featuredImage.url}
-            alt="Featured"
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
-        <Button variant="outlined">Add to cart</Button>
-        <div>
-          <h3>{title}</h3>
-          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+        <div className={styles.grid}>
+          <div className={styles.mainImage}>
+            <Image
+              src={featuredImage.url}
+              alt="Featured"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div>
+            <h3>{title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+            <Button variant="outlined">Add to cart</Button>
+          </div>
         </div>
       </PageWrapper>
       <Footer />
