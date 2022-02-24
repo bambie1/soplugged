@@ -71,7 +71,7 @@ export async function getAllPostsWithSlug() {
   return data.posts;
 }
 
-export async function getAllPostsForHome(preview: any) {
+export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
@@ -80,6 +80,7 @@ export async function getAllPostsForHome(preview: any) {
           slug
           excerpt
           date
+          featuredArticle
           coverImage {
             url(
               transformation: {
@@ -99,8 +100,7 @@ export async function getAllPostsForHome(preview: any) {
           }
         }
       }
-    `,
-    { preview }
+    `
   );
   return data.posts;
 }

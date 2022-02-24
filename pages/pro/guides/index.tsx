@@ -1,29 +1,34 @@
 import { NextPage } from "next";
 
-import { getAllPostsForHome, getPostBySlug } from "@/utils/graphcms";
+import { getAllPostsForHome } from "@/utils/graphcms";
 
 import { SEO } from "@/components/SEO";
 import { ProGuidesPage } from "@/scenes/ProGuidesPage";
 
 interface Props {
   posts: any;
+  feature: any;
 }
 
-const GuidesHomePage: NextPage<Props> = ({ posts }) => {
+const GuidesHomePage: NextPage<Props> = (props) => {
   return (
     <>
       <SEO title="FREE Guides on how to scale your business | SoPluggedPRO" />
-      <ProGuidesPage posts={posts} />
+      <ProGuidesPage {...props} />
     </>
   );
 };
 
 export default GuidesHomePage;
 
-export async function getStaticProps({ preview = false }) {
-  const posts = (await getAllPostsForHome(preview)) || [];
+export async function getStaticProps() {
+  const posts = (await getAllPostsForHome()) || [];
+
+  const feature = posts.find((post: any) => post.featuredArticle === true);
+
+  console.log({ feature });
 
   return {
-    props: { posts, revalidate: 10 * 60 },
+    props: { posts, feature, revalidate: 10 * 60 },
   };
 }

@@ -19,16 +19,20 @@ const GuideContentPage: FC<Props> = ({ post }) => {
     <>
       <Header color="blue" />
       <section className={styles.hero}>
-        <div className={`container ${styles.hero_content}`}>
+        <div className={`container ${styles.heroContent}`}>
           <div className={styles.text}>
-            <h3 className={styles.tagLine}>SoPlugged PRO</h3>
             <h1>{post.title}</h1>
-            <p>Learn how to grow and improve your online presence</p>
           </div>
         </div>
       </section>
       <PageWrapper>
-        <div dangerouslySetInnerHTML={{ __html: post.content.html }} />
+        <div className={styles.grid}>
+          <div
+            dangerouslySetInnerHTML={{ __html: post.content.html }}
+            className={styles.cmsContent}
+          />
+          <aside className={styles.aside}></aside>
+        </div>
       </PageWrapper>
       <Footer tertiary />
     </>
