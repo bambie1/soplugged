@@ -18,3 +18,15 @@
   gap: 2rem;
   justify-items: start;
 }
+
+.thumbnailList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+}
