@@ -26,8 +26,6 @@ export async function getStaticProps() {
 
   const feature = posts.find((post: any) => post.featuredArticle === true);
 
-  console.log({ feature });
-
   return {
     props: { posts, feature, revalidate: 10 * 60 },
   };
