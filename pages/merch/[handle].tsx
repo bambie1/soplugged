@@ -73,6 +73,15 @@ const singleProductQuery = gql`
       featuredImage {
         url
       }
+      media(first: 6) {
+        edges {
+          node {
+            previewImage {
+              url
+            }
+          }
+        }
+      }
       variants(first: 6) {
         edges {
           node {

@@ -1,6 +1,7 @@
 @import "styles/mixins";
 
 .grid {
+  margin-top: 3rem;
   display: grid;
   gap: 2rem;
 
@@ -10,8 +11,21 @@
 }
 
 .mainImage {
+  flex: 1;
   position: relative;
   width: 100%;
   min-height: 250px;
   max-height: 500px;
+}
+
+.thumbnailList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
 }
