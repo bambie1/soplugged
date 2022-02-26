@@ -1,0 +1,57 @@
+@import "styles/mixins";
+
+.item {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid $lightGrey;
+  transition: 0.5s;
+
+  &.updating {
+    opacity: 0.5;
+  }
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.details {
+  display: grid;
+  gap: 0.25rem;
+
+  .product {
+    font-weight: bold;
+    color: $secondary;
+  }
+}
+
+.controls {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  .updateBtn {
+    color: $lightSecondary;
+    font-size: 1rem;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  .deleteBtn {
+    color: grey;
+    font-size: 1rem;
+    margin-left: 1rem;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

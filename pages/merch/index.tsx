@@ -1,21 +1,24 @@
 import type { NextPage } from "next";
+import { useFlags } from "@happykit/flags/client";
 
-import { MerchPage } from "@/scenes/MerchPage";
+import { MerchPage, OldMerchPage } from "@/scenes/MerchPage";
 import { SEO } from "@/components/SEO";
-import { storefront } from "@/utils/shopify";
+import { storefront, collectionQuery } from "@/utils/shopify";
 
 interface Props {
   products: any;
 }
 
 const Merch: NextPage<Props> = ({ products }) => {
+  const { flags } = useFlags();
+
   return (
     <>
       <SEO
         description="Custom tees, sweatshirts and accessories to look fashionable while buying black"
         title="SoPlugged Merch"
       />
-      <MerchPage products={products} />
+      {flags?.merch_page ? <MerchPage products={products} /> : <OldMerchPage />}
     </>
   );
 };
@@ -29,35 +32,5 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-const gql = String.raw;
-
-const collectionQuery = gql`
-  query Collection {
-    collection(handle: "merch-full-collection") {
-      products(first: 10) {
-        edges {
-          node {
-            title
-            handle
-            priceRange {
-              minVariantPrice {
-                amount
-              }
-            }
-            images(first: 1) {
-              edges {
-                node {
-                  altText
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default Merch;

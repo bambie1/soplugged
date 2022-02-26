@@ -6,6 +6,7 @@ import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
 
 import styles from "./MerchPage.module.scss";
+import { MerchHeader } from "@/components/MerchHeader";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -19,6 +20,7 @@ const MerchPage: FC<Props> = ({ products }) => {
     <>
       <Header />
       <PageWrapper center>
+        <MerchHeader />
         <h1>merch</h1>
         <p className="noMargin">
           Normalize <b>#buyingblack</b>, but make it fashionable
@@ -44,7 +46,9 @@ const MerchPage: FC<Props> = ({ products }) => {
                   </div>
 
                   <div className={styles.productInfo}>
-                    <p className={styles.title}>{product.title}</p>
+                    <p className={styles.title} title={product.title}>
+                      {product.title}
+                    </p>
                     <p>${product.priceRange.minVariantPrice.amount}</p>
                   </div>
                 </a>

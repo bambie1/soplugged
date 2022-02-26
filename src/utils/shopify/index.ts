@@ -11,3 +11,15 @@ export const storefront = async (query: any, variables = {}) => {
 
   return response.json();
 };
+
+export { getCartId } from "./getCartId";
+export {
+  addCartLines,
+  loadCart,
+  singleProductQuery,
+  allHandlesQuery,
+  collectionQuery,
+  createCartMutation,
+  removeFromCart,
+  loadCartItemIds,
+} from "./graphql";

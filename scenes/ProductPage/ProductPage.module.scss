@@ -5,9 +5,18 @@
   display: grid;
   gap: 2rem;
 
+  // max-width: 700px;
+  margin-inline: auto;
+
   @include desktop {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.info {
+  display: grid;
+  gap: 2rem;
+  justify-items: start;
 }
 
 .mainImage {

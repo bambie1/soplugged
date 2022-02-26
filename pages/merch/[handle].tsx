@@ -1,11 +1,13 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
 
-import { storefront } from "@/utils/shopify";
+import {
+  storefront,
+  allHandlesQuery,
+  singleProductQuery,
+} from "@/utils/shopify";
 import { SEO } from "@/components/SEO";
 import { ProductPage } from "@/scenes/ProductPage";
-
-const gql = String.raw;
 
 interface Props {
   product: any;
@@ -36,19 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { data } = await storefront(gql`
-    {
-      collection(handle: "merch-full-collection") {
-        products(first: 10) {
-          edges {
-            node {
-              handle
-            }
-          }
-        }
-      }
-    }
-  `);
+  const { data } = await storefront(allHandlesQuery);
 
   return {
     paths: data.collection.products.edges.map((product: any) => ({
@@ -57,47 +47,5 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
-
-const singleProductQuery = gql`
-  query SingleProduct($handle: String!) {
-    productByHandle(handle: $handle) {
-      title
-      descriptionHtml
-      handle
-      updatedAt
-      priceRange {
-        minVariantPrice {
-          amount
-        }
-      }
-      featuredImage {
-        url
-      }
-      media(first: 6) {
-        edges {
-          node {
-            previewImage {
-              url
-            }
-          }
-        }
-      }
-      variants(first: 6) {
-        edges {
-          node {
-            title
-            image {
-              altText
-              url
-            }
-            priceV2 {
-              amount
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default Product;

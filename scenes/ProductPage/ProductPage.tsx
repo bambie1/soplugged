@@ -1,11 +1,12 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import { PageWrapper } from "@/components/PageWrapper";
+import { MerchHeader } from "@/components/MerchHeader";
 
 import styles from "./ProductPage.module.scss";
-import { Button } from "@/styled/Button";
+import { AddToCart } from "@/components/AddToCart";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -15,12 +16,16 @@ interface Props {
 }
 
 const ProductPage: FC<Props> = ({ product }) => {
-  const { featuredImage, title, descriptionHtml, media } = product;
+  const { featuredImage, title, descriptionHtml, media, options, variants } =
+    product;
+
+  const variantId = variants.edges[0].node.id;
 
   return (
     <>
       <Header />
       <PageWrapper>
+        <MerchHeader />
         <div className={styles.grid}>
           <div className="column">
             <div className={styles.mainImage}>
@@ -50,11 +55,33 @@ const ProductPage: FC<Props> = ({ product }) => {
           </div>
           <div>
             <h1>{title}</h1>
-            <div
-              className={styles.description}
-              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-            />
-            <Button variant="outlined">Add to cart</Button>
+            <div className={styles.info}>
+              <section>
+                {options.map((option: any) => {
+                  const { name, values } = option;
+                  return (
+                    <Fragment key={name}>
+                      <label htmlFor="cars">{name}</label>
+                      <select name="cars" id="cars">
+                        {values.map((val: any) => (
+                          <option value={val} key={val}>
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </Fragment>
+                  );
+                })}
+              </section>
+              <AddToCart variantId={variantId} />
+              <section>
+                <b>Description</b>
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+                />
+              </section>
+            </div>
           </div>
         </div>
       </PageWrapper>
