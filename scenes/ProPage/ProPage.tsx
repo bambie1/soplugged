@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
 import dynamic from "next/dynamic";
-import { openPopupWidget } from "react-calendly";
-import { useWindowSize } from "@reach/window-size";
 
 import { ProHero } from "@/components/ProHero";
 import { FAQs } from "@/components/FAQs";
@@ -15,26 +13,8 @@ const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const ProPage = () => {
-  const { width } = useWindowSize();
-
   const openCalendly = () => {
-    // if (width < 768) {
-    window.open(
-      "https://calendly.com/benaiahbarango/website-consult",
-      "_blank"
-    );
-    // } else {
-    //   openPopupWidget({
-    //     url: "https://calendly.com/benaiahbarango/website-consult",
-    //     pageSettings: {
-    //       backgroundColor: "ffffff",
-    //       hideEventTypeDetails: false,
-    //       hideLandingPageDetails: false,
-    //       primaryColor: "00a2ff",
-    //       textColor: "4d5055",
-    //     },
-    //   });
-    // }
+    window.open("https://calendly.com/soplugged/consultation", "_blank");
   };
 
   return (

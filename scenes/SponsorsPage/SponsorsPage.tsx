@@ -1,3 +1,4 @@
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
@@ -6,7 +7,6 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import { Button } from "@/styled/Button";
 
 import styles from "./SponsorsPage.module.scss";
-import { useState } from "react";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));

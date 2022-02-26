@@ -1,17 +1,17 @@
 export const proPersonas = [
   {
-    image: "/images/freelance-woman.jpg",
-    heading: "Small-to-medium businesses",
-    text: "(Business-to-customer) businesses looking to showcase their brand identity in a unique way, and increase brand awareness. ",
+    image: "/images/business-woman.jpg",
+    heading: "Small businesses",
+    text: "SMBs that want to make a great first impression on their customers. ",
   },
   {
-    image: "/images/freelance.jpg",
-    heading: "Solopreneurs",
-    text: "Freelancers, and independently-owned businesses that want to make a great first impression",
+    image: "/images/ecommerce.jpg",
+    heading: "E-Commerce stores",
+    text: "Improve your customer experience, mobile optimization, and conversion rates.",
   },
   {
-    image: "/images/business-owner.jpg",
-    heading: "E-Commerce warriors",
-    text: "E-commerce stores designed to improve user experience, mobile optimization, and conversion rates",
+    image: "/images/freelancer.jpg",
+    heading: "Freelance professionals",
+    text: "Showcase your brand identity in a unique way, and increase brand awareness.",
   },
 ];

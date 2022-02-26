@@ -1,33 +1,142 @@
 @import "styles/_mixins";
 
+.hero {
+  position: relative;
+  display: flex;
+  padding: 8rem 0 1.15rem;
+  text-decoration: none;
+  justify-content: center;
+  background-color: $lightTertiary;
+  background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
+  overflow: hidden;
+  min-height: 35rem;
+
+  .heroContent {
+    text-align: left;
+    max-width: 1280px;
+
+    h1 {
+      @include mobile_only {
+        font-size: 2rem;
+      }
+    }
+
+    * {
+      max-width: 650px;
+    }
+  }
+
+  @include desktop {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.tagLine {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  margin: 0;
+}
+
+.pageSection {
+  margin-block: 2.5rem;
+}
+
 .list {
   list-style: none;
   padding: 0;
-  margin-block: 2.5rem;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 20rem);
-  justify-content: center;
-  grid-gap: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 2rem;
+
+  @include tablet {
+    row-gap: 4rem;
+  }
+
+  @include desktop {
+    column-gap: 3rem;
+  }
+
+  li {
+    width: 100%;
+    @include mobile_xl {
+      width: calc(50% - 1rem);
+    }
+
+    @include desktop {
+      width: calc(32.5% - 1.5rem);
+    }
+  }
 }
 
 .postPreview {
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 100%;
   gap: 1rem;
-  text-align: center;
+  box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 48%);
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.info {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
 
   * {
     margin: 0;
   }
+
+  h3 {
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
-.coverPhoto {
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  height: 150px;
+.colorIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgba(186 177 158 / 0.2);
+}
+
+.list li {
+  &:nth-child(1) {
+    span {
+      background-color: rgba(186 177 158 / 0.9);
+    }
+  }
+  &:nth-child(2) {
+    span {
+      background-color: rgba(186 177 158 / 0.8);
+    }
+  }
+  &:nth-child(3) {
+    span {
+      background-color: rgba(186 177 158 / 0.7);
+    }
+  }
+  &:nth-child(4) {
+    span {
+      background-color: rgba(186 177 158 / 0.6);
+    }
+  }
+  &:nth-child(5) {
+    span {
+      background-color: rgba(186 177 158 / 0.5);
+    }
+  }
+  &:nth-child(6) {
+    span {
+      background-color: rgba(186 177 158 / 0.4);
+    }
+  }
 }

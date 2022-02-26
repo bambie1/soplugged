@@ -46,7 +46,8 @@ const NavLinks: FC = () => {
   };
 
   const buildStyles = (href: string) => {
-    if (router.asPath == href) return `${styles.navLink} ${styles.active}`;
+    if (router.asPath.startsWith(href))
+      return `${styles.navLink} ${styles.active}`;
 
     return styles.navLink;
   };

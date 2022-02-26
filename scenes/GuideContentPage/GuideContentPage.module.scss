@@ -1,0 +1,55 @@
+@import "styles/_mixins";
+
+.hero {
+  position: relative;
+  display: flex;
+  padding: 8rem 0 1.15rem;
+  text-decoration: none;
+  justify-content: center;
+  background-color: $lightTertiary;
+  background: linear-gradient(180deg, $lightTertiary 0%, white 100%);
+  overflow: hidden;
+
+  .heroContent {
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  @include desktop {
+    .heroContent {
+      text-align: left;
+      max-width: 1280px;
+
+      * {
+        max-width: 650px;
+      }
+    }
+    margin-bottom: 3.5rem;
+  }
+}
+
+.grid {
+  max-width: 600px;
+  margin: auto;
+
+  @include desktop {
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+
+    .aside {
+      border: 1px solid;
+      min-width: 400px;
+    }
+  }
+}
+
+.cmsContent {
+  a {
+    text-decoration: underline;
+    color: $secondary;
+  }
+}

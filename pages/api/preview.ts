@@ -1,4 +1,4 @@
-import { getPreviewPostBySlug } from "@/utils/graphcms";
+import { getPostBySlug } from "@/utils/graphcms";
 
 export default async function handler(req: any, res: any) {
   // Check the secret and next parameters
@@ -10,7 +10,7 @@ export default async function handler(req: any, res: any) {
   }
 
   // Fetch the headless CMS to check if the provided `slug` exists
-  const post = await getPreviewPostBySlug(req.query.slug);
+  const post = await getPostBySlug(req.query.slug);
 
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!post) {

@@ -1,5 +1,11 @@
 @import "styles/mixins";
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -138,6 +144,15 @@ ul.list {
 
 .center {
   text-align: center;
+}
+
+.textLink {
+  color: $secondary;
+  text-decoration: underline;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .marginless {
@@ -292,6 +307,7 @@ ul.list {
   cursor: pointer;
   color: $secondary;
   border-radius: 8px;
+  transition: 0.5s;
 
   &:hover,
   &:active {

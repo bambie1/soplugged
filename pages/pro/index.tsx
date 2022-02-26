@@ -9,7 +9,10 @@ const Pro: NextPage = () => {
 
   return (
     <>
-      <SEO title="Professional help for your business' digital needs | SoPluggedPRO" />
+      <SEO
+        description="Professional help for your business' digital needs | SoPluggedPRO"
+        title="Scale your business with ease"
+      />
       {flags?.pro_page ? <ProPage /> : <ComingSoon />}
     </>
   );
