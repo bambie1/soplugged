@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import Image from "next/image";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
