@@ -1,7 +1,8 @@
 @import "styles/mixins";
 
 .headerWrapper {
-  position: fixed;
+  // position: fixed;
+  position: absolute;
   background-color: transparent;
   top: 0;
   z-index: 10;
