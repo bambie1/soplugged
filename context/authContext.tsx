@@ -10,22 +10,27 @@ const AuthContext = createContext<any>({});
 
 export const AuthProvider: FC = ({ children }) => {
   firebaseClient();
+
   const [user, setUser] = useState<firebase.User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    return firebase.auth().onIdTokenChanged(async (user) => {
-      if (!user) {
-        setUser(null);
-        nookies.set(undefined, "token", "", { path: "/" });
-        setLoading(false);
-      } else {
-        const token = await user.getIdToken();
-        setUser(user);
-        nookies.set(undefined, "token", token, { path: "/" });
-        setLoading(false);
-      }
-    });
+    try {
+      return firebase.auth().onIdTokenChanged(async (user) => {
+        if (!user) {
+          setUser(null);
+          nookies.set(undefined, "token", "", { path: "/" });
+          setLoading(false);
+        } else {
+          const token = await user.getIdToken();
+          setUser(user);
+          nookies.set(undefined, "token", token, { path: "/" });
+          setLoading(false);
+        }
+      });
+    } catch (error) {
+      return;
+    }
   }, []);
 
   useEffect(() => {
