@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
 import { AlgoliaSearchProvider } from "@/context/algoliaSearchContext";
+import { CartProvider } from "@/context/cartContext";
 
 import "../flags.config";
 
@@ -35,10 +36,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <AlgoliaSearchProvider>
         <BusinessFormProvider>
-          <div className="layout-div">
-            <Component {...pageProps} />
-            <Toaster position="bottom-left" />
-          </div>
+          <CartProvider>
+            <div className="layout-div">
+              <Component {...pageProps} />
+              <Toaster position="bottom-left" />
+            </div>
+          </CartProvider>
         </BusinessFormProvider>
       </AlgoliaSearchProvider>
     </AuthProvider>

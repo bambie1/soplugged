@@ -1,1 +1,2 @@
-export { default as MerchPage } from "./MerchPage";
+export { MerchPage } from "./MerchPage";
+export { OldMerchPage } from "./OldMerchPage";
