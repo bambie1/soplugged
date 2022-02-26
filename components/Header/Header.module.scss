@@ -3,11 +3,14 @@
 .headerWrapper {
   // position: fixed;
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: transparent;
   top: 0;
   z-index: 10;
   padding: 0.5rem;
-  width: 100vw;
+  // width: 100vw;
   backdrop-filter: blur(200px);
 
   &.hideLinks {
@@ -26,7 +29,6 @@
     position: absolute;
     background-color: transparent;
     width: 100%;
-
 
     &.hideLinks {
       background-color: transparent;
