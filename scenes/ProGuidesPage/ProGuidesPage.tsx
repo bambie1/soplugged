@@ -4,10 +4,11 @@ import Link from "next/link";
 
 import { PageWrapper } from "@/components/PageWrapper";
 
-import styles from "./ProGuidesPage.module.scss";
 import { FeaturedGuide } from "@/components/FeaturedGuide";
 import { ProPlug } from "@/components/ProPlug";
 import { ButtonLink } from "@/styled/ButtonLink";
+
+import styles from "./ProGuidesPage.module.scss";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));

@@ -12,6 +12,7 @@
 
   .heroContent {
     text-align: center;
+<<<<<<< HEAD
     max-width: 700px;
     margin: auto;
   }
@@ -82,10 +83,44 @@
 
     p {
       margin: 0;
+=======
+    max-width: 600px;
+    margin: auto;
+  }
+
+  @include desktop {
+    .heroContent {
+      text-align: left;
+      max-width: 1280px;
+
+      * {
+        max-width: 650px;
+      }
+    }
+    margin-bottom: 3.5rem;
+  }
+}
+
+.grid {
+  max-width: 600px;
+  margin: auto;
+
+  @include desktop {
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+
+    .aside {
+      border: 1px solid;
+      min-width: 400px;
+>>>>>>> f3245e5... Pro page (#21)
     }
   }
 }
 
+<<<<<<< HEAD
 .readMore {
   margin-top: 1rem;
   text-align: left;
@@ -112,5 +147,11 @@
         line-height: 1.75;
       }
     }
+=======
+.cmsContent {
+  a {
+    text-decoration: underline;
+    color: $secondary;
+>>>>>>> f3245e5... Pro page (#21)
   }
 }

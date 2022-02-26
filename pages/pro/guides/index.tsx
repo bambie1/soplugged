@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 
 import { getAllPostsForHome } from "@/utils/graphcms";
-
 import { SEO } from "@/components/SEO";
 import { ProGuidesPage } from "@/scenes/ProGuidesPage";
 
