@@ -59,7 +59,6 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
 
         <div className={styles.blogFooter}>
           <hr />
-
           <div className={styles.shareDiv}>
             <p>Share:</p>
             <FacebookShareButton url={blogUrl}>
