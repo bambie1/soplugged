@@ -1,7 +1,6 @@
 @import "styles/mixins";
 
 .headerWrapper {
-  // position: fixed;
   position: absolute;
   top: 0;
   left: 0;
@@ -10,8 +9,6 @@
   top: 0;
   z-index: 10;
   padding: 0.5rem;
-  // width: 100vw;
-  backdrop-filter: blur(200px);
 
   &.hideLinks {
     backdrop-filter: none;
@@ -22,16 +19,6 @@
 
     &.blue {
       z-index: 10;
-    }
-  }
-
-  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    position: absolute;
-    background-color: transparent;
-    width: 100%;
-
-    &.hideLinks {
-      background-color: transparent;
     }
   }
 }

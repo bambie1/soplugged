@@ -30,7 +30,7 @@ const Footer: FC<Props> = ({ tertiary }) => {
       </div>
 
       <div className={`container ${styles.container}`}>
-        <SubscribeForm />
+        {!tertiary && <SubscribeForm />}
         <section className={styles.linksGrid}>
           <aside className={styles.externalLinks}>
             <p>Contact us:</p>

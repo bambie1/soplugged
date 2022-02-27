@@ -32,6 +32,7 @@ export async function getPostBySlug(slug: any) {
         post(where: { slug: $slug }) {
           slug
           title
+          subtitle
           content {
             html
           }
@@ -40,6 +41,7 @@ export async function getPostBySlug(slug: any) {
             id
             name
           }
+          createdAt
           author {
             id
             name
