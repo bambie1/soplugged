@@ -5,10 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
-import { removeFromCart, storefront } from "@/utils/shopify";
+import { removeFromCart } from "@/utils/shopify";
+import { callShopify } from "@/lib/shopify";
+import { useCart } from "@/context/cartContext";
 
 import styles from "./CartItem.module.scss";
-import { useCart } from "@/context/cartContext";
 
 interface Props {
   item: any;
@@ -23,7 +24,7 @@ const CartItem: FC<Props> = ({ item, cartId }) => {
 
   const removeItem = async () => {
     setIsUpdating(true);
-    await storefront(removeFromCart, {
+    await callShopify(removeFromCart, {
       cartId,
       lineIds: [id],
     });

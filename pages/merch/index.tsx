@@ -3,7 +3,7 @@ import { useFlags } from "@happykit/flags/client";
 
 import { MerchPage, OldMerchPage } from "@/scenes/MerchPage";
 import { SEO } from "@/components/SEO";
-import { storefront, collectionQuery } from "@/utils/shopify";
+import { getAllProductsInCollection } from "@/lib/shopify";
 
 interface Props {
   products: any;
@@ -24,11 +24,11 @@ const Merch: NextPage<Props> = ({ products }) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await storefront(collectionQuery);
+  const products = await getAllProductsInCollection();
 
   return {
     props: {
-      products: data.collection.products,
+      products,
     },
   };
 };

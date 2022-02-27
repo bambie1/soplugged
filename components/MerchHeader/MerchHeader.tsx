@@ -5,7 +5,8 @@ import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
 import { CartInfo } from "@/components/CartInfo";
-import { storefront, loadCart, getCartId } from "@/utils/shopify";
+import { loadCart, getCartId } from "@/utils/shopify";
+import { callShopify } from "@/lib/shopify";
 import { useCart } from "@/context/cartContext";
 
 import styles from "./MerchHeader.module.scss";
@@ -26,7 +27,7 @@ const MerchHeader: FC = () => {
 
   const createCart = async () => {
     const cartId = await getCartId();
-    const { data } = await storefront(loadCart, {
+    const { data } = await callShopify(loadCart, {
       cartId,
     });
 
