@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import { PageWrapper } from "@/components/PageWrapper";
-
 import { FeaturedGuide } from "@/components/FeaturedGuide";
 import { ProPlug } from "@/components/ProPlug";
 import { ButtonLink } from "@/styled/ButtonLink";
