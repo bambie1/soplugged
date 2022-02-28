@@ -33,7 +33,7 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
     setBlogUrl(window.location.href);
   }, []);
 
-  const { title, createdBy, content, subtitle, createdAt } = post;
+  const { title, content, subtitle, createdAt } = post;
 
   return (
     <>
@@ -45,7 +45,7 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
             <h1>{title}</h1>
             <hr />
             <p className={styles.author}>
-              <span>{createdBy.name || "SoPlugged team"}</span> &middot;{" "}
+              <span>{"SoPlugged team"}</span> &middot;{" "}
               {createdAt.substring(0, 10)}
             </p>
           </div>
