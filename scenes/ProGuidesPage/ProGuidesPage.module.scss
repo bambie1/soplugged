@@ -12,11 +12,8 @@
   min-height: 35rem;
   align-items: center;
 
-  @include tablet {
-    padding: 4rem 0 1.15rem;
-  }
-
   @include desktop {
+    padding: 4rem 0 1.15rem;
     margin-bottom: 3.5rem;
   }
 }

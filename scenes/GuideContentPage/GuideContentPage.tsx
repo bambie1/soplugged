@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import {
@@ -13,18 +14,19 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { PageWrapper } from "@/components/PageWrapper";
+import { ProPlug } from "@/components/ProPlug";
 
 import styles from "./GuideContentPage.module.scss";
-import { ProPlug } from "@/components/ProPlug";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 interface Props {
   post: any;
+  relatedPosts: any;
 }
 
-const GuideContentPage: FC<Props> = ({ post }) => {
+const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
   const [blogUrl, setBlogUrl] = useState("");
 
   useEffect(() => {
@@ -57,6 +59,7 @@ const GuideContentPage: FC<Props> = ({ post }) => {
 
         <div className={styles.blogFooter}>
           <hr />
+
           <div className={styles.shareDiv}>
             <p>Share:</p>
             <FacebookShareButton url={blogUrl}>
@@ -68,6 +71,24 @@ const GuideContentPage: FC<Props> = ({ post }) => {
             <WhatsappShareButton url={blogUrl}>
               <FontAwesomeIcon icon={faWhatsapp} />
             </WhatsappShareButton>
+          </div>
+          <div className={styles.readMore}>
+            <h3>READ MORE...</h3>
+            <ul className={styles.list}>
+              {relatedPosts.map((post: any) => (
+                <li key={post.slug}>
+                  <Link href={`/pro/guides/${post.slug}`}>
+                    <a className={styles.postPreview}>
+                      <span className={styles.colorIcon} />
+                      <div className={styles.info}>
+                        <h4 title={post.title}>{post.title}</h4>
+                        <p>{post.excerpt.substring(0, 70)}...</p>
+                      </div>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
           <section>
             <ProPlug />

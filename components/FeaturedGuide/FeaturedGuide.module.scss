@@ -2,7 +2,6 @@
 
 .wrapper {
   margin-bottom: 5rem;
-  text-align: justify;
 
   .grid {
     display: grid;
@@ -14,6 +13,9 @@
     div {
       margin: auto;
     }
+    p {
+      text-align: justify;
+    }
   }
 }
 
@@ -22,6 +24,9 @@
   flex-direction: column;
   align-items: flex-start;
   max-width: 750px;
+  transition: 0.25s;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
 
   .tag {
     border: 1px solid transparent;
@@ -31,7 +36,7 @@
   }
 
   &:hover {
-    opacity: 0.8;
+    box-shadow: -1px 2px 3px rgb(0 0 0 / 33%);
   }
 }
 

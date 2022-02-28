@@ -2,18 +2,23 @@ import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { SEO } from "@/components/SEO";
-import { getAllPostsWithSlug, getPostBySlug } from "@/utils/graphcms";
 import { GuideContentPage } from "@/scenes/GuideContentPage";
+import {
+  getAllPostsForHome,
+  getAllPostsWithSlug,
+  getPostBySlug,
+} from "@/utils/graphcms";
 
 interface Props {
   post: any;
+  relatedPosts: any;
 }
 
-const GuidePage: FC<Props> = ({ post }) => {
+const GuidePage: FC<Props> = ({ post, relatedPosts }) => {
   return (
     <>
       <SEO title={`${post?.title || "Guides"} | SoPluggedPRO`} />
-      <GuideContentPage post={post} />
+      <GuideContentPage post={post} relatedPosts={relatedPosts} />
     </>
   );
 };
@@ -32,8 +37,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = (await getPostBySlug(params?.id || "")) || {};
 
+  const posts = (await getAllPostsForHome()) || [];
+  const relatedPosts = posts
+    .filter((post: any) => post.slug !== params?.id)
+    .slice(0, 4);
+
   return {
-    props: { post },
+    props: { post, relatedPosts },
   };
 };
 

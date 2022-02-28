@@ -38,30 +38,32 @@ const ProGuidesPage: FC<Props> = ({ posts, feature }) => {
       </section>
 
       <PageWrapper>
-        <FeaturedGuide feature={feature} />
+        <div className="flex column">
+          <FeaturedGuide feature={feature} />
 
-        <section className={styles.pageSection}>
-          <h3>More reads...</h3>
-          <ul className={styles.list}>
-            {posts.map((post: any) => (
-              <li key={post.slug}>
-                <Link href={`/pro/guides/${post.slug}`}>
-                  <a className={styles.postPreview}>
-                    <span className={styles.colorIcon} />
-                    <div className={styles.info}>
-                      <h3 title={post.title}>{post.title}</h3>
-                      <p>{post.excerpt.substring(0, 70)}...</p>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section id="list-of-guides" className={styles.pageSection}>
+            <h2>All guides</h2>
+            <ul className={styles.list}>
+              {posts.map((post: any) => (
+                <li key={post.slug}>
+                  <Link href={`/pro/guides/${post.slug}`}>
+                    <a className={styles.postPreview}>
+                      <span className={styles.colorIcon} />
+                      <div className={styles.info}>
+                        <h3 title={post.title}>{post.title}</h3>
+                        <p>{post.excerpt.substring(0, 70)}...</p>
+                      </div>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section className={styles.pageSection}>
-          <ProPlug />
-        </section>
+          <section className={styles.pageSection}>
+            <ProPlug />
+          </section>
+        </div>
       </PageWrapper>
       <Footer tertiary />
     </>

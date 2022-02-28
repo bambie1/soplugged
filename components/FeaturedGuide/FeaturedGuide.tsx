@@ -2,8 +2,9 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "./FeaturedGuide.module.scss";
 import { Button } from "@/styled/Button";
+
+import styles from "./FeaturedGuide.module.scss";
 
 interface Props {
   feature: any;
@@ -15,7 +16,7 @@ const FeaturedGuide: FC<Props> = ({ feature }) => {
       <div className={styles.grid}>
         <div className={styles.featuredImage}>
           <Image
-            src="/images/business-woman.jpg"
+            src="/images/package.jpg"
             alt=""
             layout="fill"
             objectFit="cover"
