@@ -19,10 +19,6 @@
     position: relative;
     height: 250px;
     border-radius: 10px;
-
-    @include desktop {
-      height: 400px;
-    }
   }
 
   @include mobile_only {

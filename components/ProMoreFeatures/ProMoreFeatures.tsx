@@ -12,11 +12,9 @@ const ProMoreFeatures: FC = () => {
       <h2 className="center">WAIT! THERE'S MORE...</h2>
       <section className={`${styles.section} ${styles.reverse} container`}>
         <div>
-          <h3>We have FREE guides for scaling your business</h3>
+          <h3>Do you prefer to Do-It-Yourself?</h3>
           <p>
             You've come to the right place. Explore our free guides and
-            resources that we've compiled to help you grow your business with
-            ease. You've come to the right place. Explore our free guides and
             resources that we've compiled to help you grow your business with
             ease.
           </p>
@@ -28,9 +26,9 @@ const ProMoreFeatures: FC = () => {
           <Image
             placeholder="blur"
             blurDataURL={rgbDataURL(247, 244, 244)}
-            src="/images/BOOK_LOVE.png"
+            src="/images/man_reading.png"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             alt="Free guides"
           />
         </aside>
