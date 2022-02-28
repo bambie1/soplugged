@@ -17,7 +17,10 @@ interface Props {
 const GuidePage: FC<Props> = ({ post, relatedPosts }) => {
   return (
     <>
-      <SEO title={`${post?.title || "Guides"} | SoPluggedPRO`} />
+      <SEO
+        title={`${post?.title || "Guides"} | SoPluggedPRO`}
+        description={post?.excerpt}
+      />
       <GuideContentPage post={post} relatedPosts={relatedPosts} />
     </>
   );
@@ -43,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .slice(0, 4);
 
   return {
-    props: { post, relatedPosts, revalidate: 5 * 60 },
+    props: { post, relatedPosts, revalidate: 1 * 60 },
   };
 };
 

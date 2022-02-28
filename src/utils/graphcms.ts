@@ -41,6 +41,7 @@ export async function getPostBySlug(slug: any) {
             id
             name
           }
+          excerpt
           createdAt
           author {
             id
