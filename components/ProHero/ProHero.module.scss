@@ -37,10 +37,13 @@
 }
 
 .subTitle {
-  font-size: 1.15rem;
-  line-height: 1.5;
   margin-bottom: 3rem;
   max-width: 960px;
+
+  @include tablet {
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
 }
 
 .tagLine {

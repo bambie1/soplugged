@@ -56,16 +56,6 @@
     margin-block: 0;
   }
 
-  section {
-    box-shadow: 2px 4px 20px 0px $lightGrey;
-    border-radius: 10px;
-    padding: 1rem;
-
-    p {
-      margin-bottom: 2rem;
-    }
-  }
-
   .shareDiv {
     display: flex;
     gap: 1rem;
@@ -73,7 +63,6 @@
 
     button {
       svg {
-        // color: $secondary;
         font-size: 1.5rem;
       }
     }

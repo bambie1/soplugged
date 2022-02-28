@@ -1,10 +1,10 @@
 @import "styles/_mixins";
 
-
 .howItWorks {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: 3rem;
   margin-block: 2.5rem;
 
   @include mobile_xl {
@@ -12,6 +12,10 @@
     position: relative;
     z-index: 0;
     grid-template-rows: 3.2rem 1fr 3.2rem 1fr;
+  }
+
+  @include tablet {
+    row-gap: 1rem;
   }
 }
 
@@ -28,6 +32,25 @@
   grid-template-areas:
     "title image"
     "paragraph paragraph";
+
+  .number {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $secondary;
+    color: $secondary;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    left: 45%;
+    top: -20px;
+    background: white;
+
+    p {
+      margin: 0;
+      align-self: center;
+    }
+  }
 
   @include desktop {
     grid-template-areas:
@@ -70,12 +93,19 @@
 .deliver {
   z-index: 2;
   grid-area: 3/2/5/5;
-  background: linear-gradient(180deg, white 0%, $lightLight 100%);
+  background: linear-gradient(354deg, white 0%, $lightLight 100%);
   padding-block: 3.5rem;
   // background-color: $tertiary;
 
   @include mobile_xl {
     box-shadow: -10px -15px 26px rgba(0, 0, 0, 0.2);
+  }
+
+  @include tablet {
+    .number {
+      top: auto;
+      bottom: -20px;
+    }
   }
 }
 

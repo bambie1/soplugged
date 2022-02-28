@@ -6,7 +6,8 @@ import { PageWrapper } from "@/components/PageWrapper";
 
 import styles from "./ProGuidesPage.module.scss";
 import { FeaturedGuide } from "@/components/FeaturedGuide";
-import { BrandPlug } from "@/components/BrandPlug";
+import { ProPlug } from "@/components/ProPlug";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -22,11 +23,17 @@ const ProGuidesPage: FC<Props> = ({ posts, feature }) => {
       <Header color="blue" />
 
       <section className={styles.hero}>
-        <div className={`container ${styles.heroContent}`}>
-          <div className={styles.text}>
-            <p className={styles.tagLine}>Ecommerce-101</p>
-            <h1>Learn how to grow and improve your online presence</h1>
-          </div>
+        <div className={`container ${styles.hero_content}`}>
+          <h3 className={styles.tagLine}>FREE Guides</h3>
+          <h1>Learn how to grow and improve your online presence</h1>
+          <p className={styles.subTitle}>
+            Explore our free guides and resources that we've compiled to help
+            you grow your business with ease.
+          </p>
+
+          <ButtonLink big href="#list-of-guides" variant="outlined">
+            Start reading
+          </ButtonLink>
         </div>
       </section>
 
@@ -53,7 +60,7 @@ const ProGuidesPage: FC<Props> = ({ posts, feature }) => {
         </section>
 
         <section className={styles.pageSection}>
-          <BrandPlug />
+          <ProPlug />
         </section>
       </PageWrapper>
       <Footer tertiary />

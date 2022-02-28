@@ -13,9 +13,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./GuideContentPage.module.scss";
+import { ProPlug } from "@/components/ProPlug";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -70,13 +70,7 @@ const GuideContentPage: FC<Props> = ({ post }) => {
             </WhatsappShareButton>
           </div>
           <section>
-            <p>
-              Psst...Black entrepreneurs in Canada can list their business on
-              our directory for <b>FREE!</b>
-            </p>
-            <ButtonLink variant="filled" href="/my-business">
-              Get listed
-            </ButtonLink>
+            <ProPlug />
           </section>
         </div>
       </PageWrapper>

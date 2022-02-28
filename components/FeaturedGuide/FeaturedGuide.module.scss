@@ -2,6 +2,7 @@
 
 .wrapper {
   margin-bottom: 5rem;
+  text-align: justify;
 
   .grid {
     display: grid;
@@ -38,7 +39,11 @@
   width: 100%;
   max-width: 600px;
   position: relative;
-  height: 400px;
+  height: 250px;
   border-radius: 15px;
   overflow: hidden;
+
+  @include tablet {
+    height: 400px;
+  }
 }
