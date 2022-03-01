@@ -1,6 +1,7 @@
-import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
+import { useRouter } from "next/router";
+import qs from "qs";
 import algoliasearch from "algoliasearch/lite";
-import { useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import {
   InstantSearch,
   SearchBox,
@@ -13,30 +14,67 @@ import { useWindowSize } from "@reach/window-size";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
+import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import { CustomRefinementList } from "../CustomRefinementList/CustomRefinementList";
 import { CustomRefinements } from "../CustomRefinements";
+import { CustomStateResults } from "../CustomStateResults";
 
 import styles from "./AlgoliaSearch.module.scss";
-import { CustomStateResults } from "../CustomStateResults";
+
+const DEBOUNCE_TIME = 400;
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID || "",
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API || ""
 );
 
+const createURL = (state: any) => `?${qs.stringify(state)}`;
+
+const searchStateToUrl = (searchState: any) => {
+  return searchState ? createURL(searchState) : "";
+};
+
+const urlToSearchState = (search: any) => {
+  return qs.parse(search.slice(1));
+};
+
 const filters = [
   { label: "CATEGORY", attribute: "category" },
   { label: "LOCATION", attribute: "business_location" },
 ];
 
-const AlgoliaSearch = () => {
+const AlgoliaSearch: FC = () => {
+  const router = useRouter();
+  const searchQuery = router.asPath.replace(router.pathname, "");
   const [currentDropDown, setCurrentDropDown] = useState(0); //0, for no dropdowns
   const { category, location } = useAlgoliaSearch();
   const { width } = useWindowSize();
+  const [searchState, setSearchState] = useState(urlToSearchState(searchQuery));
+  const debouncedSetStateRef = useRef<any>(null);
+
+  function onSearchStateChange(updatedSearchState: any) {
+    clearTimeout(debouncedSetStateRef.current);
+
+    debouncedSetStateRef.current = setTimeout(() => {
+      router.push(searchStateToUrl(updatedSearchState));
+    }, DEBOUNCE_TIME);
+
+    setSearchState(updatedSearchState);
+  }
+
+  useEffect(() => {
+    setSearchState(urlToSearchState(searchQuery));
+  }, [searchQuery]);
 
   return (
     <div className="ais-InstantSearch">
-      <InstantSearch indexName="Business" searchClient={searchClient}>
+      <InstantSearch
+        indexName="Business"
+        searchClient={searchClient}
+        searchState={searchState}
+        onSearchStateChange={onSearchStateChange}
+        createURL={createURL}
+      >
         <div className={styles.searchDiv}>
           <PoweredBy />
           <SearchBox />

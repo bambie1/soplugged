@@ -12,44 +12,105 @@
 
   .heroContent {
     text-align: center;
-    max-width: 600px;
+    max-width: 700px;
     margin: auto;
   }
 
-  @include desktop {
-    .heroContent {
-      text-align: left;
-      max-width: 1280px;
-
-      * {
-        max-width: 650px;
-      }
-    }
-    margin-bottom: 3.5rem;
+  .subtitle {
+    font-size: 1.2rem;
+    text-transform: uppercase;
   }
-}
 
-.grid {
-  max-width: 600px;
-  margin: auto;
+  hr {
+    margin-top: 4rem;
+    width: 60%;
+    border-color: $lightGrey;
+  }
 
-  @include desktop {
-    max-width: 100%;
-
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-
-    .aside {
-      border: 1px solid;
-      min-width: 400px;
+  .author {
+    margin-top: 2rem;
+    opacity: 0.5;
+    span {
+      font-weight: bold;
     }
   }
 }
 
 .cmsContent {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+
+  h2,
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  p {
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+
   a {
     text-decoration: underline;
     color: $secondary;
+  }
+}
+
+.blogFooter {
+  margin-top: 4rem;
+  text-align: center;
+  display: grid;
+  gap: 2rem;
+
+  hr {
+    width: 60%;
+    border-color: $lightGrey;
+    margin-block: 0;
+  }
+
+  .shareDiv {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    button {
+      svg {
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.readMore {
+  margin-top: 1rem;
+  text-align: left;
+
+  h3 {
+    font-weight: normal;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      background: $offWhite;
+      border: 1px solid $lightPrimary;
+      padding: 1rem;
+      border-radius: 15px;
+
+      p {
+        margin: 0;
+        line-height: 1.75;
+      }
+    }
   }
 }

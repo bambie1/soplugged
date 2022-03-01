@@ -10,7 +10,7 @@ export const proPersonas = [
     text: "Improve your customer experience, mobile optimization, and conversion rates.",
   },
   {
-    image: "/images/freelancer.jpg",
+    image: "/images/freelance-photographer.jpg",
     heading: "Freelance professionals",
     text: "Showcase your brand identity in a unique way, and increase brand awareness.",
   },

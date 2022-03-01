@@ -1,13 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
 
-import {
-  storefront,
-  allHandlesQuery,
-  singleProductQuery,
-} from "@/utils/shopify";
 import { SEO } from "@/components/SEO";
 import { ProductPage } from "@/scenes/ProductPage";
+import { getProduct, getProductSlugs } from "@/lib/shopify";
 
 interface Props {
   product: any;
@@ -26,24 +22,27 @@ const Product: NextPage<Props> = ({ product }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await storefront(singleProductQuery, {
-    handle: params?.handle,
-  });
+  const product = await getProduct(params?.handle);
 
   return {
     props: {
-      product: data.productByHandle,
+      product,
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const { data } = await storefront(allHandlesQuery);
+  const productSlugs = await getProductSlugs();
+
+  const paths = productSlugs.map((slug: any) => {
+    const handle = String(slug.node.handle);
+    return {
+      params: { handle },
+    };
+  });
 
   return {
-    paths: data.collection.products.edges.map((product: any) => ({
-      params: { handle: product.node.handle },
-    })),
+    paths,
     fallback: false,
   };
 };

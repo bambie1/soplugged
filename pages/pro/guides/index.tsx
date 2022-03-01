@@ -13,7 +13,10 @@ interface Props {
 const GuidesHomePage: NextPage<Props> = (props) => {
   return (
     <>
-      <SEO title="FREE Guides on how to scale your business | SoPluggedPRO" />
+      <SEO
+        title="FREE Guides on how to scale your business | SoPluggedPRO"
+        description="Explore our free guides and resources that we've compiled to help you grow your business with ease."
+      />
       <ProGuidesPage {...props} />
     </>
   );

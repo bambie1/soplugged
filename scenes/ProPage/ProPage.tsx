@@ -25,7 +25,7 @@ const ProPage = () => {
         <section className={`${styles.pageSection} container`}>
           <ProPersonas ctaHandler={openCalendly} />
         </section>
-        <section className={styles.pageSection}>
+        <section id="how-it-works" className={styles.pageSection}>
           <ProHowItWorks ctaHandler={openCalendly} />
         </section>
         <section className={styles.pageSection}>

@@ -1,12 +1,13 @@
+import { callShopify } from "@/lib/shopify";
+
 import { createCartMutation } from "./graphql";
-import { storefront } from ".";
 
 export const getCartId = async () => {
   const localCartId = window.localStorage.getItem("cartId");
 
   if (localCartId) return localCartId;
   else {
-    const { data } = await storefront(createCartMutation);
+    const { data } = await callShopify(createCartMutation);
 
     const { checkoutUrl, id } = data.cartCreate.cart;
 

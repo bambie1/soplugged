@@ -27,7 +27,7 @@ const MerchPage: FC<Props> = ({ products }) => {
         </p>
 
         <div className={styles.productsWrapper}>
-          {products?.edges.map((item: any) => {
+          {products?.map((item: any) => {
             const product = item.node;
             const image = product.images.edges[0].node;
 
@@ -37,7 +37,7 @@ const MerchPage: FC<Props> = ({ products }) => {
                   <div className={styles.productImage}>
                     <div>
                       <Image
-                        src={image.url}
+                        src={image.originalSrc}
                         alt="Placeholder"
                         layout="fill"
                         objectFit="contain"

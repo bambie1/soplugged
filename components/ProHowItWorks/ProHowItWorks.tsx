@@ -16,6 +16,9 @@ const ProHowItWorks: FC<Props> = ({ ctaHandler }) => {
 
       <div className={`container ${styles.howItWorks}`}>
         <div className={`${styles.step} ${styles.consult}`}>
+          <div className={styles.number}>
+            <p>1</p>
+          </div>
           <div className={styles.stepImage}>
             <Image
               src="/images/consultation.png"
@@ -34,6 +37,9 @@ const ProHowItWorks: FC<Props> = ({ ctaHandler }) => {
         </div>
 
         <div className={`${styles.step} ${styles.work}`}>
+          <div className={styles.number}>
+            <p>2</p>
+          </div>
           <div className={styles.stepImage}>
             <Image src="/images/draw.png" width={60} height={60} alt="" />
           </div>
@@ -47,11 +53,13 @@ const ProHowItWorks: FC<Props> = ({ ctaHandler }) => {
         </div>
 
         <div className={`${styles.step} ${styles.deliver}`}>
+          <div className={styles.number}>
+            <p>3</p>
+          </div>{" "}
           <div className={styles.stepImage}>
             <Image src="/images/gift-box.png" width={60} height={60} alt="" />
           </div>
           <h3>Ready to go Live!</h3>
-
           <p>
             If your request was for a website, we’ll contact you once it’s
             ready, and have a follow-up meeting to cross ‘t’s and dot ’i’s.
