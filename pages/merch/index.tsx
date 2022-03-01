@@ -18,19 +18,20 @@ const Merch: NextPage<Props> = ({ products }) => {
         description="Custom tees, sweatshirts and accessories to look fashionable while buying black"
         title="SoPlugged Merch"
       />
-      {flags?.merch_page ? <MerchPage products={products} /> : <OldMerchPage />}
+      {/* {flags?.merch_page ? <MerchPage products={products} /> : <OldMerchPage />} */}
+      <OldMerchPage />
     </>
   );
 };
 
-export const getStaticProps = async () => {
-  const products = await getAllProductsInCollection();
+// export const getStaticProps = async () => {
+//   const products = await getAllProductsInCollection();
 
-  return {
-    props: {
-      products,
-    },
-  };
-};
+//   return {
+//     props: {
+//       products,
+//     },
+//   };
+// };
 
 export default Merch;
