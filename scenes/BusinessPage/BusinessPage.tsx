@@ -14,11 +14,11 @@ import {
 
 import { Button } from "@/styled/Button";
 import { ButtonLink } from "@/styled/ButtonLink";
-import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import { PageWrapper } from "@/components/PageWrapper";
 import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
+import { createURL } from "@/components/algolia/AlgoliaSearch";
 import { IBusiness } from "@/types/Business";
 import { useAuth } from "@/context/authContext";
 
@@ -42,7 +42,6 @@ interface Props {
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
   const { user } = useAuth();
-  const { setCategory, setLocation } = useAlgoliaSearch();
   const router = useRouter();
   const {
     business_name,
@@ -68,14 +67,31 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const fullView = hasPreview && verified && width > 960;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
+  const backToSearchLink = `/search${createURL({
+    refinementList: {
+      category: [category],
+      business_location: [business_location],
+    },
+  })}`;
+
   const handleCategoryClick = () => {
-    setCategory(category);
-    router.push("/search");
+    router.push(
+      `/search${createURL({
+        refinementList: {
+          category: [category],
+        },
+      })}`
+    );
   };
 
   const handleLocationClick = () => {
-    setLocation(business_location);
-    router.push("/search");
+    router.push(
+      `/search${createURL({
+        refinementList: {
+          business_location: [business_location],
+        },
+      })}`
+    );
   };
 
   const renderFullView = () => (
@@ -192,8 +208,8 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
         )}
         <div className={`flex-center ${styles.backToSearch}`}>
-          <ButtonLink href="/search" variant="outlined">
-            Back to search
+          <ButtonLink href={backToSearchLink} variant="outlined">
+            View similar businesses
           </ButtonLink>
         </div>
 
