@@ -46,7 +46,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .slice(0, 4);
 
   return {
-    props: { post, relatedPosts, revalidate: 1 * 60 },
+    props: { post, relatedPosts },
+    revalidate: 2 * 60,
   };
 };
 
