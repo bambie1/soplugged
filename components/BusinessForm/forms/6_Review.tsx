@@ -19,8 +19,6 @@ const Review = () => {
     isSubmitting,
   } = useFormikContext<any>();
 
-  // if (isSubmitting) return <p>Submitting this</p>;
-
   return (
     <>
       <Input noHelper value={business_name} label="Business Name" disabled />
