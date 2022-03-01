@@ -5,10 +5,10 @@
   margin-bottom: 2.5rem;
 }
 
-// .image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
-//   display: flex;
-//   width: 100%;
-// }
+.image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
+  display: flex;
+  // width: 100%;
+}
 
 .image-gallery-slides {
   display: flex;
@@ -16,6 +16,7 @@
 
 .image-gallery-slide .image-gallery-image {
   object-fit: cover;
+  object-position: top;
 }
 
 .image-gallery-slide div {
@@ -67,6 +68,11 @@
 .image-gallery-swipe {
   background: #e0e0e0;
   width: 100%;
+  display: flex;
+
+  div {
+    width: 100%;
+  }
 }
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:hover,

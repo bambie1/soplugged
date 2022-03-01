@@ -58,7 +58,7 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
         />
 
         <div className={styles.blogFooter}>
-          <hr />
+          <hr className={styles.hr} />
 
           <div className={styles.shareDiv}>
             <p>Share:</p>
