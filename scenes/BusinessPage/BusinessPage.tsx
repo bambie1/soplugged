@@ -59,10 +59,15 @@ const BusinessPage: FC<Props> = ({ business }) => {
   } = business;
 
   const rawImages = sample_images?.split(",") || [];
-  const images = rawImages.map((item: any) => ({
-    original: item,
-    thumbnail: item,
-  }));
+  const images = rawImages.map((item: any) => {
+    const arr = item.split("/upload/");
+    const newImage = arr[1] ? `${arr[0]}/upload/w_1200/${arr[1]}` : item;
+
+    return {
+      original: newImage,
+      thumbnail: newImage,
+    };
+  });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const fullView = hasPreview && verified && width > 960;
   const hasContactLinks = ig_handle || phone_number || business_url;
