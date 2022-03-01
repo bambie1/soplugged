@@ -1,18 +1,23 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+import { createURL } from "@/components/algolia/AlgoliaSearch";
 import { ButtonLink } from "@/styled/ButtonLink";
-import styles from "./TopCategories.module.scss";
 import { categoryIcons } from "@/lib/topCategories";
-import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
+
+import styles from "./TopCategories.module.scss";
 
 const TopCategories = () => {
   const router = useRouter();
-  const { setCategory } = useAlgoliaSearch();
 
   const handleClick = (label: string) => {
-    setCategory(label);
-    router.push("/search");
+    router.push(
+      `/search${createURL({
+        refinementList: {
+          category: [label],
+        },
+      })}`
+    );
   };
 
   return (

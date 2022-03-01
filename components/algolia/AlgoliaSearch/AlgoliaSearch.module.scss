@@ -22,6 +22,7 @@
     border-radius: 0;
     border-bottom: 2px solid transparent;
     padding-inline: 0;
+    position: relative;
 
     &.activeFilter {
       border-color: $secondary;
@@ -31,4 +32,14 @@
       border-color: grey;
     }
   }
+}
+
+.active {
+  width: 5px;
+  height: 5px;
+  background-color: $primary;
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  border-radius: 50%;
 }

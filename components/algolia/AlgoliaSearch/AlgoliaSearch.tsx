@@ -14,7 +14,6 @@ import { useWindowSize } from "@reach/window-size";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
-import { useAlgoliaSearch } from "@/context/algoliaSearchContext";
 import { CustomRefinementList } from "../CustomRefinementList/CustomRefinementList";
 import { CustomRefinements } from "../CustomRefinements";
 import { CustomStateResults } from "../CustomStateResults";
@@ -28,7 +27,7 @@ const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API || ""
 );
 
-const createURL = (state: any) => `?${qs.stringify(state)}`;
+export const createURL = (state: any) => `?${qs.stringify(state)}`;
 
 const searchStateToUrl = (searchState: any) => {
   return searchState ? createURL(searchState) : "";
@@ -47,9 +46,10 @@ const AlgoliaSearch: FC = () => {
   const router = useRouter();
   const searchQuery = router.asPath.replace(router.pathname, "");
   const [currentDropDown, setCurrentDropDown] = useState(0); //0, for no dropdowns
-  const { category, location } = useAlgoliaSearch();
   const { width } = useWindowSize();
-  const [searchState, setSearchState] = useState(urlToSearchState(searchQuery));
+  const [searchState, setSearchState] = useState<any>(
+    urlToSearchState(searchQuery)
+  );
   const debouncedSetStateRef = useRef<any>(null);
 
   function onSearchStateChange(updatedSearchState: any) {
@@ -83,6 +83,14 @@ const AlgoliaSearch: FC = () => {
         <div className={styles.searchFilters}>
           {filters.map((item, index) => {
             const isActive = currentDropDown === index + 1;
+
+            let isFiltered = false;
+
+            if (searchState?.refinementList) {
+              isFiltered =
+                searchState.refinementList[item.attribute]?.length > 0;
+            }
+
             return (
               <button
                 key={item.label}
@@ -94,6 +102,7 @@ const AlgoliaSearch: FC = () => {
                 className={`button withIcon ${isActive && styles.activeFilter}`}
               >
                 {item.label}
+                {isFiltered && <span className={styles.active} />}
                 <FontAwesomeIcon icon={isActive ? faCaretUp : faCaretDown} />
               </button>
             );
@@ -104,21 +113,17 @@ const AlgoliaSearch: FC = () => {
         <CustomRefinementList
           operator="or"
           attribute={"category"}
-          defaultRefinement={category ? [category] : undefined}
           hide={currentDropDown !== 1}
         />
         <CustomRefinementList
           operator="or"
           attribute={"business_location"}
-          defaultRefinement={location ? [location] : undefined}
           hide={currentDropDown !== 2}
         />
         <ClearRefinements />
         {width >= 768 && <CustomRefinements clearsQuery />}
 
         <div className="cover"></div>
-        {/* <Stats /> */}
-        {/* <Hits hitComponent={AlgoliaHit} /> */}
         <CustomStateResults />
         <Pagination />
       </InstantSearch>

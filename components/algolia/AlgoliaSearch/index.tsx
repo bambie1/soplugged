@@ -1,1 +1,1 @@
-export { default as AlgoliaSearch } from "./AlgoliaSearch";
+export { default as AlgoliaSearch, createURL } from "./AlgoliaSearch";
