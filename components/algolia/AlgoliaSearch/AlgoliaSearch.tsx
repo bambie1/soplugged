@@ -88,7 +88,7 @@ const AlgoliaSearch: FC = () => {
 
             if (searchState?.refinementList) {
               isFiltered =
-                searchState.refinementList[item.attribute].length > 0;
+                searchState.refinementList[item.attribute]?.length > 0;
             }
 
             return (
