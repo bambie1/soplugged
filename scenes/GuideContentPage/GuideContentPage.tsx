@@ -82,7 +82,7 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
                       <span className={styles.colorIcon} />
                       <div className={styles.info}>
                         <h4 title={post.title}>{post.title}</h4>
-                        <p>{post.excerpt.substring(0, 70)}...</p>
+                        <p>{post.excerpt.substring(0, 100)}...</p>
                       </div>
                     </a>
                   </Link>
