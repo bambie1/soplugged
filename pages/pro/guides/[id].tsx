@@ -1,13 +1,9 @@
 import { FC } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 import { SEO } from "@/components/SEO";
 import { GuideContentPage } from "@/scenes/GuideContentPage";
-import {
-  getAllPostsForHome,
-  getAllPostsWithSlug,
-  getPostBySlug,
-} from "@/utils/graphcms";
+import { getAllPostsForHome, getPostBySlug } from "@/utils/graphcms";
 
 interface Props {
   post: any;
@@ -26,18 +22,7 @@ const GuidePage: FC<Props> = ({ post, relatedPosts }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPostsWithSlug();
-
-  return {
-    paths: posts.map((post: any) => ({
-      params: { id: post.slug },
-    })),
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = (await getPostBySlug(params?.id || "")) || {};
 
   const posts = (await getAllPostsForHome()) || [];
@@ -47,7 +32,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { post, relatedPosts },
-    revalidate: 2 * 60,
   };
 };
 

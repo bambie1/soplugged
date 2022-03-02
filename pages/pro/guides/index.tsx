@@ -23,13 +23,12 @@ const GuidesHomePage: NextPage<Props> = (props) => {
 
 export default GuidesHomePage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const posts = (await getAllPostsForHome()) || [];
 
   const feature = posts.find((post: any) => post.featuredArticle === true);
 
   return {
     props: { posts, feature },
-    revalidate: 10 * 60,
   };
 }
