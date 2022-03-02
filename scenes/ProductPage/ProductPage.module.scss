@@ -5,10 +5,11 @@
   display: grid;
   gap: 2rem;
 
-  // max-width: 700px;
+  max-width: 650px;
   margin-inline: auto;
 
   @include desktop {
+    max-width: 100%;
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -17,6 +18,7 @@
   display: grid;
   gap: 2rem;
   justify-items: start;
+  word-break: break-word;
 }
 
 .thumbnailList {

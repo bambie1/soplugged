@@ -6,6 +6,8 @@ import { callShopify } from "@/lib/shopify";
 
 import { Button } from "@/styled/Button";
 
+import styles from "./AddToCart.module.scss";
+
 interface Props {
   variants: any;
   options: any;
@@ -15,6 +17,26 @@ const AddToCart: FC<Props> = ({ variants, options }) => {
   const { isDirty, setIsDirty } = useCart();
   const [loading, setLoading] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  const [inputValues, setInputValues] = useState({});
+
+  useEffect(() => {
+    let defaults = {};
+    options.map((option: any) => {
+      const { name, values } = option;
+      defaults = { ...defaults, [name]: values[0] };
+    });
+    setInputValues(defaults);
+  }, [options]);
+
+  const handleChange = ({ target: { name, value } }: any) => {
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+  };
+
+  console.log({ inputValues });
 
   // const checkCart = async () => {
   //   const cartId = await getCartId();
@@ -46,32 +68,37 @@ const AddToCart: FC<Props> = ({ variants, options }) => {
   };
 
   return (
-    <>
-      <section>
+    <div className={styles.wrapper}>
+      <section className={styles.optionsDiv}>
         {options?.map((option: any) => {
           const { name, values } = option;
           return (
             <Fragment key={name}>
-              <label htmlFor="cars">{name}</label>
-              <select name="cars" id="cars">
-                {values.map((val: any) => (
-                  <option value={val} key={val}>
-                    {val}
-                  </option>
-                ))}
-              </select>
+              <label htmlFor="cars" className="selectLabel">
+                {name}
+                <div className="selectWrapper">
+                  <select name={name} id={name} onChange={handleChange}>
+                    {values.map((val: any) => (
+                      <option value={val} key={val}>
+                        {val}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </label>
             </Fragment>
           );
         })}
       </section>
       <Button
-        variant="outlined"
+        big
+        // variant="outlined"
         disabled={isAddedToCart || loading}
         onClick={addToCart}
       >
         {isAddedToCart ? "Added to cart" : "Add to cart"}
       </Button>
-    </>
+    </div>
   );
 };
 

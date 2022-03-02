@@ -4,15 +4,22 @@
   flex: 1;
   position: relative;
   width: 100%;
-  min-height: 250px;
+  min-height: 350px;
   max-height: 500px;
 }
 
 .thumbnailList {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
+  padding: 0;
+  width: 90%;
+  margin-inline: auto;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .thumbnail {
@@ -20,6 +27,7 @@
   height: 60px;
   cursor: pointer;
   transition: 0.5s;
+  flex-shrink: 0;
 
   &:hover {
     opacity: 0.7;

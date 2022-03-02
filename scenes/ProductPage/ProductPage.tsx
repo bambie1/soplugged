@@ -28,7 +28,7 @@ const ProductPage: FC<Props> = ({ product }) => {
       <PageWrapper>
         <MerchHeader />
         <div className={styles.grid}>
-          <div className="column">
+          <div className="column hideOverflow">
             <ProductImage images={images.edges} />
           </div>
           <div>

@@ -24,7 +24,7 @@ const Merch: NextPage<Props> = ({ products }) => {
   );
 };
 
-// export const getStaticProps = async () => {
+// export const getServerSideProps = async () => {
 //   const products = await getAllProductsInCollection();
 
 //   return {

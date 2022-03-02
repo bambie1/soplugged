@@ -115,12 +115,19 @@ export const getProduct = async (handle: any) => {
             }
           }
         }
+        options (first:100){
+          name
+          values
+        }
         variants(first: 250) {
           edges {
             node {
               id
               title
               price
+              image {
+            url
+          }
             }
           }
         }
