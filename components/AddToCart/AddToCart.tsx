@@ -1,7 +1,12 @@
 import { FC, Fragment, useEffect, useState } from "react";
 
 import { useCart } from "@/context/cartContext";
-import { addCartLines, getCartId, loadCartItemIds } from "@/utils/shopify";
+import {
+  addCartLines,
+  getCartId,
+  loadCartItemIds,
+  getVariant,
+} from "@/utils/shopify";
 import { callShopify } from "@/lib/shopify";
 
 import { Button } from "@/styled/Button";
@@ -17,6 +22,7 @@ const AddToCart: FC<Props> = ({ variants, options }) => {
   const { isDirty, setIsDirty } = useCart();
   const [loading, setLoading] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const { selectedVariant, updateVariant } = useCart();
 
   const [inputValues, setInputValues] = useState({});
 
@@ -26,41 +32,45 @@ const AddToCart: FC<Props> = ({ variants, options }) => {
       const { name, values } = option;
       defaults = { ...defaults, [name]: values[0] };
     });
+    const currentVariant = getVariant(variants, defaults);
+    updateVariant(currentVariant);
     setInputValues(defaults);
-  }, [options]);
+  }, [options, variants]);
 
   const handleChange = ({ target: { name, value } }: any) => {
-    setInputValues({
+    const newValues = {
       ...inputValues,
       [name]: value,
-    });
+    };
+    const currentVariant = getVariant(variants, newValues);
+    setInputValues(newValues);
+    updateVariant(currentVariant);
   };
 
-  console.log({ inputValues });
+  useEffect(() => {
+    const checkCart = async () => {
+      const cartId = await getCartId();
+      const { data } = await callShopify(loadCartItemIds, {
+        cartId,
+      });
+      const isFound = data.cart.lines.edges.find((item: any) => {
+        return item.node.merchandise.id === selectedVariant?.node.id;
+      });
 
-  // const checkCart = async () => {
-  //   const cartId = await getCartId();
-  //   const { data } = await callShopify(loadCartItemIds, {
-  //     cartId,
-  //   });
-  //   const isFound = data.cart.lines.edges.find((item: any) => {
-  //     return item.node.merchandise.id === variantId;
-  //   });
+      if (isFound) setIsAddedToCart(true);
+      setLoading(false);
+    };
 
-  //   if (isFound) setIsAddedToCart(true);
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   checkCart();
-  // }, [isDirty]);
+    checkCart();
+  }, [isDirty, selectedVariant]);
 
   const addToCart = async () => {
     setLoading(true);
+    // const selectedVariant = getVariant(variants, inputValues);
     const cartId = await getCartId();
     await callShopify(addCartLines, {
       cartId,
-      variantId: "",
+      variantId: selectedVariant?.node.id,
     });
 
     setLoading(false);

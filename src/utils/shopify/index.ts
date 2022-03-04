@@ -64,6 +64,7 @@ export const getCartSubTotal = (cart: any) => {
 };
 
 export { getCartId } from "./getCartId";
+export { getVariant } from "./getVariant";
 export {
   addCartLines,
   loadCart,

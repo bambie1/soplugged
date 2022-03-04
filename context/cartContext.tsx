@@ -4,8 +4,11 @@ const CartContext = createContext<any>({});
 
 export const CartProvider: FC = ({ children }) => {
   const [isDirty, setIsDirty] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState<any>();
 
-  const value = { isDirty, setIsDirty };
+  const updateVariant = (variant: any) => setSelectedVariant(variant);
+
+  const value = { isDirty, setIsDirty, selectedVariant, updateVariant };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

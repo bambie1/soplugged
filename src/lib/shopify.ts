@@ -126,8 +126,12 @@ export const getProduct = async (handle: any) => {
               title
               price
               image {
-            url
-          }
+                url
+              }
+              selectedOptions{
+                name
+                value
+              }
             }
           }
         }

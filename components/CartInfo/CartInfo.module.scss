@@ -26,13 +26,22 @@
     width: 100%;
     left: 0;
     display: flex;
+    gap: 1rem;
     justify-content: center;
     box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+
+    p {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: grey;
+    }
   }
 }
 
 .header {
   padding: 1rem;
+  position: relative;
 }
 
 .empty {
@@ -58,5 +67,22 @@
 
   p {
     line-height: 1.2;
+  }
+}
+
+.closeCart {
+  position: absolute;
+  top: 10%;
+  right: 1rem;
+  border: 1px solid;
+  transition: 0.25s;
+
+  &:hover {
+    border-color: transparent;
+    opacity: 0.8;
+  }
+
+  svg {
+    font-size: 1.5rem;
   }
 }

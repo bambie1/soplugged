@@ -203,6 +203,7 @@ ul.list {
 [data-reach-dialog-overlay] {
   z-index: 7;
   display: flex;
+  backdrop-filter: blur(15px);
 }
 
 .pageButtons {

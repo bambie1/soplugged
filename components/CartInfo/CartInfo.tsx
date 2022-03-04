@@ -1,11 +1,13 @@
 import { FC } from "react";
 import Image from "next/image";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import { CartItem } from "../CartItem";
 import { Button } from "@/styled/Button";
 
 import styles from "./CartInfo.module.scss";
-import { CartItem } from "../CartItem";
 
 interface Props {
   data: any;
@@ -38,11 +40,7 @@ const CartInfo: FC<Props> = ({ data, onClose, isOpen }) => {
     return (
       <ul className={styles.list}>
         {items.map((item: any) => (
-          <CartItem
-            key={item.node.merchandise.product.title}
-            item={item.node}
-            cartId={data.cart.id}
-          />
+          <CartItem key={item.node.id} item={item.node} cartId={data.cart.id} />
         ))}
       </ul>
     );
@@ -61,12 +59,22 @@ const CartInfo: FC<Props> = ({ data, onClose, isOpen }) => {
         >
           <div className={styles.header}>
             <h3 className="center">Your cart</h3>
+            <button
+              className={`button icon ${styles.closeCart}`}
+              onClick={onClose}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
           </div>
           {renderItems()}
           <div className={styles.cta}>
-            <Button variant="outlined" disabled={!items.length}>
-              Proceed to checkout
-            </Button>
+            <a href={data.cart?.checkoutUrl}>
+              <Button variant="outlined" disabled={!items.length}>
+                Proceed to checkout
+              </Button>
+            </a>
+
+            <p>${data.cart?.estimatedCost.totalAmount.amount}</p>
           </div>
         </DialogContent>
       </DialogOverlay>
