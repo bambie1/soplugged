@@ -5,7 +5,6 @@ import { Toaster } from "react-hot-toast";
 
 import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
-import { CartProvider } from "@/context/cartContext";
 
 import "../flags.config";
 
@@ -13,7 +12,6 @@ import "../styles/globals.scss";
 import "../styles/algolia.scss";
 import "../styles/imageGallery.scss";
 import "../styles/quill.scss";
-import "../styles/autocomplete.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
 import "@reach/tooltip/styles.css";
@@ -34,12 +32,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <BusinessFormProvider>
-        <CartProvider>
-          <div className="layout-div">
-            <Component {...pageProps} />
-            <Toaster position="bottom-left" />
-          </div>
-        </CartProvider>
+        <div className="layout-div">
+          <Component {...pageProps} />
+          <Toaster position="bottom-left" />
+        </div>
       </BusinessFormProvider>
     </AuthProvider>
   );
