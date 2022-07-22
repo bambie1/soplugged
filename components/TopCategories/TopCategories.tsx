@@ -21,32 +21,30 @@ const TopCategories = () => {
   };
 
   return (
-    <section className={styles.wrapper}>
-      <h2>Top Categories</h2>
-      <div className={styles.iconsList}>
-        {categoryIcons.map((icon) => (
-          <button
-            key={icon.imageSrc}
-            className={styles.categoryWrapper}
-            title={icon.categoryText}
-            onClick={() => handleClick(icon.categoryText)}
-          >
-            <div className={styles.image}>
-              <Image
-                src={icon.imageSrc}
-                width={40}
-                height={40}
-                alt={`${icon.shortText}-icon`}
-              />
-            </div>
-            <span className={styles.categoryName}>{icon.shortText}</span>
-          </button>
-        ))}
+    <>
+      {/* mobile */}
+      <div className={styles.mobileCarousel}>
+        <ul>
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <li key={item} className={styles.item}></li>
+          ))}
+        </ul>
       </div>
-      <ButtonLink href="/search" variant="filled">
-        Explore More
-      </ButtonLink>
-    </section>
+
+      {/* laptop */}
+      <div className={styles.categoryImages}>
+        <ul className={styles.column}>
+          {[1, 2, 3].map((item) => (
+            <li key={item} className={styles.item}></li>
+          ))}
+        </ul>
+        <ul className={styles.column}>
+          {[1, 2, 3].map((item) => (
+            <li key={item} className={styles.item}></li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

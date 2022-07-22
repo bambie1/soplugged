@@ -44,7 +44,7 @@ const FAQs: FC<PageProps> = ({ isPro }) => {
   const list = isPro ? proFaqs : faqs;
 
   return (
-    <section className={styles.faqs}>
+    <section className={`${styles.faqs} container`}>
       <h2 className="center">FAQs</h2>
 
       {list.map(({ question, answer }) => (

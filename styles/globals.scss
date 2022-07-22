@@ -4,14 +4,15 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: $black;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Raleway, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
   line-height: 1.65;
 }
@@ -22,8 +23,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: $secondary;
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -32,6 +31,7 @@ h6 {
 
 h1 {
   font-size: 3.1rem;
+  font-weight: 700;
 
   @include large_tablet_down {
     font-size: 2.6rem;
@@ -58,14 +58,10 @@ p {
 a {
   color: inherit;
   text-decoration: none;
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 button,
 select {
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   cursor: pointer;
   font-size: 1rem;
 }
@@ -108,6 +104,32 @@ ul.list {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.page {
+  position: relative;
+  min-height: 40rem;
+  padding-top: 5rem;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  &.withHero {
+    padding-top: 0;
+  }
+
+  &.center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &.slim {
+    max-width: 900px;
+    margin-inline: auto;
+  }
 }
 
 // app.tsx

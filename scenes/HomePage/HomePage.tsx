@@ -20,90 +20,55 @@ const HomePage = () => {
     <>
       <Header color="brown" />
       <Hero />
-      <PageWrapper hasHero>
+      <PageWrapper hasHero isFullWidth>
         <div className="flex-column">
-          <section className={`${styles.pageSection} ${styles.reverse}`}>
-            <aside>
-              <h2>Want to #BuyBlack?</h2>
+          <h2 className="container">Popular Categories</h2>
+          <div className={styles.mobileCarousel}>
+            <ul>
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <li key={item} className={styles.item}></li>
+              ))}
+            </ul>
+          </div>
+          <section
+            className={`${styles.pageSection} ${styles.reverse} container`}
+          >
+            <div className="">
+              <h2>What is SoPlugged?</h2>
               <p>
-                We have businesses based in Ottawa, Toronto, and across Canada
-                that you can choose from. Whether you're looking for a hair
-                stylist or a caterer for your next event, we've got you covered.
-                Once you find a business you like, you can contact them directly
-                on our platform, or through their preferred means of
-                communication.
+                We LOVE #buyingblack, and as we encourage everyone to buy-black,
+                we're reducing the obstacles that you could possibly face if you
+                wanted to support a local black-owned business. Check out some
+                of our popular categories to get started!
               </p>
               <ButtonLink variant="filled" href="/search">
-                Find a business
+                Explore all categories
               </ButtonLink>
-            </aside>
-            <aside>
-              <Image
-                placeholder="blur"
-                blurDataURL={rgbDataURL(247, 244, 244)}
-                src="/images/search_businesses_tiny.png"
-                width={400}
-                height={272}
-                alt="Search for businesses"
-                priority
-              />
+            </div>
+            <aside className={`${styles.decor}`}>
+              <div className={styles.categoryImages}>
+                <ul className={styles.column}>
+                  {[1, 2, 3].map((item) => (
+                    <li key={item} className={styles.item}></li>
+                  ))}
+                </ul>
+                <ul className={styles.column}>
+                  {[1, 2, 3].map((item) => (
+                    <li key={item} className={styles.item}></li>
+                  ))}
+                </ul>
+              </div>
             </aside>
           </section>
 
-          <TopCategories />
-          <section className={styles.pageSection}>
-            <aside>
-              <Image
-                placeholder="blur"
-                blurDataURL={rgbDataURL(247, 244, 244)}
-                src="/images/add_business.png"
-                width={400}
-                height={350}
-                alt="Add a business"
-              />
-            </aside>
-            <aside>
-              <h2>Want to add your business?</h2>
-              <p>
-                You can do so for <u>FREE!</u> Simply click the 'JOIN' button to
-                register, and follow the instructions to add your business to
-                our directory. Once complete, you can begin to field quotesand
-                requests through your preferred means of communication.
-              </p>
-              <ButtonLink variant="filled" href="/my-business">
-                Add your business
-              </ButtonLink>
-            </aside>
+          <section className={`container ${styles.locationFilter}`}>
+            <h2>Filter by location</h2>
+            <ul>
+              {[...Array(6)].map((item) => (
+                <li key={item}></li>
+              ))}
+            </ul>
           </section>
-          <section className={`${styles.pageSection} ${styles.reverse}`}>
-            <aside>
-              <h2>Become a Sponsor</h2>
-              <p>
-                At SoPlugged, our biggest inspiration is supporting one another
-                and growing our community. Our goal is to normalize buying black
-                and we rely on amazing people like you to keep our platform free
-                and accessible to Black-owned businesses across Canada.
-              </p>
-              <p className={styles.subText}>
-                All donations go towards maintaining our platform and supporting
-                Black-owned businesses across Canada.
-              </p>
-              <ButtonLink variant="filled" href="/sponsors">
-                Become a sponsor
-              </ButtonLink>
-            </aside>
-            <aside>
-              <Image
-                placeholder="blur"
-                blurDataURL={rgbDataURL(247, 244, 244)}
-                src="/images/support_team.png"
-                alt="Become a sponsor"
-                width={400}
-                height={400}
-              />
-            </aside>
-          </section>
-
           <FAQs />
         </div>
       </PageWrapper>

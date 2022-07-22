@@ -5,12 +5,9 @@
   display: -webkit-box;
   display: flex;
   padding: 1.15rem;
-  transition: background 2s ease;
   text-decoration: none;
   min-height: 35rem;
   justify-content: center;
-  background: $primary;
-  background: linear-gradient(180deg, $primary 0%, white 100%);
 }
 
 .hero_content {
@@ -22,16 +19,26 @@
   width: 100%;
 
   h1 {
-    font-weight: normal;
+    color: $black;
     font-size: 2.1rem;
+
+    span {
+      color: $secondary;
+    }
 
     @include tablet {
       font-size: 2.4rem;
     }
 
     @include desktop {
-      font-size: 2.6rem;
+      font-size: 3.5rem;
     }
+  }
+
+  p.subtitle {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
   }
 
   .line_break {
@@ -43,17 +50,16 @@
 
 .hero_cta_link {
   width: 100%;
-  max-width: 500px;
-  margin-top: 16px;
 }
 
 .hero_cta_button {
   color: #4e3505;
   padding: 0.75rem 1rem;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   width: 100%;
+  margin-top: 1rem;
+  border: 1px solid $lightSecondary;
 
-  background-color: #fffaf2;
+  // background-color: #fffaf2;
   transition: box-shadow 0.2s ease-in-out;
   position: relative;
   display: flex;
@@ -78,27 +84,16 @@
     text-overflow: ellipsis;
     text-align: left;
   }
-  &:hover {
-    box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px;
-  }
+  // &:hover {
+  //   box-shadow: rgb(0 0 0 / 25%) 0px 25px 50px -12px;
+  // }
 }
 
-.custom_shape_divider_bottom_1626981879 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.cta_box {
   width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom_shape_divider_bottom_1626981879 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 66px;
-}
-
-.custom_shape_divider_bottom_1626981879 .shape_fill {
-  fill: white;
+  margin-top: 16px;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }

@@ -1,0 +1,41 @@
+@import "styles/mixins";
+
+.container {
+  background-color: rgba(206, 182, 147, 0.13);
+  padding-block: 1rem;
+  margin-bottom: 3rem;
+}
+
+.statsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  max-width: 50rem;
+  margin-inline: auto;
+
+  li {
+    justify-self: center;
+  }
+
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.statGroup {
+  h3 {
+    color: grey;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  p {
+    color: grey;
+    margin: 0;
+  }
+}

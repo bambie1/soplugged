@@ -6,14 +6,21 @@ interface Props {
   hasHero?: boolean;
   center?: boolean;
   isSlim?: boolean;
+  isFullWidth?: boolean;
   children: ReactNode;
 }
 
-const PageWrapper: FC<Props> = ({ hasHero, center, children, isSlim }) => {
+const PageWrapper: FC<Props> = ({
+  hasHero,
+  center,
+  children,
+  isSlim,
+  isFullWidth,
+}) => {
   const buildStyle = () => {
     return `${styles.page} ${hasHero ? styles.withHero : ""} ${
       center ? styles.center : ""
-    } ${isSlim ? styles.slim : ""} container`;
+    } ${isSlim ? styles.slim : ""} ${!isFullWidth && "container"}`;
   };
 
   return <div className={buildStyle()}>{children}</div>;
