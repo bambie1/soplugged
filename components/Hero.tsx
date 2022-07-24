@@ -1,24 +1,35 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable max-len */
 import Link from "next/link";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 
-import Stats from "./Stats";
+import { popularCategories } from "@/lib/popularCategories";
 
 const Hero = () => {
   return (
-    <div className="min-h-[95vh] flex flex-col">
-      <section className="relative flex-1 flex p-5 min-h-[35rem] justify-center">
-        <div className="flex flex-col items-center justify-center text-center w-full">
-          <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold">
-            Find <span className="text-primary inline-block">black-owned</span>
+    <div className="flex lg:min-h-[90vh] flex-col my-container py-10 md:py-20 lg:py-0 text-center lg:text-left">
+      <section className="relative gap-3 lg:grid lg:grid-cols-7 flex-1 py-5 justify-center items-center">
+        <div className="relative flex flex-col w-full col-start-1 col-span-4">
+          <h1 className="text-5xl lg:text-6xl font-bold leading-[1.05] lg:leading-[1.2]">
+            Discover{" "}
+            <div className="text-primary inline-block relative">
+              <span>black-owned</span>
+              <img
+                src="/underline_draw.svg"
+                className="absolute -bottom-6"
+                alt=""
+              />
+            </div>
             <br></br> businesses in Canada
           </h1>
-          <p className="text-lg lg:text-2xl mt-6">
-            #BuyingBlack just got a LOT easier!
+          <p className="lg:hidden text-lg mt-6">
+            Connecting black businesses with the consumers that love them.
           </p>
-
-          <div className="mt-4 flex flex-col items-end w-full max-w-xl">
+          <p className="hidden lg:block text-lg w-[90%] mt-6">
+            Find everything from restaurants, hairstylists and salons to
+            tutoring, tech and healthcare services.
+          </p>
+          <div className="mt-4 flex flex-col items-end w-full max-w-xl mx-auto lg:mx-0">
             <Link href="/search">
               <a className="w-full relative mt-4">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -46,18 +57,55 @@ const Hero = () => {
                 />
               </a>
             </Link>
-
             <Link href="/dashboard">
-              <a className="text-sm lg:text-base">I am an entrepreneur</a>
+              <a className="text-base mt-2 underline">I am an entrepreneur</a>
             </Link>
           </div>
         </div>
-
-        <div className="border border-secondary/70 rounded-full absolute -left-16 bottom-[29rem] w-24 h-24 -z-10" />
-        <div className="border border-secondary/70 rounded-full absolute -left-20 bottom-72 w-48 h-48 -z-10" />
-        <div className="border border-secondary/70 rounded-full absolute -left-20 -bottom-10 w-96 h-96 -z-10" />
+        <aside className="flex flex-col col-start-5 col-span-3">
+          <div className="hidden lg:flex ml-auto w-full -space-x-24">
+            <ul className="flex flex-col flex-1 items-end">
+              {[0, 1, 2].map((item) => (
+                <li
+                  key={item}
+                  className={`relative w-[60%] aspect-square rounded-full overflow-hidden ${
+                    item === 1 ? "mr-20" : ""
+                  }`}
+                >
+                  <div className="absolute inset-0 z-[2] bg-secondary/30 w-full h-full" />
+                  <Image
+                    src={popularCategories[item].url}
+                    objectFit="cover"
+                    alt=""
+                    layout="fill"
+                  />
+                </li>
+              ))}
+            </ul>
+            <ul className="flex flex-col flex-1 items-end">
+              {[3, 4, 5].map((item) => (
+                <li
+                  key={item}
+                  className={`relative w-[60%] aspect-square rounded-full overflow-hidden ${
+                    item === 4 ? "mr-20" : ""
+                  }`}
+                >
+                  <div className="absolute inset-0 z-[2] bg-secondary/30 w-full h-full" />
+                  <Image
+                    src={popularCategories[item].url}
+                    objectFit="cover"
+                    alt=""
+                    layout="fill"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+        {/* <div className="border border-secondary/50 rounded-full absolute -left-16 bottom-[29rem] w-24 h-24 -z-10" />
+          <div className="border border-secondary/50 rounded-full absolute -left-20 bottom-72 w-[60%] aspect-square -z-10" />
+        <div className="border border-secondary/50 rounded-full absolute -left-20 -bottom-10 w-96 h-96 -z-10" /> */}
       </section>
-      <Stats />
     </div>
   );
 };

@@ -11,6 +11,8 @@ module.exports = {
       "res.cloudinary.com",
       "cdn.shopify.com",
       "media.graphcms.com",
+      "unsplash.com",
+      "images.unsplash.com",
     ],
   },
   env: {

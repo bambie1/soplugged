@@ -12,7 +12,7 @@
 }
 
 .my-container {
-  @apply w-full max-w-2xl lg:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply w-full lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
