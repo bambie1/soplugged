@@ -31,9 +31,9 @@ const NavLinks: FC = () => {
               Dashboard
             </ButtonLink>
           </li>
-          <li className={styles.navLink}>
+          {/* <li className={styles.navLink}>
             <SignOutButton />
-          </li>
+          </li> */}
         </>
       );
     return (
@@ -54,7 +54,7 @@ const NavLinks: FC = () => {
 
   return (
     <>
-      <nav>
+      <nav className="hidden md:block">
         <ul className={`list ${styles.navLinks}`}>
           {openNavLinks.map(({ id, text, link }) => (
             <li key={id} className={buildStyles(link)}>

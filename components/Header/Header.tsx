@@ -33,7 +33,7 @@ const Header: FC<Props> = ({ color, hideLinks }) => {
 
   return (
     <>
-      <div className={wrapperStyles()}>
+      <div className="my-container py-2">
         <header className={`${styles.header} container`}>
           <Link href="/">
             <a className={styles.logo}>

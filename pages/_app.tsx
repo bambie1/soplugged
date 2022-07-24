@@ -8,7 +8,8 @@ import { BusinessFormProvider } from "@/context/businessFormContext";
 
 import "../flags.config";
 
-import "../styles/globals.scss";
+// import "../styles/globals.scss";
+import "../styles/global.css";
 import "../styles/algolia.scss";
 import "../styles/imageGallery.scss";
 import "../styles/quill.scss";
