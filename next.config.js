@@ -13,6 +13,7 @@ module.exports = {
       "media.graphcms.com",
       "unsplash.com",
       "images.unsplash.com",
+      "cdn.pixabay.com",
     ],
   },
   env: {

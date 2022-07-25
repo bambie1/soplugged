@@ -7,7 +7,7 @@ import { popularCategories } from "@/lib/popularCategories";
 
 const Hero = () => {
   return (
-    <div className="flex lg:min-h-[90vh] flex-col my-container py-10 md:py-20 lg:py-0 text-center lg:text-left">
+    <div className="flex flex-col my-container py-10 md:py-20 text-center lg:text-left">
       <section className="relative gap-3 lg:grid lg:grid-cols-7 flex-1 py-5 justify-center items-center">
         <div className="relative flex flex-col w-full col-start-1 col-span-4">
           <h1 className="text-5xl lg:text-6xl font-bold leading-[1.05] lg:leading-[1.2]">
