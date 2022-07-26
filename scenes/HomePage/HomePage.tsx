@@ -1,27 +1,28 @@
+/* eslint-disable max-len */
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import {
+  GlobeAltIcon,
+  LightningBoltIcon,
+  PlusIcon,
+} from "@heroicons/react/outline";
 
 import Hero from "@/components/Hero";
+import FilterByLocation from "@/components/FilterByLocation";
 import { FAQs } from "@/components/FAQs";
 import PopularBusinesses from "@/components/PopularBusinesses";
 import { popularCategories } from "@/lib/popularCategories";
 
-import {
-  AnnotationIcon,
-  GlobeAltIcon,
-  LightningBoltIcon,
-  MailIcon,
-  ScaleIcon,
-  PlusIcon,
-} from "@heroicons/react/outline";
-
-const transferFeatures = [
+const secondaryLinks = [
   {
     id: 2,
     name: "Add your business",
     description:
       "Easily add your business to our directory for FREE, and let potential customers come to you",
+    linkText: "Add your business",
+    linkHref: "/my-business",
+    color: "group-hover:bg-secondary",
     icon: PlusIcon,
   },
   {
@@ -29,6 +30,9 @@ const transferFeatures = [
     name: "Go PRO",
     description:
       "Reach out to our team of experts if you are looking to launch or improve your digital presence with a website or social media marketing.",
+    linkText: "Explore Pro",
+    linkHref: "/pro",
+    color: "group-hover:bg-accent",
     icon: LightningBoltIcon,
   },
   {
@@ -36,6 +40,9 @@ const transferFeatures = [
     name: "Join our sponsors",
     description:
       "We rely on amazing people like you to keep our platform free and accessible to Black-owned businesses across Canada. ",
+    linkText: "Become a sponsor",
+    linkHref: "/sponsors",
+    color: "group-hover:bg-primary",
     icon: GlobeAltIcon,
   },
 ];
@@ -81,13 +88,13 @@ const HomePage = () => {
                 <span className="text-primary">#Buyingblack</span> just got
                 easier
               </h2>
-              <p className="mt-3 text-lg text-gray-500">
+              <p className="mt-3 text-lg text-gray-700">
                 It's time to stop searching. We're here to help you find the
                 best black-owned businesses in your city with the click of a
                 button. Find everything from restaurants, hairstylists and
                 salons to tutoring, tech and healthcare services.
               </p>
-              <p className="mt-3 text-lg text-gray-500 hidden lg:block">
+              <p className="mt-3 text-lg text-gray-700 hidden lg:block">
                 You can now have all your black-owned businesses in one place,
                 right at your fingertips.
               </p>
@@ -98,18 +105,25 @@ const HomePage = () => {
             </div>
             <div>
               <dl className="mt-10 space-y-10">
-                {transferFeatures.map((item) => (
-                  <div key={item.id} className="relative">
+                {secondaryLinks.map((item) => (
+                  <div key={item.id} className="relative group">
                     <dt>
-                      <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                      <div
+                        className={`absolute flex items-center justify-center h-12 w-12 rounded-md ${item.color} text-primary border border-primary  group-hover:text-white group-hover:border-transparent transition duration-200`}
+                      >
                         <item.icon className="h-6 w-6" aria-hidden="true" />
                       </div>
                       <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
                         {item.name}
                       </p>
                     </dt>
-                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                      {item.description}
+                    <dd className="mt-2 ml-16 text-base text-gray-700 grid justify-items-start">
+                      <p>{item.description}</p>
+                      <Link href={item.linkHref}>
+                        <a className="mt-3 text-primary border-b border-primary pb-1">
+                          {item.linkText}
+                        </a>
+                      </Link>
                     </dd>
                   </div>
                 ))}
@@ -117,6 +131,8 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+
+        <FilterByLocation />
 
         {/* <FAQs /> */}
       </div>
