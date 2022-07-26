@@ -24,7 +24,7 @@ import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const FavoriteButton = dynamic(
   () => import("../../components/FavoriteButton/FavoriteButton")
 );
@@ -159,7 +159,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header color="transparent" />
+      <Header />
       <PageWrapper>
         <section className="center">
           <div className={styles.businessHeader}>

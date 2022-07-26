@@ -18,7 +18,7 @@ import { ProPlug } from "@/components/ProPlug";
 
 import styles from "./GuideContentPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 interface Props {
@@ -37,7 +37,7 @@ const GuideContentPage: FC<Props> = ({ post, relatedPosts }) => {
 
   return (
     <>
-      <Header color="blue" />
+      <Header />
       <section className={styles.hero}>
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.text}>

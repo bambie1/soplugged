@@ -5,7 +5,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./FAQPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const FAQPage = () => {
@@ -17,7 +17,7 @@ const FAQPage = () => {
         <section className={styles.faqSection}>
           <h2>Is SoPlugged free?</h2>
           <p>
-            Yes, SoPlugged is free to use and register (if you’re a black-owned
+            Yes, SoPlugged is free to use and register (if you're a black-owned
             business in Canada). We rely on our amazing sponsors to keep our
             platform free and accessible to Black-owned businesses across
             Canada.
@@ -67,10 +67,10 @@ const FAQPage = () => {
           </ButtonLink>
         </section>
         <section className={styles.faqSection}>
-          <h2>What’s the difference between SoPlugged and SoPluggedPro?</h2>
+          <h2>What's the difference between SoPlugged and SoPluggedPro?</h2>
           <p>
             SoPlugged is a FREE directory of Black-owned businesses across
-            Canada. SoPluggedPro is professional help for your business’ digital
+            Canada. SoPluggedPro is professional help for your business' digital
             needs
           </p>
           <ButtonLink variant="outlined" href="/pro">

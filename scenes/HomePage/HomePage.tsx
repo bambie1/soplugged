@@ -13,6 +13,7 @@ import FilterByLocation from "@/components/FilterByLocation";
 import { FAQs } from "@/components/FAQs";
 import PopularBusinesses from "@/components/PopularBusinesses";
 import { popularCategories } from "@/lib/popularCategories";
+import useAlgolia from "@/hooks/useAlgolia";
 
 const secondaryLinks = [
   {
@@ -47,30 +48,40 @@ const secondaryLinks = [
   },
 ];
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const HomePage = () => {
+  const { handleCategoryClick } = useAlgolia();
+
   return (
     <>
-      <Header color="brown" />
+      <Header />
       <Hero />
       <div className="flex flex-col mt-10 lg:mt-20">
         <section className="lg:hidden">
-          {/* <h2 className="text-2xl font-bold">Popular Categories</h2> */}
           <div className="lg:hidden overflow-x-auto">
             <ul className="inline-flex px-4 gap-4">
-              {[0, 1, 2, 3, 4, 5].map((item) => (
-                <li
-                  key={item}
-                  className="w-40 h-40 rounded-full relative overflow-hidden"
-                >
-                  <Image
-                    src={popularCategories[item].url}
-                    objectFit="cover"
-                    alt=""
-                    layout="fill"
-                  />
+              {[0, 1, 2, 3, 4, 5].map((index) => (
+                <li key={index}>
+                  <button
+                    className="flex flex-col items-center"
+                    onClick={() =>
+                      handleCategoryClick(popularCategories[index].title)
+                    }
+                  >
+                    <div className="w-40 h-40 rounded-full relative overflow-hidden">
+                      <Image
+                        src={popularCategories[index].url}
+                        objectFit="cover"
+                        alt=""
+                        layout="fill"
+                      />
+                    </div>
+                    <p className="z-10 text-gray-700 text-sm md:text-base mt-2 border-b border-gray-700">
+                      {popularCategories[index].title}
+                    </p>
+                  </button>
                 </li>
               ))}
             </ul>

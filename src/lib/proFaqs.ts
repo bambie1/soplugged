@@ -6,9 +6,9 @@ export const proFaqs = [
       "SoPluggedPro is here to help small to medium sized businesses across Canada.",
   },
   {
-    question: "What’s the difference between SoPlugged and SoPluggedPro?",
+    question: "What's the difference between SoPlugged and SoPluggedPro?",
     answer:
-      "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business’ digital needs",
+      "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business' digital needs",
   },
   {
     question: "Is SoPluggedPRO free?",

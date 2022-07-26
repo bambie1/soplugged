@@ -12,7 +12,7 @@ import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import styles from "./MyBusinessWelcome.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 
 const referralSources = [
   { label: "Instagram (@sopluggd)", value: "SoPlugged" },
@@ -65,7 +65,7 @@ const MyBusinessWelcome: FC = () => {
 
   return (
     <>
-      <Header hideLinks={width >= 768} />
+      {/* <Header hideLinks={width >= 768} /> */}
       <PreBusinessForm>
         <div className={styles.content}>
           <b className="center">

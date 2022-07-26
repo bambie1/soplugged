@@ -9,7 +9,7 @@ import { ProMoreFeatures } from "@/components/ProMoreFeatures";
 
 import styles from "./ProPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const ProPage = () => {
@@ -19,7 +19,7 @@ const ProPage = () => {
 
   return (
     <>
-      <Header color="blue" />
+      <Header />
       <ProHero ctaHandler={openCalendly} />
       <div className={styles.wrapper}>
         <section className={`${styles.pageSection} container`}>

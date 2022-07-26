@@ -4,10 +4,39 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { popularCategories } from "@/lib/popularCategories";
+import useAlgolia from "@/hooks/useAlgolia";
+
+const HeroImage = ({ index }: any) => {
+  const { handleCategoryClick } = useAlgolia();
+
+  return (
+    <li
+      key={index}
+      className={`w-[60%]  ${index === 1 || index === 4 ? "mr-20" : ""}`}
+    >
+      <button
+        onClick={() => handleCategoryClick(popularCategories[index].title)}
+        className="focus:border-primary border-2 border-transparent aspect-square rounded-full overflow-hidden group relative w-full"
+      >
+        <div className="absolute inset-0 z-[2] bg-secondary/30 duration-500 transition hover:bg-gradient-to-r hover:from-secondary/70 hover:to-white/70 w-full h-full flex items-center justify-center">
+          <p className="z-10 opacity-0 group-hover:opacity-100 duration-300 transition uppercase font-semibold border-b border-black">
+            {popularCategories[index].title}
+          </p>
+        </div>
+        <Image
+          src={popularCategories[index].url}
+          objectFit="cover"
+          alt=""
+          layout="fill"
+        />
+      </button>
+    </li>
+  );
+};
 
 const Hero = () => {
   return (
-    <div className="flex flex-col my-container py-10 md:py-20 text-center lg:text-left">
+    <div className="flex flex-col my-container py-10 md:py-20 pt-24 lg:pt-36 text-center lg:text-left">
       <section className="relative gap-3 lg:grid lg:grid-cols-7 flex-1 py-5 justify-center items-center">
         <div className="relative flex flex-col w-full col-start-1 col-span-4">
           <h1 className="text-5xl lg:text-6xl font-bold leading-[1.05] lg:leading-[1.2]">
@@ -52,52 +81,28 @@ const Hero = () => {
                 <input
                   type="search"
                   id="default-search"
-                  className="block p-4 pl-10 w-full lg:text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  placeholder-shown:text-ellipsis"
+                  className="block p-4 pl-10 w-full lg:text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary  placeholder-shown:text-ellipsis"
                   placeholder="Search by category, location, or business name"
                 />
               </a>
             </Link>
             <Link href="/dashboard">
-              <a className="text-base mt-2 underline">I am an entrepreneur</a>
+              <a className="text-base mt-2 border-b border-primary">
+                I am an entrepreneur
+              </a>
             </Link>
           </div>
         </div>
         <aside className="flex flex-col col-start-5 col-span-3">
           <div className="hidden lg:flex ml-auto w-full -space-x-24">
             <ul className="flex flex-col flex-1 items-end">
-              {[0, 1, 2].map((item) => (
-                <li
-                  key={item}
-                  className={`relative w-[60%] aspect-square rounded-full overflow-hidden ${
-                    item === 1 ? "mr-20" : ""
-                  }`}
-                >
-                  <div className="absolute inset-0 z-[2] bg-secondary/30 w-full h-full" />
-                  <Image
-                    src={popularCategories[item].url}
-                    objectFit="cover"
-                    alt=""
-                    layout="fill"
-                  />
-                </li>
+              {[0, 1, 2].map((index) => (
+                <HeroImage index={index} key={index} />
               ))}
             </ul>
             <ul className="flex flex-col flex-1 items-end">
-              {[3, 4, 5].map((item) => (
-                <li
-                  key={item}
-                  className={`relative w-[60%] aspect-square rounded-full overflow-hidden ${
-                    item === 4 ? "mr-20" : ""
-                  }`}
-                >
-                  <div className="absolute inset-0 z-[2] bg-secondary/30 w-full h-full" />
-                  <Image
-                    src={popularCategories[item].url}
-                    objectFit="cover"
-                    alt=""
-                    layout="fill"
-                  />
-                </li>
+              {[3, 4, 5].map((index) => (
+                <HeroImage index={index} key={index} />
               ))}
             </ul>
           </div>

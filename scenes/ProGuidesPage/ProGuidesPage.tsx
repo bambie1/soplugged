@@ -9,7 +9,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./ProGuidesPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
 const ProGuidesPage: FC<Props> = ({ posts, feature }) => {
   return (
     <>
-      <Header color="blue" />
+      <Header />
 
       <section className={styles.hero}>
         <div className={`container ${styles.hero_content}`}>

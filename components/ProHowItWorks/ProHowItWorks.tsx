@@ -30,7 +30,7 @@ const ProHowItWorks: FC<Props> = ({ ctaHandler }) => {
           <h3>Book a FREE consultation</h3>
 
           <p>
-            You’ll be meeting with both our marketing specialist, and developer
+            You'll be meeting with both our marketing specialist, and developer
             consultant. This is to understand your business needs and room for
             growth.
           </p>
@@ -61,8 +61,8 @@ const ProHowItWorks: FC<Props> = ({ ctaHandler }) => {
           </div>
           <h3>Ready to go Live!</h3>
           <p>
-            If your request was for a website, we’ll contact you once it’s
-            ready, and have a follow-up meeting to cross ‘t’s and dot ’i’s.
+            If your request was for a website, we'll contact you once it's
+            ready, and have a follow-up meeting to cross ‘t's and dot 'i's.
           </p>
         </div>
       </div>

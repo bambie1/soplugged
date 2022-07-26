@@ -8,7 +8,7 @@ import { Button } from "@/styled/Button";
 
 import styles from "./SponsorsPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const SponsorsPage = () => {

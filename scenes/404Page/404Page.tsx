@@ -7,7 +7,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./404Page.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const FAQPage = () => {

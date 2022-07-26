@@ -7,7 +7,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import styles from "./GuidelinesPage.module.scss";
 import { ButtonLink } from "@/styled/ButtonLink";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const GuidelinesPage: FC = () => {
@@ -26,10 +26,10 @@ const GuidelinesPage: FC = () => {
 
         <p>
           In order to maintain a respectful, inclusive, and safe environment for
-          everyone, we’ve created a set of community guidelines to serve as a
+          everyone, we've created a set of community guidelines to serve as a
           moral compass for behavior on our platform, define what is acceptable
           in the SoPlugged community, and explain how violations are enforced.
-          They aren’t tied to any law, rather they reflect our expectations and
+          They aren't tied to any law, rather they reflect our expectations and
           are rooted in our mission to support the Black community in Canada!
         </p>
 

@@ -14,7 +14,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import styles from "./Dashboard.module.scss";
 import { Button } from "@/styled/Button";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 
 const dashboardLinks = [
   { id: 1, href: "/dashboard", text: "Business", icon: faBuilding },
@@ -33,7 +33,7 @@ const Dashboard: FC = ({ children }) => {
 
   return (
     <>
-      <Header color="brown" />
+      <Header />
       <div className={styles.body}>
         <PageWrapper center>
           <div className={styles.wrapper}>

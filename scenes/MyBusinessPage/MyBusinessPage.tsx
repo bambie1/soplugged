@@ -21,7 +21,7 @@ import { Button } from "@/styled/Button";
 
 import styles from "./MyBusinessPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
+const Header = dynamic(() => import("../../components/Header"));
 
 interface Props {
   business: any;
@@ -137,7 +137,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header hideLinks={width >= 768} />
+      {/* <Header hideLinks={width >= 768} /> */}
       <BusinessForm>
         <Formik
           initialValues={{
