@@ -15,18 +15,18 @@ const PopularBusinesses = () => {
   const index = client.initIndex("Business");
 
   useEffect(() => {
-    index
-      .search("", {
-        attributesToRetrieve: [
-          "business_name",
-          "logo_url",
-          "business_location",
-          "category",
-          "slug",
-        ],
-        length: 15,
-      })
-      .then(({ hits }) => setBusinesses(hits));
+    // index
+    //   .search("", {
+    //     attributesToRetrieve: [
+    //       "business_name",
+    //       "logo_url",
+    //       "business_location",
+    //       "category",
+    //       "slug",
+    //     ],
+    //     length: 15,
+    //   })
+    //   .then(({ hits }) => setBusinesses(hits));
   }, []);
 
   return (
