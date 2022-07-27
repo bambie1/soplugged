@@ -9,7 +9,7 @@
     "import/imports-first": 1,
     "import/no-extraneous-dependencies": 1,
     "import/no-unresolved": 1,
-    "max-len": [2, 250],
+    "max-len": "off",
     "no-console": 1,
     "no-param-reassign": ["error", { "props": true }],
     "no-return-assign": 1,
@@ -22,6 +22,7 @@
     "spaced-comment": 0,
     "strict": 1,
     "no-else-return": 0,
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
+    
   }
 }

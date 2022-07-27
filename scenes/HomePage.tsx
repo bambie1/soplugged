@@ -48,8 +48,8 @@ const secondaryLinks = [
   },
 ];
 
-const Header = dynamic(() => import("../../components/Header"));
-const Footer = dynamic(() => import("../../components/Footer/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 const HomePage = () => {
   const { handleCategoryClick } = useAlgolia();

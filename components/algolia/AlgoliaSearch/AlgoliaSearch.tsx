@@ -76,7 +76,7 @@ const AlgoliaSearch: FC = () => {
         createURL={createURL}
       >
         <div className={styles.searchDiv}>
-          <PoweredBy />
+          {/* <PoweredBy /> */}
           <SearchBox />
         </div>
 

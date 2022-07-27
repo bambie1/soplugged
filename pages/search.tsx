@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { SearchPage } from "@/scenes/SearchPage";
+import SearchPage from "@/scenes/SearchPage";
 import { SEO } from "@/components/SEO";
 
 const Search: NextPage = () => {

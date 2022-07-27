@@ -8,14 +8,15 @@ import styles from "./AlgoliaHit.module.scss";
 interface Props {
   hit: any;
 }
+
 const AlgoliaHit: FC<Props> = ({ hit }) => {
   const { slug, business_name, logo_url, business_location } = hit;
 
   return (
     <Link href={`/business/${slug}`}>
-      <a className={styles.hitWrapper}>
+      <a className="flex h-full flex-col rounded-lg border border-transparent p-4 shadow transition duration-200 hover:border-secondary/60 hover:shadow-md focus:border-primary  focus-visible:border-primary ">
         <section className={styles.cardHeader}>
-          <Avatar name={business_name} url={logo_url} />
+          {/* <Avatar name={business_name} url={logo_url} /> */}
           <h3 className={styles.businessName}>
             <Highlight attribute="business_name" hit={hit} />
           </h3>

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { HomePage } from "@/scenes/HomePage";
+import HomePage from "@/scenes/HomePage";
 import { SEO } from "@/components/SEO";
 
 const Home: NextPage = () => {
