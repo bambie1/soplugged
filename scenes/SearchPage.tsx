@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 
+import ExtendedSearch from "@/components/algolia/ExtendedSearch";
+
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 const AlgoliaSearch = dynamic(
@@ -14,7 +16,8 @@ const SearchPage = () => {
         <h1 className="mb-8 text-center text-5xl font-bold text-primary lg:text-6xl">
           directory
         </h1>
-        <AlgoliaSearch />
+        {/* <AlgoliaSearch /> */}
+        <ExtendedSearch />
       </main>
       <Footer />
     </>

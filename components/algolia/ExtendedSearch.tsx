@@ -4,24 +4,17 @@ import algoliasearch from "algoliasearch/lite";
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   InstantSearch,
-  SearchBox,
-  ClearRefinements,
-  PoweredBy,
   Configure,
   Pagination,
   connectSearchBox,
+  Snippet,
+  Hits,
 } from "react-instantsearch-dom";
-import { useWindowSize } from "@reach/window-size";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { createQuerySuggestionsPlugin } from "@algolia/autocomplete-plugin-query-suggestions";
 import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
-
-import { CustomRefinementList } from "../CustomRefinementList/CustomRefinementList";
-import { CustomRefinements } from "../CustomRefinements";
-import { CustomStateResults } from "../CustomStateResults";
-
-import styles from "./AlgoliaSearch.module.scss";
+import { Autocomplete } from "./Autocomplete";
+import Searchbar from "./Searchbar";
+import { CustomStateResults } from "./CustomStateResults";
 
 const DEBOUNCE_TIME = 400;
 
@@ -40,18 +33,11 @@ export const urlToSearchState = (search: any) => {
   return qs.parse(search.slice(1));
 };
 
-const filters = [
-  { label: "CATEGORY", attribute: "category" },
-  { label: "LOCATION", attribute: "business_location" },
-];
-
 const VirtualSearchBox = connectSearchBox(() => null);
 
-const AlgoliaSearch: FC = () => {
+const ExtendedSearch: FC = () => {
   const router = useRouter();
   const searchQuery = router.asPath.replace(router.pathname, "");
-  const [currentDropDown, setCurrentDropDown] = useState(0); //0, for no dropdowns
-  const { width } = useWindowSize();
   const [searchState, setSearchState] = useState<any>(
     urlToSearchState(searchQuery)
   );
@@ -139,26 +125,49 @@ const AlgoliaSearch: FC = () => {
       >
         <VirtualSearchBox />
 
-        <Configure hitsPerPage={12} />
-        <CustomRefinementList
-          operator="or"
-          attribute={"category"}
-          hide={currentDropDown !== 1}
-        />
-        <CustomRefinementList
-          operator="or"
-          attribute={"business_location"}
-          hide={currentDropDown !== 2}
-        />
-        <ClearRefinements />
-        {width >= 768 && <CustomRefinements clearsQuery />}
+        {/* <Autocomplete
+          placeholder="Search products"
+          detachedMediaQuery="none"
+          initialState={{
+            query: searchState.query,
+          }}
+          openOnFocus={true}
+          onSubmit={onSubmit}
+          onReset={onReset}
+          // plugins={plugins}
+        /> */}
+        <Searchbar />
 
-        <div className="cover"></div>
+        <Configure hitsPerPage={12} />
+
         <CustomStateResults />
         <Pagination />
+
+        {/* <div className="mt-10">
+          <Hits hitComponent={Hit} />
+          <Pagination />
+        </div> */}
       </InstantSearch>
     </div>
   );
 };
 
-export default AlgoliaSearch;
+export default ExtendedSearch;
+
+function Hit({ hit }: any) {
+  return (
+    <article className="hit">
+      <div className="hit-image">
+        <img src={hit.image} alt={hit.name} />
+      </div>
+      <div>
+        <h1>
+          <Snippet hit={hit} attribute="business_name" />
+        </h1>
+        <div>
+          <strong>{hit.business_name}</strong>
+        </div>
+      </div>
+    </article>
+  );
+}

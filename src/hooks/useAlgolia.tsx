@@ -1,10 +1,8 @@
-import { useRouter } from "next/router";
+import router from "next/router";
 
-import { createURL } from "@/components/algolia-old/AlgoliaSearch";
+import { createURL } from "@/utils/algolia";
 
 const useAlgolia = () => {
-  const router = useRouter();
-
   const handleCategoryClick = (label: string) => {
     router.push(
       `/search${createURL({

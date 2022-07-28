@@ -24,7 +24,7 @@ const Search: NextPage = () => {
   return (
     <>
       <SEO
-        title={`${title} | SoPlugged`}
+        title={`Find businesses | SoPlugged`}
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
       <SearchPage />

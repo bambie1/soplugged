@@ -1,5 +1,3 @@
-// file: Autocomplete.jsx
-
 import { autocomplete } from "@algolia/autocomplete-js";
 import React, { createElement, Fragment, useEffect, useRef } from "react";
 import { render } from "react-dom";
@@ -23,5 +21,5 @@ export function Autocomplete(props: any) {
     };
   }, [props]);
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef} className="w-full" />;
 }
