@@ -16,6 +16,10 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <script defer src="https://cdn.splitbee.io/sb.js"></script>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic"
+          />
         </Head>
         <body>
           <Main />

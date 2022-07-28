@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import qs from "qs";
 import algoliasearch from "algoliasearch/lite";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   InstantSearch,
   SearchBox,
@@ -9,14 +9,19 @@ import {
   PoweredBy,
   Configure,
   Pagination,
+  connectSearchBox,
 } from "react-instantsearch-dom";
 import { useWindowSize } from "@reach/window-size";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { createQuerySuggestionsPlugin } from "@algolia/autocomplete-plugin-query-suggestions";
+import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
 
 import { CustomRefinementList } from "../CustomRefinementList/CustomRefinementList";
 import { CustomRefinements } from "../CustomRefinements";
 import { CustomStateResults } from "../CustomStateResults";
+
+import { Autocomplete } from "../Autocomplete";
 
 import styles from "./AlgoliaSearch.module.scss";
 
@@ -33,7 +38,7 @@ const searchStateToUrl = (searchState: any) => {
   return searchState ? createURL(searchState) : "";
 };
 
-const urlToSearchState = (search: any) => {
+export const urlToSearchState = (search: any) => {
   return qs.parse(search.slice(1));
 };
 
@@ -41,6 +46,8 @@ const filters = [
   { label: "CATEGORY", attribute: "category" },
   { label: "LOCATION", attribute: "business_location" },
 ];
+
+const VirtualSearchBox = connectSearchBox(() => null);
 
 const AlgoliaSearch: FC = () => {
   const router = useRouter();
@@ -66,6 +73,63 @@ const AlgoliaSearch: FC = () => {
     setSearchState(urlToSearchState(searchQuery));
   }, [searchQuery]);
 
+  const onSubmit = useCallback(({ state }) => {
+    setSearchState((searchState: any) => ({
+      ...searchState,
+      query: state.query,
+    }));
+  }, []);
+
+  const onReset = useCallback(() => {
+    setSearchState((searchState: any) => ({
+      ...searchState,
+      query: "",
+    }));
+  }, []);
+
+  const plugins = useMemo(() => {
+    const recentSearchesPlugin = createLocalStorageRecentSearchesPlugin({
+      key: "search",
+      limit: 3,
+      transformSource({ source }: any) {
+        return {
+          ...source,
+          onSelect({ item }) {
+            setSearchState((searchState: any) => ({
+              ...searchState,
+              query: item.label,
+            }));
+          },
+        };
+      },
+    });
+
+    const querySuggestionsPlugin = createQuerySuggestionsPlugin({
+      searchClient,
+      indexName: "Business",
+      getSearchParams() {
+        // This creates a shared `hitsPerPage` value once the duplicates
+        // between recent searches and Query Suggestions are removed.
+        return recentSearchesPlugin!.data!.getAlgoliaSearchParams({
+          hitsPerPage: 6,
+        });
+      },
+      transformSource({ source }) {
+        return {
+          ...source,
+          onSelect({ item }) {
+            setSearchState((searchState: any) => ({
+              ...searchState,
+              query: item.query,
+            }));
+          },
+        };
+      },
+    });
+
+    return [recentSearchesPlugin, querySuggestionsPlugin];
+  }, []);
+
   return (
     <div className="ais-InstantSearch">
       <InstantSearch
@@ -75,39 +139,18 @@ const AlgoliaSearch: FC = () => {
         onSearchStateChange={onSearchStateChange}
         createURL={createURL}
       >
-        <div className={styles.searchDiv}>
-          {/* <PoweredBy /> */}
-          <SearchBox />
-        </div>
-
-        <div className={styles.searchFilters}>
-          {filters.map((item, index) => {
-            const isActive = currentDropDown === index + 1;
-
-            let isFiltered = false;
-
-            if (searchState?.refinementList) {
-              isFiltered =
-                searchState.refinementList[item.attribute]?.length > 0;
-            }
-
-            return (
-              <button
-                key={item.label}
-                onClick={() =>
-                  isActive
-                    ? setCurrentDropDown(0)
-                    : setCurrentDropDown(index + 1)
-                }
-                className={`button withIcon ${isActive && styles.activeFilter}`}
-              >
-                {item.label}
-                {isFiltered && <span className={styles.active} />}
-                <FontAwesomeIcon icon={isActive ? faCaretUp : faCaretDown} />
-              </button>
-            );
-          })}
-        </div>
+        <VirtualSearchBox />
+        <Autocomplete
+          placeholder="Search"
+          detachedMediaQuery="none"
+          initialState={{
+            query: searchState.query,
+          }}
+          openOnFocus={true}
+          onSubmit={onSubmit}
+          onReset={onReset}
+          plugins={plugins}
+        />
 
         <Configure hitsPerPage={12} />
         <CustomRefinementList
