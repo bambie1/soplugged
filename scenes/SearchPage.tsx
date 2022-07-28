@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 const AlgoliaSearch = dynamic(
-  () => import("../components/algolia/AlgoliaSearch/AlgoliaSearch")
+  () => import("../components/algolia-old/AlgoliaSearch/AlgoliaSearch")
 );
 
 const SearchPage = () => {

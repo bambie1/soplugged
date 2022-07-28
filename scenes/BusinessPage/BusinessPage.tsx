@@ -18,7 +18,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
-import { createURL } from "@/components/algolia/AlgoliaSearch";
+import { createURL } from "@/components/algolia-old/AlgoliaSearch";
 import { IBusiness } from "@/types/Business";
 import { useAuth } from "@/context/authContext";
 

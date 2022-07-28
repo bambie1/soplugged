@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { createURL } from "@/components/algolia/AlgoliaSearch";
+import { createURL } from "@/components/algolia-old/AlgoliaSearch";
 
 const useAlgolia = () => {
   const router = useRouter();

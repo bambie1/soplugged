@@ -3,8 +3,6 @@ import Link from "next/link";
 
 import Avatar from "@/components/Avatar/Avatar";
 
-import styles from "./algolia/AlgoliaHit/AlgoliaHit.module.scss";
-
 interface Props {
   hit: any;
 }
@@ -15,16 +13,16 @@ const NewBusinessCard: FC<Props> = ({ hit }) => {
   return (
     <>
       <Link href={`/business/${slug}`}>
-        <a className="relative bg-white block rounded-lg p-4 text-center min-w-[16rem]">
-          <div className="absolute -top-7 shadow-lg rounded-full flex">
+        <a className="relative block min-w-[16rem] rounded-lg bg-white p-4 text-center">
+          <div className="absolute -top-7 flex rounded-full shadow-lg">
             <Avatar name={business_name} url={logo_url} />
           </div>
-          <h3 className="font-bold text-gray-600 uppercase truncate">
+          <h3 className="truncate font-bold uppercase text-gray-600">
             {business_name}
           </h3>
 
-          <p className="text-sm truncate">{category}</p>
-          <p className="text-xs mt-2 truncate">{business_location}</p>
+          <p className="truncate text-sm">{category}</p>
+          <p className="mt-2 truncate text-xs">{business_location}</p>
         </a>
       </Link>
     </>

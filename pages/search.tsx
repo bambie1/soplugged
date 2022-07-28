@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import SearchPage from "@/scenes/SearchPage";
 import { SEO } from "@/components/SEO";
 
-import { urlToSearchState } from "@/components/algolia/AlgoliaSearch/AlgoliaSearch";
+import { urlToSearchState } from "@/components/algolia-old/AlgoliaSearch/AlgoliaSearch";
 
 const Search: NextPage = () => {
   const router = useRouter();
