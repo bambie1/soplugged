@@ -2,10 +2,12 @@
 /* eslint-disable max-len */
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import { popularCategories } from "@/lib/popularCategories";
 import useAlgolia from "@/hooks/useAlgolia";
-import Searchbar from "./algolia/Searchbar";
+
+const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 
 const HeroImage = ({ index }: any) => {
   const { handleCategoryClick } = useAlgolia();
@@ -20,7 +22,7 @@ const HeroImage = ({ index }: any) => {
         className="group relative aspect-square w-full overflow-hidden rounded-full border-2 border-transparent focus:border-primary"
       >
         <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30 transition duration-500 hover:bg-gradient-to-r hover:from-secondary/70 hover:to-white/70">
-          <p className="z-10 border-b border-black font-semibold uppercase opacity-0 transition duration-300 group-hover:opacity-100">
+          <p className="border-b border-black font-semibold uppercase opacity-0 transition duration-300 group-hover:opacity-100">
             {popularCategories[index].title}
           </p>
         </div>
@@ -109,9 +111,6 @@ const Hero = () => {
             </ul>
           </div>
         </aside>
-        {/* <div className="border border-secondary/50 rounded-full absolute -left-16 bottom-[29rem] w-24 h-24 -z-10" />
-          <div className="border border-secondary/50 rounded-full absolute -left-20 bottom-72 w-[60%] aspect-square -z-10" />
-        <div className="border border-secondary/50 rounded-full absolute -left-20 -bottom-10 w-96 h-96 -z-10" /> */}
       </section>
     </div>
   );

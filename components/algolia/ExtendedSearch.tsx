@@ -1,73 +1,108 @@
-import { useRouter } from "next/router";
-import qs from "qs";
-import algoliasearch from "algoliasearch/lite";
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  InstantSearch,
-  Configure,
-  Pagination,
-  connectSearchBox,
-  Snippet,
-  Hits,
-} from "react-instantsearch-dom";
+// @ts-nocheck
+
 import { createQuerySuggestionsPlugin } from "@algolia/autocomplete-plugin-query-suggestions";
 import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
+import algoliasearch from "algoliasearch/lite";
+import qs from "qs";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
+  Configure,
+  connectSearchBox,
+  HierarchicalMenu,
+  Hits,
+  InstantSearch,
+  Pagination,
+  Panel,
+  Snippet,
+} from "react-instantsearch-dom";
+import { getAlgoliaResults } from "@algolia/autocomplete-js";
+
 import { Autocomplete } from "./Autocomplete";
-import Searchbar from "./Searchbar";
+import { CategoryHit } from "./CategoryHit";
+
+import "@algolia/autocomplete-theme-classic/dist/theme.css";
 import { CustomStateResults } from "./CustomStateResults";
 
-const DEBOUNCE_TIME = 400;
+export const INSTANT_SEARCH_INDEX_NAME = "Business";
+export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
+  "instant_search_demo_query_suggestions";
+export const INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES = [
+  "hierarchicalCategories.lvl0",
+  "hierarchicalCategories.lvl1",
+];
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID!,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API!
 );
 
-const createURL = (state: any) => `?${qs.stringify(state)}`;
+function createURL(searchState) {
+  return qs.stringify(searchState, { addQueryPrefix: true });
+}
 
-const searchStateToUrl = (searchState: any) => {
-  return searchState ? createURL(searchState) : "";
-};
+function searchStateToUrl({ location }, searchState) {
+  if (Object.keys(searchState).length === 0) {
+    return "";
+  }
 
-export const urlToSearchState = (search: any) => {
+  // Remove configure search state from query parameters
+  const { configure, ...rest } = searchState;
+  return `${location.pathname}${createURL(rest)}`;
+}
+
+function urlToSearchState({ search }) {
   return qs.parse(search.slice(1));
-};
+}
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
-const ExtendedSearch: FC = () => {
-  const router = useRouter();
-  const searchQuery = router.asPath.replace(router.pathname, "");
-  const [searchState, setSearchState] = useState<any>(
-    urlToSearchState(searchQuery)
-  );
-  const debouncedSetStateRef = useRef<any>(null);
-
-  function onSearchStateChange(updatedSearchState: any) {
-    clearTimeout(debouncedSetStateRef.current);
-
-    debouncedSetStateRef.current = setTimeout(() => {
-      router.push(searchStateToUrl(updatedSearchState));
-    }, DEBOUNCE_TIME);
-
-    setSearchState(updatedSearchState);
-  }
+function ExtendedSearch() {
+  const [searchState, setSearchState] = useState(() => {
+    if (typeof window !== "undefined") {
+      return urlToSearchState(window.location);
+    } else return null;
+  });
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    setSearchState(urlToSearchState(searchQuery));
-  }, [searchQuery]);
+    clearTimeout(timerRef.current);
+
+    timerRef.current = setTimeout(() => {
+      window.history.pushState(
+        searchState,
+        null,
+        searchStateToUrl({ location: window.location }, searchState)
+      );
+    }, 400);
+  }, [searchState]);
+
+  const currentCategory = useMemo(
+    () =>
+      searchState?.hierarchicalMenu?.[
+        INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]
+      ] || "",
+    [searchState]
+  );
 
   const onSubmit = useCallback(({ state }) => {
-    setSearchState((searchState: any) => ({
+    setSearchState((searchState) => ({
       ...searchState,
       query: state.query,
     }));
   }, []);
-
   const onReset = useCallback(() => {
-    setSearchState((searchState: any) => ({
+    setSearchState((searchState) => ({
       ...searchState,
       query: "",
+      hierarchicalMenu: {
+        [INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]]: "",
+      },
     }));
   }, []);
 
@@ -75,99 +110,91 @@ const ExtendedSearch: FC = () => {
     const recentSearchesPlugin = createLocalStorageRecentSearchesPlugin({
       key: "search",
       limit: 3,
-      transformSource({ source }: any) {
-        return {
-          ...source,
-          onSelect({ item }) {
-            setSearchState((searchState: any) => ({
-              ...searchState,
-              query: item.label,
-            }));
-          },
-        };
-      },
-    });
-
-    const querySuggestionsPlugin = createQuerySuggestionsPlugin({
-      searchClient,
-      indexName: "Business",
-      getSearchParams() {
-        // This creates a shared `hitsPerPage` value once the duplicates
-        // between recent searches and Query Suggestions are removed.
-        return recentSearchesPlugin!.data!.getAlgoliaSearchParams({
-          hitsPerPage: 6,
-        });
-      },
       transformSource({ source }) {
         return {
           ...source,
           onSelect({ item }) {
-            setSearchState((searchState: any) => ({
+            setSearchState((searchState) => ({
               ...searchState,
-              query: item.query,
+              query: item.label,
+              hierarchicalMenu: {
+                [INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]]:
+                  item.category || "",
+              },
             }));
           },
         };
       },
     });
 
-    return [recentSearchesPlugin, querySuggestionsPlugin];
+    return [recentSearchesPlugin];
   }, []);
 
+  console.log({ searchState });
+
   return (
-    <div className="ais-InstantSearch">
+    <div>
       <InstantSearch
-        indexName="Business"
         searchClient={searchClient}
+        indexName={INSTANT_SEARCH_INDEX_NAME}
         searchState={searchState}
-        onSearchStateChange={onSearchStateChange}
+        onSearchStateChange={setSearchState}
         createURL={createURL}
       >
-        <VirtualSearchBox />
-
-        {/* <Autocomplete
-          placeholder="Search products"
-          detachedMediaQuery="none"
-          initialState={{
-            query: searchState.query,
-          }}
-          openOnFocus={true}
-          onSubmit={onSubmit}
-          onReset={onReset}
-          // plugins={plugins}
-        /> */}
-        <Searchbar />
+        <header className="header">
+          <div className="header-wrapper wrapper">
+            {/* A virtual search box is required for InstantSearch to understand the `query` search state property */}
+            <VirtualSearchBox />
+            <Autocomplete
+              placeholder="Search products"
+              detachedMediaQuery="none"
+              initialState={{
+                query: searchState?.query || "",
+              }}
+              openOnFocus={true}
+              onSubmit={onSubmit}
+              onReset={onReset}
+              plugins={plugins}
+              getSources={({ query }: any) => [
+                {
+                  sourceId: "categories",
+                  getItems() {
+                    return getAlgoliaResults({
+                      searchClient,
+                      queries: [
+                        {
+                          indexName: "Category",
+                          query,
+                          params: {
+                            hitsPerPage: 4,
+                          },
+                        },
+                      ],
+                    });
+                  },
+                  templates: {
+                    item({ item, components }: any) {
+                      return <CategoryHit hit={item} components={components} />;
+                    },
+                  },
+                },
+              ]}
+            />
+          </div>
+        </header>
 
         <Configure hitsPerPage={12} />
 
         <CustomStateResults />
-        <Pagination />
-
-        {/* <div className="mt-10">
-          <Hits hitComponent={Hit} />
-          <Pagination />
+        {/* <div className="wrapper container">
+          <div>
+            <Hits hitComponent={Hit} />
+            <Pagination />
+          </div>
         </div> */}
       </InstantSearch>
     </div>
   );
-};
+}
 
 export default ExtendedSearch;
-
-function Hit({ hit }: any) {
-  return (
-    <article className="hit">
-      <div className="hit-image">
-        <img src={hit.image} alt={hit.name} />
-      </div>
-      <div>
-        <h1>
-          <Snippet hit={hit} attribute="business_name" />
-        </h1>
-        <div>
-          <strong>{hit.business_name}</strong>
-        </div>
-      </div>
-    </article>
-  );
-}

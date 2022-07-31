@@ -5,7 +5,7 @@ import styles from "./BusinessPage.module.scss";
 
 const BusinessPageSkeleton = () => {
   return (
-    <PageWrapper center>
+    <div className="my-container">
       <Skeleton type="title" />
       <Skeleton type="heading" />
 
@@ -21,7 +21,7 @@ const BusinessPageSkeleton = () => {
           <Skeleton type="input" />
         </div>
       </section>
-    </PageWrapper>
+    </div>
   );
 };
 

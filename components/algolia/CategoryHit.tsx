@@ -1,5 +1,4 @@
 import useAlgolia from "@/hooks/useAlgolia";
-import { createURL } from "../algolia-old/AlgoliaSearch";
 
 export function CategoryHit({ hit, components }: any) {
   const { handleCategoryClick } = useAlgolia();

@@ -2,31 +2,49 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Fragment } from "react";
+import dynamic from "next/dynamic";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+
+const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 const mainNav = [
+  { id: 1, text: "Directory", link: "/search" },
   { id: 2, text: "PRO", link: "/pro" },
   { id: 3, text: "Merch", link: "/merch" },
 ];
 
 export default function Example() {
   const router = useRouter();
+  const [isStyled, setIsStyled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () =>
+        setIsStyled(window.pageYOffset > 70)
+      );
+    }
+  }, []);
 
   return (
-    <Disclosure as="nav" className="bg-white shadow fixed w-full z-10">
+    <Disclosure
+      as="nav"
+      className={`fixed z-10 w-full overflow-hidden transition duration-200 ${
+        isStyled ? "bg-white shadow" : ""
+      }`}
+    >
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div className="flex justify-between h-16">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+            <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 <Link href="/">
-                  <a className="flex-shrink-0 flex items-center">
+                  <a className="flex flex-shrink-0 items-center">
                     <Image
                       src="/soplugged-logo.png"
                       alt="SoPlugged Logo"
@@ -43,7 +61,7 @@ export default function Example() {
                           router.asPath.startsWith(link)
                             ? "border-primary font-bold text-primary"
                             : "border-transparent font-medium text-gray-900"
-                        } inline-flex items-center px-1 pt-1 border-b-2`}
+                        } inline-flex items-center border-b-2 px-1 pt-1`}
                       >
                         {text}
                       </a>
@@ -51,42 +69,14 @@ export default function Example() {
                   ))}
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
-                <div className="max-w-lg w-full lg:max-w-xs">
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <svg
-                        aria-hidden="true"
-                        className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <input
-                      id="search"
-                      name="search"
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
-                      placeholder="Start your search"
-                      type="search"
-                    />
-                  </div>
+              <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
+                <div className="w-full max-w-lg lg:max-w-xs">
+                  <Searchbar />
                 </div>
               </div>
               <div className="flex items-center lg:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -97,9 +87,9 @@ export default function Example() {
               </div>
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-4 relative flex-shrink-0">
+                <Menu as="div" className="relative ml-4 flex-shrink-0">
                   <div>
-                    <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -117,7 +107,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -165,23 +155,23 @@ export default function Example() {
           </div>
 
           <Disclosure.Panel className="lg:hidden">
-            <div className="pt-2 pb-3 space-y-1">
+            <div className="space-y-1 pt-2 pb-3">
               <Disclosure.Button
                 as="a"
                 href="#"
-                className="bg-indigo-50 border-primary text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                className="block border-l-4 border-primary bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
                 PRO
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="#"
-                className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800"
               >
                 Team
               </Disclosure.Button>
             </div>
-            <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="border-t border-gray-200 pt-4 pb-3">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
                   <img
@@ -203,14 +193,14 @@ export default function Example() {
                 <Disclosure.Button
                   as="a"
                   href="#"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 border hover:text-gray-800 hover:bg-gray-100"
+                  className="block border px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                 >
                   My dashboard
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
                   href="#"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                 >
                   Sign out
                 </Disclosure.Button>

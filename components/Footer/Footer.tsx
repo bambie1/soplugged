@@ -14,7 +14,11 @@ interface Props {
 
 const Footer: FC<Props> = ({ tertiary }) => {
   return (
-    <footer className={`${styles.footer} ${tertiary && styles.blue}`}>
+    <footer
+      className={`${styles.footer} ${
+        tertiary && styles.blue
+      } border-t border-gray-300`}
+    >
       <div className={`container ${styles.container} my-container`}>
         {!tertiary && <SubscribeForm />}
         <section className={styles.linksGrid}>

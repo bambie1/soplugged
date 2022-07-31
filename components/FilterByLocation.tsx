@@ -37,23 +37,23 @@ const FilterByLocation = () => {
   const { handleLocationClick } = useAlgolia();
 
   return (
-    <section className="mt-20 mb-20 bg-secondary/[.12] pt-10 pb-12">
+    <section className="light-gradient relative mt-20 mb-20 pt-10 pb-12">
       <div className="my-container grid">
-        <h2 className="text-2xl lg:text-3xl font-bold mb-1 text-center">
+        <h2 className="mb-1 text-center text-3xl font-bold xl:text-4xl">
           Find by location
         </h2>
         <p className="text-center lg:text-lg">
           There is a black-owned business near you
         </p>
         <div className="mt-10">
-          <ul className="grid grid-cols-2 lg:flex gap-3 xl:gap-10 flex-wrap justify-center">
+          <ul className="grid grid-cols-2 flex-wrap justify-center gap-3 lg:flex xl:gap-10">
             {locationImages.map(({ city, cityFull }) => (
               <li
                 key={city}
-                className="lg:w-[20%] relative overflow-hidden border border-black rounded-lg flex items-center justify-center"
+                className="relative flex items-center justify-center overflow-hidden rounded-lg border border-black lg:w-[20%]"
               >
                 <button
-                  className="flex-1 aspect-[2/1]"
+                  className="aspect-[2/1] flex-1"
                   onClick={() => handleLocationClick(cityFull)}
                 >
                   <p className="uppercase">{city}</p>

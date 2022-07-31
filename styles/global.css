@@ -12,7 +12,7 @@
 }
 
 .my-container {
-  @apply w-full lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full px-4 sm:px-6 lg:max-w-7xl lg:px-8;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -24,4 +24,8 @@
 .overflow-x-auto {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.light-gradient {
+  @apply bg-gradient-to-r from-secondary/5 to-secondary/[.12];
 }

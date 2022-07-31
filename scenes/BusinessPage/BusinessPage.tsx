@@ -18,11 +18,11 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
-import { createURL } from "@/components/algolia-old/AlgoliaSearch";
 import { IBusiness } from "@/types/Business";
 import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
+import { createURL } from "@/utils/algolia";
 
 const Header = dynamic(() => import("../../components/Header"));
 const FavoriteButton = dynamic(
@@ -160,7 +160,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <PageWrapper>
+      <main className="my-container pt-28">
         <section className="center">
           <div className={styles.businessHeader}>
             <Avatar name={business_name} url={logo_url} />
@@ -227,7 +227,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             </a>
           </Link>
         )}
-      </PageWrapper>
+      </main>
       <Footer />
     </>
   );
