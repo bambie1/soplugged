@@ -10,7 +10,7 @@ import {
 
 import Hero from "@/components/Hero";
 import FilterByLocation from "@/components/FilterByLocation";
-import { FAQs } from "@/components/FAQs";
+import FAQs from "@/components/FAQs";
 import PopularBusinesses from "@/components/PopularBusinesses";
 import BuyOrSell from "@/components/BuyOrSell";
 import { popularCategories } from "@/lib/popularCategories";

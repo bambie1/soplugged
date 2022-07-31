@@ -57,38 +57,11 @@ const Hero = () => {
           <p className="mt-6 text-lg lg:hidden">
             Connecting black businesses with the consumers that love them.
           </p>
-          <p className="mt-6 hidden w-[90%] text-lg lg:block">
+          <p className="mt-3 hidden w-[90%] text-lg lg:block">
             Find everything from restaurants, hairstylists and salons to
             tutoring, tech and healthcare services.
           </p>
-          <div className="mx-auto mt-4 flex w-full max-w-xl flex-col items-end lg:mx-0">
-            {/* <Link href="/search">
-              <a className="relative mt-4 w-full">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <svg
-                    aria-hidden="true"
-                    className="h-5 w-5 text-gray-500 dark:text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  type="search"
-                  id="default-search"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-gray-900 placeholder-shown:text-ellipsis focus:border-primary focus:ring-primary  lg:text-lg"
-                  placeholder="Search by category, location, or business name"
-                />
-              </a>
-            </Link> */}
+          <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0">
             <Searchbar />
             <Link href="/dashboard">
               <a className="mt-2 border-b border-primary text-base">

@@ -2,7 +2,6 @@
 import dynamic from "next/dynamic";
 
 import { ProHero } from "@/components/ProHero";
-import { FAQs } from "@/components/FAQs";
 import { ProHowItWorks } from "@/components/ProHowItWorks";
 import { ProPersonas } from "@/components/ProPersonas";
 import { ProMoreFeatures } from "@/components/ProMoreFeatures";
@@ -30,10 +29,6 @@ const ProPage = () => {
         </section>
         <section className={styles.pageSection}>
           <ProMoreFeatures />
-        </section>
-
-        <section className={`container`}>
-          <FAQs isPro />
         </section>
       </div>
       <Footer tertiary />

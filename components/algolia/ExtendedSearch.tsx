@@ -19,6 +19,7 @@ import {
   InstantSearch,
   Pagination,
   Panel,
+  RefinementList,
   Snippet,
 } from "react-instantsearch-dom";
 import { getAlgoliaResults } from "@algolia/autocomplete-js";
@@ -28,6 +29,7 @@ import { CategoryHit } from "./CategoryHit";
 
 import "@algolia/autocomplete-theme-classic/dist/theme.css";
 import { CustomStateResults } from "./CustomStateResults";
+import { useRouter } from "next/router";
 
 export const INSTANT_SEARCH_INDEX_NAME = "Business";
 export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
@@ -62,7 +64,8 @@ function urlToSearchState({ search }) {
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
-function ExtendedSearch() {
+const ExtendedSearch = () => {
+  const router = useRouter();
   const [searchState, setSearchState] = useState(() => {
     if (typeof window !== "undefined") {
       return urlToSearchState(window.location);
@@ -80,7 +83,7 @@ function ExtendedSearch() {
         searchStateToUrl({ location: window.location }, searchState)
       );
     }, 400);
-  }, [searchState]);
+  }, [searchState, router]);
 
   const currentCategory = useMemo(
     () =>
@@ -130,8 +133,6 @@ function ExtendedSearch() {
     return [recentSearchesPlugin];
   }, []);
 
-  console.log({ searchState });
-
   return (
     <div>
       <InstantSearch
@@ -142,7 +143,7 @@ function ExtendedSearch() {
         createURL={createURL}
       >
         <header className="header">
-          <div className="header-wrapper wrapper">
+          <div className="header-wrapper wrapper mx-auto max-w-2xl">
             {/* A virtual search box is required for InstantSearch to understand the `query` search state property */}
             <VirtualSearchBox />
             <Autocomplete
@@ -186,6 +187,7 @@ function ExtendedSearch() {
         <Configure hitsPerPage={12} />
 
         <CustomStateResults />
+        <RefinementList operator="or" attribute={"category"} />
         {/* <div className="wrapper container">
           <div>
             <Hits hitComponent={Hit} />
@@ -195,6 +197,6 @@ function ExtendedSearch() {
       </InstantSearch>
     </div>
   );
-}
+};
 
 export default ExtendedSearch;
