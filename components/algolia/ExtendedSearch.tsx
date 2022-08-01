@@ -12,11 +12,12 @@ import React, {
   useState,
 } from "react";
 import {
+  ClearRefinements,
   Configure,
   connectRefinementList,
   connectSearchBox,
   InstantSearch,
-  RefinementList,
+  Pagination,
 } from "react-instantsearch-dom";
 import { getAlgoliaResults } from "@algolia/autocomplete-js";
 
@@ -26,13 +27,7 @@ import { CustomStateResults } from "./CustomStateResults";
 
 import "@algolia/autocomplete-theme-classic/dist/theme.css";
 
-export const INSTANT_SEARCH_INDEX_NAME = "Business";
-export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
-  "instant_search_demo_query_suggestions";
-export const INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES = [
-  "hierarchicalCategories.lvl0",
-  "hierarchicalCategories.lvl1",
-];
+const INSTANT_SEARCH_INDEX_NAME = "Business";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_ID!,
@@ -82,6 +77,10 @@ const ExtendedSearch = () => {
     }, 400);
   }, [searchState, router]);
 
+  useEffect(() => {
+    setSearchState(urlToSearchState(window.location));
+  }, [router]);
+
   const onSubmit = useCallback(({ state }) => {
     setSearchState((searchState) => ({
       ...searchState,
@@ -116,8 +115,16 @@ const ExtendedSearch = () => {
     return [recentSearchesPlugin];
   }, []);
 
+  const filteredCategory = searchState?.refinementList?.category?.[0] || null;
+  const filteredLocation =
+    searchState?.refinementList?.business_location?.[0] || null;
+
   return (
     <div>
+      <h1 className="mb-8 text-center text-3xl font-bold lg:text-5xl">
+        <span className="text-primary">{filteredCategory || "All"}</span>{" "}
+        businesses
+      </h1>
       <InstantSearch
         searchClient={searchClient}
         indexName={INSTANT_SEARCH_INDEX_NAME}
@@ -170,15 +177,10 @@ const ExtendedSearch = () => {
 
         <Configure hitsPerPage={12} />
 
+        <ClearRefinements />
         <CustomStateResults />
-        <RefinementList attribute={"category"} />
-        {/* <VirtualRefinementList attribute={"category"} /> */}
-        {/* <div className="wrapper container">
-          <div>
-            <Hits hitComponent={Hit} />
-            <Pagination />
-          </div>
-        </div> */}
+        <VirtualRefinementList attribute={"category"} />
+        <Pagination />
       </InstantSearch>
     </div>
   );

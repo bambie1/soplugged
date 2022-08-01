@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@1.7.1", "@algolia/autocomplete-core@^1.7.1":
+"@algolia/autocomplete-core@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.7.1.tgz#025538b8a9564a9f3dd5bcf8a236d6951c76c7d1"
   integrity sha512-eiZw+fxMzNQn01S8dA/hcCpoWCOCwcIIEUtHHdzN5TGB3IpzLbuhqFeTfh2OUhhgkE8Uo17+wH+QJ/wYyQmmzg==
@@ -1617,7 +1617,7 @@ algoliasearch-helper@>=3, algoliasearch-helper@^3.6.2:
   dependencies:
     events "^1.1.1"
 
-algoliasearch-helper@^3.10.0, algoliasearch-helper@^3.7.4:
+algoliasearch-helper@^3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/algoliasearch-helper/-/algoliasearch-helper-3.10.0.tgz#59a0f645dd3c7e55cf01faa568d1af50c49d36f6"
   integrity sha512-4E4od8qWWDMVvQ3jaRX6Oks/k35ywD011wAA4LbYMMjOtaZV6VWaTjRr4iN2bdaXP2o1BP7SLFMBf3wvnHmd8Q==
@@ -3560,7 +3560,7 @@ inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, i
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-instantsearch.js@^4.40.1, instantsearch.js@^4.43.1:
+instantsearch.js@^4.43.1:
   version "4.43.1"
   resolved "https://registry.yarnpkg.com/instantsearch.js/-/instantsearch.js-4.43.1.tgz#9f316c13f63a1e53bf999f5d3716dc73bc7e9f4d"
   integrity sha512-JEaODN0MDb5atW39nWmdxCPlcaNmX7THBlhy3cAJhVG9c19Cfaw27DXRBdE9E9B7WO45YYAhyNTnGITNKBXC0w==
@@ -5033,24 +5033,6 @@ react-instantsearch-dom@^6.15.0:
     prop-types "^15.6.2"
     react-fast-compare "^3.0.0"
     react-instantsearch-core "^6.16.0"
-
-react-instantsearch-hooks-web@6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/react-instantsearch-hooks-web/-/react-instantsearch-hooks-web-6.25.0.tgz#4ca1ca5c4a0368aa4178ad0f6e1341489c1df741"
-  integrity sha512-rlexu6ngoHeLleGdrpM1nytk6L3xmFRn3F+mt4Ctug26aPibECUHgP82dy8hS0Iz9Ob3Rm0RX1SNW3H/4lw2ew==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    instantsearch.js "^4.40.1"
-    react-instantsearch-hooks "6.25.0"
-
-react-instantsearch-hooks@6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/react-instantsearch-hooks/-/react-instantsearch-hooks-6.25.0.tgz#09392025b4fc619ce7ac045d9675d82115eddebe"
-  integrity sha512-+0/bAut7PZAAKls3mZU84C0O+9QqTE9dNVp82dATk4QN4xBamrdIEwBq15t/O38n5pXLbVt5rLgmarmtbL0+BA==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    algoliasearch-helper "^3.7.4"
-    instantsearch.js "^4.40.1"
 
 react-is@17.0.2:
   version "17.0.2"
