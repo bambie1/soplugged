@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import { createQuerySuggestionsPlugin } from "@algolia/autocomplete-plugin-query-suggestions";
 import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
 import algoliasearch from "algoliasearch/lite";
 import qs from "qs";
@@ -13,14 +12,10 @@ import React, {
 } from "react";
 import {
   Configure,
+  connectRefinementList,
   connectSearchBox,
-  HierarchicalMenu,
-  Hits,
   InstantSearch,
-  Pagination,
-  Panel,
   RefinementList,
-  Snippet,
 } from "react-instantsearch-dom";
 import { getAlgoliaResults } from "@algolia/autocomplete-js";
 
@@ -64,6 +59,8 @@ function urlToSearchState({ search }) {
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
+const VirtualRefinementList = connectRefinementList(() => null);
+
 const ExtendedSearch = () => {
   const router = useRouter();
   const [searchState, setSearchState] = useState(() => {
@@ -85,34 +82,24 @@ const ExtendedSearch = () => {
     }, 400);
   }, [searchState, router]);
 
-  const currentCategory = useMemo(
-    () =>
-      searchState?.hierarchicalMenu?.[
-        INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]
-      ] || "",
-    [searchState]
-  );
-
   const onSubmit = useCallback(({ state }) => {
     setSearchState((searchState) => ({
       ...searchState,
       query: state.query,
     }));
   }, []);
+
   const onReset = useCallback(() => {
     setSearchState((searchState) => ({
       ...searchState,
       query: "",
-      hierarchicalMenu: {
-        [INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]]: "",
-      },
     }));
   }, []);
 
   const plugins = useMemo(() => {
     const recentSearchesPlugin = createLocalStorageRecentSearchesPlugin({
       key: "search",
-      limit: 3,
+      limit: 1,
       transformSource({ source }) {
         return {
           ...source,
@@ -120,10 +107,6 @@ const ExtendedSearch = () => {
             setSearchState((searchState) => ({
               ...searchState,
               query: item.label,
-              hierarchicalMenu: {
-                [INSTANT_SEARCH_HIERARCHICAL_ATTRIBUTES[0]]:
-                  item.category || "",
-              },
             }));
           },
         };
@@ -152,6 +135,7 @@ const ExtendedSearch = () => {
               initialState={{
                 query: searchState?.query || "",
               }}
+              classNames={{}}
               openOnFocus={true}
               onSubmit={onSubmit}
               onReset={onReset}
@@ -187,7 +171,8 @@ const ExtendedSearch = () => {
         <Configure hitsPerPage={12} />
 
         <CustomStateResults />
-        <RefinementList operator="or" attribute={"category"} />
+        <RefinementList attribute={"category"} />
+        {/* <VirtualRefinementList attribute={"category"} /> */}
         {/* <div className="wrapper container">
           <div>
             <Hits hitComponent={Hit} />
