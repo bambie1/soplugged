@@ -1,10 +1,11 @@
-import { Button } from "@/styled/Button";
 import Image from "next/image";
+import { SearchResults } from "react-instantsearch-core";
 import { connectStateResults, Hits } from "react-instantsearch-dom";
 
-import AlgoliaHit from "./AlgoliaHit";
+import { Button } from "@/styled/Button";
+import CustomHit from "./CustomHit";
 
-const StateResults = ({ searchResults }: any) => {
+const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
   const hasResults = searchResults && searchResults.nbHits !== 0;
   const nbHits = searchResults && searchResults.nbHits;
 
@@ -31,7 +32,7 @@ const StateResults = ({ searchResults }: any) => {
     <div>
       <p>{nbHits} hits found</p>
       <div>
-        <Hits hitComponent={AlgoliaHit} />
+        <Hits hitComponent={CustomHit as any} />
       </div>
     </div>
   );

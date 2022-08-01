@@ -1,5 +1,5 @@
 import { autocomplete } from "@algolia/autocomplete-js";
-import React, { createElement, Fragment, useEffect, useRef } from "react";
+import { createElement, Fragment, useEffect, useRef } from "react";
 import { render } from "react-dom";
 
 export function Autocomplete(props: any) {

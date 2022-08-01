@@ -2,13 +2,20 @@ import { FC } from "react";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import Link from "next/link";
 
+import { Hit as AlgoliaHit } from "instantsearch.js/es/types";
+
 import Avatar from "@/components/Avatar/Avatar";
 
-interface Props {
-  hit: any;
-}
+type HitProps = {
+  hit: AlgoliaHit<{
+    slug: string;
+    business_name: string;
+    logo_url: string;
+    business_location: string[];
+  }>;
+};
 
-const AlgoliaHit: FC<Props> = ({ hit }) => {
+const CustomHit: FC<HitProps> = ({ hit }) => {
   const { slug, business_name, logo_url, business_location } = hit;
 
   return (
@@ -33,4 +40,4 @@ const AlgoliaHit: FC<Props> = ({ hit }) => {
   );
 };
 
-export default AlgoliaHit;
+export default CustomHit;

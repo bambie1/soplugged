@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import { useRouter } from "next/router";
 import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
 import algoliasearch from "algoliasearch/lite";
 import qs from "qs";
@@ -21,10 +22,9 @@ import { getAlgoliaResults } from "@algolia/autocomplete-js";
 
 import { Autocomplete } from "./Autocomplete";
 import { CategoryHit } from "./CategoryHit";
+import { CustomStateResults } from "./CustomStateResults";
 
 import "@algolia/autocomplete-theme-classic/dist/theme.css";
-import { CustomStateResults } from "./CustomStateResults";
-import { useRouter } from "next/router";
 
 export const INSTANT_SEARCH_INDEX_NAME = "Business";
 export const INSTANT_SEARCH_QUERY_SUGGESTIONS =
