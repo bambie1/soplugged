@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 export const faqs = [
   {
     question: "Is SoPlugged free?",

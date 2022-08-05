@@ -9,8 +9,7 @@ const SearchPage = () => {
   return (
     <>
       <Header />
-      <main className="my-container pt-24">
-        {/* <AlgoliaSearch /> */}
+      <main className="my-container mb-16 min-h-screen pt-24">
         <ExtendedSearch />
       </main>
       <Footer />

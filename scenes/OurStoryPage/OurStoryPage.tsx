@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import dynamic from "next/dynamic";
 
 import { ButtonLink } from "@/styled/ButtonLink";

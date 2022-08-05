@@ -49,7 +49,7 @@ const Searchbar = () => {
                     indexName: "Business",
                     query,
                     params: {
-                      hitsPerPage: 3,
+                      hitsPerPage: 4,
                     },
                   },
                 ],

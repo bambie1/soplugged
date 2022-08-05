@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable max-len */
+
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /** @type {import('next').NextConfig} */
 
 module.exports = {

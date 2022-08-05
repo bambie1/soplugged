@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 export const proFaqs = [
   {
     question: "Is SoPluggedPro only for Black-owned businesses?",

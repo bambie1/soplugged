@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";

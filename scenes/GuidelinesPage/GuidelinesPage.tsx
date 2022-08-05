@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { FC } from "react";
 import dynamic from "next/dynamic";
 

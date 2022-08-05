@@ -10,6 +10,7 @@
     "import/no-extraneous-dependencies": 1,
     "import/no-unresolved": 1,
     "max-len": "off",
+    "@next/next/no-img-element": "off",
     "no-console": 1,
     "no-param-reassign": ["error", { "props": true }],
     "no-return-assign": 1,

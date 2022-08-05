@@ -4,6 +4,7 @@ import { connectStateResults, Hits } from "react-instantsearch-dom";
 
 import { Button } from "@/styled/Button";
 import CustomHit from "./CustomHit";
+import CustomHits from "./CustomHits";
 
 const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
   const hasResults = searchResults && searchResults.nbHits !== 0;
@@ -29,11 +30,10 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
     );
 
   return (
-    <div>
-      <p>{nbHits} hits found</p>
-      <div>
-        <Hits hitComponent={CustomHit as any} />
-      </div>
+    <div className="mt-10 w-full">
+      <p>{nbHits} businesses found</p>
+      <CustomHits />
+      {/* <Hits hitComponent={CustomHit as any} /> */}
     </div>
   );
 };

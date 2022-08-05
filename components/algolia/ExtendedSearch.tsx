@@ -1,31 +1,24 @@
 // @ts-nocheck
 
 import { useRouter } from "next/router";
-import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
 import algoliasearch from "algoliasearch/lite";
 import qs from "qs";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  ClearRefinements,
   Configure,
-  connectRefinementList,
   connectSearchBox,
+  CurrentRefinements,
   InstantSearch,
   Pagination,
 } from "react-instantsearch-dom";
-import { getAlgoliaResults } from "@algolia/autocomplete-js";
 
-import { Autocomplete } from "./Autocomplete";
-import { CategoryHit } from "./CategoryHit";
 import { CustomStateResults } from "./CustomStateResults";
+import { SEO } from "@/components/SEO";
 
 import "@algolia/autocomplete-theme-classic/dist/theme.css";
+import { CustomRefinements } from "../algolia-old/CustomRefinements";
+import CustomMenu from "./CustomMenu";
+import { LocationMenu } from "./LocationMenu";
 
 const INSTANT_SEARCH_INDEX_NAME = "Business";
 
@@ -34,11 +27,11 @@ const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API!
 );
 
-function createURL(searchState) {
+function createURL(searchState: any) {
   return qs.stringify(searchState, { addQueryPrefix: true });
 }
 
-function searchStateToUrl({ location }, searchState) {
+function searchStateToUrl({ location }: any, searchState: any) {
   if (Object.keys(searchState).length === 0) {
     return "";
   }
@@ -48,13 +41,11 @@ function searchStateToUrl({ location }, searchState) {
   return `${location.pathname}${createURL(rest)}`;
 }
 
-function urlToSearchState({ search }) {
+function urlToSearchState({ search }: any) {
   return qs.parse(search.slice(1));
 }
 
 const VirtualSearchBox = connectSearchBox(() => null);
-
-const VirtualRefinementList = connectRefinementList(() => null);
 
 const ExtendedSearch = () => {
   const router = useRouter();
@@ -66,7 +57,7 @@ const ExtendedSearch = () => {
   const timerRef = useRef(null);
 
   useEffect(() => {
-    clearTimeout(timerRef.current);
+    clearTimeout(timerRef.current!);
 
     timerRef.current = setTimeout(() => {
       window.history.pushState(
@@ -81,108 +72,50 @@ const ExtendedSearch = () => {
     setSearchState(urlToSearchState(window.location));
   }, [router]);
 
-  const onSubmit = useCallback(({ state }) => {
-    setSearchState((searchState) => ({
-      ...searchState,
-      query: state.query,
-    }));
-  }, []);
-
-  const onReset = useCallback(() => {
-    setSearchState((searchState) => ({
-      ...searchState,
-      query: "",
-    }));
-  }, []);
-
-  const plugins = useMemo(() => {
-    const recentSearchesPlugin = createLocalStorageRecentSearchesPlugin({
-      key: "search",
-      limit: 1,
-      transformSource({ source }) {
-        return {
-          ...source,
-          onSelect({ item }) {
-            setSearchState((searchState) => ({
-              ...searchState,
-              query: item.label,
-            }));
-          },
-        };
-      },
-    });
-
-    return [recentSearchesPlugin];
-  }, []);
-
-  const filteredCategory = searchState?.refinementList?.category?.[0] || null;
-  const filteredLocation =
-    searchState?.refinementList?.business_location?.[0] || null;
+  const filteredCategory = searchState?.menu?.category || null;
+  const filteredLocation = searchState?.menu?.business_location || null;
 
   return (
-    <div>
-      <h1 className="mb-8 text-center text-3xl font-bold lg:text-5xl">
-        <span className="text-primary">{filteredCategory || "All"}</span>{" "}
-        businesses
-      </h1>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={INSTANT_SEARCH_INDEX_NAME}
-        searchState={searchState}
-        onSearchStateChange={setSearchState}
-        createURL={createURL}
-      >
-        <header className="header">
-          <div className="header-wrapper wrapper mx-auto max-w-2xl">
-            {/* A virtual search box is required for InstantSearch to understand the `query` search state property */}
-            <VirtualSearchBox />
-            <Autocomplete
-              placeholder="Search products"
-              detachedMediaQuery="none"
-              initialState={{
-                query: searchState?.query || "",
-              }}
-              classNames={{}}
-              openOnFocus={true}
-              onSubmit={onSubmit}
-              onReset={onReset}
-              plugins={plugins}
-              getSources={({ query }: any) => [
-                {
-                  sourceId: "categories",
-                  getItems() {
-                    return getAlgoliaResults({
-                      searchClient,
-                      queries: [
-                        {
-                          indexName: "Category",
-                          query,
-                          params: {
-                            hitsPerPage: 4,
-                          },
-                        },
-                      ],
-                    });
-                  },
-                  templates: {
-                    item({ item, components }: any) {
-                      return <CategoryHit hit={item} components={components} />;
-                    },
-                  },
-                },
-              ]}
-            />
+    <>
+      <SEO
+        title={`${filteredCategory || "Discover all"} businesses | SoPlugged`}
+        description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
+      />
+      <div className="flex flex-col items-center">
+        <div className="mb-8 flex flex-col items-center ">
+          <h1 className="relative inline-block max-w-lg text-center text-5xl font-bold">
+            <span className="text-primary">
+              {filteredCategory || "Explore"}
+            </span>
+            {/* <span className="absolute left-0 -bottom-1 mx-auto h-3 w-full -rotate-2 bg-secondary/40" /> */}
+          </h1>
+          <span className="mt-4 text-lg lg:text-2xl">
+            Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
+          </span>
+        </div>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={INSTANT_SEARCH_INDEX_NAME}
+          searchState={searchState}
+          onSearchStateChange={setSearchState}
+          createURL={createURL}
+        >
+          {/* A virtual search box is required for InstantSearch to understand the `query` search state property */}
+          <VirtualSearchBox />
+
+          <Configure hitsPerPage={12} />
+
+          <CustomRefinements />
+          <div className="mt-4 flex w-full justify-between gap-4">
+            <CustomMenu attribute="category" />
+            <LocationMenu attribute="business_location" />
           </div>
-        </header>
 
-        <Configure hitsPerPage={12} />
-
-        <ClearRefinements />
-        <CustomStateResults />
-        <VirtualRefinementList attribute={"category"} />
-        <Pagination />
-      </InstantSearch>
-    </div>
+          <CustomStateResults />
+          <Pagination />
+        </InstantSearch>
+      </div>
+    </>
   );
 };
 

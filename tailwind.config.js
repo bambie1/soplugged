@@ -10,8 +10,8 @@ module.exports = {
         primary: "#4e3505",
         secondary: "#cdb693",
         accent: "#93aacd",
-        accent2: "#CD93C7",
-      },
+        light: "#f3f2f2"
+       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",
       },

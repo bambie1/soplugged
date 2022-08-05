@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import algoliasearch from "algoliasearch/lite";
 import { Configure, InstantSearch } from "react-instantsearch-dom";
 import CarouselHits from "./algolia/CarouselHits";

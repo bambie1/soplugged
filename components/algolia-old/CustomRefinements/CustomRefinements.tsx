@@ -1,45 +1,23 @@
 import { connectCurrentRefinements } from "react-instantsearch-dom";
 
-import styles from "./CustomRefinements.module.scss";
-
 const CurrentRefinements = ({ items, refine, createURL }: any) => {
   return (
-    <ul className={styles.list}>
+    <ul className="flex gap-2">
       {items.map((item: any) => (
-        <li key={item.label} className={styles.refinementGroup}>
-          {item.items ? (
-            <>
-              {item.items.map((nested: any) => (
-                <span key={nested.label} className={styles.refinementItem}>
-                  {nested.label}{" "}
-                  <button
-                    onClick={(event) => {
-                      event.preventDefault();
-                      refine(nested.value);
-                    }}
-                    className={`button ${styles.removeQuery}`}
-                  >
-                    ✕
-                  </button>
-                </span>
-              ))}
-            </>
-          ) : (
-            <>
-              {/* <a href={createURL(item.value)} className={styles.refinementItem}>
-                {item.label}{" "}
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    refine(item.value);
-                  }}
-                  className={`button ${styles.removeQuery}`}
-                >
-                  ✕
-                </button>
-              </a> */}
-            </>
-          )}
+        <li
+          key={item.label}
+          className="rounded-md border border-primary p-2 text-sm"
+        >
+          {item.currentRefinement}{" "}
+          <button
+            onClick={(event) => {
+              event.preventDefault();
+              refine(item.value);
+            }}
+            className="button ml-2 h-5 w-5 rounded-full border border-primary p-1 text-xs leading-[1]"
+          >
+            ✕
+          </button>
         </li>
       ))}
     </ul>

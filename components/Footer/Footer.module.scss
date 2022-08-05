@@ -1,19 +1,5 @@
 @import "styles/_mixins";
 
-.footer {
-  padding: 6rem 0px 8px;
-  position: relative;
-  min-height: 20rem;
-  text-align: center;
-  // background: linear-gradient(180deg, white 0%, $primary 100%);
-  width: 100%;
-  margin-top: 4rem;
-
-  &.blue {
-    background: linear-gradient(180deg, white 0%, $lightTertiary 100%);
-  }
-}
-
 .externalLinks {
   p {
     margin-bottom: 0.25rem;
@@ -52,25 +38,4 @@
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-// shape divider
-.shape_divider_container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.shape_divider_container svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 86px;
-}
-
-.shape_divider_container .shape_fill {
-  fill: #ffffff;
 }
