@@ -73,7 +73,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const hasContactLinks = ig_handle || phone_number || business_url;
 
   const backToSearchLink = `/search${createURL({
-    refinementList: {
+    menu: {
       category: [category],
       business_location: [business_location],
     },
@@ -82,7 +82,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const handleCategoryClick = () => {
     router.push(
       `/search${createURL({
-        refinementList: {
+        menu: {
           category: [category],
         },
       })}`

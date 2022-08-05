@@ -6,7 +6,7 @@ const useAlgolia = () => {
   const handleCategoryClick = (label: string) => {
     router.push(
       `/search${createURL({
-        refinementList: {
+        menu: {
           category: [label],
         },
       })}`
@@ -16,7 +16,7 @@ const useAlgolia = () => {
   const handleLocationClick = (label: string) => {
     router.push(
       `/search${createURL({
-        refinementList: {
+        menu: {
           business_location: [label],
         },
       })}`
