@@ -15,7 +15,7 @@ const ProPage = () => {
     <>
       <Header />
       <ProHero />
-      <main className="mb-10  flex min-h-screen scroll-pt-10 flex-col gap-20">
+      <main className="mb-10 flex min-h-screen scroll-pt-10 flex-col gap-20">
         <Services />
         <Reviews />
         <HomeGuides />

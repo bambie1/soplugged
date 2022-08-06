@@ -22,6 +22,7 @@ const Business: NextPage = () => {
   const renderContent = () => {
     if (!business) return <BusinessPageSkeleton />;
 
+    // return <BusinessPageSkeleton />;
     return <BusinessPage business={business} />;
   };
 

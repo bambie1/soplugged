@@ -105,7 +105,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
         <ReactImageGallery items={images} showPlayButton={false} />
 
         <div>
-          <h3>About</h3>
+          <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
+            About
+          </h3>
           <section
             dangerouslySetInnerHTML={{ __html: business_description }}
           ></section>
@@ -134,7 +136,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
         )}
         {business_description && (
           <div>
-            <h3>About</h3>
+            <h3 className="">About</h3>
             <section
               className={styles.description}
               dangerouslySetInnerHTML={{ __html: business_description }}
