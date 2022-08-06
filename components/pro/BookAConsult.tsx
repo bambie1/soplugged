@@ -3,6 +3,7 @@ import { InlineWidget } from "react-calendly";
 const BookAConsult = () => {
   return (
     <div className="my-container mt-20 grid gap-4 lg:grid-cols-2">
+      <div id="book-consult" className="sr-only"></div>
       <div className="flex flex-col items-start">
         <h2 className="mb-4 text-3xl font-bold xl:text-4xl">
           Get started for <span className="relative inline-block">FREE</span>

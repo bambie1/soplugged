@@ -34,6 +34,9 @@ const Searchbar = () => {
               });
             },
             templates: {
+              header() {
+                return "Categories";
+              },
               item({ item, components }: any) {
                 return <CategoryHit hit={item} components={components} />;
               },
@@ -56,6 +59,9 @@ const Searchbar = () => {
               });
             },
             templates: {
+              header() {
+                return "Businesses";
+              },
               item({ item, components }: any) {
                 return <BusinessHit hit={item} components={components} />;
               },

@@ -110,19 +110,3 @@ ais-highlight-0000000000,
   font-style: inherit;
   color: $secondary;
 }
-
-@media only screen and (min-width: 600px) {
-  .ais-Hits-item {
-    width: calc(50% - 1rem);
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .ais-Hits-item {
-    width: calc(33.3% - 1rem);
-  }
-}
-@media only screen and (min-width: 1400px) {
-  .ais-Hits-item {
-    width: calc(25% - 1rem);
-  }
-}

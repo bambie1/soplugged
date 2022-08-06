@@ -75,7 +75,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const backToSearchLink = `/search${createURL({
     menu: {
       category: [category],
-      business_location: [business_location],
+      // business_location: [business_location],
     },
   })}`;
 
@@ -92,7 +92,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const handleLocationClick = () => {
     router.push(
       `/search${createURL({
-        refinementList: {
+        menu: {
           business_location: [business_location],
         },
       })}`

@@ -4,6 +4,11 @@ const Services = () => {
       <section className="bg-pro-gradient">
         <div className="my-container grid items-center gap-4 lg:grid-cols-2">
           <div className="flex flex-col items-start py-10 lg:row-start-1">
+            <img
+              src="/images/shopify_experts.svg"
+              className="mb-5 max-h-[1.5rem] grayscale-[.6]"
+              alt="Shopify experts logo"
+            />
             <h2 className="mb-4 text-3xl font-bold xl:text-4xl">
               E-commerce websites
             </h2>
