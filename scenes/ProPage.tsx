@@ -1,3 +1,4 @@
+import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
@@ -10,7 +11,7 @@ import OurToolkit from "@/components/pro/OurToolkit";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
-const ProPage = () => {
+const ProPage: FC = (props) => {
   return (
     <>
       <Header />
@@ -18,7 +19,7 @@ const ProPage = () => {
       <main className="mb-10 flex min-h-screen scroll-pt-10 flex-col gap-20">
         <Services />
         <Reviews />
-        <HomeGuides />
+        <HomeGuides {...props} />
         <OurToolkit />
         <BookAConsult />
       </main>

@@ -58,6 +58,7 @@
   "devDependencies": {
     "@algolia/autocomplete-plugin-query-suggestions": "^1.7.1",
     "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.4",
     "@types/node": "16.11.6",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.34",

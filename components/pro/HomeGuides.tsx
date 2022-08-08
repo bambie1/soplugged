@@ -1,6 +1,12 @@
-const guides = [...Array(4)];
+import { FC } from "react";
 
-const HomeGuides = () => {
+import BlogCard from "../BlogCard";
+
+interface Props {
+  posts?: any[];
+}
+
+const HomeGuides: FC<Props> = ({ posts }) => {
   return (
     <div className="my-container mt-20 grid items-center gap-4 lg:grid-cols-2 lg:gap-8">
       <div className="flex flex-col items-start">
@@ -15,12 +21,14 @@ const HomeGuides = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <ul className="inline-flex gap-2 lg:grid lg:grid-cols-2">
-          {guides.map((guide, index) => (
-            <div
+        <ul className="mt-4 inline-flex gap-4 lg:grid lg:grid-cols-2 lg:gap-8">
+          {posts?.map((post, index) => (
+            <li
               key={index}
-              className="aspect-video w-36 rounded-lg border border-black lg:w-full"
-            ></div>
+              className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"
+            >
+              <BlogCard post={post} />
+            </li>
           ))}
         </ul>
       </div>

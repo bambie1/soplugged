@@ -11,8 +11,8 @@ module.exports = {
         secondary: "#cdb693",
         accent: "#93aacd",
         light: "#f3f2f2",
-        black: "#231803"
-       },
+        black: "#231803",
+      },
       animation: {
         slide: "100s linear 0s infinite normal none slide",
       },
@@ -23,12 +23,14 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'pro-gradient': "linear-gradient(180deg, rgba(147, 170, 205, 0.14) 0%, rgba(147, 170, 205, 0.28) 100%);"
-      }
+        "pro-gradient":
+          "linear-gradient(180deg, rgba(147, 170, 205, 0.14) 0%, rgba(147, 170, 205, 0.28) 100%);",
+      },
     },
   },
   plugins: [
     require("@tailwindcss/forms"),
     require("prettier-plugin-tailwindcss"),
+    require("@tailwindcss/typography"),
   ],
 };

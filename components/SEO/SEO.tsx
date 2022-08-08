@@ -9,7 +9,7 @@ interface Props {
 
 const SEO: FC<Props> = ({ description, title }) => {
   const router = useRouter();
-  const firstUrl = router.pathname || "not-found";
+  const firstUrl = router.asPath || "not-found";
   const url = "https://www.soplugged.com" + firstUrl;
   return (
     <Head>

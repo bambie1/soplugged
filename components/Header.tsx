@@ -15,7 +15,7 @@ function classNames(...classes: any) {
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
   { id: 2, text: "PRO", link: "/pro" },
-  { id: 3, text: "Blog", link: "/pro/blog" },
+  { id: 3, text: "Blog", link: "/blog" },
 ];
 
 export default function Example() {
@@ -25,7 +25,7 @@ export default function Example() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 20)
+        setIsStyled(window.pageYOffset > 200)
       );
     }
   }, []);
@@ -71,7 +71,8 @@ export default function Example() {
               <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
                 <div className="w-full max-w-lg lg:max-w-sm">
                   {router.asPath !== "/" &&
-                    !router.asPath.startsWith("/pro") && <Searchbar />}
+                    !router.asPath.startsWith("/pro") &&
+                    !router.asPath.startsWith("/blog") && <Searchbar />}
                 </div>
               </div>
               <div className="flex items-center lg:hidden">

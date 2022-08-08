@@ -32,7 +32,6 @@ export async function getPostBySlug(slug: any) {
         post(where: { slug: $slug }) {
           slug
           title
-          subtitle
           content {
             html
           }
@@ -41,14 +40,22 @@ export async function getPostBySlug(slug: any) {
             id
             name
           }
-          excerpt
           createdAt
           author {
             id
             name
           }
-          coverImage {
-            url
+          seo {
+            description
+            title
+            keywords
+            imageUrlSource
+            image {
+              url
+            }
+          }
+          categories(first: 10) {
+            title
           }
         }
       }
@@ -63,48 +70,76 @@ export async function getPostBySlug(slug: any) {
   return data.post;
 }
 
-export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(gql`
-    {
-      posts {
-        slug
-      }
-    }
-  `);
-  return data.posts;
-}
-
 export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: date_DESC, first: 20) {
+        posts(orderBy: featuredArticle_ASC, first: 4) {
           title
           slug
-          excerpt
           date
           featuredArticle
-          coverImage {
-            url(
-              transformation: {
-                image: { resize: { fit: crop, width: 2000, height: 1000 } }
-              }
-            )
-          }
           author {
             name
-            picture {
-              url(
-                transformation: {
-                  image: { resize: { width: 100, height: 100, fit: crop } }
-                }
-              )
+          }
+          seo {
+            description
+            title
+            keywords
+            imageUrlSource
+            image {
+              url
             }
+          }
+          categories(first: 10) {
+            title
           }
         }
       }
     `
   );
+  return data.posts;
+}
+
+export async function getAllBlogPosts() {
+  const data = await fetchAPI(
+    gql`
+      {
+        posts(orderBy: featuredArticle_ASC, first: 20) {
+          title
+          slug
+          date
+          featuredArticle
+          author {
+            name
+          }
+          seo {
+            description
+            title
+            keywords
+            imageUrlSource
+            image {
+              url
+            }
+          }
+          categories(first: 10) {
+            title
+          }
+        }
+      }
+    `
+  );
+  return data.posts;
+}
+
+export async function getAllPostsWithSlug() {
+  const data = await fetchAPI(gql`
+    query PostsWithSlugs {
+      posts {
+        slug
+      }
+    }
+  `);
   return data.posts;
 }
 
@@ -119,55 +154,39 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
             html
           }
           date
-          ogImage: coverImage {
-            url(
-              transformation: {
-                image: { resize: { fit: crop, width: 2000, height: 1000 } }
-              }
-            )
-          }
-          coverImage {
-            url(
-              transformation: {
-                image: { resize: { fit: crop, width: 2000, height: 1000 } }
-              }
-            )
-          }
           author {
             name
-            picture {
-              url(
-                transformation: {
-                  image: { resize: { fit: crop, width: 100, height: 100 } }
-                }
-              )
+          }
+          seo {
+            description
+            title
+            keywords
+            imageUrlSource
+            image {
+              url
             }
           }
+          categories(first: 10) {
+            title
+          }
+          createdAt
         }
         morePosts: posts(
           orderBy: date_DESC
-          first: 2
+          first: 4
           where: { slug_not_in: [$slug] }
         ) {
           title
           slug
-          excerpt
           date
-          coverImage {
-            url(
-              transformation: {
-                image: { resize: { fit: crop, width: 2000, height: 1000 } }
-              }
-            )
-          }
           author {
             name
-            picture {
-              url(
-                transformation: {
-                  image: { resize: { fit: crop, width: 100, height: 100 } }
-                }
-              )
+          }
+          seo {
+            description
+            title
+            image {
+              url
             }
           }
         }
