@@ -82,7 +82,7 @@ const ExtendedSearch = () => {
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
       <div className="flex flex-col items-center">
-        <div className="mb-8 flex flex-col items-center ">
+        <div className="my-container mb-8 flex flex-col items-center ">
           <h1 className="relative inline-block max-w-lg text-center text-5xl font-bold">
             <span className="text-primary">
               {filteredCategory || "Explore"}
@@ -106,9 +106,11 @@ const ExtendedSearch = () => {
           <Configure hitsPerPage={12} />
 
           <CustomRefinements />
-          <div className="mt-4 flex w-full justify-between gap-4">
-            <CustomMenu attribute="category" />
-            <LocationMenu attribute="business_location" />
+          <div className="sticky top-[3.9rem] z-10 mt-4 w-full border-b border-secondary/30 bg-white py-2">
+            <div className="my-container flex flex-col justify-between gap-2 md:flex-row">
+              <CustomMenu attribute="category" />
+              <LocationMenu attribute="business_location" />
+            </div>
           </div>
 
           <CustomStateResults />

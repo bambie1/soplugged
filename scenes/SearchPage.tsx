@@ -9,7 +9,7 @@ const SearchPage = () => {
   return (
     <>
       <Header />
-      <main className="my-container mb-16 min-h-screen pt-24">
+      <main className="mb-16 min-h-screen pt-24">
         <ExtendedSearch />
       </main>
       <Footer />

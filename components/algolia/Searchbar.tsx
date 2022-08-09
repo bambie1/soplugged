@@ -15,7 +15,7 @@ const Searchbar = () => {
   return (
     <>
       <Autocomplete
-        openOnFocus={false}
+        openOnFocus={true}
         getSources={({ query }: any) => [
           {
             sourceId: "categories",

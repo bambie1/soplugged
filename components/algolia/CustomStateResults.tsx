@@ -10,7 +10,7 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
 
   if (!hasResults)
     return (
-      <div>
+      <div className="my-container">
         <div>
           <Image
             src="/images/empty_inbox.svg"
@@ -24,7 +24,7 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
     );
 
   return (
-    <div className="mt-10 w-full">
+    <div className="my-container mt-10 w-full">
       <p>
         {nbHits} {nbHits > 1 ? "businesses" : "business"} found
       </p>

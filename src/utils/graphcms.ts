@@ -108,7 +108,7 @@ export async function getAllBlogPosts() {
         posts(orderBy: featuredArticle_ASC, first: 20) {
           title
           slug
-          date
+          createdAt
           featuredArticle
           author {
             name
@@ -153,7 +153,7 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
           content {
             html
           }
-          date
+          createdAt
           author {
             name
           }
@@ -178,7 +178,7 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
         ) {
           title
           slug
-          date
+          createdAt
           author {
             name
           }

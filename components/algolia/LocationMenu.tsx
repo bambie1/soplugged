@@ -5,7 +5,7 @@ const Menu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
   const [hide, setHide] = useState(true);
 
   return (
-    <div className="relative w-40">
+    <div className="relative w-auto flex-1">
       <button
         className="flex h-full w-full items-center justify-center border border-black"
         onClick={() => setHide(!hide)}
@@ -13,7 +13,7 @@ const Menu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
         Filter by location
       </button>
       <ul
-        className={`absolute right-0 flex-1 gap-2 overflow-x-auto whitespace-nowrap ${
+        className={`absolute inset-x-0 mt-2 flex-1 gap-2 overflow-x-auto whitespace-nowrap rounded-md border bg-white p-4 shadow-lg ${
           hide ? "-z-1 opacity-0" : "z-[2] opacity-100"
         }`}
       >

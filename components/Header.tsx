@@ -25,7 +25,7 @@ export default function Example() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 200)
+        setIsStyled(window.pageYOffset > 40)
       );
     }
   }, []);
@@ -33,8 +33,8 @@ export default function Example() {
   return (
     <Disclosure
       as="nav"
-      className={`fixed z-10 w-full overflow-hidden transition duration-100 ${
-        isStyled ? "bg-white shadow" : ""
+      className={`fixed z-20 w-full overflow-hidden transition duration-100 ${
+        isStyled ? "border border-secondary/40 bg-white" : ""
       }`}
     >
       {({ open }) => (

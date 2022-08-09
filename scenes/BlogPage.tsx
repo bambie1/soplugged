@@ -13,7 +13,6 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 
-import { PageWrapper } from "@/components/PageWrapper";
 import { ProPlug } from "@/components/ProPlug";
 import BlogCard from "@/components/BlogCard";
 
@@ -39,36 +38,18 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
   return (
     <>
       <Header />
-      <main>
-        <section className="relative flex bg-gradient-to-b from-accent to-white pt-24 pb-20">
-          <div className="my-container min-h-[30vh]">
-            <div className="flex flex-col items-center justify-center p-10 lg:p-20">
-              <p className="">{subtitle}</p>
-              <h1 className="mx-auto mb-8 max-w-xl text-center text-3xl font-bold leading-[1.05] lg:mb-4 lg:text-5xl lg:leading-[1.2]">
+      <main className="mx-auto mb-10 max-w-2xl lg:max-w-none">
+        <section className="my-container relative grid gap-4 pt-24 pb-10 lg:grid-cols-2 lg:gap-10 lg:pb-20">
+          <div className="">
+            <div className="flex flex-col py-4 lg:py-20">
+              <h1 className="relative mb-8 text-3xl font-bold leading-[1.05] lg:mb-4 lg:text-5xl lg:leading-[1.2]">
                 {title}
-              </h1>{" "}
+                {/* <span className="absolute left-0 top-8 h-3 w-full -rotate-2 bg-accent/40" /> */}
+              </h1>
               <p className="">
                 <span>{"SoPlugged team"}</span> &middot;{" "}
                 {/* {createdAt.substring(0, 10)} */}
               </p>
-            </div>
-          </div>
-        </section>
-        <div className="my-container">
-          <div className="relative mb-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
-            <div className="col-span-2 col-start-1 flex flex-col">
-              <img
-                src={seo.image.url}
-                alt=""
-                className="aspect-[2/1] w-full rounded-lg object-cover"
-              />
-              <div
-                dangerouslySetInnerHTML={{ __html: content.html }}
-                className="prose mt-10 max-w-none"
-              />
-            </div>
-            <hr className="lg:hidden" />
-            <div className="top-20 min-h-[10rem] border border-black lg:sticky">
               <div className="">
                 <p className="">Share:</p>
                 <FacebookShareButton url={blogUrl}>
@@ -80,6 +61,51 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
                 <WhatsappShareButton url={blogUrl}>
                   <FontAwesomeIcon icon={faWhatsapp} />
                 </WhatsappShareButton>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <img
+              src={seo.image.url}
+              alt=""
+              className="ml-auto aspect-[3/2] w-full rounded-lg object-cover lg:w-[90%]"
+            />
+            <div className="absolute -bottom-10 left-0 -z-[1] hidden h-full w-[90%] rounded-lg bg-gradient-to-tr from-white to-accent/50 lg:block"></div>
+          </div>
+        </section>
+        <div className="my-container">
+          <div className="relative my-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
+            <div
+              dangerouslySetInnerHTML={{ __html: content.html }}
+              className="prose col-span-2 col-start-1 max-w-none lg:mr-10"
+            />
+            <hr className="lg:hidden" />
+            <div className="top-20 lg:sticky lg:my-20">
+              <div className="flex min-h-[10rem] flex-col items-start rounded-xl bg-secondary/10 p-4 shadow shadow-accent/40 lg:p-8">
+                <h3 className="mb-4 text-lg font-semibold lg:text-xl">
+                  List your business on SoPlugged for FREE
+                </h3>
+                <p>
+                  SoPlugged is an online platform that makes #buyingblack easy!
+                </p>
+                <Link href="/my-business">
+                  <a className="mt-8 rounded-lg border border-primary p-4 text-primary">
+                    Add your business
+                  </a>
+                </Link>
+              </div>
+              <div className="flex min-h-[10rem] flex-col items-start rounded-xl bg-accent/10 p-4 shadow shadow-accent/40 lg:p-8">
+                <h3 className="mb-4 text-lg font-semibold lg:text-xl">
+                  List your business on SoPlugged for FREE
+                </h3>
+                <p>
+                  SoPlugged is an online platform that makes #buyingblack easy!
+                </p>
+                <Link href="/my-business">
+                  <a className="mt-8 rounded-lg border border-primary p-4 text-primary">
+                    Add your business
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
