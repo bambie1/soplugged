@@ -7,7 +7,7 @@ const Menu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
   return (
     <div className="relative w-auto flex-1">
       <button
-        className="flex h-full w-full items-center justify-center border border-black"
+        className="flex h-full w-full items-center justify-center border border-black lg:w-40"
         onClick={() => setHide(!hide)}
       >
         Filter by location
