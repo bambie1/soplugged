@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { connectMenu, Highlight } from "react-instantsearch-dom";
 
 const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
-  const listInnerRef = useRef<HTMLElement>();
+  const listInnerRef = useRef<any>();
 
   const [isAtEnd, setIsAtEnd] = useState(false);
   const [isAtBeginning, setIsAtBeginning] = useState(true);
