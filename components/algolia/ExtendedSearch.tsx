@@ -106,7 +106,7 @@ const ExtendedSearch = () => {
           <Configure hitsPerPage={12} />
 
           <CustomRefinements />
-          <div className="sticky top-[3.9rem] z-10 mt-4 w-full border-b border-secondary/30 bg-white py-2">
+          <div className="sticky top-[3.9rem] mt-4 w-full border-b border-secondary/30 bg-white py-2">
             <div className="my-container flex flex-col justify-between gap-2 md:flex-row">
               <CustomMenu attribute="category" />
               <LocationMenu attribute="business_location" />

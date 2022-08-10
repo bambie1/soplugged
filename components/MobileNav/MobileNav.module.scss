@@ -8,36 +8,6 @@
   font-size: 1.025em;
 }
 
-.navLink {
-  margin-inline: 0.5rem;
-  text-transform: uppercase;
-  position: relative;
-  border-radius: 8px;
-  align-self: center;
-
-  &.active {
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      width: 50%;
-      left: 25%;
-      bottom: 0;
-      border-bottom: 2px solid $secondary;
-    }
-  }
-
-  &.dashboardActive {
-    box-shadow: 0 0 0 3px $lightSecondary;
-  }
-}
-
-.mobileSeparator {
-  margin-top: 1rem;
-  margin-bottom: -1rem;
-}
-
 .loading {
   width: 10ch;
   height: 44px;

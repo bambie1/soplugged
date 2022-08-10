@@ -8,8 +8,9 @@
   backdrop-filter: blur(20px);
   z-index: 10;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 8rem;
+  // justify-content: center;
+  // align-items: center;
 
   @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     background: #fff;
