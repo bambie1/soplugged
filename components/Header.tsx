@@ -43,14 +43,16 @@ export default function Example() {
       className={`fixed z-20 w-full overflow-hidden border-b transition duration-100 ${
         openMenu ? "" : "bg-white"
       } ${
-        isStyled ? "lg:border-secondary/40 lg:bg-white" : "border-transparent"
+        isStyled
+          ? "md:border-gray-200 md:bg-white"
+          : "border-transparent bg-transparent"
       }`}
     >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4 md:px-8">
             <div className="flex h-16 items-center justify-between">
-              <div className="flex px-2 lg:px-0">
+              <div className="flex px-2 md:px-0">
                 <Link href="/">
                   <a className="flex flex-shrink-0 items-center">
                     <Image
@@ -61,15 +63,15 @@ export default function Example() {
                     />
                   </a>
                 </Link>
-                <div className="hidden lg:ml-10 lg:flex lg:space-x-8">
+                <div className="hidden md:ml-10 md:flex md:space-x-8">
                   {mainNav.map(({ text, link }) => (
                     <Link href={link} key={text}>
                       <a
                         className={`${
                           router.asPath.startsWith(link)
-                            ? "border-primary font-bold text-primary"
-                            : "border-transparent font-medium text-gray-900"
-                        } inline-flex items-center border-b-2 px-1 pt-1`}
+                            ? "border-primary text-primary"
+                            : "border-transparent"
+                        } inline-flex items-center border-b-[1px] px-1 pt-1 hover:border-primary hover:text-primary lg:text-lg`}
                       >
                         {text}
                       </a>
@@ -77,14 +79,14 @@ export default function Example() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full max-w-lg lg:max-w-sm">
+              <div className="flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end">
+                <div className="w-full max-w-lg md:max-w-sm">
                   {router.asPath !== "/" &&
                     !router.asPath.startsWith("/pro") &&
                     !router.asPath.startsWith("/blog") && <Searchbar />}
                 </div>
               </div>
-              <div className="lg:hidden">
+              <div className="md:hidden">
                 <button
                   className={`button ${styles.menuBtn}`}
                   onClick={toggleMenu}
@@ -97,77 +99,32 @@ export default function Example() {
                 <Dialog
                   isOpen={openMenu}
                   aria-label="Mobile menu"
-                  className={`lg:hidden ${styles.mobileMenu}`}
+                  className={`md:hidden ${styles.mobileMenu}`}
                 >
                   <MobileNav />
                 </Dialog>
               </div>
-              <div className="hidden lg:ml-4 lg:flex lg:items-center">
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-4 flex-shrink-0">
-                  <div>
-                    <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+              <Link href="/dashboard">
+                <a className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-primary md:ml-4 md:inline-flex md:items-center lg:text-lg">
+                  Go to dashboard
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
+                    </svg>
+                  </span>
+                </a>
+              </Link>
             </div>
           </div>
         </>

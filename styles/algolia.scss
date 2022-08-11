@@ -2,73 +2,32 @@
 
 // algolia
 :root {
-  --dark: #4e3505;
-  --light: #cdb693;
+  --primary: #4e3505;
+  --secondary: #cdb693;
+
+  // autocomplete variables
+  --aa-primary-color-rgb: 78, 53, 5 !important;
+  --aa-muted-color-rgb: 35, 24, 13 !important;
+  // --aa-panel-border-color-rgb: 78, 53, 5 !important;
+  --aa-input-border-color-rgb: 78, 53, 5 !important;
+  --aa-selected-color-rgb: 205, 182, 147 !important;
 }
 
-.ais-InstantSearch {
-  width: 100%;
-}
-.ais-Hits {
-  margin-bottom: 3rem;
-}
-.ais-Hits-item {
-  width: calc(100% - 1rem);
-  word-break: break-word;
-  /* padding: "8px"; */
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin-top: 1.5rem;
-}
 [class^="ais-"] {
   font-size: inherit;
   font-family: inherit;
 }
-.ais-SearchBox {
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  margin: 0px auto 8px;
-}
-.ais-SearchBox-input {
-  padding: 0.75rem 1.7rem;
-  font-size: 1rem;
-  border-radius: 11px;
-  transition: box-shadow 0.2s ease-in-out;
-  box-shadow: none;
-  transition: border-color 0.2s ease-in-out;
-}
-.ais-SearchBox-submit {
-  z-index: 0;
-}
-.ais-SearchBox-input:hover {
-  border-color: var(--dark);
-}
-input.ais-SearchBox-input:focus {
-  border-color: $secondary;
-  box-shadow: 0 0 0 3px $lightSecondary;
-  outline: 3px solid transparent;
-}
-.ais-PoweredBy {
-  display: inline-flex;
-  font-size: 0.7rem;
-  margin-left: auto;
-  margin-top: 6px;
-}
 
 .ais-Pagination-link {
-  color: var(--dark);
+  color: var(--primary);
 }
 .ais-Pagination-link:hover {
-  color: var(--dark);
+  color: var(--primary);
 }
 .ais-Pagination-item--selected .ais-Pagination-link {
   color: #fff;
-  background-color: var(--dark);
-  border-color: var(--dark);
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 .ais-Pagination {
   margin-top: 16px;
@@ -83,21 +42,21 @@ input.ais-SearchBox-input:focus {
   display: none;
 }
 .ais-ClearRefinements-button {
-  background-color: var(--dark);
+  background-color: var(--primary);
   display: inline-flex;
   margin-top: 8px;
   font-size: 0.8rem;
 
   &:hover {
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--secondary);
+    color: var(--primary);
   }
 
   &:focus-visible,
   &:focus {
     box-shadow: 0 0 0 3px $lightSecondary;
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--secondary);
+    color: var(--primary);
   }
 }
 

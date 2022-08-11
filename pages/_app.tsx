@@ -6,8 +6,6 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
 
-import "../flags.config";
-
 // import "../styles/globals.scss";
 import "../styles/global.css";
 import "../styles/algolia.scss";

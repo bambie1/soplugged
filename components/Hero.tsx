@@ -39,7 +39,7 @@ const HeroImage = ({ index }: any) => {
 
 const Hero = () => {
   return (
-    <div className="my-container flex flex-col py-10 pt-24 text-center md:py-20 lg:pt-36 lg:text-left">
+    <div className="my-container flex flex-col py-10 pt-24 text-center md:pt-36 lg:text-left">
       <section className="relative flex-1 items-center justify-center gap-3 py-5 lg:grid lg:grid-cols-7">
         <div className="relative col-span-4 col-start-1 flex w-full flex-col">
           <h1 className="text-5xl font-bold leading-[1.05] lg:text-6xl lg:leading-[1.2]">
@@ -63,13 +63,13 @@ const Hero = () => {
           </p>
           <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0">
             <Searchbar />
-            <Link href="/dashboard">
-              <a className="mt-2 border-b border-primary text-base">
-                I am an entrepreneur
-              </a>
-            </Link>
           </div>
         </div>
+        {/* <img
+          src="/squiggly-arrow.svg"
+          className="absolute top-1/2 left-1/2 ml-20 mt-10 -translate-x-1/2 -translate-y-1/2 transform"
+          alt=""
+        /> */}
         <aside className="col-span-3 col-start-5 flex flex-col">
           <div className="ml-auto hidden w-full -space-x-24 lg:flex">
             <ul className="flex flex-1 flex-col items-end">

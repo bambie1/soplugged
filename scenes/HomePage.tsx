@@ -23,7 +23,7 @@ const secondaryLinks = [
       "Easily add your business to our directory for FREE, and let potential customers come to you",
     linkText: "Add your business",
     linkHref: "/my-business",
-    color: "group-hover:bg-secondary",
+    color: "bg-gradient-to-tr from-accent to-secondary",
     icon: PlusIcon,
   },
   {
@@ -33,7 +33,7 @@ const secondaryLinks = [
       "Reach out to our team of experts if you are looking to launch or improve your digital presence with a website or social media marketing.",
     linkText: "Explore Pro",
     linkHref: "/pro",
-    color: "group-hover:bg-accent",
+    color: "bg-gradient-to-tr from-accent to-white",
     icon: LightningBoltIcon,
   },
   {
@@ -43,7 +43,7 @@ const secondaryLinks = [
       "We rely on amazing people like you to keep our platform free and accessible to Black-owned businesses across Canada. ",
     linkText: "Become a sponsor",
     linkHref: "/sponsors",
-    color: "group-hover:bg-primary",
+    color: "bg-gradient-to-tr from-secondary to-white",
     icon: GlobeAltIcon,
   },
 ];
@@ -141,26 +141,26 @@ const HomePage = () => {
             <div>
               <dl className="mt-10 space-y-10">
                 {secondaryLinks.map((item) => (
-                  <div key={item.id} className="group relative">
-                    <dt>
-                      <div
-                        className={`absolute flex h-12 w-12 items-center justify-center rounded-md ${item.color} border border-primary text-primary transition duration-200 group-hover:border-transparent group-hover:text-white`}
-                      >
-                        <item.icon className="h-6 w-6" aria-hidden="true" />
-                      </div>
-                      <p className="ml-16 text-lg font-medium leading-6 text-gray-900">
-                        {item.name}
-                      </p>
-                    </dt>
-                    <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
-                      <p>{item.description}</p>
-                      <Link href={item.linkHref}>
-                        <a className="mt-3 border-b border-primary pb-1 text-primary">
+                  <Link key={item.id} href={item.linkHref}>
+                    <a className="group relative block">
+                      <dt>
+                        <div
+                          className={`absolute flex h-12 w-12 items-center justify-center rounded-md ${item.color} border text-primary transition duration-200 group-hover:scale-[90%]`}
+                        >
+                          <item.icon className="h-6 w-6" aria-hidden="true" />
+                        </div>
+                        <p className="ml-16 text-lg font-semibold leading-6 text-gray-900">
+                          {item.name}
+                        </p>
+                      </dt>
+                      <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
+                        <p>{item.description}</p>
+                        <span className="mt-3 border-b border-primary pb-1 text-primary transition duration-200 group-hover:scale-[90%]">
                           {item.linkText}
-                        </a>
-                      </Link>
-                    </dd>
-                  </div>
+                        </span>
+                      </dd>
+                    </a>
+                  </Link>
                 ))}
               </dl>
             </div>

@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React from "react";
 import { getAlgoliaResults } from "@algolia/autocomplete-js";
 import algoliasearch from "algoliasearch";
 import "@algolia/autocomplete-theme-classic";
@@ -34,9 +34,6 @@ const Searchbar = () => {
               });
             },
             templates: {
-              header() {
-                return "Categories";
-              },
               item({ item, components }: any) {
                 return <CategoryHit hit={item} components={components} />;
               },
@@ -59,9 +56,6 @@ const Searchbar = () => {
               });
             },
             templates: {
-              header() {
-                return "Businesses";
-              },
               item({ item, components }: any) {
                 return <BusinessHit hit={item} components={components} />;
               },

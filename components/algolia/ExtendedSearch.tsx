@@ -7,7 +7,6 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   Configure,
   connectSearchBox,
-  CurrentRefinements,
   InstantSearch,
   Pagination,
 } from "react-instantsearch-dom";
@@ -15,7 +14,6 @@ import {
 import { CustomStateResults } from "./CustomStateResults";
 import { SEO } from "@/components/SEO";
 
-import "@algolia/autocomplete-theme-classic/dist/theme.css";
 import { CustomRefinements } from "../algolia-old/CustomRefinements";
 import CustomMenu from "./CustomMenu";
 import { LocationMenu } from "./LocationMenu";
