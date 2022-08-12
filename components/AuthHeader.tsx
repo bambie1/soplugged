@@ -3,12 +3,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { Fragment, useEffect, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { MobileNav } from "./MobileNav";
 
 import styles from "../styles/Header.module.scss";
+import { SignOutButton } from "./SignOutButton";
 
 const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 
@@ -22,7 +23,7 @@ const mainNav = [
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
-const Header = () => {
+const AuthHeader = () => {
   const router = useRouter();
   const [isStyled, setIsStyled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -79,13 +80,6 @@ const Header = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end">
-                <div className="w-full max-w-lg md:max-w-sm">
-                  {router.asPath !== "/" &&
-                    !router.asPath.startsWith("/pro") &&
-                    !router.asPath.startsWith("/blog") && <Searchbar />}
-                </div>
-              </div>
               <div className="md:hidden">
                 <button
                   className={`button ${styles.menuBtn}`}
@@ -104,27 +98,7 @@ const Header = () => {
                   <MobileNav />
                 </Dialog>
               </div>
-              <Link href="/dashboard">
-                <a className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-primary md:ml-4 md:inline-flex md:items-center lg:text-lg">
-                  Go to dashboard
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </a>
-              </Link>
+              <SignOutButton />
             </div>
           </div>
         </>
@@ -133,4 +107,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AuthHeader;

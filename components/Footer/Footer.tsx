@@ -1,82 +1,54 @@
+import Link from "next/link";
 import { FC } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-
-import { ButtonLink } from "@/styled/ButtonLink";
-
-import styles from "./Footer.module.scss";
 
 interface Props {
   tertiary?: boolean;
 }
 
+const footerMenu = [
+  { title: "Find a business", href: "/search" },
+  { title: "Add your business", href: "/my-business" },
+  { title: "Our story", href: "/our-story" },
+];
+
 const Footer: FC<Props> = ({ tertiary }) => {
   return (
     <footer
-      className={`bg-gradient-to-t to-white pt-20 pb-10 ${
+      className={`mt-auto flex flex-col bg-gradient-to-t to-white pt-20 pb-10 ${
         tertiary ? "from-accent" : "from-secondary"
       }`}
     >
-      <div className={`container ${styles.container} my-container`}>
-        <section className={styles.linksGrid}>
-          <aside className={styles.externalLinks}>
-            <p>Contact us:</p>
-
-            <section className={styles.socials}>
-              <button className="iconButton" aria-label="Email icon">
-                <a href="mailto:hello@soplugged.com" aria-label="email contact">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </a>
-              </button>
-              <button className="iconButton" aria-label="Instagram icon">
-                <a
-                  aria-label="instagram"
-                  href="https://www.instagram.com/sopluggd/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FontAwesomeIcon icon={faInstagram} />
-                </a>
-              </button>
-            </section>
-
-            <ButtonLink href="/sponsors" variant="outlined">
-              Become a sponsor
-            </ButtonLink>
-          </aside>
-          <aside className={styles.internalLinks}>
-            <ButtonLink href="/faqs">FAQs</ButtonLink>
-            <ButtonLink href="/our-story">About Us</ButtonLink>
-            <a
-              href="https://soplugged.kampsite.co/"
-              target="_blank"
-              rel="noreferrer"
-              className="button "
-            >
-              Make a feature request
-            </a>
-          </aside>
-        </section>
-
-        <div>
-          <p className="marginless">
-            Copyright&copy; {new Date().getFullYear()}, SoPlugged
+      <div className="my-container grid w-full lg:grid-cols-7">
+        <div className="col-span-2">
+          <p className="font-bold">Menu</p>
+          <ul className="mt-4 flex flex-col gap-2">
+            {footerMenu.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>
+                  <a>{item.title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="col-span-3">
+          <p className="font-bold">Heard about SoPluggedPro yet?</p>
+          <p className="mt-4 max-w-[80%]">
+            Let our team of experts build or improve your business’s digital
+            presence with slick websites and/or social media marketing content
           </p>
-          <section className={styles.guidelines}>
-            <a
-              href="https://docs.google.com/document/d/1lq7Be0U3GTswo3kCZ2tHvZ20J_eJbqhQX3XiKAjih20/edit?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="button text"
-            >
-              Privacy Policy
-            </a>
-
-            <ButtonLink href="/guidelines">Community Guidelines</ButtonLink>
-          </section>
+        </div>
+        <div className="col-span-2">
+          <p className="font-bold">Got a question?</p>
+          <p className="mt-4">
+            Send us an e-mail at hello@soplugged.com Or connect with us on IG
+          </p>
         </div>
       </div>
+
+      <p className="mt-10 text-center">
+        Copyright&copy; {new Date().getFullYear()}, SoPlugged
+      </p>
     </footer>
   );
 };

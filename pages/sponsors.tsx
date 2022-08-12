@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { SponsorsPage } from "@/scenes/SponsorsPage";
 import { SEO } from "@/components/SEO";
@@ -13,6 +13,12 @@ const Sponsors: NextPage = () => {
       <SponsorsPage />
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    notFound: true,
+  };
 };
 
 export default Sponsors;

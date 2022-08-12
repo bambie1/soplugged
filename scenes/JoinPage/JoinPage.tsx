@@ -23,7 +23,9 @@ const JoinPage: FC<Props> = ({ referrer }) => {
             height={60}
           />
         </div>
-        <h1 className="center">Join SoPlugged</h1>
+        <h1 className="relative mb-2 block text-center text-5xl font-bold text-primary">
+          Join SoPlugged
+        </h1>
         <p>
           Please verify your identity via one of the following sign-in methods:
         </p>

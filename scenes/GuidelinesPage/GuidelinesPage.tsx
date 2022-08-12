@@ -1,20 +1,16 @@
 import { FC } from "react";
-import dynamic from "next/dynamic";
 
 import { PageWrapper } from "@/components/PageWrapper";
 
-import styles from "./GuidelinesPage.module.scss";
 import { ButtonLink } from "@/styled/ButtonLink";
-
-const Header = dynamic(() => import("../../components/Header"));
-const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const GuidelinesPage: FC = () => {
   return (
     <>
-      <Header />
       <PageWrapper isSlim>
-        <h1 className="center">Community Guidelines</h1>
+        <h1 className="relative mb-4 block text-5xl font-bold text-primary">
+          Community Guidelines
+        </h1>
 
         <p>
           The purpose of SoPlugged is to increase brand awareness of Black-owned
@@ -73,7 +69,7 @@ const GuidelinesPage: FC = () => {
           concerns.
         </p>
         <br />
-        <div className="pageButtons flex-center">
+        <div className="flex gap-4">
           <ButtonLink href="/search" variant="filled">
             Begin your search
           </ButtonLink>
@@ -82,7 +78,6 @@ const GuidelinesPage: FC = () => {
           </ButtonLink>
         </div>
       </PageWrapper>
-      <Footer />
     </>
   );
 };

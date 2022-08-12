@@ -14,11 +14,11 @@ const FAQPage = () => {
   return (
     <>
       <Header />
-      <PageWrapper center>
+      <main className="my-container mb-16 flex min-h-[70vh] flex-col items-center pt-24 text-center">
         <div className={styles.content}>
           <FontAwesomeIcon icon={faExclamation} className={styles.errorIcon} />
-          <h1>404</h1>
-          <h2>Page not found</h2>
+          <h1 className="text-4xl font-bold">404</h1>
+          <h2 className="text-2xl font-medium">Page not found</h2>
 
           <p>We suggest trying our most frequented pages:</p>
 
@@ -29,7 +29,7 @@ const FAQPage = () => {
             Go back home
           </ButtonLink>
         </div>
-      </PageWrapper>
+      </main>
       <Footer />
     </>
   );

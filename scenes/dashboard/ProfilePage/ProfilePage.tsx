@@ -44,7 +44,7 @@ const ProfilePage: FC<Props> = ({ dbUser }) => {
 
   return (
     <>
-      <h1 className="center">profile</h1>
+      <h1 className="h1 mb-4">Profile</h1>
       <form className={styles.paper} onSubmit={handleSubmit(onSubmit)}>
         <Avatar name={userName} />
         <p>{user?.email || ""}</p>

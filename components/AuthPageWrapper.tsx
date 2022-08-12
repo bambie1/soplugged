@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
 import { FC, ReactNode } from "react";
 
-const Header = dynamic(() => import("../Header"));
-const Footer = dynamic(() => import("../Footer/Footer"));
+import AuthHeader from "./AuthHeader";
 
 interface Props {
   hasHero?: boolean;
@@ -12,10 +11,10 @@ interface Props {
   children: ReactNode;
 }
 
-const PageWrapper: FC<Props> = ({ children, center, isSlim }) => {
+const AuthPageWrapper: FC<Props> = ({ children, center, isSlim }) => {
   return (
     <>
-      <Header />
+      <AuthHeader />
       <div className="flex min-h-screen flex-col">
         <main
           className={`my-container mb-16 min-h-[70vh] pt-24 ${
@@ -24,10 +23,9 @@ const PageWrapper: FC<Props> = ({ children, center, isSlim }) => {
         >
           {children}
         </main>
-        <Footer />
       </div>
     </>
   );
 };
 
-export default PageWrapper;
+export default AuthPageWrapper;

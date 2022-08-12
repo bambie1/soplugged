@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { FAQPage } from "@/scenes/FAQPage";
 import { SEO } from "@/components/SEO";
@@ -13,6 +13,12 @@ const FAQ: NextPage = () => {
       <FAQPage />
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    notFound: true,
+  };
 };
 
 export default FAQ;

@@ -40,7 +40,7 @@ const FavoritesPage: FC<Props> = ({ favorites }) => {
   };
   return (
     <>
-      <h1 className="center">favorites</h1>
+      <h1 className="h1">Favorites</h1>
       {renderFavorites()}
     </>
   );

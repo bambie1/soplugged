@@ -7,6 +7,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import { Button } from "@/styled/Button";
 
 import styles from "./SponsorsPage.module.scss";
+import Link from "next/link";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -21,35 +22,42 @@ const SponsorsPage = () => {
   return (
     <>
       <Header />
-      <PageWrapper center>
-        <h1>sponsors</h1>
-        <section className={`${styles.section} flex-center column`}>
-          <aside>
-            <p>
+      <main className="my-container mb-16 min-h-[70vh] pt-24">
+        <h1 className="relative block text-center text-5xl font-bold">
+          Sponsors
+        </h1>
+        <section className="mt-10 grid items-center gap-10 lg:grid-cols-2">
+          <div>
+            <p className="mb-4 lg:text-lg">
               At SoPlugged, our biggest inspiration is supporting one another
               and growing our community. Our goal is to normalize buying black
               and we rely on amazing people like you to keep our platform free
               and accessible to Black-owned businesses across Canada.
             </p>
-            <hr style={{ width: "100%", maxWidth: "150px" }}></hr>
             <p>
               <em>
                 All donations go towards maintaining our platform and supporting
                 Black-owned businesses across Canada.
               </em>
             </p>
-          </aside>
 
-          <div className="pageButtons column">
-            <Button onClick={() => setShowKweeve(true)}>
-              Show your support
-            </Button>
-            <ButtonLink href="/search" variant="text">
-              Back to Directory
-            </ButtonLink>
+            <div className="mt-4">
+              <Link href="/search">
+                <a>Search for businesses</a>
+              </Link>
+            </div>
+          </div>
+
+          <div className="h-[30rem] overflow-auto bg-gray-400">
+            <iframe
+              src="https://kweeve.page/soplugged/embed"
+              style={{ border: "none" }}
+              width="100%"
+              height="700px"
+              allow="payment"
+            ></iframe>
           </div>
         </section>
-
         <DialogOverlay
           className={styles.dialogOverlay}
           isOpen={showKweeve}
@@ -68,7 +76,7 @@ const SponsorsPage = () => {
             ></iframe>
           </DialogContent>
         </DialogOverlay>
-      </PageWrapper>
+      </main>
       <Footer />
     </>
   );

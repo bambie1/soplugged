@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { FC, useEffect } from "react";
-import { useWindowSize } from "@reach/window-size";
 import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
 import slugify from "slugify";
@@ -30,7 +29,6 @@ interface Props {
 
 const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
-  const { width } = useWindowSize();
   const router = useRouter();
   const {
     referralSource,

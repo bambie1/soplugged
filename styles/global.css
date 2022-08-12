@@ -20,6 +20,22 @@
   @apply mx-auto w-full px-4 sm:px-6 lg:max-w-7xl lg:px-8;
 }
 
+.h1 {
+  @apply text-5xl font-bold text-primary;
+}
+
+.light-gradient {
+  @apply bg-gradient-to-r from-secondary/5 to-secondary/[.12];
+}
+
+.icon-btn {
+  @apply inline-flex items-center gap-3 rounded-lg border border-primary bg-primary px-4 py-2 text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary;
+}
+
+.icon-btn-outline {
+  @apply inline-flex items-center gap-3 rounded-lg border border-primary px-4 py-2 text-primary hover:bg-primary hover:text-white focus:outline-none focus:ring active:bg-primary;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .overflow-x-auto::-webkit-scrollbar {
   display: none;
@@ -29,8 +45,4 @@
 .overflow-x-auto {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-}
-
-.light-gradient {
-  @apply bg-gradient-to-r from-secondary/5 to-secondary/[.12];
 }

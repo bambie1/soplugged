@@ -26,7 +26,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   if (!business)
     return (
       <>
-        <h1>Business</h1>
+        <h1 className="h1">Business</h1>
         <div className={styles.noBusiness}>
           <Image
             src="/images/Cocktail_Monochromatic.svg"
@@ -70,7 +70,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           <div className={styles.suggestion}>
             <p>Add a logo</p>
             <button
-              className="button withIcon"
+              className="icon-btn-outline"
               onClick={() => suggestionHandler(4)}
             >
               <FontAwesomeIcon icon={faPen} />
@@ -82,7 +82,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           <div className={styles.suggestion}>
             <p>Upload sample images</p>
             <button
-              className="button  withIcon"
+              className="icon-btn-outline"
               onClick={() => suggestionHandler(4)}
             >
               <FontAwesomeIcon icon={faPen} />
@@ -94,7 +94,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           <div className={styles.suggestion}>
             <p>Describe your business more</p>
             <button
-              className="button  withIcon"
+              className="icon-btn-outline"
               onClick={() => suggestionHandler(2)}
             >
               <FontAwesomeIcon icon={faPen} />
@@ -108,36 +108,36 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <h1>Business</h1>
-      <h3>{greetFunction(userName)}</h3>
+      <h1 className="h1 mb-4">Business</h1>
+      <h3 className="mb-4 text-lg lg:text-xl">{greetFunction(userName)}</h3>
       <p>Here's some important stuff we've outlined for you</p>
       <div className={styles.grid}>
         <section className={styles.businessCard}>
-          <h3 className={styles.sectionTitle}>Info</h3>
+          <h3 className={`${styles.sectionTitle} font-medium text-gray-800`}>
+            Info
+          </h3>
           <BusinessCard business={business} />
 
           <div className={styles.buttons}>
             <Link href="/my-business">
-              <a>
-                <button className="button outlined withIcon">
-                  <FontAwesomeIcon icon={faPen} />
-                  Edit
-                </button>
+              <a className="icon-btn">
+                <FontAwesomeIcon icon={faPen} />
+                Edit
               </a>
             </Link>
             <Link href={`/business/${business.slug}`}>
-              <a>
-                <button className="button text withIcon">
-                  <FontAwesomeIcon icon={faEye} />
-                  View
-                </button>
+              <a className="icon-btn-outline">
+                <FontAwesomeIcon icon={faEye} />
+                View
               </a>
             </Link>
           </div>
         </section>
 
         <section className={styles.insightsDiv}>
-          <article className={styles.sectionTitle}>
+          <article
+            className={`${styles.sectionTitle} font-medium text-gray-800`}
+          >
             <h3>Business Insights</h3>
             <Tooltip label="Suggestions to improve your SoPlugged business page">
               <div>
@@ -150,7 +150,10 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
         </section>
 
         <section className={styles.plugs}>
-          <article className={styles.sectionTitle}>
+          <article
+            className={`${styles.sectionTitle} font-medium text-gray-800`}
+          >
+            {" "}
             <h3>Plugs</h3>
             <Tooltip label="Number of people who have added your business to their favorites">
               <div>

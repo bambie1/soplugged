@@ -9,10 +9,9 @@ import {
   faUserCircle,
 } from "@fortawesome/free-regular-svg-icons";
 
-import { PageWrapper } from "@/components/PageWrapper";
+import AuthPageWrapper from "@/components/AuthPageWrapper";
 
 import styles from "./Dashboard.module.scss";
-import { Button } from "@/styled/Button";
 
 const Header = dynamic(() => import("../../components/Header"));
 
@@ -33,9 +32,8 @@ const Dashboard: FC = ({ children }) => {
 
   return (
     <>
-      <Header />
       <div className={styles.body}>
-        <PageWrapper center>
+        <AuthPageWrapper center>
           <div className={styles.wrapper}>
             <nav className={styles.nav}>
               <ul className="list">
@@ -53,7 +51,7 @@ const Dashboard: FC = ({ children }) => {
             </nav>
             <div className={styles.content}>{children}</div>
           </div>
-        </PageWrapper>
+        </AuthPageWrapper>
       </div>
     </>
   );

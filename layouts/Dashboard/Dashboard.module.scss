@@ -2,7 +2,7 @@
 
 .body {
   min-height: 100vh;
-  background: $lightLight;
+  // background: $lightLight;
 
   @include tablet {
     background: rgb(205, 182, 147);
@@ -41,7 +41,7 @@
   background-color: $lightLight;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  z-index: 1;
+  // z-index: 1;
   bottom: 0;
   height: clamp(3rem, 100%, 4rem);
   width: 100%;
@@ -98,5 +98,6 @@
     margin-left: 5rem;
     overflow-y: auto;
     max-height: 100%;
+    margin-top: 1rem;
   }
 }

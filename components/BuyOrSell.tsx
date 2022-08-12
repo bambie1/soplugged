@@ -26,14 +26,18 @@ const BuyOrSell = () => {
           {cardInfo.map(({ text, title, number, href }) => (
             <Link href={href} key={title}>
               <a
-                className={`flex w-full flex-col justify-center rounded-lg p-10 shadow backdrop-blur-[1px] transition duration-200 hover:border hover:border-secondary ${
+                className={`group flex w-full flex-col justify-center rounded-lg border border-transparent p-10 shadow backdrop-blur-[1px] transition duration-200 hover:backdrop-blur-[5px] ${
                   number == 2
-                    ? "bg-gradient-to-tr from-accent/50 to-secondary/50 hover:skew-y-1 lg:mt-48"
-                    : "bg-gradient-to-tr from-secondary/50 to-white/50 hover:-skew-y-1 lg:mb-48"
+                    ? "bg-gradient-to-tr from-accent/50 to-secondary/50 lg:mt-48"
+                    : "bg-gradient-to-tr from-secondary/50 to-white/50 lg:mb-48"
                 } lg:min-h-[20rem]`}
               >
-                <h2 className="mb-1 text-2xl font-bold xl:text-3xl">{title}</h2>
-                <p>{text}</p>
+                <div className="transition duration-300 group-hover:translate-x-5">
+                  <h2 className="mb-1 text-2xl font-bold xl:text-3xl">
+                    {title}
+                  </h2>
+                  <p>{text}</p>
+                </div>
               </a>
             </Link>
           ))}
