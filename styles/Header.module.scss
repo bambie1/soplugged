@@ -1,5 +1,22 @@
 @import "styles/mixins";
 
+.navLink {
+  position: relative;
+
+  &.active {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      left: 25%;
+      bottom: 0;
+      border-bottom: 2px solid $secondary;
+    }
+  }
+}
+
 .mobileMenu {
   height: 100vh;
   margin: 0;
@@ -8,7 +25,7 @@
   backdrop-filter: blur(20px);
   z-index: 10;
   display: flex;
-  padding-top: 8rem;
+  padding-block: 8rem;
   // justify-content: center;
   // align-items: center;
 

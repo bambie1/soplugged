@@ -59,7 +59,7 @@ const HomePage = () => {
       <Header />
       <Hero />
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
-        <section className="lg:hidden">
+        <section className="my-10 lg:hidden">
           <div className="overflow-x-auto lg:hidden">
             <ul className="inline-flex gap-4 px-4">
               {[0, 1, 2, 3, 4, 5].map((index) => (
@@ -96,7 +96,7 @@ const HomePage = () => {
           <span className="absolute -left-24 bottom-20 -z-[1] -rotate-90 whitespace-nowrap font-extrabold leading-[1] text-primary/[.045] lg:text-[10rem]">
             black-<span className="block">owned</span>
           </span>
-          <div className="my-container grid items-center gap-10 lg:grid-cols-2">
+          <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-10">
             <div className="flex flex-col items-start">
               <h2 className="text-3xl font-bold xl:text-4xl">
                 <span className="relative text-primary">
@@ -149,7 +149,7 @@ const HomePage = () => {
                         >
                           <item.icon className="h-6 w-6" aria-hidden="true" />
                         </div>
-                        <p className="ml-16 text-lg font-semibold leading-6 text-gray-900">
+                        <p className="ml-16 text-lg font-semibold uppercase leading-6 text-gray-900">
                           {item.name}
                         </p>
                       </dt>

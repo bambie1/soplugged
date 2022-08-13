@@ -20,21 +20,14 @@ type ButtonAsLink = BaseProps &
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-export function Button(props: ButtonProps): JSX.Element {
+export function FilledButton(props: ButtonProps): JSX.Element {
   if (props.as === "link") {
     const { className, type, as, children, ...rest } = props;
     return (
       <Link {...rest}>
         <a
           className={classNames(
-            `inline-flex items-center rounded-md border border-transparent px-4 py-2 transition duration-200 focus:outline-none ${className}`,
-            {
-              "rounded-md bg-primary text-white shadow-sm": type == "filled",
-              "hover:bg-gray-100 focus:border-primary focus:bg-gray-100":
-                type == "text",
-              "focus:ring-2 focus:ring-primary focus:ring-offset-2":
-                type !== "text",
-            }
+            `inline-flex items-center rounded-md border border-transparent px-4 py-2 transition duration-200 focus:outline-none ${className}`
           )}
         >
           {children}
