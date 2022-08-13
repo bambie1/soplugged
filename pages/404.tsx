@@ -7,7 +7,7 @@ const NotFound: NextPage = () => {
   return (
     <>
       <SEO
-        title="404 Page not found | SoPlugged"
+        title="Page not found | SoPlugged"
         description="We couldn't find this page you've requested"
       />
       <PageNotFound />
