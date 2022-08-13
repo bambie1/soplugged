@@ -1,5 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
-
 export const handleSubscription = async (
   data: any,
   subscription_type: string
@@ -22,8 +20,6 @@ export const handleSubscription = async (
 
     return res;
   } catch (error) {
-    Sentry.captureException(error);
-
     return { error, ok: false };
   }
 };

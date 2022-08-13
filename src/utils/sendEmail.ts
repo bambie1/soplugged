@@ -1,5 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
-
 import { Email } from "@/types/Email";
 
 export const sendEmail = async (email: Email) => {
@@ -14,8 +12,5 @@ export const sendEmail = async (email: Email) => {
     }),
   });
 
-  if (!res.ok) {
-    Sentry.captureException(res);
-  }
   return res;
 };

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const { withSentryConfig } = require("@sentry/nextjs");
+
+const moduleExports = {
   reactStrictMode: true,
   images: {
     domains: [
@@ -25,13 +27,6 @@ module.exports = {
     GRAPHCMS_DEV_AUTH_TOKEN:
       "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE2NDMzMzQ4MzksImF1ZCI6WyJodHRwczovL2FwaS1jYS1jZW50cmFsLTEuZ3JhcGhjbXMuY29tL3YyL2NreXhyNHJibDB2ZWgwMXl0ZWRhZDJyeWEvbWFzdGVyIiwiaHR0cHM6Ly9tYW5hZ2VtZW50LW5leHQuZ3JhcGhjbXMuY29tIl0sImlzcyI6Imh0dHBzOi8vbWFuYWdlbWVudC5ncmFwaGNtcy5jb20vIiwic3ViIjoiYmIyZjY5M2YtYjQwOS00ZTgzLWE2NjktYjc4MWNjNjA2YmY5IiwianRpIjoiY2thNWo0djJmMDN3bTAxejNhMmN2ZXo0ZCJ9.xI6D6Vc2JB2YlB6AzkD2ayOMvD3BJ8Th6X6yLXWWzGJISE08yhm4H-TWwXa58s1GNcUYoSBq82q3ZMIsrm1INLpvX5S5Kdl05cYk39coHsNKwGIF1eHGsHHJbqhGs_oXXe128HkW03iiLYC3MSFkt0FMRZmJyXWoIP2GZxXjLSksuFbf_o4vhJZ-HTmHJiK48UFsZTH6a4FW8okktOoaOzQX9qqJSB18C-tN81U3fYmWjqJsCudqWa3tNSuDeqRz0BQwLqLrHUM9O-hKUDwOu2zxMpI31IemhZ6mqrDIrOXXJoUVL47Lopw_lxe_ycgKeSwVGXQ-K20qt8Zi5CTeJ79xvHYoboIT185t2qaQVV7wBWixqljHPjm6SCJ7cYJMYOVNzyMjxvZuEHigL-FFtDX5430N8edokPvGEt6F5Q7jGJC41oSTMwsFvm_SDTKgBovfAcMaOGgvjqxPO6qr0MYSKAFDSmqyrITP3zQMv3flOfGHwzp5d3Hp_iScqdQanwfe4XuZwvWv5iFxKkGtS3IxNOPGk2k0E8QwsgpiA7VxIL9j656--fbDvqPk3zKxA4CaZaiAdC84REB_DmNA7q6uw6inaIk4j93dBCKVSVB-A7gh_SnHW7VGaPH6Am4ycwRbgeU8IWmx40eOWyvmUa8uk_Oz5Q9OqeMToOXlDMo",
   },
-  async redirects() {
-    return [
-      {
-        source: "/merch",
-        destination: "https://merch.soplugged.com/",
-        permanent: true,
-      },
-    ];
-  },
 };
+
+module.exports = withSentryConfig(moduleExports);
