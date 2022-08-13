@@ -7,6 +7,7 @@ import slugify from "slugify";
 import { useSWRConfig } from "swr";
 
 import { BusinessForm } from "layouts/BusinessForm";
+import AuthHeader from "@/components/AuthHeader";
 import { businessFormSchema } from "@/components/formik";
 import NameLocation from "@/components/BusinessForm/forms/1_NameLocation";
 import Categories from "@/components/BusinessForm/forms/2_Categories";
@@ -19,8 +20,6 @@ import { updateBusiness } from "@/utils/updateBusiness";
 import { Button } from "@/styled/Button";
 
 import styles from "./MyBusinessPage.module.scss";
-
-const Header = dynamic(() => import("../../components/Header"));
 
 interface Props {
   business: any;
@@ -76,7 +75,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         >
           Go Back
         </Button>
-        <Button type="submit">
+        <Button type="submit" isOutlined>
           {currentStep === formSteps.length - 1
             ? !business
               ? "Complete setup"
@@ -135,7 +134,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      {/* <Header hideLinks={width >= 768} /> */}
+      <AuthHeader />
       <BusinessForm>
         <Formik
           initialValues={{

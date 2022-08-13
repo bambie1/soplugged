@@ -33,7 +33,7 @@ const AuthHeader = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 40)
+        setIsStyled(window.pageYOffset > 10)
       );
     }
   }, []);

@@ -12,7 +12,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
   return (
     <>
       <Header />
-      <main>
+      <main className="mb-10 lg:mb-20">
         <section className="relative flex bg-gradient-to-b from-accent to-white pt-24 pb-20">
           <div className="my-container min-h-[30vh]">
             <div className="flex flex-col items-center justify-center p-10 lg:p-20">

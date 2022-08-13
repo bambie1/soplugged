@@ -3,15 +3,19 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./scenes/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
         primary: "#4e3505",
+        "primary-900": "#271a02",
+        "primary-100": "#dcd7cd",
         secondary: "#cdb693",
         accent: "#93aacd",
         light: "#f3f2f2",
-        black: "#231803",
+        black: "#100b01",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",

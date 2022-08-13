@@ -7,6 +7,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { MobileNav } from "./MobileNav";
+import { Button } from "./Button";
 
 import styles from "../styles/Header.module.scss";
 
@@ -65,17 +66,19 @@ const Header = () => {
                 </Link>
                 <div className="hidden md:ml-10 md:flex md:space-x-8">
                   {mainNav.map(({ text, link }) => (
-                    <Link href={link} key={text}>
-                      <a
-                        className={`${
-                          router.asPath.startsWith(link)
-                            ? "border-primary text-primary"
-                            : "border-transparent"
-                        } inline-flex items-center border-b-[1px] px-1 pt-1 hover:border-primary hover:text-primary lg:text-lg`}
-                      >
-                        {text}
-                      </a>
-                    </Link>
+                    <Button
+                      as="link"
+                      href={link}
+                      type="text"
+                      key={text}
+                      className={`border-b ${
+                        router.asPath.startsWith(link)
+                          ? "border-primary text-primary"
+                          : "border-transparent"
+                      } `}
+                    >
+                      {text}
+                    </Button>
                   ))}
                 </div>
               </div>

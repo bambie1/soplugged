@@ -13,8 +13,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/styled/Button";
-import { ButtonLink } from "@/styled/ButtonLink";
-import { PageWrapper } from "@/components/PageWrapper";
 import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
@@ -23,6 +21,7 @@ import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
+import { IconButton } from "@/styled/IconButton";
 
 const Header = dynamic(() => import("../../components/Header"));
 const FavoriteButton = dynamic(
@@ -119,7 +118,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             <ContactForm businessEmail={creator?.email || ""} />
           </div>
           {hasContactLinks && <SocialLinks business={business} />}
-          <div className={styles.buttonGroup}>
+          <div className="grid gap-2">
             <FavoriteButton business={business} />
             <ShareButton />
           </div>
@@ -136,7 +135,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
         )}
         {business_description && (
           <div>
-            <h3 className="">About</h3>
+            <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
+              About
+            </h3>
             <section
               className={styles.description}
               dangerouslySetInnerHTML={{ __html: business_description }}
@@ -162,7 +163,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main className="my-container pt-28">
+      <main className="my-container mb-20 pt-28">
         <section className="center">
           <div className={styles.businessHeader}>
             <Avatar name={business_name} url={logo_url} />
@@ -179,23 +180,17 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
           <div className={styles.info}>
             {category && (
-              <button
-                className="button text withIcon"
-                onClick={handleCategoryClick}
-              >
+              <IconButton isText onClick={handleCategoryClick}>
                 <FontAwesomeIcon icon={faShapes} />
                 {category}
-              </button>
+              </IconButton>
             )}
 
             {business_location && (
-              <button
-                className="button text withIcon"
-                onClick={handleLocationClick}
-              >
+              <IconButton isText onClick={handleLocationClick}>
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
                 {business_location}
-              </button>
+              </IconButton>
             )}
 
             {!fixed_to_one_location && (
@@ -214,11 +209,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
             </a>
           </div>
         )}
-        <div className={`flex-center ${styles.backToSearch}`}>
-          <ButtonLink href={backToSearchLink} variant="outlined">
-            View similar businesses
-          </ButtonLink>
-        </div>
 
         {user?.email === creator?.email && (
           <Link href="/my-business?start=0">

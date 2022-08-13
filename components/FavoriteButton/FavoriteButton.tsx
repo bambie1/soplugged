@@ -9,6 +9,7 @@ import { useAuth } from "@/context/authContext";
 import { addFavorite } from "@/utils/addFavorite";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { removeFavorite } from "@/utils/removeFavorite";
+import { IconButton } from "@/styled/IconButton";
 
 interface Props {
   business: any;
@@ -65,27 +66,15 @@ const FavoriteButton: FC<Props> = ({ business }) => {
     mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`);
   };
 
-  if (userLikesBusiness)
-    return (
-      <button
-        onClick={handleClick}
-        className="button outlined withIcon"
-        disabled={disabled}
-      >
-        <FontAwesomeIcon icon={faHeartFilled} />
-        Added to Favorites
-      </button>
-    );
-
   return (
-    <button
+    <IconButton
+      title={userLikesBusiness ? "Added to Favorites" : "Add to Favorites"}
       onClick={handleClick}
-      className="button outlined withIcon"
       disabled={disabled}
+      isOutlined
     >
-      <FontAwesomeIcon icon={faHeart} />
-      Add to Favorites
-    </button>
+      <FontAwesomeIcon icon={userLikesBusiness ? faHeartFilled : faHeart} />
+    </IconButton>
   );
 };
 

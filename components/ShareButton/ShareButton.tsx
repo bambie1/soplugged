@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy as faCopyFilled } from "@fortawesome/free-solid-svg-icons";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
+import { IconButton } from "@/styled/IconButton";
+
 const ShareButton = () => {
   const [textCopied, setTextCopied] = useState(false);
   const [businessUrl, setBusinessUrl] = useState("");
@@ -20,14 +22,14 @@ const ShareButton = () => {
 
   return (
     <>
-      <button
-        className="button text withIcon"
+      <IconButton
         onClick={copyUrl}
         disabled={textCopied}
+        title={textCopied ? "Copied!" : "Copy Link"}
+        isText
       >
         <FontAwesomeIcon icon={textCopied ? faCopyFilled : faCopy} />
-        {textCopied ? "Copied!" : "Copy Link"}
-      </button>
+      </IconButton>
     </>
   );
 };
