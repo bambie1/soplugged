@@ -14,16 +14,31 @@ const useAlgolia = () => {
   };
 
   const handleLocationClick = (label: string) => {
-    router.push(
-      `/search${createURL({
-        menu: {
-          business_location: [label],
-        },
-      })}`
-    );
+    const url = `/search${createURL({
+      menu: {
+        business_location: label,
+      },
+    })}`;
+
+    router.push(url);
   };
 
-  return { handleCategoryClick, handleLocationClick };
+  const handleCategoryAndLocation = (category: string, location: string) => {
+    const url = `/search${createURL({
+      menu: {
+        category: [category],
+        business_location: location,
+      },
+    })}`;
+
+    router.push(url);
+  };
+
+  return {
+    handleCategoryClick,
+    handleLocationClick,
+    handleCategoryAndLocation,
+  };
 };
 
 export default useAlgolia;

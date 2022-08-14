@@ -2,7 +2,7 @@ import Skeleton from "@/components/skeletons/Skeleton";
 
 const ProfileSkeleton = () => {
   return (
-    <div className="flex-center column">
+    <div className="flex flex-col items-center">
       <Skeleton type="title" />
       <Skeleton type="input" />
       <Skeleton type="input" />

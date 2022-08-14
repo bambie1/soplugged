@@ -4,7 +4,7 @@ import styles from "./FavoritesPage.module.scss";
 
 const FavoritesSkeleton = () => {
   return (
-    <div className="flex-center column">
+    <div className="flex flex-col items-center">
       <Skeleton type="title" />
 
       <div className={styles.favorites}>

@@ -12,24 +12,26 @@ const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 const HeroImage = ({ index }: any) => {
   const { handleCategoryClick } = useAlgolia();
 
+  const category = popularCategories[index];
+
   return (
     <li
       key={index}
       className={`w-[60%]  ${index === 1 || index === 4 ? "mr-20" : ""}`}
     >
       <button
-        onClick={() => handleCategoryClick(popularCategories[index].title)}
+        onClick={() => handleCategoryClick(category.title)}
         className="group relative aspect-square w-full overflow-hidden rounded-full border-2 border-transparent focus:border-primary"
       >
         <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30 transition duration-500 hover:bg-gradient-to-r hover:from-secondary/70 hover:to-white/70">
           <p className="border-b border-black font-semibold uppercase opacity-0 transition duration-300 group-hover:opacity-100">
-            {popularCategories[index].title}
+            {category.title}
           </p>
         </div>
         <Image
-          src={popularCategories[index].url}
+          src={category.url}
           objectFit="cover"
-          alt=""
+          alt={`Picture of a black-owned ${category.title} business`}
           layout="fill"
         />
       </button>

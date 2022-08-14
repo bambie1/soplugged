@@ -4,7 +4,7 @@ import styles from "./BusinessInfoPage.module.scss";
 
 const BusinessInfoSkeleton = () => {
   return (
-    <div className="flex-center column">
+    <div className="flex flex-col items-center">
       <Skeleton type="title" />
       <Skeleton type="heading" />
 
