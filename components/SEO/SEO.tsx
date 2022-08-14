@@ -18,6 +18,10 @@ const SEO: FC<Props> = ({ description, title }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#cdb693" />
       <meta
+        name="keywords"
+        content="black-owned, business, Canada, Ottawa, Toronto, hair, Calgary, buyblack, black, fashion"
+      />
+      <meta
         property="og:image"
         content="https://firebasestorage.googleapis.com/v0/b/soplugged-stg.appspot.com/o/splgd_og_image_tiny.png?alt=media&token=89cffe13-be44-4e77-b1ba-1d27049129ef"
       />

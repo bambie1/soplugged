@@ -20,11 +20,11 @@ const BlogCard: FC<Props> = ({ post }) => {
 
   return (
     <Link href={`/blog/${slug}`}>
-      <a className="flex h-full flex-col">
+      <a className="group flex h-full flex-col">
         <img
           src={url}
           alt=""
-          className="aspect-video w-full rounded-lg object-cover"
+          className="aspect-video w-full rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:border-primary/40 group-hover:shadow-lg"
         />
         <div className="mt-2 flex flex-col">
           <h3
