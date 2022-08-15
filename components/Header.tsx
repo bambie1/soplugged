@@ -68,7 +68,7 @@ const Header = () => {
                     />
                   </a>
                 </Link>
-                <ul className={`hidden md:ml-10 md:flex md:space-x-8`}>
+                <ul className={`hidden md:ml-10 md:flex md:space-x-4`}>
                   {mainNav.map(({ id, text, link }) => (
                     <li key={id} className={`${buildStyles(link)}`}>
                       <ButtonLink href={link}>{text}</ButtonLink>
@@ -76,42 +76,15 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-              <div
-                className={classNames("", {
-                  "flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end":
-                    router.asPath.startsWith("/search"),
-                  "hidden md:flex": !router.asPath.startsWith("/search"),
-                })}
-              >
+              <div className="flex flex-1 items-center justify-center md:ml-6 md:justify-end">
                 <div className="w-full max-w-lg md:max-w-sm">
-                  <Searchbar />
+                  {router.asPath !== "/" &&
+                    !router.asPath.startsWith("/pro") &&
+                    !router.asPath.startsWith("/blog") && <Searchbar />}
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 md:hidden">
-                <Link href="/search?focus=true">
-                  <a
-                    className={classNames("md:hidden", {
-                      hidden: router.asPath.startsWith("/search"),
-                    })}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-search"
-                    >
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                  </a>
-                </Link>
+              <div className="md:hidden">
                 <button
                   className={`button ${styles.menuBtn}`}
                   onClick={toggleMenu}
@@ -130,7 +103,7 @@ const Header = () => {
                 </Dialog>
               </div>
               <Link href="/dashboard">
-                <a className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-primary md:ml-4 md:inline-flex md:items-center lg:text-lg">
+                <a className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-primary md:ml-4 md:items-center lg:inline-flex lg:text-lg">
                   Go to dashboard
                   <span>
                     <svg

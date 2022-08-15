@@ -10,7 +10,7 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
 
   if (!hasResults)
     return (
-      <div className="my-container">
+      <div className="my-container text-center">
         <div>
           <Image
             src="/images/empty_inbox.svg"
@@ -29,7 +29,6 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
         {nbHits} {nbHits > 1 ? "businesses" : "business"} found
       </p>
       <CustomHits />
-      {/* <Hits hitComponent={CustomHit as any} /> */}
     </div>
   );
 };
