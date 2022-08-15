@@ -20,8 +20,8 @@ const BusinessForm: FC<Props> = ({ children }) => {
 
   const renderStepInfo = () => {
     return (
-      <aside className={`${styles.stepInfo} my-container h-screen`}>
-        <h1 className="h1 max-w-lg">{step.title}</h1>
+      <aside className={`${styles.stepInfo} my-container md:h-screen`}>
+        <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
         <h2 className={styles.stepDescription}>{step.description}</h2>
       </aside>
     );

@@ -1,0 +1,89 @@
+@import "styles/mixins";
+
+.button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: $secondary;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.25em 0.75em;
+  text-align: center;
+  white-space: nowrap;
+
+  height: 2.81rem;
+  line-height: 2.8rem;
+  transition: 220ms all ease-in-out;
+
+  &.withIcon {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &.text {
+    position: relative;
+
+    &:hover,
+    &:active {
+      background-color: rgba(78, 53, 5, 0.04);
+    }
+  }
+
+  &.filled {
+    min-width: 10ch;
+    min-height: 44px;
+    background-color: $secondary;
+    color: #fff;
+
+    background-color: rgb(78 53 5);
+    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgb(78 56 10 / 23%);
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &.outlined {
+    border: 1px solid $secondary;
+    color: $secondary;
+
+    &:hover {
+      background-color: $lightGrey;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &.big {
+    padding: 1.75rem;
+    text-transform: uppercase;
+
+    // @include desktop {
+    //   font-size: 1.2rem;
+    // }
+  }
+
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

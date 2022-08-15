@@ -2,20 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { Fragment, useEffect, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { useEffect, useState } from "react";
+import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
+import { ButtonLink } from "@/styled/ButtonLink";
 import { MobileNav } from "./MobileNav";
-import { Button } from "./Button";
 
 import styles from "../styles/Header.module.scss";
+import classNames from "classnames";
 
 const Searchbar = dynamic(() => import("./algolia/Searchbar"));
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
@@ -37,6 +34,13 @@ const Header = () => {
       );
     }
   }, []);
+
+  const buildStyles = (href: string) => {
+    if (router.asPath.startsWith(href))
+      return `${styles.navLink} ${styles.active}`;
+
+    return styles.navLink;
+  };
 
   return (
     <Disclosure
@@ -64,32 +68,50 @@ const Header = () => {
                     />
                   </a>
                 </Link>
-                <div className="hidden md:ml-10 md:flex md:space-x-8">
-                  {mainNav.map(({ text, link }) => (
-                    <Button
-                      as="link"
-                      href={link}
-                      type="text"
-                      key={text}
-                      className={`border-b ${
-                        router.asPath.startsWith(link)
-                          ? "border-primary text-primary"
-                          : "border-transparent"
-                      } `}
-                    >
-                      {text}
-                    </Button>
+                <ul className={`hidden md:ml-10 md:flex md:space-x-8`}>
+                  {mainNav.map(({ id, text, link }) => (
+                    <li key={id} className={`${buildStyles(link)}`}>
+                      <ButtonLink href={link}>{text}</ButtonLink>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
-              <div className="flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end">
+              <div
+                className={classNames("", {
+                  "flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end":
+                    router.asPath.startsWith("/search"),
+                  "hidden md:flex": !router.asPath.startsWith("/search"),
+                })}
+              >
                 <div className="w-full max-w-lg md:max-w-sm">
-                  {router.asPath !== "/" &&
-                    !router.asPath.startsWith("/pro") &&
-                    !router.asPath.startsWith("/blog") && <Searchbar />}
+                  <Searchbar />
                 </div>
               </div>
-              <div className="md:hidden">
+
+              <div className="flex items-center space-x-4 md:hidden">
+                <Link href="/search?focus=true">
+                  <a
+                    className={classNames("md:hidden", {
+                      hidden: router.asPath.startsWith("/search"),
+                    })}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-search"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </a>
+                </Link>
                 <button
                   className={`button ${styles.menuBtn}`}
                   onClick={toggleMenu}

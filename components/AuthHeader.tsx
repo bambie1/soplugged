@@ -2,20 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
+import { ButtonLink } from "@/styled/ButtonLink";
 import { MobileNav } from "./MobileNav";
-
-import styles from "../styles/Header.module.scss";
 import { SignOutButton } from "./SignOutButton";
 
-const Searchbar = dynamic(() => import("./algolia/Searchbar"));
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import styles from "../styles/Header.module.scss";
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
@@ -37,6 +32,13 @@ const AuthHeader = () => {
       );
     }
   }, []);
+
+  const buildStyles = (href: string) => {
+    if (router.asPath.startsWith(href))
+      return `${styles.navLink} ${styles.active}`;
+
+    return styles.navLink;
+  };
 
   return (
     <Disclosure
@@ -64,21 +66,13 @@ const AuthHeader = () => {
                     />
                   </a>
                 </Link>
-                <div className="hidden md:ml-10 md:flex md:space-x-8">
-                  {mainNav.map(({ text, link }) => (
-                    <Link href={link} key={text}>
-                      <a
-                        className={`${
-                          router.asPath.startsWith(link)
-                            ? "border-primary text-primary"
-                            : "border-transparent"
-                        } inline-flex items-center border-b-[1px] px-1 pt-1 hover:border-primary hover:text-primary lg:text-lg`}
-                      >
-                        {text}
-                      </a>
-                    </Link>
+                <ul className="hidden md:ml-10 md:flex md:space-x-8">
+                  {mainNav.map(({ id, text, link }) => (
+                    <li key={id} className={`${buildStyles(link)}`}>
+                      <ButtonLink href={link}>{text}</ButtonLink>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
               <div className="md:hidden">
                 <button

@@ -75,7 +75,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         >
           Go Back
         </Button>
-        <Button type="submit" isOutlined>
+        <Button type="submit">
           {currentStep === formSteps.length - 1
             ? !business
               ? "Complete setup"

@@ -88,7 +88,9 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h3 className="center">Contact</h3>
+      <h3 className="center text-lg font-bold uppercase text-primary">
+        Contact
+      </h3>
 
       <Input label="Email address" value={user?.email || ""} disabled />
 

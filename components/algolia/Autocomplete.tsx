@@ -14,6 +14,7 @@ export function Autocomplete(props: any) {
       container: containerRef.current,
       renderer: { createElement, Fragment, render },
       placeholder: "Search for a hair stylist",
+      autoFocus: true,
       ...props,
     });
 

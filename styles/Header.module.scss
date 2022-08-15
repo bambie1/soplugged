@@ -2,6 +2,9 @@
 
 .navLink {
   position: relative;
+  text-transform: uppercase;
+  border-radius: 8px;
+  align-self: center;
 
   &.active {
     position: relative;

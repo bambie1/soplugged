@@ -8,6 +8,7 @@ import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
 
 // import "../styles/globals.scss";
+import "../styles/button.scss";
 import "../styles/global.css";
 import "../styles/algolia.scss";
 import "../styles/imageGallery.scss";
