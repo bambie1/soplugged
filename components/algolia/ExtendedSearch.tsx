@@ -16,7 +16,6 @@ import { SEO } from "@/components/SEO";
 
 import { CustomRefinements } from "../algolia-old/CustomRefinements";
 import CustomMenu from "./CustomMenu";
-import { LocationMenu } from "./LocationMenu";
 
 const INSTANT_SEARCH_INDEX_NAME = "Business";
 
@@ -29,19 +28,10 @@ function createURL(searchState: any) {
   return qs.stringify(searchState, { addQueryPrefix: true });
 }
 
-function searchStateToUrl({ location }: any, searchState: any) {
-  if (Object.keys(searchState).length === 0) {
-    return "";
-  }
+const searchStateToUrl = (searchState) =>
+  searchState ? createURL(searchState) : "";
 
-  // Remove configure search state from query parameters
-  const { configure, ...rest } = searchState;
-  return `${location.pathname}${createURL(rest)}`;
-}
-
-function urlToSearchState({ search }: any) {
-  return qs.parse(search.slice(1));
-}
+const urlToSearchState = ({ search }) => qs.parse(search.slice(1));
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
@@ -54,17 +44,15 @@ const ExtendedSearch = () => {
   });
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    clearTimeout(timerRef.current!);
+  function onSearchStateChange(updatedSearchState) {
+    clearTimeout(timerRef.current);
 
     timerRef.current = setTimeout(() => {
-      window.history.pushState(
-        searchState,
-        null,
-        searchStateToUrl({ location: window.location }, searchState)
-      );
+      router.push(searchStateToUrl(updatedSearchState));
     }, 400);
-  }, [searchState, router]);
+
+    setSearchState(updatedSearchState);
+  }
 
   useEffect(() => {
     setSearchState(urlToSearchState(window.location));
@@ -95,7 +83,7 @@ const ExtendedSearch = () => {
           searchClient={searchClient}
           indexName={INSTANT_SEARCH_INDEX_NAME}
           searchState={searchState}
-          onSearchStateChange={setSearchState}
+          onSearchStateChange={onSearchStateChange}
           createURL={createURL}
         >
           {/* A virtual search box is required for InstantSearch to understand the `query` search state property */}

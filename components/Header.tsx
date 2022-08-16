@@ -76,7 +76,7 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-              <div className="flex flex-1 items-center justify-center md:ml-6 md:justify-end">
+              <div className="flex max-w-[60%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
                 <div className="w-full max-w-lg md:max-w-sm">
                   {router.asPath !== "/" &&
                     !router.asPath.startsWith("/pro") &&

@@ -1,45 +1,59 @@
 import { FC, useState } from "react";
-import { Highlight, connectMenu } from "react-instantsearch-dom";
+import Link from "next/link";
+import { connectMenu } from "react-instantsearch-dom";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+import classNames from "classnames";
 
-const Menu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
+const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
   const [hide, setHide] = useState(true);
 
   return (
-    <div className="relative">
-      <button
-        className="flex h-full w-full items-center justify-center border border-black lg:w-40"
-        onClick={() => setHide(!hide)}
+    <Menu as="div" className="relative z-[1] inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-100">
+          Location
+          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
       >
-        Filter by location
-      </button>
-      <ul
-        className={`absolute inset-x-0 mt-2 flex-1 gap-2 overflow-x-auto whitespace-nowrap rounded-md border bg-white p-4 shadow-lg ${
-          hide ? "-z-1 opacity-0" : "z-[2] opacity-100"
-        }`}
-      >
-        {items.map((item: any) => (
-          <li key={item.label}>
-            <a
-              href={createURL(item.value)}
-              className={`m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 ${
-                item.isRefined ? "bg-secondary text-primary" : ""
-              }`}
-              onClick={(event) => {
-                event.preventDefault();
-                refine(item.value);
-              }}
-            >
-              {isFromSearch ? (
-                <Highlight attribute="label" hit={item} />
-              ) : (
-                item.label.split(", Canada")[0]
-              )}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            {items.map((item: any) => (
+              <Menu.Item key={item.label}>
+                {({ active }) => (
+                  <Link href={createURL(item.value)}>
+                    <a
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2"
+                      )}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        refine(item.value);
+                      }}
+                    >
+                      {item.label.split(", Canada")[0]}
+                    </a>
+                  </Link>
+                )}
+              </Menu.Item>
+            ))}
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 };
 
-export const LocationMenu = connectMenu(Menu);
+export const LocationMenu = connectMenu(CustomMenu);
