@@ -10,7 +10,7 @@ const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
   const [hide, setHide] = useState(true);
 
   return (
-    <Menu as="div" className="relative z-[1] inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-100">
           Location
@@ -27,7 +27,7 @@ const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-[1] mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {items.map((item: any) => (
               <Menu.Item key={item.label}>

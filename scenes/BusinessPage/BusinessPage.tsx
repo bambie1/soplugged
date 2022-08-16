@@ -155,7 +155,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header />
+      <Header hideSearch />
       <main className="my-container mb-20 pt-28">
         <section className="center">
           <div className={styles.businessHeader}>
@@ -186,7 +186,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               </IconButton>
             )}
 
-            {!fixed_to_one_location && (
+            {!fixed_to_one_location && !business_location && (
               <button className="button noPointer">CANADA-WIDE</button>
             )}
           </div>

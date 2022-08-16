@@ -13,7 +13,7 @@ export function Autocomplete(props: any) {
     const search = autocomplete({
       container: containerRef.current,
       renderer: { createElement, Fragment, render },
-      placeholder: "Search for a hair stylist",
+      placeholder: "Find a black-owned business",
       ...props,
     });
 

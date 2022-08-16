@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
@@ -20,7 +20,11 @@ const mainNav = [
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
-const Header = () => {
+interface Props {
+  hideSearch?: boolean;
+}
+
+const Header: FC<Props> = ({ hideSearch }) => {
   const router = useRouter();
   const [isStyled, setIsStyled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -76,11 +80,12 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-              <div className="flex max-w-[60%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
+              <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
                 <div className="w-full max-w-lg md:max-w-sm">
                   {router.asPath !== "/" &&
                     !router.asPath.startsWith("/pro") &&
-                    !router.asPath.startsWith("/blog") && <Searchbar />}
+                    !router.asPath.startsWith("/blog") &&
+                    !hideSearch && <Searchbar />}
                 </div>
               </div>
 
