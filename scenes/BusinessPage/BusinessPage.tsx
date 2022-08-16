@@ -71,13 +71,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const fullView = hasPreview && verified && width > 960;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
-  const backToSearchLink = `/search${createURL({
-    menu: {
-      category: [category],
-      // business_location: [business_location],
-    },
-  })}`;
-
   const handleCategoryClick = () => {
     router.push(
       `/search${createURL({
