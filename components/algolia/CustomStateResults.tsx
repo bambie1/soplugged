@@ -3,6 +3,7 @@ import { SearchResults } from "react-instantsearch-core";
 import { connectStateResults } from "react-instantsearch-dom";
 
 import CustomHits from "./CustomHits";
+import { LocationMenu } from "./LocationMenu";
 
 const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
   const hasResults = searchResults && searchResults.nbHits !== 0;
@@ -25,9 +26,12 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
 
   return (
     <div className="my-container mt-10 w-full">
-      <p>
-        {nbHits} {nbHits > 1 ? "businesses" : "business"} found
-      </p>
+      <div className="flex w-full justify-between">
+        <p>
+          {nbHits} {nbHits > 1 ? "businesses" : "business"} found
+        </p>
+        <LocationMenu attribute="business_location" />
+      </div>
       <CustomHits />
     </div>
   );

@@ -5,7 +5,7 @@ const Menu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
   const [hide, setHide] = useState(true);
 
   return (
-    <div className="relative w-auto flex-1">
+    <div className="relative">
       <button
         className="flex h-full w-full items-center justify-center border border-black lg:w-40"
         onClick={() => setHide(!hide)}

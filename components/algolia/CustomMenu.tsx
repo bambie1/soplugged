@@ -17,7 +17,7 @@ const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
   };
 
   return (
-    <div className="relative flex overflow-auto bg-gray-100 md:w-[80%]">
+    <div className="relative flex w-full overflow-auto">
       <div
         className={`pointer-events-none absolute left-0  bottom-0 flex w-10 justify-center bg-gradient-to-r from-white py-8 ${
           isAtBeginning ? "hidden" : "block"
