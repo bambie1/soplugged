@@ -8,10 +8,8 @@ import {
 } from "@heroicons/react/outline";
 
 import Hero from "@/components/Hero";
-import FilterByLocation from "@/components/FilterByLocation";
 import FAQs from "@/components/FAQs";
 import PopularBusinesses from "@/components/PopularBusinesses";
-import BuyOrSell from "@/components/BuyOrSell";
 import { popularCategories } from "@/lib/popularCategories";
 import useAlgolia from "@/hooks/useAlgolia";
 
@@ -50,6 +48,10 @@ const secondaryLinks = [
 
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
+const BuyOrSell = dynamic(() => import("../components/BuyOrSell"));
+const FilterByLocation = dynamic(
+  () => import("../components/FilterByLocation")
+);
 
 const HomePage = () => {
   const { handleCategoryClick } = useAlgolia();
@@ -62,24 +64,17 @@ const HomePage = () => {
         <section className="my-10 lg:hidden">
           <div className="overflow-x-auto lg:hidden">
             <ul className="inline-flex gap-4 px-4">
-              {[0, 1, 2, 3, 4, 5].map((index) => (
-                <li key={index}>
+              {popularCategories.map(({ title, url }) => (
+                <li key={url}>
                   <button
                     className="flex flex-col items-center"
-                    onClick={() =>
-                      handleCategoryClick(popularCategories[index].title)
-                    }
+                    onClick={() => handleCategoryClick(title)}
                   >
                     <div className="relative h-40 w-40 overflow-hidden rounded-full">
-                      <Image
-                        src={popularCategories[index].url}
-                        objectFit="cover"
-                        alt=""
-                        layout="fill"
-                      />
+                      <Image src={url} objectFit="cover" alt="" layout="fill" />
                     </div>
                     <p className="mt-2 border-b border-gray-700 text-sm text-gray-700 md:text-base">
-                      {popularCategories[index].title}
+                      {title}
                     </p>
                   </button>
                 </li>

@@ -73,6 +73,7 @@ const FilterByLocation = () => {
                   <img
                     src={url}
                     alt=""
+                    loading="lazy"
                     className="absolute -top-5 -left-5 z-[1] aspect-square w-14 rounded-full border-2 border-transparent object-cover shadow-lg transition duration-200 group-hover:border-primary group-hover:shadow-none"
                   />
                   <button

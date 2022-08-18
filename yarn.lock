@@ -6002,11 +6002,6 @@ raw-body@2.4.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-calendly@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-2.2.2.tgz#5c5b00dc38fdfd1f963b18c11b3e92430772b17a"
-  integrity sha512-sDXoLLd7aWm+MBnzLZ6xmRb17pSTVlID3G3kjqtqJByGIoWylfx2nXe9IkN644ZDFcLmCVlLvSdL/GmX1owTGw==
-
 react-clientside-effect@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.5.tgz#e2c4dc3c9ee109f642fac4f5b6e9bf5bcd2219a3"

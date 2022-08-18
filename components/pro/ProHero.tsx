@@ -12,6 +12,7 @@ const ProHero: FC = () => {
               src="/images/pro-marker.svg"
               className="absolute -bottom-6"
               alt=""
+              loading="lazy"
             />
           </span>
         </h1>

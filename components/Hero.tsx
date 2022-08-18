@@ -51,6 +51,7 @@ const Hero = () => {
               <img
                 src="/underline_draw.svg"
                 className="absolute -bottom-6"
+                loading="lazy"
                 alt=""
               />
             </div>

@@ -24,6 +24,7 @@ const BlogCard: FC<Props> = ({ post }) => {
         <img
           src={url}
           alt=""
+          loading="lazy"
           className="aspect-video w-full rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:border-primary/40 group-hover:shadow-lg"
         />
         <div className="mt-2 flex flex-col">

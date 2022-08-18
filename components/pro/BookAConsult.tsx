@@ -1,5 +1,3 @@
-import { InlineWidget } from "react-calendly";
-
 const BookAConsult = () => {
   return (
     <div className="my-container mt-20 grid gap-4 lg:grid-cols-2">
@@ -15,9 +13,7 @@ const BookAConsult = () => {
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-lg border-2">
-        <InlineWidget url="https://calendly.com/soplugged" />
-      </div>
+      <div className="overflow-hidden rounded-lg border-2">Form goes here</div>
     </div>
   );
 };

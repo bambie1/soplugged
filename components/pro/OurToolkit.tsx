@@ -27,6 +27,7 @@ const OurToolkit = () => {
               key={tool.image}
               alt={`Logo for ${tool.title}`}
               title={tool.title}
+              loading="lazy"
             />
           ))}
         </ul>

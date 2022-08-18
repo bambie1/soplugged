@@ -68,6 +68,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             <img
               src={seo.image.url}
               alt=""
+              loading="lazy"
               className="ml-auto aspect-[3/2] w-full rounded-lg object-cover lg:w-[90%]"
             />
             <div className="absolute -bottom-10 left-0 -z-[1] hidden h-full w-[90%] rounded-lg bg-gradient-to-tr from-white to-accent/50 lg:block"></div>
