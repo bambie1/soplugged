@@ -11,6 +11,7 @@ const SEO: FC<Props> = ({ description, title }) => {
   const router = useRouter();
   const firstUrl = router.asPath || "not-found";
   const url = "https://www.soplugged.com" + firstUrl;
+
   return (
     <Head>
       <meta name="description" content={description || ""} />
@@ -23,7 +24,7 @@ const SEO: FC<Props> = ({ description, title }) => {
       />
       <meta
         property="og:image"
-        content="https://firebasestorage.googleapis.com/v0/b/soplugged-stg.appspot.com/o/splgd_og_image_tiny.png?alt=media&token=89cffe13-be44-4e77-b1ba-1d27049129ef"
+        content="https://res.cloudinary.com/denbpv9kp/image/upload/v1660913947/soplugged_images/og_images/og-img_ouruhc.png"
       />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />
