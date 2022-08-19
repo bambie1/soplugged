@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 
-import { PageWrapper } from "@/components/PageWrapper";
-import { ButtonLink } from "@/styled/ButtonLink";
-
 import styles from "./404Page.module.scss";
 
 const Header = dynamic(() => import("../../components/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
+const ButtonLink = dynamic(
+  () => import("../../src/styled/ButtonLink/ButtonLink")
+);
 
 const FAQPage = () => {
   return (

@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 
-import HomePage from "@/scenes/HomePage";
+import Hero from "@/components/Hero";
 import { SEO } from "@/components/SEO";
+
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer/Footer"));
+const HomePage = dynamic(() => import("../scenes/HomePage"));
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +15,13 @@ const Home: NextPage = () => {
         description="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform."
         title="Discover black-owned businesses in Canada | SoPlugged"
       />
+
+      <Header />
+
+      <Hero />
       <HomePage />
+
+      <Footer />
     </>
   );
 };

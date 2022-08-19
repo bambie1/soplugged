@@ -1,12 +1,18 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import dynamic from "next/dynamic";
 
-import { BusinessPage } from "@/scenes/BusinessPage";
 import { SEO } from "@/components/SEO";
 import { swrFetcher } from "@/utils/swrFetcher";
-import { PageNotFound } from "@/scenes/404Page";
-import BusinessPageSkeleton from "@/scenes/BusinessPage/BusinessPageSkeleton";
+
+const BusinessPageSkeleton = dynamic(
+  () => import("../../scenes/BusinessPage/BusinessPageSkeleton")
+);
+const BusinessPage = dynamic(
+  () => import("../../scenes/BusinessPage/BusinessPage")
+);
+const PageNotFound = dynamic(() => import("../../scenes/404Page/404Page"));
 
 const Business: NextPage = () => {
   const router = useRouter();

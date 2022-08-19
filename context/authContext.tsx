@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, createContext, FC } from "react";
 import nookies from "nookies";
 import firebase from "firebase/app";
-import "firebase/auth";
 import toast from "react-hot-toast";
 
 import firebaseClient from "@/src/firebase/firebaseClient";
@@ -14,7 +13,8 @@ export const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<firebase.User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const loadAuth = async () => {
+    await import("firebase/auth");
     try {
       return firebase.auth().onIdTokenChanged(async (user) => {
         if (!user) {
@@ -31,6 +31,10 @@ export const AuthProvider: FC = ({ children }) => {
     } catch (error) {
       return;
     }
+  };
+
+  useEffect(() => {
+    loadAuth();
   }, []);
 
   useEffect(() => {

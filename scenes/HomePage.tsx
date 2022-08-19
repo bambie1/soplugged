@@ -7,8 +7,6 @@ import {
   PlusIcon,
 } from "@heroicons/react/outline";
 
-import Hero from "@/components/Hero";
-import FAQs from "@/components/FAQs";
 import PopularBusinesses from "@/components/PopularBusinesses";
 import { popularCategories } from "@/lib/popularCategories";
 import useAlgolia from "@/hooks/useAlgolia";
@@ -46,20 +44,17 @@ const secondaryLinks = [
   },
 ];
 
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer/Footer"));
 const BuyOrSell = dynamic(() => import("../components/BuyOrSell"));
 const FilterByLocation = dynamic(
   () => import("../components/FilterByLocation")
 );
+const FAQs = dynamic(() => import("../components/FAQs"));
 
 const HomePage = () => {
   const { handleCategoryClick } = useAlgolia();
 
   return (
     <>
-      <Header />
-      <Hero />
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
         <section className="my-10 lg:hidden">
           <div className="overflow-x-auto lg:hidden">
@@ -168,7 +163,6 @@ const HomePage = () => {
 
         <FAQs />
       </div>
-      <Footer />
     </>
   );
 };

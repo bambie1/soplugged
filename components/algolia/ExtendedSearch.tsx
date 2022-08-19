@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { useRouter } from "next/router";
 import algoliasearch from "algoliasearch/lite";
 import qs from "qs";
@@ -10,12 +8,17 @@ import {
   InstantSearch,
   Pagination,
 } from "react-instantsearch-dom";
+import dynamic from "next/dynamic";
 
 import { CustomStateResults } from "./CustomStateResults";
 import { SEO } from "@/components/SEO";
 
-import { CustomRefinements } from "../algolia-old/CustomRefinements";
-import CustomMenu from "./CustomMenu";
+const CustomMenu = dynamic(() => import("./CustomMenu"));
+const CustomRefinements = dynamic(() =>
+  import("../algolia-old/CustomRefinements").then(
+    (mod: any) => mod.CustomRefinements
+  )
+);
 
 const INSTANT_SEARCH_INDEX_NAME = "Business";
 
@@ -28,10 +31,10 @@ function createURL(searchState: any) {
   return qs.stringify(searchState, { addQueryPrefix: true });
 }
 
-const searchStateToUrl = (searchState) =>
+const searchStateToUrl = (searchState: any) =>
   searchState ? createURL(searchState) : "";
 
-const urlToSearchState = ({ search }) => qs.parse(search.slice(1));
+const urlToSearchState = ({ search }: any) => qs.parse(search.slice(1));
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
@@ -44,9 +47,11 @@ const ExtendedSearch = () => {
   });
   const timerRef = useRef(null);
 
-  function onSearchStateChange(updatedSearchState) {
+  function onSearchStateChange(updatedSearchState: any) {
+    // @ts-ignore
     clearTimeout(timerRef.current);
 
+    // @ts-ignore
     timerRef.current = setTimeout(() => {
       router.push(searchStateToUrl(updatedSearchState));
     }, 400);
@@ -58,7 +63,9 @@ const ExtendedSearch = () => {
     setSearchState(urlToSearchState(window.location));
   }, [router]);
 
+  // @ts-ignore
   const filteredCategory = searchState?.menu?.category || null;
+  // @ts-ignore
   const filteredLocation = searchState?.menu?.business_location || null;
 
   return (

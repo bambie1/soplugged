@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
-import ReactImageGallery from "react-image-gallery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfoCircle,
@@ -33,6 +32,9 @@ const ContactForm = dynamic(
 const ShareButton = dynamic(
   () => import("../../components/ShareButton/ShareButton")
 );
+const ReactImageGallery = dynamic(() => import("react-image-gallery"), {
+  loading: () => <div className="aspect-video w-full rounded-lg bg-gray-200" />,
+});
 
 interface Props {
   business: IBusiness;
