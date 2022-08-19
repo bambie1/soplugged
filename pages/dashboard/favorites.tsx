@@ -25,7 +25,7 @@ const Favorites: NextPage = () => {
   return (
     <>
       <SEO
-        title="Favorites | My SoPlugged dashboard"
+        title="Favorites | SoPlugged dashboard"
         description="Manage your business, favorites and profile."
       />
       <DashboardLayout>{renderPage()}</DashboardLayout>

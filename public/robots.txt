@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://soplugged.com
+Host: https://www.soplugged.com
 
 # Sitemaps
-Sitemap: https://soplugged.com/sitemap.xml
+Sitemap: https://www.soplugged.com/sitemap.xml

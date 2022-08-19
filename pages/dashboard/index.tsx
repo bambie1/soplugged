@@ -25,7 +25,7 @@ const DashboardHome: NextPage = () => {
   return (
     <>
       <SEO
-        title="Business Info | My SoPlugged dashboard"
+        title="Business Info | SoPlugged dashboard"
         description="Manage your business, favorites and profile."
       />
       <DashboardLayout>{renderPage()}</DashboardLayout>
