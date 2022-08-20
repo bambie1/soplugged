@@ -8,15 +8,16 @@ interface Props {
 
 const HomeGuides: FC<Props> = ({ posts }) => {
   return (
-    <div className="my-container mt-20 grid items-center gap-4 lg:grid-cols-2 lg:gap-8">
+    <div className="my-container mt-20 grid items-center gap-4 lg:grid-cols-2 lg:gap-20">
       <div className="flex flex-col items-start">
         <h2 className="mb-4 text-3xl font-bold xl:text-4xl">
           Getting-started guides
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat a
-          pellentesque arcu, sapien. Luctus ut fermentum urna dolor. Fringilla
-          sit est at amet justo nec. Quam eli.
+          We've had some thoughts Look: Here's where we share ideas, stories and
+          opinions from the design, UX and development world we live in. We've
+          had some thoughts Look: Here's where we share ideas, stories and
+          opinions from the design, UX and development world we live in.
         </p>
       </div>
 

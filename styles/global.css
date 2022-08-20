@@ -36,6 +36,13 @@
   @apply inline-flex items-center gap-3 rounded-lg border border-primary px-4 py-2 text-primary hover:bg-primary hover:text-white focus:outline-none focus:ring active:bg-primary;
 }
 
+.inset-center {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .overflow-x-auto::-webkit-scrollbar {
   display: none;

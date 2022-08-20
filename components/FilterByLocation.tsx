@@ -1,43 +1,7 @@
 import Link from "next/link";
-import useAlgolia from "@/hooks/useAlgolia";
 
-const locationImages = [
-  {
-    city: "Ottawa, ON",
-    cityFull: "Ottawa, ON, Canada",
-    url: "https://images.unsplash.com/photo-1572955304332-bf714bd49add?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    category: "Hair & Beauty",
-    categoryFull: "Hair / Beauty",
-  },
-  {
-    city: "Calgary, AB",
-    cityFull: "Calgary, AB, Canada",
-    url: "https://images.unsplash.com/photo-1615557509870-98972c5e1396?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-    category: "Baking & Catering",
-    categoryFull: "Baking / Catering",
-  },
-  {
-    city: "Toronto, ON",
-    cityFull: "Toronto, ON, Canada",
-    url: "https://images.unsplash.com/photo-1648328168368-3a25f2152802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=722&q=80",
-    category: "Fashion",
-    categoryFull: "Fashion",
-  },
-  {
-    city: "Hamilton, ON",
-    cityFull: "Hamilton, ON, Canada",
-    url: "https://images.unsplash.com/photo-1607083206139-7c5b07e66ac3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z2lmdGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
-    category: "Handcraft & Gifting",
-    categoryFull: "Handcraft / Gifting Services",
-  },
-  {
-    city: "Edmonton, AB",
-    cityFull: "Edmonton, AB, Canada",
-    url: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZXZlbnQlMjBwbGFubmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
-    category: "Event planning",
-    categoryFull: "Event Planning",
-  },
-];
+import useAlgolia from "@/hooks/useAlgolia";
+import { locationsWithCategories } from "@/lib/locationsWithCategories";
 
 const FilterByLocation = () => {
   const { handleCategoryAndLocation } = useAlgolia();
@@ -64,7 +28,7 @@ const FilterByLocation = () => {
         <div className="text-center lg:hidden">{renderHeading()}</div>
         <div className="mt-10">
           <ul className="flex flex-col flex-wrap gap-8 md:flex-row md:justify-center lg:gap-12">
-            {locationImages.map(
+            {locationsWithCategories.map(
               ({ city, cityFull, category, url, categoryFull }) => (
                 <li
                   key={city}
@@ -77,7 +41,7 @@ const FilterByLocation = () => {
                     className="absolute -top-5 -left-5 z-[1] aspect-square w-14 rounded-full border-2 border-transparent object-cover shadow-lg transition duration-200 group-hover:border-primary group-hover:shadow-none"
                   />
                   <button
-                    className="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-lg border border-transparent bg-white px-6 py-3 shadow-md transition duration-200 hover:border-primary hover:shadow-none"
+                    className="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-lg border border-transparent bg-white px-6 py-3 drop-shadow transition duration-200 hover:border-primary hover:shadow-none"
                     onClick={() =>
                       handleCategoryAndLocation(categoryFull, cityFull)
                     }
