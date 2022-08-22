@@ -29,6 +29,8 @@ const CategoriesGrid: FC = () => {
               className="relative flex aspect-[4/5] w-full flex-col items-center overflow-hidden rounded-lg"
               onClick={() => handleCategoryClick(title)}
             >
+              <div className="absolute inset-0 z-[2] flex h-full w-full  bg-secondary/20"></div>
+
               <Image src={url} objectFit="cover" alt="" layout="fill" />
               <div className="absolute bottom-0 flex h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent pl-4">
                 <p className="text-sm text-white">{title}</p>
