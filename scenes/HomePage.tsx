@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
@@ -8,8 +7,7 @@ import {
 } from "@heroicons/react/outline";
 
 import PopularBusinesses from "@/components/PopularBusinesses";
-import { popularCategories } from "@/lib/popularCategories";
-import useAlgolia from "@/hooks/useAlgolia";
+import CategoriesGrid from "@/components/CategoriesGrid";
 
 const secondaryLinks = [
   {
@@ -51,31 +49,11 @@ const FilterByLocation = dynamic(
 const FAQs = dynamic(() => import("../components/FAQs"));
 
 const HomePage = () => {
-  const { handleCategoryClick } = useAlgolia();
-
   return (
     <>
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
-        <section className="my-10 lg:hidden">
-          <div className="overflow-x-auto lg:hidden">
-            <ul className="inline-flex gap-4 px-4">
-              {popularCategories.map(({ title, url }) => (
-                <li key={url}>
-                  <button
-                    className="flex flex-col items-center"
-                    onClick={() => handleCategoryClick(title)}
-                  >
-                    <div className="relative h-40 w-40 overflow-hidden rounded-full">
-                      <Image src={url} objectFit="cover" alt="" layout="fill" />
-                    </div>
-                    <p className="mt-2 border-b border-gray-700 text-sm text-gray-700 md:text-base">
-                      {title}
-                    </p>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section className="mb-10 lg:hidden">
+          <CategoriesGrid />
         </section>
 
         <section className="">

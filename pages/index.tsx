@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     <>
       <SEO
         description="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform."
-        title="Discover black-owned businesses in Canada | SoPlugged"
+        title="SoPlugged | Discover black-owned businesses in Canada"
       />
 
       <Header />
