@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const ProHero: FC = () => {
   return (
-    <div className="relative mb-10 flex min-h-[70vh] items-center bg-accent/10 lg:min-h-[40rem]">
+    <div className="relative mb-10 flex min-h-[70vh] items-center bg-gradient-to-r from-white to-accent/10 lg:min-h-[40rem]">
       <section className="my-container flex w-full flex-col py-10 pt-24 md:py-20 lg:pt-48 lg:pb-36">
         <div className="lg:max-w-[55%]">
           <h1 className="mb-8 text-5xl font-bold leading-[1.05] lg:mb-4 lg:text-6xl lg:leading-[1.2]">
