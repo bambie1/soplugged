@@ -1,7 +1,7 @@
 const Services = () => {
   return (
     <div className="mt-20 flex flex-col gap-20">
-      <section className="bg-pro-gradient">
+      <section className="">
         <div className="my-container grid items-center gap-4 lg:grid-cols-2">
           <div className="flex flex-col items-start py-10 lg:row-start-1 lg:py-20">
             <img
