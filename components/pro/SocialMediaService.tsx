@@ -4,7 +4,7 @@ const SocialMediaService = () => {
       <div className="my-container flex flex-1">
         <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
           <div className="flex min-h-0 justify-center lg:hidden">
-            <img src="/instagram_reel.png" alt="" className="object-contain" />
+            <img src="/instagram_reel.svg" alt="" className="object-contain" />
           </div>
 
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
@@ -27,7 +27,7 @@ const SocialMediaService = () => {
       </div>
       <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent/5 to-accent lg:flex">
         <div className="flex flex-1 items-center justify-center p-10">
-          <img src="/instagram_reel.png" alt="" className="" />
+          <img src="/instagram_reel.svg" alt="" className="" />
         </div>
       </aside>
     </div>

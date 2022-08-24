@@ -6,7 +6,7 @@ const ProHero: FC = () => {
       <div className="my-container flex flex-1">
         <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
           <div className="flex min-h-0 justify-center lg:hidden">
-            <img src="/instagram_reel.png" alt="" className="object-contain" />
+            <img src="/instagram_reel.svg" alt="" className="object-contain" />
           </div>
 
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
@@ -35,8 +35,14 @@ const ProHero: FC = () => {
         </div>
       </div>
       <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent to-accent/5 lg:flex">
-        <div className="flex flex-1 items-center justify-center p-10">
-          <img src="/instagram_reel.png" alt="" className="" />
+        <div className="relative flex flex-1 items-center justify-center overflow-hidden px-10 pt-24 pb-10">
+          {/* <div className="absolute top-1/3 aspect-square w-48 animate-ping-slow rounded-full border-[1px] border-black/60 delay-100 lg:w-72"></div> */}
+          <div className="inset-center aspect-square w-36 animate-ping-slow rounded-full border-[1px] border-black/60 lg:w-56"></div>
+          <img
+            src="/instagram_reel.svg"
+            alt="2 iPhones placed side-by-side displaying instagram reels"
+            className="z-[1]"
+          />
         </div>
       </aside>
     </div>

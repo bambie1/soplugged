@@ -37,10 +37,7 @@
 }
 
 .inset-center {
-  position: absolute;
-  /* top: 50%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

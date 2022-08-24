@@ -20,6 +20,7 @@ module.exports = {
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",
+        "ping-slow": "ping 3s linear infinite",
       },
       keyframes: {
         slide: {
