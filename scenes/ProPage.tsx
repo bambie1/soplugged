@@ -2,30 +2,30 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
-import ExpandedServices from "@/components/pro/ExpandedServices";
 
 const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
-const BookAConsult = dynamic(() => import("../components/pro/BookAConsult"));
+const SocialMediaService = dynamic(
+  () => import("../components/pro/SocialMediaService")
+);
+const CustomWebsiteService = dynamic(
+  () => import("../components/pro/CustomWebsiteService")
+);
+const ConsultForm = dynamic(() => import("../components/pro/ConsultForm"));
 const HomeGuides = dynamic(() => import("../components/pro/HomeGuides"));
 const OurToolkit = dynamic(() => import("../components/pro/OurToolkit"));
-const HowWeDoIt = dynamic(() => import("../components/pro/HowWeDoIt"));
 const Reviews = dynamic(() => import("../components/pro/Reviews"));
 
 const ProPage: FC = (props) => {
   return (
     <>
       <ProHeader />
-      <ProHero />
-      <main className="mb-10 flex min-h-screen scroll-pt-10 flex-col gap-20">
-        <ExpandedServices />
-        <HowWeDoIt />
-        <Reviews />
-        <HomeGuides {...props} />
-        <OurToolkit />
-        <BookAConsult />
-      </main>
-      <Footer tertiary />
+      <div className="h-screen snap-y snap-mandatory overflow-y-auto">
+        <ProHero />
+        <SocialMediaService />
+        <CustomWebsiteService />
+        <ConsultForm />
+      </div>
     </>
   );
 };

@@ -1,6 +1,4 @@
-import { FC } from "react";
-
-const ProHero: FC = () => {
+const CustomWebsiteService = () => {
   return (
     <div className="relative flex h-screen snap-start">
       <div className="my-container flex flex-1">
@@ -10,28 +8,21 @@ const ProHero: FC = () => {
           </div>
 
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-            Grow your{" "}
-            <span className="text-accent-dark lg:block">
-              e-commerce business
-            </span>{" "}
-            with ease
+            <span className="text-accent-dark lg:block">Custom-made</span>{" "}
+            websites
           </h1>
-          <p className="w-[90%] lg:text-xl">
-            Get strategic recommendations and professional services when you
-            work with us on anything
+          <p className="w-[90%] lg:text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat a
+            pellentesque arcu, sapien. Luctus ut fermentum urna dolor. Fringilla
+            sit est at amet justo nec. Quam eli.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#book-consult"
-              className="rounded-md bg-black px-4 py-3 text-white"
-            >
-              Book a FREE consultation
-            </a>
-            <a href="#book-consult" className="border-b border-black">
-              Learn more
-            </a>
-          </div>
+          <a
+            href="#book-consult"
+            className="mt-10 inline-flex rounded-md bg-black px-4 py-3 text-white"
+          >
+            Book a FREE consultation
+          </a>
         </div>
       </div>
       <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent to-accent/5 lg:flex">
@@ -43,4 +34,4 @@ const ProHero: FC = () => {
   );
 };
 
-export default ProHero;
+export default CustomWebsiteService;

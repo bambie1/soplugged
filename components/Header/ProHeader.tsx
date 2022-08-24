@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
@@ -55,7 +55,9 @@ const ProHeader: FC<Props> = ({ hideSearch }) => {
                     />
                   </a>
                 </Link>
-                <ul className={`hidden md:ml-10 md:flex md:space-x-4`}>
+                <ul
+                  className={`hidden text-black md:ml-10 md:flex md:space-x-4`}
+                >
                   {mainNav.map(({ id, text, link }) => (
                     <li key={id} className={`${buildStyles(link)}`}>
                       <ButtonLink href={link}>{text}</ButtonLink>
