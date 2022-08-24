@@ -12,7 +12,7 @@ import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import styles from "./MyBusinessWelcome.module.scss";
 
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../../components/Header/Header"));
 
 const referralSources = [
   { label: "Instagram (@sopluggd)", value: "SoPlugged" },

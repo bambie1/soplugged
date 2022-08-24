@@ -3,9 +3,8 @@ import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
 import ExpandedServices from "@/components/pro/ExpandedServices";
-import Services from "@/components/pro/Services";
 
-const Header = dynamic(() => import("../components/Header"));
+const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 const BookAConsult = dynamic(() => import("../components/pro/BookAConsult"));
 const HomeGuides = dynamic(() => import("../components/pro/HomeGuides"));
@@ -16,10 +15,9 @@ const Reviews = dynamic(() => import("../components/pro/Reviews"));
 const ProPage: FC = (props) => {
   return (
     <>
-      <Header />
+      <ProHeader />
       <ProHero />
-      <main className="mb-10 flex min-h-screen scroll-pt-10 flex-col gap-20 lg:mt-36">
-        <Services />
+      <main className="mb-10 flex min-h-screen scroll-pt-10 flex-col gap-20">
         <ExpandedServices />
         <HowWeDoIt />
         <Reviews />

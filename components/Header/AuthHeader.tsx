@@ -7,10 +7,10 @@ import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { ButtonLink } from "@/styled/ButtonLink";
-import { MobileNav } from "./MobileNav";
-import { SignOutButton } from "./SignOutButton";
+import { MobileNav } from "../MobileNav";
+import { SignOutButton } from "../SignOutButton";
 
-import styles from "../styles/Header.module.scss";
+import styles from "../../styles/Header.module.scss";
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },

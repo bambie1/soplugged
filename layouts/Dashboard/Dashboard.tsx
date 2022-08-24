@@ -13,7 +13,7 @@ import AuthPageWrapper from "@/components/AuthPageWrapper";
 
 import styles from "./Dashboard.module.scss";
 
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../../components/Header/Header"));
 
 const dashboardLinks = [
   { id: 1, href: "/dashboard", text: "Business", icon: faBuilding },

@@ -7,7 +7,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./ErrorPage.module.scss";
 
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const ErrorPage = () => {

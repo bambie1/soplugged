@@ -16,7 +16,7 @@ import {
 import { ProPlug } from "@/components/ProPlug";
 import BlogCard from "@/components/BlogCard";
 
-const Header = dynamic(() => import("../components/Header"));
+const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 interface Props {

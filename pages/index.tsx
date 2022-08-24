@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import { SEO } from "@/components/SEO";
 
-const Header = dynamic(() => import("../components/Header"));
+const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 const HomePage = dynamic(() => import("../scenes/HomePage"));
 

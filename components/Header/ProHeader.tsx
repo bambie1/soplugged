@@ -1,18 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 import { FC, useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { ButtonLink } from "@/styled/ButtonLink";
-import { MobileNav } from "./MobileNav";
+import { MobileNav } from "../MobileNav";
 
-import styles from "../styles/Header.module.scss";
-import classNames from "classnames";
-
-const Searchbar = dynamic(() => import("./algolia/Searchbar"));
+import styles from "../../styles/Header.module.scss";
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
@@ -24,20 +20,11 @@ interface Props {
   hideSearch?: boolean;
 }
 
-const Header: FC<Props> = ({ hideSearch }) => {
+const ProHeader: FC<Props> = ({ hideSearch }) => {
   const router = useRouter();
-  const [isStyled, setIsStyled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
   const toggleMenu = () => setOpenMenu(!openMenu);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 40)
-      );
-    }
-  }, []);
 
   const buildStyles = (href: string) => {
     if (router.asPath.startsWith(href))
@@ -51,11 +38,7 @@ const Header: FC<Props> = ({ hideSearch }) => {
       as="nav"
       className={`fixed z-20 w-full overflow-hidden border-b transition duration-100 ${
         openMenu ? "" : "bg-white"
-      } ${
-        isStyled
-          ? "md:border-gray-200 md:bg-white"
-          : "border-transparent bg-transparent"
-      }`}
+      } border-transparent bg-transparent`}
     >
       {({ open }) => (
         <>
@@ -80,14 +63,8 @@ const Header: FC<Props> = ({ hideSearch }) => {
                   ))}
                 </ul>
               </div>
-              <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
-                <div className="w-full max-w-lg md:max-w-sm">
-                  {router.asPath !== "/" &&
-                    !router.asPath.startsWith("/pro") &&
-                    !router.asPath.startsWith("/blog") &&
-                    !hideSearch && <Searchbar />}
-                </div>
-              </div>
+
+              <ButtonLink href="#">Book consultation</ButtonLink>
 
               <div className="md:hidden">
                 <button
@@ -107,27 +84,6 @@ const Header: FC<Props> = ({ hideSearch }) => {
                   <MobileNav />
                 </Dialog>
               </div>
-              <Link href="/dashboard">
-                <a className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-primary md:ml-4 md:items-center lg:inline-flex lg:text-lg">
-                  Go to dashboard
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </a>
-              </Link>
             </div>
           </div>
         </>
@@ -136,4 +92,4 @@ const Header: FC<Props> = ({ hideSearch }) => {
   );
 };
 
-export default Header;
+export default ProHeader;

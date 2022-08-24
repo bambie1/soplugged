@@ -2,29 +2,23 @@ import { FC } from "react";
 
 const ProHero: FC = () => {
   return (
-    <div className="relative mb-10 flex min-h-[70vh] items-center bg-gradient-to-r from-white to-accent/10 lg:min-h-[40rem]">
-      <section className="my-container flex w-full flex-col py-10 pt-24 md:py-20 lg:pt-48 lg:pb-36">
-        <div className="lg:max-w-[55%]">
-          <h1 className="mb-8 text-5xl font-bold leading-[1.05] lg:mb-4 lg:text-6xl lg:leading-[1.2]">
-            Scale your business{" "}
-            <span className="relative inline-block">
-              with ease
-              <img
-                src="/images/pro-marker.svg"
-                className="absolute -bottom-6"
-                alt=""
-                loading="lazy"
-              />
-            </span>
+    <div className="relative flex h-screen">
+      <div className="my-container flex flex-1">
+        <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
+          <div className="flex min-h-0 justify-center lg:hidden">
+            <img src="/instagram_reel.png" alt="" className="object-contain" />
+          </div>
+
+          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
+            Grow your{" "}
+            <span className="text-accent-dark lg:block">
+              e-commerce business
+            </span>{" "}
+            with ease
           </h1>
-          <p className="hidden max-w-2xl text-lg lg:block">
-            From strategic recommendations to professional services, our team of
-            experts is ready to work with you and provide all the support you
-            need to grow your business.
-          </p>
-          <p className="max-w-2xl lg:hidden">
+          <p className="w-[90%] lg:text-xl">
             Get strategic recommendations and professional services when you
-            work with us
+            work with us on anything
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -39,15 +33,10 @@ const ProHero: FC = () => {
             </a>
           </div>
         </div>
-      </section>
-
-      <aside className="absolute top-0 right-0 ml-auto hidden h-full w-[40%] bg-gradient-to-r from-accent/10 to-accent/60 lg:flex">
-        <div>
-          <img
-            src="/pro_illustration.png"
-            alt=""
-            className="absolute -left-10 -bottom-10 max-h-[80%]"
-          />
+      </div>
+      <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-accent lg:flex">
+        <div className="flex flex-1 items-center justify-center p-10">
+          <img src="/instagram_reel.png" alt="" className="" />
         </div>
       </aside>
     </div>

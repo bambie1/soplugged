@@ -7,7 +7,7 @@ import slugify from "slugify";
 import { useSWRConfig } from "swr";
 
 import { BusinessForm } from "layouts/BusinessForm";
-import AuthHeader from "@/components/AuthHeader";
+import AuthHeader from "@/components/Header/AuthHeader";
 import { businessFormSchema } from "@/components/formik";
 import NameLocation from "@/components/BusinessForm/forms/1_NameLocation";
 import Categories from "@/components/BusinessForm/forms/2_Categories";

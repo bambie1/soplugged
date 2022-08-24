@@ -22,7 +22,7 @@ import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
 import { IconButton } from "@/styled/IconButton";
 
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../../components/Header/Header"));
 const FavoriteButton = dynamic(
   () => import("../../components/FavoriteButton/FavoriteButton")
 );
