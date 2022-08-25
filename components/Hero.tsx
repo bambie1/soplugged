@@ -1,5 +1,6 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import classNames from "classnames";
 
 import { popularCategories } from "@/lib/popularCategories";
 import useAlgolia from "@/hooks/useAlgolia";
@@ -14,23 +15,27 @@ const HeroImage = ({ index }: any) => {
   return (
     <li
       key={index}
-      className={`w-[60%]  ${index === 1 || index === 4 ? "mr-20" : ""}`}
+      className={classNames("w-full", {
+        "col-span-2 row-span-2 row-start-1": index === 0,
+        "mt-8": index === 1,
+        "mt-16": index === 2,
+        "-mt-8": index === 3,
+      })}
     >
       <button
         onClick={() => handleCategoryClick(category.title)}
-        className="group relative aspect-square w-full overflow-hidden rounded-full border-2 border-transparent focus:border-primary"
+        className="group relative aspect-[2/3] w-full overflow-hidden rounded-lg border-2 border-transparent focus:border-primary"
       >
-        <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30 transition duration-500 hover:bg-gradient-to-r hover:from-secondary/70 hover:to-white/70">
-          <p className="border-b border-black font-semibold uppercase opacity-0 transition duration-300 group-hover:opacity-100">
-            {category.title}
-          </p>
-        </div>
+        <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30"></div>
         <Image
           src={category.url}
           objectFit="cover"
           alt={`Picture of a black-owned ${category.title} business`}
           layout="fill"
         />
+        <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent pb-4 pl-4">
+          <p className="text-sm text-white">{category.title}</p>
+        </div>
       </button>
     </li>
   );
@@ -38,7 +43,7 @@ const HeroImage = ({ index }: any) => {
 
 const Hero = () => {
   return (
-    <div className="my-container flex flex-col py-10 pt-24 text-center md:pt-36 lg:text-left">
+    <div className="my-container flex flex-col py-10 pt-24 text-center md:pt-36 lg:pt-48 lg:pb-24 lg:text-left">
       <section className="relative flex-1 items-center justify-center gap-10 py-5 lg:grid lg:grid-cols-5 lg:py-0">
         <div className="relative col-span-3 col-start-1 flex w-full flex-col">
           <h1 className="text-5xl font-bold leading-[1.05] lg:text-6xl lg:leading-[1.2]">
@@ -65,16 +70,10 @@ const Hero = () => {
             <Searchbar />
           </div>
         </div>
-        <aside className="col-span-2 col-start-4 hidden flex-col lg:flex">
-          {/* <CategoriesGrid /> */}
-          <div className="ml-auto hidden w-full -space-x-24 lg:flex">
-            <ul className="flex flex-1 flex-col items-end gap-4">
-              {[0, 1, 2].map((index) => (
-                <HeroImage index={index} key={index} />
-              ))}
-            </ul>
-            <ul className="flex flex-1 flex-col items-end gap-4">
-              {[3, 4, 5].map((index) => (
+        <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">
+          <div className="ml-auto w-full">
+            <ul className="grid flex-1 grid-cols-4 justify-items-end gap-1">
+              {[0, 1, 2, 3, 4].map((index) => (
                 <HeroImage index={index} key={index} />
               ))}
             </ul>
