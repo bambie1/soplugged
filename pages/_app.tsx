@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <AuthProvider>
         <BusinessFormProvider>
-          <div className="overflow-hidden">
+          <div className="">
             <Component {...pageProps} />
           </div>
           <Toaster position="bottom-left" />
