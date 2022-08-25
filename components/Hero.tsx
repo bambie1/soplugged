@@ -24,16 +24,16 @@ const HeroImage = ({ index }: any) => {
     >
       <button
         onClick={() => handleCategoryClick(category.title)}
-        className="group relative aspect-[2/3] w-full overflow-hidden rounded-lg border-2 border-transparent focus:border-primary"
+        className="group relative aspect-[2/3] w-full overflow-hidden rounded-xl border border-transparent focus:border-primary"
       >
-        <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30"></div>
+        <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
         <Image
           src={category.url}
           objectFit="cover"
           alt={`Picture of a black-owned ${category.title} business`}
           layout="fill"
         />
-        <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent pb-4 pl-4">
+        <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 pl-4">
           <p className="text-sm text-white">{category.title}</p>
         </div>
       </button>

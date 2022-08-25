@@ -66,7 +66,7 @@ const ProHeader: FC<Props> = ({ hideSearch }) => {
                 </ul>
               </div>
 
-              <ButtonLink href="#">Book consultation</ButtonLink>
+              <ButtonLink href="#book-consult">Book consultation</ButtonLink>
 
               <div className="md:hidden">
                 <button

@@ -28,7 +28,7 @@ const ProHero: FC = () => {
             >
               Book a FREE consultation
             </a>
-            <a href="#book-consult" className="border-b border-black">
+            <a href="#custom-website" className="border-b border-black">
               Learn more
             </a>
           </div>

@@ -22,7 +22,7 @@ const BuyOrSell = () => {
     <section className="my-10">
       <div className="my-container">
         <div className="relative grid items-center gap-5 md:grid-cols-2">
-          <div className="absolute top-1/2 left-1/2 -z-10 mx-auto aspect-square w-40  max-w-xs -translate-x-1/2 -translate-y-1/2 transform rounded-full border-2 border-secondary/40 lg:w-full"></div>
+          <div className="absolute top-1/2 left-1/2 -z-10 mx-auto aspect-square w-40 max-w-xs -translate-x-1/2 -translate-y-1/2 transform animate-pulse rounded-full border-2 border-secondary/40 lg:w-full"></div>
           {cardInfo.map(({ text, title, number, href }) => (
             <Link href={href} key={title}>
               <a

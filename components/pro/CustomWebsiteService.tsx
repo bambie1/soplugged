@@ -1,6 +1,6 @@
 const CustomWebsiteService = () => {
   return (
-    <div className="relative flex h-screen snap-start">
+    <div id="custom-website" className="relative flex h-screen snap-start">
       <div className="my-container flex flex-1">
         <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
           <div className="flex min-h-0 justify-center lg:hidden">
