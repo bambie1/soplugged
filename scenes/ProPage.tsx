@@ -16,7 +16,7 @@ const ProPage: FC = (props) => {
   return (
     <>
       <ProHeader />
-      <div className="h-screen snap-y snap-mandatory scroll-p-10 overflow-y-auto scroll-smooth">
+      <div className="h-screen scroll-p-10 overflow-y-auto scroll-smooth">
         <ProHero />
         <SocialMediaService />
         <CustomWebsiteService />
