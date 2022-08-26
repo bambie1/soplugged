@@ -10,6 +10,7 @@ const Pro: NextPage = (props) => {
       <SEO
         description="Professional help for your business' digital needs"
         title="SoPlugged Pro | Scale your business with ease"
+        variant="pro"
       />
       <ProPage {...props} />
     </>

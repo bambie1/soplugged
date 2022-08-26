@@ -16,6 +16,7 @@ const GuidePage: FC<Props> = ({ post, morePosts }) => {
       <SEO
         title={`${post?.title || "Guides"} | SoPluggedPRO`}
         description={post?.excerpt}
+        variant="blog"
       />
       <BlogPage post={post} morePosts={morePosts} />
     </>

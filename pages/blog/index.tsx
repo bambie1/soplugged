@@ -14,6 +14,7 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
       <SEO
         title="FREE Guides on how to scale your business | SoPluggedPRO"
         description="Explore our free guides and resources that we've compiled to help you grow your business with ease."
+        variant="blog"
       />
 
       <BlogsHomePage posts={posts} />
