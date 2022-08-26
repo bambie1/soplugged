@@ -36,9 +36,9 @@ const ProHeader: FC<Props> = ({ hideSearch }) => {
   return (
     <Disclosure
       as="nav"
-      className={`fixed z-20 w-full overflow-hidden border-b transition duration-100 ${
+      className={`sticky top-0 z-20 w-full overflow-hidden border-b transition duration-100 ${
         openMenu ? "" : "bg-white"
-      } border-transparent bg-transparent`}
+      } border-transparent`}
     >
       {({ open }) => (
         <>

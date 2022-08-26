@@ -1,39 +1,38 @@
+import Link from "next/link";
+
 const CustomWebsiteService = () => {
   return (
-    <div id="custom-website" className="relative flex h-screen snap-start">
-      <div className="my-container flex flex-1">
-        <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
-          <div className="flex min-h-0 justify-center lg:hidden">
-            <img
-              src="/custom_website.svg"
-              loading="lazy"
-              alt=""
-              className="object-contain"
-            />
-          </div>
+    <div className="my-container relative grid min-h-[90vh] gap-10 lg:grid-cols-2">
+      <div className="flex h-full w-full flex-col justify-center py-10 lg:items-start">
+        <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
+          <span className="text-accent-dark lg:block">Custom-made</span>{" "}
+          websites
+        </h1>
+        <p className="lg:text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat a
+          pellentesque arcu, sapien. Luctus ut fermentum urna dolor. Fringilla
+          sit est at amet justo nec. Quam eli.
+        </p>
 
-          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-            <span className="text-accent-dark lg:block">Custom-made</span>{" "}
-            websites
-          </h1>
-          <p className="w-[90%] lg:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat a
-            pellentesque arcu, sapien. Luctus ut fermentum urna dolor. Fringilla
-            sit est at amet justo nec. Quam eli.
-          </p>
-
-          <a
-            href="#book-consult"
-            className="mt-10 inline-flex rounded-md bg-black px-4 py-3 text-white"
-          >
-            Book a FREE consultation
-          </a>
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <Link href="#book-consult">
+            <a className="rounded-md bg-black px-4 py-3 text-white">
+              Book a FREE consultation
+            </a>
+          </Link>
+          <Link href="#custom-website">
+            <a className="border-b border-black">Learn more</a>
+          </Link>
         </div>
       </div>
-      <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent to-accent/5 lg:flex">
-        <div className="flex flex-1 items-center justify-center p-10">
-          <img src="/custom_website.svg" loading="lazy" alt="" className="" />
-        </div>
+      <aside className="relative flex flex-1 items-center justify-center px-10 py-10">
+        <div className="absolute bottom-0 -left-20 -z-[1] aspect-square w-96 animate-blob rounded-full bg-gray-300 opacity-40 mix-blend-multiply filter"></div>
+
+        <img
+          src="/custom_website.svg"
+          alt="2 iPhones placed side-by-side displaying instagram reels"
+          className="z-[1]"
+        />
       </aside>
     </div>
   );

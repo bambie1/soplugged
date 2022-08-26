@@ -1,49 +1,37 @@
+import Link from "next/link";
 import { FC } from "react";
 
 const ProHero: FC = () => {
   return (
-    <div className="relative flex h-screen snap-start">
-      <div className="my-container flex flex-1">
-        <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
-          <div className="flex min-h-0 justify-center lg:hidden">
-            <img src="/instagram_reel.svg" alt="" className="object-contain" />
-          </div>
+    <div className="my-container relative grid min-h-[90vh] gap-10 lg:grid-cols-5">
+      <div className="flex h-full w-full flex-col justify-center py-10 text-center lg:col-span-3 lg:items-start lg:text-left">
+        <h1 className="mb-6 text-4xl font-bold lg:pr-10 lg:text-6xl">
+          Grow your <span className="text-accent-dark">business</span> with ease
+        </h1>
+        <p className="lg:w-[90%] lg:text-xl">
+          Get strategic recommendations and professional services when you work
+          with us on anything
+        </p>
 
-          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-            Grow your{" "}
-            <span className="text-accent-dark lg:block">
-              e-commerce business
-            </span>{" "}
-            with ease
-          </h1>
-          <p className="w-[90%] lg:text-xl">
-            Get strategic recommendations and professional services when you
-            work with us on anything
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#book-consult"
-              className="rounded-md bg-black px-4 py-3 text-white"
-            >
+        <div className="mt-10 flex flex-col items-center gap-4 lg:flex-row">
+          <Link href="#book-consult">
+            <a className="rounded-md bg-black px-4 py-3 text-white">
               Book a FREE consultation
             </a>
-            <a href="#custom-website" className="border-b border-black">
-              Learn more
-            </a>
-          </div>
+          </Link>
+          <Link href="#custom-website">
+            <a className="border-b border-black">Learn more</a>
+          </Link>
         </div>
       </div>
-      <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent to-accent/5 lg:flex">
-        <div className="relative flex flex-1 items-center justify-center overflow-hidden px-10 pt-24 pb-10">
-          {/* <div className="absolute top-1/3 aspect-square w-48 animate-ping-slow rounded-full border-[1px] border-black/60 delay-100 lg:w-72"></div> */}
-          <div className="inset-center aspect-square w-36 animate-ping-slow rounded-full border-[1px] border-black/60 lg:w-56"></div>
-          <img
-            src="/instagram_reel.svg"
-            alt="2 iPhones placed side-by-side displaying instagram reels"
-            className="z-[1]"
-          />
-        </div>
+      <aside className="relative flex flex-1 items-center justify-center px-10 lg:col-span-2 lg:py-10">
+        <div className="absolute bottom-0 -left-6 -z-[1] aspect-square w-48 animate-blob rounded-full bg-accent opacity-40 mix-blend-multiply blur-xl filter lg:-left-20 lg:w-96"></div>
+        <div className="animation-delay-2000 absolute bottom-6 -right-6 -z-[1] aspect-square w-48 animate-blob rounded-full bg-secondary opacity-40 mix-blend-multiply blur-xl filter lg:-right-20 lg:w-96"></div>
+
+        <img
+          src="/instagram_reel.svg"
+          alt="2 iPhones placed side-by-side displaying instagram reels"
+        />
       </aside>
     </div>
   );

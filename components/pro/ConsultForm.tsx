@@ -121,9 +121,9 @@ const ConsultForm = () => {
           </form>
         </div>
       </div>
-      <aside className="absolute top-0 right-0 hidden h-full w-[40%] bg-gradient-to-b from-accent/5 to-accent lg:flex">
+      <aside className="absolute top-0 right-0 hidden h-full w-[40%] lg:flex">
         <div className="flex flex-1 items-center justify-center p-10">
-          <div className="aspect-square w-64 rounded-full border border-white"></div>
+          <div className="aspect-square w-64 rounded-full border border-black"></div>
         </div>
       </aside>
     </div>
