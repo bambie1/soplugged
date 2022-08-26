@@ -157,6 +157,9 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
           author {
             name
           }
+          createdBy {
+            name
+          }
           seo {
             description
             title

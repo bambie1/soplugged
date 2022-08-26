@@ -15,10 +15,10 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
     <>
       <ProHeader />
       <main className="mb-10 lg:mb-20">
-        <section className="relative flex bg-gradient-to-b from-accent to-white py-14 md:pt-16 md:pb-14 lg:pt-24 lg:pb-20">
+        <section className="relative flex">
           <div className="my-container flex min-h-[30vh] items-center justify-center text-center">
             <div className="flex flex-col items-center justify-center p-10 lg:p-20">
-              <h1 className="mx-auto mb-8 max-w-xl text-3xl font-bold leading-[1.05] text-primary lg:mb-4 lg:text-5xl lg:leading-[1.2]">
+              <h1 className="mx-auto mb-4 max-w-xl text-3xl font-bold leading-[1.05] text-primary lg:text-5xl lg:leading-[1.2]">
                 SoPlugged blog
               </h1>
               <p className="lg:text-lg">

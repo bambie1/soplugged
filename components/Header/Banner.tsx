@@ -18,7 +18,7 @@ const Banner = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="relative bg-secondary/30">
+    <div className="relative bg-gradient-to-l from-accent/60 to-accent-30">
       <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
         <div className="px-4 text-center sm:px-16">
           <p className="font-medium text-primary">
