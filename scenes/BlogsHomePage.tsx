@@ -1,8 +1,10 @@
 import { FC } from "react";
+import dynamic from "next/dynamic";
 
-import { Footer } from "@/components/Footer";
-import Header from "@/components/Header/Header";
 import BlogCard from "@/components/BlogCard";
+
+const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
+const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 interface Props {
   posts: any[];
@@ -11,7 +13,7 @@ interface Props {
 const BlogsHomePage: FC<Props> = ({ posts }) => {
   return (
     <>
-      <Header />
+      <ProHeader />
       <main className="mb-10 lg:mb-20">
         <section className="relative flex bg-gradient-to-b from-accent to-white py-14 md:pt-16 md:pb-14 lg:pt-24 lg:pb-20">
           <div className="my-container flex min-h-[30vh] items-center justify-center text-center">

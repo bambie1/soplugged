@@ -1,8 +1,19 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Banner = () => {
-  const [showBanner, setshowBanner] = useState(true);
+  const [showBanner, setshowBanner] = useState(false);
+
+  useEffect(() => {
+    const isBannerClosed = localStorage.getItem("isBannerClosed");
+
+    if (!isBannerClosed) setshowBanner(true);
+  }, []);
+
+  const closeBanner = () => {
+    setshowBanner(false);
+    localStorage.setItem("isBannerClosed", "true");
+  };
 
   if (!showBanner) return null;
 
@@ -27,8 +38,8 @@ const Banner = () => {
         <div className="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:items-start sm:pt-1 sm:pr-2">
           <button
             type="button"
-            className="flex rounded-md p-2 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white"
-            onClick={() => setshowBanner(false)}
+            className="flex rounded-md border border-transparent p-2 hover:border-secondary"
+            onClick={closeBanner}
           >
             <span className="sr-only">Dismiss</span>
             <svg

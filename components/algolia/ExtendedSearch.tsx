@@ -80,7 +80,6 @@ const ExtendedSearch = () => {
             <span className="text-primary">
               {filteredCategory || "Explore"}
             </span>
-            {/* <span className="absolute left-0 -bottom-1 mx-auto h-3 w-full -rotate-2 bg-secondary/40" /> */}
           </h1>
           <span className="mt-4 text-lg lg:text-2xl">
             Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}

@@ -13,10 +13,9 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 
-import { ProPlug } from "@/components/ProPlug";
 import BlogCard from "@/components/BlogCard";
 
-const Header = dynamic(() => import("../components/Header/Header"));
+const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 interface Props {
@@ -37,7 +36,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
 
   return (
     <>
-      <Header />
+      <ProHeader />
       <main className="mx-auto mb-10 max-w-2xl lg:max-w-none">
         <section className="my-container relative grid gap-4 pt-24 pb-10 lg:grid-cols-2 lg:gap-10 lg:pb-20">
           <div className="">

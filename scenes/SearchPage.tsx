@@ -9,7 +9,7 @@ const SearchPage = () => {
   return (
     <>
       <Header showBanner />
-      <main className="mb-16 min-h-screen pt-24">
+      <main className="mb-16 min-h-screen pt-12">
         <ExtendedSearch />
       </main>
       <Footer />
