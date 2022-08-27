@@ -32,29 +32,25 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
     <>
       <ProHeader />
       <main className="mx-auto mb-10 max-w-2xl  lg:max-w-none">
-        <section className="my-container relative grid gap-4 py-10 lg:grid-cols-2 lg:gap-10">
-          <div className="">
-            <div className="flex flex-col py-4 lg:py-20">
-              <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:mb-2 lg:text-5xl lg:leading-[1.2]">
-                {title}
-              </h1>
-              <p className="text-gray-700">{seo.description}</p>
+        <section className="my-container relative grid items-center gap-4 py-10 lg:grid-cols-2 lg:gap-10">
+          <div className="flex flex-col py-4 lg:py-20">
+            <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:mb-2 lg:text-5xl lg:leading-[1.2]">
+              {title}
+            </h1>
+            <p className="text-gray-700">{seo.description}</p>
 
-              <div className="mt-6">
-                <p className="uppercase">
-                  {createdBy?.name || "SoPlugged team"}
-                </p>
-                <p className="text-sm text-gray-600">
-                  {new Date(createdAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
+            <div className="mt-6">
+              <p className="uppercase">{createdBy?.name || "SoPlugged team"}</p>
+              <p className="text-sm text-gray-600">
+                {new Date(createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </p>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative row-start-1 lg:row-start-auto">
             <img
               src={seo.image.url}
               alt=""
@@ -65,7 +61,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
         </section>
         <div className="my-container">
-          <div className="relative my-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
+          <div className="relative grid-cols-3 items-start gap-4 lg:my-10 lg:grid lg:gap-8">
             <div
               dangerouslySetInnerHTML={{ __html: content.html }}
               className="prose col-span-2 col-start-1 max-w-none lg:mr-10"

@@ -8,6 +8,8 @@ import {
 
 import PopularBusinesses from "@/components/PopularBusinesses";
 import CategoriesGrid from "@/components/CategoriesGrid";
+import { Button } from "@/styled/Button";
+import { ArrowButton } from "@/styled/ArrowButton";
 
 const secondaryLinks = [
   {
@@ -79,32 +81,12 @@ const HomePage = () => {
                 button. Find everything from restaurants, hairstylists and
                 salons to tutoring, tech and healthcare services.
               </p>
-              <p className="mt-3 hidden text-lg text-gray-700 lg:block">
+              <p className="mt-3 mb-6 hidden text-lg text-gray-700 lg:block">
                 You can now have all your black-owned businesses in one place,
                 right at your fingertips.
               </p>
 
-              <Link href="/search">
-                <a className="group mt-6 inline-flex items-center gap-2 border-b border-primary transition duration-200 hover:font-semibold lg:text-lg">
-                  Explore businesses
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </a>
-              </Link>
+              <ArrowButton>Explore businesses</ArrowButton>
             </div>
             <div>
               <dl className="mt-10 space-y-10">
@@ -123,8 +105,27 @@ const HomePage = () => {
                       </dt>
                       <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
                         <p>{item.description}</p>
-                        <span className="mt-3 border-b border-primary pb-1 text-primary transition duration-200 group-hover:scale-[90%]">
+                        <span
+                          className="mt-4 inline-flex items-center gap-2
+                          border-b border-primary text-primary transition duration-200 group-hover:font-semibold lg:text-base"
+                        >
                           {item.linkText}
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={1}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </dd>
                     </a>

@@ -13,9 +13,15 @@ const faqs = [
   },
   {
     id: 3,
-    question: "What’s the difference between SoPlugged and SoPluggedPro?",
+    question: "What's the difference between SoPlugged and SoPluggedPro?",
     answer:
       "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business’ digital needs",
+  },
+  {
+    id: 4,
+    question: "Why is SoPlugged free?",
+    answer:
+      "Yes, SoPlugged is free to use and register (if you're a black-owned business in Canada). We rely on our amazing sponsors to keep our platform free and accessible to Black-owned businesses across Canada.",
   },
 ];
 
