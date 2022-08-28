@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const SocialMediaService = () => {
   return (
-    <div className="my-container relative grid min-h-[90vh] gap-10 lg:grid-cols-2">
+    <div className="my-container relative grid lg:min-h-[90vh] lg:grid-cols-2 lg:gap-10">
       <aside className="relative flex flex-1 items-center justify-center px-10 py-10">
         <img
           src="/instagram_reel.svg"

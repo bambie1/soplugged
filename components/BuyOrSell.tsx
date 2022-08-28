@@ -1,3 +1,4 @@
+import { ArrowButton } from "@/styled/ArrowButton";
 import Link from "next/link";
 
 const cardInfo = [
@@ -22,7 +23,9 @@ const BuyOrSell = () => {
     <section className="my-10">
       <div className="my-container">
         <div className="relative grid items-center gap-5 md:grid-cols-2">
-          <div className="absolute top-1/2 left-1/2 -z-10 mx-auto aspect-square w-40 max-w-xs -translate-x-1/2 -translate-y-1/2 transform animate-pulse rounded-full border-2 border-secondary/40 lg:w-full"></div>
+          <div className="absolute top-1/2 left-1/2 -z-10 mx-auto aspect-square w-40 max-w-xs -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-gradient-to-tr from-primary to-accent p-[1px] opacity-50 transition lg:w-full">
+            <div className="aspect-square w-full rounded-full bg-white"></div>
+          </div>
           {cardInfo.map(({ text, title, number, href }) => (
             <Link href={href} key={title}>
               <a
@@ -33,10 +36,11 @@ const BuyOrSell = () => {
                 } lg:min-h-[20rem]`}
               >
                 <div className="transition duration-300 group-hover:translate-x-5">
-                  <h2 className="mb-1 text-2xl font-bold xl:text-3xl">
+                  <h2 className="mb-4 text-2xl font-bold xl:text-3xl">
                     {title}
                   </h2>
-                  <p>{text}</p>
+
+                  <ArrowButton>{text}</ArrowButton>
                 </div>
               </a>
             </Link>

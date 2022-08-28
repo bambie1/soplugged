@@ -6,6 +6,7 @@ import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { ButtonLink } from "@/styled/ButtonLink";
+import { ArrowButton } from "@/styled/ArrowButton";
 import { MobileNav } from "../MobileNav";
 
 import styles from "../../styles/Header.module.scss";
@@ -66,7 +67,8 @@ const ProHeader: FC<Props> = ({ hideSearch }) => {
                 </ul>
               </div>
 
-              <ButtonLink href="#book-consult">Book consultation</ButtonLink>
+              <div className="mr-4"></div>
+              <ArrowButton href="#book-consult">Book a consult</ArrowButton>
 
               <div className="md:hidden">
                 <button

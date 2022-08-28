@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import BlogCard from "@/components/BlogCard";
 
-const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
+const BlogHeader = dynamic(() => import("../components/Header/BlogHeader"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const BlogsHomePage: FC<Props> = ({ posts }) => {
   return (
     <>
-      <ProHeader />
+      <BlogHeader />
       <main className="mb-10 lg:mb-20">
         <section className="relative flex">
           <div className="my-container flex min-h-[30vh] items-center justify-center text-center">

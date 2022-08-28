@@ -12,7 +12,7 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <SEO
-        title="FREE Guides on how to scale your business | SoPluggedPRO"
+        title="FREE Guides on how to scale your business | SoPlugged Blog"
         description="Explore our free guides and resources that we've compiled to help you grow your business with ease."
         variant="blog"
       />

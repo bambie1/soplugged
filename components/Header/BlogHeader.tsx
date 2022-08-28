@@ -1,20 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Dialog } from "@reach/dialog";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import { MobileNav } from "../MobileNav";
 
-import Banner from "./Banner";
-
 import styles from "../../styles/Header.module.scss";
 import { ArrowButton } from "@/styled/ArrowButton";
-
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
+import Banner from "./Banner";
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
@@ -24,23 +20,13 @@ const mainNav = [
 
 interface Props {
   hideSearch?: boolean;
-  showBanner?: boolean;
 }
 
-const Header: FC<Props> = ({ hideSearch, showBanner }) => {
+const BlogHeader: FC<Props> = ({ hideSearch }) => {
   const router = useRouter();
-  const [isStyled, setIsStyled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
   const toggleMenu = () => setOpenMenu(!openMenu);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 40)
-      );
-    }
-  }, []);
 
   const buildStyles = (href: string) => {
     if (router.asPath.startsWith(href))
@@ -51,13 +37,12 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
 
   return (
     <>
-      {showBanner && <Banner />}
-
+      <Banner />
       <Disclosure
         as="nav"
         className={`sticky top-0 z-20 w-full overflow-hidden border-b transition duration-100 ${
           openMenu ? "" : "bg-white"
-        }`}
+        } border-transparent`}
       >
         {({ open }) => (
           <>
@@ -74,7 +59,9 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
                       />
                     </a>
                   </Link>
-                  <ul className={`hidden md:ml-10 md:flex md:space-x-4`}>
+                  <ul
+                    className={`hidden text-black md:ml-10 md:flex md:space-x-4`}
+                  >
                     {mainNav.map(({ id, text, link }) => (
                       <li key={id} className={`${buildStyles(link)}`}>
                         <ButtonLink href={link}>{text}</ButtonLink>
@@ -82,14 +69,10 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
                     ))}
                   </ul>
                 </div>
-                <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
-                  <div className="w-full max-w-lg md:max-w-sm">
-                    {router.asPath !== "/" &&
-                      !router.asPath.startsWith("/pro") &&
-                      !router.asPath.startsWith("/blog") &&
-                      !hideSearch && <Searchbar />}
-                  </div>
-                </div>
+
+                <div className="mr-4"></div>
+                <ArrowButton href="/">Back to soplugged.com</ArrowButton>
+
                 <div className="md:hidden">
                   <button
                     className={`button ${styles.menuBtn}`}
@@ -99,6 +82,7 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
                       className={`${styles.burger} ${openMenu && styles.open}`}
                     ></div>
                   </button>
+
                   <Dialog
                     isOpen={openMenu}
                     aria-label="Mobile menu"
@@ -107,8 +91,6 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
                     <MobileNav />
                   </Dialog>
                 </div>
-                <div className="mr-4"></div>
-                <ArrowButton href="/dashboard">Go to dashboard</ArrowButton>
               </div>
             </div>
           </>
@@ -118,4 +100,4 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
   );
 };
 
-export default Header;
+export default BlogHeader;

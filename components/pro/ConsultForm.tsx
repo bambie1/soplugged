@@ -1,24 +1,19 @@
 const ConsultForm = () => {
   return (
-    <div id="book-consult" className="relative flex h-screen snap-start">
+    <div id="book-consult" className="relative flex snap-start">
       <div className="my-container flex flex-1 flex-col pt-10">
-        <div className="flex min-h-0 items-center justify-center lg:hidden">
+        <div className="flex items-center justify-center lg:hidden">
           <div className="aspect-square w-64 rounded-full border border-accent"></div>
         </div>
         <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
-          <div className="flex min-h-0 justify-center lg:hidden">
-            <img src="/instagram_reel.png" alt="" className="object-contain" />
-          </div>
-
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-            Get started{" "}
-            <span className="text-accent-dark lg:block">for FREE</span>
+            Get started <span className="text-accent-dark">for FREE</span>
           </h1>
 
           <form
             action="#"
             method="POST"
-            className="grid w-[80%] gap-6 lg:grid-cols-2"
+            className="grid gap-6 lg:w-[80%] lg:grid-cols-2"
           >
             <div className="">
               <label

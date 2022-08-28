@@ -23,7 +23,7 @@ export function Autocomplete({ ...props }: any) {
     const search = autocomplete({
       container: containerRef.current,
       renderer: { createElement, Fragment, render },
-      placeholder: `Find ${placeholderArray[index]} near you`,
+      placeholder: `Find ${placeholderArray[index]} near you...`,
       ...props,
     });
 

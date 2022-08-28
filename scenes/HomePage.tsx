@@ -75,18 +75,18 @@ const HomePage = () => {
                 </span>{" "}
                 just got easier
               </h2>
-              <p className="mt-3 text-lg text-gray-700">
+              <p className="mt-3 text-gray-700 lg:text-lg">
                 It's time to stop searching. We're here to help you find the
                 best black-owned businesses in your city with the click of a
                 button. Find everything from restaurants, hairstylists and
                 salons to tutoring, tech and healthcare services.
               </p>
-              <p className="mt-3 mb-6 hidden text-lg text-gray-700 lg:block">
+              <p className="mt-3 mb-6 hidden text-gray-700 lg:block lg:text-lg">
                 You can now have all your black-owned businesses in one place,
                 right at your fingertips.
               </p>
 
-              <ArrowButton>Explore businesses</ArrowButton>
+              <ArrowButton href="/search">Explore businesses</ArrowButton>
             </div>
             <div>
               <dl className="mt-10 space-y-10">
@@ -99,34 +99,15 @@ const HomePage = () => {
                         >
                           <item.icon className="h-6 w-6" aria-hidden="true" />
                         </div>
-                        <p className="ml-16 text-lg font-semibold uppercase leading-6 text-gray-900">
+                        <p className="ml-16 font-semibold uppercase leading-6 text-gray-900 lg:text-lg">
                           {item.name}
                         </p>
                       </dt>
                       <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
-                        <p>{item.description}</p>
-                        <span
-                          className="mt-4 inline-flex items-center gap-2
-                          border-b border-primary text-primary transition duration-200 group-hover:font-semibold lg:text-base"
-                        >
+                        <p className="mb-4">{item.description}</p>
+                        <ArrowButton isSmall color="primary">
                           {item.linkText}
-                          <span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={1}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                              />
-                            </svg>
-                          </span>
-                        </span>
+                        </ArrowButton>
                       </dd>
                     </a>
                   </Link>

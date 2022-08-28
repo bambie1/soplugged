@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CustomWebsiteService = () => {
   return (
-    <div className="my-container relative grid min-h-[90vh] gap-10 lg:grid-cols-2">
+    <div className="my-container relative mt-10 grid lg:mt-0 lg:min-h-[90vh] lg:grid-cols-2 lg:gap-10">
       <div className="flex h-full w-full flex-col justify-center py-10 lg:items-start">
         <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
           <span className="text-accent-dark lg:block">Custom-made</span>{" "}
@@ -25,7 +25,7 @@ const CustomWebsiteService = () => {
           </Link>
         </div>
       </div>
-      <aside className="relative flex flex-1 items-center justify-center px-10 py-10">
+      <aside className="relative row-start-1 flex flex-1 items-center justify-center px-10 py-10 lg:row-start-auto">
         <div className="absolute bottom-0 -left-20 -z-[1] aspect-square w-96 animate-blob rounded-full bg-gray-300 opacity-40 mix-blend-multiply filter"></div>
 
         <img
