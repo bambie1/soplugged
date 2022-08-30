@@ -20,7 +20,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
 
   return (
     <Link href={`/business/${slug}`}>
-      <a className="relative flex h-full w-full flex-col items-start rounded-lg bg-light p-4 shadow transition  duration-200 hover:border-secondary/60 hover:bg-white hover:shadow-md focus:border-primary focus-visible:border-primary">
+      <a className="relative flex h-full w-full flex-col items-start rounded-lg border border-transparent bg-light p-4 shadow transition duration-200 hover:border-primary hover:bg-white hover:shadow-none focus:border-primary focus:outline-none focus-visible:border-primary focus-visible:bg-white">
         <div className="-mt-10 mb-2 inline-flex rounded-full border-4 border-white ">
           <Avatar name={business_name} url={logo_url} />
         </div>{" "}

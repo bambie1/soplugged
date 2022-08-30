@@ -16,7 +16,7 @@ const navigation = {
   social: [
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/sopluggd/",
       icon: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ const navigation = {
     },
     {
       name: "LinkedIn",
-      href: "#",
+      href: "https://ca.linkedin.com/in/soplugged",
       icon: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,13 @@ const Footer: FC<Props> = ({ tertiary }) => {
         </nav>
         <div className="mt-8 flex justify-center space-x-6">
           {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="">
+            <a
+              key={item.name}
+              target="_blank"
+              rel="noreferrer"
+              href={item.href}
+              className=""
+            >
               <span className="sr-only">{item.name}</span>
               <item.icon aria-hidden="true" />
             </a>
