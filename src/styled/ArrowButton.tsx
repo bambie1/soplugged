@@ -41,9 +41,11 @@ const ArrowButton = forwardRef<HTMLButtonElement, Props>(
     return (
       <Link href={href}>
         <a
-          className={`group hidden items-center gap-2 border-b border-transparent transition duration-200 ${
-            color === "primary" && "text-primary group-hover:border-primary"
-          } md:items-center lg:inline-flex ${!isSmall && "lg:text-lg"}`}
+          className={`group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:font-medium ${
+            color === "primary" && "text-primary hover:border-primary"
+          } hover:border-black md:items-center lg:inline-flex ${
+            !isSmall && "lg:text-lg"
+          }`}
         >
           {children}
           <span>

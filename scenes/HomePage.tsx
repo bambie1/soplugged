@@ -86,7 +86,9 @@ const HomePage = () => {
                 right at your fingertips.
               </p>
 
-              <ArrowButton href="/search">Explore businesses</ArrowButton>
+              <ArrowButton href="/search" color="primary">
+                Explore businesses
+              </ArrowButton>
             </div>
             <div>
               <dl className="mt-10 space-y-10">

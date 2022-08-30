@@ -1,14 +1,15 @@
-import useAlgolia from "@/hooks/useAlgolia";
+import { createURL } from "@/utils/algolia";
 
 export function CategoryHit({ hit, components }: any) {
-  const { handleCategoryClick } = useAlgolia();
-
-  const onClick = () => {
-    handleCategoryClick(hit.name);
-  };
-
   return (
-    <button onClick={onClick} className="aa-ItemLink">
+    <a
+      href={`/search${createURL({
+        menu: {
+          category: [hit.name],
+        },
+      })}`}
+      className="aa-ItemLink"
+    >
       <div className="flex items-center gap-4 text-left">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +33,6 @@ export function CategoryHit({ hit, components }: any) {
           </div>
         </div>
       </div>
-    </button>
+    </a>
   );
 }
