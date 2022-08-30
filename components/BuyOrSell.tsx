@@ -20,10 +20,10 @@ const cardInfo = [
 
 const BuyOrSell = () => {
   return (
-    <section className="my-10">
+    <section className="my-10 bg-transparent">
       <div className="my-container">
         <div className="relative grid items-center gap-5 md:grid-cols-2">
-          <div className="absolute top-1/2 left-1/2 -z-10 mx-auto aspect-square w-40 max-w-xs -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-gradient-to-tr from-primary to-accent p-[1px] opacity-50 transition lg:w-full">
+          <div className="absolute top-1/2 left-1/2 z-[0] mx-auto aspect-square w-40 max-w-xs -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-gradient-to-tr from-primary to-accent p-[1px] opacity-50 transition lg:w-full">
             <div className="aspect-square w-full rounded-full bg-white"></div>
           </div>
           {cardInfo.map(({ text, title, number, href }) => (

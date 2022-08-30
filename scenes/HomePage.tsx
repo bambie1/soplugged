@@ -121,9 +121,8 @@ const HomePage = () => {
 
         <FilterByLocation />
 
-        <BuyOrSell />
-
         <FAQs />
+        <BuyOrSell />
       </div>
     </>
   );

@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
       <Hero />
       <HomePage />
-
+      <div className="mt-10 lg:mt-20"></div>
       <Footer />
     </>
   );

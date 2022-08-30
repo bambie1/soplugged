@@ -36,11 +36,6 @@ const FAQs = () => {
               <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
             </span>
           </h2>
-          <p className="mt-4 text-gray-500">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-            Malesuada adipiscing sagittis vel nulla nec. Urna, sed a lectus
-            elementum blandit et.
-          </p>
         </div>
         <div className="mt-20">
           <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
