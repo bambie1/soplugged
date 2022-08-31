@@ -64,7 +64,7 @@ const navigation = {
 const Footer: FC<Props> = ({ tertiary }) => {
   return (
     <footer
-      className={`mt-auto flex flex-col bg-gradient-to-t to-white pt-20 pb-10 ${
+      className={`mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ${
         tertiary ? "from-accent/60" : "from-secondary/60"
       }`}
     >

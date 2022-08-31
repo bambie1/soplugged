@@ -7,6 +7,12 @@ import useAlgolia from "@/hooks/useAlgolia";
 
 const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 
+const popularSearches = [
+  { title: "Hair", category: "Hair / Beauty" },
+  { title: "Catering", category: "Food / Catering" },
+  { title: "Fashion", category: "Fashion" },
+];
+
 const HeroImage = ({ index }: any) => {
   const { handleCategoryClick } = useAlgolia();
 
@@ -42,6 +48,8 @@ const HeroImage = ({ index }: any) => {
 };
 
 const Hero = () => {
+  const { handleCategoryClick } = useAlgolia();
+
   return (
     <div className="my-container flex flex-col py-10 text-center md:py-24 lg:text-left">
       <section className="relative flex-1 items-center justify-center gap-10 py-5 lg:grid lg:grid-cols-5 lg:py-0">
@@ -68,6 +76,22 @@ const Hero = () => {
           </p>
           <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0 lg:mt-10">
             <Searchbar />
+          </div>
+
+          <div className="mt-6 hidden items-center md:flex">
+            <p className=" italic underline">Popular searches:</p>
+            <ul className="ml-4 inline-flex flex-wrap gap-2">
+              {popularSearches.map(({ title, category }) => (
+                <li key={title}>
+                  <button
+                    className="rounded-2xl border border-transparent bg-secondary/30 py-1 px-3 text-sm text-primary transition duration-200 hover:border-primary hover:bg-white"
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    {title}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
         <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">

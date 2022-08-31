@@ -107,7 +107,7 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
                     <MobileNav />
                   </Dialog>
                 </div>
-                <div className="mr-4"></div>
+                <div className="md:mr-4"></div>
                 <ArrowButton href="/dashboard">Go to dashboard</ArrowButton>
               </div>
             </div>

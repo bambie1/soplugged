@@ -25,12 +25,13 @@ const ProHero: FC = () => {
         </div>
       </div>
       <aside className="relative hidden flex-1 items-center justify-center px-10 lg:col-span-2 lg:flex lg:py-10">
-        <div className="absolute bottom-0 -left-6 -z-[1] aspect-square w-48 animate-blob rounded-full bg-accent opacity-40 mix-blend-multiply blur-xl filter lg:-left-20 lg:w-96"></div>
-        <div className="animation-delay-2000 absolute bottom-6 -right-6 -z-[1] aspect-square w-48 animate-blob rounded-full bg-secondary opacity-40 mix-blend-multiply blur-xl filter lg:-right-20 lg:w-96"></div>
+        <div className="absolute bottom-0 -left-6 aspect-square w-48 animate-blob rounded-full bg-accent opacity-40 mix-blend-multiply blur-xl filter lg:-left-20 lg:w-96"></div>
+        <div className="animation-delay-2000 absolute bottom-6 -right-6 aspect-square w-48 animate-blob rounded-full bg-secondary opacity-40 mix-blend-multiply blur-xl filter lg:-right-20 lg:w-96"></div>
 
         <img
           src="/instagram_reel.svg"
           alt="2 iPhones placed side-by-side displaying instagram reels"
+          className="z-1"
         />
       </aside>
     </div>

@@ -70,7 +70,7 @@ const BlogHeader: FC<Props> = ({ hideSearch }) => {
                   </ul>
                 </div>
 
-                <div className="mr-4"></div>
+                <div className="md:mr-4"></div>
                 <ArrowButton href="/">Back to soplugged.com</ArrowButton>
 
                 <div className="md:hidden">
