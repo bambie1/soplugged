@@ -47,6 +47,11 @@ module.exports = {
       backgroundImage: {
         "pro-gradient":
           "linear-gradient(180deg, rgba(147, 170, 205, 0.14) 0%, rgba(147, 170, 205, 0.28) 100%);",
+        "radial-pro":
+          "radial-gradient(50% 50% at 50% 50%, rgba(147, 170, 205, 0.8) 0%, rgba(147, 170, 205, 0) 100%);",
+      },
+      fontFamily: {
+        handwriting: ["Gloria Hallelujah", "cursive"],
       },
     },
   },

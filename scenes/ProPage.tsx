@@ -2,6 +2,7 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
+import FeaturedReview from "@/components/pro/FeaturedReview";
 
 const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
 const SocialMediaService = dynamic(
@@ -18,6 +19,7 @@ const ProPage: FC = (props) => {
       <ProHeader />
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
+        <FeaturedReview />
         <SocialMediaService />
         <CustomWebsiteService />
         <ConsultForm />

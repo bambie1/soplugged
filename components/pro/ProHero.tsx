@@ -3,38 +3,39 @@ import { FC } from "react";
 
 const ProHero: FC = () => {
   return (
-    <div className="my-container relative grid gap-10 lg:min-h-[90vh] lg:grid-cols-5">
-      <div className="flex h-full w-full flex-col justify-center py-10 text-center lg:col-span-3 lg:items-start lg:text-left">
-        <h1 className="mb-6 text-4xl font-bold lg:pr-10 lg:text-6xl">
-          Grow your <span className="text-accent-dark">business</span> with ease
-        </h1>
-        <p className="lg:w-[90%] lg:text-xl">
-          Get strategic recommendations and professional services when you work
-          with us on anything
-        </p>
-
-        <div className="mt-10 flex flex-col items-center gap-4 lg:flex-row">
-          <Link href="#book-consult">
-            <a className="rounded-md bg-black px-4 py-3 text-white">
-              Book a FREE consultation
-            </a>
-          </Link>
-          <Link href="#custom-website">
-            <a className="border-b border-black">Learn more</a>
-          </Link>
+    <>
+      <div className="my-container relative flex items-center justify-center">
+        <div className="absolute inset-0 -z-[1] bg-radial-pro"></div>
+        <div className="mx-auto flex flex-col items-center py-10 text-center md:py-20">
+          <h1 className="mb-6 text-6xl font-bold lg:max-w-4xl lg:text-7xl xl:text-[6rem]">
+            Grow your{" "}
+            <span className="relative mt-6 inline-flex md:mt-0">
+              <img
+                src="/caret.svg"
+                alt=""
+                className="absolute -left-5 -bottom-4 hidden w-8 md:inline-block lg:-left-6 lg:bottom-0 lg:w-10"
+              />
+              <span className="absolute left-1/2 -top-6 w-full -translate-x-1/2 font-handwriting text-2xl text-accent-dark md:-left-10 md:-top-6 md:w-auto md:translate-x-0 lg:-top-8 xl:-left-16 xl:text-3xl">
+                e-commerce
+              </span>
+              business
+            </span>{" "}
+            <span className="relative inline-block">with ease</span>
+          </h1>
+          <p className="lg:max-w-5xl lg:text-xl xl:text-2xl">
+            Professional services from experts to provide all the support you
+            need to grow your business.
+          </p>
+          <div className="mt-10 flex flex-col items-center gap-4 lg:mt-20 lg:flex-row">
+            <Link href="#book-consult">
+              <a className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:py-4 lg:px-5 lg:text-xl">
+                Book a FREE consultation
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
-      <aside className="relative hidden flex-1 items-center justify-center px-10 lg:col-span-2 lg:flex lg:py-10">
-        <div className="absolute bottom-0 -left-6 aspect-square w-48 animate-blob rounded-full bg-accent opacity-40 mix-blend-multiply blur-xl filter lg:-left-20 lg:w-96"></div>
-        <div className="animation-delay-2000 absolute bottom-6 -right-6 aspect-square w-48 animate-blob rounded-full bg-secondary opacity-40 mix-blend-multiply blur-xl filter lg:-right-20 lg:w-96"></div>
-
-        <img
-          src="/instagram_reel.svg"
-          alt="2 iPhones placed side-by-side displaying instagram reels"
-          className="z-1"
-        />
-      </aside>
-    </div>
+    </>
   );
 };
 

@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <AuthProvider>
         <BusinessFormProvider>
-          <div className="bg-white">
+          <div className="">
             <Component {...pageProps} />
           </div>
           <Toaster position="bottom-left" />

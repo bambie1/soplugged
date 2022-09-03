@@ -7,7 +7,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Raleway:wght@300;400;500;600&display=swap"
           />
           <link
             rel="stylesheet"
