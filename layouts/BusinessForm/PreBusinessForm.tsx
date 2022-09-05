@@ -1,8 +1,6 @@
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
 
-import { useAuth } from "@/context/authContext";
-
 import styles from "./BusinessForm.module.scss";
 
 interface Props {
@@ -10,7 +8,12 @@ interface Props {
 }
 
 const PreBusinessForm: FC<Props> = ({ children }) => {
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+      displayName: "",
+    },
+  };
   const { width } = useWindowSize();
 
   const isMobile = width < 768;

@@ -1,5 +1,3 @@
-import { parseCookies } from "nookies";
-
 import { IUser } from "../types/User";
 
 const updateDBUser = async (
@@ -7,14 +5,13 @@ const updateDBUser = async (
   fetchMethod: "GET" | "POST" | "PUT",
   user: IUser
 ) => {
-  const { token } = parseCookies();
-
   const res = await fetch(fetchUrl, {
     method: fetchMethod,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Firebase-Token": token,
+      "User-Email": "bennieb96@gmail.com",
+      "Super-Secret-Key": "wrong",
     },
     body: JSON.stringify(user),
   });
@@ -38,7 +35,6 @@ export const addDBUser = async (user: IUser) => {
 
 export const getDBUser = async (email: string) => {
   const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/user`;
-  const { token } = parseCookies();
 
   try {
     const res = await fetch(fetchUrl, {
@@ -46,7 +42,8 @@ export const getDBUser = async (email: string) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Firebase-Token": token,
+        "User-Email": "bennieb96@gmail.com",
+        "Super-Secret-Key": "wrong",
       },
     });
     if (!res.ok) throw new Error("HTTP status " + res.status);

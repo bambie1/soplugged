@@ -5,7 +5,6 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 
-import { useAuth } from "@/context/authContext";
 import { addFavorite } from "@/utils/addFavorite";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { removeFavorite } from "@/utils/removeFavorite";
@@ -16,7 +15,11 @@ interface Props {
 }
 
 const FavoriteButton: FC<Props> = ({ business }) => {
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+    },
+  };
   const { mutate } = useSWRConfig();
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);
 

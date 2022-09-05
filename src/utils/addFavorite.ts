@@ -1,9 +1,7 @@
 import { getDBUser } from "@/utils/dbUser";
-import { parseCookies } from "nookies";
 
 export const addFavorite = async (business_id: number, user: any) => {
   // try {
-  const { token } = parseCookies();
   const dbUser = await getDBUser(user);
 
   if (!dbUser) return null;
@@ -14,7 +12,8 @@ export const addFavorite = async (business_id: number, user: any) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Firebase-Token": token,
+      "User-Email": "bennieb96@gmail.com",
+      "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
     },
     body: JSON.stringify({
       business_id,

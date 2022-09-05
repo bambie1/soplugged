@@ -1,17 +1,12 @@
 import Image from "next/image";
 
-import { FirebaseAuth } from "@/components/FirebaseAuth";
 import { PageWrapper } from "@/components/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./JoinPage.module.scss";
 import { FC } from "react";
 
-interface Props {
-  referrer: any;
-}
-
-const JoinPage: FC<Props> = ({ referrer }) => {
+const JoinPage: FC = () => {
   return (
     <>
       <PageWrapper center>
@@ -29,9 +24,7 @@ const JoinPage: FC<Props> = ({ referrer }) => {
         <p>
           Please verify your identity via one of the following sign-in methods:
         </p>
-        <div className={styles.authDiv}>
-          <FirebaseAuth referrer={referrer} />
-        </div>
+        <div className={styles.authDiv}>{/* auth placeholder */}</div>
         <ButtonLink href="/search" variant="outlined">
           I'm just browsing
         </ButtonLink>

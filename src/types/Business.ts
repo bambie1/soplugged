@@ -3,7 +3,7 @@ export interface IBusiness {
   creator?: {
     id: 5;
     full_name: "Jane Doe";
-    email: "bennieb96@gmail.com";
+    email: "jdoe6@gmail.com";
   };
   services?: string[];
   phone_number: string;

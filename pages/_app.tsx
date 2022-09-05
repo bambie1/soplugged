@@ -3,11 +3,11 @@ import Script from "next/script";
 import Router from "next/router";
 import nProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
+import { SWRConfig } from "swr";
 
-import { AuthProvider } from "@/context/authContext";
 import { BusinessFormProvider } from "@/context/businessFormContext";
 
-// import "../styles/globals.scss";
 import "../styles/button.scss";
 import "../styles/global.css";
 import "../styles/algolia.scss";
@@ -29,17 +29,25 @@ Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
-      <AuthProvider>
-        <BusinessFormProvider>
-          <div className="">
-            <Component {...pageProps} />
-          </div>
-          <Toaster position="bottom-left" />
-        </BusinessFormProvider>
-      </AuthProvider>
+      <SessionProvider session={session}>
+        <SWRConfig
+          value={{
+            refreshInterval: 5000,
+            fetcher: (resource, init) =>
+              fetch(resource, init).then((res) => res.json()),
+          }}
+        >
+          <BusinessFormProvider>
+            <div className="">
+              <Component {...pageProps} />
+            </div>
+            <Toaster position="bottom-left" />
+          </BusinessFormProvider>
+        </SWRConfig>
+      </SessionProvider>
 
       {process.env.NODE_ENV !== "development" && (
         <Script

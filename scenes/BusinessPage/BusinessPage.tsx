@@ -16,7 +16,6 @@ import { SocialLinks } from "@/components/SocialLinks";
 import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
 import { IBusiness } from "@/types/Business";
-import { useAuth } from "@/context/authContext";
 
 import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
@@ -42,7 +41,12 @@ interface Props {
 
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+    },
+  };
+
   const router = useRouter();
   const {
     business_name,

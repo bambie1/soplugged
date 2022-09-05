@@ -1,25 +1,19 @@
-import type { GetServerSideProps, NextPage } from "next";
-import nookies from "nookies";
+import type { NextPage } from "next";
 import useSWR from "swr";
 
 import { BusinessInfoPage } from "@/scenes/dashboard/BusinessInfoPage";
 import BusinessInfoSkeleton from "@/scenes/dashboard/BusinessInfoPage/BusinessInfoSkeleton";
-import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 
-import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
 
 const DashboardHome: NextPage = () => {
-  const { data: businesses, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
-    swrFetchWithToken
-  );
+  const { data: business, error } = useSWR("/api/user/getBusiness");
 
   const renderPage = () => {
     if (error) return <BusinessInfoPage business={null} />;
-    if (!businesses) return <BusinessInfoSkeleton />;
-    return <BusinessInfoPage business={businesses[0]} />;
+    if (!business) return <BusinessInfoSkeleton />;
+    return <BusinessInfoPage business={business} />;
   };
 
   return (
@@ -31,22 +25,6 @@ const DashboardHome: NextPage = () => {
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    if (!token.email) throw new Error("no email in token");
-
-    return { props: {} };
-  } catch (error) {
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-
-    return { props: {} as never };
-  }
 };
 
 export default DashboardHome;

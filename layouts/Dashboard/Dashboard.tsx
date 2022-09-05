@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -12,6 +13,7 @@ import {
 import AuthPageWrapper from "@/components/AuthPageWrapper";
 
 import styles from "./Dashboard.module.scss";
+import AccessDenied from "@/components/auth/AccessDenied";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 
@@ -23,6 +25,15 @@ const dashboardLinks = [
 
 const Dashboard: FC = ({ children }) => {
   const router = useRouter();
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return <p>Loading or not authenticated...</p>;
+  }
+
+  if (!session?.user) {
+    return <AccessDenied />;
+  }
 
   const linkStyles = (href: string) => {
     if (router.asPath === href) return `${styles.link} ${styles.active}`;

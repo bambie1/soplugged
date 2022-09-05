@@ -1,20 +1,14 @@
-import type { GetServerSideProps, NextPage } from "next";
-import nookies from "nookies";
+import type { NextPage } from "next";
 import useSWR from "swr";
 
 import { FavoritesPage } from "@/scenes/dashboard/FavoritesPage";
 import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleton";
-import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 
-import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 import { DashboardLayout } from "layouts/Dashboard";
 
 const Favorites: NextPage = () => {
-  const { data: favorites, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`,
-    swrFetchWithToken
-  );
+  const { data: favorites, error } = useSWR("/api/user/favorites");
 
   const renderPage = () => {
     if (error) return <FavoritesPage favorites={[]} />;
@@ -31,22 +25,6 @@ const Favorites: NextPage = () => {
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    if (!token.email) throw new Error("no email in token");
-
-    return { props: {} };
-  } catch (error) {
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-
-    return { props: {} as never };
-  }
 };
 
 export default Favorites;

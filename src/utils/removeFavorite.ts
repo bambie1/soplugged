@@ -1,8 +1,6 @@
 import { getDBUser } from "@/utils/dbUser";
-import { parseCookies } from "nookies";
 
 export const removeFavorite = async (business_id: number, email: string) => {
-  const { token } = parseCookies();
   const dbUser = await getDBUser(email);
 
   if (!dbUser) return null;
@@ -14,7 +12,8 @@ export const removeFavorite = async (business_id: number, email: string) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Firebase-Token": token,
+        "User-Email": "bennieb96@gmail.com",
+        "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
       },
       body: JSON.stringify({
         business_id,

@@ -1,14 +1,11 @@
-import { parseCookies } from "nookies";
-
 export const swrFetchWithToken = async (url: string) => {
-  const { token } = parseCookies();
-
   const res = await fetch(url, {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Firebase-Token": token,
+      "User-Email": "bennieb96@gmail.com",
+      "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
     },
   });
 

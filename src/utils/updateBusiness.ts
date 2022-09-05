@@ -1,11 +1,8 @@
-import { parseCookies } from "nookies";
 import slugify from "slugify";
 
 import { IBusiness } from "@/types/Business";
 
 export const updateBusiness = async (data: IBusiness, isNew: boolean) => {
-  const { token } = parseCookies();
-
   const businessObject: any = {
     ...data,
     business_name: data.business_name.trim(),
@@ -31,7 +28,8 @@ export const updateBusiness = async (data: IBusiness, isNew: boolean) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Firebase-Token": token,
+      "User-Email": "bennieb96@gmail.com",
+      "Super-Secret-Key": "wrong",
     },
     body: JSON.stringify({
       business: businessObject,

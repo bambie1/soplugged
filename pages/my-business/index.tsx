@@ -1,14 +1,12 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import nookies from "nookies";
 import useSWR from "swr";
 
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
 import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 import { useBusinessFormContext } from "@/context/businessFormContext";
-import { verifyIdToken } from "@/src/firebase/firebaseAdmin";
 import { useEffect } from "react";
 
 const MyBusinessPage = dynamic(
@@ -58,22 +56,6 @@ const MyBusiness: NextPage = () => {
       {renderPage()}
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const cookies = nookies.get(context);
-    const token = await verifyIdToken(cookies.token);
-
-    if (!token.email) throw new Error("no email in token");
-
-    return { props: {} };
-  } catch (error) {
-    context.res.writeHead(302, { Location: "/join" });
-    context.res.end();
-
-    return { props: {} as never };
-  }
 };
 
 export default MyBusiness;

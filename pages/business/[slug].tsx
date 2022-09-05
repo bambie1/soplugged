@@ -20,7 +20,10 @@ const Business: NextPage = () => {
 
   const { data: business, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`,
-    swrFetcher
+    swrFetcher,
+    {
+      refreshInterval: 1000000000,
+    }
   );
 
   if (error) return <PageNotFound />;

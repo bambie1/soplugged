@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 
-import { useAuth } from "@/context/authContext";
 import { Button } from "@/styled/Button";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { Input } from "@/styled/Input";
@@ -22,7 +21,12 @@ interface Props {
 }
 
 const ContactForm: FC<Props> = ({ businessEmail }) => {
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+    },
+  };
+
   const [messageSent, setMessageSent] = useState(false);
   const {
     register,

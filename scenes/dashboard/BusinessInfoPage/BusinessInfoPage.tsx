@@ -9,7 +9,6 @@ import Tooltip from "@reach/tooltip";
 
 import { BusinessCard } from "@/components/BusinessCard";
 import { ButtonLink } from "@/styled/ButtonLink";
-import { useAuth } from "@/context/authContext";
 import { IBusiness } from "@/types/Business";
 import { greetFunction } from "@/utils/greeting";
 
@@ -21,7 +20,12 @@ interface Props {
 
 const BusinessInfoPage: FC<Props> = ({ business }) => {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+      displayName: "",
+    },
+  };
 
   if (!business)
     return (

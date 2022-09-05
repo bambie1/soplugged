@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 
 import { Avatar } from "@/components/Avatar";
-import { useAuth } from "@/context/authContext";
 import { IUser } from "@/types/User";
 import { Input } from "@/styled/Input";
 import { Button } from "@/styled/Button";
@@ -22,7 +21,13 @@ interface Props {
 
 const ProfilePage: FC<Props> = ({ dbUser }) => {
   const { mutate } = useSWRConfig();
-  const { user } = useAuth();
+  const { user } = {
+    user: {
+      email: "",
+      displayName: "",
+    },
+  };
+
   const userName = dbUser?.full_name || user?.displayName || "";
 
   const {

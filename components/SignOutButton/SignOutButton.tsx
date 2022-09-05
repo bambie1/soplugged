@@ -1,19 +1,16 @@
-import { useRouter } from "next/router";
 import { FC, useRef, useState } from "react";
 import {
   AlertDialog,
   AlertDialogLabel,
   AlertDialogDescription,
 } from "@reach/alert-dialog";
+import { signOut } from "next-auth/react";
 
-import { useAuth } from "@/context/authContext";
 import { Button } from "@/styled/Button";
 
 import styles from "./SignOutButton.module.scss";
 
 const SignOutButton: FC = () => {
-  const router = useRouter();
-  const { signOutUser } = useAuth();
   const [showSignOut, setShowSignOut] = useState(false);
 
   const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
@@ -22,8 +19,7 @@ const SignOutButton: FC = () => {
   const close = () => setShowSignOut(false);
 
   const handleSignOut = () => {
-    signOutUser();
-    router.reload();
+    signOut();
   };
 
   return (
