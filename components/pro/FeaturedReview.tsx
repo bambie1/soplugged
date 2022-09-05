@@ -4,12 +4,12 @@ const FeaturedReview = () => {
       <img
         src="/mesh_bg.svg"
         alt=""
-        className="inset-center h-40 opacity-40 md:hidden"
+        className="inset-center -z-[1] h-40 opacity-40 md:hidden"
       />
       <img
         src="/wide_mesh_bg.svg"
         alt=""
-        className="inset-center hidden h-64 opacity-40 md:inline-block"
+        className="inset-center -z-[1] hidden h-64 opacity-40 md:inline-block"
       />
 
       <div className="flex flex-col items-center">

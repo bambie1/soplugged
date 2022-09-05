@@ -1,11 +1,11 @@
 const ConsultForm = () => {
   return (
     <div id="book-consult" className="relative flex snap-start">
-      <div className="my-container flex flex-1 flex-col pt-10">
+      <div className="my-container flex flex-1 flex-col">
         <div className="flex items-center justify-center lg:hidden">
           <div className="aspect-square w-64 rounded-full border border-accent"></div>
         </div>
-        <div className="flex h-full w-full flex-1 flex-col justify-center pt-16 pb-10 lg:max-w-[60%] lg:items-start">
+        <div className="flex h-full w-full flex-1 flex-col justify-center lg:max-w-[60%] lg:items-start">
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
             Get started <span className="text-accent-dark">for FREE</span>
           </h1>

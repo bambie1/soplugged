@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const SocialMediaService = () => {
+const ProductPhotography = () => {
   return (
     <div className="my-container relative grid lg:grid-cols-2 lg:gap-10 xl:gap-20">
       <aside className="relative flex max-h-[30rem] flex-1 items-center justify-center px-10 py-10 lg:max-h-max">
@@ -12,8 +12,7 @@ const SocialMediaService = () => {
       </aside>
       <div className="flex flex-col justify-center lg:items-start lg:py-10">
         <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-          <span className="text-accent-dark">Full-scope</span> social media
-          management
+          <span className="text-accent-dark">Product</span> photography
         </h1>
         <section className="prose">
           <p className="lg:text-lg">
@@ -50,4 +49,4 @@ const SocialMediaService = () => {
   );
 };
 
-export default SocialMediaService;
+export default ProductPhotography;
