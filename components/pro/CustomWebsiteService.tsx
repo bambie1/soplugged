@@ -3,43 +3,44 @@ import Link from "next/link";
 const CustomWebsiteService = () => {
   return (
     <div className="relative flex">
-      <div className="my-container relative mt-10 grid lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-        <div className="flex h-full w-full flex-col justify-center lg:items-start">
+      <div className="my-container relative mt-10 grid lg:mt-0 lg:grid-cols-7 lg:gap-10 xl:gap-20">
+        <div className="col-span-4 flex h-full w-full flex-col justify-center lg:items-start">
           <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
-            <span className="text-accent-dark lg:block">Custom-made</span>{" "}
+            <span className="relative text-accent-dark lg:block">
+              Custom-made
+            </span>{" "}
             websites
           </h1>
           <section className="prose">
-            <p className="lg:text-lg">
-              You will receive a fully developed content strategy for your
-              business or brand, as well as one month of support while you
-              implement it.
+            <p className="">
+              Looking to build your presence online? A website is essential!
+              It's the face of your brand, and it should{" "}
+              <span className="font-semibold italic text-accent-dark">
+                look and feel unique to you
+              </span>
+              .
             </p>
-            <p className="">This service includes:</p>
-            <ul>
-              <li>
-                A content strategy that includes your content plan (content
-                pillars, content prompts, content ideas, and a content bank)
-              </li>
-              <li>
-                Designed Instagram post templates for reels, single feed posts,
-                story, polls, and quotes.
-              </li>
-              <li>
-                Caption framework and hashtag strategy Community management and
-                engagement.
-              </li>
+            <p>
+              Here's what you can expect when we build an amazing online
+              experience for you:
+            </p>
+            <ul className="list-square">
+              <li>UX-research into your business needs and niche</li>
+              <li>High-fidelity mockups in Figma</li>
+              <li>Fully-responsive designs</li>
+              <li>SEO-friendly and accessible pages</li>
+              <li>Easily-customizable content</li>
             </ul>
           </section>
           <div className="mt-10 flex flex-wrap ">
             <Link href="#book-consult">
-              <a className="rounded-md bg-black px-4 py-3 text-white">
+              <a className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
                 Book a FREE consultation
               </a>
             </Link>
           </div>
         </div>
-        <aside className="relative row-start-1 flex flex-1 items-center justify-center lg:row-start-auto">
+        <aside className="relative col-span-3 row-start-1 flex flex-1 items-center justify-center lg:row-start-auto">
           <img
             src="/custom_website.svg"
             alt="2 iPhones placed side-by-side displaying instagram reels"

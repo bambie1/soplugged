@@ -22,7 +22,7 @@ const SocialMediaService = () => {
             implement it.
           </p>
           <p className="">This service includes:</p>
-          <ul>
+          <ul className="list-square">
             <li>
               A content strategy that includes your content plan (content
               pillars, content prompts, content ideas, and a content bank)
@@ -40,7 +40,7 @@ const SocialMediaService = () => {
 
         <div className="mt-10 flex items-center">
           <Link href="#book-consult">
-            <a className="rounded-md bg-black px-4 py-3 text-white">
+            <a className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
               Book a FREE consultation
             </a>
           </Link>

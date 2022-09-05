@@ -8,7 +8,7 @@ const toolkit = [
 
 const OurToolkit = () => {
   return (
-    <section className="mt-20 flex min-h-[25rem] bg-accent/10">
+    <section className="flex min-h-[25rem] bg-accent/10">
       <div className="my-container flex flex-col justify-center px-10 py-20">
         <h2 className="mb-4 text-center text-3xl font-bold xl:text-4xl">
           Equipped for success

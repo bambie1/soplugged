@@ -53,6 +53,9 @@ module.exports = {
       fontFamily: {
         handwriting: ["Gloria Hallelujah", "cursive"],
       },
+      listStyleType: {
+        square: "square",
+      },
     },
   },
   plugins: [

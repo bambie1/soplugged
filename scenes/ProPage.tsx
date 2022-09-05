@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
 import FeaturedReview from "@/components/pro/FeaturedReview";
-import { Footer } from "@/components/Footer";
+import OurToolkit from "@/components/pro/OurToolkit";
 
 const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
 const SocialMediaService = dynamic(
@@ -16,8 +16,10 @@ const ProductPhotography = dynamic(
   () => import("../components/pro/ProductPhotography")
 );
 const ConsultForm = dynamic(() => import("../components/pro/ConsultForm"));
+const Pricing = dynamic(() => import("../components/pro/Pricing"));
+const Footer = dynamic(() => import("../components/Footer/Footer"));
 
-const ProPage: FC = (props) => {
+const ProPage: FC = () => {
   return (
     <>
       <ProHeader />
@@ -27,7 +29,9 @@ const ProPage: FC = (props) => {
         <div className="my-10 grid gap-20 lg:gap-36">
           <SocialMediaService />
           <CustomWebsiteService />
+          {/* <OurToolkit /> */}
           <ProductPhotography />
+          <Pricing />
 
           <ConsultForm />
         </div>
