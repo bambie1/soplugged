@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -6,7 +7,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import styles from "./JoinPage.module.scss";
 import { FC } from "react";
 
-const JoinPage: FC = () => {
+const JoinPage: FC = ({ csrfToken }: any) => {
   return (
     <>
       <PageWrapper center>
@@ -24,7 +25,18 @@ const JoinPage: FC = () => {
         <p>
           Please verify your identity via one of the following sign-in methods:
         </p>
-        <div className={styles.authDiv}>{/* auth placeholder */}</div>
+        <div className={styles.authDiv}>
+          <button onClick={() => signIn("google")}>Sign in with google</button>
+
+          <form method="post" action="/api/auth/signin/email">
+            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+            <label>
+              Email address
+              <input type="email" id="email" name="email" />
+            </label>
+            <button type="submit">Sign in with Email</button>
+          </form>
+        </div>
         <ButtonLink href="/search" variant="outlined">
           I'm just browsing
         </ButtonLink>
