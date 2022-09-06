@@ -5,6 +5,8 @@ export default function AccessDenied() {
   return (
     <>
       <h1>Access Denied</h1>
+      <button onClick={() => signIn("google")}>Sign in with google</button>
+
       <p>
         <Link
           href="/api/auth/signin"
