@@ -50,7 +50,7 @@ const Header: FC<Props> = () => {
           isStyled && "border-b"
         } bg-white py-3 transition duration-100 md:py-0`}
       >
-        <MobileHeader />
+        <MobileHeader mainNav={mainNav} />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block">
           <div className="flex h-16 items-center justify-between">

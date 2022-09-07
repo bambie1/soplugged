@@ -8,19 +8,13 @@ import Searchbar from "../algolia/Searchbar";
 
 import styles from "styles/MobileHeader.module.css";
 
-const mainNav = [
-  { id: 1, text: "Directory", link: "/search" },
-  { id: 2, text: "PRO", link: "/pro" },
-  { id: 3, text: "Blog", link: "/blog" },
-];
-
-const MobileHeader = () => {
+const MobileHeader = ({ mainNav }: any) => {
   const [showMenu, setshowMenu] = useState(false);
   const router = useRouter();
 
   return (
     <div className="my-container md:hidden">
-      <header className="flex items-center justify-between gap-3">
+      <header className="flex h-12 items-center justify-between gap-3">
         <Link href="/">
           <a className="flex flex-shrink-0 items-center">
             <Image
@@ -32,7 +26,7 @@ const MobileHeader = () => {
           </a>
         </Link>
         <div className="w-[calc(100%-100px)]">
-          {router.asPath.startsWith("/search") && <Searchbar />}
+          {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
         </div>
         <button
           onClick={() => setshowMenu(!showMenu)}
@@ -46,7 +40,7 @@ const MobileHeader = () => {
           className={styles.dialogContent}
         >
           <ul className={`space-y-10`}>
-            {mainNav.map(({ id, text, link }) => (
+            {mainNav.map(({ id, text, link }: any) => (
               <li key={id}>
                 <Link href={link}>
                   <a className="text-xl uppercase">{text}</a>
