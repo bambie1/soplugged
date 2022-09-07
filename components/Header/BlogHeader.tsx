@@ -10,7 +10,6 @@ import { MobileNav } from "../MobileNav";
 
 import styles from "../../styles/Header.module.scss";
 import { ArrowButton } from "@/styled/ArrowButton";
-import Banner from "./Banner";
 
 const mainNav = [
   { id: 1, text: "Directory", link: "/search" },
@@ -22,7 +21,7 @@ interface Props {
   hideSearch?: boolean;
 }
 
-const BlogHeader: FC<Props> = ({ hideSearch }) => {
+const BlogHeader: FC<Props> = () => {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -37,7 +36,6 @@ const BlogHeader: FC<Props> = ({ hideSearch }) => {
 
   return (
     <>
-      <Banner />
       <Disclosure
         as="nav"
         className={`sticky top-0 z-20 w-full overflow-hidden border-b transition duration-100 ${

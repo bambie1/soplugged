@@ -13,16 +13,6 @@ import { ArrowButton } from "@/styled/ArrowButton";
 
 const secondaryLinks = [
   {
-    id: 1,
-    name: "Buy black",
-    description:
-      "We rely on amazing people like you to keep our platform free and accessible to Black-owned businesses across Canada. ",
-    linkText: "Explore directory",
-    linkHref: "/search",
-    color: "bg-gradient-to-tr from-secondary to-white",
-    icon: GlobeAltIcon,
-  },
-  {
     id: 2,
     name: "Add your business",
     description:
@@ -41,6 +31,16 @@ const secondaryLinks = [
     linkHref: "/pro",
     color: "bg-gradient-to-tr from-accent to-white",
     icon: LightningBoltIcon,
+  },
+  {
+    id: 1,
+    name: "Become a sponsor",
+    description:
+      "We rely on amazing people like you to keep our platform free and accessible to Black-owned businesses across Canada. ",
+    linkText: "Show your support",
+    linkHref: "/sponsors",
+    color: "bg-gradient-to-tr from-secondary to-white",
+    icon: GlobeAltIcon,
   },
 ];
 

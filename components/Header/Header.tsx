@@ -9,8 +9,6 @@ import { Dialog } from "@reach/dialog";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { MobileNav } from "../MobileNav";
 
-import Banner from "./Banner";
-
 import styles from "../../styles/Header.module.scss";
 import { ArrowButton } from "@/styled/ArrowButton";
 
@@ -27,7 +25,7 @@ interface Props {
   showBanner?: boolean;
 }
 
-const Header: FC<Props> = ({ hideSearch, showBanner }) => {
+const Header: FC<Props> = ({ hideSearch }) => {
   const router = useRouter();
   const [isStyled, setIsStyled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -51,8 +49,6 @@ const Header: FC<Props> = ({ hideSearch, showBanner }) => {
 
   return (
     <>
-      {showBanner && <Banner />}
-
       <Disclosure
         as="nav"
         className={`sticky top-0 z-20 w-full overflow-hidden border-b transition duration-100 ${

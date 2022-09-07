@@ -58,10 +58,8 @@ const FilterByLocation = () => {
           <div className="hidden lg:block">{renderHeading()}</div>
 
           <p className="text-base">
-            It's time to stop searching. We're here to help you find the best
-            black-owned businesses in your city with the click of a button. Find
-            everything from restaurants, hairstylists and salons to tutoring,
-            tech and healthcare services.
+            Our mission is to connect you with the best black-owned businesses
+            in your city and around Canada.
           </p>
           <Link href="/search">
             <a className="group mt-6 inline-flex items-center gap-2 border-b border-primary transition duration-200 hover:font-semibold lg:text-lg">
