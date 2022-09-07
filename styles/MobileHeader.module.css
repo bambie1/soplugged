@@ -1,5 +1,6 @@
 .burger {
   display: flex;
+  flex-shrink: 0;
   outline: none;
   height: 20px;
   width: 1.5rem;
@@ -40,7 +41,7 @@
 
 .dialogContent {
   width: 100% !important;
-  padding: 6rem 0 0 !important;
+  padding: 6rem 2rem 0 !important;
   height: 100% !important;
   margin: 0 !important;
 }
