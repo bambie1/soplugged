@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 export default function AccessDenied() {
   return (
     <>
-      <Header hideSearch />
+      <Header />
       <main className="my-container mb-20 pt-10 text-center">
         <h1 className="text-4xl font-bold lg:text-5xl">
           Please sign in to continue

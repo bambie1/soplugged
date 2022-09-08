@@ -13,20 +13,44 @@ import styles from "../../styles/Header.module.scss";
 
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
-const mainNav = [
+const links = [
   { id: 1, text: "Find a business", link: "/search" },
-  { id: 2, text: "PRO", link: "/pro" },
+  { id: 2, text: "PRO", link: "/pro", isNew: true },
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
+const nav = {
+  main: {
+    cta: { text: "Go to dashboard", link: "/dashboard" },
+    links,
+  },
+  pro: {
+    cta: { text: "Book a consult", link: "#book-a-consult" },
+    links,
+  },
+  blog: {
+    cta: { text: "Back to soplugged.com", link: "/" },
+    links,
+  },
+  auth: {
+    cta: { text: "Back to soplugged.com", link: "/" },
+    links: [
+      { id: 1, text: "Find a business", link: "/search" },
+      { id: 2, text: "PRO", link: "/pro", isNew: true },
+      { id: 3, text: "Blog", link: "/blog" },
+    ],
+  },
+};
+
 interface Props {
-  hideSearch?: boolean;
-  showBanner?: boolean;
+  variant?: "main" | "pro" | "blog" | "auth";
 }
 
-const Header: FC<Props> = () => {
+const Header: FC<Props> = ({ variant = "main" }) => {
   const router = useRouter();
   const [isStyled, setIsStyled] = useState(false);
+
+  const currentNav = nav[variant];
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -50,7 +74,7 @@ const Header: FC<Props> = () => {
           isStyled && "border-b"
         } bg-white py-3 transition duration-100 md:py-0`}
       >
-        <MobileHeader mainNav={mainNav} />
+        <MobileHeader currentNav={currentNav} />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block">
           <div className="flex h-16 items-center justify-between">
@@ -66,9 +90,27 @@ const Header: FC<Props> = () => {
                 </a>
               </Link>
               <ul className={`ml-10 flex space-x-4`}>
-                {mainNav.map(({ id, text, link }) => (
+                {currentNav.links.map(({ id, text, link, isNew }) => (
                   <li key={id} className={`lg:text-lg ${buildStyles(link)}`}>
-                    <ButtonLink href={link}>{text}</ButtonLink>
+                    <ButtonLink href={link}>
+                      <span className="relative">
+                        {text}
+                        {isNew && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="absolute -right-3 top-1 h-3 w-3 text-accent-dark"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        )}
+                      </span>
+                    </ButtonLink>
                   </li>
                 ))}
               </ul>
@@ -78,7 +120,9 @@ const Header: FC<Props> = () => {
                 {router.asPath.startsWith("/search") && <Searchbar />}
               </div>
             </div>
-            <ArrowButton href="/dashboard">Go to dashboard</ArrowButton>
+            <ArrowButton href={currentNav.cta.link}>
+              {currentNav.cta.text}
+            </ArrowButton>
           </div>
         </div>
       </nav>

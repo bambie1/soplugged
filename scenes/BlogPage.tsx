@@ -9,7 +9,7 @@ import {
 
 import BlogCard from "@/components/BlogCard";
 
-const BlogHeader = dynamic(() => import("../components/Header/BlogHeader"));
+const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 interface Props {
@@ -30,7 +30,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
 
   return (
     <>
-      <BlogHeader />
+      <Header variant="blog" />
       <main className="mx-auto mb-10 max-w-2xl  lg:max-w-none">
         <section className="my-container relative grid items-center gap-4 py-10 lg:grid-cols-2 lg:gap-10">
           <div className="flex flex-col py-4 lg:py-20">

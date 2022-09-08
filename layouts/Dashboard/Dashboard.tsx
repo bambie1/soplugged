@@ -13,9 +13,6 @@ import {
 import AuthPageWrapper from "@/components/AuthPageWrapper";
 
 import styles from "./Dashboard.module.scss";
-import AccessDenied from "@/components/auth/AccessDenied";
-
-const Header = dynamic(() => import("../../components/Header/Header"));
 
 const dashboardLinks = [
   { id: 1, href: "/dashboard", text: "Business", icon: faBuilding },
@@ -29,10 +26,6 @@ const Dashboard: FC = ({ children }) => {
 
   if (status === "loading") {
     return <p>Loading or not authenticated...</p>;
-  }
-
-  if (!session?.user) {
-    return <AccessDenied />;
   }
 
   const linkStyles = (href: string) => {

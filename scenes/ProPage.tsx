@@ -5,7 +5,7 @@ import ProHero from "@/components/pro/ProHero";
 import FeaturedReview from "@/components/pro/FeaturedReview";
 import OurToolkit from "@/components/pro/OurToolkit";
 
-const ProHeader = dynamic(() => import("../components/Header/ProHeader"));
+const Header = dynamic(() => import("../components/Header/Header"));
 const SocialMediaService = dynamic(
   () => import("../components/pro/SocialMediaService")
 );
@@ -22,7 +22,7 @@ const Footer = dynamic(() => import("../components/Footer/Footer"));
 const ProPage: FC = () => {
   return (
     <>
-      <ProHeader />
+      <Header variant="pro" />
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
         <FeaturedReview />

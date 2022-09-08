@@ -7,7 +7,7 @@ import slugify from "slugify";
 import { useSWRConfig } from "swr";
 
 import { BusinessForm } from "layouts/BusinessForm";
-import AuthHeader from "@/components/Header/AuthHeader";
+import Header from "@/components/Header/Header";
 import { businessFormSchema } from "@/components/formik";
 import NameLocation from "@/components/BusinessForm/forms/1_NameLocation";
 import Categories from "@/components/BusinessForm/forms/2_Categories";
@@ -134,7 +134,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <AuthHeader />
+      <Header />
       <BusinessForm>
         <Formik
           initialValues={{

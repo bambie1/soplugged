@@ -161,7 +161,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header hideSearch />
+      <Header />
       <main className="my-container mb-20 pt-28">
         <section className="center">
           <div className={styles.businessHeader}>

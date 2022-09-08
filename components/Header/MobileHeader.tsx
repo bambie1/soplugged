@@ -8,7 +8,7 @@ import Searchbar from "../algolia/Searchbar";
 
 import styles from "styles/MobileHeader.module.css";
 
-const MobileHeader = ({ mainNav }: any) => {
+const MobileHeader = ({ currentNav }: any) => {
   const [showMenu, setshowMenu] = useState(false);
   const router = useRouter();
 
@@ -40,7 +40,7 @@ const MobileHeader = ({ mainNav }: any) => {
           className={styles.dialogContent}
         >
           <ul className={`space-y-10`}>
-            {mainNav.map(({ id, text, link }: any) => (
+            {currentNav.links.map(({ id, text, link }: any) => (
               <li key={id}>
                 <Link href={link}>
                   <a className="text-xl uppercase">{text}</a>
