@@ -63,7 +63,7 @@ const HomePage = () => {
         </section>
 
         <section className="relative my-10">
-          <span className="absolute -left-24 bottom-20 -z-[1] -rotate-90 whitespace-nowrap font-extrabold leading-[1] text-primary/[.045] lg:text-[10rem]">
+          <span className="absolute -left-24 bottom-20 -z-[1] -rotate-90 whitespace-nowrap font-extrabold text-primary/[.025] lg:text-[10rem] lg:leading-[.7]">
             black-<span className="block">owned</span>
           </span>
           <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-10">
@@ -76,14 +76,13 @@ const HomePage = () => {
                 just got easier
               </h2>
               <p className="mt-3 text-gray-700 lg:text-lg">
-                It's time to stop searching. We're here to help you find the
-                best black-owned businesses in your city with the click of a
-                button. Find everything from restaurants, hairstylists and
-                salons to tutoring, tech and healthcare services.
+                Find a local Black-owned business near you. From restaurants,
+                hairstylists and salons to tutoring, tech and healthcare
+                services.
               </p>
               <p className="mt-3 mb-6 hidden text-gray-700 lg:block lg:text-lg">
-                You can now have all your black-owned businesses in one place,
-                right at your fingertips.
+                With our search friendly directory, you now have various
+                Black-owned businesses in one place, right at your fingertips.
               </p>
 
               <ArrowButton href="/search" color="primary">

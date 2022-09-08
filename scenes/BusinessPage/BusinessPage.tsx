@@ -162,11 +162,11 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main className="my-container mb-20 pt-28">
+      <main className="my-container mb-20 pt-6 lg:pt-14">
         <section className="center">
-          <div className={styles.businessHeader}>
+          <div className="flex flex-wrap justify-center gap-4">
             <Avatar name={business_name} url={logo_url} />
-            <h1 className={styles.businessName}>
+            <h1 className="text-center text-4xl font-bold lg:text-5xl">
               {business_name.toUpperCase()}
             </h1>
           </div>

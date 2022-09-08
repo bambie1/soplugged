@@ -10,19 +10,15 @@ const CategoriesGrid: FC = () => {
 
   return (
     <div className="relative">
-      <ul className="grid grid-cols-2 gap-4 px-4 md:grid-cols-6 lg:grid-cols-3 lg:px-0">
+      <ul className="grid grid-cols-2 gap-4 px-4 md:grid-cols-6">
         {popularCategories.map(({ title, url }, index) => (
           <li
             key={url}
             className={classNames("", {
-              "lg:col-start-3": index === 0,
-              "mt-10 lg:col-start-3 lg:row-start-2 lg:mt-0": index === 1,
-              "-mt-10 md:mt-0 lg:col-start-2 lg:row-start-2 lg:mt-0":
-                index === 2,
-              "md:mt-10 lg:row-start-3 lg:mt-0": index === 3,
-              "-mt-10 md:mt-0 lg:col-start-2 lg:row-start-3 lg:mt-0":
-                index === 4,
-              "md:mt-10 lg:col-start-3 lg:row-start-3 lg:mt-0": index === 5,
+              "": index === 0,
+              "mt-10": index === 1,
+              "-mt-10 md:mt-0": index === 2 || index === 4,
+              "md:mt-10": index === 3 || index === 5,
             })}
           >
             <button
@@ -32,15 +28,13 @@ const CategoriesGrid: FC = () => {
               <div className="absolute inset-0 flex h-full w-full  bg-secondary/20"></div>
 
               <Image src={url} objectFit="cover" alt="" layout="fill" />
-              <div className="absolute bottom-0 flex h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent pl-4">
+              <div className="absolute bottom-0 flex w-full items-center bg-gradient-to-t from-black to-black/5 py-2 px-2">
                 <p className="text-sm text-white">{title}</p>
               </div>
             </button>
           </li>
         ))}
       </ul>
-
-      <div className="absolute -bottom-40 -right-40 -z-10 h-96 w-96 rounded-full bg-gradient-to-t from-white to-secondary/40 " />
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         title="SoPlugged | Discover black-owned businesses in Canada"
       />
 
-      <Header showBanner />
+      <Header />
 
       <Hero />
       <HomePage />

@@ -3,14 +3,22 @@ import Link from "next/link";
 const CustomWebsiteService = () => {
   return (
     <div className="relative flex">
-      <div className="my-container relative mt-10 grid lg:mt-0 lg:grid-cols-7 lg:gap-10 xl:gap-20">
-        <div className="col-span-4 flex h-full w-full flex-col justify-center lg:items-start">
-          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
+      <div className="my-container relative mt-10 grid gap-5 lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+        <aside className="relative flex flex-1 items-center justify-center">
+          <img
+            loading="lazy"
+            src="/website_showcase.png"
+            alt=""
+            className="lg:absolute lg:-right-10 lg:max-w-[700px]"
+          />
+        </aside>
+        <div className="flex h-full w-full flex-col justify-center lg:items-start">
+          <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
             <span className="relative text-accent-dark lg:block">
               Custom-made
             </span>{" "}
             websites
-          </h1>
+          </h2>
           <section className="prose">
             <p className="">
               Looking to build your presence online? A website is essential!
@@ -40,15 +48,7 @@ const CustomWebsiteService = () => {
             </Link>
           </div>
         </div>
-        <aside className="relative col-span-3 row-start-1 flex flex-1 items-center justify-center lg:row-start-auto">
-          <img
-            src="/custom_website.svg"
-            alt="2 iPhones placed side-by-side displaying instagram reels"
-            className="z-[1]"
-          />
-        </aside>
       </div>
-      {/* <div className="absolute top-5 h-[80%] w-full skew-y-3 bg-accent/30 lg:top-10"></div> */}
     </div>
   );
 };

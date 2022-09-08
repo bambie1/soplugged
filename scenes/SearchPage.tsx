@@ -8,7 +8,7 @@ const Footer = dynamic(() => import("../components/Footer/Footer"));
 const SearchPage = () => {
   return (
     <>
-      <Header showBanner />
+      <Header />
       <main className="mb-16 min-h-screen pt-12">
         <ExtendedSearch />
       </main>

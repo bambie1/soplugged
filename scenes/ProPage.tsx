@@ -26,7 +26,7 @@ const ProPage: FC = () => {
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
         <FeaturedReview />
-        <div className="my-10 grid gap-20 lg:gap-36">
+        <div className="my-10 mx-auto grid max-w-2xl gap-20 lg:max-w-none lg:gap-36">
           <SocialMediaService />
           <CustomWebsiteService />
           {/* <OurToolkit /> */}
