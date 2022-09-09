@@ -1,19 +1,47 @@
-const packageOptions = [
-  {
+import { ChangeEvent, useState } from "react";
+
+const packages = {
+  website: {
     title: "Custom website",
-    name: "website",
+    fixedPrice: 750,
+    monthlyPrice: 0,
   },
-  {
+  socialMedia: {
     title: "Social media management",
-    name: "socialMedia",
+    fixedPrice: 450,
+    monthlyPrice: 400,
   },
-  {
+  photography: {
     title: "Product photography",
-    name: "photography",
+    fixedPrice: 250,
+    monthlyPrice: 0,
   },
-];
+};
 
 const Pricing = () => {
+  const [fixedCost, setFixedCost] = useState(0);
+  const [monthlyCost, setMonthlyCost] = useState(0);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      setFixedCost(
+        fixedCost + packages[value as keyof typeof packages].fixedPrice
+      );
+      setMonthlyCost(
+        monthlyCost + packages[value as keyof typeof packages].fixedPrice
+      );
+    } else {
+      setFixedCost(
+        fixedCost - packages[value as keyof typeof packages].fixedPrice
+      );
+      setMonthlyCost(
+        monthlyCost - packages[value as keyof typeof packages].fixedPrice
+      );
+    }
+  };
+
   return (
     <div>
       <div className="my-container">
@@ -27,18 +55,29 @@ const Pricing = () => {
         <section className="grid gap-5 lg:grid-cols-2">
           <div>
             <p className="uppercase">I need:</p>
-            <div>
-              {packageOptions.map(({ title, name }) => (
-                <div key={title}>
-                  <input type="checkbox" id={name} name={name} value={title} />
-                  <label htmlFor={name}>{title}</label>
-                </div>
-              ))}
-            </div>
+            <form>
+              {Object.keys(packages).map((key) => {
+                const { title } = packages[key as keyof typeof packages];
+
+                return (
+                  <div key={title}>
+                    <input
+                      type="checkbox"
+                      id={key}
+                      name={key}
+                      value={key}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor={key}>{title}</label>
+                  </div>
+                );
+              })}
+            </form>
           </div>
-          <div className="m-4 flex items-center justify-center rounded-lg bg-accent/20 p-4 lg:p-10">
+          <div className="m-4 flex items-center justify-center p-4 lg:p-10">
             <h3 className="text-4xl font-light lg:text-6xl">
-              <sup className="text-3xl">$</sup>750
+              <sup className="text-3xl">$</sup>
+              {fixedCost}
             </h3>
           </div>
         </section>
