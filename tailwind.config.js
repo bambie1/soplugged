@@ -21,6 +21,7 @@ module.exports = {
       animation: {
         slide: "100s linear 0s infinite normal none slide",
         "ping-slow": "ping 3s linear infinite",
+        "bounce-slow": "bounce 3s linear infinite",
         "pulse-slow": "pulse 3s linear infinite",
         blob: "blob 7s infinite",
       },
@@ -46,7 +47,7 @@ module.exports = {
       },
       backgroundImage: {
         "pro-gradient":
-          "linear-gradient(180deg, rgba(147, 170, 205, 0.14) 0%, rgba(147, 170, 205, 0.28) 100%);",
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(147, 170, 205, 0.3) 22.4%, rgba(147, 170, 205, 0.3) 75.52%, rgba(147, 170, 205, 0) 100%);",
         "radial-pro":
           "radial-gradient(50% 50% at 50% 50%, rgba(147, 170, 205, 0.8) 0%, rgba(147, 170, 205, 0) 100%);",
       },

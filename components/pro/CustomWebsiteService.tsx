@@ -3,13 +3,14 @@ import Link from "next/link";
 const CustomWebsiteService = () => {
   return (
     <div className="relative flex">
+      {/* <div className="absolute -top-5 left-0 right-0 h-full skew-y-2 bg-pro-gradient"></div> */}
       <div className="my-container relative mt-10 grid gap-5 lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
         <aside className="relative flex flex-1 items-center justify-center">
           <img
             loading="lazy"
-            src="/website_showcase.png"
+            src="/website_showcase_2.png"
             alt=""
-            className="lg:absolute lg:-right-10 lg:max-w-[700px]"
+            className=""
           />
         </aside>
         <div className="flex h-full w-full flex-col justify-center lg:items-start">

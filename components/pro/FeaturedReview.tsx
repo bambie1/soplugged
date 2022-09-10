@@ -14,8 +14,8 @@ const FeaturedReview = () => {
 
       <div className="flex flex-col items-center">
         <p className="mx-auto max-w-3xl text-center italic text-gray-500 md:text-lg xl:text-xl">
-          The team was exceptional and way quicker than I would've imagined in
-          getting my website up and running. Would recommended for sure!
+          Every step of the way, the SoPlugged Pro team provided exceptional
+          services with their great expertise and professionalism.
         </p>
         <p className="mt-4 uppercase lg:text-lg">Princess Akindele</p>
         <p className="text-sm text-accent lg:text-base">

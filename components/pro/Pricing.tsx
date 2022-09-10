@@ -46,21 +46,21 @@ const Pricing = () => {
     <div>
       <div className="my-container">
         <div className="mb-10 text-center">
-          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">
+          <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
             Package pricing
-          </h1>
+          </h2>
           <p>Select any of our 3 services to get the estimated starting cost</p>
         </div>
 
         <section className="grid gap-5 lg:grid-cols-2">
           <div>
             <p className="uppercase">I need:</p>
-            <form>
+            <form className="mt-4 flex flex-wrap gap-4">
               {Object.keys(packages).map((key) => {
                 const { title } = packages[key as keyof typeof packages];
 
                 return (
-                  <div key={title}>
+                  <label htmlFor={key} key={title} className="label">
                     <input
                       type="checkbox"
                       id={key}
@@ -68,8 +68,9 @@ const Pricing = () => {
                       value={key}
                       onChange={handleChange}
                     />
-                    <label htmlFor={key}>{title}</label>
-                  </div>
+                    <span className="checkmark"></span>
+                    {title}
+                  </label>
                 );
               })}
             </form>

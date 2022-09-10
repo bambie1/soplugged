@@ -30,7 +30,7 @@ const ProPage: FC = () => {
           <SocialMediaService />
           <CustomWebsiteService />
           {/* <OurToolkit /> */}
-          <ProductPhotography />
+          {/* <ProductPhotography /> */}
           <Pricing />
 
           <ConsultForm />

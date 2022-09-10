@@ -38,6 +38,7 @@ const SocialMediaService = () => {
         </div>
       </div>
       <aside className="relative row-start-1 flex max-h-[30rem] flex-1 items-center justify-center px-10 py-10 lg:row-start-auto lg:max-h-max">
+        {/* <div className="absolute inset-0 -z-[1] animate-bounce-slow bg-radial-pro opacity-70"></div> */}
         <img
           loading="lazy"
           src="/instagram_reel.svg"
