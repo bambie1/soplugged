@@ -17,6 +17,9 @@ const ProductPhotography = dynamic(
 );
 const ConsultForm = dynamic(() => import("../components/pro/ConsultForm"));
 const Pricing = dynamic(() => import("../components/pro/Pricing"));
+const SatisfactionGuarantee = dynamic(
+  () => import("../components/pro/SatisfactionGuarantee")
+);
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 const ProPage: FC = () => {
@@ -26,11 +29,12 @@ const ProPage: FC = () => {
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
         <FeaturedReview />
-        <div className="my-10 mx-auto grid max-w-2xl gap-20 lg:max-w-none lg:gap-36">
+        <div className="my-10 mx-auto grid gap-20 lg:max-w-none lg:gap-36">
           <SocialMediaService />
           <CustomWebsiteService />
           {/* <OurToolkit /> */}
           {/* <ProductPhotography /> */}
+          <SatisfactionGuarantee />
           <Pricing />
 
           <ConsultForm />

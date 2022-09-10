@@ -22,9 +22,9 @@ const ProHero: FC = () => {
             </span>{" "}
             <span className="relative inline-block">with ease</span>
           </h1>
-          <p className="lg:max-w-5xl lg:text-xl xl:text-2xl">
-            Professional services from experts to provide all the support you
-            need to grow your business.
+          <p className="lg:max-w-3xl lg:text-xl xl:text-2xl">
+            Hire our team of experts to handle your digital needs, from custom
+            websites to social media management
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 lg:mt-20 lg:flex-row">
             <Link href="#book-consult">

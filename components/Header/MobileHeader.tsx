@@ -29,6 +29,7 @@ const MobileHeader = ({ currentNav }: any) => {
           {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
         </div>
         <button
+          aria-label="Mobile menu toggle"
           onClick={() => setshowMenu(!showMenu)}
           className={`${styles.burger} ${showMenu && styles.active}`}
         ></button>
