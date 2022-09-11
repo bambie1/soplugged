@@ -12,7 +12,7 @@ const Avatar: FC<Props> = ({ name, url }) => {
       {url ? (
         <Image src={url} width={40} height={40} alt="avatar" />
       ) : (
-        name.toUpperCase().charAt(0)
+        name?.toUpperCase().charAt(0)
       )}
     </span>
   );

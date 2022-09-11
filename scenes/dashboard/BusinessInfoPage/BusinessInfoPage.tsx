@@ -51,7 +51,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   const userName = business.creator?.full_name || user?.displayName;
 
   const hasLogo = business.logo_url !== "";
-  const hasGoodDescription = business.business_description.length > 150;
+  const hasGoodDescription = business.business_description?.length > 150;
   const hasImages = !!business.sample_images?.split(",")[0];
 
   const suggestionsCount = [hasLogo, hasGoodDescription, hasImages].filter(

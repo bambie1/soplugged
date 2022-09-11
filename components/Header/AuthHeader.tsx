@@ -1,65 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
-import { ArrowButton } from "@/styled/ArrowButton";
 import MobileHeader from "./MobileHeader";
-
-import styles from "../../styles/Header.module.scss";
 import { SignOutButton } from "../SignOutButton";
 
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
+import styles from "../../styles/Header.module.scss";
 
-const links = [
-  { id: 1, text: "Find a business", link: "/search" },
-  { id: 2, text: "PRO", link: "/pro", isNew: true },
-  { id: 3, text: "Blog", link: "/blog" },
-];
-
-const nav = {
-  main: {
-    cta: { text: "Go to dashboard", link: "/dashboard" },
-    links,
-  },
-  pro: {
-    cta: { text: "Book a consult", link: "#book-a-consult" },
-    links,
-  },
-  blog: {
-    cta: { text: "Back to soplugged.com", link: "/" },
-    links,
-  },
-  auth: {
-    cta: { text: "Back to soplugged.com", link: "/" },
-    links: [
-      { id: 1, text: "Find a business", link: "/search" },
-      { id: 2, text: "PRO", link: "/pro", isNew: true },
-      { id: 3, text: "Blog", link: "/blog" },
-    ],
-  },
+const currentNav = {
+  cta: { text: "Back to soplugged.com", link: "/" },
+  links: [
+    { id: 1, text: "Find a business", link: "/search" },
+    { id: 2, text: "PRO", link: "/pro", isNew: true },
+    { id: 3, text: "Blog", link: "/blog" },
+  ],
 };
 
-interface Props {
-  variant?: "main" | "pro" | "blog" | "auth";
-}
-
-const Header: FC<Props> = ({ variant = "main" }) => {
+const AuthHeader: FC = () => {
   const router = useRouter();
-  const [isStyled, setIsStyled] = useState(false);
-
-  const currentNav = nav[variant];
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 40)
-      );
-    }
-  }, []);
 
   const buildStyles = (href: string) => {
     if (router.asPath.startsWith(href))
@@ -71,9 +32,7 @@ const Header: FC<Props> = ({ variant = "main" }) => {
   return (
     <>
       <nav
-        className={`sticky top-0 z-20 w-full overflow-hidden ${
-          isStyled && "border-b"
-        } bg-white py-3 transition duration-100 md:py-0`}
+        className={`sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 md:py-0`}
       >
         <MobileHeader currentNav={currentNav} />
 
@@ -116,18 +75,7 @@ const Header: FC<Props> = ({ variant = "main" }) => {
                 ))}
               </ul>
             </div>
-            <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
-              <div className="w-full max-w-sm lg:mr-4">
-                {router.asPath.startsWith("/search") && <Searchbar />}
-              </div>
-            </div>
-            {variant === "auth" ? (
-              <SignOutButton />
-            ) : (
-              <ArrowButton href={currentNav.cta.link}>
-                {currentNav.cta.text}
-              </ArrowButton>
-            )}
+            <SignOutButton />
           </div>
         </div>
       </nav>
@@ -135,4 +83,4 @@ const Header: FC<Props> = ({ variant = "main" }) => {
   );
 };
 
-export default Header;
+export default AuthHeader;
