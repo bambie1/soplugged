@@ -55,3 +55,4 @@ jest.config.js
 
 # Sentry
 .sentryclirc
+prisma/migrations/

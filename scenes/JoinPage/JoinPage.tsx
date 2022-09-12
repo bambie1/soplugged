@@ -8,6 +8,10 @@ import styles from "./JoinPage.module.scss";
 import { FC } from "react";
 
 const JoinPage: FC = ({ csrfToken }: any) => {
+  const handleEmailSignIn = () => {
+    signIn("email", { email: "benaiah.barango@fullscript.com" });
+  };
+
   return (
     <>
       <PageWrapper center>
@@ -28,14 +32,12 @@ const JoinPage: FC = ({ csrfToken }: any) => {
         <div className={styles.authDiv}>
           <button onClick={() => signIn("google")}>Sign in with google</button>
 
-          <form method="post" action="/api/auth/signin/email">
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-            <label>
-              Email address
-              <input type="email" id="email" name="email" />
-            </label>
-            <button type="submit">Sign in with Email</button>
-          </form>
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <button onClick={handleEmailSignIn}>Sign in with Email</button>
+          <label>
+            Email address
+            <input type="email" id="email" name="email" />
+          </label>
         </div>
         <ButtonLink href="/search" variant="outlined">
           I'm just browsing
