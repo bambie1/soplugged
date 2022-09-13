@@ -27,5 +27,8 @@ export default NextAuth({
   ],
   pages: {
     signIn: "/join",
+    signOut: "/auth/signout",
+    error: "/join/error", // Error code passed in query string as ?error=
+    verifyRequest: "/join/verify-request", // (used for check email message)
   },
 });
