@@ -36,7 +36,6 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     !session?.user || session?.user.email === businessEmail || messageSent;
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log({ session, businessEmail });
     if (!session?.user?.email) return;
 
     const { email: userEmail } = session.user;
@@ -48,8 +47,6 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
       content: data.message,
       reply_to: userEmail,
     };
-
-    console.log({ email });
 
     const res = await sendEmail(email);
 

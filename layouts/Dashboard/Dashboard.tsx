@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -10,7 +10,6 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 import AuthPageWrapper from "@/components/AuthPageWrapper";
-import AccessDenied from "@/components/auth/AccessDenied";
 
 import styles from "./Dashboard.module.scss";
 
@@ -28,7 +27,10 @@ const Dashboard: FC = ({ children }) => {
     return <p>Loading or not authenticated...</p>;
   }
 
-  if (!session?.user) return <AccessDenied />;
+  if (!session?.user) {
+    signIn();
+    return null;
+  }
 
   const linkStyles = (href: string) => {
     if (router.asPath === href) return `${styles.link} ${styles.active}`;

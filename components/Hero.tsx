@@ -32,7 +32,6 @@ const HeroImage = ({ index }: any) => {
         onClick={() => handleCategoryClick(category.title)}
         className="group relative aspect-[2/3] w-full overflow-hidden rounded-xl border border-transparent focus:border-primary"
       >
-        <div className="absolute inset-0 z-[2] flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
         <Image
           src={category.url}
           objectFit="cover"
@@ -42,6 +41,7 @@ const HeroImage = ({ index }: any) => {
         <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 pl-4">
           <p className="text-sm text-white">{category.title}</p>
         </div>
+        <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
       </button>
     </li>
   );

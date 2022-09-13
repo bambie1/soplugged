@@ -48,6 +48,11 @@ const MobileHeader = ({ currentNav }: any) => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href={currentNav.cta.link}>
+                <a className="text-xl uppercase">{currentNav.cta.text}</a>
+              </Link>
+            </li>
           </ul>
         </DialogContent>
       </DialogOverlay>
