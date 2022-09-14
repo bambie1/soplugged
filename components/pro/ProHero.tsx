@@ -1,5 +1,27 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+
+const business_types = ["e-commerce", "freelance"];
+
+const BusinessTypes = () => {
+  const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex((prevIndex) =>
+        prevIndex === business_types.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="absolute left-1/2 -top-6 w-full -translate-x-1/2 font-handwriting text-2xl text-accent-dark transition duration-200 md:-left-10 md:-top-6 md:w-auto md:translate-x-0 lg:-top-8 xl:-left-16 xl:text-3xl">
+      {business_types[textIndex]}
+    </span>
+  );
+};
 
 const ProHero: FC = () => {
   return (
@@ -15,9 +37,7 @@ const ProHero: FC = () => {
                 alt=""
                 className="absolute -left-5 -bottom-4 hidden w-8 md:inline-block lg:-left-6 lg:bottom-0 lg:w-10"
               />
-              <span className="absolute left-1/2 -top-6 w-full -translate-x-1/2 font-handwriting text-2xl text-accent-dark md:-left-10 md:-top-6 md:w-auto md:translate-x-0 lg:-top-8 xl:-left-16 xl:text-3xl">
-                e-commerce
-              </span>
+              <BusinessTypes />
               business
             </span>{" "}
             <span className="relative inline-block">with ease</span>

@@ -24,21 +24,14 @@ const Pricing = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
+    const selectedPackage = packages[value as keyof typeof packages];
 
     if (checked) {
-      setFixedCost(
-        fixedCost + packages[value as keyof typeof packages].fixedPrice
-      );
-      setMonthlyCost(
-        monthlyCost + packages[value as keyof typeof packages].fixedPrice
-      );
+      setFixedCost(fixedCost + selectedPackage.fixedPrice);
+      setMonthlyCost(monthlyCost + selectedPackage.fixedPrice);
     } else {
-      setFixedCost(
-        fixedCost - packages[value as keyof typeof packages].fixedPrice
-      );
-      setMonthlyCost(
-        monthlyCost - packages[value as keyof typeof packages].fixedPrice
-      );
+      setFixedCost(fixedCost - selectedPackage.fixedPrice);
+      setMonthlyCost(monthlyCost - selectedPackage.fixedPrice);
     }
   };
 

@@ -30,8 +30,8 @@ const ProPage: FC = () => {
         <ProHero />
         <FeaturedReview />
         <div className="my-10 mx-auto grid gap-20 lg:max-w-none lg:gap-36">
-          <SocialMediaService />
           <CustomWebsiteService />
+          <SocialMediaService />
           {/* <OurToolkit /> */}
           {/* <ProductPhotography /> */}
           <SatisfactionGuarantee />
