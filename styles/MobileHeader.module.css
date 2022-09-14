@@ -13,7 +13,7 @@
 
 .burger:before,
 .burger:after {
-  content: '';
+  content: "";
   width: 1.5rem;
   height: 2px;
   position: absolute;
@@ -30,7 +30,6 @@
   transform: translateY(4px);
 }
 
- 
 .active.burger:before {
   transform: translateY(0) rotate(45deg);
 }
@@ -41,7 +40,7 @@
 
 .dialogContent {
   width: 100% !important;
-  padding: 6rem 2rem 0 !important;
+  padding: 6rem 1rem 0 !important;
   height: 100% !important;
   margin: 0 !important;
 }

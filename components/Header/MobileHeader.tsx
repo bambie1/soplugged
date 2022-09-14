@@ -41,19 +41,49 @@ const MobileHeader = ({ currentNav }: any) => {
           className={styles.dialogContent}
         >
           <ul className={`space-y-10`}>
-            {currentNav.links.map(({ id, text, link }: any) => (
+            {currentNav.links.map(({ id, text, link, isNew }: any) => (
               <li key={id}>
                 <Link href={link}>
-                  <a className="text-xl uppercase">{text}</a>
+                  <a className="relative flex p-2 text-2xl uppercase">
+                    {text}
+                    {isNew && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="h-3 w-3 text-accent-dark"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </a>
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href={currentNav.cta.link}>
-                <a className="text-xl uppercase">{currentNav.cta.text}</a>
-              </Link>
-            </li>
           </ul>
+          <Link href={currentNav.cta.link}>
+            <a className="mt-20 ml-2 inline-flex items-center gap-4 border-b border-primary py-1 text-2xl">
+              {currentNav.cta.text}{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </Link>
         </DialogContent>
       </DialogOverlay>
     </div>
