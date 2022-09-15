@@ -2,14 +2,17 @@ import dynamic from "next/dynamic";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import { PageWrapper } from "@/components/PageWrapper";
+import { ArrowButton } from "@/styled/ArrowButton";
 
 const OurStoryPage = () => {
   return (
     <PageWrapper>
       <div className="my-8 grid items-center gap-10 lg:grid-cols-2">
         <section>
-          <h1 className="relative mb-4 block text-5xl font-bold">Our story</h1>
-          <div className="flex flex-col gap-2">
+          <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
+            Our story
+          </h1>
+          <div className="flex flex-col gap-2 lg:text-lg">
             <p>
               Hi, I'm Nina, creator, and founder of SoPlugged - an online
               platform that makes <b>#buyingblack</b> easy! Our biggest
@@ -28,16 +31,16 @@ const OurStoryPage = () => {
               become a part of it!
             </p>
           </div>
-          <div className="mt-4 flex gap-4">
-            <ButtonLink href="/search" variant="filled">
-              Find a business
-            </ButtonLink>
-            <ButtonLink href="/my-business" variant="outlined">
-              Add your business
-            </ButtonLink>
+          <div className="mt-8">
+            <ArrowButton href="/search">Find a business</ArrowButton>
           </div>
         </section>
-        <section className="ml-auto aspect-square w-full max-w-sm rounded-full border border-black"></section>
+
+        <img
+          src="/soplugged_team.png"
+          className="row-start-1 justify-self-center lg:row-start-auto"
+          alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"
+        />
       </div>
     </PageWrapper>
   );

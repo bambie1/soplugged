@@ -12,9 +12,9 @@ const ArrowButton = forwardRef<HTMLButtonElement, Props>(
     if (!href)
       return (
         <button
-          className={`hidden items-center gap-2 border-b border-transparent transition duration-200 group-hover:font-medium ${
+          className={`items-center gap-2 border-b border-transparent transition duration-200 group-hover:font-medium ${
             color === "primary" && "text-primary group-hover:border-primary"
-          } group-hover:border-black md:items-center lg:inline-flex ${
+          } inline-flex group-hover:border-black md:items-center ${
             !isSmall && "lg:text-lg"
           }`}
         >
@@ -41,9 +41,9 @@ const ArrowButton = forwardRef<HTMLButtonElement, Props>(
     return (
       <Link href={href}>
         <a
-          className={`group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:font-medium ${
-            color === "primary" && "text-primary hover:border-primary"
-          } hover:border-black md:items-center lg:inline-flex ${
+          className={`group items-center gap-2 border-b transition duration-200 hover:border-gray-400 hover:font-medium ${
+            color === "primary" && "border-primary text-primary"
+          } inline-flex border-black md:items-center ${
             !isSmall && "lg:text-lg"
           }`}
         >

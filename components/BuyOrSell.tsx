@@ -29,7 +29,7 @@ const BuyOrSell = () => {
           {cardInfo.map(({ text, title, number, href }) => (
             <Link href={href} key={title}>
               <a
-                className={`group flex w-full flex-col justify-center rounded-lg border border-transparent p-10 shadow backdrop-blur-[1px] transition duration-200 hover:backdrop-blur-[5px] ${
+                className={`group flex min-h-[10rem] w-full flex-col justify-center rounded-lg border border-transparent p-5 shadow backdrop-blur-[1px] transition duration-200 hover:backdrop-blur-[5px] md:h-auto md:p-10 ${
                   number == 2
                     ? "bg-gradient-to-tr from-accent/50 to-secondary/50 lg:mt-48"
                     : "bg-gradient-to-tr from-secondary/50 to-white/50 lg:mb-48"
