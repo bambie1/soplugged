@@ -1,14 +1,46 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
 import { PageWrapper } from "@/components/PageWrapper";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { ArrowButton } from "@/styled/ArrowButton";
 import { Button } from "@/styled/Button";
+import { Input } from "@/styled/Input";
 
-const JoinPage: FC = ({ csrfToken }: any) => {
+interface Props {
+  stage?: "verify";
+  csrfToken?: any;
+}
+
+const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
   const { query } = useRouter();
+  const [userEmail, setUserEmail] = useState("");
+
+  const renderEmailSignIn = () => {
+    if (stage === "verify") return <div>Check your inbox</div>;
+
+    return (
+      <form
+        method="post"
+        action="/api/auth/signin/email"
+        className="flex flex-col gap-4"
+      >
+        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+        <Input
+          label="Email address"
+          type="email"
+          id="email"
+          name="email"
+          noHelper
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
+        />
+        <Button type="submit" disabled={!userEmail}>
+          Sign in with Email
+        </Button>
+      </form>
+    );
+  };
 
   return (
     <>
@@ -62,20 +94,7 @@ const JoinPage: FC = ({ csrfToken }: any) => {
             </div>
           </div>
 
-          <form
-            method="post"
-            action="/api/auth/signin/email"
-            className="flex flex-col gap-4"
-          >
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-            <label className="flex w-full flex-col text-left">
-              Email address
-              <input type="email" id="email" name="email" />
-            </label>
-            <Button type="submit" variant="outlined">
-              Sign in with Email
-            </Button>
-          </form>
+          {renderEmailSignIn()}
         </div>
         {query.error && <p>An error occurred: {query.error}</p>}
         <ArrowButton href="/search">I'm just browsing</ArrowButton>
