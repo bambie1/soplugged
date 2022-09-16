@@ -3,7 +3,6 @@ import { forwardRef } from "react";
 type Props = {
   variant?: string;
   color?: string;
-  big?: boolean;
 } & React.ComponentProps<"button">;
 
 const Button = forwardRef<HTMLButtonElement, Props>(

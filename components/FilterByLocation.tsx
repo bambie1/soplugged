@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import useAlgolia from "@/hooks/useAlgolia";
 import { locationsWithCategories } from "@/lib/locationsWithCategories";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const FilterByLocation = () => {
   const { handleCategoryAndLocation } = useAlgolia();
@@ -57,31 +56,13 @@ const FilterByLocation = () => {
         <div>
           <div className="hidden lg:block">{renderHeading()}</div>
 
-          <p className="text-base">
+          <p className="mb-6 text-base">
             Our mission is to connect you with the best black-owned businesses
             in your city and around Canada.
           </p>
-          <Link href="/search">
-            <a className="group mt-6 inline-flex items-center gap-2 border-b border-primary transition duration-200 hover:font-semibold lg:text-lg">
-              Explore businesses
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 transition duration-200 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
-            </a>
-          </Link>
+          <ButtonLink href="/search" showArrow variant="outlined">
+            Explore businesses
+          </ButtonLink>
         </div>
       </div>
     </section>

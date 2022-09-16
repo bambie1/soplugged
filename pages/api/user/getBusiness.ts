@@ -22,9 +22,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       }
     );
-    const businesses = await fetchPromise.json();
 
-    res.status(200).json(businesses[0]);
+    if (fetchPromise.status > 250) res.status(200).json(null);
+    else {
+      const businesses = await fetchPromise.json();
+
+      res.status(200).json(businesses[0]);
+    }
   } catch (err: any) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }

@@ -12,7 +12,7 @@ const DashboardHome: NextPage = () => {
 
   const renderPage = () => {
     if (error) return <BusinessInfoPage business={null} />;
-    if (!business) return <BusinessInfoSkeleton />;
+    if (business === undefined) return <BusinessInfoSkeleton />;
     return <BusinessInfoPage business={business} />;
   };
 

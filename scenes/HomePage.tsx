@@ -8,8 +8,7 @@ import {
 
 import PopularBusinesses from "@/components/PopularBusinesses";
 import CategoriesGrid from "@/components/CategoriesGrid";
-import { Button } from "@/styled/Button";
-import { ArrowButton } from "@/styled/ArrowButton";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const secondaryLinks = [
   {
@@ -80,38 +79,36 @@ const HomePage = () => {
                 hairstylists and salons to tutoring, tech and healthcare
                 services.
               </p>
-              <p className="mt-3 mb-6 hidden text-gray-700 lg:block lg:text-lg">
+              <p className="mt-3 mb-6 text-gray-700">
                 With our search friendly directory, you now have various
                 Black-owned businesses in one place, right at your fingertips.
               </p>
 
-              <ArrowButton href="/search" color="primary">
+              <ButtonLink href="/search" variant="outlined" showArrow>
                 Explore businesses
-              </ArrowButton>
+              </ButtonLink>
             </div>
             <div>
               <dl className="mt-10 space-y-10">
                 {secondaryLinks.map((item) => (
-                  <Link key={item.id} href={item.linkHref}>
-                    <a className="group relative block">
-                      <dt>
-                        <div
-                          className={`absolute flex h-12 w-12 items-center justify-center rounded-md ${item.color} border text-primary transition duration-200 group-hover:scale-[90%]`}
-                        >
-                          <item.icon className="h-6 w-6" aria-hidden="true" />
-                        </div>
-                        <p className="ml-16 font-semibold uppercase leading-6 text-gray-900 lg:text-lg">
-                          {item.name}
-                        </p>
-                      </dt>
-                      <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
-                        <p className="mb-4">{item.description}</p>
-                        <ArrowButton isSmall color="primary">
-                          {item.linkText}
-                        </ArrowButton>
-                      </dd>
-                    </a>
-                  </Link>
+                  <span key={item.linkText} className="relative block">
+                    <dt>
+                      <div
+                        className={`absolute flex h-12 w-12 items-center justify-center rounded-md ${item.color} border text-primary transition duration-200 group-hover:scale-[90%]`}
+                      >
+                        <item.icon className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <p className="ml-16 font-semibold uppercase leading-6 text-gray-900 lg:text-lg">
+                        {item.name}
+                      </p>
+                    </dt>
+                    <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
+                      <p className="mb-4">{item.description}</p>
+                      <ButtonLink variant="text" showArrow href={item.linkHref}>
+                        {item.linkText}
+                      </ButtonLink>
+                    </dd>
+                  </span>
                 ))}
               </dl>
             </div>
