@@ -5,6 +5,7 @@ import Image from "next/image";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
 import Searchbar from "../algolia/Searchbar";
+import { SignOutButton } from "../SignOutButton";
 
 import styles from "styles/MobileHeader.module.css";
 
@@ -84,6 +85,12 @@ const MobileHeader = ({ currentNav }: any) => {
               </svg>
             </a>
           </Link>
+
+          {router.asPath.startsWith("/dashboard") && (
+            <span className="mt-auto mb-20 ml-2 text-2xl text-red-500">
+              <SignOutButton />
+            </span>
+          )}
         </DialogContent>
       </DialogOverlay>
     </div>

@@ -30,7 +30,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   if (!business)
     return (
       <>
-        <h1 className="h1">Business</h1>
+        <h1 className="h1 mb-6">Business</h1>
         <div className={styles.noBusiness}>
           <Image
             src="/images/Cocktail_Monochromatic.svg"
@@ -39,9 +39,11 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             height={300}
             className={styles.emptyImage}
           />
-          <p>No business found. Just a nice beverage!</p>
-          <p>Are you an entrepreneur?</p>
-          <ButtonLink href="/my-business?start=0" variant="filled">
+          <p className="mt-3 text-xl lg:text-2xl">
+            No business found. Just a nice beverage!
+          </p>
+          <p className="mt-4 mb-2">Are you an entrepreneur?</p>
+          <ButtonLink href="/my-business?start=0" variant="outlined" showArrow>
             Add your business
           </ButtonLink>
         </div>

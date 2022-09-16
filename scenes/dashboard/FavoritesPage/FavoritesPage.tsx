@@ -22,9 +22,11 @@ const FavoritesPage: FC<Props> = ({ favorites }) => {
             width={300}
             height={300}
           />
-          <h3>No favorites found</h3>
-          <p>When you see a business you like, add it to your favorites</p>
-          <ButtonLink href="/search" variant="outlined">
+          <p className="mt-3 text-xl lg:text-2xl">No favorites found </p>
+          <p className="mt-4 mb-2">
+            When you see a business you like, add it to your favorites
+          </p>
+          <ButtonLink href="/search" variant="outlined" showArrow>
             Go to directory
           </ButtonLink>
         </div>
@@ -40,7 +42,7 @@ const FavoritesPage: FC<Props> = ({ favorites }) => {
   };
   return (
     <>
-      <h1 className="h1">Favorites</h1>
+      <h1 className="h1 mb-6">Favorites</h1>
       {renderFavorites()}
     </>
   );

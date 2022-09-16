@@ -1,9 +1,25 @@
-import { useRouter } from "next/router";
+import type { GetServerSideProps, NextPage } from "next";
+import dynamic from "next/dynamic";
+import { getCsrfToken } from "next-auth/react";
 
-const JoinError = () => {
-  const { query } = useRouter();
+import { SEO } from "@/components/SEO";
 
-  return <div>An error occurred: {query.error}</div>;
+const JoinPage = dynamic(() => import("../../scenes/JoinPage/JoinPage"));
+
+const Join: NextPage = (props) => {
+  return (
+    <>
+      <SEO title="An error occurred | Join SoPlugged" />
+      <JoinPage {...props} />
+    </>
+  );
 };
 
-export default JoinError;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const csrfToken = await getCsrfToken(context);
+  return {
+    props: { csrfToken },
+  };
+};
+
+export default Join;

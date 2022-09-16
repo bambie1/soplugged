@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowButton } from "@/styled/ArrowButton";
@@ -12,9 +12,25 @@ interface Props {
   csrfToken?: any;
 }
 
+const expectedErrors: any = {
+  OAuthSignin: "Error in constructing an authorization URL (1, 2, 3)",
+  OAuthCallback:
+    "Error in handling the response (1, 2, 3) from an OAuth provider.",
+  OAuthCreateAccount: "Could not create OAuth provider user in the database.",
+  EmailCreateAccount: "Could not create email provider user in the database.",
+  Callback: "Error in the OAuth callback handler route",
+  OAuthAccountNotLinked: "Please sign in via e-mail",
+  EmailSignin: "Sending the e-mail with the verification token failed",
+};
+
 const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const [userEmail, setUserEmail] = useState("");
+  const { data: session, status } = useSession();
+
+  if (session?.user?.email) {
+    push("/dashboard");
+  }
 
   const renderEmailSignIn = () => {
     if (stage === "verify") return <div>Check your inbox</div>;
@@ -52,6 +68,27 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
           Please verify your identity via one of the following sign-in methods:
         </p>
         <div className="mt-6 mb-20 w-full max-w-lg">
+          {query.error && (
+            <p className="inline-flex text-red-500 underline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="mr-2 h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                />
+              </svg>
+
+              {expectedErrors[query.error as string] || "An error occurred"}
+            </p>
+          )}
+
           <button
             onClick={() => signIn("google")}
             className="mt-4 w-full rounded-md border bg-white px-6 py-3 font-semibold text-gray-900 shadow outline-none hover:border-primary hover:bg-secondary/10 focus:outline-none"
@@ -96,7 +133,6 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
 
           {renderEmailSignIn()}
         </div>
-        {query.error && <p>An error occurred: {query.error}</p>}
         <ArrowButton href="/search">I'm just browsing</ArrowButton>
       </PageWrapper>
     </>

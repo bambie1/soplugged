@@ -8,7 +8,7 @@ import { SEO } from "@/components/SEO";
 import { DashboardLayout } from "layouts/Dashboard";
 
 const Favorites: NextPage = () => {
-  const { data: favorites, error } = useSWR("/api/user/favorites");
+  const { data: favorites, error } = useSWR("/api/user/getFavorites");
 
   const renderPage = () => {
     if (error) return <FavoritesPage favorites={[]} />;

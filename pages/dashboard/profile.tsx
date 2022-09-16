@@ -12,7 +12,7 @@ const Profile: NextPage = () => {
 
   const renderPage = () => {
     if (error) return <ProfilePage dbUser={null} />;
-    if (!dbUser) return <ProfileSkeleton />;
+    if (dbUser === undefined) return <ProfileSkeleton />;
     return <ProfilePage dbUser={dbUser} />;
   };
 

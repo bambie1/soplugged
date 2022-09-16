@@ -26,7 +26,7 @@ const SignOutButton: FC = () => {
     <>
       <button
         onClick={open}
-        className="group hidden items-center gap-2 border-b border-transparent transition duration-200 hover:border-red-700 hover:text-red-700 md:ml-4 md:inline-flex md:items-center lg:text-lg"
+        className="group inline-flex items-center gap-2 border-b border-transparent transition duration-200 hover:border-red-700 hover:text-red-700 lg:ml-4 lg:text-lg"
       >
         Log out
         <span>
