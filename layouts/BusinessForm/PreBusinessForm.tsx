@@ -20,8 +20,8 @@ const PreBusinessForm: FC<Props> = ({ children }) => {
 
   const renderStepInfo = () => {
     return (
-      <aside className={`${styles.stepInfo} container`}>
-        <h1 className={styles.stepName}>
+      <aside className={`${styles.stepInfo} my-container md:h-screen`}>
+        <h1 className="h1">
           Hi {user?.displayName?.split(" ")[0] || "there"},
         </h1>
         <h2 className={styles.stepDescription}>
@@ -43,11 +43,9 @@ const PreBusinessForm: FC<Props> = ({ children }) => {
     <>
       <div className={styles.background}></div>
       {renderStepInfo()}
-      <section className={styles.grid}>
+      <section className={`${styles.grid}`}>
         <aside className={styles.container}>
-          <div className={`${styles.content} column flex-center`}>
-            {children}
-          </div>
+          <div className={`${styles.content} `}>{children}</div>
         </aside>
       </section>
     </>

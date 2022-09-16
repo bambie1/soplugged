@@ -25,7 +25,7 @@ p {
 }
 
 .h1 {
-  @apply text-5xl font-bold text-primary;
+  @apply text-5xl font-bold text-primary xl:text-6xl;
 }
 
 .light-gradient {

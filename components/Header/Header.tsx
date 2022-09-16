@@ -71,9 +71,11 @@ const Header: FC<Props> = ({ variant = "main" }) => {
   return (
     <>
       <nav
-        className={`sticky top-0 z-20 w-full overflow-hidden ${
+        className={`top-0 z-20 w-full overflow-hidden ${
           isStyled && "border-b"
-        } bg-white py-3 transition duration-100 md:py-0`}
+        } ${
+          variant === "auth" ? "fixed bg-transparent" : "sticky bg-white"
+        } py-3 transition duration-100 md:py-0`}
       >
         <MobileHeader currentNav={currentNav} />
 

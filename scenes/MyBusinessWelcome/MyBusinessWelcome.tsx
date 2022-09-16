@@ -65,9 +65,9 @@ const MyBusinessWelcome: FC = () => {
 
   return (
     <>
-      {/* <Header hideLinks={width >= 768} /> */}
+      <Header variant="auth" />
       <PreBusinessForm>
-        <div className={styles.content}>
+        <div className={`my-container ${styles.content}`}>
           <b className="center">
             <u>Please confirm the following to get started:</u>
           </b>
