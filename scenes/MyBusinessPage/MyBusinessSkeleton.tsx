@@ -3,7 +3,7 @@ import { BusinessForm } from "layouts/BusinessForm";
 
 const MyBusinessSkeleton = () => {
   return (
-    <BusinessForm>
+    <BusinessForm skeleton>
       <Skeleton type="input" />
       <Skeleton type="input" />
       <Skeleton type="input" />

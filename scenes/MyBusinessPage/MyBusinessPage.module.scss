@@ -43,9 +43,6 @@
     }
   }
 
-  @include mobile_only {
-  }
-
   @include tablet {
     grid-template-columns: 1fr 1fr;
     column-gap: 1.25rem;
@@ -59,7 +56,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
 
   background-color: white;
 
@@ -67,18 +63,26 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
+    margin-left: 1rem;
   }
 
   @include mobile_only {
+    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
     position: fixed;
   }
 }
 
 .progress {
-  border-radius: 7px;
-  width: 100%;
-  height: 4px;
+  display: none;
+
+  @include mobile_only {
+    display: block;
+    border-radius: 7px;
+    width: 100%;
+    height: 4px;
+  }
 }
+
 .progress::-webkit-progress-bar {
   background-color: $lightSecondary;
   border-radius: 7px;

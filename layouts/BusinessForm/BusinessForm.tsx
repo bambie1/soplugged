@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useWindowSize } from "@reach/window-size";
 
 import { useBusinessFormContext } from "@/context/businessFormContext";
 
@@ -7,43 +6,39 @@ import styles from "./BusinessForm.module.scss";
 
 interface Props {
   current?: number;
+  skeleton?: boolean;
 }
 
-const BusinessForm: FC<Props> = ({ children }) => {
-  const { width } = useWindowSize();
-
+const BusinessForm: FC<Props> = ({ children, skeleton }) => {
   const { currentStep, formSteps } = useBusinessFormContext();
 
   const step = formSteps[currentStep];
 
-  const isMobile = width < 768;
-
   const renderStepInfo = () => {
     return (
-      <aside className={`${styles.stepInfo} my-container md:h-screen`}>
-        <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
-        <h2 className={styles.stepDescription}>{step.description}</h2>
-      </aside>
+      !skeleton && (
+        <aside className={`${styles.stepInfo}`}>
+          <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
+          <h2 className={styles.stepDescription}>{step.description}</h2>
+        </aside>
+      )
     );
   };
 
-  if (isMobile)
-    return (
+  return (
+    <>
+      {/* mobile view */}
       <div className={styles.mobileWrapper}>
         {renderStepInfo()}
         <aside className={styles.mobileContent}>{children}</aside>
       </div>
-    );
 
-  return (
-    <>
+      {/* tablet+ view */}
       <div className={styles.background}></div>
-      {renderStepInfo()}
-      <section className={styles.grid}>
+      <section className={`${styles.grid} my-container`}>
+        {renderStepInfo()}
         <aside className={styles.container}>
-          <div className={`${styles.content} flex flex-col items-center`}>
-            {children}
-          </div>
+          <div className={`${styles.content} `}>{children}</div>
         </aside>
       </section>
     </>

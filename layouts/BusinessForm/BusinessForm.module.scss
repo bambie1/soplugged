@@ -11,6 +11,10 @@
     rgba(147, 170, 205, 1) 100%
   );
   z-index: -1;
+
+  @include mobile_only {
+    display: none;
+  }
 }
 
 .grid {
@@ -18,9 +22,11 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "blank content";
   align-items: center;
-  position: absolute;
-  top: 0;
   width: 100%;
+
+  @include mobile_only {
+    display: none;
+  }
 }
 
 .container {
@@ -54,7 +60,6 @@
 
     * {
       z-index: 1;
-      max-width: 40%;
     }
   }
 }
@@ -78,10 +83,13 @@
 }
 
 .mobileWrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow-y: auto;
+  display: none;
+  @include mobile_only {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+  }
 }
 
 .mobileContent {

@@ -39,9 +39,9 @@
   &.filled {
     background-color: $secondary;
     color: #fff;
+    padding: 0.75rem 1rem;
 
     background-color: rgb(78 53 5);
-    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
 
     &:hover {
       box-shadow: 0 6px 20px rgb(78 56 10 / 23%);

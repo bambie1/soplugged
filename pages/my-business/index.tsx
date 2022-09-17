@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type {
   GetServerSideProps,
   InferGetServerSidePropsType,
@@ -10,6 +10,7 @@ import { getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
 import { useBusinessFormContext } from "@/context/businessFormContext";
+import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
 const MyBusinessPage = dynamic(
   () => import("../../scenes/MyBusinessPage/MyBusinessPage")
@@ -19,11 +20,14 @@ const MyBusiness: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ business }) => {
   const router = useRouter();
+  const [checkedAgreement, setCheckedAgreement] = useState(false);
   const { agreementSigned } = useBusinessFormContext();
 
   useEffect(() => {
     if (!agreementSigned) {
       router.push("/my-business/welcome");
+    } else {
+      setCheckedAgreement(true);
     }
   }, [agreementSigned]);
 
@@ -33,7 +37,11 @@ const MyBusiness: NextPage<
         description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
         title="My Business | SoPlugged"
       />
-      <MyBusinessPage business={business} />
+      {!checkedAgreement ? (
+        <MyBusinessSkeleton />
+      ) : (
+        <MyBusinessPage business={business} />
+      )}
     </>
   );
 };
@@ -72,9 +80,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   } catch (error) {
     return {
-      redirect: {
-        destination: "/my-business/welcome",
-        permanent: false,
+      props: {
+        business: null,
       },
     };
   }

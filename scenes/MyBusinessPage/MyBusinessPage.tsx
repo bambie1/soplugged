@@ -134,7 +134,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header />
+      <Header variant="auth" />
       <BusinessForm>
         <Formik
           initialValues={{

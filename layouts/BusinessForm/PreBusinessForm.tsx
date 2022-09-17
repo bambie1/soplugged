@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useWindowSize } from "@reach/window-size";
+import { useSession } from "next-auth/react";
 
 import styles from "./BusinessForm.module.scss";
 
@@ -8,21 +8,13 @@ interface Props {
 }
 
 const PreBusinessForm: FC<Props> = ({ children }) => {
-  const { user } = {
-    user: {
-      email: "",
-      displayName: "",
-    },
-  };
-  const { width } = useWindowSize();
-
-  const isMobile = width < 768;
+  const { data: session } = useSession();
 
   const renderStepInfo = () => {
     return (
-      <aside className={`${styles.stepInfo} my-container md:h-screen`}>
+      <aside className={`${styles.stepInfo}`}>
         <h1 className="h1">
-          Hi {user?.displayName?.split(" ")[0] || "there"},
+          Hi {session?.user?.name?.split(" ")[0] || "there"},
         </h1>
         <h2 className={styles.stepDescription}>
           Welcome to your SoPlugged business page builder{" "}
@@ -31,19 +23,18 @@ const PreBusinessForm: FC<Props> = ({ children }) => {
     );
   };
 
-  if (isMobile)
-    return (
+  return (
+    <>
+      {/* mobile view */}
       <div className={styles.mobileWrapper}>
         {renderStepInfo()}
         <aside className={styles.mobileContent}>{children}</aside>
       </div>
-    );
 
-  return (
-    <>
+      {/* tablet+ view */}
       <div className={styles.background}></div>
-      {renderStepInfo()}
-      <section className={`${styles.grid}`}>
+      <section className={`${styles.grid} my-container`}>
+        {renderStepInfo()}
         <aside className={styles.container}>
           <div className={`${styles.content} `}>{children}</div>
         </aside>
