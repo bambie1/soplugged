@@ -1,51 +1,31 @@
-import type { NextPage } from "next";
+import { useEffect } from "react";
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import useSWR from "swr";
+import { getSession } from "next-auth/react";
 
-import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { SEO } from "@/components/SEO";
-import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 import { useBusinessFormContext } from "@/context/businessFormContext";
-import { useEffect } from "react";
 
 const MyBusinessPage = dynamic(
   () => import("../../scenes/MyBusinessPage/MyBusinessPage")
 );
 
-const MyBusiness: NextPage = () => {
+const MyBusiness: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ business }) => {
   const router = useRouter();
   const { agreementSigned } = useBusinessFormContext();
 
-  const { data: businesses, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
-    swrFetchWithToken
-  );
-
   useEffect(() => {
-    if (error && !agreementSigned) {
+    if (!agreementSigned) {
       router.push("/my-business/welcome");
     }
-  }, [error, agreementSigned]);
-
-  if (error)
-    return (
-      <>
-        <SEO
-          description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
-          title="My Business | SoPlugged"
-        />
-        <MyBusinessPage business={null} />
-      </>
-    );
-
-  const renderPage = () => {
-    if (!businesses) return <MyBusinessSkeleton />;
-
-    if (!businesses?.length) return <MyBusinessPage business={null} />;
-
-    return <MyBusinessPage business={businesses[0]} />;
-  };
+  }, [agreementSigned]);
 
   return (
     <>
@@ -53,9 +33,51 @@ const MyBusiness: NextPage = () => {
         description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
         title="My Business | SoPlugged"
       />
-      {renderPage()}
+      <MyBusinessPage business={business} />
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+
+  if (!session?.user) {
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
+  }
+
+  try {
+    const fetchPromise = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "User-Email": session.user.email!,
+          "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
+        },
+      }
+    );
+    const businesses = await fetchPromise.json();
+
+    return {
+      props: {
+        business: businesses[0],
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/my-business/welcome",
+        permanent: false,
+      },
+    };
+  }
 };
 
 export default MyBusiness;

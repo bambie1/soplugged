@@ -3,7 +3,6 @@ import { FC, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useWindowSize } from "@reach/window-size";
 
 import { PreBusinessForm } from "layouts/BusinessForm";
 import { swrFetcher } from "@/utils/swrFetcher";
@@ -24,7 +23,6 @@ const referralSources = [
 
 const MyBusinessWelcome: FC = () => {
   const router = useRouter();
-  const { width } = useWindowSize();
 
   const {
     agreementSigned,
@@ -44,8 +42,7 @@ const MyBusinessWelcome: FC = () => {
   const [refBusiness, setRefBusiness] = useState<string>("");
 
   const { data: businesses, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`,
-    swrFetcher
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
   );
 
   const orderedBusinesses =
