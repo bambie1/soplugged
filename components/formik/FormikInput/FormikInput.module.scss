@@ -1,29 +1,5 @@
 @import "styles/_mixins";
 
-.input {
-  background-color: $offWhite;
-  border: 1px solid $secondary;
-  border-radius: 12px;
-  transition: 180ms box-shadow ease-in-out;
-  display: block;
-  width: 100%;
-
-  padding: 16px;
-
-  &.error {
-    border-color: red;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px $lightSecondary;
-    outline: 3px solid transparent;
-
-    &.error {
-      box-shadow: 0 0 0 3px #ff00002e;
-    }
-  }
-}
-
 .input[readonly] {
   border-style: dotted;
   cursor: not-allowed;
@@ -48,7 +24,7 @@
   margin-bottom: 0.25rem;
   display: block;
   text-transform: uppercase;
-  font-weight: bold;
+  // font-weight: bold;
 
   &.error {
     color: red;

@@ -1,7 +1,6 @@
 @import "styles/_mixins";
 
 .input {
-  font-size: 16px;
   font-family: inherit;
   background-color: $offWhite;
   border: 1.5px solid $secondary;
@@ -33,25 +32,6 @@
 .input[disabled] {
   background-color: #eee;
   cursor: not-allowed;
-}
-
-.formGroup {
-  display: grid;
-  text-align: left !important;
-  width: 100%;
-  max-width: 500px;
-}
-
-.label {
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-  display: block;
-  text-transform: uppercase;
-  font-weight: bold;
-
-  &.error {
-    color: red;
-  }
 }
 
 .helperText {

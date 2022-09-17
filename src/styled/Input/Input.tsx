@@ -17,17 +17,22 @@ const Input = forwardRef<HTMLInputElement, Props>(
     };
 
     return (
-      <div className={styles.formGroup}>
+      <div className="grid w-full max-w-[500px] text-left">
         <label
           htmlFor=""
-          className={`${styles.label} ${!!error && styles.error}`}
+          className={`mb-1 block text-sm font-bold uppercase ${
+            !!error && "text-red-500"
+          }`}
         >
           {label}
         </label>
         <input
           ref={ref}
           {...props}
-          className={`${styles.input} ${!!error && styles.error}`}
+          className={`rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:italic placeholder:text-slate-400 ${
+            !!error &&
+            "border-red-500 focus:outline-2 focus:outline-transparent"
+          }`}
         />
         {!noHelper && renderHelperText()}
       </div>

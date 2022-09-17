@@ -38,7 +38,7 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
       <section className={`${styles.grid} my-container`}>
         {renderStepInfo()}
         <aside className={styles.container}>
-          <div className={`${styles.content} `}>{children}</div>
+          <div className={`${styles.content} flex flex-col`}>{children}</div>
         </aside>
       </section>
     </>

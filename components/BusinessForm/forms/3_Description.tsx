@@ -48,7 +48,12 @@ const Description = () => {
     <>
       <section className={styles.form}>
         <div className="quillFormGroup">
-          <label htmlFor="business_description" className={isError && "error"}>
+          <label
+            htmlFor="business_description"
+            className={`text-sm font-medium uppercase lg:text-base ${
+              isError && "text-red-500"
+            }`}
+          >
             Business Description
           </label>
 
@@ -65,7 +70,9 @@ const Description = () => {
               toolbar: toolbarOptions,
             }}
           />
-          {isError && <p className="error">{meta.error}</p>}
+          {isError && (
+            <p className="text-xs text-red-500 lg:text-sm ">{meta.error}</p>
+          )}
         </div>
       </section>
     </>

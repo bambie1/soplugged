@@ -24,7 +24,7 @@ const MyBusiness: NextPage<
   const { agreementSigned } = useBusinessFormContext();
 
   useEffect(() => {
-    if (!agreementSigned) {
+    if (!agreementSigned && !business) {
       router.push("/my-business/welcome");
     } else {
       setCheckedAgreement(true);

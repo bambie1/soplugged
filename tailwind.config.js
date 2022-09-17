@@ -57,6 +57,10 @@ module.exports = {
       listStyleType: {
         square: "square",
       },
+      boxShadow: {
+        "input-focus": "0 0 0 2px #4e350563",
+        "error-focus": "0 0 0 3px #ff00002e",
+      },
     },
   },
   plugins: [

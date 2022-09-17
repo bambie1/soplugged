@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 import { FC, useEffect } from "react";
 import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
@@ -16,7 +15,6 @@ import Contact from "@/components/BusinessForm/forms/4_Contact";
 import Images from "@/components/BusinessForm/forms/5_Images";
 import Review from "@/components/BusinessForm/forms/6_Review";
 import { useBusinessFormContext } from "@/context/businessFormContext";
-import { updateBusiness } from "@/utils/updateBusiness";
 import { Button } from "@/styled/Button";
 
 import styles from "./MyBusinessPage.module.scss";
@@ -96,23 +94,25 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         }
       : { ...values, business_url: "https://" + values.business_url };
 
-    const res = await updateBusiness(businessObj, !business);
+    const updatedBusiness = await fetch("/api/user/updateBusiness", {
+      method: !business ? "POST" : "PATCH",
+      body: JSON.stringify({
+        data: businessObj,
+        isNew: !business,
+      }),
+    }).then((res) => res.json());
 
-    if (res.ok) {
+    if (updatedBusiness.statusCode !== 500) {
       toast.success(
         !business
           ? "Business created successfully"
           : "Business updated successfully"
       );
       mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`);
-      const slug = slugify(values.business_name.trim(), {
-        lower: true,
-        remove: /[*+~.()'"!:@]/g,
-      });
       mutate(
-        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
+        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${updatedBusiness.slug}`
       );
-      router.push(`/business/${slug}`);
+      router.push(`/business/${updatedBusiness.slug}`);
     } else {
       toast.error("An error occurred");
     }
