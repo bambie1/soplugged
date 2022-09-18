@@ -1,8 +1,5 @@
-import dynamic from "next/dynamic";
-
 import { ButtonLink } from "@/styled/ButtonLink";
 import { PageWrapper } from "@/components/PageWrapper";
-import { ArrowButton } from "@/styled/ArrowButton";
 
 const OurStoryPage = () => {
   return (
@@ -12,7 +9,7 @@ const OurStoryPage = () => {
           <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
             Our story
           </h1>
-          <div className="flex flex-col gap-2 lg:text-lg">
+          <div className="prose">
             <p>
               Hi, I'm Nina, creator, and founder of SoPlugged - an online
               platform that makes <b>#buyingblack</b> easy! Our biggest
@@ -32,14 +29,17 @@ const OurStoryPage = () => {
             </p>
           </div>
           <div className="mt-8">
-            <ArrowButton href="/search">Find a business</ArrowButton>
+            <ButtonLink href="/search" variant="outlined" showArrow>
+              Visit our directory
+            </ButtonLink>
           </div>
         </section>
 
         <img
           src="/soplugged_team.png"
-          className="row-start-1 justify-self-center lg:row-start-auto"
+          className="justify-self-center lg:row-start-auto lg:mx-auto lg:max-w-lg"
           alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"
+          loading="lazy"
         />
       </div>
     </PageWrapper>

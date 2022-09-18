@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { ArrowButton } from "@/styled/ArrowButton";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
@@ -22,9 +23,9 @@ const SponsorsPage = () => {
             All donations go towards maintaining our platform and supporting
             Black-owned businesses across Canada.
           </p>
-          <ArrowButton href="/our-story">
-            Read about the SoPlugged story
-          </ArrowButton>
+          <ButtonLink showArrow variant="outlined" href="/our-story">
+            Read about our story
+          </ButtonLink>
         </div>
 
         <aside className="col-span-2 mt-4">
