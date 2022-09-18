@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faPen } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
@@ -9,6 +8,7 @@ import Tooltip from "@reach/tooltip";
 
 import { BusinessCard } from "@/components/BusinessCard";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { Button } from "@/styled/Button";
 import { IBusiness } from "@/types/Business";
 import { greetFunction } from "@/utils/greeting";
 
@@ -87,25 +87,19 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
         {!hasImages && (
           <div className={styles.suggestion}>
             <p>Upload sample images</p>
-            <button
-              className="icon-btn-outline"
-              onClick={() => suggestionHandler(4)}
-            >
-              <FontAwesomeIcon icon={faPen} />
+            <Button variant="text" onClick={() => suggestionHandler(4)}>
+              <FontAwesomeIcon icon={faPen} className="mr-2" />
               Fix
-            </button>
+            </Button>
           </div>
         )}
         {!hasGoodDescription && (
           <div className={styles.suggestion}>
             <p>Describe your business more</p>
-            <button
-              className="icon-btn-outline"
-              onClick={() => suggestionHandler(2)}
-            >
-              <FontAwesomeIcon icon={faPen} />
+            <Button variant="text" onClick={() => suggestionHandler(2)}>
+              <FontAwesomeIcon icon={faPen} className="mr-2" />
               Fix
-            </button>
+            </Button>
           </div>
         )}
       </>
@@ -125,18 +119,14 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
           <BusinessCard business={business} />
 
           <div className={styles.buttons}>
-            <Link href="/my-business">
-              <a className="icon-btn">
-                <FontAwesomeIcon icon={faPen} />
-                Edit
-              </a>
-            </Link>
-            <Link href={`/business/${business.slug}`}>
-              <a className="icon-btn-outline">
-                <FontAwesomeIcon icon={faEye} />
-                View
-              </a>
-            </Link>
+            <ButtonLink href="/my-business" variant="outlined">
+              <FontAwesomeIcon icon={faPen} className="mr-2" />
+              Edit
+            </ButtonLink>
+            <ButtonLink href={`/business/${business.slug}`}>
+              <FontAwesomeIcon icon={faEye} className="mr-2" />
+              View
+            </ButtonLink>
           </div>
         </section>
 
@@ -152,7 +142,9 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             </Tooltip>
           </article>
 
-          <div className={styles.insights}>{renderInsights()}</div>
+          <div className="mx-auto max-w-sm rounded-lg bg-primary/5 py-4 px-5">
+            {renderInsights()}
+          </div>
         </section>
 
         <section className={styles.plugs}>

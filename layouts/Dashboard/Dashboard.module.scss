@@ -22,7 +22,9 @@
 
   @include tablet {
     overflow: auto;
-    background: rgba($color: #fff, $alpha: 0.45);
+    // background: rgba($color: #fff, $alpha: 0.45);
+    background-color: $lightLight;
+
     backdrop-filter: blur(10px);
     // margin-top: 3rem;
     margin-bottom: 0;
@@ -42,7 +44,6 @@
   background-color: $lightLight;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  // z-index: 1;
   bottom: 0;
   height: clamp(3rem, 100%, 4rem);
   width: 100%;
@@ -96,6 +97,8 @@
 
 .content {
   @include tablet {
+    background-color: $lightLight;
+
     padding: 1rem;
     margin-left: 5rem;
     overflow-y: auto;

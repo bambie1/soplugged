@@ -43,6 +43,7 @@ const Dashboard: FC = ({ children }) => {
       <div className={styles.body}>
         <AuthPageWrapper center>
           <div className={styles.wrapper}>
+            <div className={styles.content}>{children}</div>
             <nav className={styles.nav}>
               <ul className="list">
                 {dashboardLinks.map((link) => (
@@ -57,7 +58,6 @@ const Dashboard: FC = ({ children }) => {
                 ))}
               </ul>
             </nav>
-            <div className={styles.content}>{children}</div>
           </div>
         </AuthPageWrapper>
       </div>

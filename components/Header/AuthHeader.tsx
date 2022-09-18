@@ -49,7 +49,7 @@ const AuthHeader: FC = () => {
                   />
                 </a>
               </Link>
-              <ul className={`ml-10 flex space-x-4`}>
+              <ul className={`ml-10 flex space-x-6`}>
                 {currentNav.links.map(({ id, text, link, isNew }) => (
                   <li key={id} className={`lg:text-lg ${buildStyles(link)}`}>
                     <ButtonLink href={link}>
