@@ -6,7 +6,6 @@ import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { signIn, useSession } from "next-auth/react";
 
 import { Button } from "@/styled/Button";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { Input } from "@/styled/Input";
 import TextArea from "@/styled/TextArea/TextArea";
 import { sendEmail } from "@/utils/sendEmail";
@@ -22,7 +21,7 @@ interface Props {
 }
 
 const ContactForm: FC<Props> = ({ businessEmail }) => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   const [messageSent, setMessageSent] = useState(false);
   const {

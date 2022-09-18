@@ -11,15 +11,7 @@ const IconButton = forwardRef<HTMLButtonElement, Props>(
   ({ title, children, isText, isOutlined, ...rest }, ref: any) => {
     return (
       <button
-        className={classNames(
-          "inline-flex items-center justify-center gap-3 rounded-lg border px-4 py-2  transition duration-200 focus:outline-none focus:ring",
-          {
-            "border-transparent text-primary hover:bg-gray-100": isText,
-            "border-primary text-primary hover:border-transparent hover:bg-primary-100":
-              isOutlined,
-            "": !(isOutlined || isText),
-          }
-        )}
+        className={classNames("button", { text: isText, outlined: isOutlined })}
         {...rest}
       >
         {title && <span className="font-medium">{title}</span>}

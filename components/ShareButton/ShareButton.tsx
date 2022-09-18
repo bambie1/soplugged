@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy as faCopyFilled } from "@fortawesome/free-solid-svg-icons";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
+import toast from "react-hot-toast";
 
-import { IconButton } from "@/styled/IconButton";
+import { Button } from "@/styled/Button";
 
 const ShareButton = () => {
   const [textCopied, setTextCopied] = useState(false);
@@ -16,20 +17,20 @@ const ShareButton = () => {
   const copyUrl = () => {
     navigator.clipboard.writeText(businessUrl);
     setTextCopied(true);
+    toast.success("Link copied successfully");
 
     setTimeout(() => setTextCopied(false), 2000);
   };
 
   return (
     <>
-      <IconButton
-        onClick={copyUrl}
-        disabled={textCopied}
-        title={textCopied ? "Copied!" : "Copy Link"}
-        isText
-      >
-        <FontAwesomeIcon icon={textCopied ? faCopyFilled : faCopy} />
-      </IconButton>
+      <Button onClick={copyUrl} disabled={textCopied} variant="text">
+        {textCopied ? "Copied!" : "Copy Link"}
+        <FontAwesomeIcon
+          icon={textCopied ? faCopyFilled : faCopy}
+          className="ml-3"
+        />
+      </Button>
     </>
   );
 };

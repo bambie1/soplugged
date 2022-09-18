@@ -42,8 +42,8 @@ export const getDBUser = async (email: string) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "User-Email": "bennieb96@gmail.com",
-        "Super-Secret-Key": "wrong",
+        "User-Email": email,
+        "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
       },
     });
     if (!res.ok) throw new Error("HTTP status " + res.status);

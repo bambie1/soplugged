@@ -4,22 +4,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartFilled } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 import { addFavorite } from "@/utils/addFavorite";
 import { swrFetchWithToken } from "@/utils/swrFetchWithToken";
 import { removeFavorite } from "@/utils/removeFavorite";
-import { IconButton } from "@/styled/IconButton";
+import { Button } from "@/styled/Button";
 
 interface Props {
   business: any;
 }
 
 const FavoriteButton: FC<Props> = ({ business }) => {
-  const { user } = {
-    user: {
-      email: "",
-    },
-  };
+  const { data: session } = useSession();
+
   const { mutate } = useSWRConfig();
   const [userLikesBusiness, setUserLikesBusiness] = useState(false);
 
@@ -28,7 +26,7 @@ const FavoriteButton: FC<Props> = ({ business }) => {
     creator: { email },
   } = business;
 
-  const disabled = !user || user.email === email;
+  const disabled = !session?.user?.email || session?.user?.email === email;
 
   const { data: favorites, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`,
@@ -48,19 +46,23 @@ const FavoriteButton: FC<Props> = ({ business }) => {
 
   const handleClick = async () => {
     setUserLikesBusiness(!userLikesBusiness);
+    if (!session?.user?.email) return;
+
     if (userLikesBusiness) {
-      const res = await removeFavorite(id, user.email);
+      const res = await removeFavorite(id, session.user.email);
 
       if (res?.ok) {
         toast.success("Removed from favorites");
+        setUserLikesBusiness(!userLikesBusiness);
       } else {
         toast.error("An error occurred");
       }
     } else {
-      const res = await addFavorite(id, user.email);
+      const res = await addFavorite(id, session.user.email!);
 
       if (res?.ok) {
         toast.success("Added to favorites");
+        setUserLikesBusiness(!userLikesBusiness);
       } else {
         toast.error("An error occurred");
       }
@@ -70,14 +72,13 @@ const FavoriteButton: FC<Props> = ({ business }) => {
   };
 
   return (
-    <IconButton
-      title={userLikesBusiness ? "Added to Favorites" : "Add to Favorites"}
-      onClick={handleClick}
-      disabled={disabled}
-      isOutlined
-    >
-      <FontAwesomeIcon icon={userLikesBusiness ? faHeartFilled : faHeart} />
-    </IconButton>
+    <Button onClick={handleClick} disabled={disabled} variant="outlined">
+      {userLikesBusiness ? "Added to Favorites" : "Add to Favorites"}
+      <FontAwesomeIcon
+        icon={userLikesBusiness ? faHeartFilled : faHeart}
+        className="ml-3"
+      />
+    </Button>
   );
 };
 

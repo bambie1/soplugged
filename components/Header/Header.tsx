@@ -92,7 +92,7 @@ const Header: FC<Props> = ({ variant = "main" }) => {
                   />
                 </a>
               </Link>
-              <ul className={`ml-10 flex space-x-7`}>
+              <ul className={`ml-10 flex space-x-4`}>
                 {currentNav.links.map(({ id, text, link, isNew }) => (
                   <li key={id} className={`lg:text-lg ${buildStyles(link)}`}>
                     <ButtonLink href={link}>

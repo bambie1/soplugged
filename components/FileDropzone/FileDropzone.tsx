@@ -123,7 +123,7 @@ const FileDropzone: FC = () => {
           color="secondary"
           disabled={uploading}
           onClick={open}
-          className="button outlined withIcon"
+          className="button outlined withIcon mt-6"
         >
           <FontAwesomeIcon icon={faUpload} />
           Click to upload images

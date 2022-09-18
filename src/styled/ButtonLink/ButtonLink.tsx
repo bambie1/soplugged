@@ -4,15 +4,19 @@ import Link from "next/link";
 type IProps = {
   variant?: "outlined" | "filled" | "text";
   showArrow?: boolean;
+  leftAlign?: boolean;
 } & React.ComponentProps<"a">;
 
 const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
-  ({ variant, showArrow, href, type, children, ...props }, ref: any) => {
+  (
+    { variant, showArrow, leftAlign, href, type, children, ...props },
+    ref: any
+  ) => {
     const linkStyles = () => {
       let styleStr = "button group";
       if (variant === "outlined") styleStr += " outlined";
       else if (variant === "filled") styleStr += " filled";
-      else styleStr += " text";
+      else styleStr += ` text ${leftAlign && "-ml-4"}`;
 
       return styleStr;
     };

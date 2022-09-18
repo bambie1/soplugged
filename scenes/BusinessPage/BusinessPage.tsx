@@ -118,7 +118,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             <ContactForm businessEmail={creator?.email || ""} />
           </div>
           {hasContactLinks && <SocialLinks business={business} />}
-          <div className="grid gap-2">
+          <div className="grid gap-2 overflow-hidden">
             <FavoriteButton business={business} />
             <ShareButton />
           </div>
@@ -180,17 +180,17 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
           <div className={styles.info}>
             {category && (
-              <IconButton isText onClick={handleCategoryClick}>
-                <FontAwesomeIcon icon={faShapes} />
+              <Button variant="text" onClick={handleCategoryClick}>
+                <FontAwesomeIcon icon={faShapes} className="mr-2" />
                 {category}
-              </IconButton>
+              </Button>
             )}
 
             {business_location && (
-              <IconButton isText onClick={handleLocationClick}>
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
+              <Button variant="text" onClick={handleLocationClick}>
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
                 {business_location}
-              </IconButton>
+              </Button>
             )}
 
             {!fixed_to_one_location && !business_location && (

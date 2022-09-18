@@ -104,7 +104,12 @@ const HomePage = () => {
                     </dt>
                     <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
                       <p className="mb-4">{item.description}</p>
-                      <ButtonLink variant="text" showArrow href={item.linkHref}>
+                      <ButtonLink
+                        variant="text"
+                        showArrow
+                        href={item.linkHref}
+                        leftAlign
+                      >
                         {item.linkText}
                       </ButtonLink>
                     </dd>
