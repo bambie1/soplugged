@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
-import slugify from "slugify";
 import { useSWRConfig } from "swr";
 
 import { BusinessForm } from "layouts/BusinessForm";
@@ -27,6 +26,7 @@ interface Props {
 const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     referralSource,
     referringBusiness,
@@ -69,11 +69,11 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           type="button"
           variant="text"
           onClick={handleBack}
-          disabled={currentStep === 0}
+          disabled={currentStep === 0 || isSubmitting}
         >
           Go Back
         </Button>
-        <Button type="submit">
+        <Button type="submit" disabled={isSubmitting}>
           {currentStep === formSteps.length - 1
             ? !business
               ? "Complete setup"
@@ -85,6 +85,8 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   };
 
   async function _submitForm(values: any, actions: any) {
+    setIsSubmitting(true);
+
     const businessObj = !business
       ? {
           ...values,

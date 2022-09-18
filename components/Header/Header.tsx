@@ -96,14 +96,14 @@ const Header: FC<Props> = ({ variant = "main" }) => {
                 {currentNav.links.map(({ id, text, link, isNew }) => (
                   <li key={id} className={`lg:text-lg ${buildStyles(link)}`}>
                     <ButtonLink href={link}>
-                      <span className="relative">
+                      <span className="flex">
                         {text}
                         {isNew && (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            className="absolute -right-3 top-1 h-3 w-3 text-accent-dark"
+                            className="top-1 h-3 w-3 text-accent-dark"
                           >
                             <path
                               fillRule="evenodd"
@@ -126,7 +126,7 @@ const Header: FC<Props> = ({ variant = "main" }) => {
             {variant === "auth" ? (
               <SignOutButton />
             ) : (
-              <ButtonLink href={currentNav.cta.link} variant="outlined">
+              <ButtonLink href={currentNav.cta.link} variant="text" showArrow>
                 {currentNav.cta.text}
               </ButtonLink>
             )}

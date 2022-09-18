@@ -108,6 +108,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </h3>
           <section
             dangerouslySetInnerHTML={{ __html: business_description }}
+            className="text-gray-500"
           ></section>
         </div>
       </div>
@@ -138,7 +139,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               About
             </h3>
             <section
-              className={styles.description}
+              className="mb-12 text-gray-500"
               dangerouslySetInnerHTML={{ __html: business_description }}
             ></section>
           </div>
