@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import useSWR from "swr";
+import { getSession } from "next-auth/react";
 
 import { FavoritesPage } from "@/scenes/dashboard/FavoritesPage";
 import FavoritesSkeleton from "@/scenes/dashboard/FavoritesPage/FavoritesSkeleton";
@@ -25,6 +26,22 @@ const Favorites: NextPage = () => {
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+
+  if (!session?.user?.email)
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {},
+  };
 };
 
 export default Favorites;

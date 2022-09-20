@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { signIn, useSession } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -21,16 +20,6 @@ const dashboardLinks = [
 
 const Dashboard: FC = ({ children }) => {
   const router = useRouter();
-  const { data: session, status } = useSession();
-
-  if (status === "loading") {
-    return <p>Loading or not authenticated...</p>;
-  }
-
-  if (!session?.user) {
-    signIn();
-    return null;
-  }
 
   const linkStyles = (href: string) => {
     if (router.asPath === href) return `${styles.link} ${styles.active}`;

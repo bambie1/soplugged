@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowButton } from "@/styled/ArrowButton";
@@ -24,16 +24,39 @@ const expectedErrors: any = {
 };
 
 const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
   const [userEmail, setUserEmail] = useState("");
-  const { data: session, status } = useSession();
-
-  if (session?.user?.email) {
-    push("/dashboard");
-  }
 
   const renderEmailSignIn = () => {
-    if (stage === "verify") return <div>Check your inbox</div>;
+    if (stage === "verify")
+      return (
+        <div className="rounded-md bg-green-50 p-8">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6 text-green-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div className="ml-3 flex-1 md:flex md:justify-between">
+              <p className="text-sm text-green-700">
+                Check your inbox! We've sent you a magic link that you can
+                click, and get signed in.
+              </p>
+            </div>
+          </div>
+        </div>
+      );
 
     return (
       <form

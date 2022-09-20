@@ -2,12 +2,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import Searchbar from "../algolia/Searchbar";
-import { SignOutButton } from "../SignOutButton";
-
 import styles from "styles/MobileHeader.module.css";
+
+const SignOutButton = dynamic(() => import("../SignOutButton/SignOutButton"));
+const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const MobileHeader = ({ currentNav }: any) => {
   const [showMenu, setshowMenu] = useState(false);

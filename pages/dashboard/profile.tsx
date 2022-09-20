@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import useSWR from "swr";
+import { getSession } from "next-auth/react";
 
 import { ProfilePage } from "@/scenes/dashboard/ProfilePage";
 import ProfileSkeleton from "@/scenes/dashboard/ProfilePage/ProfileSkeleton";
@@ -25,6 +26,22 @@ const Profile: NextPage = () => {
       <DashboardLayout>{renderPage()}</DashboardLayout>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+
+  if (!session?.user?.email)
+    return {
+      redirect: {
+        destination: "/join",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {},
+  };
 };
 
 export default Profile;

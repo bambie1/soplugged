@@ -6,13 +6,12 @@ import { FC, useEffect, useState } from "react";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
-import { ArrowButton } from "@/styled/ArrowButton";
 import MobileHeader from "./MobileHeader";
 
 import styles from "../../styles/Header.module.scss";
-import { SignOutButton } from "../SignOutButton";
 
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
+const SignOutButton = dynamic(() => import("../SignOutButton/SignOutButton"));
 
 const links = [
   { id: 1, text: "Find a business", link: "/search" },
