@@ -4,38 +4,13 @@ import { FC } from "react";
 const ProHero: FC = () => {
   return (
     <>
-      <div className="my-container relative flex items-center justify-center">
-        <div className="relative mx-auto flex flex-col items-center py-10 text-center md:py-20">
-          <div className="absolute top-40 -left-10 flex aspect-square w-16 rounded-full bg-accent-dark/5 p-4 lg:-left-60 lg:top-40 lg:w-20 lg:animate-pulse-slow lg:p-6">
-            <img
-              src="/doodles/bag.svg"
-              className="object-contain opacity-60"
-              alt=""
-            />
-          </div>
-          <div className="absolute top-80 left-0 flex aspect-square w-16 rounded-full bg-secondary/5 p-4 lg:-left-24 lg:top-96 lg:w-20 lg:animate-bounce-slow lg:p-6">
-            <img
-              src="/doodles/globe.svg"
-              className="object-contain opacity-60"
-              alt=""
-            />
-          </div>
-          <div className="absolute top-0 -right-10 flex aspect-square w-16 rounded-full bg-black/5 p-4 lg:-right-60 lg:top-40 lg:w-20 lg:animate-bounce-slow lg:p-6">
-            <img
-              src="/doodles/camera.svg"
-              className="object-contain opacity-60"
-              alt=""
-            />
-          </div>
-          <div className="absolute top-64 right-0 flex aspect-square w-16 rounded-full bg-accent/5 p-4 lg:-right-24 lg:top-96 lg:w-20 lg:animate-pulse-slow lg:p-6">
-            <img
-              src="/doodles/instagram.svg"
-              className="object-contain opacity-60"
-              alt=""
-            />
-          </div>
-          <h1 className="relative mx-auto mb-3 bg-gradient-to-r from-black to-accent-dark bg-clip-text pb-2 text-6xl font-bold text-transparent lg:mb-6 lg:max-w-5xl lg:text-7xl xl:text-[6rem]">
-            Digital experiences <br></br>your customers <br></br>will love
+      <div className="my-container relative flex flex-col items-center justify-center">
+        <div className="relative mx-auto flex flex-col items-center pt-10 text-center md:pt-20">
+          <h1 className="relative mx-auto mb-3 pb-2 text-6xl font-bold lg:mb-6 lg:max-w-5xl lg:text-7xl xl:text-[5rem]">
+            <span className="bg-gradient-to-l from-black to-accent-dark bg-clip-text text-transparent">
+              Websites
+            </span>{" "}
+            your <br></br>customers will love
           </h1>
           <p className="font-light lg:max-w-3xl lg:text-xl xl:text-2xl">
             Hire our team of experts to handle your digital needs, from custom
@@ -49,6 +24,7 @@ const ProHero: FC = () => {
             </Link>
           </div>
         </div>
+        <img loading="lazy" src="/brandbird.webp" alt="" className="" />
       </div>
     </>
   );
