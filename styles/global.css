@@ -10,6 +10,19 @@
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@keyframes rollout {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.roll-out {
+  animation: rollout 0.5s;
+}
+
 @layer base {
   body {
     color: #100b01;
