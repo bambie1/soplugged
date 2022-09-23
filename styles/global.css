@@ -13,6 +13,7 @@
 @layer base {
   body {
     color: #100b01;
+    word-break: break-word;
   }
 }
 

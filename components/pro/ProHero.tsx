@@ -12,7 +12,7 @@ const ProHero: FC = () => {
             </span>{" "}
             your <br></br>customers will love
           </h1>
-          <p className="font-light lg:max-w-3xl lg:text-xl xl:text-2xl">
+          <p className="text-lg font-light lg:max-w-3xl lg:text-xl xl:text-2xl">
             Hire our team of experts to handle your digital needs, from custom
             websites to social media management
           </p>

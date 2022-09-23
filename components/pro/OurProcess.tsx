@@ -6,7 +6,7 @@ const steps = [
 
 const OurProcess = () => {
   return (
-    <div className="w-full bg-accent">
+    <div className="w-full">
       <div className="relative mx-auto flex max-w-3xl items-center gap-20">
         {steps.map(({ title, image }, index) => (
           <div

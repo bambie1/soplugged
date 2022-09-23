@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
 import FeaturedReview from "@/components/pro/FeaturedReview";
+import OurProcess from "@/components/pro/OurProcess";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const SocialMediaService = dynamic(
@@ -24,9 +25,14 @@ const ProPage: FC = () => {
       <Header variant="pro" />
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
-        <div className="my-10 mx-auto grid gap-20 lg:gap-36">
+        <div className="relative mx-auto grid gap-20 lg:gap-36">
+          <div className="absolute -top-14 left-0 right-0 -z-[1] h-[100rem] -skew-y-6 bg-accent/40 lg:-top-48"></div>
+          <div className="absolute top-64 left-0 right-0 bottom-0 -z-[1] skew-y-6 bg-white lg:top-96"></div>
+          <OurProcess />
           <FeaturedReview />
-          <CustomWebsiteService />
+          <div className="relative">
+            <CustomWebsiteService />
+          </div>
           <SocialMediaService />
           <SatisfactionGuarantee />
           <Pricing />
