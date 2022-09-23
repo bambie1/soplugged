@@ -18,10 +18,8 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
         <section className="relative flex">
           <div className="my-container flex min-h-[30vh] items-center justify-center text-center">
             <div className="flex flex-col items-center justify-center p-10 lg:p-20">
-              <h1 className="mx-auto mb-4 max-w-xl text-3xl font-bold leading-[1.05] text-primary lg:text-5xl lg:leading-[1.2]">
-                SoPlugged blog
-              </h1>
-              <p className="lg:text-lg">
+              <h1 className="h1 mx-auto mb-4 max-w-xl">SoPlugged blog</h1>
+              <p className="text-lg lg:text-xl">
                 Helpful guides to create or improve your business' digital
                 presence
               </p>

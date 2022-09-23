@@ -9,9 +9,9 @@ const SponsorsPage = () => {
   return (
     <>
       <Header />
-      <div className="my-container flex flex-col items-center gap-10 pt-16 pb-10 lg:grid lg:grid-cols-5">
+      <div className="my-container flex flex-col items-center gap-10 py-10 lg:grid lg:grid-cols-5">
         <div className="w-full lg:col-span-3">
-          <h1 className="mb-6 text-4xl font-bold lg:text-6xl">Sponsors</h1>
+          <h1 className="h1 mb-6">Sponsors</h1>
           <p className="lg:text-lg">
             At SoPlugged, our biggest inspiration is supporting one another and
             growing our community. Our goal is to normalize buying black and we

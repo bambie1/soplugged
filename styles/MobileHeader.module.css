@@ -8,14 +8,14 @@
   padding: 0px;
   background: transparent;
   transition: all 250ms ease-out;
-  margin-top: 1rem;
+  margin-top: 0.1rem;
 }
 
 .burger:before,
 .burger:after {
   content: "";
   width: 2.25rem;
-  height: 2px;
+  height: 1px;
   position: absolute;
   background: #1a1a1a;
   transition: all 250ms ease-out;
@@ -23,19 +23,19 @@
 }
 
 .burger:before {
-  transform: translateY(-6px);
+  transform: translateY(4px);
 }
 
 .burger:after {
-  transform: translateY(6px);
+  transform: translateY(16px);
 }
 
 .active.burger:before {
-  transform: translateY(0) rotate(45deg);
+  transform: translateY(12px) rotate(45deg);
 }
 
 .active.burger:after {
-  transform: translateY(0) rotate(-45deg);
+  transform: translateY(12px) rotate(-45deg);
 }
 
 .dialogContent {

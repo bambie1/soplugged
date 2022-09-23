@@ -24,7 +24,18 @@ const ProHero: FC = () => {
             </Link>
           </div>
         </div>
-        <img loading="lazy" src="/brandbird.webp" alt="" className="" />
+        <img
+          loading="lazy"
+          src="/brandbird.webp"
+          alt=""
+          className="hidden md:block"
+        />
+        <img
+          loading="lazy"
+          src="/mobile_brandbird.webp"
+          alt=""
+          className="md:hidden"
+        />
       </div>
     </>
   );

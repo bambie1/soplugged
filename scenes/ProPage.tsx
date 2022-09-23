@@ -25,19 +25,19 @@ const ProPage: FC = () => {
       <Header variant="pro" />
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
-        <div className="relative mx-auto grid gap-20 lg:gap-36">
-          <div className="absolute -top-14 left-0 right-0 -z-[1] h-[100rem] -skew-y-6 bg-accent/40 lg:-top-48"></div>
+        <div className="relative mx-auto ">
+          <div className="absolute -top-36 left-0 right-0 -z-[1] h-[100rem] -skew-y-6 bg-accent/40 lg:-top-48"></div>
           <div className="absolute top-64 left-0 right-0 bottom-0 -z-[1] skew-y-6 bg-white lg:top-96"></div>
-          <OurProcess />
-          <FeaturedReview />
-          <div className="relative">
+          <div className="lg:my-4"></div>
+          <div className="grid gap-20 lg:gap-36">
+            <OurProcess />
+            <FeaturedReview />
             <CustomWebsiteService />
+            <SocialMediaService />
+            <SatisfactionGuarantee />
+            <Pricing />
+            <ConsultForm />
           </div>
-          <SocialMediaService />
-          <SatisfactionGuarantee />
-          <Pricing />
-
-          <ConsultForm />
         </div>
         <Footer tertiary />
       </div>

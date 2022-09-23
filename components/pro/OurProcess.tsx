@@ -6,8 +6,8 @@ const steps = [
 
 const OurProcess = () => {
   return (
-    <div className="w-full">
-      <div className="relative mx-auto flex max-w-3xl items-center gap-20">
+    <div className="my-container my-10">
+      <div className="relative mx-auto flex max-w-3xl items-center justify-center gap-10 lg:gap-20">
         {steps.map(({ title, image }, index) => (
           <div
             className="flex max-w-[5rem] flex-col items-center text-center"
