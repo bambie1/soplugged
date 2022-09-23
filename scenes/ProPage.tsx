@@ -26,15 +26,13 @@ const ProPage: FC = () => {
       <div className="scroll-p-10 overflow-hidden scroll-smooth">
         <ProHero />
         <div className="relative mx-auto ">
-          <div className="absolute -top-36 left-0 right-0 -z-[1] h-[100rem] -skew-y-6 bg-accent/40 lg:-top-48"></div>
-          <div className="absolute top-64 left-0 right-0 bottom-0 -z-[1] skew-y-6 bg-white lg:top-96"></div>
-          <div className="lg:my-4"></div>
+          <div className="absolute -top-96 left-0 right-0 -z-[1] h-80 -skew-y-6 bg-gradient-to-r from-accent/40 to-accent/20 lg:-top-64"></div>
           <div className="grid gap-20 lg:gap-36">
             <OurProcess />
-            <FeaturedReview />
+            {/* <FeaturedReview /> */}
             <CustomWebsiteService />
-            <SocialMediaService />
             <SatisfactionGuarantee />
+            <SocialMediaService />
             <Pricing />
             <ConsultForm />
           </div>

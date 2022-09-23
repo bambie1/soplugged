@@ -1,16 +1,33 @@
+import { ButtonLink } from "@/styled/ButtonLink";
+
 const steps = [
-  { title: "Book consult", image: "/doodles/video-camera.svg" },
-  { title: "We get to work", image: "/doodles/pen-tool.svg" },
-  { title: "Ready to launch", image: "/doodles/plane.svg" },
+  {
+    title: "Book consult",
+    body: "We discuss your business needs and ideas",
+    image: "/doodles/video-camera.svg",
+  },
+  {
+    title: "We get to work",
+    body: "Designs, mood boards, iterations",
+    image: "/doodles/pen-tool.svg",
+  },
+  {
+    title: "Ready to launch",
+    body: "After testing, we hand over the website to you and properly onboard you",
+    image: "/doodles/plane.svg",
+  },
 ];
 
 const OurProcess = () => {
   return (
-    <div className="my-container my-10">
-      <div className="relative mx-auto flex max-w-3xl items-center justify-center gap-10 lg:gap-20">
-        {steps.map(({ title, image }, index) => (
+    <div className="my-container mt-14 flex flex-col items-center lg:mt-40 xl:mt-56">
+      <h2 className="mb-10 text-3xl font-semibold lg:mb-20 lg:text-5xl">
+        How it works
+      </h2>
+      <div className="relative mx-auto mb-10 flex flex-wrap justify-center gap-10 lg:mb-20 lg:gap-20">
+        {steps.map(({ title, image, body }, index) => (
           <div
-            className="relative flex max-w-[7rem] flex-col items-center text-center"
+            className="relative flex flex-col items-center text-center lg:w-[20rem]"
             key={title}
           >
             {index === 0 && (
@@ -34,10 +51,17 @@ const OurProcess = () => {
             >
               <img src={image} alt="" />
             </div>
-            <p className="font-medium leading-tight">{title}</p>
+            <p className="mb-2 text-lg font-medium uppercase leading-tight lg:text-xl">
+              {title}
+            </p>
+            <p className="text-base leading-tight">{body}</p>
           </div>
         ))}
       </div>
+
+      <ButtonLink href="#book-consult" variant="outlined" showArrow>
+        Get started
+      </ButtonLink>
     </div>
   );
 };
