@@ -24,6 +24,7 @@ module.exports = {
         "bounce-slow": "bounce 3s linear infinite",
         "pulse-slow": "pulse 3s linear infinite",
         blob: "blob 7s infinite",
+        "spin-slow": "spin 4s linear infinite",
       },
       keyframes: {
         slide: {
