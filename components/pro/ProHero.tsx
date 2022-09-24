@@ -22,31 +22,31 @@ const ProHero: FC = () => {
 
   return (
     <>
-      <div className="my-container relative flex flex-col items-center justify-center">
-        <div className="relative mx-auto flex flex-col items-center pt-10 text-center md:pt-20">
-          <h1 className="relative mx-auto mb-3 text-6xl font-semibold transition duration-1000 lg:mb-6 lg:max-w-5xl lg:text-7xl xl:text-[5rem]">
-            <span className="">We help</span> grow your{" "}
+      <div className="my-container relative flex grid-cols-2 flex-col items-center justify-center xl:grid xl:gap-10">
+        <div className="relative mx-auto flex flex-col items-center pt-10 text-center md:pt-20 xl:text-left">
+          <h1 className="relative mx-auto mb-3 text-6xl font-semibold transition duration-1000 lg:text-7xl xl:mb-6 xl:text-[5rem]">
+            <span className="">We help</span> grow{" "}
             <span
               key={textIndex}
-              className={`roll-out block bg-gradient-to-r from-black to-accent-dark bg-clip-text pb-2 text-transparent`}
+              className={`roll-out block bg-gradient-to-l from-black to-accent-dark bg-clip-text pb-2 text-transparent xl:inline-block`}
             >
-              {features[textIndex].title}
+              your {features[textIndex].title}
             </span>
           </h1>
-          <p className="text-lg font-light lg:max-w-3xl lg:text-xl xl:text-2xl">
+          <p className="text-lg font-light lg:text-xl xl:text-2xl">
             Hire our team of experts to handle your digital needs, from custom
             websites to social media management
           </p>
-          <div className="mt-10 flex flex-col items-center gap-4 lg:mt-20 lg:flex-row">
+          <div className="mt-10 flex flex-col items-center gap-4 xl:mt-20 xl:flex-row xl:self-start">
             <Link href="#book-consult">
-              <a className="rounded-md bg-black px-4 py-3 text-lg text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:py-4 lg:px-5 lg:text-xl">
+              <a className="rounded-md bg-black px-4 py-3 text-lg text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 xl:py-4 xl:px-5 xl:text-xl">
                 Book a FREE consultation
               </a>
             </Link>
           </div>
         </div>
 
-        <div className="example mt-10 h-[545px] w-[560px] gap-4 lg:h-[572px] lg:w-[1189px]"></div>
+        <div className="example mt-10 h-[545px] w-[560px] xl:h-[722px] xl:w-[795px]"></div>
       </div>
     </>
   );
