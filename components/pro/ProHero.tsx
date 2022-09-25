@@ -1,3 +1,4 @@
+import { SparklesIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
@@ -10,20 +11,24 @@ const features = [
 const ProHero: FC = () => {
   const [textIndex, setTextIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTextIndex((prevIndex) =>
-        prevIndex === features.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 6000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTextIndex((prevIndex) =>
+  //       prevIndex === features.length - 1 ? 0 : prevIndex + 1
+  //     );
+  //   }, 6000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <>
       <div className="my-container relative flex grid-cols-2 flex-col items-center justify-center xl:grid xl:gap-10">
         <div className="relative mx-auto flex flex-col items-center pt-10 text-center md:pt-20 xl:text-left">
+          <div className="mb-3 flex items-center gap-2 rounded-xl bg-secondary/[.15] px-4 py-2 xl:mr-auto">
+            <SparklesIcon className="h-5 w-5" strokeWidth={1} />
+            <p className="text-sm lg:text-base">Introducing SoPlugged PRO</p>
+          </div>
           <h1 className="relative mx-auto mb-3 text-6xl font-semibold transition duration-1000 lg:text-7xl xl:mb-6 xl:text-[5rem]">
             <span className="">We help</span> grow{" "}
             <span
@@ -33,7 +38,7 @@ const ProHero: FC = () => {
               your {features[textIndex].title}
             </span>
           </h1>
-          <p className="text-lg font-light lg:text-xl xl:text-2xl">
+          <p className="text-lg xl:text-xl">
             Hire our team of experts to handle your digital needs, from custom
             websites to social media management
           </p>

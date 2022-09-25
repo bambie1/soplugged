@@ -1,13 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import { ChangeEvent, useState } from "react";
 
-const includedFeatures = [
-  "Private forum access",
-  "Member resources",
-  "Entry to annual conference",
-  "Official member t-shirt",
-];
-
 const packages = {
   website: {
     title: "Custom website",
@@ -27,7 +20,7 @@ const packages = {
 };
 
 const Pricing = () => {
-  const [fixedCost, setFixedCost] = useState(0);
+  const [fixedCost, setFixedCost] = useState(750);
   const [monthlyCost, setMonthlyCost] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,11 +42,10 @@ const Pricing = () => {
         <div className="my-container">
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              Simple no-tricks pricing
+              Flexible pricing
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              If you're not satisfied, contact us within the first 14 days and
-              we'll send you a full refund.
+              Payment is made installmentally over the course of the project
             </p>
           </div>
         </div>
@@ -65,7 +57,8 @@ const Pricing = () => {
             <div className="mx-auto max-w-lg overflow-hidden rounded-lg shadow-lg lg:flex lg:max-w-none">
               <div className="flex-1 bg-white px-6 py-8 lg:p-12">
                 <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
-                  Lifetime Membership
+                  The <i className="border-b-[.5px] border-black">all-in-one</i>{" "}
+                  package
                 </h3>
                 <p className="mt-6 text-base text-gray-500">
                   Lorem ipsum dolor sit amet consect etur adipisicing elit.
@@ -83,18 +76,17 @@ const Pricing = () => {
                     role="list"
                     className="mt-8 space-y-5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5 lg:space-y-0"
                   >
-                    {includedFeatures.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start lg:col-span-1"
-                      >
+                    {Object.keys(packages).map((key) => (
+                      <li key={key} className="flex items-start lg:col-span-1">
                         <div className="flex-shrink-0">
                           <CheckCircleIcon
                             className="h-5 w-5 text-green-400"
                             aria-hidden="true"
                           />
                         </div>
-                        <p className="ml-3 text-sm text-gray-700">{feature}</p>
+                        <p className="ml-3 text-sm text-gray-700">
+                          {packages[key as keyof typeof packages].title}
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -102,18 +94,16 @@ const Pricing = () => {
               </div>
               <div className="bg-gray-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
                 <p className="text-lg font-medium leading-6 text-gray-900">
-                  Pay once, own it forever
+                  Starting at
                 </p>
                 <div className="mt-4 flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900">
-                  <span>$349</span>
+                  <span>${fixedCost}</span>
                   <span className="ml-3 text-xl font-medium tracking-normal text-gray-500">
-                    USD
+                    CAD
                   </span>
                 </div>
-                <p className="mt-4 text-sm">
-                  <a href="#" className="font-medium text-gray-500 underline">
-                    Learn about our membership policy
-                  </a>
+                <p className="mt-4 text-sm font-medium text-gray-500">
+                  *excluding external payments (e.g. domain providers)
                 </p>
                 <div className="mt-6">
                   <div className="rounded-md shadow">

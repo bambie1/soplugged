@@ -20,7 +20,7 @@ const MobileHeader = ({ currentNav }: any) => {
         <Link href="/">
           <a className="flex flex-shrink-0 items-center">
             <Image
-              src="/soplugged-logo.png"
+              src="/logos/logo-brown.svg"
               alt="SoPlugged Logo"
               width={40}
               height={40}
