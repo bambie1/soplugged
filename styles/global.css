@@ -10,6 +10,10 @@
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes rollout {
   0% {
     transform: translateY(10px);
@@ -23,7 +27,7 @@
   animation: rollout 0.5s;
 }
 
-.example {
+.pro_hero_image {
   background-image: url(https://images.unsplash.com/photo-1519923834699-ef0b7cde4712?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGluc3RhZ3JhbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60);
   background-size: cover;
   background-position: center;
@@ -35,7 +39,7 @@
 }
 
 @media (min-width: 1024px) {
-  .example {
+  .pro_hero_image {
     mask-image: url(/mask_grid_laptop.png);
     /* background-image: url(https://images.unsplash.com/photo-1546177461-3283e4aa3b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fGluc3RhZ3JhbXxlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60); */
   }

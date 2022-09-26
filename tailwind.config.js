@@ -21,7 +21,7 @@ module.exports = {
       animation: {
         slide: "100s linear 0s infinite normal none slide",
         "ping-slow": "ping 3s linear infinite",
-        "bounce-slow": "bounce 3s linear infinite",
+        "bounce-slow": "bounce 2s linear infinite",
         "pulse-slow": "pulse 3s linear infinite",
         blob: "blob 7s infinite",
         "spin-slow": "spin 4s linear infinite",

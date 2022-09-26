@@ -20,7 +20,10 @@ const steps = [
 
 const OurProcess = () => {
   return (
-    <div className="my-container mt-14 flex flex-col items-center lg:mt-40 xl:mt-56">
+    <div
+      id="our-process"
+      className="my-container mt-14 flex scroll-mt-20 flex-col items-center lg:mt-40 xl:mt-56"
+    >
       <h2 className="mb-10 text-3xl font-semibold lg:mb-20 lg:text-5xl">
         How it works
       </h2>

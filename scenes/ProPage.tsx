@@ -23,7 +23,7 @@ const ProPage: FC = () => {
   return (
     <>
       <Header variant="pro" />
-      <div className="scroll-p-10 overflow-hidden scroll-smooth">
+      <div className="overflow-hidden">
         <ProHero />
         <div className="relative mx-auto ">
           {/* <div className="absolute -top-96 left-0 right-0 -z-[1] h-80 -skew-y-6 bg-gradient-to-r from-accent/40 to-accent/20 lg:-top-64"></div> */}
