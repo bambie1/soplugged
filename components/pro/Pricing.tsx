@@ -1,26 +1,37 @@
-import { CheckCircleIcon } from "@heroicons/react/solid";
 import { ChangeEvent, useState } from "react";
 
 const packages = {
-  website: {
+  customWebsite: {
+    name: "customWebsite",
     title: "Custom website",
+    description: "Fully-customized website created for you",
     fixedPrice: 750,
     monthlyPrice: 0,
+    defaultValue: true,
   },
   socialMedia: {
+    name: "socialMedia",
     title: "Social media management",
+    description: "IG content carefully curated for you",
     fixedPrice: 450,
     monthlyPrice: 400,
+    defaultValue: true,
   },
   photography: {
+    name: "photography",
     title: "Product photography",
+    description: "Professionally-taken pictures to improve your page look",
     fixedPrice: 250,
     monthlyPrice: 0,
+    defaultValue: false,
   },
 };
 
+const defaultFixedPrice =
+  packages.customWebsite.fixedPrice + packages.socialMedia.fixedPrice;
+
 const Pricing = () => {
-  const [fixedCost, setFixedCost] = useState(750);
+  const [fixedCost, setFixedCost] = useState(defaultFixedPrice);
   const [monthlyCost, setMonthlyCost] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +45,37 @@ const Pricing = () => {
       setFixedCost(fixedCost - selectedPackage.fixedPrice);
       setMonthlyCost(monthlyCost - selectedPackage.fixedPrice);
     }
+  };
+
+  const renderCheckbox = (option: any) => {
+    const { name, title, description, defaultValue } = option;
+    return (
+      <div className="relative flex items-start">
+        <div className="flex h-5 items-center">
+          <input
+            id={name}
+            aria-describedby={name}
+            name={name}
+            type="checkbox"
+            value={name}
+            defaultChecked={defaultValue}
+            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="ml-3 text-sm">
+          <label
+            htmlFor={name}
+            className="text-base font-medium text-gray-700 lg:text-lg"
+          >
+            {title}
+          </label>
+          <p id={name} className="text-sm text-gray-500 lg:text-base">
+            {description}
+          </p>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -76,19 +118,17 @@ const Pricing = () => {
                     role="list"
                     className="mt-8 space-y-5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5 lg:space-y-0"
                   >
-                    {Object.keys(packages).map((key) => (
-                      <li key={key} className="flex items-start lg:col-span-1">
-                        <div className="flex-shrink-0">
-                          <CheckCircleIcon
-                            className="h-5 w-5 text-green-400"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <p className="ml-3 text-sm text-gray-700">
-                          {packages[key as keyof typeof packages].title}
-                        </p>
-                      </li>
-                    ))}
+                    {Object.keys(packages).map((key) => {
+                      const option = packages[key as keyof typeof packages];
+                      return (
+                        <li
+                          key={key}
+                          className="flex items-start lg:col-span-1"
+                        >
+                          {renderCheckbox(option)}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
