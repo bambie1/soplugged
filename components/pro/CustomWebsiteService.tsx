@@ -15,10 +15,7 @@ const CustomWebsiteService = () => {
         </aside>
         <div className="flex h-full w-full flex-col justify-center lg:items-start">
           <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-            <span className="relative text-accent-dark lg:block">
-              Custom-made
-            </span>{" "}
-            websites
+            <span className="relative text-accent-dark">Custom</span> websites
           </h2>
           <section className="prose">
             <p className="">

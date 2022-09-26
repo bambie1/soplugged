@@ -22,29 +22,30 @@ const OurProcess = () => {
   return (
     <div
       id="our-process"
-      className="my-container mt-14 flex scroll-mt-20 flex-col items-center lg:mt-40"
+      className="my-container mt-36 flex scroll-mt-20 flex-col items-center lg:mt-40"
     >
       <h2 className="mb-10 text-3xl font-semibold lg:mb-20 lg:text-5xl">
         How it works
       </h2>
-      <div className="relative mx-auto mb-10 flex flex-wrap justify-center gap-10 lg:mb-20 lg:gap-20">
+      <div className="relative mx-auto mb-10 flex flex-col gap-4 lg:mb-20 lg:flex-row lg:justify-center lg:gap-20">
+        <div className="absolute top-4 bottom-4 left-4 w-[1px] border border-dashed border-accent-dark"></div>
         {steps.map(({ title, image, body }, index) => (
           <div
-            className="relative flex flex-col items-center text-center lg:w-[20rem]"
+            className="relative flex w-full flex-col rounded-lg border border-accent/40 bg-white py-3 px-2 lg:w-[20rem] lg:items-center lg:border-none lg:bg-none lg:text-center"
             key={title}
           >
             {index === 0 && (
               <img
                 alt=""
                 src="/doodles/up_right_arrow.svg"
-                className="absolute -right-10 -top-6 w-10 lg:-right-20 lg:w-20"
+                className="absolute -right-10 -top-6 hidden w-10 lg:-right-20 lg:block lg:w-20"
               />
             )}
             {index === 1 && (
               <img
                 alt=""
                 src="/doodles/down_right_arrow.svg"
-                className="absolute -right-10 -bottom-6 w-10 lg:-right-20 lg:w-20"
+                className="absolute -right-10 -bottom-6 hidden w-10 lg:-right-20 lg:block lg:w-20"
               />
             )}
             <div
