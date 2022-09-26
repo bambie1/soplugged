@@ -42,7 +42,7 @@ const MobileHeader = ({ currentNav }: any) => {
           aria-label="Mobile nav links"
           className={styles.dialogContent}
         >
-          <ul className={`space-y-10`}>
+          <ul className={`w-full space-y-10`}>
             {currentNav.links.map(({ id, text, link, isNew }: any) => (
               <li key={id}>
                 <Link href={link}>
