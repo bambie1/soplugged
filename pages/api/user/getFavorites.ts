@@ -23,11 +23,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     );
 
-    if (fetchPromise.status > 250) res.status(200).json([]);
+    if (fetchPromise.ok) res.json([]);
 
     const favorites = await fetchPromise.json();
 
-    res.status(200).json(favorites);
+    res.json(favorites);
   } catch (err: any) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }

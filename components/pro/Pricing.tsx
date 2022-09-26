@@ -83,16 +83,14 @@ const Pricing = () => {
 
   return (
     <div className="">
-      <div className="pt-12 sm:pt-16 lg:pt-20">
-        <div className="my-container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              Flexible pricing
-            </h2>
-            <p className="mt-4 text-xl text-gray-600">
-              Payment is made installmentally over the course of the project
-            </p>
-          </div>
+      <div className="my-container">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            Flexible pricing
+          </h2>
+          <p className="mt-4 text-xl text-gray-600">
+            Payment is made installmentally over the course of the project
+          </p>
         </div>
       </div>
       <div className="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
@@ -158,7 +156,7 @@ const Pricing = () => {
                 {monthlyCost > 0 && (
                   <div className="mt-4 text-sm text-white">
                     + Plus an <span className="underline">optional</span> $
-                    {monthlyCost} monthly fee
+                    {monthlyCost} monthly retainer
                   </div>
                 )}
               </div>

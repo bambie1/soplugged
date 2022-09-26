@@ -28,10 +28,9 @@ const FavoriteButton: FC<Props> = ({ business }) => {
 
   const disabled = !session?.user?.email || session?.user?.email === email;
 
-  const { data: favorites, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/favorites`,
-    swrFetchWithToken
-  );
+  const { data: favorites, error } = useSWR("/api/user/getFavorites");
+
+  // console.log({ favorites });
 
   useEffect(() => {
     if (favorites?.length) {

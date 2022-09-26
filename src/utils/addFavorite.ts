@@ -20,5 +20,7 @@ export const addFavorite = async (business_id: number, user: any) => {
     }),
   });
 
+  console.log({ res });
+
   return res;
 };

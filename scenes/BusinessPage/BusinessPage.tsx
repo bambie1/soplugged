@@ -119,7 +119,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
           {hasContactLinks && <SocialLinks business={business} />}
           <div className="grid gap-2 overflow-hidden">
-            <FavoriteButton business={business} />
+            {/* <FavoriteButton business={business} /> */}
             <ShareButton />
           </div>
         </div>
@@ -147,12 +147,12 @@ const BusinessPage: FC<Props> = ({ business }) => {
         <SocialLinks business={business} />
         {verified && (
           <>
-            <div className={styles.buttonGroup}>
-              <FavoriteButton business={business} />
-              <ShareButton />
-            </div>
             <div className={styles.contactForm}>
               <ContactForm businessEmail={creator?.email || ""} />
+            </div>
+            <div className={styles.buttonGroup}>
+              {/* <FavoriteButton business={business} /> */}
+              <ShareButton />
             </div>
           </>
         )}
