@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CustomWebsiteService = () => {
   return (
-    <div className="relative flex">
+    <div className="relative flex bg-gradient-to-b from-white via-accent/20 to-white">
       {/* <div className="absolute -top-5 left-0 right-0 h-full skew-y-2 bg-pro-gradient"></div> */}
       <div className="my-container relative mt-10 grid gap-5 lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
         <aside className="relative flex flex-1 items-center justify-center">

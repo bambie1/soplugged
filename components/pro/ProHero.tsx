@@ -24,9 +24,9 @@ const ProHero: FC = () => {
   );
 
   return (
-    <div className="bg-gradient-to-b from-white via-accent/30 to-white">
-      <div className="my-container relative flex grid-cols-2 flex-col items-center justify-center xl:grid xl:gap-10">
-        <div className="relative mx-auto flex flex-col items-center pt-10 text-center md:pt-20 xl:text-left">
+    <div className="bg-gradient-to-b from-white via-accent/20 to-white">
+      <div className="my-container relative flex grid-cols-2 flex-col items-center justify-center pt-10 md:pt-20 xl:grid xl:gap-10 xl:pt-10">
+        <div className="relative mx-auto flex flex-col items-center text-center xl:text-left">
           <div className="mb-3 flex items-center gap-2 rounded-xl bg-secondary/[.15] px-4 py-2 xl:mr-auto">
             <SparklesIcon className="h-5 w-5" strokeWidth={1} />
             <p className="text-sm lg:text-base">Introducing SoPlugged PRO</p>

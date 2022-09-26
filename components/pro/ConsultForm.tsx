@@ -9,7 +9,7 @@ const ConsultForm = () => {
   };
 
   return (
-    <div id="book-consult" className="relative flex snap-start">
+    <div id="book-consult" className="relative flex scroll-mt-20">
       <div className="my-container flex w-full flex-col justify-center">
         <h2 className="mb-6 text-center text-4xl font-bold lg:mb-10 lg:text-5xl">
           Get started <span className="text-accent-dark">for FREE</span>
@@ -25,7 +25,7 @@ const ConsultForm = () => {
               name="services"
             />
             <div className="lg:col-span-2">
-              <TextArea label="Project description" />
+              <TextArea label="Project description" rows={10} />
             </div>
           </div>
 

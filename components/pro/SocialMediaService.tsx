@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const SocialMediaService = () => {
   return (
-    <div className="relative">
+    <div className="relative bg-gradient-to-b from-white via-accent/20 to-white">
       <div className="my-container relative grid lg:grid-cols-2 lg:gap-10 xl:gap-20">
         <div className="flex flex-col justify-center lg:items-start lg:py-10">
           <h2 className="mb-6 text-4xl font-bold lg:text-5xl">

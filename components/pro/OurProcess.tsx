@@ -22,7 +22,7 @@ const OurProcess = () => {
   return (
     <div
       id="our-process"
-      className="my-container mt-14 flex scroll-mt-20 flex-col items-center lg:mt-40 xl:mt-56"
+      className="my-container mt-14 flex scroll-mt-20 flex-col items-center lg:mt-40"
     >
       <h2 className="mb-10 text-3xl font-semibold lg:mb-20 lg:text-5xl">
         How it works
