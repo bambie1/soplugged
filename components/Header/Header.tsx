@@ -21,7 +21,7 @@ const links = [
 
 const nav = {
   main: {
-    cta: { text: "Go to dashboard", link: "/dashboard" },
+    cta: { text: "I am an entrepreneur", link: "/dashboard" },
     links,
   },
   pro: {

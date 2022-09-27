@@ -27,7 +27,7 @@ const StateResults = ({ searchResults }: { searchResults: SearchResults }) => {
   return (
     <div className="my-container mt-10 w-full">
       <div className="flex w-full items-center justify-between">
-        <p>
+        <p className="text-sm text-gray-500 lg:text-base">
           {nbHits} {nbHits > 1 ? "businesses" : "business"} found
         </p>
         <LocationMenu attribute="business_location" />
