@@ -6,7 +6,7 @@ interface Props {
   posts?: any[];
 }
 
-const HomeGuides: FC<Props> = ({ posts }) => {
+const BlogSnippet: FC<Props> = ({ posts }) => {
   return (
     <div className="my-container mt-20 grid items-center gap-4 lg:grid-cols-2 lg:gap-20">
       <div className="flex flex-col items-start">
@@ -37,4 +37,4 @@ const HomeGuides: FC<Props> = ({ posts }) => {
   );
 };
 
-export default HomeGuides;
+export default BlogSnippet;
