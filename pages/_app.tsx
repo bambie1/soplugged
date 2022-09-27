@@ -1,10 +1,10 @@
 import type { AppProps } from "next/app";
-import Script from "next/script";
 import Router from "next/router";
 import nProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
 import { SWRConfig } from "swr";
+import PlausibleProvider from "next-plausible";
 
 import { BusinessFormProvider } from "@/context/businessFormContext";
 
@@ -32,24 +32,26 @@ Router.events.on("routeChangeComplete", nProgress.done);
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
-      <SessionProvider session={session}>
-        <SWRConfig
-          value={{
-            refreshInterval: 50000,
-            fetcher: (resource, init) =>
-              fetch(resource, init).then((res) => res.json()),
-          }}
-        >
-          <BusinessFormProvider>
-            <div className="">
-              <Component {...pageProps} />
-            </div>
-            <Toaster position="bottom-left" />
-          </BusinessFormProvider>
-        </SWRConfig>
-      </SessionProvider>
+      <PlausibleProvider domain="preview.soplugged.com">
+        <SessionProvider session={session}>
+          <SWRConfig
+            value={{
+              refreshInterval: 50000,
+              fetcher: (resource, init) =>
+                fetch(resource, init).then((res) => res.json()),
+            }}
+          >
+            <BusinessFormProvider>
+              <div className="">
+                <Component {...pageProps} />
+              </div>
+              <Toaster position="bottom-left" />
+            </BusinessFormProvider>
+          </SWRConfig>
+        </SessionProvider>
+      </PlausibleProvider>
 
-      {process.env.NODE_ENV !== "development" && (
+      {/* {process.env.NODE_ENV !== "development" && (
         <Script
           id="smartLook"
           strategy="afterInteractive"
@@ -64,7 +66,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           `,
           }}
         />
-      )}
+      )} */}
     </>
   );
 }
