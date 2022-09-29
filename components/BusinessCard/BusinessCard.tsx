@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Link from "next/link";
 
-import { Avatar } from "@/components/Avatar";
+import { Avatar } from "../Avatar";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessCard.module.scss";
@@ -11,40 +11,26 @@ interface Props {
   mini?: boolean;
 }
 
-const BusinessCard: FC<Props> = ({ business, mini }) => {
-  const {
-    business_name,
-    business_location,
-    business_description,
-    logo_url,
-    sample_images,
-    category,
-    fixed_to_one_location,
-    slug,
-  } = business;
+const BusinessCard: FC<Props> = ({ business }) => {
+  const { business_name, business_location, logo_url, category, slug } =
+    business;
 
   return (
     <Link href={`/business/${slug}`}>
       <a className={styles.root}>
-        <div className={styles.cardHeader}>
+        <div className="mb-4 flex items-center gap-2">
           <Avatar url={logo_url} name={business_name} />
-          <h3 className={styles.businessName}>{business_name}</h3>
+          <h3 className="text-lg font-semibold uppercase tracking-wide lg:text-xl">
+            {business_name}
+          </h3>
         </div>
 
-        <p className={styles.category}>{category}</p>
-        <div
-          className={styles.businessDescription}
-          dangerouslySetInnerHTML={{
-            __html: business_description?.replace(/<[^>]*>?/gm, ""),
-          }}
-        ></div>
+        <p className="">{category}</p>
 
-        {mini && (
-          <>
-            {business_location && (
-              <p className={styles.businessLocation}>{business_location}</p>
-            )}
-          </>
+        {business_location && (
+          <p className="my-1 text-xs uppercase text-gray-600 lg:text-sm">
+            {business_location}
+          </p>
         )}
       </a>
     </Link>

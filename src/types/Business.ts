@@ -21,4 +21,5 @@ export interface IBusiness {
   slug: string;
   number_of_likes: number;
   verified: boolean;
+  created_at?: string;
 }

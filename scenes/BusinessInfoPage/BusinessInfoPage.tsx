@@ -1,16 +1,15 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faPen } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-regular-svg-icons";
 import Tooltip from "@reach/tooltip";
 
 import { BusinessCard } from "@/components/BusinessCard";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { Button } from "@/styled/Button";
 import { IBusiness } from "@/types/Business";
-import { greetFunction } from "@/utils/greeting";
 
 import styles from "./BusinessInfoPage.module.scss";
 
@@ -20,12 +19,7 @@ interface Props {
 
 const BusinessInfoPage: FC<Props> = ({ business }) => {
   const router = useRouter();
-  const { user } = {
-    user: {
-      email: "",
-      displayName: "",
-    },
-  };
+  const { data: session } = useSession();
 
   if (!business)
     return (
@@ -49,8 +43,6 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
         </div>
       </>
     );
-
-  const userName = business.creator?.full_name || user?.displayName;
 
   const hasLogo = business.logo_url !== "";
   const hasGoodDescription = business.business_description?.length > 150;
@@ -108,33 +100,31 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <h1 className="h1 mb-4">Business</h1>
-      <h3 className="mb-4 text-lg lg:text-xl">{greetFunction(userName)}</h3>
-      <p>Here's some important stuff we've outlined for you</p>
-      <div className={styles.grid}>
+      <div className="mb-4 flex flex-wrap items-center justify-between lg:mb-2">
+        <h1 className="text-4xl font-bold text-primary lg:text-5xl">
+          Hi {session?.user?.name?.split(" ")[0]}
+        </h1>
+        <p className="text-gray-600 underline">{session?.user?.email}</p>
+      </div>
+      <p className="mb-4 text-lg font-bold text-gray-700 lg:text-xl">
+        Welcome to your SoPlugged dashboard
+      </p>
+
+      <div className="mt-8 grid gap-x-16 gap-y-16 lg:mt-16 lg:grid-cols-2 lg:gap-y-8">
         <section className={styles.businessCard}>
-          <h3 className={`${styles.sectionTitle} font-medium text-gray-800`}>
-            Info
+          <h3 className="mb-2 font-light uppercase text-gray-800 lg:text-lg">
+            Your business
           </h3>
           <BusinessCard business={business} />
-
-          <div className={styles.buttons}>
-            <ButtonLink href="/my-business" variant="outlined">
-              <FontAwesomeIcon icon={faPen} className="mr-2" />
-              Edit
-            </ButtonLink>
-            <ButtonLink href={`/business/${business.slug}`}>
-              <FontAwesomeIcon icon={faEye} className="mr-2" />
-              View
-            </ButtonLink>
-          </div>
         </section>
 
         <section className={styles.insightsDiv}>
           <article
-            className={`${styles.sectionTitle} font-medium text-gray-800`}
+            className={`${styles.sectionTitle} mb-2 font-medium text-gray-800`}
           >
-            <h3>Business Insights</h3>
+            <h3 className="font-light uppercase text-gray-800 lg:text-lg">
+              Business Insights
+            </h3>
             <Tooltip label="Suggestions to improve your SoPlugged business page">
               <div>
                 <FontAwesomeIcon icon={faInfoCircle} />
@@ -142,26 +132,21 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
             </Tooltip>
           </article>
 
-          <div className="mx-auto max-w-sm rounded-lg bg-primary/5 py-4 px-5">
+          <div className="max-w-sm rounded-lg bg-primary/5 py-4 px-5">
             {renderInsights()}
           </div>
         </section>
-
-        <section className={styles.plugs}>
-          <article
-            className={`${styles.sectionTitle} font-medium text-gray-800`}
-          >
-            {" "}
-            <h3>Plugs</h3>
-            <Tooltip label="Number of people who have added your business to their favorites">
-              <div>
-                <FontAwesomeIcon icon={faInfoCircle} />
-              </div>
-            </Tooltip>
-          </article>
-          <p className={styles.plug}>{business.number_of_likes}</p>
-        </section>
       </div>
+
+      {business.created_at && (
+        <p className="mt-20 text-center text-sm text-gray-600 lg:text-base">
+          Joined{" "}
+          {new Date(business.created_at).toLocaleString("en-US", {
+            year: "numeric",
+            month: "long",
+          })}
+        </p>
+      )}
     </>
   );
 };
