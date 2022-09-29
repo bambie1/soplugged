@@ -12,6 +12,7 @@ import { Button } from "@/styled/Button";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessInfoPage.module.scss";
+import Link from "next/link";
 
 interface Props {
   business: IBusiness | null;
@@ -112,9 +113,22 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
 
       <div className="mt-8 grid gap-x-16 gap-y-16 lg:mt-16 lg:grid-cols-2 lg:gap-y-8">
         <section className={styles.businessCard}>
-          <h3 className="mb-2 font-light uppercase text-gray-800 lg:text-lg">
-            Your business
-          </h3>
+          <div className="mb-2 flex items-center justify-between">
+            <h3 className="font-light uppercase text-gray-800 lg:text-lg">
+              Your business
+            </h3>
+
+            <Link href="/my-business">
+              <a className="text-primary">
+                <FontAwesomeIcon
+                  icon={faPen}
+                  className="mr-1 h-1"
+                  strokeWidth={1}
+                />
+                Edit
+              </a>
+            </Link>
+          </div>
           <BusinessCard business={business} />
         </section>
 
@@ -139,7 +153,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
       </div>
 
       {business.created_at && (
-        <p className="mt-20 text-center text-sm text-gray-600 lg:text-base">
+        <p className="mt-20 text-sm text-gray-600 lg:-mb-14 lg:text-base">
           Joined{" "}
           {new Date(business.created_at).toLocaleString("en-US", {
             year: "numeric",

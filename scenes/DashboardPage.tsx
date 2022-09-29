@@ -4,9 +4,9 @@ import AuthPageWrapper from "@/components/AuthPageWrapper";
 
 const DashboardPage: FC = ({ children }) => {
   return (
-    <div className="min-h-screen from-secondary to-accent lg:bg-gradient-to-b">
+    <div className="relative min-h-screen bg-gradient-to-b lg:from-secondary lg:to-accent">
       <AuthPageWrapper>
-        <div className="w-full bg-white/30 py-10 lg:rounded-xl lg:py-20 lg:shadow-md">
+        <div className="w-full py-10 lg:rounded-xl lg:bg-white/30 lg:py-20 lg:shadow-md">
           <div className="lg:mx-10">{children}</div>
         </div>
       </AuthPageWrapper>

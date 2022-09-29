@@ -3,7 +3,8 @@
 .root {
   display: inline-grid;
   flex-direction: column;
-  width: clamp(10rem, 90%, 22rem);
+  // width: clamp(10rem, 90%, 22rem);
+  width: 100%;
   margin-inline: auto;
   border: 1px solid;
 

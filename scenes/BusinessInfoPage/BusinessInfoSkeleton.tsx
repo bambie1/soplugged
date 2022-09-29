@@ -1,19 +1,14 @@
 import Skeleton from "@/components/skeletons/Skeleton";
 
-import styles from "./BusinessInfoPage.module.scss";
-
 const BusinessInfoSkeleton = () => {
   return (
-    <div className="flex flex-col items-center">
-      <Skeleton type="title" />
+    <div className="flex flex-col">
+      <Skeleton type="heading" />
       <Skeleton type="heading" />
 
-      <section className={styles.grid}>
+      <section className="grid w-full gap-8 lg:grid-cols-2 lg:justify-start">
         <Skeleton type="box" />
         <Skeleton type="box" />
-        <div className={styles.plugs}>
-          <Skeleton type="box" />
-        </div>
       </section>
     </div>
   );

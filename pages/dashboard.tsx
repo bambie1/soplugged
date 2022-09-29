@@ -14,6 +14,7 @@ const DashboardHome: NextPage = () => {
     if (error) return <BusinessInfoPage business={null} />;
     if (business === undefined) return <BusinessInfoSkeleton />;
     return <BusinessInfoPage business={business} />;
+    return <BusinessInfoSkeleton />;
   };
 
   return (

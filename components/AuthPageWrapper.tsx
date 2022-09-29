@@ -11,7 +11,7 @@ const AuthPageWrapper: FC<Props> = ({ children }) => {
     <>
       <AuthHeader />
       <div className="flex flex-col">
-        <main className={`my-container min-h-[70vh] pt-10`}>{children}</main>
+        <main className={`my-container min-h-[70vh] lg:pt-10`}>{children}</main>
       </div>
     </>
   );
