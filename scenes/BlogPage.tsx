@@ -26,7 +26,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
 
   if (!post) return null;
 
-  const { title, content, createdBy, createdAt, seo } = post;
+  const { title, content, author, createdAt, excerpt, blogImage } = post;
 
   return (
     <>
@@ -37,10 +37,10 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:mb-2 lg:text-5xl lg:leading-[1.2]">
               {title}
             </h1>
-            <p className="text-gray-700">{seo.description}</p>
+            <p className="text-gray-700">{excerpt}</p>
 
             <div className="mt-6">
-              <p className="uppercase">{createdBy?.name || "SoPlugged team"}</p>
+              <p className="uppercase">{author?.name || "SoPlugged team"}</p>
               <p className="text-sm text-gray-600">
                 {new Date(createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -52,7 +52,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
           <div className="relative row-start-1 lg:row-start-auto">
             <img
-              src={seo.image.url}
+              src={blogImage.url}
               alt=""
               loading="lazy"
               className="ml-auto aspect-[3/2] w-full rounded-lg object-cover lg:w-[90%]"

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { connectMenu, Highlight } from "react-instantsearch-dom";
 
 const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
@@ -33,7 +33,7 @@ const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
             <li key={item.label}>
               <a
                 href={createURL(item.value)}
-                className={`m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 ${
+                className={`m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base lg:uppercase ${
                   item.isRefined ? "bg-secondary text-primary" : ""
                 }`}
                 onClick={(event) => {

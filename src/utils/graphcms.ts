@@ -19,6 +19,7 @@ async function fetchAPI(query: any, { variables, preview }: any = {}) {
   const json = await res.json();
 
   if (json.errors) {
+    console.log(json.errors);
     throw new Error("Failed to fetch API");
   }
 
@@ -32,27 +33,19 @@ export async function getPostBySlug(slug: any) {
         post(where: { slug: $slug }) {
           slug
           title
+          createdAt
+          blogImage {
+            url
+          }
           content {
             html
           }
-          tags
-          createdBy {
-            id
+          author {
             name
           }
-          createdAt
           author {
             id
             name
-          }
-          seo {
-            description
-            title
-            keywords
-            imageUrlSource
-            image {
-              url
-            }
           }
           categories(first: 10) {
             title
@@ -74,22 +67,15 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: featuredArticle_ASC, first: 4) {
+        posts(orderBy: createdAt_DESC, first: 4) {
           title
           slug
-          date
-          featuredArticle
+          createdAt
+          blogImage {
+            url
+          }
           author {
             name
-          }
-          seo {
-            description
-            title
-            keywords
-            imageUrlSource
-            image {
-              url
-            }
           }
           categories(first: 10) {
             title
@@ -105,22 +91,16 @@ export async function getAllBlogPosts() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: featuredArticle_ASC, first: 20) {
+        posts(orderBy: createdAt_DESC, first: 20) {
           title
           slug
           createdAt
-          featuredArticle
+          excerpt
           author {
             name
           }
-          seo {
-            description
-            title
-            keywords
-            imageUrlSource
-            image {
-              url
-            }
+          blogImage {
+            url
           }
           categories(first: 10) {
             title
@@ -150,6 +130,7 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
         post(stage: $stage, where: { slug: $slug }) {
           title
           slug
+          excerpt
           content {
             html
           }
@@ -157,40 +138,27 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
           author {
             name
           }
-          createdBy {
-            name
-          }
-          seo {
-            description
-            title
-            keywords
-            imageUrlSource
-            image {
-              url
-            }
+          blogImage {
+            url
           }
           categories(first: 10) {
             title
           }
-          createdAt
         }
         morePosts: posts(
-          orderBy: date_DESC
+          orderBy: createdAt_DESC
           first: 4
           where: { slug_not_in: [$slug] }
         ) {
           title
           slug
           createdAt
+          excerpt
           author {
             name
           }
-          seo {
-            description
-            title
-            image {
-              url
-            }
+          blogImage {
+            url
           }
         }
       }

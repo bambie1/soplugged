@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { getAllBlogPosts, getAllPostsForHome } from "@/utils/graphcms";
+import { getAllBlogPosts } from "@/utils/graphcms";
 import { SEO } from "@/components/SEO";
 import BlogsHomePage from "@/scenes/BlogsHomePage";
 
@@ -12,7 +12,7 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <SEO
-        title="FREE Guides on how to scale your business | SoPlugged Blog"
+        title="Helpful guides to create or improve your business' digital presence and stay updated with SoPlugged news | SoPlugged Blog"
         description="Explore our free guides and resources that we've compiled to help you grow your business with ease."
         variant="blog"
       />

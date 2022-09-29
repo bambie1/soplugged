@@ -31,7 +31,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           <Highlight attribute="category" hit={hit} />
         </p>
         <div className="max-w-full overflow-hidden">
-          <p className="mt-4 truncate">
+          <p className="mt-4 truncate text-sm lg:text-base">
             <Snippet attribute="business_description" hit={hit} />
           </p>
         </div>
