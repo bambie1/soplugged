@@ -28,6 +28,7 @@
     "@reach/dialog": "^0.16.2",
     "@reach/tooltip": "^0.16.2",
     "@reach/window-size": "^0.16.0",
+    "@sendgrid/mail": "^7.7.0",
     "@sentry/nextjs": "^7.10.0",
     "algoliasearch": "4.12.1",
     "classnames": "^2.3.1",

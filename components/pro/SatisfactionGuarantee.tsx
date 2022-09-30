@@ -7,13 +7,14 @@ const SatisfactionGuarantee = () => {
       <div className="my-container">
         <div className="mt-8 flex flex-col items-center py-4">
           <p className="mx-auto max-w-3xl text-center italic text-gray-800 lg:text-lg">
-            I absolutely love what the team continues to do with my IG content.
-            I no longer have to worry about coming up with reels and post ideas,
-            but my customer base keeps increasing!
+            Kudos to the team for a job well done. The time, detail, and care
+            put into this project is greatly appreciated. Every step of the way,
+            the team provided exceptional services with their great expertise
+            and professionalism.
           </p>
-          <p className="mt-10 uppercase">Deinye Eporwei</p>
+          <p className="mt-10 uppercase">Princess A.</p>
           <p className="text-sm text-accent-dark lg:text-base">
-            Founder, Stripped Bare
+            Founder, Treats Royale
           </p>
         </div>
       </div>

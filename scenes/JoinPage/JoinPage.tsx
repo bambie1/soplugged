@@ -62,7 +62,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
       <form
         method="post"
         action="/api/auth/signin/email"
-        className="flex flex-col gap-4"
+        className="flex max-w-[500px] flex-col gap-4"
       >
         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <Input

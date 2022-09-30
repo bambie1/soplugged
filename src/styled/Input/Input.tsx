@@ -9,7 +9,7 @@ type Props = {
 } & React.ComponentProps<"input">;
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, error, noHelper, required, ...props }, ref: any) => {
+  ({ label, error, noHelper, ...props }, ref: any) => {
     const renderHelperText = () => {
       if (error) return <span className={styles.errorMsg}>{error}</span>;
 
@@ -17,7 +17,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     };
 
     return (
-      <div className="grid w-full max-w-[500px] text-left">
+      <div className="grid w-full text-left">
         <label
           htmlFor=""
           className={`mb-1 block text-sm font-bold uppercase ${

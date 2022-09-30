@@ -11,7 +11,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, Props>(
   ({ label, noScroll, ...props }, ref: any) => {
     return (
       <div className={styles.formGroup}>
-        <label htmlFor="" className={styles.label}>
+        <label htmlFor="" className="mb-1 block text-sm font-bold uppercase">
           {label}
         </label>
         <textarea
