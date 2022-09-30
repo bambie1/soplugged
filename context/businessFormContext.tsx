@@ -32,18 +32,18 @@ const formSteps = [
   },
   {
     number: 3,
+    title: "Images",
+    description: "Upload a logo and sample images of your work",
+    fieldNames: ["logoUrl", "sampleImages"],
+    backEndFields: ["logo_url", "sample_images"],
+  },
+  {
+    number: 4,
     title: "Contact",
     description: "Add helpful contact info for your potential customers",
 
     fieldNames: ["businessDescription", "businessUrl", "igHandle"],
     backEndFields: ["business_description", "business_url", "ig_handle"],
-  },
-  {
-    number: 4,
-    title: "Images",
-    description: "Upload a logo and sample images of your work",
-    fieldNames: ["logoUrl", "sampleImages"],
-    backEndFields: ["logo_url", "sample_images"],
   },
   {
     number: 5,

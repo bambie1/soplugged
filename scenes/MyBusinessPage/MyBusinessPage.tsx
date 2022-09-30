@@ -52,9 +52,9 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       case 2:
         return <Description />;
       case 3:
-        return <Contact />;
-      case 4:
         return <Images />;
+      case 4:
+        return <Contact />;
       case 5:
         return <Review />;
       default:

@@ -6,11 +6,6 @@ export const businessModel = {
       label: "Business name*",
       requiredErrorMsg: "Business name is required",
     },
-    street_address: {
-      name: "street_address",
-      label: "Street Address*",
-      requiredErrorMsg: "Street Address is required",
-    },
     category: {
       name: "category",
       label: "Category*",

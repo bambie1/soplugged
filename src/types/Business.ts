@@ -10,7 +10,7 @@ export interface IBusiness {
   business_name: string;
   business_url: string;
   ig_handle: string;
-  street_address: string;
+  street_address?: string;
   business_location: string;
   fixed_to_one_location: boolean;
   business_description: string;

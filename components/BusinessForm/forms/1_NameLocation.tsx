@@ -15,13 +15,6 @@ const NameLocation: FC = () => {
         name="business_location"
         label="Business Location (City)"
       />
-
-      <FormikInput
-        label="Street Address"
-        placeholder="123 Street"
-        name="street_address"
-        optional
-      />
     </>
   );
 };
