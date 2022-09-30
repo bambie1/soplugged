@@ -47,6 +47,7 @@ const ConsultForm = () => {
         >
           <div className="grid gap-6 lg:grid-cols-2">
             <Input
+              autoComplete="off"
               label="Full name"
               name="fullName"
               value={name}
@@ -54,6 +55,7 @@ const ConsultForm = () => {
               required
             />
             <Input
+              autoComplete="off"
               label="E-mail address"
               name="email"
               type="email"
@@ -62,6 +64,7 @@ const ConsultForm = () => {
               required
             />
             <Input
+              autoComplete="off"
               label="Name of business"
               name="businessName"
               value={businessName}
@@ -69,6 +72,7 @@ const ConsultForm = () => {
               required
             />
             <Input
+              autoComplete="off"
               label="Please select the service(s) you need"
               name="services"
               value={service}

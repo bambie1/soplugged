@@ -3,7 +3,7 @@ const sgMail = require("@sendgrid/mail");
 
 const VERIFIED_SENDER = "hello@soplugged.com";
 // These 2 e-mails HAVE to be unique
-const VERIFIED_RECIPIENT = "bennieb96@gmail.com";
+const RECIPIENT = "benaiahambiebarango@hotmail.com";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -12,8 +12,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const parsedBody = JSON.parse(req.body);
 
     const msg = {
-      to: VERIFIED_RECIPIENT,
       from: VERIFIED_SENDER,
+      to: RECIPIENT,
       subject: "New consult request from SoPlugged Pro",
       html: `<h2>Hi SoPlugged team</h2>
       <p>You have a new consult request:</p>
@@ -27,9 +27,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `,
     };
 
-    const response = await sgMail.send(msg);
+    await sgMail.send(msg);
 
-    console.log({ response });
     res.status(200).json({});
   } catch (err: any) {
     console.log(JSON.stringify(err));
