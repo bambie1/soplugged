@@ -42,6 +42,7 @@
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",
     "react": "17.0.2",
+    "react-calendly": "^4.1.0",
     "react-dom": "17.0.2",
     "react-dropzone": "^11.4.2",
     "react-easy-crop": "^4.5.1",
