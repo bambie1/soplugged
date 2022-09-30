@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px;
-  border-width: 2px;
+  padding: 2rem;
+  border-width: 1px;
   border-radius: 10px;
   border-color: rgb(78, 53, 5);
   border-style: dashed;
@@ -16,34 +16,6 @@
   transition: border 0.24s ease-in-out 0s;
   margin-bottom: 8px;
   cursor: default;
-}
-
-.thumbsContainer {
-  display: flex;
-  flex-wrap: wrap;
-
-  img {
-    border-radius: 50%;
-  }
-
-  .removeAll {
-    margin-left: 1rem;
-    color: red;
-    opacity: 0.6;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
-.thumb {
-  display: inline-flex;
-  border-radius: 2px;
-  margin-bottom: 8px;
-  padding: 4px;
-  box-sizing: border-box;
-  position: relative;
 }
 
 .removeButton {

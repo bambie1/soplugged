@@ -90,14 +90,32 @@ const FileDropzone: FC = () => {
     if (file == "") return null;
     return (
       <Fragment key={index}>
-        <div key={index} className={styles.thumb}>
-          <Image src={file} width={40} height={40} alt="sample images" />
+        <div key={index} className="relative inline-flex p-1">
+          <div className="relative aspect-video h-10 overflow-hidden rounded-md border-[.5px] border-primary ">
+            <Image
+              src={file}
+              objectFit="cover"
+              alt="sample image"
+              layout="fill"
+            />
+          </div>
           <button
             type="button"
             onClick={removeFile(file)}
-            className={styles.removeButton}
+            className="absolute -top-2 -right-2"
           >
-            x
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-6 w-6 text-red-500"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                clipRule="evenodd"
+              />
+            </svg>
           </button>
         </div>
       </Fragment>
@@ -132,13 +150,13 @@ const FileDropzone: FC = () => {
 
       {files?.length > 0 && (
         <>
-          <aside className={styles.thumbsContainer}>
+          <aside className="flex flex-wrap items-center gap-4">
             {files}
 
             <button
               type="button"
               onClick={removeAll}
-              className={`button text withIcon ${styles.removeAll}`}
+              className={`button text withIcon ml-5 text-sm text-red-600`}
             >
               <FontAwesomeIcon icon={faTrash} />
               Remove All
@@ -148,7 +166,9 @@ const FileDropzone: FC = () => {
       )}
       {(fileRejections.length !== 0 || errorMessage) && (
         <aside>
-          <p className="error">{errorMessage}</p>
+          <p className="text-sm font-medium text-gray-500 underline">
+            {errorMessage}
+          </p>
         </aside>
       )}
     </>
