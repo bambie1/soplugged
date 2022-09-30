@@ -6,11 +6,15 @@ const SatisfactionGuarantee = () => {
       </h3>
       <div className="my-container">
         <div className="mt-8 flex flex-col items-center py-4">
-          <p className="mx-auto max-w-3xl text-center italic text-gray-800 lg:text-lg">
+          <p className="mx-auto hidden max-w-3xl text-center italic text-gray-800 lg:block lg:text-lg">
             Kudos to the team for a job well done. The time, detail, and care
             put into this project is greatly appreciated. Every step of the way,
             the team provided exceptional services with their great expertise
             and professionalism.
+          </p>
+          <p className="mx-auto max-w-3xl text-center italic text-gray-800 lg:hidden">
+            Every step of the way, the team provided exceptional services with
+            their great expertise and professionalism.
           </p>
           <p className="mt-10 uppercase">Princess A.</p>
           <p className="text-sm text-accent-dark lg:text-base">
