@@ -1,3 +1,5 @@
+import { usePlausible } from "next-plausible";
+
 import { ButtonLink } from "@/styled/ButtonLink";
 
 const steps = [
@@ -19,39 +21,41 @@ const steps = [
 ];
 
 const OurProcess = () => {
+  const plausible = usePlausible();
+
   return (
     <div
       id="our-process"
-      className="my-container mt-36 flex scroll-mt-20 flex-col items-center lg:mt-40"
+      className="my-container mt-36 flex max-w-xl scroll-mt-20 flex-col items-center lg:mt-40"
     >
       <h2 className="mb-10 text-3xl font-semibold lg:mb-20 lg:text-5xl">
         How it works
       </h2>
-      <div className="relative mx-auto mb-10 flex flex-col gap-4 lg:mb-20 lg:flex-row lg:justify-center lg:gap-20">
+      <div className="relative mx-auto mb-10 flex flex-col gap-4 lg:mb-20 lg:flex-row xl:justify-center xl:gap-20">
         <div className="absolute top-4 bottom-4 left-4 w-[1px] border border-dashed border-accent-dark"></div>
         {steps.map(({ title, image, body }, index) => (
           <div
-            className="relative flex w-full flex-col rounded-lg border border-accent/40 bg-white py-3 px-2 lg:w-[20rem] lg:items-center lg:border-none lg:bg-none lg:text-center"
+            className="relative flex w-full flex-col rounded-lg border border-accent/40 bg-white py-3 px-2 xl:w-[20rem] xl:items-center xl:border-none xl:bg-none xl:text-center"
             key={title}
           >
             {index === 0 && (
               <img
                 alt=""
                 src="/doodles/up_right_arrow.svg"
-                className="absolute -right-10 -top-6 hidden w-10 lg:-right-20 lg:block lg:w-20"
+                className="absolute -right-10 -top-6 hidden w-10 xl:-right-20 xl:block xl:w-20"
               />
             )}
             {index === 1 && (
               <img
                 alt=""
                 src="/doodles/down_right_arrow.svg"
-                className="absolute -right-10 -bottom-6 hidden w-10 lg:-right-20 lg:block lg:w-20"
+                className="absolute -right-10 -bottom-6 hidden w-10 xl:-right-20 xl:block xl:w-20"
               />
             )}
             <div
               className={`flex aspect-square w-10 rounded-full ${
                 index % 2 === 0 ? "bg-gradient-to-r" : "bg-gradient-to-b"
-              } mb-2 from-accent to-white p-3 lg:w-24 lg:p-7`}
+              } mb-2 from-accent to-white p-3 xl:w-24 xl:p-7`}
             >
               <img src={image} alt="" />
             </div>
@@ -63,7 +67,12 @@ const OurProcess = () => {
         ))}
       </div>
 
-      <ButtonLink href="#book-consult" variant="outlined" showArrow>
+      <ButtonLink
+        href="#book-consult"
+        variant="outlined"
+        showArrow
+        onClick={() => plausible("Book consult CTA")}
+      >
         Get started
       </ButtonLink>
     </div>

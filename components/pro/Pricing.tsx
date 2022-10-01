@@ -1,3 +1,4 @@
+import { usePlausible } from "next-plausible";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
@@ -34,6 +35,7 @@ const defaultMonthlyPrice =
   packages.customWebsite.monthlyPrice + packages.socialMedia.monthlyPrice;
 
 const Pricing = () => {
+  const plausible = usePlausible();
   const [fixedCost, setFixedCost] = useState(defaultFixedPrice);
   const [monthlyCost, setMonthlyCost] = useState(defaultMonthlyPrice);
 
@@ -146,7 +148,10 @@ const Pricing = () => {
                 <div className="mt-6">
                   <div className="rounded-md shadow">
                     <Link href="#book-consult">
-                      <a className="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium">
+                      <a
+                        className="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium"
+                        onClick={() => plausible("Book consult CTA")}
+                      >
                         Book a consult
                       </a>
                     </Link>

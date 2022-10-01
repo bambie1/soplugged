@@ -1,9 +1,12 @@
+import { usePlausible } from "next-plausible";
 import Link from "next/link";
 
 const SocialMediaService = () => {
+  const plausible = usePlausible();
+
   return (
     <div className="relative bg-gradient-to-b from-white via-accent/20 to-white">
-      <div className="my-container relative grid lg:grid-cols-2 lg:gap-10 xl:gap-20">
+      <div className="my-container relative grid max-w-xl lg:grid-cols-2 lg:gap-10 xl:gap-20">
         <div className="flex flex-col justify-center lg:items-start lg:py-10">
           <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
             <span className="text-accent-dark">Full-scope</span> social media
@@ -31,7 +34,10 @@ const SocialMediaService = () => {
           </section>
           <div className="mt-10 flex items-center">
             <Link href="#book-consult">
-              <a className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
+              <a
+                className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg"
+                onClick={() => plausible("Book consult CTA")}
+              >
                 Book a FREE consultation
               </a>
             </Link>

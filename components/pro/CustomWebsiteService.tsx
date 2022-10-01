@@ -1,17 +1,23 @@
+import { usePlausible } from "next-plausible";
 import Link from "next/link";
+import Image from "next/image";
 
 const CustomWebsiteService = () => {
+  const plausible = usePlausible();
+
   return (
     <div className="relative flex bg-gradient-to-b from-white via-accent/20 to-white">
-      {/* <div className="absolute -top-5 left-0 right-0 h-full skew-y-2 bg-pro-gradient"></div> */}
-      <div className="my-container relative mt-10 grid gap-5 lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+      <div className="my-container relative mt-10 grid max-w-xl gap-5 lg:mt-0 lg:grid-cols-2 lg:gap-10 xl:gap-20">
         <aside className="relative flex flex-1 items-center justify-center">
-          <img
-            loading="lazy"
-            src="/website_showcase_2.png"
-            alt=""
-            className=""
-          />
+          <div className="relative aspect-square w-full">
+            <Image
+              src="/website_showcase_2.png"
+              alt=""
+              className=""
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </aside>
         <div className="flex h-full w-full flex-col justify-center lg:items-start">
           <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
@@ -40,7 +46,10 @@ const CustomWebsiteService = () => {
           </section>
           <div className="mt-10 flex flex-wrap ">
             <Link href="#book-consult">
-              <a className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
+              <a
+                className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg"
+                onClick={() => plausible("Book consult CTA")}
+              >
                 Book a FREE consultation
               </a>
             </Link>

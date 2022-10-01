@@ -1,9 +1,6 @@
 import { InlineWidget } from "react-calendly";
-import { useWindowSize } from "@reach/window-size";
 
 const ConsultForm = () => {
-  const { width } = useWindowSize();
-
   return (
     <div
       id="book-consult"
@@ -16,7 +13,7 @@ const ConsultForm = () => {
 
         <InlineWidget
           url="https://calendly.com/soplugged/consultation"
-          styles={{ height: width < 768 ? "1200px" : "800px" }}
+          styles={{ height: "1400px" }}
         />
       </div>
     </div>
