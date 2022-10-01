@@ -2,7 +2,6 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
-import FeaturedReview from "@/components/pro/FeaturedReview";
 import OurProcess from "@/components/pro/OurProcess";
 
 const Header = dynamic(() => import("../components/Header/Header"));
@@ -26,10 +25,8 @@ const ProPage: FC = () => {
       <div className="overflow-hidden">
         <ProHero />
         <div className="relative mx-auto ">
-          {/* <div className="absolute -top-96 left-0 right-0 -z-[1] h-80 -skew-y-6 bg-gradient-to-r from-accent/40 to-accent/20 lg:-top-64"></div> */}
           <div className="grid gap-20 lg:gap-36">
             <OurProcess />
-            {/* <FeaturedReview /> */}
             <CustomWebsiteService />
             <SatisfactionGuarantee />
             <SocialMediaService />

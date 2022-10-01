@@ -13,7 +13,7 @@ const ConsultForm = () => {
 
         <InlineWidget
           url="https://calendly.com/soplugged/consultation"
-          styles={{ height: "1400px" }}
+          styles={{ height: "1200px", marginBottom: "-10rem" }}
         />
       </div>
     </div>
