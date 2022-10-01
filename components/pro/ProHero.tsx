@@ -59,7 +59,7 @@ const ProHero: FC = () => {
           </div>
         </div>
 
-        <div className="pro_hero_image mt-10 h-[545px] w-[560px] xl:h-[600px] xl:w-[660px]"></div>
+        <div className="pro_hero_image mt-10 h-[545px] w-[560px] xl:h-[600px] xl:w-[610px]"></div>
       </div>
     </div>
   );
