@@ -18,7 +18,9 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
     return (
       !skeleton && (
         <aside className={`${styles.stepInfo}`}>
-          <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
+          <h1 key={step.title} className="h1 roll-out mx-auto max-w-lg md:mx-0">
+            {step.title}
+          </h1>
           <h2 className={styles.stepDescription}>{step.description}</h2>
         </aside>
       )
