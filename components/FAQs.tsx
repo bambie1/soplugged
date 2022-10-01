@@ -15,13 +15,13 @@ const faqs = [
     id: 3,
     question: "What's the difference between SoPlugged and SoPluggedPro?",
     answer:
-      "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business’ digital needs",
+      "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business' digital needs",
   },
   {
     id: 4,
-    question: "Why is SoPlugged free?",
+    question: "How can I support the team?",
     answer:
-      "Yes, SoPlugged is free to use and register (if you're a black-owned business in Canada). We rely on our amazing sponsors to keep our platform free and accessible to Black-owned businesses across Canada.",
+      "We rely on amazing people like you to spread the word about our platform to black-owned businesses that you know",
   },
 ];
 
@@ -41,8 +41,10 @@ const FAQs = () => {
           <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
             {faqs.map((faq) => (
               <div key={faq.id}>
-                <dt className="font-semibold text-gray-900">{faq.question}</dt>
-                <dd className="mt-3 text-gray-500">{faq.answer}</dd>
+                <dt className="font-semibold text-gray-900 lg:text-lg">
+                  {faq.question}
+                </dt>
+                <dd className="mt-3 text-gray-600 lg:text-lg">{faq.answer}</dd>
               </div>
             ))}
           </dl>

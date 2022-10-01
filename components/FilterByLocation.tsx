@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import useAlgolia from "@/hooks/useAlgolia";
 import { locationsWithCategories } from "@/lib/locationsWithCategories";
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -33,12 +35,9 @@ const FilterByLocation = () => {
                   key={city}
                   className="group relative odd:ml-4 odd:self-start even:self-end md:odd:ml-0 md:odd:self-auto md:even:self-auto"
                 >
-                  <img
-                    src={url}
-                    alt=""
-                    loading="lazy"
-                    className="absolute -top-5 -left-5 z-[1] aspect-square w-14 rounded-full border-2 border-transparent object-cover shadow-lg transition duration-200 group-hover:border-primary group-hover:shadow-none"
-                  />
+                  <div className="absolute -top-5 -left-5 z-[1] aspect-square w-14 overflow-hidden rounded-full border-2 border-transparent shadow-lg transition duration-200 group-hover:border-primary group-hover:shadow-none">
+                    <Image src={url} alt="" layout="fill" objectFit="cover" />
+                  </div>
                   <button
                     className="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-lg border border-transparent bg-white px-6 py-3 drop-shadow transition duration-200 hover:border-primary hover:shadow-none"
                     onClick={() =>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ButtonLink } from "@/styled/ButtonLink";
 import { PageWrapper } from "@/components/PageWrapper";
 
@@ -35,12 +37,14 @@ const OurStoryPage = () => {
           </div>
         </section>
 
-        <img
-          src="/soplugged_team.png"
-          className="justify-self-center lg:row-start-auto lg:mx-auto lg:max-w-lg"
-          alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"
-          loading="lazy"
-        />
+        <div className="relative aspect-square w-full justify-self-center lg:row-start-auto lg:mx-auto lg:max-w-lg">
+          <Image
+            src="/soplugged_team.png"
+            alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
     </PageWrapper>
   );

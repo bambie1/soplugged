@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
+import Image from "next/image";
 
 interface Props {
   post: any;
@@ -11,12 +12,9 @@ const BlogCard: FC<Props> = ({ post }) => {
   return (
     <Link href={`/blog/${slug}`}>
       <a className="group flex h-full flex-col">
-        <img
-          src={blogImage.url}
-          alt=""
-          loading="lazy"
-          className="aspect-video w-full rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[97%] group-hover:border-accent"
-        />
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[97%] group-hover:border-accent">
+          <Image src={blogImage.url} alt="" layout="fill" objectFit="cover" />
+        </div>
         <div className="mt-2 flex flex-col">
           <h3
             className="mb-2 font-semibold uppercase lg:truncate"

@@ -31,10 +31,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
           <div className="">
             <ul className="mt-4 inline-flex grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3">
               {posts?.map((post: any) => (
-                <li
-                  key={post.slug}
-                  className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"
-                >
+                <li key={post.slug} className="w-full">
                   <BlogCard post={post} />
                 </li>
               ))}

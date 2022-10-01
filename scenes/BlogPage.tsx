@@ -6,6 +6,7 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
 } from "react-share";
+import Image from "next/image";
 
 import BlogCard from "@/components/BlogCard";
 
@@ -51,12 +52,15 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             </div>
           </div>
           <div className="relative row-start-1 lg:row-start-auto">
-            <img
-              src={blogImage.url}
-              alt=""
-              loading="lazy"
-              className="ml-auto aspect-[3/2] w-full rounded-lg object-cover lg:w-[90%]"
-            />
+            <div className="relative ml-auto aspect-[3/2] w-full overflow-hidden rounded-lg lg:w-[90%]">
+              <Image
+                src={blogImage.url}
+                alt=""
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+
             <div className="absolute -bottom-10 left-0 -z-[1] hidden h-full w-[90%] rounded-lg bg-gradient-to-tr from-white to-accent/50 lg:block"></div>
           </div>
         </section>

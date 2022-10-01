@@ -10,22 +10,17 @@ const moduleExports = {
   reactStrictMode: true,
   images: {
     domains: [
-      "cdn-images-1.medium.com",
-      "dummyimage.com",
       "firebasestorage.googleapis.com",
       "res.cloudinary.com",
-      "cdn.shopify.com",
       "media.graphcms.com",
       "unsplash.com",
       "images.unsplash.com",
-      "cdn.pixabay.com",
+      "media.graphassets.com",
     ],
   },
   env: {
-    // GOOGLE_API_KEY: "AIzaSyDjqMtZjTrCMfn7U4OHk00_wte02pcuaHs",
     GRAPHCMS_PROJECT_API:
       "https://api-ca-central-1.graphcms.com/v2/ckyxr4rbl0veh01ytedad2rya/master",
-    GRAPHCMS_PREVIEW_SECRET: "OUR_SECRET",
     GRAPHCMS_PROD_AUTH_TOKEN:
       "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE2NDMzMzQ4MzksImF1ZCI6WyJodHRwczovL2FwaS1jYS1jZW50cmFsLTEuZ3JhcGhjbXMuY29tL3YyL2NreXhyNHJibDB2ZWgwMXl0ZWRhZDJyeWEvbWFzdGVyIiwiaHR0cHM6Ly9tYW5hZ2VtZW50LW5leHQuZ3JhcGhjbXMuY29tIl0sImlzcyI6Imh0dHBzOi8vbWFuYWdlbWVudC5ncmFwaGNtcy5jb20vIiwic3ViIjoiYjk5NDRjYjUtNjRiNC00YjUwLWJiMDQtZmFjYTkxYzg0NzU3IiwianRpIjoiY2thNWoyZW9iMDN0YzAxd2gwZGZkNjdyeSJ9.a13iYRXWXx4M0zkEBQ20yDPgsENKXaf-5RJuBi1euJs0XOHBkr_FvYkANBepQ9GMGOSnPknjFTb-dSfgNchSZzG5FJl-HhG77-yJXXT9DVjeOO3D4vDxn_XvO8vT3bkpLTcc8SI2wT0zCi5u5h3kF3y6MZuR-aajRG240dIAv9-byc3ELYTlNu4ssBmIh0SlACQXvkZV4CT5TsimWNxZ0U_oP6B6AFl2U4KlERv0MCIalUAHQ8H52tGGXYhqKlUdMyvGFjcHO1LMELWVRWTZs-lt8qSiHSx7vAs06XjPj5alCioa_NodmxFyEsiNp_RLn0KZWpv2RxDQysPPCMYDED1Ys_he9WD9crcg9k0QCBu3xDjMMloULvGbgycYQPeMeeF-Au0UrpYmIhgTkixPJL1HRdcsFAEyewS9VrYNh9VQtDNlUpUp601ApS3kG99m7FzlIS86WxQ63xCMB4dlSaKWssIhW5yLCOWIxbiQS9eHE5l2YHLiMnqvQF-denie0ynyE7i-slBRSm4jsnwa6zX_00XKVSux-KRXXKbFamk6NMexzfkis2OJ9bdDb5Nm1T4OhUYO0-DiQEkcJLtdkgbfG5fi_7ut9lmyNP7utSNy5LtOaOx2kj9SSSaPReAG4DdAsDrGr4621wwQcfQg9CTffVC_XTQeL_oIrtKsGmU",
     GRAPHCMS_DEV_AUTH_TOKEN:
