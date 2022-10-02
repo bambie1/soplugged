@@ -1,87 +1,5 @@
 @import "styles/_mixins";
 
-.background {
-  position: absolute;
-  height: 100%;
-  width: 50%;
-  background: rgb(205, 182, 147);
-  background: linear-gradient(
-    180deg,
-    rgba(205, 182, 147, 1) 0%,
-    rgba(147, 170, 205, 1) 100%
-  );
-  z-index: -1;
-
-  @include mobile_only {
-    display: none;
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "blank content";
-  align-items: center;
-  width: 100%;
-
-  @include mobile_only {
-    display: none;
-  }
-}
-
-.container {
-  position: relative;
-  height: 100vh;
-  grid-area: content;
-
-  @include mobile_only {
-    overflow-y: auto;
-    height: calc(100% - 2rem);
-  }
-}
-
-.stepInfo {
-  @include mobile_only {
-    text-align: center;
-    padding: 5rem 1rem;
-    background: rgb(205, 182, 147);
-    background: linear-gradient(
-      180deg,
-      rgba(205, 182, 147, 1) 0%,
-      rgba(147, 170, 205, 1) 100%
-    );
-  }
-
-  @include tablet {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    * {
-      z-index: 1;
-    }
-  }
-}
-
-.stepDescription {
-  margin-block: 0.75rem;
-  font-weight: normal;
-  color: #454545;
-  font-size: 1.25rem;
-  line-height: 1.5;
-
-  @include mobile_only {
-    font-size: 1.25rem;
-  }
-}
-
-.content {
-  padding-top: 7rem;
-  height: calc(100% - 4rem);
-  overflow-y: auto;
-}
-
 .mobileWrapper {
   display: none;
   @include mobile_only {
@@ -101,26 +19,6 @@
   box-shadow: 0 -14px 14px -12px rgb(78 56 10 / 39%);
 
   padding: 2rem 0.5rem;
-}
-
-.navigation {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
-
-  background-color: white;
-
-  @include mobile_only {
-    position: fixed;
-  }
-}
-
-.labelButton {
-  display: inline-flex;
 }
 
 @keyframes slideInFromLeft {

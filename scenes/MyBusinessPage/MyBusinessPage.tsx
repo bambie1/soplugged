@@ -20,7 +20,6 @@ import styles from "./MyBusinessPage.module.scss";
 
 interface Props {
   business: any;
-  step?: any;
 }
 
 const MyBusinessPage: FC<Props> = ({ business }) => {
@@ -36,6 +35,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   } = useBusinessFormContext();
 
   const isLastStep = currentStep === formSteps.length - 1;
+  const isWideStep = currentStep === 1 || currentStep === 2;
 
   const queryStep = parseInt(
     typeof router.query?.start === "string" ? router.query.start : "-1"
@@ -64,15 +64,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   const renderButtons = () => {
     return (
-      <div className={styles.buttons}>
-        <Button
-          type="button"
-          variant="text"
-          onClick={handleBack}
-          disabled={currentStep === 0 || isSubmitting}
-        >
-          Go Back
-        </Button>
+      <div className="mx-auto flex w-full max-w-xl p-2 [&>*]:flex-1">
         <Button type="submit" disabled={isSubmitting}>
           {currentStep === formSteps.length - 1
             ? !business
@@ -150,9 +142,22 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         >
           {() => (
             <>
-              <Form id="businessForm" className={styles.form}>
+              <Form
+                id="businessForm"
+                className={`grid w-full gap-7 px-2 ${
+                  !isWideStep && "max-w-xl"
+                } mx-auto`}
+              >
+                {!(currentStep === 0 || isSubmitting) && (
+                  <div className="absolute top-20 left-4 inline-flex md:left-0 md:-top-10">
+                    <Button type="button" variant="text" onClick={handleBack}>
+                      Go Back
+                    </Button>
+                  </div>
+                )}
+
                 {_renderStepContent()}
-                <div className={styles.navigation}>
+                <div className="fixed bottom-0 left-0 flex w-full flex-col shadow-bottom-nav md:absolute md:shadow-none">
                   <progress
                     value={(currentStep / (formSteps.length - 1)) * 100}
                     max="100"

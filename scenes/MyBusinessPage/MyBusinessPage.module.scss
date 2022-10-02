@@ -1,29 +1,5 @@
 @import "styles/_mixins";
 
-.form {
-  display: grid;
-  row-gap: 1.75rem;
-  width: calc(100% - 2rem);
-  margin: auto;
-  max-height: 100%;
-
-  @include mobile_only {
-    width: calc(100% - 1rem);
-  }
-}
-
-.descriptionLabel {
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-  display: block;
-  text-transform: uppercase;
-  font-weight: bold;
-
-  &.error {
-    color: red;
-  }
-}
-
 .grid {
   display: grid;
   margin-block: 5rem;
@@ -47,34 +23,6 @@
   @include tablet {
     grid-template-columns: 1fr 1fr;
     column-gap: 1.25rem;
-  }
-}
-
-.navigation {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  background-color: white;
-
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    gap: 2rem;
-
-    * {
-      flex: 1;
-    }
-  }
-
-  @include mobile_only {
-    box-shadow: 0 4px 14px 0 rgb(78 56 10 / 39%);
-    position: fixed;
   }
 }
 
