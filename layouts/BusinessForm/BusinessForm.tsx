@@ -14,16 +14,35 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
 
   const step = formSteps[currentStep];
 
-  const renderStepInfo = () => {
+  const renderSteps = () => {
     return (
       !skeleton && (
         <aside className={`${styles.stepInfo}`}>
-          <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
-          <h2 className={styles.stepDescription}>{step.description}</h2>
+          <ul className="flex flex-col gap-4">
+            {formSteps.map((step: any) => (
+              <li
+                key={step.title}
+                className={`${
+                  step.number === currentStep && "font-bold underline"
+                }`}
+              >
+                {step.title}
+              </li>
+            ))}
+            <li></li>
+          </ul>
         </aside>
       )
     );
   };
+
+  const renderStepInfo = () =>
+    !skeleton && (
+      <aside className={`${styles.stepInfo}`}>
+        <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
+        <h2 className={styles.stepDescription}>{step.description}</h2>
+      </aside>
+    );
 
   return (
     <>
@@ -34,11 +53,15 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
       </div>
 
       {/* tablet+ view */}
-      <div className={styles.background}></div>
-      <section className={`${styles.grid} my-container`}>
-        {renderStepInfo()}
-        <aside className={styles.container}>
-          <div className={`${styles.content} flex flex-col`}>{children}</div>
+      <div className="absolute left-0 -z-[1] hidden min-h-screen w-[30%] bg-gradient-to-b from-secondary to-accent md:block"></div>
+      <section className="my-container hidden min-h-screen grid-cols-3 pt-24 md:grid">
+        {renderSteps()}
+        <aside className="relative col-span-2 col-start-2 mx-auto w-full">
+          <div className="flex flex-col">
+            <h1 className="h1 mx-auto text-center md:mx-0">{step.title}</h1>
+            <h2 className={styles.stepDescription}>{step.description}</h2>
+            {children}
+          </div>
         </aside>
       </section>
     </>

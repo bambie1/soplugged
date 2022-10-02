@@ -35,9 +35,9 @@ const nav = {
   auth: {
     cta: { text: "Back to soplugged.com", link: "/" },
     links: [
-      { id: 1, text: "Find a business", link: "/search" },
-      { id: 2, text: "PRO", link: "/pro", isNew: true },
-      { id: 3, text: "Blog", link: "/blog" },
+      // { id: 1, text: "Find a business", link: "/search" },
+      // { id: 2, text: "PRO", link: "/pro", isNew: true },
+      // { id: 3, text: "Blog", link: "/blog" },
     ],
   },
 };

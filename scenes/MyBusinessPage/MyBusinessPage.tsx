@@ -65,14 +65,14 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   const renderButtons = () => {
     return (
       <div className={styles.buttons}>
-        <Button
+        {/* <Button
           type="button"
           variant="text"
           onClick={handleBack}
           disabled={currentStep === 0 || isSubmitting}
         >
           Go Back
-        </Button>
+        </Button> */}
         <Button type="submit" disabled={isSubmitting}>
           {currentStep === formSteps.length - 1
             ? !business
@@ -151,6 +151,14 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           {() => (
             <>
               <Form id="businessForm" className={styles.form}>
+                <Button
+                  type="button"
+                  variant="text"
+                  onClick={handleBack}
+                  disabled={currentStep === 0 || isSubmitting}
+                >
+                  Go Back
+                </Button>
                 {_renderStepContent()}
                 <div className={styles.navigation}>
                   <progress
