@@ -33,7 +33,14 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
       <a className="group relative flex h-full w-full flex-col items-start focus:outline-none">
         <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
           {featuredImage ? (
-            <Image src={featuredImage} alt="" objectFit="cover" layout="fill" />
+            <Image
+              src={featuredImage}
+              alt=""
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8u21yPQAHBQKXKv8OfQAAAABJRU5ErkJggg==`}
+            />
           ) : (
             <div className="relative flex aspect-video w-full items-center justify-center bg-secondary/20">
               <span className="whitespace-nowrap font-light uppercase tracking-wider text-primary/40">

@@ -13,7 +13,14 @@ const BlogCard: FC<Props> = ({ post }) => {
     <Link href={`/blog/${slug}`}>
       <a className="group flex h-full flex-col">
         <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[97%] group-hover:border-accent">
-          <Image src={blogImage.url} alt="" layout="fill" objectFit="cover" />
+          <Image
+            src={blogImage.url}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOcPGlSPQAFrwI48uvwCAAAAABJRU5ErkJggg==`}
+          />
         </div>
         <div className="mt-2 flex flex-col">
           <h3
