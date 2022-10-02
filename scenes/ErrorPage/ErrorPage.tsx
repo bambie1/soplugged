@@ -13,7 +13,6 @@ const Footer = dynamic(() => import("../../components/Footer/Footer"));
 const ErrorPage = () => {
   return (
     <>
-      <Header />
       <PageWrapper center>
         <div className={styles.content}>
           <FontAwesomeIcon icon={faExclamation} className={styles.errorIcon} />
@@ -33,7 +32,6 @@ const ErrorPage = () => {
           </ButtonLink>
         </div>
       </PageWrapper>
-      <Footer />
     </>
   );
 };
