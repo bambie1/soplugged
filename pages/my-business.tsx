@@ -1,47 +1,28 @@
-import { useEffect, useState } from "react";
 import type {
   GetServerSideProps,
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
-import { useBusinessFormContext } from "@/context/businessFormContext";
-import MyBusinessSkeleton from "@/scenes/MyBusinessPage/MyBusinessSkeleton";
 
 const MyBusinessPage = dynamic(
-  () => import("../../scenes/MyBusinessPage/MyBusinessPage")
+  () => import("../scenes/MyBusinessPage/MyBusinessPage")
 );
 
 const MyBusiness: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ business }) => {
-  const router = useRouter();
-  const [checkedAgreement, setCheckedAgreement] = useState(false);
-  const { agreementSigned } = useBusinessFormContext();
-
-  useEffect(() => {
-    if (!agreementSigned && !business) {
-      router.push("/my-business/welcome");
-    } else {
-      setCheckedAgreement(true);
-    }
-  }, [agreementSigned]);
-
   return (
     <>
       <SEO
         description="Register your business as an Black entrepreneur, and get featured on our platform, for FREE!"
         title="My Business | SoPlugged"
       />
-      {!checkedAgreement ? (
-        <MyBusinessSkeleton />
-      ) : (
-        <MyBusinessPage business={business} />
-      )}
+
+      <MyBusinessPage business={business} />
     </>
   );
 };
@@ -72,6 +53,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       }
     );
     const businesses = await fetchPromise.json();
+
+    if (!businesses[0]) throw new Error("no business found");
 
     return {
       props: {

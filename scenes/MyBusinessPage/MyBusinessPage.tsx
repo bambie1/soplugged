@@ -15,6 +15,7 @@ import Images from "@/components/BusinessForm/forms/5_Images";
 import Review from "@/components/BusinessForm/forms/6_Review";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 import { Button } from "@/styled/Button";
+import { TermsAndConditions } from "../TermsAndConditions";
 
 import styles from "./MyBusinessPage.module.scss";
 
@@ -32,6 +33,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     currentStep,
     setCurrentStep,
     formSteps,
+    agreementSigned,
   } = useBusinessFormContext();
 
   const isLastStep = currentStep === formSteps.length - 1;
@@ -46,6 +48,10 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   }, []);
 
   function _renderStepContent() {
+    if (!agreementSigned && !business) {
+      return <TermsAndConditions />;
+    }
+
     switch (currentStep) {
       case 1:
         return <Categories />;
@@ -63,6 +69,10 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   }
 
   const renderButtons = () => {
+    if (!agreementSigned && !business) {
+      return null;
+    }
+
     return (
       <div className="mx-auto flex w-full max-w-xl p-2 [&>*]:flex-1">
         <Button type="submit" disabled={isSubmitting}>

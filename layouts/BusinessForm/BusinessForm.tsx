@@ -10,15 +10,15 @@ interface Props {
 }
 
 const BusinessForm: FC<Props> = ({ children, skeleton }) => {
-  const { currentStep, formSteps } = useBusinessFormContext();
+  const { currentStep, formSteps, agreementSigned } = useBusinessFormContext();
 
   const step = formSteps[currentStep];
 
   const renderSteps = () => {
     return (
       !skeleton && (
-        <aside className={`${styles.stepInfo}`}>
-          <ul className="flex flex-col gap-4">
+        <aside className="flex items-center">
+          <ul className="flex flex-1 flex-col gap-4">
             {formSteps.map((step: any) => (
               <li
                 key={step.title}
@@ -37,22 +37,25 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
   };
 
   const renderStepInfo = () =>
-    !skeleton && (
-      <aside className="bg-gradient-to-b from-secondary to-accent px-4 pt-24 pb-10 text-center">
-        <h1 className="mx-auto mt-12 max-w-lg text-4xl font-bold text-primary md:mx-0 lg:text-5xl">
+    !skeleton &&
+    agreementSigned && (
+      <>
+        <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
           {step.title}
         </h1>
         <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
           {step.description}
         </h2>
-      </aside>
+      </>
     );
 
   return (
     <>
       {/* mobile view */}
       <div className={styles.mobileWrapper}>
-        {renderStepInfo()}
+        <div className="bg-gradient-to-b from-secondary to-accent px-4 pt-24 pb-10">
+          {renderStepInfo()}
+        </div>
         <aside className={styles.mobileContent}>{children}</aside>
       </div>
 
@@ -60,14 +63,9 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
       <div className="absolute left-0 -z-[1] hidden min-h-screen w-[30%] bg-gradient-to-b from-secondary to-accent md:block"></div>
       <section className="my-container hidden min-h-screen grid-cols-3 pt-24 md:grid">
         {renderSteps()}
-        <aside className="relative col-span-2 col-start-2 mx-auto w-full">
+        <aside className="relative col-span-2 col-start-2 mx-auto flex w-full items-center justify-center">
           <div className="flex flex-col">
-            <h1 className="mx-auto mt-12 text-center text-4xl font-bold text-primary md:mx-0 lg:text-5xl">
-              {step.title}
-            </h1>
-            <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
-              {step.description}
-            </h2>
+            {renderStepInfo()}
             {children}
           </div>
         </aside>

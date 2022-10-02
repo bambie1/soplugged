@@ -1,17 +1,12 @@
 import useSWR from "swr";
 import { FC, useState } from "react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { PreBusinessForm } from "layouts/BusinessForm";
-import { swrFetcher } from "@/utils/swrFetcher";
 import { Button } from "@/styled/Button";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 
-import styles from "./MyBusinessWelcome.module.scss";
-
-const Header = dynamic(() => import("../../components/Header/Header"));
+import styles from "./TermsAndConditions.module.scss";
 
 const referralSources = [
   { label: "Instagram (@sopluggd)", value: "SoPlugged" },
@@ -21,7 +16,7 @@ const referralSources = [
   { label: "Other", value: "Other" },
 ];
 
-const MyBusinessWelcome: FC = () => {
+const TermsAndConditions: FC = () => {
   const router = useRouter();
 
   const {
@@ -62,8 +57,7 @@ const MyBusinessWelcome: FC = () => {
 
   return (
     <>
-      <Header variant="auth" />
-      <PreBusinessForm>
+      <div>
         <div className={`my-container ${styles.content}`}>
           <b className="center">
             <u>Please confirm the following to get started:</u>
@@ -175,9 +169,9 @@ const MyBusinessWelcome: FC = () => {
             </Button>
           </div>
         </div>
-      </PreBusinessForm>
+      </div>
     </>
   );
 };
 
-export default MyBusinessWelcome;
+export default TermsAndConditions;
