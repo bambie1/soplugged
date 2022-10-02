@@ -43,7 +43,7 @@ const Images = () => {
         <div className={styles.logoAndPreview}>
           <label
             htmlFor="business-logo"
-            className={`button outlined withIcon ${styles.labelButton} ${
+            className={`button outlined withIcon inline-flex ${
               uploading && "disabled"
             }`}
           >

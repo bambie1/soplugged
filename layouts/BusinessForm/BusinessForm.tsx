@@ -23,8 +23,8 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
               <li
                 key={step.title}
                 className={`${
-                  step.number === currentStep && "font-bold underline"
-                }`}
+                  step.number === currentStep ? "font-bold" : "text-gray-700"
+                } transition duration-150 lg:text-lg`}
               >
                 {step.title}
               </li>
@@ -38,9 +38,13 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
 
   const renderStepInfo = () =>
     !skeleton && (
-      <aside className={`${styles.stepInfo}`}>
-        <h1 className="h1 mx-auto max-w-lg md:mx-0">{step.title}</h1>
-        <h2 className={styles.stepDescription}>{step.description}</h2>
+      <aside className="bg-gradient-to-b from-secondary to-accent px-4 pt-24 pb-10 text-center">
+        <h1 className="mx-auto mt-12 max-w-lg text-4xl font-bold text-primary md:mx-0 lg:text-5xl">
+          {step.title}
+        </h1>
+        <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
+          {step.description}
+        </h2>
       </aside>
     );
 
@@ -58,8 +62,12 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
         {renderSteps()}
         <aside className="relative col-span-2 col-start-2 mx-auto w-full">
           <div className="flex flex-col">
-            <h1 className="h1 mx-auto text-center md:mx-0">{step.title}</h1>
-            <h2 className={styles.stepDescription}>{step.description}</h2>
+            <h1 className="mx-auto mt-12 text-center text-4xl font-bold text-primary md:mx-0 lg:text-5xl">
+              {step.title}
+            </h1>
+            <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
+              {step.description}
+            </h2>
             {children}
           </div>
         </aside>
