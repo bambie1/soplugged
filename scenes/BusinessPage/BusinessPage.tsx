@@ -163,7 +163,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main className="my-container mb-20 pt-6 lg:pt-14">
+      <main className="my-container mb-20 min-h-[90vh] pt-6 lg:pt-14">
         <section className="center">
           <div className="flex flex-wrap justify-center gap-4">
             <Avatar name={business_name} url={logo_url} />
@@ -172,7 +172,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
             </h1>
           </div>
           {!verified && (
-            <div className={`flex-center ${styles.unverified}`}>
+            <div className={`mt-4 text-center ${styles.unverified}`}>
               <FontAwesomeIcon icon={faInfoCircle} />
               This business hasn't been claimed by it's owner
             </div>

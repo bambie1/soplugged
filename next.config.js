@@ -16,6 +16,7 @@ const moduleExports = {
       "unsplash.com",
       "images.unsplash.com",
       "media.graphassets.com",
+      "cdn.shopify.com",
     ],
   },
   env: {

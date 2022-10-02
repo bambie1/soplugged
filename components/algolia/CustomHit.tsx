@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { Highlight, Snippet } from "react-instantsearch-dom";
+import { Highlight } from "react-instantsearch-dom";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Hit as AlgoliaHit } from "instantsearch.js/es/types";
-
-import Avatar from "@/components/Avatar/Avatar";
 
 type HitProps = {
   hit: AlgoliaHit<{
@@ -12,30 +11,50 @@ type HitProps = {
     business_name: string;
     logo_url: string;
     business_location: string[];
+    sample_images: string;
   }>;
 };
 
 const CustomHit: FC<HitProps> = ({ hit }) => {
-  const { slug, business_name, logo_url, business_location } = hit;
+  const { slug, business_name, business_location, sample_images } = hit;
+
+  const rawImages = sample_images?.split(",") || [];
+  const images = rawImages.map((item: any) => {
+    const arr = item.split("/upload/");
+    const newImage = arr[1] ? `${arr[0]}/upload/w_1200/${arr[1]}` : item;
+
+    return newImage;
+  });
+
+  const featuredImage = images.length ? images[0] : null;
 
   return (
     <Link href={`/business/${slug}`}>
-      <a className="relative flex h-full w-full flex-col items-start rounded-lg border border-transparent bg-light p-4 shadow transition duration-200 hover:border-primary hover:bg-white hover:shadow-none focus:border-primary focus:outline-none focus-visible:border-primary focus-visible:bg-white">
-        <div className="-mt-10 mb-2 inline-flex rounded-full border-4 border-white ">
-          <Avatar name={business_name} url={logo_url} />
-        </div>{" "}
-        <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
-          <Highlight attribute="business_name" hit={hit} />
-        </h3>
-        <p className="truncate text-sm">
-          <Highlight attribute="category" hit={hit} />
-        </p>
-        <div className="max-w-full overflow-hidden">
-          <p className="mt-4 truncate text-sm lg:text-base">
-            <Snippet attribute="business_description" hit={hit} />
-          </p>
+      <a className="group relative flex h-full w-full flex-col items-start focus:outline-none">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
+          {featuredImage ? (
+            <Image src={featuredImage} alt="" objectFit="cover" layout="fill" />
+          ) : (
+            <div className="relative flex aspect-video w-full items-center justify-center bg-secondary/20">
+              <span className="whitespace-nowrap font-light uppercase tracking-wider text-primary/40">
+                {business_name}
+              </span>
+
+              <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+              <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+            </div>
+          )}
         </div>
-        <p className="mt-2 truncate text-xs">{business_location}</p>
+
+        <div className="mt-3">
+          <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
+            <Highlight attribute="business_name" hit={hit} />
+          </h3>
+          <p className="truncate text-sm">
+            <Highlight attribute="category" hit={hit} />
+          </p>
+          <p className="mt-2 truncate text-xs">{business_location}</p>
+        </div>
       </a>
     </Link>
   );
