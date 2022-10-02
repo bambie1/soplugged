@@ -4,7 +4,7 @@ import { getCsrfToken, getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
 
-const JoinPage = dynamic(() => import("../../scenes/JoinPage/JoinPage"));
+const JoinPage = dynamic(() => import("../../scenes/JoinPage"));
 
 const Join: NextPage = (props) => {
   return (

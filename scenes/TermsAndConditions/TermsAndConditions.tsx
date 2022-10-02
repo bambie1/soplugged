@@ -36,7 +36,7 @@ const TermsAndConditions: FC = () => {
   const [referralInput, setReferralInput] = useState<string>("");
   const [refBusiness, setRefBusiness] = useState<string>("");
 
-  const { data: businesses, error } = useSWR(
+  const { data: businesses } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
   );
 
@@ -59,9 +59,6 @@ const TermsAndConditions: FC = () => {
     <>
       <div>
         <div className={`my-container ${styles.content}`}>
-          <b className="center">
-            <u>Please confirm the following to get started:</u>
-          </b>
           <div className={styles.checkbox}>
             <input
               type="checkbox"
@@ -116,6 +113,7 @@ const TermsAndConditions: FC = () => {
                 id="referral-source"
                 onChange={(e) => setReferralInput(e.target.value)}
                 defaultValue=""
+                className="cursor-pointer"
               >
                 <option value="" disabled>
                   Select one

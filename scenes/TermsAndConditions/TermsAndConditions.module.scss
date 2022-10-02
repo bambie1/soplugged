@@ -114,15 +114,4 @@
   padding-left: 0;
   position: relative;
   margin-top: 0.25rem;
-
-  &:after {
-    content: "";
-    position: absolute;
-    right: 1.5rem;
-    top: 40%;
-    width: 0.8em;
-    height: 0.5em;
-    background-color: grey;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  }
 }

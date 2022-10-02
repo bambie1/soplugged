@@ -23,7 +23,9 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
               <li
                 key={step.title}
                 className={`${
-                  step.number === currentStep ? "font-bold" : "text-gray-700"
+                  step.number === currentStep && agreementSigned
+                    ? "font-bold"
+                    : "text-gray-600"
                 } transition duration-150 lg:text-lg`}
               >
                 {step.title}
@@ -36,18 +38,22 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
     );
   };
 
-  const renderStepInfo = () =>
-    !skeleton &&
-    agreementSigned && (
+  const renderStepInfo = () => {
+    if (skeleton) return null;
+
+    return (
       <>
         <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
-          {step.title}
+          {agreementSigned ? step.title : "Welcome aboard!"}
         </h1>
         <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
-          {step.description}
+          {agreementSigned
+            ? step.description
+            : "Please confirm the following to get started"}
         </h2>
       </>
     );
+  };
 
   return (
     <>
@@ -56,19 +62,19 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
         <div className="bg-gradient-to-b from-secondary to-accent px-4 pt-24 pb-10">
           {renderStepInfo()}
         </div>
-        <aside className={styles.mobileContent}>{children}</aside>
+        <div className={styles.mobileContent}>{children}</div>
       </div>
 
       {/* tablet+ view */}
       <div className="absolute left-0 -z-[1] hidden min-h-screen w-[30%] bg-gradient-to-b from-secondary to-accent md:block"></div>
       <section className="my-container hidden min-h-screen grid-cols-3 pt-24 md:grid">
         {renderSteps()}
-        <aside className="relative col-span-2 col-start-2 mx-auto flex w-full items-center justify-center">
-          <div className="flex flex-col">
+        <div className="relative col-span-2 col-start-2 mx-auto flex w-full justify-center">
+          <div className="flex w-full flex-col">
             {renderStepInfo()}
             {children}
           </div>
-        </aside>
+        </div>
       </section>
     </>
   );
