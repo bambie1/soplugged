@@ -76,7 +76,7 @@ const ExtendedSearch = () => {
       />
       <div className="flex flex-col items-center">
         <div className="my-container mb-8 flex flex-col items-center ">
-          <h1 className="relative inline-block max-w-lg text-center text-5xl font-bold">
+          <h1 className="relative inline-block max-w-lg break-words break-all text-center text-5xl font-bold">
             <span className="text-primary">
               {filteredCategory || "Explore"}
             </span>

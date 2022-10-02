@@ -5,17 +5,17 @@ import { ButtonLink } from "@/styled/ButtonLink";
 const steps = [
   {
     title: "Book consult",
-    body: "We discuss your business needs and ideas",
+    body: "We discuss your business needs, where we can help and timeline expectations",
     image: "/doodles/video-camera.svg",
   },
   {
     title: "We get to work",
-    body: "Designs, mood boards, iterations",
+    body: "We have a close-collaboration process where we send you regular updates to keep you in the loop",
     image: "/doodles/pen-tool.svg",
   },
   {
     title: "Ready to launch",
-    body: "After testing, we hand over the website to you and properly onboard you",
+    body: "After proper testing, we set up a thorough onboarding for you, and strategize a launch plan!",
     image: "/doodles/plane.svg",
   },
 ];
@@ -62,7 +62,7 @@ const OurProcess = () => {
             <p className="mb-2 text-lg font-medium uppercase leading-tight lg:text-xl">
               {title}
             </p>
-            <p className="text-base leading-tight">{body}</p>
+            <p className="text-base">{body}</p>
           </div>
         ))}
       </div>
