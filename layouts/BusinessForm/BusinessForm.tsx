@@ -5,49 +5,45 @@ import { useBusinessFormContext } from "@/context/businessFormContext";
 import styles from "./BusinessForm.module.scss";
 
 interface Props {
-  current?: number;
   skeleton?: boolean;
+  business?: any;
 }
 
-const BusinessForm: FC<Props> = ({ children, skeleton }) => {
+const BusinessForm: FC<Props> = ({ children, business }) => {
   const { currentStep, formSteps, agreementSigned } = useBusinessFormContext();
 
   const step = formSteps[currentStep];
 
   const renderSteps = () => {
     return (
-      !skeleton && (
-        <aside className="flex items-center">
-          <ul className="flex flex-1 flex-col gap-4">
-            {formSteps.map((step: any) => (
-              <li
-                key={step.title}
-                className={`${
-                  step.number === currentStep && agreementSigned
-                    ? "font-bold"
-                    : "text-gray-600"
-                } transition duration-150 lg:text-lg`}
-              >
-                {step.title}
-              </li>
-            ))}
-            <li></li>
-          </ul>
-        </aside>
-      )
+      <aside className="flex items-center">
+        <ul className="flex flex-1 flex-col gap-4">
+          {formSteps.map((step: any) => (
+            <li
+              key={step.title}
+              className={`${
+                step.number === currentStep && (agreementSigned || !!business)
+                  ? "font-bold"
+                  : "text-gray-600"
+              } transition duration-150 lg:text-lg`}
+            >
+              {step.title}
+            </li>
+          ))}
+          <li></li>
+        </ul>
+      </aside>
     );
   };
 
   const renderStepInfo = () => {
-    if (skeleton) return null;
-
     return (
       <>
         <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
-          {agreementSigned ? step.title : "Welcome aboard!"}
+          {agreementSigned || !!business ? step.title : "Welcome aboard!"}
         </h1>
         <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
-          {agreementSigned
+          {agreementSigned || !!business
             ? step.description
             : "Please confirm the following to get started"}
         </h2>

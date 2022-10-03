@@ -54,7 +54,6 @@ const formSteps = [
 
 export const BusinessFormProvider: FC = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [formWasChanged, setFormWasChanged] = useState(false);
 
   const [agreementSigned, setAgreementSigned] = useState(false);
   const [referralSource, setReferralSource] = useState("");
@@ -64,8 +63,6 @@ export const BusinessFormProvider: FC = ({ children }) => {
     formSteps,
     currentStep,
     setCurrentStep,
-    formWasChanged,
-    setFormWasChanged,
 
     agreementSigned,
     setAgreementSigned,

@@ -140,7 +140,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header variant="auth" className="hidden lg:block" />
-      <BusinessForm>
+      <BusinessForm business={business}>
         <Formik
           initialValues={{
             ...business,

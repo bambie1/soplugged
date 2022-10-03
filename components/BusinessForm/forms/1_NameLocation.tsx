@@ -1,20 +1,18 @@
 import { FC } from "react";
 
-import { FormikInput, FormikLocation } from "@/components/formik";
+import { FormikInput } from "@/components/formik";
+import LocationPicker from "@/components/formik/LocationPicker";
 
 const NameLocation: FC = () => {
   return (
     <>
       <FormikInput
-        label="Business Name"
+        label="What is your business name?"
         placeholder="ABC Business"
         name="business_name"
       />
 
-      <FormikLocation
-        name="business_location"
-        label="Business Location (City)"
-      />
+      <LocationPicker />
     </>
   );
 };
