@@ -58,8 +58,8 @@ const BusinessForm: FC<Props> = ({ children, skeleton }) => {
   return (
     <>
       {/* mobile view */}
-      <div className={styles.mobileWrapper}>
-        <div className="bg-gradient-to-b from-secondary to-accent px-4 pt-24 pb-10">
+      <div className="flex min-h-screen flex-col overflow-y-auto md:hidden">
+        <div className="bg-gradient-to-b from-secondary to-accent px-4 pt-10 pb-10 lg:pt-24">
           {renderStepInfo()}
         </div>
         <div className={styles.mobileContent}>{children}</div>

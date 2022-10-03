@@ -61,7 +61,7 @@ module.exports = {
       boxShadow: {
         "input-focus": "0 0 0 2px #4e350563",
         "error-focus": "0 0 0 3px #ff00002e",
-        "bottom-nav": "0 4px 14px 0 rgb(78 56 10 / 39%)"
+        "bottom-nav": "0 4px 14px 0 rgb(78 56 10 / 39%)",
       },
     },
   },

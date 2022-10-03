@@ -1,15 +1,5 @@
 @import "styles/_mixins";
 
-.mobileWrapper {
-  display: none;
-  @include mobile_only {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
-  }
-}
-
 .mobileContent {
   background-color: white;
   border-top-left-radius: 20px;

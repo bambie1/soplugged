@@ -53,12 +53,4 @@ export const businessFormSchema = [
 
   // images
   Yup.object().shape({}),
-
-  // review
-  Yup.object().shape({
-    business_name: Yup.string()
-      .min(3, "Business name is too short!")
-      .max(30, "Business name is too long!")
-      .required("Please enter a name for your business"),
-  }),
 ];

@@ -9,6 +9,7 @@ const Contact = () => {
         placeholder="www.soplugged.com"
         name="business_url"
         optional
+        type="url"
       />
       <FormikInput
         label="Phone Number"
@@ -16,6 +17,7 @@ const Contact = () => {
         placeholder="6131234567"
         name="phone_number"
         optional
+        type="tel"
       />
       <FormikInput
         label="IG Handle"

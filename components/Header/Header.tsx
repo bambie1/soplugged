@@ -33,7 +33,7 @@ const nav = {
     links,
   },
   auth: {
-    cta: { text: "Back to soplugged.com", link: "/" },
+    cta: { text: "Back to dashboard", link: "/dashboard" },
     links: [
       // { id: 1, text: "Find a business", link: "/search" },
       // { id: 2, text: "PRO", link: "/pro", isNew: true },
@@ -44,9 +44,10 @@ const nav = {
 
 interface Props {
   variant?: "main" | "pro" | "blog" | "auth";
+  className?: string;
 }
 
-const Header: FC<Props> = ({ variant = "main" }) => {
+const Header: FC<Props> = ({ variant = "main", className }) => {
   const router = useRouter();
   const [isStyled, setIsStyled] = useState(false);
 
@@ -74,7 +75,7 @@ const Header: FC<Props> = ({ variant = "main" }) => {
           isStyled && "border-b"
         } ${
           variant === "auth" ? "fixed bg-transparent" : "sticky bg-white"
-        } py-3 transition duration-100 md:py-0`}
+        } py-3 transition duration-100 md:py-0 ${className}`}
       >
         <MobileHeader currentNav={currentNav} />
 
@@ -122,13 +123,9 @@ const Header: FC<Props> = ({ variant = "main" }) => {
                 {router.asPath.startsWith("/search") && <Searchbar />}
               </div>
             </div>
-            {variant === "auth" ? (
-              <SignOutButton />
-            ) : (
-              <ButtonLink href={currentNav.cta.link} variant="text" showArrow>
-                {currentNav.cta.text}
-              </ButtonLink>
-            )}
+            <ButtonLink href={currentNav.cta.link} variant="text" showArrow>
+              {currentNav.cta.text}
+            </ButtonLink>
           </div>
         </div>
       </nav>

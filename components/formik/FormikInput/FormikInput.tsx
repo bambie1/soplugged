@@ -1,5 +1,6 @@
 import { FC, ComponentProps } from "react";
 import { useField } from "formik";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 type Props = {
   label: string;
@@ -8,57 +9,64 @@ type Props = {
 } & ComponentProps<"input">;
 
 const FormikInput: FC<Props> = ({ label, prefix, optional, ...props }: any) => {
-  const { errorText, ...rest } = props;
+  const { errorText, name, type, ...rest } = props;
   const [field, meta] = useField(props);
 
   const isError = (meta.touched || !meta.initialValue) && meta.error;
 
-  const baseInput = () => (
-    <input
-      {...field}
-      {...props}
-      className={`block w-full rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:text-gray-300 focus:shadow-input-focus focus:outline-2 focus:outline-primary/70 ${
-        isError &&
-        "border-red-500 placeholder:text-red-200 focus:shadow-error-focus focus:outline-red-500/70"
-      }`}
-    />
-  );
-
-  const renderInput = () => {
-    if (prefix) {
-      return (
-        <div
-          className={`flex items-center rounded-xl border border-primary bg-white pl-4 ${
-            isError && "border-red-500"
-          }`}
-        >
-          <span className="pr-3 lowercase text-gray-500">{prefix}</span>
-          {baseInput()}
-        </div>
-      );
-    }
-
-    return baseInput();
-  };
-
   return (
     <>
-      <label
-        className={`mb-1 block text-sm font-medium uppercase lg:text-base ${
-          isError && "text-red-500"
-        }`}
-      >
-        <span className="mb-1 inline-flex">{label}</span>{" "}
-        {optional && (
-          <span className="mb-2 font-normal normal-case">(Optional)</span>
-        )}
-        {renderInput()}
-        {isError ? (
-          <div className="mt-[.125rem] text-xs font-normal normal-case text-red-500 lg:text-sm">
-            {meta.error}
+      <div>
+        <div className="flex justify-between">
+          <label
+            htmlFor={name}
+            className={`block text-sm font-medium lg:text-base ${
+              isError ? "font-medium text-red-500" : "text-gray-700"
+            }`}
+          >
+            {label}
+          </label>
+          {optional && (
+            <span
+              className="text-xs text-gray-500 lg:text-sm"
+              id="email-optional"
+            >
+              Optional
+            </span>
+          )}
+        </div>
+        <div className="relative mt-1 rounded-md">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <span className="text-gray-500">{prefix}</span>
           </div>
-        ) : null}
-      </label>
+          <input
+            {...rest}
+            {...field}
+            type={type || "text"}
+            name={name}
+            id={name}
+            className={`block w-full rounded-md shadow-sm  ${
+              isError
+                ? "border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
+                : "border-gray-400 placeholder:text-gray-300 focus:border-primary focus:ring-primary"
+            } ${prefix && "pl-20"}`}
+          />
+          {isError && (
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <ExclamationCircleIcon
+                className="h-5 w-5 text-red-500"
+                aria-hidden="true"
+              />
+            </div>
+          )}
+        </div>
+
+        {isError && (
+          <p className="text-xs text-red-600 lg:text-sm" id="email-error">
+            {meta.error}
+          </p>
+        )}
+      </div>
     </>
   );
 };

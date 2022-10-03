@@ -5,11 +5,21 @@ type IProps = {
   variant?: "outlined" | "filled" | "text";
   showArrow?: boolean;
   leftAlign?: boolean;
+  className?: string;
 } & React.ComponentProps<"a">;
 
 const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
   (
-    { variant, showArrow, leftAlign, href, type, children, ...props },
+    {
+      variant,
+      showArrow,
+      leftAlign,
+      href,
+      type,
+      className,
+      children,
+      ...props
+    },
     ref: any
   ) => {
     const linkStyles = () => {
@@ -23,7 +33,7 @@ const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
 
     return (
       <Link href={href || "#"}>
-        <a {...props} className={linkStyles()}>
+        <a {...props} className={`${linkStyles()} ${className}`}>
           {children}
           {showArrow && (
             <svg
