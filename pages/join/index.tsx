@@ -1,10 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
-import dynamic from "next/dynamic";
 import { getCsrfToken, getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
-
-const JoinPage = dynamic(() => import("../../scenes/JoinPage"));
+import JoinPage from "@/scenes/JoinPage";
 
 const Join: NextPage = (props) => {
   return (

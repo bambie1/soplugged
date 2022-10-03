@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import { getCsrfToken, getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
-import { JoinPage } from "@/scenes/JoinPage";
+import JoinPage from "@/scenes/JoinPage";
 
 const VerifyRequest: NextPage = (props) => {
   return (
