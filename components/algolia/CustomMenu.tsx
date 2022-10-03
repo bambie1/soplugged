@@ -19,7 +19,7 @@ const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
   return (
     <div className="relative flex w-full overflow-auto">
       <div
-        className={`pointer-events-none absolute left-0  bottom-0 flex w-10 justify-center bg-gradient-to-r from-white py-8 ${
+        className={`pointer-events-none absolute left-0 bottom-0 flex w-10 justify-center bg-gradient-to-r from-white py-8 ${
           isAtBeginning ? "hidden" : "block"
         }`}
       ></div>
@@ -33,7 +33,7 @@ const Menu = ({ items, refine, isFromSearch, createURL }: any) => {
             <li key={item.label}>
               <a
                 href={createURL(item.value)}
-                className={`m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base lg:uppercase ${
+                className={`m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base ${
                   item.isRefined ? "bg-secondary text-primary" : ""
                 }`}
                 onClick={(event) => {

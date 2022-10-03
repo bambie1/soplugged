@@ -20,7 +20,7 @@ const FormikInput: FC<Props> = ({ label, prefix, optional, ...props }: any) => {
         <div className="flex justify-between">
           <label
             htmlFor={name}
-            className={`block text-sm lg:text-base ${
+            className={`block text-sm font-medium lg:text-base ${
               isError ? "font-medium text-red-500" : "text-gray-700"
             }`}
           >
