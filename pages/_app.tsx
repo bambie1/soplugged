@@ -32,7 +32,7 @@ Router.events.on("routeChangeComplete", nProgress.done);
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
-      <PlausibleProvider domain="preview.soplugged.com">
+      <PlausibleProvider domain="soplugged.com">
         <SessionProvider session={session}>
           <SWRConfig
             value={{
