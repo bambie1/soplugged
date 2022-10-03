@@ -7,8 +7,7 @@ const NameLocation: FC = () => {
   return (
     <>
       <FormikInput
-        label="What is your business name?"
-        placeholder="ABC Business"
+        label="What is the name of your business?"
         name="business_name"
       />
 
