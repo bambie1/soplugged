@@ -30,7 +30,7 @@ export async function getPostBySlug(slug: any) {
   const data = await fetchAPI(
     gql`
       query PostBySlug($slug: String!) {
-        post(where: { slug: $slug }) {
+        post(where: { slug: $slug }, stage: PUBLISHED) {
           slug
           title
           createdAt
@@ -67,7 +67,7 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 4) {
+        posts(orderBy: createdAt_DESC, first: 4, stage: PUBLISHED) {
           title
           slug
           createdAt
@@ -91,7 +91,7 @@ export async function getAllBlogPosts() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 20) {
+        posts(orderBy: createdAt_DESC, first: 20, stage: PUBLISHED) {
           title
           slug
           createdAt
@@ -115,7 +115,7 @@ export async function getAllBlogPosts() {
 export async function getAllPostsWithSlug() {
   const data = await fetchAPI(gql`
     query PostsWithSlugs {
-      posts {
+      posts(stage: PUBLISHED) {
         slug
       }
     }
@@ -123,11 +123,11 @@ export async function getAllPostsWithSlug() {
   return data.posts;
 }
 
-export async function getPostAndMorePosts(slug: any, preview: any) {
+export async function getPostAndMorePosts(slug: any) {
   const data = await fetchAPI(
     gql`
-      query PostBySlug($slug: String!, $stage: Stage!) {
-        post(stage: $stage, where: { slug: $slug }) {
+      query PostBySlug($slug: String!) {
+        post(stage: PUBLISHED, where: { slug: $slug }) {
           title
           slug
           excerpt
@@ -149,6 +149,7 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
           orderBy: createdAt_DESC
           first: 4
           where: { slug_not_in: [$slug] }
+          stage: PUBLISHED
         ) {
           title
           slug
@@ -164,9 +165,7 @@ export async function getPostAndMorePosts(slug: any, preview: any) {
       }
     `,
     {
-      preview,
       variables: {
-        stage: preview ? "DRAFT" : "PUBLISHED",
         slug,
       },
     }

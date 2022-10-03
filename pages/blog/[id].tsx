@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { post, morePosts } =
-    (await getPostAndMorePosts(params?.id || "", false)) || {};
+    (await getPostAndMorePosts(params?.id || "")) || {};
 
   return {
     props: { post, morePosts },
