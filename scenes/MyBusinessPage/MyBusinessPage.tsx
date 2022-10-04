@@ -15,10 +15,10 @@ import Images from "@/components/BusinessForm/forms/5_Images";
 import Review from "@/components/BusinessForm/forms/6_Review";
 import { useBusinessFormContext } from "@/context/businessFormContext";
 import { Button } from "@/styled/Button";
+import { ButtonLink } from "@/styled/ButtonLink";
 import { TermsAndConditions } from "../TermsAndConditions";
 
 import styles from "./MyBusinessPage.module.scss";
-import { ButtonLink } from "@/styled/ButtonLink";
 
 interface Props {
   business: any;
@@ -159,9 +159,14 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
                   !isWideStep && "max-w-xl"
                 } mx-auto`}
               >
-                {!(currentStep === 0 || isSubmitting) && (
+                {!isSubmitting && (
                   <div className="absolute top-4 left-0 inline-flex w-full justify-between md:left-0 md:-top-10 md:w-auto">
-                    <Button type="button" variant="text" onClick={handleBack}>
+                    <Button
+                      type="button"
+                      variant="text"
+                      onClick={handleBack}
+                      disabled={currentStep === 0}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

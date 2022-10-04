@@ -8,7 +8,7 @@ import styles from "./FormikInput/FormikInput.module.scss";
 
 const LocationPicker = () => {
   const { setFieldValue, values } = useFormikContext<any>();
-  const [address, setAddress] = useState(values.business_location);
+  const [address, setAddress] = useState(values.business_location || "");
   const [_, meta] = useField({ name: "business_location" });
 
   const isError = (meta.touched || !meta.initialValue) && meta.error;
@@ -39,7 +39,7 @@ const LocationPicker = () => {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={styles.autocomplete}>
             <label
-              className={`mb-1 block text-sm font-medium lg:text-base ${
+              className={`mb-1 block text-base font-medium ${
                 isError ? "text-red-500" : "text-gray-700"
               }`}
             >
@@ -65,7 +65,7 @@ const LocationPicker = () => {
                 )}
               </div>
               {isError ? (
-                <div className="mt-[.125rem] text-xs font-normal normal-case text-red-500 lg:text-sm">
+                <div className="mt-[.125rem] text-sm font-normal normal-case text-red-500">
                   {meta.error}
                 </div>
               ) : null}
