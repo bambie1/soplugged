@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import Script from "next/script";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { useField, useFormikContext } from "formik";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import styles from "./FormikInput/FormikInput.module.scss";
 
@@ -38,23 +39,31 @@ const LocationPicker = () => {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={styles.autocomplete}>
             <label
-              className={`mb-1 block text-sm font-medium uppercase lg:text-base ${
-                isError && "text-red-500"
+              className={`mb-1 block text-sm font-medium lg:text-base ${
+                isError ? "text-red-500" : "text-gray-700"
               }`}
             >
               Where is your business located?
               <input
                 label="Business Location"
                 {...getInputProps({
-                  placeholder: "City, Province, Canada",
                   type: "search",
                 })}
                 autoComplete="off"
-                className={`mt-2 block w-full rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:text-gray-300 focus:border-transparent focus:shadow-input-focus focus:outline-2 focus:outline-primary/70 ${
-                  isError &&
-                  "border-red-500 placeholder:text-red-200 focus:shadow-error-focus focus:outline-red-500/70"
+                className={`mt-1 block w-full rounded-md p-4 transition duration-150 ${
+                  isError
+                    ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+                    : "border-gray-400 focus:border-primary focus:ring-primary"
                 }`}
               />
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                {isError && (
+                  <ExclamationCircleIcon
+                    className="h-5 w-5 text-red-500"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
               {isError ? (
                 <div className="mt-[.125rem] text-xs font-normal normal-case text-red-500 lg:text-sm">
                   {meta.error}

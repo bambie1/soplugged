@@ -29,7 +29,7 @@ const nav = {
     links,
   },
   blog: {
-    cta: { text: "Back to soplugged.com", link: "/" },
+    cta: { text: "I am an entrepreneur", link: "/dashboard" },
     links,
   },
   auth: {

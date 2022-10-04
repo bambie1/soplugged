@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
@@ -12,7 +13,6 @@ import { Button } from "@/styled/Button";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessInfoPage.module.scss";
-import Link from "next/link";
 
 interface Props {
   business: IBusiness | null;
@@ -81,26 +81,27 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
     if (!business)
       return (
         <>
-          <div className="mt-10 max-w-2xl text-gray-600">
-            <Image
-              src="/images/Cocktail_Monochromatic.svg"
-              alt="empty clipboard"
-              width={300}
-              height={300}
-            />
-
-            <p className="mt-2 mb-6 lg:mb-8">
-              If you're a business-owner and would like to expand your customer
-              reach, you can easily list your business on our directory for
-              FREE!
-            </p>
-            <ButtonLink
-              href="/my-business?start=0"
-              variant="outlined"
-              showArrow
-            >
-              Add your business
-            </ButtonLink>
+          <div className="mt-10 text-gray-600 lg:mt-14">
+            <div className="w-full rounded-lg border border-primary/30 p-4 lg:w-1/2">
+              <p className="font-medium text-black">
+                Your business isn't on the SoPlugged directory yet
+              </p>
+              <p className="mt-2 mb-6 hidden text-base lg:mb-8 lg:block">
+                If you're a business-owner and would like to expand your
+                customer reach, you can easily list your business on our
+                directory for FREE!
+              </p>
+              <p className="mt-2 mb-6 lg:mb-8 lg:hidden">
+                You can easily change that for FREE!
+              </p>
+              <ButtonLink
+                href="/my-business?start=0"
+                variant="outlined"
+                showArrow
+              >
+                Add your business
+              </ButtonLink>
+            </div>
           </div>
         </>
       );

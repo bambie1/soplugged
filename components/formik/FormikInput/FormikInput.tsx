@@ -21,7 +21,7 @@ const FormikInput: FC<Props> = ({ label, prefix, optional, ...props }: any) => {
           <label
             htmlFor={name}
             className={`block text-sm font-medium lg:text-base ${
-              isError ? "font-medium text-red-500" : "text-gray-700"
+              isError ? "text-red-500" : "text-gray-700"
             }`}
           >
             {label}
