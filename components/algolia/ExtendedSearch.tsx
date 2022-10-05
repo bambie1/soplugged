@@ -65,8 +65,10 @@ const ExtendedSearch = () => {
 
   // @ts-ignore
   const filteredCategory = searchState?.menu?.category || null;
+
   // @ts-ignore
-  const filteredLocation = searchState?.menu?.business_location || null;
+  let filteredLocation = searchState?.menu?.business_location || null;
+  if (Array.isArray(filteredLocation)) filteredLocation = filteredLocation[0];
 
   return (
     <>
@@ -76,12 +78,10 @@ const ExtendedSearch = () => {
       />
       <div className="flex flex-col items-center">
         <div className="my-container mb-8 flex flex-col items-center ">
-          <h1 className="relative inline-block max-w-lg break-words break-all text-center text-5xl font-bold">
-            <span className="text-primary">
-              {filteredCategory || "Explore"}
-            </span>
+          <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
+            {filteredCategory || "Explore"}
           </h1>
-          <span className="mt-4 text-lg lg:text-2xl">
+          <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
             Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
           </span>
         </div>
