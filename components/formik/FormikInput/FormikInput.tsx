@@ -17,7 +17,7 @@ const FormikInput: FC<Props> = ({ label, prefix, optional, ...props }: any) => {
   return (
     <>
       <div>
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <label
             htmlFor={name}
             className={`block text-base font-medium ${
@@ -26,19 +26,19 @@ const FormikInput: FC<Props> = ({ label, prefix, optional, ...props }: any) => {
           >
             {label}
           </label>
-          {optional && (
-            <span className="text-sm text-gray-500" id="email-optional">
-              Optional
-            </span>
-          )}
+          {optional && <span className="text-sm text-gray-500">Optional</span>}
         </div>
-        <div className="relative mt-1 rounded-md">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <span className="text-gray-500">{prefix}</span>
-          </div>
+        <div className="relative mt-1 overflow-hidden rounded-md">
+          {prefix && (
+            <div className="pointer-events-none absolute top-1 bottom-1 left-1 flex items-center rounded-sm bg-gray-100 pr-1 pl-3">
+              <span className="text-gray-500">{prefix}</span>
+            </div>
+          )}
+
           <input
             {...rest}
             {...field}
+            autoComplete="off"
             type={type || "text"}
             name={name}
             id={name}

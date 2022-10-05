@@ -42,7 +42,7 @@ const BusinessForm: FC<Props> = ({ children, business }) => {
         <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
           {agreementSigned || !!business ? step.title : "Welcome aboard!"}
         </h1>
-        <h2 className="mb-10 mt-4 text-center text-lg lg:text-xl">
+        <h2 className="mb-4 mt-2 text-center md:text-lg lg:mb-10 lg:text-xl">
           {agreementSigned || !!business
             ? step.description
             : "Please confirm the following to get started"}

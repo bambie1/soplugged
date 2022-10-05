@@ -15,7 +15,7 @@ const Categories = () => {
       <div
         role="group"
         aria-labelledby="categories-group"
-        className="flex flex-wrap justify-center gap-2"
+        className="flex flex-col flex-wrap justify-center gap-2 md:flex-row"
       >
         {categories.map(({ label, imageSrc }) => (
           <label key={label}>

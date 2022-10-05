@@ -160,7 +160,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
                 } mx-auto`}
               >
                 {!isSubmitting && (
-                  <div className="absolute top-4 left-0 inline-flex w-full justify-between md:left-0 md:-top-10 md:w-auto">
+                  <div className="absolute top-4 left-0 inline-flex w-full items-center justify-between md:left-0 md:-top-10 md:w-auto">
                     <Button
                       type="button"
                       variant="text"
@@ -189,7 +189,20 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
                       variant="text"
                       className="md:hidden"
                     >
-                      Dashboard
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={0.5}
+                        stroke="currentColor"
+                        className="h-12 w-12"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
                     </ButtonLink>
                   </div>
                 )}

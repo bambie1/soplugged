@@ -52,12 +52,14 @@ const Images = () => {
           </label>
 
           {values.logo_url && (
-            <Image
-              src={values.logo_url}
-              width={40}
-              height={40}
-              alt="log preview"
-            />
+            <div className="relative aspect-square w-10 overflow-hidden rounded-full border border-primary">
+              <Image
+                src={values.logo_url}
+                layout="fill"
+                objectFit="cover"
+                alt="logo preview"
+              />
+            </div>
           )}
         </div>
 

@@ -5,9 +5,9 @@ import type {
 } from "next";
 import dynamic from "next/dynamic";
 import { getSession } from "next-auth/react";
+import Script from "next/script";
 
 import { SEO } from "@/components/SEO";
-import Script from "next/script";
 
 const MyBusinessPage = dynamic(
   () => import("../scenes/MyBusinessPage/MyBusinessPage")
