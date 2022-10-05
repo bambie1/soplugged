@@ -54,9 +54,12 @@ export const getStaticPaths = async () => {
   ).then((res) => res.json());
 
   return {
-    paths: businesses.map(({ slug }: any) => ({
-      params: { slug },
-    })),
+    paths: businesses.map(
+      ({ slug }: any) =>
+        !!slug && {
+          params: { slug },
+        }
+    ),
     fallback: true,
   };
 };
