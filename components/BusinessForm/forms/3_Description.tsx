@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useFormikContext, useField } from "formik";
 
-import styles from "../BusinessForm.module.scss";
 import "react-quill/dist/quill.snow.css";
 import Skeleton from "@/components/skeletons/Skeleton";
 
@@ -21,7 +20,7 @@ const Description = () => {
   const [content, setContent] = useState(values.business_description || "");
   const [_, meta] = useField("business_description");
 
-  const isError = meta && meta.error;
+  const isError = meta.touched && meta.error;
 
   const handleUpdate = (content: any) => {
     if (typeof content === "string") {
@@ -46,7 +45,7 @@ const Description = () => {
 
   return (
     <>
-      <section className={styles.form}>
+      <section>
         <div className="quillFormGroup">
           <label
             htmlFor="business_description"
@@ -62,7 +61,7 @@ const Description = () => {
             value={content}
             onChange={handleUpdate}
             id="business_description"
-            className={isError && "quillError"}
+            className={isError ? "quillError" : ""}
             modules={{
               clipboard: {
                 matchVisual: false,
