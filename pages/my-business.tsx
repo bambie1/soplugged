@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import { getSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
+import Script from "next/script";
 
 const MyBusinessPage = dynamic(
   () => import("../scenes/MyBusinessPage/MyBusinessPage")
@@ -23,6 +24,7 @@ const MyBusiness: NextPage<
       />
 
       <MyBusinessPage business={business} />
+      <Script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqMtZjTrCMfn7U4OHk00_wte02pcuaHs&libraries=places" />
     </>
   );
 };

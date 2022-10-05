@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { useField, useFormikContext } from "formik";
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
@@ -11,16 +11,6 @@ const LocationPicker = () => {
   const [_, meta] = useField({ name: "business_location" });
 
   const isError = (meta.touched || !meta.initialValue) && meta.error;
-
-  useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src =
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqMtZjTrCMfn7U4OHk00_wte02pcuaHs&libraries=places";
-    script.async = true;
-
-    document.body.appendChild(script);
-  }, []);
 
   const handleSelect = (value: string) => {
     setAddress(value);
