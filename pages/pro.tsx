@@ -8,8 +8,9 @@ const Pro: NextPage = (props) => {
   return (
     <>
       <SEO
-        description="Professional help for your business' digital needs"
-        title="SoPlugged Pro | Scale your business with ease"
+        description="Hire our team of experts to handle your digital needs, from custom
+        websites to social media management"
+        title="SoPlugged Pro | Grow your online presence with ease"
         variant="pro"
       />
       <ProPage {...props} />

@@ -7,8 +7,11 @@ const Guidelines: FC = () => {
   return (
     <>
       <SEO
-        description="Community Guidelines for SoPlugged users"
-        title="Guidelines | SoPlugged"
+        description="In order to maintain a respectful, inclusive, and safe environment
+        for everyone, we've created a set of community guidelines to serve
+        as a moral compass for behavior on our platform, define what is
+        acceptable in the SoPlugged community."
+        title="Community guidelines | SoPlugged"
       />
 
       <GuidelinesPage />

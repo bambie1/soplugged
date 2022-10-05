@@ -9,9 +9,10 @@ interface Props {
 const navigation = {
   main: [
     { name: "Our story", href: "/our-story" },
-    { name: "Pro", href: "/pro" },
-    { name: "Blog", href: "/blog" },
+    { name: "Grow your business", href: "/pro" },
+    { name: "Read our blog", href: "/blog" },
     { name: "Become a sponsor", href: "/sponsors" },
+    { name: "Community guidelines", href: "/guidelines" },
   ],
   social: [
     {
@@ -80,7 +81,7 @@ const Footer: FC<Props> = ({ tertiary }) => {
         </Link>
 
         <nav
-          className="-mx-5 -my-2 flex flex-wrap justify-center"
+          className="-mx-5 -my-2 flex max-w-2xl flex-wrap justify-center"
           aria-label="Footer"
         >
           {navigation.main.map((item) => (
