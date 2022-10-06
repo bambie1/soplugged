@@ -33,16 +33,22 @@ const Business: NextPage = ({ slug, fallbackData }: any) => {
 
   return (
     <>
-      <SEO
-        description={`SoPlugged page for ${
-          business?.business_name || "a business"
-        }. A ${business?.category?.toLowerCase() || ""} business based in ${
-          business?.business_location
-        }.`}
-        title={`${
-          business?.business_name.toUpperCase() || "SoPlugged"
-        } | SoPlugged`}
-      />
+      {!!business?.business_name ? (
+        <SEO
+          description={`SoPlugged page for ${
+            business?.business_name || "a business"
+          }. A ${business?.category?.toLowerCase()} business based in ${
+            business?.business_location
+          }.`}
+          title={`${business?.business_name.toUpperCase()} | SoPlugged`}
+        />
+      ) : (
+        <SEO
+          description="Online platform connecting you to black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
+          title="SoPlugged | Discover black-owned businesses in Canada"
+        />
+      )}
+
       {renderContent()}
     </>
   );
@@ -77,7 +83,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { business, slug: params?.slug },
+    props: { fallbackData: business, slug: params?.slug },
   };
 };
 
