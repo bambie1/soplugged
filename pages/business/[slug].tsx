@@ -53,13 +53,14 @@ export const getStaticPaths = async () => {
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
   ).then((res) => res.json());
 
+  const filteredBusinesses = businesses.filter(
+    ({ verified, slug }: any) => verified && !!slug
+  );
+
   return {
-    paths: businesses.map(
-      ({ slug }: any) =>
-        !!slug && {
-          params: { slug },
-        }
-    ),
+    paths: filteredBusinesses.map(({ slug }: any) => ({
+      params: { slug },
+    })),
     fallback: true,
   };
 };
