@@ -19,12 +19,9 @@ import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
-import { IconButton } from "@/styled/IconButton";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
-const FavoriteButton = dynamic(
-  () => import("../../components/FavoriteButton/FavoriteButton")
-);
+
 const ContactForm = dynamic(
   () => import("../../components/ContactForm/ContactForm")
 );

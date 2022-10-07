@@ -65,6 +65,9 @@
   width: auto;
   max-height: 30px;
   line-height: 0;
+  width: 100%;
+  object-position: top;
+  object-fit: cover;
 }
 .image-gallery-swipe {
   background: #e0e0e0;
