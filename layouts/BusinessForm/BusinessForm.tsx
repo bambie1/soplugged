@@ -52,7 +52,8 @@ const BusinessForm: FC<Props> = ({ children, business }) => {
   return (
     <>
       {/* mobile view */}
-      <div className="flex min-h-screen flex-col md:hidden">
+      <div className="relative flex min-h-screen flex-col md:hidden">
+        <div className="absolute top-0 left-0 -z-[1] h-1/3 w-full bg-gradient-to-b from-secondary/40"></div>
         <div className="px-4 pt-10 pb-10 lg:pt-24">{renderStepInfo()}</div>
         <div className="pb-20">{children}</div>
       </div>
