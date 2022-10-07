@@ -2,8 +2,6 @@ import { FC } from "react";
 
 import { useBusinessFormContext } from "@/context/businessFormContext";
 
-import styles from "./BusinessForm.module.scss";
-
 interface Props {
   skeleton?: boolean;
   business?: any;
@@ -54,11 +52,9 @@ const BusinessForm: FC<Props> = ({ children, business }) => {
   return (
     <>
       {/* mobile view */}
-      <div className="flex min-h-screen flex-col overflow-y-auto md:hidden">
-        <div className="bg-gradient-to-b from-secondary to-accent px-4 pt-10 pb-10 lg:pt-24">
-          {renderStepInfo()}
-        </div>
-        <div className={styles.mobileContent}>{children}</div>
+      <div className="flex min-h-screen flex-col md:hidden">
+        <div className="px-4 pt-10 pb-10 lg:pt-24">{renderStepInfo()}</div>
+        <div className="pb-20">{children}</div>
       </div>
 
       {/* tablet+ view */}

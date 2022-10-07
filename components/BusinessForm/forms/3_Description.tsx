@@ -3,11 +3,9 @@ import { useState } from "react";
 import { useFormikContext, useField } from "formik";
 
 import "react-quill/dist/quill.snow.css";
-import Skeleton from "@/components/skeletons/Skeleton";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
-  loading: () => <Skeleton type="box" />,
 });
 
 const toolbarOptions = [

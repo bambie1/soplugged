@@ -161,33 +161,30 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
               >
                 {!isSubmitting && (
                   <div className="absolute top-4 left-0 inline-flex w-full items-center justify-between md:left-0 md:-top-10 md:w-auto">
-                    <Button
-                      type="button"
-                      variant="text"
-                      onClick={handleBack}
-                      disabled={currentStep === 0}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1}
-                        stroke="currentColor"
-                        className="mr-2 h-6 w-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                        />
-                      </svg>
-                      Go Back
-                    </Button>
+                    {currentStep > 0 && (
+                      <Button type="button" variant="text" onClick={handleBack}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1}
+                          stroke="currentColor"
+                          className="mr-2 h-6 w-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                          />
+                        </svg>
+                        Go Back
+                      </Button>
+                    )}
 
                     <ButtonLink
                       href="/dashboard"
                       variant="text"
-                      className="md:hidden"
+                      className="ml-auto md:hidden"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -226,5 +223,9 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     </>
   );
 };
+
+const SubmitButton: FC = ({ children }) => (
+  <button className="button text-lg">{children}</button>
+);
 
 export default MyBusinessPage;
