@@ -8,9 +8,9 @@ import styles from "./FormikInput/FormikInput.module.scss";
 const LocationPicker = () => {
   const { setFieldValue, values } = useFormikContext<any>();
   const [address, setAddress] = useState(values.business_location || "");
-  const [_, meta] = useField({ name: "business_location" });
+  const [field, meta] = useField({ name: "business_location" });
 
-  const isError = (meta.touched || !meta.initialValue) && meta.error;
+  const isError = meta.touched && meta.error;
 
   const handleSelect = (value: string) => {
     setAddress(value);
@@ -41,19 +41,22 @@ const LocationPicker = () => {
               className={`mb-1 block text-base font-medium ${
                 isError ? "text-red-500" : "text-gray-700"
               }`}
+              htmlFor="business_location"
             >
               Where is your business located?
               <input
-                label="Business Location"
+                {...field}
                 {...getInputProps({
                   type: "search",
                 })}
+                id="business_location"
                 autoComplete="off"
                 className={`mt-1 block w-full rounded-md p-4 transition duration-150 ${
                   isError
                     ? "border-red-300 focus:border-red-500 focus:ring-red-500"
                     : "border-gray-400 focus:border-primary focus:ring-primary"
                 }`}
+                name="business_location"
               />
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 {isError && (
