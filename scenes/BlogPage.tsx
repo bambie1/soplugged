@@ -27,18 +27,33 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
 
   if (!post) return null;
 
-  const { title, content, author, createdAt, excerpt, blogImage } = post;
+  const { title, content, author, createdAt, categories, blogImage } = post;
 
   return (
     <>
       <Header variant="blog" />
       <main className="mx-auto mb-10 max-w-2xl  lg:max-w-none">
         <section className="my-container relative grid items-center gap-4 py-10 lg:grid-cols-2 lg:gap-10">
-          <div className="flex flex-col py-4 lg:py-20">
-            <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:mb-2 lg:text-5xl lg:leading-[1.2]">
+          <div className="flex flex-col items-start py-4 lg:py-20">
+            <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:text-5xl lg:leading-[1.2]">
               {title}
             </h1>
-            <p className="text-gray-700">{excerpt}</p>
+            <div className="flex flex-wrap gap-3">
+              {categories.map(({ title, color }: any) => {
+                const { r, g, b } = color.rgba;
+                const bgColor = `rgba(${r}, ${g}, ${b}, .2)`;
+
+                return (
+                  <span
+                    key={title}
+                    style={{ background: bgColor }}
+                    className={`inline-flex items-center rounded-full px-3 py-0.5 text-sm text-primary`}
+                  >
+                    {title}
+                  </span>
+                );
+              })}
+            </div>
 
             <div className="mt-6">
               <p className="uppercase">{author?.name || "SoPlugged team"}</p>
@@ -65,7 +80,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
         </section>
         <div className="my-container">
-          <div className="relative grid-cols-3 items-start gap-4 lg:my-10 lg:grid lg:gap-8">
+          <div className="relative my-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
             <div
               dangerouslySetInnerHTML={{ __html: content.html }}
               className="prose col-span-2 col-start-1 max-w-none lg:mr-10"
@@ -142,21 +157,19 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
               </div>
             </div>
           </div>
-          <div className="">
-            <div className="">
-              <h3>READ MORE...</h3>
-              <div className="overflow-x-auto pb-2">
-                <ul className="mt-4 inline-flex gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
-                  {morePosts?.map((post: any) => (
-                    <li
-                      key={post.slug}
-                      className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"
-                    >
-                      <BlogCard post={post} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="border-t border-gray-200 pt-6">
+            <h3>READ MORE...</h3>
+            <div className="overflow-x-auto pb-2">
+              <ul className="mt-4 inline-flex gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
+                {morePosts?.map((post: any) => (
+                  <li
+                    key={post.slug}
+                    className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"
+                  >
+                    <BlogCard post={post} />
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

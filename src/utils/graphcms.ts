@@ -1,6 +1,6 @@
 const gql = String.raw;
 
-async function fetchAPI(query: any, { variables, preview }: any = {}) {
+export async function fetchAPI(query: any, { variables, preview }: any = {}) {
   const res = await fetch(process.env.GRAPHCMS_PROJECT_API!, {
     method: "POST",
     headers: {
@@ -110,65 +110,4 @@ export async function getAllBlogPosts() {
     `
   );
   return data.posts;
-}
-
-export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(gql`
-    query PostsWithSlugs {
-      posts(stage: PUBLISHED) {
-        slug
-      }
-    }
-  `);
-  return data.posts;
-}
-
-export async function getPostAndMorePosts(slug: any) {
-  const data = await fetchAPI(
-    gql`
-      query PostBySlug($slug: String!) {
-        post(stage: PUBLISHED, where: { slug: $slug }) {
-          title
-          slug
-          excerpt
-          content {
-            html
-          }
-          createdAt
-          author {
-            name
-          }
-          blogImage {
-            url
-          }
-          categories(first: 10) {
-            title
-          }
-        }
-        morePosts: posts(
-          orderBy: createdAt_DESC
-          first: 4
-          where: { slug_not_in: [$slug] }
-          stage: PUBLISHED
-        ) {
-          title
-          slug
-          createdAt
-          excerpt
-          author {
-            name
-          }
-          blogImage {
-            url
-          }
-        }
-      }
-    `,
-    {
-      variables: {
-        slug,
-      },
-    }
-  );
-  return data;
 }
