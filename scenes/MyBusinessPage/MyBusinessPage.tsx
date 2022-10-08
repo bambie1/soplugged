@@ -78,9 +78,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       <div className="mx-auto flex w-full max-w-xl p-2 [&>*]:flex-1">
         <Button type="submit" disabled={isSubmitting}>
           {currentStep === formSteps.length - 1
-            ? !business
-              ? "Complete setup"
-              : "Submit and view page"
+            ? "Submit and view page"
             : "Next"}
         </Button>
       </div>
@@ -160,7 +158,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
                 } mx-auto`}
               >
                 {!isSubmitting && (
-                  <div className="absolute top-4 left-0 inline-flex w-full items-center justify-between md:left-0 md:-top-10 md:w-auto">
+                  <div className="absolute top-0 left-0 inline-flex w-full items-center justify-between md:left-0 md:-top-10 md:w-auto">
                     {currentStep > 0 && (
                       <Button type="button" variant="text" onClick={handleBack}>
                         <svg
