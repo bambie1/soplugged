@@ -109,7 +109,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
     return (
       <>
         <div className="mt-8 grid gap-x-16 gap-y-16 lg:mt-16 lg:grid-cols-2 lg:gap-y-8">
-          <section className={styles.businessCard}>
+          <section className="">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="font-light uppercase text-gray-800 lg:text-lg">
                 Your business
