@@ -33,6 +33,9 @@ export const businessFormSchema = [
     ),
   }),
 
+  // images
+  Yup.object().shape({}),
+
   // contact links
   Yup.object().shape({
     business_url: Yup.string().matches(
@@ -50,7 +53,4 @@ export const businessFormSchema = [
       .matches(/^\d+$/, "The field should have digits only")
       .length(10, "Phone number must be 10 digits"),
   }),
-
-  // images
-  Yup.object().shape({}),
 ];

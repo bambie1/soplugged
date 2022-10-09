@@ -7,10 +7,10 @@ import styles from "./FormikInput/FormikInput.module.scss";
 
 const LocationPicker = () => {
   const { setFieldValue, values } = useFormikContext<any>();
-  const [address, setAddress] = useState(values.business_location || "");
+  const [address, setAddress] = useState(values.business_location);
   const [field, meta] = useField({ name: "business_location" });
 
-  const isError = meta.touched && meta.error;
+  const isError = (meta.touched || !meta.initialValue) && meta.error;
 
   const handleSelect = (value: string) => {
     setAddress(value);
