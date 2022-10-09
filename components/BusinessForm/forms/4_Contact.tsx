@@ -12,7 +12,6 @@ const Contact = () => {
       />
       <FormikInput
         label="Phone Number"
-        prefix="+1"
         placeholder="6131234567"
         name="phone_number"
         optional
@@ -20,7 +19,6 @@ const Contact = () => {
       />
       <FormikInput
         label="IG Handle"
-        prefix="@"
         placeholder="sopluggd"
         name="ig_handle"
         optional

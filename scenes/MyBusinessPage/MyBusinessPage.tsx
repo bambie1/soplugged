@@ -148,6 +148,8 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           }}
           validationSchema={businessFormSchema[currentStep]}
           onSubmit={_handleSubmit}
+          validateOnBlur={false}
+          validateOnChange={false}
         >
           {() => (
             <>
