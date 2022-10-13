@@ -155,7 +155,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
             <>
               <Form
                 id="businessForm"
-                className={`grid w-full gap-7 px-2 ${
+                className={`flex w-full flex-col gap-7 px-2 ${
                   !isWideStep && "max-w-xl"
                 } mx-auto`}
               >
