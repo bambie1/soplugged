@@ -25,8 +25,8 @@ const Review = () => {
   } = useFormikContext<any>();
 
   return (
-    <div className="grid gap-5 text-gray-700">
-      <div className="mb-3 flex items-center gap-3">
+    <div className="grid gap-5 rounded-md bg-gray-100 p-4 text-gray-700">
+      <div className="flex items-center gap-3">
         {logo_url && (
           <img
             src={logo_url}
@@ -34,7 +34,7 @@ const Review = () => {
             className="h-10 w-10 rounded-full"
           />
         )}
-        <p className="text-xl font-light uppercase text-primary lg:text-3xl">
+        <p className="text-2xl uppercase text-primary lg:text-3xl">
           {business_name}
         </p>
       </div>

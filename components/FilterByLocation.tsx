@@ -55,7 +55,7 @@ const FilterByLocation = () => {
         <div>
           <div className="hidden lg:block">{renderHeading()}</div>
 
-          <p className="mb-6 text-base">
+          <p className="mb-6">
             Our mission is to connect you with the best black-owned businesses
             in your city and around Canada.
           </p>
