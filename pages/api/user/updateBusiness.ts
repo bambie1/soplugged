@@ -47,8 +47,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }),
     });
 
-    console.log({ fetchPromise });
-
     if (!fetchPromise.ok) throw new Error();
 
     res.status(200).json({

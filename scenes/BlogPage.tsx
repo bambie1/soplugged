@@ -67,7 +67,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             </div>
           </div>
           <div className="relative row-start-1 lg:row-start-auto">
-            <div className="relative ml-auto aspect-[3/2] w-full overflow-hidden rounded-lg lg:w-[90%]">
+            <div className="relative ml-auto aspect-[3/2] w-full overflow-hidden rounded-lg shadow lg:w-[90%]">
               <Image
                 src={blogImage.url}
                 alt=""
@@ -83,7 +83,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           <div className="relative my-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
             <div
               dangerouslySetInnerHTML={{ __html: content.html }}
-              className="prose col-span-2 col-start-1 max-w-none lg:mr-10"
+              className="prose col-span-2 col-start-1 mb-20 max-w-none lg:mr-10"
             />
             <hr className="mt-10 mb-4 lg:hidden" />
             <div className="top-20 lg:sticky lg:my-20">

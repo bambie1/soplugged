@@ -8,8 +8,6 @@ import { FileDropzone } from "@/components/FileDropzone";
 
 import useImageUploader from "@/hooks/useImageUploader";
 
-import styles from "../BusinessForm.module.scss";
-
 const Images = () => {
   const { setFieldValue, values } = useFormikContext<any>();
   const { url, error, uploadImage, uploading } = useImageUploader();
@@ -27,11 +25,11 @@ const Images = () => {
 
   return (
     <>
-      <div className={styles.logoInput}>
+      <div className="lg:hidden">
         <label htmlFor="business-logo">Business logo:</label>
         <input
           accept="image/png, image/jpeg"
-          className={styles.input}
+          className="hidden"
           id="business-logo"
           name="logo_url"
           type="file"
@@ -40,7 +38,7 @@ const Images = () => {
           disabled={uploading}
         />
 
-        <div className={styles.logoAndPreview}>
+        <div className="flex items-center gap-4">
           <label
             htmlFor="business-logo"
             className={`button outlined withIcon inline-flex ${
