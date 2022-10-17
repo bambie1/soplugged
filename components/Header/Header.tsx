@@ -25,7 +25,7 @@ const nav = {
     links,
   },
   pro: {
-    cta: { text: "Book a consult", link: "#book-a-consult" },
+    cta: { text: "Book a consult", link: "#book-consult" },
     links,
   },
   blog: {
