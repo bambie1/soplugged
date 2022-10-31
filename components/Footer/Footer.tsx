@@ -4,6 +4,7 @@ import { FC } from "react";
 
 interface Props {
   tertiary?: boolean;
+  noBackground?: boolean;
 }
 
 const navigation = {
@@ -62,11 +63,11 @@ const navigation = {
   ],
 };
 
-const Footer: FC<Props> = ({ tertiary }) => {
+const Footer: FC<Props> = ({ tertiary, noBackground }) => {
   return (
     <footer
       className={`mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ${
-        tertiary ? "from-accent/60" : "from-secondary/60"
+        tertiary ? "from-accent/60" : !noBackground ? "from-secondary/60" : ""
       }`}
     >
       <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8">

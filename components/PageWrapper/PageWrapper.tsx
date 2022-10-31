@@ -5,14 +5,13 @@ const Header = dynamic(() => import("../Header/Header"));
 const Footer = dynamic(() => import("../Footer/Footer"));
 
 interface Props {
-  hasHero?: boolean;
   center?: boolean;
   isSlim?: boolean;
-  isFullWidth?: boolean;
+  whiteFooter?: boolean;
   children: ReactNode;
 }
 
-const PageWrapper: FC<Props> = ({ children, center, isSlim }) => {
+const PageWrapper: FC<Props> = ({ children, center, isSlim, whiteFooter }) => {
   return (
     <>
       <Header />
@@ -24,7 +23,7 @@ const PageWrapper: FC<Props> = ({ children, center, isSlim }) => {
         >
           {children}
         </main>
-        <Footer />
+        <Footer noBackground={whiteFooter} />
       </div>
     </>
   );
