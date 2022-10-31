@@ -9,6 +9,7 @@ import {
   PlusIcon,
   SearchIcon,
   StarIcon,
+  VideoCameraIcon,
 } from "@heroicons/react/outline";
 
 const linksArray = [
@@ -43,10 +44,10 @@ const linksArray = [
     ),
   },
   {
-    title: "Become a SoPlugged sponsor",
-    href: "/sponsors",
+    title: "Watch SoRandom discussions",
+    href: "/so-random",
     icon: (
-      <HeartIcon
+      <VideoCameraIcon
         className="h-6 w-6 flex-shrink-0 text-primary/70"
         strokeWidth={0.5}
       />
@@ -57,6 +58,16 @@ const linksArray = [
     href: "/blog",
     icon: (
       <PencilIcon
+        className="h-6 w-6 flex-shrink-0 text-primary/70"
+        strokeWidth={0.5}
+      />
+    ),
+  },
+  {
+    title: "Become a SoPlugged sponsor",
+    href: "/sponsors",
+    icon: (
+      <HeartIcon
         className="h-6 w-6 flex-shrink-0 text-primary/70"
         strokeWidth={0.5}
       />
