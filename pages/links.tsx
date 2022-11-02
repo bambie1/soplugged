@@ -44,7 +44,7 @@ const linksArray = [
     ),
   },
   {
-    title: "Watch SoRandom discussions",
+    title: "Submit a question",
     href: "/so-random",
     icon: (
       <VideoCameraIcon
