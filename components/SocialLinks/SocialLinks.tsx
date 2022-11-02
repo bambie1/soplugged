@@ -38,22 +38,24 @@ const SocialLinks = ({ business }: any) => {
         </button>
       )}
 
-      {business_url && (
-        <button
-          title="Website"
-          className={`${styles.icons} iconButton`}
-          aria-label="Website icon"
-        >
-          <a
-            aria-label="website url"
-            href={business_url}
-            target="_blank"
-            rel="noreferrer"
+      {business_url &&
+        business_url !== "https://undefined" &&
+        business_url !== "https://" && (
+          <button
+            title="Website"
+            className={`${styles.icons} iconButton`}
+            aria-label="Website icon"
           >
-            <FontAwesomeIcon icon={faGlobe} />
-          </a>
-        </button>
-      )}
+            <a
+              aria-label="website url"
+              href={business_url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon icon={faGlobe} />
+            </a>
+          </button>
+        )}
     </div>
   );
 };

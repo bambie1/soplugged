@@ -91,7 +91,10 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     const businessObj = !business
       ? {
           ...values,
-          business_url: "https://" + values.business_url,
+          business_url:
+            values.business_url && values.business_url !== "undefined"
+              ? "https://" + values.business_url
+              : "",
           referral_source: referralSource,
           referral_business_slug: referringBusiness,
         }
