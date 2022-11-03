@@ -78,7 +78,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     router.push(
       `${createURL({
         menu: {
-          category: [category],
+          category,
         },
       })}`
     );
@@ -88,7 +88,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     router.push(
       `${createURL({
         menu: {
-          business_location: [business_location],
+          business_location,
         },
       })}`
     );
