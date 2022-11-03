@@ -1,14 +1,11 @@
-import { FC, useState } from "react";
-import Link from "next/link";
+import { FC } from "react";
 import { connectMenu } from "react-instantsearch-dom";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classNames from "classnames";
 
-const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
-  const [hide, setHide] = useState(true);
-
+const CustomMenu: FC = ({ items, refine }: any) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

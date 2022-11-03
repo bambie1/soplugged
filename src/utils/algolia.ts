@@ -1,8 +1,11 @@
-// @ts-nocheck
-
 import qs from "qs";
+import { SearchState } from "react-instantsearch-core";
 
-const encodedCategories = {
+interface IObjectKeys {
+  [key: string]: string;
+}
+
+const encodedCategories: IObjectKeys = {
   art: "Art",
   "baking-and-catering": "Baking / Catering",
   "coaching-tutoring": "Coaching / Tutoring",
@@ -29,31 +32,32 @@ const encodedCategories = {
   beauty: "Beauty",
 };
 
-const decodedCategories = Object.keys(encodedCategories).reduce((acc, key) => {
-  const newKey = encodedCategories[key];
-  const newValue = key;
+const decodedCategories: IObjectKeys = Object.keys(encodedCategories).reduce(
+  (acc, key) => {
+    const newKey = encodedCategories[key];
+    const newValue = key;
 
-  return {
-    ...acc,
-    [newKey]: newValue,
-  };
-}, {});
+    return {
+      ...acc,
+      [newKey]: newValue,
+    };
+  },
+  {}
+);
 
-function getCategorySlug(name) {
+function getCategorySlug(name: string) {
   const encodedName = decodedCategories[name] || name;
 
-  if (typeof encodedName !== "string") return "all";
-
-  return encodedName?.split(" ").map(encodeURIComponent).join("+") ?? "";
+  return encodedName.split(" ").map(encodeURIComponent).join("+");
 }
 
-function getCategoryName(slug) {
+export function getCategoryName(slug: string) {
   const decodedSlug = encodedCategories[slug] || slug;
 
   return decodedSlug.split("+").map(decodeURIComponent).join(" ");
 }
 
-export const createURL = (state) => {
+export const createURL = (state: SearchState) => {
   const isDefaultRoute =
     !state.query &&
     state.page === 1 &&
@@ -64,10 +68,10 @@ export const createURL = (state) => {
     return "";
   }
 
-  const categoryPath = state.menu.category
+  const categoryPath = state?.menu?.category
     ? `${getCategorySlug(state.menu.category)}/`
     : "";
-  const queryParameters = {};
+  const queryParameters = {} as any;
 
   if (state.query) {
     queryParameters.query = encodeURIComponent(state.query);
@@ -75,8 +79,8 @@ export const createURL = (state) => {
   if (state.page !== 1) {
     queryParameters.page = state.page;
   }
-  if (state.menu.business_location) {
-    queryParameters.business_location = state.menu.business_location;
+  if (state?.menu?.business_location) {
+    queryParameters.city = state.menu.business_location;
   }
 
   const queryString = qs.stringify(queryParameters, {

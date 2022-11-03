@@ -1,8 +1,6 @@
-// @ts-nocheck
-
 import { useEffect, useState, useRef } from "react";
+import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import qs from "qs";
 import algoliasearch from "algoliasearch/lite";
 import { findResultsState } from "react-instantsearch-dom/server";
 import {
@@ -11,12 +9,19 @@ import {
   InstantSearch,
   connectSearchBox,
 } from "react-instantsearch-dom";
+import {
+  InstantSearchProps,
+  SearchState,
+  StateResultsProvided,
+} from "react-instantsearch-core";
+
 import { CustomRefinements } from "@/components/algolia-old/CustomRefinements";
 import CustomMenu from "@/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/components/algolia/CustomStateResults";
 import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header/Header";
+import { createURL, getCategoryName } from "@/utils/algolia";
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
@@ -27,126 +32,49 @@ const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API!
 );
 
-const encodedCategories = {
-  art: "Art",
-  "baking-and-catering": "Baking / Catering",
-  "coaching-tutoring": "Coaching / Tutoring",
-  consultancy: "Consultancy",
-  "content-creating-and-writing": "Content Creating / Writing",
-  entertainment: "Entertainment",
-  "event-planning": "Event Planning",
-  fashion: "Fashion",
-  fitness: "Fitness",
-  "graphic-design": "Graphic Design",
-  groceries: "Groceries",
-  "hair-and-beauty": "Hair / Beauty",
-  "handcraft-gifting": "Handcraft / Gifting Services",
-  "housekeeping-domestic": "Housekeeping / Domestic Services",
-  "interior-decor": "Interior Decor",
-  "maintenance-repair": "Maintenance/Repair Services",
-  "media-services": "Media services",
-  "travel-tourism": "Travel / Tourism Service",
-  "web-dev-design": "Web Development / Design",
-  other: "Other",
+const searchStateToURL = (searchState: SearchState) =>
+  searchState ? createURL(searchState) : "";
 
-  // staging categories
-  hair: "Hair",
-  beauty: "Beauty",
-};
+const urlToSearchState = ({ search, pathname }: any) => {
+  const pathnameMatches = pathname.match(/search\/(.*?)\/?$/);
+  const category = getCategoryName(
+    (pathnameMatches && pathnameMatches[1]) || ""
+  );
 
-const decodedCategories = Object.keys(encodedCategories).reduce((acc, key) => {
-  const newKey = encodedCategories[key];
-  const newValue = key;
-
-  return {
-    ...acc,
-    [newKey]: newValue,
-  };
-}, {});
-
-function getCategorySlug(name) {
-  const encodedName = decodedCategories[name] || name;
-
-  return encodedName.split(" ").map(encodeURIComponent).join("+");
-}
-
-function getCategoryName(slug) {
-  const decodedSlug = encodedCategories[slug] || slug;
-
-  return decodedSlug.split("+").map(decodeURIComponent).join(" ");
-}
-
-const createURL = (state) => {
-  const isDefaultRoute =
-    !state.query &&
-    state.page === 1 &&
-    state.menu &&
-    state.menu.category.length === 0;
-
-  if (isDefaultRoute) {
-    return "";
-  }
-
-  const categoryPath = state.menu.category
-    ? `${getCategorySlug(state.menu.category)}/`
-    : "";
-  const queryParameters = {};
-
-  if (state.query) {
-    queryParameters.query = encodeURIComponent(state.query);
-  }
-  if (state.page !== 1) {
-    queryParameters.page = state.page;
-  }
-  if (state.menu.business_location) {
-    queryParameters.business_location = state.menu.business_location;
-  }
-
-  const queryString = qs.stringify(queryParameters, {
-    addQueryPrefix: true,
-    arrayFormat: "repeat",
-  });
-
-  const url = `/search/${categoryPath}${queryString}`;
-
-  return url;
-};
-
-const pathToSearchState = (urlQuery) => {
-  const { page = 1, category = "" } = qs.parse(urlQuery);
-  // `qs` does not return an array when there's a single value.
+  // const { page = 1 } = qs.parse(search?.slice(1));
 
   const isDefault = category === "all";
 
   const newState = {
-    page,
+    // page,
     menu: {
-      category: !isDefault ? decodeURIComponent(getCategoryName(category)) : "",
+      category: !isDefault
+        ? decodeURIComponent(getCategoryName(category as string))
+        : "",
       // business_location: decodedCategories()
     },
   };
 
-  return newState;
+  return newState as SearchState;
 };
-
-const searchStateToURL = (searchState) =>
-  searchState ? createURL(searchState) : "";
 
 const DEFAULT_PROPS = {
   searchClient,
   indexName: INSTANT_SEARCH_INDEX_NAME,
 };
 
-export default function Page(props) {
+export default function Page(props: {
+  searchState: SearchState;
+  resultsState: StateResultsProvided;
+}) {
   const [searchState, setSearchState] = useState(props.searchState);
   const router = useRouter();
   const debouncedSetState = useRef();
 
   useEffect(() => {
-    if (router) {
-      router.beforePopState(({ url }) => {
-        setSearchState(pathToSearchState(url));
-      });
+    if (typeof window !== "undefined") {
+      console.log(window.location);
+      setSearchState(urlToSearchState(window.location));
     }
   }, [router]);
 
@@ -175,9 +103,10 @@ export default function Page(props) {
             {...DEFAULT_PROPS}
             searchState={searchState}
             resultsState={props.resultsState}
-            onSearchStateChange={(nextSearchState) => {
+            onSearchStateChange={(nextSearchState: SearchState) => {
               clearTimeout(debouncedSetState.current);
 
+              // @ts-ignore
               debouncedSetState.current = setTimeout(() => {
                 const href = searchStateToURL(nextSearchState) || "/search/all";
 
@@ -195,9 +124,16 @@ export default function Page(props) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const searchState = pathToSearchState(query);
-  const resultsState = await findResultsState(App, {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  resolvedUrl,
+}) => {
+  console.log({ query });
+  const searchState = urlToSearchState({
+    pathname: resolvedUrl,
+    search: query,
+  });
+  const resultsState = await findResultsState(App as any, {
     ...DEFAULT_PROPS,
     searchState,
   });
@@ -208,9 +144,9 @@ export async function getServerSideProps({ query }) {
       searchState,
     },
   };
-}
+};
 
-export function App(props) {
+export function App(props: InstantSearchProps) {
   return (
     <InstantSearch {...props}>
       <VirtualSearchBox />
