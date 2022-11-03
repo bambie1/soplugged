@@ -7,7 +7,7 @@ const useAlgolia = () => {
     router.push(
       `${createURL({
         menu: {
-          category: [label],
+          category: label,
         },
       })}`
     );
@@ -26,7 +26,7 @@ const useAlgolia = () => {
   const handleCategoryAndLocation = (category: string, location: string) => {
     const url = `${createURL({
       menu: {
-        category: [category],
+        category,
         business_location: location,
       },
     })}`;
