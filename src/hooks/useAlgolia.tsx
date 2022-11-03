@@ -5,7 +5,7 @@ import { createURL } from "@/utils/algolia";
 const useAlgolia = () => {
   const handleCategoryClick = (label: string) => {
     router.push(
-      `/search${createURL({
+      `${createURL({
         menu: {
           category: [label],
         },
