@@ -32,20 +32,18 @@ const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
             {items.map((item: any) => (
               <Menu.Item key={item.label}>
                 {({ active }) => (
-                  <Link href={createURL(item.value)}>
-                    <a
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2"
-                      )}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        refine(item.value);
-                      }}
-                    >
-                      {item.label.split(", Canada")[0]}
-                    </a>
-                  </Link>
+                  <button
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2"
+                    )}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      refine(item.value);
+                    }}
+                  >
+                    {item.label.split(", Canada")[0]}
+                  </button>
                 )}
               </Menu.Item>
             ))}
