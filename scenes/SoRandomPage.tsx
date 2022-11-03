@@ -50,13 +50,13 @@ const SoRandomPage = () => {
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-14 lg:pt-10">
         <a
           className="group relative inline-flex self-start transition duration-150"
-          href="https://www.instagram.com/p/CkJLJBSjE0d/"
+          href="https://www.instagram.com/reel/CkgQlCmjMMV/?igshid=YmMyMTA2M2Y="
           rel="noreferrer"
           target="_blank"
         >
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg grayscale-[.6] group-hover:grayscale lg:-mt-10">
             <Image
-              src="/test_ig.jpg"
+              src="/test_ig.jpeg"
               alt="Screenshot of SoPlugged's latest Instagram post"
               objectFit="cover"
               layout="fill"
