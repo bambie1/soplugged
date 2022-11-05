@@ -112,7 +112,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
           <div className={styles.contactForm}>
-            <ContactForm businessEmail={creator?.email || ""} />
+            <ContactForm
+              businessEmail={creator?.email || ""}
+              businessName={business_name}
+            />
           </div>
           {hasContactLinks && <SocialLinks business={business} />}
           <div className="grid gap-2 overflow-hidden">
@@ -145,7 +148,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
         {verified && (
           <>
             <div className={styles.contactForm}>
-              <ContactForm businessEmail={creator?.email || ""} />
+              <ContactForm
+                businessEmail={creator?.email || ""}
+                businessName={business_name}
+              />
             </div>
             <div className={styles.buttonGroup}>
               {/* <FavoriteButton business={business} /> */}

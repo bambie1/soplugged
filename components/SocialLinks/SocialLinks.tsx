@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { usePlausible } from "next-plausible";
 
 import styles from "./SocialLinks.module.scss";
 
+import { MyEvents } from "@/types/Plausible";
+
 const SocialLinks = ({ business }: any) => {
   const { ig_handle, phone_number, business_url } = business;
+  const plausible = usePlausible<MyEvents>();
 
   return (
     <div className={styles.wrapper}>
@@ -14,6 +18,14 @@ const SocialLinks = ({ business }: any) => {
           title="Instagram page"
           className={`${styles.icons} iconButton`}
           aria-label="Instagram icon"
+          onClick={() =>
+            plausible("Impression on business page", {
+              props: {
+                Type: "Instagram",
+                Business: business.business_name,
+              },
+            })
+          }
         >
           <a
             aria-label="instagram page"
@@ -31,6 +43,14 @@ const SocialLinks = ({ business }: any) => {
           title="Phone number"
           className={`${styles.icons} iconButton`}
           aria-label="Phone icon"
+          onClick={() =>
+            plausible("Impression on business page", {
+              props: {
+                Type: "Phone",
+                Business: business.business_name,
+              },
+            })
+          }
         >
           <a aria-label="call business" href={`tel:${phone_number}`}>
             <FontAwesomeIcon icon={faPhone} />
@@ -45,6 +65,14 @@ const SocialLinks = ({ business }: any) => {
             title="Website"
             className={`${styles.icons} iconButton`}
             aria-label="Website icon"
+            onClick={() =>
+              plausible("Impression on business page", {
+                props: {
+                  Type: "Website",
+                  Business: business.business_name,
+                },
+              })
+            }
           >
             <a
               aria-label="website url"

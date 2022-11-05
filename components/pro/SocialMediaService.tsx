@@ -1,10 +1,10 @@
 import { usePlausible } from "next-plausible";
 import Link from "next/link";
 
-import { ProCTAType } from "@/types/Plausible";
+import { MyEvents } from "@/types/Plausible";
 
 const SocialMediaService = () => {
-  const plausible = usePlausible();
+  const plausible = usePlausible<MyEvents>();
 
   return (
     <div className="relative bg-gradient-to-b from-white via-accent/20 to-white">
@@ -39,8 +39,8 @@ const SocialMediaService = () => {
               <a
                 className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg"
                 onClick={() =>
-                  plausible("Book consult CTA", {
-                    props: { position: "Social media" } as ProCTAType,
+                  plausible("Pro page consult", {
+                    props: { Position: "Social media" },
                   })
                 }
               >

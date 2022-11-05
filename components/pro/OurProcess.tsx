@@ -1,7 +1,7 @@
 import { usePlausible } from "next-plausible";
 
 import { ButtonLink } from "@/styled/ButtonLink";
-import { ProCTAType } from "@/types/Plausible";
+import { MyEvents } from "@/types/Plausible";
 
 const steps = [
   {
@@ -22,7 +22,7 @@ const steps = [
 ];
 
 const OurProcess = () => {
-  const plausible = usePlausible();
+  const plausible = usePlausible<MyEvents>();
 
   return (
     <div
@@ -73,8 +73,8 @@ const OurProcess = () => {
         variant="outlined"
         showArrow
         onClick={() =>
-          plausible("Book consult CTA", {
-            props: { position: "Our process" } as ProCTAType,
+          plausible("Pro page consult", {
+            props: { Position: "Our process" },
           })
         }
       >

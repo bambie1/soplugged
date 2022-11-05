@@ -2,7 +2,7 @@ import { usePlausible } from "next-plausible";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
-import { ProCTAType } from "@/types/Plausible";
+import { MyEvents } from "@/types/Plausible";
 
 const packages = {
   customWebsite: {
@@ -37,7 +37,7 @@ const defaultMonthlyPrice =
   packages.customWebsite.monthlyPrice + packages.socialMedia.monthlyPrice;
 
 const Pricing = () => {
-  const plausible = usePlausible();
+  const plausible = usePlausible<MyEvents>();
   const [fixedCost, setFixedCost] = useState(defaultFixedPrice);
   const [monthlyCost, setMonthlyCost] = useState(defaultMonthlyPrice);
 
@@ -153,8 +153,8 @@ const Pricing = () => {
                       <a
                         className="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium"
                         onClick={() =>
-                          plausible("Book consult CTA", {
-                            props: { position: "Pricing" } as ProCTAType,
+                          plausible("Pro page consult", {
+                            props: { Position: "Pricing" },
                           })
                         }
                       >

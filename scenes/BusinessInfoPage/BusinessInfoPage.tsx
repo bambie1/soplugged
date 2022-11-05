@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faPen } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@reach/tooltip";
+import { usePlausible } from "next-plausible";
 
 import { BusinessCard } from "@/components/BusinessCard";
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -13,6 +14,7 @@ import { Button } from "@/styled/Button";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessInfoPage.module.scss";
+import { MyEvents } from "@/types/Plausible";
 
 interface Props {
   business: IBusiness | null;
@@ -21,6 +23,7 @@ interface Props {
 const BusinessInfoPage: FC<Props> = ({ business }) => {
   const router = useRouter();
   const { data: session } = useSession();
+  const plausible = usePlausible<MyEvents>();
 
   const hasLogo = !!business && business.logo_url !== "";
   const hasGoodDescription =
@@ -33,6 +36,12 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   const percentage = (7 + suggestionsCount) * 10;
 
   const suggestionHandler = (step: number) => {
+    plausible("Edit your business", {
+      props: {
+        "Business name": business?.business_name!,
+        "From suggestion": true,
+      },
+    });
     router.push(`/my-business?start=${step}`);
   };
 
@@ -98,6 +107,13 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
                 href="/my-business?start=0"
                 variant="outlined"
                 showArrow
+                onClick={() =>
+                  plausible("Add your business", {
+                    props: {
+                      User: session?.user?.name!,
+                    },
+                  })
+                }
               >
                 Add your business
               </ButtonLink>
@@ -116,7 +132,17 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
               </h3>
 
               <Link href="/my-business">
-                <a className="text-primary">
+                <a
+                  className="text-primary"
+                  onClick={() =>
+                    plausible("Edit your business", {
+                      props: {
+                        "Business name": business?.business_name!,
+                        "From suggestion": false,
+                      },
+                    })
+                  }
+                >
                   <FontAwesomeIcon
                     icon={faPen}
                     className="mr-1 h-1"

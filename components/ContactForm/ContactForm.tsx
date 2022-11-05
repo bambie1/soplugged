@@ -4,7 +4,9 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { signIn, useSession } from "next-auth/react";
+import { usePlausible } from "next-plausible";
 
+import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
 import TextArea from "@/styled/TextArea/TextArea";
@@ -18,10 +20,12 @@ interface IFormInput {
 
 interface Props {
   businessEmail: string;
+  businessName: string;
 }
 
-const ContactForm: FC<Props> = ({ businessEmail }) => {
+const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
   const { data: session } = useSession();
+  const plausible = usePlausible<MyEvents>();
 
   const [messageSent, setMessageSent] = useState(false);
   const {
@@ -59,7 +63,18 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
   const renderButton = () => {
     if (session?.user?.email)
       return (
-        <Button type="submit" disabled={disabled}>
+        <Button
+          type="submit"
+          disabled={disabled}
+          onClick={() =>
+            plausible("Impression on business page", {
+              props: {
+                Type: "Contact",
+                Business: businessName,
+              },
+            })
+          }
+        >
           Send Message
         </Button>
       );

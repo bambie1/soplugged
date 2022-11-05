@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import { usePlausible } from "next-plausible";
 
-import { ProCTAType } from "@/types/Plausible";
+import { MyEvents } from "@/types/Plausible";
 
 const features = [
   { title: "brand" },
@@ -12,7 +12,7 @@ const features = [
 ];
 
 const ProHero: FC = () => {
-  const plausible = usePlausible();
+  const plausible = usePlausible<MyEvents>();
   const [textIndex, setTextIndex] = useState(0);
 
   const renderLearnMore = () => (
@@ -53,8 +53,8 @@ const ProHero: FC = () => {
               <a
                 className="rounded-md bg-black px-4 py-3 text-lg text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 xl:py-4 xl:px-5 xl:text-xl"
                 onClick={() =>
-                  plausible("Book consult CTA", {
-                    props: { position: "Hero" } as ProCTAType,
+                  plausible("Pro page consult", {
+                    props: { Position: "Hero" },
                   })
                 }
               >
