@@ -59,7 +59,7 @@ const FilterByLocation = () => {
             Our mission is to connect you with the best black-owned businesses
             in your city and around Canada.
           </p>
-          <ButtonLink href="/search" showArrow variant="outlined">
+          <ButtonLink href="/search/all" showArrow variant="outlined">
             Explore businesses
           </ButtonLink>
         </div>

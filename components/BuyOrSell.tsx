@@ -7,7 +7,7 @@ const cardInfo = [
     title: "I'm looking for a black-owned business",
     text: "Discover all businesses",
     linkText: "Explore",
-    href: "/search",
+    href: "/search/all",
   },
   {
     number: 2,

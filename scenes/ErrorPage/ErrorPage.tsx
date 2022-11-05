@@ -24,7 +24,7 @@ const ErrorPage = () => {
             <br /> In the meantime, please checkout our other pages:
           </p>
 
-          <ButtonLink href="/search" variant="outlined">
+          <ButtonLink href="/search/all" variant="outlined">
             Visit Directory
           </ButtonLink>
           <ButtonLink href="/" variant="text">

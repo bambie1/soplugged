@@ -64,13 +64,6 @@ export const createURL = (state: SearchState) => {
     state.menu &&
     state.menu.category.length === 0;
 
-  if (isDefaultRoute) {
-    return "";
-  }
-
-  const categoryPath = state?.menu?.category
-    ? `${getCategorySlug(state.menu.category)}/`
-    : "";
   const queryParameters = {} as any;
 
   if (state.query) {
@@ -87,6 +80,14 @@ export const createURL = (state: SearchState) => {
     addQueryPrefix: true,
     arrayFormat: "repeat",
   });
+
+  if (isDefaultRoute) {
+    return `/search/${queryString}`;
+  }
+
+  const categoryPath = state?.menu?.category
+    ? `${getCategorySlug(state.menu.category)}/`
+    : "";
 
   const url = `/search/${categoryPath}${queryString}`;
 

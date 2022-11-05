@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+import qs from "qs";
 import { useEffect, useState, useRef } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -19,9 +21,10 @@ import { CustomRefinements } from "@/components/algolia-old/CustomRefinements";
 import CustomMenu from "@/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/components/algolia/CustomStateResults";
 import { SEO } from "@/components/SEO";
-import { Footer } from "@/components/Footer";
-import Header from "@/components/Header/Header";
 import { createURL, getCategoryName } from "@/utils/algolia";
+
+const Header = dynamic(() => import("../../components/Header/Header"));
+const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const VirtualSearchBox = connectSearchBox(() => null);
 
@@ -41,17 +44,18 @@ const urlToSearchState = ({ search, pathname }: any) => {
     (pathnameMatches && pathnameMatches[1]) || ""
   );
 
-  // const { page = 1 } = qs.parse(search?.slice(1));
+  const { page = 1, city = "" } =
+    typeof search === "string" ? qs.parse(search?.slice(1)) : search;
 
   const isDefault = category === "all";
 
   const newState = {
-    // page,
+    page,
     menu: {
       category: !isDefault
         ? decodeURIComponent(getCategoryName(category as string))
         : "",
-      // business_location: decodedCategories()
+      business_location: city,
     },
   };
 
@@ -71,22 +75,27 @@ export default function Page(props: {
   const router = useRouter();
   const debouncedSetState = useRef();
 
+  const isBrowser = typeof window !== "undefined";
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log(window.location);
-      setSearchState(urlToSearchState(window.location));
+    if (isBrowser) {
+      const urlToState = urlToSearchState(window.location);
+      setSearchState(urlToState);
     }
-  }, [router]);
+  }, [router, isBrowser]);
+
+  let filteredLocation = searchState?.menu?.business_location || null;
+  if (Array.isArray(filteredLocation)) filteredLocation = filteredLocation[0];
 
   return (
     <>
+      (
       <SEO
         title={`${
-          searchState.menu?.category || "Discover all"
+          (isBrowser && searchState.menu?.category) || "Discover all"
         } businesses | SoPlugged`}
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
-
       <Header />
       <main className="mb-16 min-h-screen pt-12">
         <div className="flex flex-col items-center">
@@ -95,7 +104,7 @@ export default function Page(props: {
               {searchState.menu?.category || "Explore"}
             </h1>
             <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
-              Businesses in Canada
+              Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
             </span>
           </div>
 
@@ -128,7 +137,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   resolvedUrl,
 }) => {
-  console.log({ query });
   const searchState = urlToSearchState({
     pathname: resolvedUrl,
     search: query,
