@@ -5,7 +5,7 @@ interface IObjectKeys {
   [key: string]: string;
 }
 
-const encodedCategories: IObjectKeys = {
+export const encodedCategories: IObjectKeys = {
   art: "Art",
   "baking-and-catering": "Baking / Catering",
   "coaching-tutoring": "Coaching / Tutoring",
