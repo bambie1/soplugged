@@ -108,9 +108,9 @@ export default function Page(props: {
     <>
       <SEO
         title={`${
-          props.searchState.menu?.category &&
-          !props.searchState.menu?.category.includes("?")
-            ? props.searchState.menu?.category
+          props.searchState?.menu?.category &&
+          !props.searchState?.menu?.category.includes("?")
+            ? props.searchState?.menu?.category
             : "Discover all"
         } businesses | SoPlugged`}
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
@@ -120,7 +120,7 @@ export default function Page(props: {
         <div className="flex flex-col items-center">
           <div className="my-container mb-8 flex flex-col items-center ">
             <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
-              {searchState.menu?.category || "Explore"}
+              {props.searchState?.menu?.category || "Explore"}
             </h1>
             <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
               Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
@@ -138,7 +138,7 @@ export default function Page(props: {
               debouncedSetState.current = setTimeout(() => {
                 const href = searchStateToURL(nextSearchState) || "/search/all";
 
-                router.push(href, href, { shallow: true });
+                router.push(href, href);
               }, updateAfter);
 
               setSearchState(nextSearchState);
