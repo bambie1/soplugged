@@ -91,7 +91,10 @@ export default function Page(props: {
     <>
       <SEO
         title={`${
-          (isBrowser && searchState.menu?.category) || "Discover all"
+          searchState.menu?.category &&
+          !searchState.menu?.category.includes("?")
+            ? searchState.menu?.category
+            : "Discover all"
         } businesses | SoPlugged`}
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
