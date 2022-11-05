@@ -89,7 +89,6 @@ export default function Page(props: {
 
   return (
     <>
-      (
       <SEO
         title={`${
           (isBrowser && searchState.menu?.category) || "Discover all"
