@@ -1,6 +1,7 @@
 import { usePlausible } from "next-plausible";
 import Link from "next/link";
 import Image from "next/image";
+import { ProCTAType } from "@/types/Plausible";
 
 const CustomWebsiteService = () => {
   const plausible = usePlausible();
@@ -45,10 +46,17 @@ const CustomWebsiteService = () => {
             </ul>
           </section>
           <div className="mt-10 flex flex-wrap ">
-            <Link href="#book-consult">
+            <Link
+              href="#book-consult"
+              data-analytics='"Book consult CTA", {"props":{"position":"Custom website"}}'
+            >
               <a
                 className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg"
-                onClick={() => plausible("Book consult CTA")}
+                onClick={() =>
+                  plausible("Book consult CTA", {
+                    props: { position: "Custom website" } as ProCTAType,
+                  })
+                }
               >
                 Book a FREE consultation
               </a>

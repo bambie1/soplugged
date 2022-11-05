@@ -2,6 +2,8 @@ import { usePlausible } from "next-plausible";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
+import { ProCTAType } from "@/types/Plausible";
+
 const packages = {
   customWebsite: {
     name: "customWebsite",
@@ -150,7 +152,11 @@ const Pricing = () => {
                     <Link href="#book-consult">
                       <a
                         className="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium"
-                        onClick={() => plausible("Book consult CTA")}
+                        onClick={() =>
+                          plausible("Book consult CTA", {
+                            props: { position: "Pricing" } as ProCTAType,
+                          })
+                        }
                       >
                         Book a consult
                       </a>

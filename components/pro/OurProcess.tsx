@@ -1,6 +1,7 @@
 import { usePlausible } from "next-plausible";
 
 import { ButtonLink } from "@/styled/ButtonLink";
+import { ProCTAType } from "@/types/Plausible";
 
 const steps = [
   {
@@ -71,7 +72,11 @@ const OurProcess = () => {
         href="#book-consult"
         variant="outlined"
         showArrow
-        onClick={() => plausible("Book consult CTA")}
+        onClick={() =>
+          plausible("Book consult CTA", {
+            props: { position: "Our process" } as ProCTAType,
+          })
+        }
       >
         Get started
       </ButtonLink>

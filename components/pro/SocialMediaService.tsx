@@ -1,6 +1,8 @@
 import { usePlausible } from "next-plausible";
 import Link from "next/link";
 
+import { ProCTAType } from "@/types/Plausible";
+
 const SocialMediaService = () => {
   const plausible = usePlausible();
 
@@ -36,7 +38,11 @@ const SocialMediaService = () => {
             <Link href="#book-consult">
               <a
                 className="rounded-md bg-black px-4 py-3 text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg"
-                onClick={() => plausible("Book consult CTA")}
+                onClick={() =>
+                  plausible("Book consult CTA", {
+                    props: { position: "Social media" } as ProCTAType,
+                  })
+                }
               >
                 Book a FREE consultation
               </a>
