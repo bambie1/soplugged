@@ -71,7 +71,7 @@ const GuidelinesPage: FC = () => {
         </div>
         <br />
         <div className="flex gap-4">
-          <ButtonLink href="/search" variant="filled">
+          <ButtonLink href="/search/all" variant="filled">
             Begin your search
           </ButtonLink>
           <ButtonLink href="/my-business" variant="outlined">

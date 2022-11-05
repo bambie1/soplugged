@@ -31,7 +31,7 @@ const OurStoryPage = () => {
             </p>
           </div>
           <div className="mt-8">
-            <ButtonLink href="/search" variant="outlined" showArrow>
+            <ButtonLink href="/search/all" variant="outlined" showArrow>
               Visit our directory
             </ButtonLink>
           </div>

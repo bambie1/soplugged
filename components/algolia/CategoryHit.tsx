@@ -3,9 +3,9 @@ import { createURL } from "@/utils/algolia";
 export function CategoryHit({ hit, components }: any) {
   return (
     <a
-      href={`/search${createURL({
+      href={`${createURL({
         menu: {
-          category: [hit.name],
+          category: hit.name,
         },
       })}`}
       className="aa-ItemLink"

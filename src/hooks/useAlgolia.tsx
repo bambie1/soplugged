@@ -5,16 +5,16 @@ import { createURL } from "@/utils/algolia";
 const useAlgolia = () => {
   const handleCategoryClick = (label: string) => {
     router.push(
-      `/search${createURL({
+      `${createURL({
         menu: {
-          category: [label],
+          category: label,
         },
       })}`
     );
   };
 
   const handleLocationClick = (label: string) => {
-    const url = `/search${createURL({
+    const url = `${createURL({
       menu: {
         business_location: label,
       },
@@ -24,9 +24,9 @@ const useAlgolia = () => {
   };
 
   const handleCategoryAndLocation = (category: string, location: string) => {
-    const url = `/search${createURL({
+    const url = `${createURL({
       menu: {
-        category: [category],
+        category,
         business_location: location,
       },
     })}`;

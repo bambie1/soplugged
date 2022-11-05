@@ -1,14 +1,11 @@
-import { FC, useState } from "react";
-import Link from "next/link";
+import { FC } from "react";
 import { connectMenu } from "react-instantsearch-dom";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classNames from "classnames";
 
-const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
-  const [hide, setHide] = useState(true);
-
+const CustomMenu: FC = ({ items, refine }: any) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -32,20 +29,18 @@ const CustomMenu: FC = ({ items, isFromSearch, refine, createURL }: any) => {
             {items.map((item: any) => (
               <Menu.Item key={item.label}>
                 {({ active }) => (
-                  <Link href={createURL(item.value)}>
-                    <a
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2"
-                      )}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        refine(item.value);
-                      }}
-                    >
-                      {item.label.split(", Canada")[0]}
-                    </a>
-                  </Link>
+                  <button
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block w-full px-4 py-2 text-left"
+                    )}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      refine(item.value);
+                    }}
+                  >
+                    {item.label.split(", Canada")[0]}
+                  </button>
                 )}
               </Menu.Item>
             ))}

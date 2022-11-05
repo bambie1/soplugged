@@ -76,9 +76,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const handleCategoryClick = () => {
     router.push(
-      `/search${createURL({
+      `${createURL({
         menu: {
-          category: [category],
+          category,
         },
       })}`
     );
@@ -86,9 +86,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const handleLocationClick = () => {
     router.push(
-      `/search${createURL({
+      `${createURL({
         menu: {
-          business_location: [business_location],
+          business_location,
         },
       })}`
     );

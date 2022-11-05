@@ -91,7 +91,7 @@ export const categories = [
   },
   {
     value: "maintenance-repair",
-    label: "Maintenance/Repair Services ",
+    label: "Maintenance/Repair Services",
     imageSrc: "/images/tools.png",
     tags: "automotive, plumbing, electrical, carpentry, woodwork, home rennovation, cleaning, furniture assembly, handyman, housekeeping",
   },

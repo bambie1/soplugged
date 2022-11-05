@@ -83,7 +83,7 @@ const HomePage = () => {
                 Black-owned businesses in one place, right at your fingertips.
               </p>
 
-              <ButtonLink href="/search" variant="outlined" showArrow>
+              <ButtonLink href="/search/all" variant="outlined" showArrow>
                 Explore businesses
               </ButtonLink>
             </div>

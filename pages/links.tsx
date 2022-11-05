@@ -15,7 +15,7 @@ import {
 const linksArray = [
   {
     title: "Find black-owned businesses",
-    href: "/search",
+    href: "/search/all",
     icon: (
       <SearchIcon
         className="h-6 w-6 flex-shrink-0 text-primary/70"
