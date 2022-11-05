@@ -120,7 +120,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
             </div>
             <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
               <div className="w-full max-w-sm lg:mr-4">
-                {router.asPath.startsWith("/search/all") && <Searchbar />}
+                {router.asPath.startsWith("/search") && <Searchbar />}
               </div>
             </div>
             <ButtonLink href={currentNav.cta.link} variant="text" showArrow>
