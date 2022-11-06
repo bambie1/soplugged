@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import qs from "qs";
 import { useEffect, useState, useRef } from "react";
-import type { GetServerSideProps } from "next";
+import type { GetStaticPathsResult, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import algoliasearch from "algoliasearch/lite";
 import { findResultsState } from "react-instantsearch-dom/server";
@@ -21,7 +21,7 @@ import { CustomRefinements } from "@/components/algolia-old/CustomRefinements";
 import CustomMenu from "@/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/components/algolia/CustomStateResults";
 import { SEO } from "@/components/SEO";
-import { createURL, getCategoryName } from "@/utils/algolia";
+import { createURL, getCategoryName, encodedCategories } from "@/utils/algolia";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
@@ -38,24 +38,38 @@ const searchClient = algoliasearch(
 const searchStateToURL = (searchState: SearchState) =>
   searchState ? createURL(searchState) : "";
 
-const urlToSearchState = ({ search, pathname }: any) => {
-  const pathnameMatches = pathname.match(/search\/(.*?)\/?$/);
-  const category = getCategoryName(
-    (pathnameMatches && pathnameMatches[1]) || ""
-  );
-
-  const { page = 1, city = "" } =
-    typeof search === "string" ? qs.parse(search?.slice(1)) : search;
-
+const urlToSearchState = ({
+  urlCategory,
+  search,
+}: {
+  urlCategory: string;
+  search?: string;
+}) => {
+  const category = getCategoryName(urlCategory || "");
   const isDefault = category === "all";
 
+  if (search) {
+    const { page = 1, city = "" } =
+      typeof search === "string" ? qs.parse(search?.slice(1)) : search;
+
+    const newState = {
+      page,
+      menu: {
+        category: !isDefault
+          ? decodeURIComponent(getCategoryName(category as string))
+          : "",
+        business_location: city,
+      },
+    };
+
+    return newState as SearchState;
+  }
+
   const newState = {
-    page,
     menu: {
       category: !isDefault
         ? decodeURIComponent(getCategoryName(category as string))
         : "",
-      business_location: city,
     },
   };
 
@@ -79,7 +93,10 @@ export default function Page(props: {
 
   useEffect(() => {
     if (isBrowser) {
-      const urlToState = urlToSearchState(window.location);
+      const urlToState = urlToSearchState({
+        urlCategory: window.location.pathname?.split("/search/")?.[1],
+        search: window.location.search,
+      });
       setSearchState(urlToState);
     }
   }, [router, isBrowser]);
@@ -91,9 +108,9 @@ export default function Page(props: {
     <>
       <SEO
         title={`${
-          props.searchState.menu?.category &&
-          !props.searchState.menu?.category.includes("?")
-            ? props.searchState.menu?.category
+          props.searchState?.menu?.category &&
+          !props.searchState?.menu?.category.includes("?")
+            ? props.searchState?.menu?.category
             : "Discover all"
         } businesses | SoPlugged`}
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
@@ -103,7 +120,7 @@ export default function Page(props: {
         <div className="flex flex-col items-center">
           <div className="my-container mb-8 flex flex-col items-center ">
             <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
-              {searchState.menu?.category || "Explore"}
+              {props.searchState?.menu?.category || "Explore"}
             </h1>
             <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
               Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
@@ -121,7 +138,7 @@ export default function Page(props: {
               debouncedSetState.current = setTimeout(() => {
                 const href = searchStateToURL(nextSearchState) || "/search/all";
 
-                router.push(href, href, { shallow: true });
+                router.push(href, href);
               }, updateAfter);
 
               setSearchState(nextSearchState);
@@ -135,13 +152,33 @@ export default function Page(props: {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  resolvedUrl,
-}) => {
+type Params = {
+  category: string;
+};
+
+export function getStaticPaths(): GetStaticPathsResult<Params> {
+  return {
+    paths: [
+      ...Object.keys(encodedCategories)
+        .slice(0, 19)
+        .map((category) => ({ params: { category } })),
+      { params: { category: "all" } },
+    ],
+    fallback: true,
+  };
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (typeof params?.category !== "string")
+    return {
+      redirect: {
+        destination: "/search/all",
+        permanent: false,
+      },
+    };
+
   const searchState = urlToSearchState({
-    pathname: resolvedUrl,
-    search: query,
+    urlCategory: params?.category || "",
   });
   const resultsState = await findResultsState(App as any, {
     ...DEFAULT_PROPS,
@@ -153,6 +190,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       resultsState: JSON.parse(JSON.stringify(resultsState)),
       searchState,
     },
+    revalidate: 5 * 60 * 60,
   };
 };
 

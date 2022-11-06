@@ -9,7 +9,7 @@ const Searchbar = dynamic(() => import("./algolia/Searchbar"));
 
 const popularSearches = [
   { title: "Hair", category: "Hair / Beauty" },
-  { title: "Catering", category: "Food / Catering" },
+  { title: "Catering", category: "Baking / Catering" },
   { title: "Fashion", category: "Fashion" },
 ];
 
