@@ -73,6 +73,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
           noHelper
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
+          autoFocus
         />
         <Button type="submit" disabled={!userEmail}>
           Sign in with Email
