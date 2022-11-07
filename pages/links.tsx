@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 import { SEO } from "@/components/SEO";
 import {
@@ -11,6 +10,8 @@ import {
   StarIcon,
   VideoCameraIcon,
 } from "@heroicons/react/outline";
+import Header from "@/components/Header/Header";
+import { Footer } from "@/components/Footer";
 
 const linksArray = [
   {
@@ -18,8 +19,8 @@ const linksArray = [
     href: "/search/all",
     icon: (
       <SearchIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -28,8 +29,8 @@ const linksArray = [
     href: "/my-business",
     icon: (
       <PlusIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -38,8 +39,8 @@ const linksArray = [
     href: "/pro",
     icon: (
       <StarIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -48,8 +49,8 @@ const linksArray = [
     href: "/so-random",
     icon: (
       <VideoCameraIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -58,8 +59,8 @@ const linksArray = [
     href: "/blog",
     icon: (
       <PencilIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -68,8 +69,8 @@ const linksArray = [
     href: "/sponsors",
     icon: (
       <HeartIcon
-        className="h-6 w-6 flex-shrink-0 text-primary/70"
-        strokeWidth={0.5}
+        className="h-6 w-6 flex-shrink-0 text-primary"
+        strokeWidth={0.75}
       />
     ),
   },
@@ -83,24 +84,20 @@ const Links: FC = () => {
         title="SoPlugged | Discover black-owned businesses in Canada"
       />
 
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-secondary/50 px-4">
+      <Header />
+      <div className="flex min-h-screen flex-col items-center justify-center px-4">
         <div className="mx-auto mt-10 flex max-w-3xl flex-1 flex-col items-center py-10">
-          <Link href="/">
-            <a className="mb-10 flex flex-shrink-0 items-center">
-              <Image
-                src="/logos/circled-brown.svg"
-                alt="SoPlugged Logo"
-                width={80}
-                height={80}
-              />
-            </a>
-          </Link>
-
-          <ul className="mb-20 grid gap-5 divide-y divide-secondary">
+          <h1 className="text-3xl font-bold text-primary lg:text-4xl">
+            <span className="relative text-primary">
+              Welcome to SoPlugged
+              <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
+            </span>{" "}
+          </h1>
+          <ul className="mb-20 mt-10 grid gap-5">
             {linksArray.map(({ title, href, icon }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="mt-5 flex items-center gap-2 text-xl transition duration-150 hover:font-medium">
+                  <a className="group relative mt-5 flex items-center gap-2 overflow-hidden rounded-md border border-primary/40 p-4 text-xl shadow-md transition duration-150 hover:border-primary hover:shadow-none">
                     {icon}
                     {title}
                   </a>
@@ -108,9 +105,9 @@ const Links: FC = () => {
               </li>
             ))}
           </ul>
-          <footer className="mt-auto text-gray-600">Copyright. 2022</footer>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
