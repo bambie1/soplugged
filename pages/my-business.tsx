@@ -1,21 +1,39 @@
-import type {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { getSession } from "next-auth/react";
 import Script from "next/script";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
 
 const MyBusinessPage = dynamic(
   () => import("../scenes/MyBusinessPage/MyBusinessPage")
 );
+const SignInModal = dynamic(() => import("../components/SignInModal"));
+const MyBusinessSkeleton = dynamic(
+  () => import("../scenes/MyBusinessPage/MyBusinessSkeleton")
+);
 
-const MyBusiness: NextPage<
-  InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ business }) => {
+const MyBusiness: NextPage = () => {
+  const { data: session, status } = useSession();
+  const { data: business, error } = useSWR("/api/user/getBusiness");
+
+  const isLoading = status === "loading";
+
+  const renderPage = () => {
+    if (business === undefined || isLoading) return <MyBusinessSkeleton />;
+    if (!session?.user)
+      return (
+        <>
+          <MyBusinessSkeleton />
+          <SignInModal />
+        </>
+      );
+
+    if (error) return <MyBusinessPage business={null} />;
+    return <MyBusinessPage business={business} />;
+  };
+
   return (
     <>
       <SEO
@@ -23,53 +41,10 @@ const MyBusiness: NextPage<
         title="My Business | SoPlugged"
       />
 
-      <MyBusinessPage business={business} />
+      {renderPage()}
       <Script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqMtZjTrCMfn7U4OHk00_wte02pcuaHs&libraries=places" />
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
-
-  if (!session?.user) {
-    return {
-      redirect: {
-        destination: "/join",
-        permanent: false,
-      },
-    };
-  }
-
-  try {
-    const fetchPromise = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "User-Email": session.user.email!,
-          "Super-Secret-Key": process.env.NEXT_SERVER_SECRET!,
-        },
-      }
-    );
-    const businesses = await fetchPromise.json();
-
-    if (!businesses[0]) throw new Error("no business found");
-
-    return {
-      props: {
-        business: businesses[0],
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        business: null,
-      },
-    };
-  }
 };
 
 export default MyBusiness;

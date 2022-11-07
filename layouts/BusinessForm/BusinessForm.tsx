@@ -1,13 +1,14 @@
 import { FC } from "react";
 
 import { useBusinessFormContext } from "@/context/businessFormContext";
+import Skeleton from "@/components/skeletons/Skeleton";
 
 interface Props {
   skeleton?: boolean;
   business?: any;
 }
 
-const BusinessForm: FC<Props> = ({ children, business }) => {
+const BusinessForm: FC<Props> = ({ children, business, skeleton }) => {
   const { currentStep, formSteps, agreementSigned } = useBusinessFormContext();
 
   const step = formSteps[currentStep];
@@ -35,6 +36,13 @@ const BusinessForm: FC<Props> = ({ children, business }) => {
   };
 
   const renderStepInfo = () => {
+    if (skeleton)
+      return (
+        <div className="flex justify-center">
+          <Skeleton type="title" />
+        </div>
+      );
+
     return (
       <>
         <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
@@ -55,7 +63,7 @@ const BusinessForm: FC<Props> = ({ children, business }) => {
       <div className="relative flex min-h-screen flex-col md:hidden">
         <div className="absolute top-0 left-0 -z-[1] h-1/3 w-full bg-gradient-to-b from-secondary/40"></div>
         <div className="px-4 pt-10 pb-10 lg:pt-24">{renderStepInfo()}</div>
-        <div className="pb-20">{children}</div>
+        <div className={`${skeleton && "px-2"} pb-20`}>{children}</div>
       </div>
 
       {/* tablet+ view */}
