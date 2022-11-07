@@ -1,18 +1,23 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import useSWR from "swr";
-import { getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import { BusinessInfoPage } from "@/scenes/BusinessInfoPage";
 import BusinessInfoSkeleton from "@/scenes/BusinessInfoPage/BusinessInfoSkeleton";
 import { SEO } from "@/components/SEO";
 import DashboardPage from "@/scenes/DashboardPage";
+import UnauthDashboardView from "@/scenes/BusinessInfoPage/UnauthDashboardView";
 
 const DashboardHome: NextPage = () => {
+  const { data: session, status } = useSession();
   const { data: business, error } = useSWR("/api/user/getBusiness");
 
+  const isLoading = status === "loading";
+
   const renderPage = () => {
+    if (business === undefined || isLoading) return <BusinessInfoSkeleton />;
+    if (!session?.user) return <UnauthDashboardView />;
     if (error) return <BusinessInfoPage business={null} />;
-    if (business === undefined) return <BusinessInfoSkeleton />;
     return <BusinessInfoPage business={business} />;
   };
 
@@ -25,22 +30,6 @@ const DashboardHome: NextPage = () => {
       <DashboardPage>{renderPage()}</DashboardPage>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
-
-  if (!session?.user?.email)
-    return {
-      redirect: {
-        destination: "/join",
-        permanent: false,
-      },
-    };
-
-  return {
-    props: {},
-  };
 };
 
 export default DashboardHome;

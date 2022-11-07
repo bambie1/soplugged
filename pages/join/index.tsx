@@ -1,10 +1,16 @@
+import { useRouter } from "next/router";
 import type { GetServerSideProps, NextPage } from "next";
-import { getCsrfToken, getSession } from "next-auth/react";
+import { getCsrfToken, useSession } from "next-auth/react";
 
 import { SEO } from "@/components/SEO";
 import JoinPage from "@/scenes/JoinPage";
 
 const Join: NextPage = (props) => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  if (session?.user) router.push("/dashboard");
+
   return (
     <>
       <SEO
@@ -18,16 +24,6 @@ const Join: NextPage = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const csrfToken = await getCsrfToken(context);
-
-  const session = await getSession({ req: context.req });
-
-  if (session?.user?.email)
-    return {
-      redirect: {
-        destination: "/dashboard",
-        permanent: false,
-      },
-    };
 
   return {
     props: { csrfToken },
