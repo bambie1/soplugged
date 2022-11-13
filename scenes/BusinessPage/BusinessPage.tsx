@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { useWindowSize } from "@reach/window-size";
@@ -7,13 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfoCircle,
   faMapMarkerAlt,
-  faPen,
   faShapes,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/styled/Button";
 import { SocialLinks } from "@/components/SocialLinks";
-import { Footer } from "@/components/Footer";
 import Avatar from "@/components/Avatar/Avatar";
 import { IBusiness } from "@/types/Business";
 
@@ -21,6 +18,7 @@ import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
+const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
 const ContactForm = dynamic(
   () => import("../../components/ContactForm/ContactForm")
@@ -38,11 +36,6 @@ interface Props {
 
 const BusinessPage: FC<Props> = ({ business }) => {
   const { width } = useWindowSize();
-  const { user } = {
-    user: {
-      email: "",
-    },
-  };
 
   const router = useRouter();
   const {
@@ -211,16 +204,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
               <Button>Let us know</Button>
             </a>
           </div>
-        )}
-
-        {user?.email === creator?.email && (
-          <Link href="/my-business?start=0">
-            <a>
-              <button className={`iconButton ${styles.editButton}`}>
-                <FontAwesomeIcon icon={faPen} />
-              </button>
-            </a>
-          </Link>
         )}
       </main>
       <Footer />

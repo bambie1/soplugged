@@ -74,7 +74,7 @@ const Review = () => {
         </span>
         <div
           dangerouslySetInnerHTML={{ __html: business_description }}
-          className="text-ellipsis text-sm text-gray-500 lg:text-base"
+          className="text-sm text-gray-500 lg:mt-2 lg:max-h-[20rem] lg:overflow-y-auto lg:rounded-lg lg:border lg:border-gray-300 lg:p-3 lg:text-base"
         ></div>
       </div>
 

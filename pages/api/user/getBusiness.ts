@@ -26,8 +26,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (fetchPromise.status > 250) res.status(200).json(null);
     else {
       const businesses = await fetchPromise.json();
+      const resBusiness = !!businesses.length ? businesses[0] : null;
 
-      res.status(200).json(businesses[0]);
+      res.status(200).json(resBusiness);
     }
   } catch (err: any) {
     res.status(500).json({ statusCode: 500, message: err.message });
