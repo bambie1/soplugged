@@ -91,7 +91,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderFullView = () => (
     <section className={styles.fullView}>
-      <div className={styles.infoBlock}>
+      <div>
         <ReactImageGallery items={images} showPlayButton={false} />
 
         <div>
@@ -116,7 +116,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
           {hasContactLinks && <SocialLinks business={business} />}
           <div className="grid gap-2 overflow-hidden">
-            {/* <FavoriteButton business={business} /> */}
             <ShareButton />
           </div>
         </div>
@@ -126,12 +125,12 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderStackedView = () => (
     <>
-      <div className={styles.stackedView}>
+      <div className="mt-16 flex w-full flex-col items-center gap-8">
         {hasPreview && (
           <ReactImageGallery items={images} showPlayButton={false} />
         )}
         {business_description && (
-          <div>
+          <div className="px-4 sm:px-6 lg:px-0">
             <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
               About
             </h3>
@@ -152,10 +151,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
                 businessName={business_name}
               />
             </div>
-            <div className={styles.buttonGroup}>
-              {/* <FavoriteButton business={business} /> */}
-              <ShareButton />
-            </div>
+            <ShareButton />
           </>
         )}
       </div>
@@ -165,8 +161,8 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main className="my-container mb-20 min-h-[90vh] pt-6 lg:pt-14">
-        <section className="center">
+      <main className="mb-20 min-h-[90vh] pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
+        <section className="px-4 sm:px-6 lg:px-0">
           <div className="flex flex-wrap justify-center gap-4">
             <Avatar name={business_name} url={logo_url} />
             <h1 className="text-center text-4xl font-bold lg:text-5xl">

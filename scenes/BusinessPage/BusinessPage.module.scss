@@ -29,13 +29,6 @@
   }
 }
 
-.infoBlock {
-  .imageGallery {
-    height: 350px;
-    background-color: lightgray;
-  }
-}
-
 .stickyWrapper {
   position: relative;
   margin-bottom: 5rem;
@@ -57,25 +50,6 @@
   margin-inline: auto;
 }
 
-// stacked view
-.stackedView {
-  max-width: 700px;
-  width: 100%;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 4rem;
-
-  .buttonGroup {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
 .backToSearch {
   margin-top: 4rem;
 }
@@ -95,29 +69,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.editButton {
-  position: fixed;
-  display: inline-flex;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: $secondary;
-  height: 50px;
-  width: 50px;
-  z-index: 5;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    opacity: 0.8;
-    background-color: $secondary;
-  }
-
-  svg {
-    color: white;
-  }
 }
 
 // skeleton
