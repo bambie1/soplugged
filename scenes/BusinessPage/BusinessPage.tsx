@@ -130,7 +130,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <ReactImageGallery items={images} showPlayButton={false} />
         )}
         {business_description && (
-          <div className="w-full px-4 sm:px-6 lg:px-0">
+          <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0 lg:text-center">
             <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
               About
             </h3>
