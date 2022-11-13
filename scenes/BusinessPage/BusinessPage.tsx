@@ -53,6 +53,8 @@ const BusinessPage: FC<Props> = ({ business }) => {
     business_url,
   } = business;
 
+  const cleanDescription = business_description.replace(/style="[^"]*"/g, "");
+
   const rawImages = sample_images?.split(",") || [];
   const images = rawImages.map((item: any) => {
     const arr = item.split("/upload/");
@@ -98,9 +100,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </h3>
           <section
             dangerouslySetInnerHTML={{
-              __html: business_description.replace(/style="[^"]*"/g, ""),
+              __html: cleanDescription,
             }}
-            className="text-gray-500"
+            className="prose max-w-none text-gray-500"
           ></section>
         </div>
       </div>
@@ -134,9 +136,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
               About
             </h3>
             <section
-              className="mb-12 text-gray-500"
+              className="prose mb-12 max-w-none text-gray-500"
               dangerouslySetInnerHTML={{
-                __html: business_description.replace(/style="[^"]*"/g, ""),
+                __html: cleanDescription,
               }}
             ></section>
           </div>

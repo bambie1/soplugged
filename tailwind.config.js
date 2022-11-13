@@ -63,6 +63,21 @@ module.exports = {
         "error-focus": "0 0 0 3px #ff00002e",
         "bottom-nav": "0 4px 14px 0 rgb(78 56 10 / 39%)",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            p: {
+              marginBlock: 0,
+            },
+            ul: {
+              marginBlock: "1rem",
+            },
+            strong: {
+              color: "currentColor",
+            },
+          },
+        },
+      },
     },
   },
   plugins: [
