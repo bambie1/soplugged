@@ -43,11 +43,16 @@
 }
 
 .contactForm {
-  box-shadow: 0px 3px 15px rgb(0 0 0 / 20%);
-  border-radius: 8px;
   padding: 0.5rem 1rem 1.5rem;
   width: clamp(300px, 100%, 500px);
   margin-inline: auto;
+  border-top: 1px solid lightgray;
+
+  @include tablet {
+    border: none;
+    box-shadow: 0px 3px 15px rgb(0 0 0 / 20%);
+    border-radius: 8px;
+  }
 }
 
 .backToSearch {

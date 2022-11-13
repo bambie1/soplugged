@@ -66,7 +66,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const fullView = hasPreview && verified && width > 960;
+  const fullView = hasPreview && verified && width > 1023;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
   const handleCategoryClick = () => {
@@ -130,7 +130,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <ReactImageGallery items={images} showPlayButton={false} />
         )}
         {business_description && (
-          <div className="px-4 sm:px-6 lg:px-0">
+          <div className="w-full px-4 sm:px-6 lg:px-0">
             <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
               About
             </h3>
