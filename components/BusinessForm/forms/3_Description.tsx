@@ -36,6 +36,7 @@ const Description = () => {
           .replace(/<\/h5>/, "</p>")
           .replace(/<h6>/, "<p>")
           .replace(/<\/h6>/, "</p>")
+          .replace(/style="[^"]*"/g, "")
       );
       setFieldValue("business_description", content);
     }
