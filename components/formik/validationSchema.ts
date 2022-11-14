@@ -6,7 +6,6 @@ export const businessFormSchema = [
     business_name: Yup.string()
       .min(3, "Business name is too short!")
       .max(30, "Business name is too long!")
-      .matches(/^[0-9A-Za-z\s\- ]+$/, "No special characters allowed")
       .required("Please enter a name for your business"),
 
     fixed_to_one_location: Yup.boolean(),

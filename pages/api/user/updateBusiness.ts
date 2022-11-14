@@ -16,6 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const newSlug = slugify(data.business_name.trim(), {
       lower: true,
       remove: /[*+~.()'"!:@]/g,
+      strict: true,
     });
 
     const businessObject: any = {
