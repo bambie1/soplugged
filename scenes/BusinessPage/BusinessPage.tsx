@@ -2,11 +2,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInfoCircle,
-  faMapMarkerAlt,
-  faShapes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import { Button } from "@/styled/Button";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -63,8 +60,18 @@ const BusinessPage: FC<Props> = ({ business }) => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const fullView = hasPreview && verified;
   const hasContactLinks = ig_handle || phone_number || business_url;
+
+  const renderBlankPreview = () => (
+    <div className="relative flex h-60 w-full items-center justify-center overflow-hidden bg-secondary/20 lg:mb-10 lg:h-80 lg:rounded-lg">
+      <span className="whitespace-nowrap font-light tracking-wider text-primary/70 lg:text-lg">
+        No preview available.
+      </span>
+
+      <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+      <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+    </div>
+  );
 
   const handleCategoryClick = () => {
     router.push(
@@ -89,7 +96,11 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const renderFullView = () => (
     <section className={styles.fullView}>
       <div>
-        <ReactImageGallery items={images} showPlayButton={false} />
+        {hasPreview ? (
+          <ReactImageGallery items={images} showPlayButton={false} />
+        ) : (
+          renderBlankPreview()
+        )}
 
         <div>
           <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
@@ -123,8 +134,10 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const renderStackedView = () => (
     <>
       <div className="mt-16 flex w-full flex-col items-center gap-8">
-        {hasPreview && (
+        {hasPreview ? (
           <ReactImageGallery items={images} showPlayButton={false} />
+        ) : (
+          renderBlankPreview()
         )}
         {business_description && (
           <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0 lg:text-center">
@@ -166,12 +179,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
               {business_name.toUpperCase()}
             </h1>
           </div>
-          {!verified && (
-            <div className={`mt-4 text-center ${styles.unverified}`}>
-              <FontAwesomeIcon icon={faInfoCircle} />
-              This business hasn't been claimed by it's owner
-            </div>
-          )}
 
           <div className={styles.info}>
             {category && (
@@ -194,20 +201,28 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
         </section>
 
-        <div className="hidden lg:block">
-          {fullView ? renderFullView() : renderStackedView()}
-        </div>
-
-        <div className="lg:hidden">{renderStackedView()}</div>
-
         {!verified && (
           <div className={styles.claimBusiness}>
-            <p>Are you the owner of this business?</p>
+            <div className={`mb-2 text-center ${styles.unverified}`}>
+              This business hasn't been claimed by it's owner
+            </div>
+
             <a href="mailto:hello@soplugged.com">
-              <Button>Let us know</Button>
+              <Button variant="outlined">
+                <div className="flex items-center gap-2">
+                  <ExclamationCircleIcon
+                    className="h-8 w-8"
+                    strokeWidth={0.75}
+                  />
+                  I own this business
+                </div>
+              </Button>
             </a>
           </div>
         )}
+
+        <div className="hidden lg:block">{renderFullView()}</div>
+        <div className="lg:hidden">{renderStackedView()}</div>
       </main>
       <Footer />
     </>
