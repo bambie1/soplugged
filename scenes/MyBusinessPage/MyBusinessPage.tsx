@@ -121,6 +121,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       router.push(`/business/${updatedBusiness.slug}`);
     } else {
       toast.error("An error occurred");
+      setIsSubmitting(false);
     }
 
     actions.setSubmitting(false);
