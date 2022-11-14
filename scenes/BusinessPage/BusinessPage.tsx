@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { useWindowSize } from "@reach/window-size";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfoCircle,
@@ -35,8 +34,6 @@ interface Props {
 }
 
 const BusinessPage: FC<Props> = ({ business }) => {
-  const { width } = useWindowSize();
-
   const router = useRouter();
   const {
     business_name,
@@ -66,7 +63,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const fullView = hasPreview && verified && width > 1023;
+  const fullView = hasPreview && verified;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
   const handleCategoryClick = () => {
@@ -197,7 +194,11 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
         </section>
 
-        {fullView ? renderFullView() : renderStackedView()}
+        <div className="hidden lg:block">
+          {fullView ? renderFullView() : renderStackedView()}
+        </div>
+
+        <div className="lg:hidden">{renderStackedView()}</div>
 
         {!verified && (
           <div className={styles.claimBusiness}>
