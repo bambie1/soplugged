@@ -64,7 +64,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderBlankPreview = () => (
     <div className="relative flex h-60 w-full items-center justify-center overflow-hidden bg-secondary/20 lg:mb-10 lg:h-80 lg:rounded-lg">
-      <span className="whitespace-nowrap font-light tracking-wider text-primary/40 lg:text-lg">
+      <span className="whitespace-nowrap font-light tracking-wider text-primary/70 lg:text-lg">
         No preview available.
       </span>
 
