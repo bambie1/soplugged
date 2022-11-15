@@ -38,8 +38,8 @@ const HeroImage = ({ index }: any) => {
           alt={`Picture of a black-owned ${category.title} business`}
           layout="fill"
         />
-        <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 pl-4">
-          <p className="text-sm text-white">{category.title}</p>
+        <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
+          <p className="truncate text-sm text-white">{category.title}</p>
         </div>
         <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
       </button>
