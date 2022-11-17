@@ -9,7 +9,6 @@ import { usePlausible } from "next-plausible";
 import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
-import TextArea from "@/styled/TextArea/TextArea";
 import { sendEmail } from "@/utils/sendEmail";
 
 import styles from "./ContactForm.module.scss";
@@ -63,18 +62,7 @@ const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
   const renderButton = () => {
     if (session?.user?.email)
       return (
-        <Button
-          type="submit"
-          disabled={disabled}
-          onClick={() =>
-            plausible("Impression on business page", {
-              props: {
-                Type: "Contact",
-                Business: businessName,
-              },
-            })
-          }
-        >
+        <Button type="submit" disabled={disabled}>
           Send Message
         </Button>
       );
@@ -96,13 +84,22 @@ const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
       );
 
     return (
-      <TextArea
-        placeholder="Hi there! I would like to employ your services"
-        label="Message"
-        rows={7}
-        disabled={disabled}
-        {...register("message", { required: true })}
-      />
+      <div className="grid">
+        <label
+          htmlFor="message"
+          className="mb-1 block text-sm font-bold uppercase"
+        >
+          Message
+        </label>
+        <textarea
+          placeholder="Hi there! I would like to employ your services"
+          id="message"
+          className="rounded-lg shadow-sm focus:border-primary focus:ring-transparent"
+          rows={7}
+          disabled={disabled}
+          {...register("message", { required: true })}
+        />
+      </div>
     );
   };
 
