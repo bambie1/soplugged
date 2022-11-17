@@ -91,6 +91,9 @@ export default function Page(props: {
 
   const isBrowser = typeof window !== "undefined";
 
+  // const isExplorePage =
+  //   searchState?.menu?.category === "" || searchState?.menu?.category === "all";
+
   useEffect(() => {
     if (isBrowser) {
       const urlToState = urlToSearchState({
@@ -118,7 +121,15 @@ export default function Page(props: {
       <Header />
       <main className="mb-16 min-h-screen pt-12">
         <div className="flex flex-col items-center">
-          <div className="my-container mb-8 flex flex-col items-center ">
+          <div className="my-container mb-8 flex flex-col items-center">
+            {/* {!isExplorePage && (
+              <Link href="/search/all">
+                <a className="mb-5 -mt-4 flex gap-2 self-start rounded-3xl text-gray-500">
+                  <ArrowLeftIcon className="h-6 w-6" strokeWidth={0.8} />
+                  Back to search
+                </a>
+              </Link>
+            )} */}
             <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
               {props.searchState?.menu?.category || "Explore"}
             </h1>
@@ -195,6 +206,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export function App(props: InstantSearchProps) {
+  // const isExplorePage =
+  //   props.searchState.menu.category === "" ||
+  //   props.searchState.menu.category === "all";
+
   return (
     <InstantSearch {...props}>
       <VirtualSearchBox />
