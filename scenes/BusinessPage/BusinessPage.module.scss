@@ -18,14 +18,13 @@
   color: inherit;
   position: relative;
   display: grid;
-  grid-template-columns: auto 400px;
   column-gap: 4rem;
-  margin-top: 3rem;
   width: 100%;
+  margin-top: 4rem;
 
-  .buttonGroup {
-    display: grid;
-    gap: 1rem;
+  @include desktop {
+    margin-top: 3rem;
+    grid-template-columns: auto 400px;
   }
 }
 
@@ -35,11 +34,16 @@
 }
 
 .pageActions {
-  min-height: 350px;
-  position: sticky;
-  top: 7rem;
   display: grid;
   gap: 2rem;
+  margin-top: 4rem;
+
+  @include desktop {
+    min-height: 350px;
+    position: sticky;
+    top: 7rem;
+    margin-top: 0;
+  }
 }
 
 .contactForm {

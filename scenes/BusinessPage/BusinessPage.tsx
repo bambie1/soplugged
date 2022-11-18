@@ -95,24 +95,26 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderFullView = () => (
     <section className={styles.fullView}>
-      <div>
+      <div className="flex w-full flex-col items-center gap-8 lg:gap-0">
         {hasPreview ? (
           <ReactImageGallery items={images} showPlayButton={false} />
         ) : (
           renderBlankPreview()
         )}
 
-        <div>
-          <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
-            About
-          </h3>
-          <section
-            dangerouslySetInnerHTML={{
-              __html: cleanDescription,
-            }}
-            className="prose max-w-none text-gray-500"
-          ></section>
-        </div>
+        {business_description && (
+          <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
+            <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
+              About
+            </h3>
+            <section
+              dangerouslySetInnerHTML={{
+                __html: cleanDescription,
+              }}
+              className="prose max-w-none text-gray-500"
+            ></section>
+          </div>
+        )}
       </div>
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
@@ -130,44 +132,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
         </div>
       </aside>
     </section>
-  );
-
-  const renderStackedView = () => (
-    <>
-      <div className="mt-16 flex w-full flex-col items-center gap-8">
-        {hasPreview ? (
-          <ReactImageGallery items={images} showPlayButton={false} />
-        ) : (
-          renderBlankPreview()
-        )}
-        {business_description && (
-          <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0 lg:text-center">
-            <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
-              About
-            </h3>
-            <section
-              className="prose mb-12 max-w-none text-gray-500"
-              dangerouslySetInnerHTML={{
-                __html: cleanDescription,
-              }}
-            ></section>
-          </div>
-        )}
-        <SocialLinks business={business} />
-        {verified && (
-          <>
-            <div className={styles.contactForm}>
-              <ContactForm
-                businessEmail={creator?.email || ""}
-                businessName={business_name}
-                phoneNumber={phone_number}
-              />
-            </div>
-            <ShareButton />
-          </>
-        )}
-      </div>
-    </>
   );
 
   return (
@@ -223,8 +187,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
         )}
 
-        <div className="hidden lg:block">{renderFullView()}</div>
-        <div className="lg:hidden">{renderStackedView()}</div>
+        <div className="">{renderFullView()}</div>
       </main>
       <Footer />
     </>
