@@ -6,7 +6,7 @@ import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import { Button } from "@/styled/Button";
-import { SocialLinks } from "@/components/SocialLinks";
+import SocialLinks from "@/components/SocialLinks";
 import Avatar from "@/components/Avatar/Avatar";
 import { IBusiness } from "@/types/Business";
 
@@ -116,13 +116,14 @@ const BusinessPage: FC<Props> = ({ business }) => {
       </div>
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
+          {hasContactLinks && <SocialLinks business={business} />}
           <div className={styles.contactForm}>
             <ContactForm
               businessEmail={creator?.email || ""}
               businessName={business_name}
+              phoneNumber={phone_number}
             />
           </div>
-          {hasContactLinks && <SocialLinks business={business} />}
           <div className="grid gap-2 overflow-hidden">
             <ShareButton />
           </div>
@@ -159,6 +160,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               <ContactForm
                 businessEmail={creator?.email || ""}
                 businessName={business_name}
+                phoneNumber={phone_number}
               />
             </div>
             <ShareButton />

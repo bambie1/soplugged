@@ -8,7 +8,6 @@ import { usePlausible } from "next-plausible";
 
 import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
-import { Input } from "@/styled/Input";
 import { sendEmail } from "@/utils/sendEmail";
 
 import styles from "./ContactForm.module.scss";
@@ -20,9 +19,10 @@ interface IFormInput {
 interface Props {
   businessEmail: string;
   businessName: string;
+  phoneNumber?: string;
 }
 
-const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
+const ContactForm: FC<Props> = ({ businessEmail, phoneNumber }) => {
   const { data: session } = useSession();
   const plausible = usePlausible<MyEvents>();
 
@@ -62,16 +62,18 @@ const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
   const renderButton = () => {
     if (session?.user?.email)
       return (
-        <Button type="submit" disabled={disabled}>
-          Send Message
-        </Button>
+        <div className="grid">
+          <Button type="submit" disabled={disabled}>
+            Send Message
+          </Button>
+          <p className="mt-1 text-center text-xs text-gray-500 lg:text-sm">
+            Signed in as{" "}
+            <span className="font-medium underline">{session.user.email}</span>
+          </p>
+        </div>
       );
 
-    return (
-      <Button onClick={() => signIn()} variant="outlined">
-        Sign in to send message
-      </Button>
-    );
+    return <Button onClick={() => signIn()}>Sign in to send message</Button>;
   };
 
   const renderContent = () => {
@@ -85,17 +87,14 @@ const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
 
     return (
       <div className="grid">
-        <label
-          htmlFor="message"
-          className="mb-1 block text-sm font-bold uppercase"
-        >
+        <label htmlFor="message" className="mb-1 block text-sm font-medium">
           Message
         </label>
         <textarea
           placeholder="Hi there! I would like to employ your services"
           id="message"
           className="rounded-lg shadow-sm focus:border-primary focus:ring-transparent"
-          rows={7}
+          rows={10}
           disabled={disabled}
           {...register("message", { required: true })}
         />
@@ -106,14 +105,8 @@ const ContactForm: FC<Props> = ({ businessEmail, businessName }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h3 className="center text-lg font-bold uppercase text-primary">
-        Contact
+        Contact owner
       </h3>
-
-      <Input
-        label="Email address"
-        value={session?.user?.email || ""}
-        disabled
-      />
 
       {renderContent()}
       {renderButton()}
