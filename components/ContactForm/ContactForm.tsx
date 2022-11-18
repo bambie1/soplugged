@@ -8,7 +8,6 @@ import { usePlausible } from "next-plausible";
 
 import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
-import { Input } from "@/styled/Input";
 import { sendEmail } from "@/utils/sendEmail";
 
 import styles from "./ContactForm.module.scss";
@@ -74,11 +73,7 @@ const ContactForm: FC<Props> = ({ businessEmail, phoneNumber }) => {
         </div>
       );
 
-    return (
-      <Button onClick={() => signIn()} variant="outlined">
-        Sign in to send message
-      </Button>
-    );
+    return <Button onClick={() => signIn()}>Sign in to send message</Button>;
   };
 
   const renderContent = () => {
@@ -109,16 +104,9 @@ const ContactForm: FC<Props> = ({ businessEmail, phoneNumber }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex items-center justify-between gap-2">
-        <h3 className="center text-lg font-bold uppercase text-primary">
-          Contact owner
-        </h3>
-        {phoneNumber && (
-          <a className="text-gray-500 underline" href={`tel:${phoneNumber}`}>
-            Phone number
-          </a>
-        )}
-      </div>
+      <h3 className="center text-lg font-bold uppercase text-primary">
+        Contact owner
+      </h3>
 
       {renderContent()}
       {renderButton()}
