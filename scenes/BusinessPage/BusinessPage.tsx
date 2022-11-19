@@ -15,6 +15,7 @@ import { createURL } from "@/utils/algolia";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
+const MoreLikeThis = dynamic(() => import("../../components/MoreLikeThis"));
 
 const ContactForm = dynamic(
   () => import("../../components/ContactForm/ContactForm")
@@ -119,6 +120,13 @@ const BusinessPage: FC<Props> = ({ business }) => {
       <aside className={styles.stickyWrapper}>
         <div className={styles.pageActions}>
           {hasContactLinks && <SocialLinks business={business} />}
+          <div className="lg:hidden">
+            <MoreLikeThis
+              category={category}
+              location={business_location}
+              excludeBusinessName={business_name}
+            />
+          </div>
           <div className={styles.contactForm}>
             <ContactForm
               businessEmail={creator?.email || ""}
@@ -188,6 +196,14 @@ const BusinessPage: FC<Props> = ({ business }) => {
         )}
 
         <div className="">{renderFullView()}</div>
+
+        <div className="hidden lg:block">
+          <MoreLikeThis
+            category={category}
+            location={business_location}
+            excludeBusinessName={business_name}
+          />
+        </div>
       </main>
       <Footer />
     </>

@@ -10,6 +10,7 @@ import { Hit as AlgoliaHit } from "instantsearch.js/es/types";
 import { connectHits } from "react-instantsearch-dom";
 
 import CustomMenu from "./algolia/CustomMenu";
+import { LocationMenu } from "./algolia/LocationMenu";
 
 const INSTANT_SEARCH_INDEX_NAME = "Business";
 const searchClient = algoliasearch(
@@ -19,7 +20,8 @@ const searchClient = algoliasearch(
 
 interface Props {
   category: string;
-  excludeBusiness: string;
+  excludeBusinessName: string;
+  location: string;
 }
 
 type HitProps = {
@@ -32,7 +34,11 @@ type HitProps = {
   }>;
 };
 
-const MoreLikeThis: FC<Props> = ({ category, excludeBusiness }) => {
+const MoreLikeThis: FC<Props> = ({
+  category,
+  location,
+  excludeBusinessName,
+}) => {
   return (
     <div className="mt-4 flex w-full flex-col border-t px-4 py-4 sm:px-6 lg:px-0">
       <span className="-mb-4 block text-xl font-medium lg:text-2xl">
@@ -44,28 +50,37 @@ const MoreLikeThis: FC<Props> = ({ category, excludeBusiness }) => {
         searchState={{
           menu: {
             category,
+            business_location: location,
           },
         }}
       >
         <Configure hitsPerPage={4} />
         <div className="relative">
           <div className="absolute inset-0 overflow-hidden">
+            <LocationMenu attribute="business_location" />
             <CustomMenu attribute="category" />
           </div>
         </div>
 
-        <CustomHits excludeBusiness={excludeBusiness} />
+        <CustomHits excludeBusinessName={excludeBusinessName} />
       </InstantSearch>
     </div>
   );
 };
 
-const Hits = ({ hits, excludeBusiness }: any) => {
+const Hits = ({ hits, excludeBusinessName }: any) => {
+  if (hits.length === 1)
+    return (
+      <div className="mt-8 rounded-lg bg-secondary/20 p-4">
+        No more like this
+      </div>
+    );
+
   return (
     <ul className="my-8 grid w-full grid-cols-2 gap-2 lg:grid-cols-5 lg:gap-6">
       {hits.map(
         (hit: any) =>
-          hit.business_name !== excludeBusiness && (
+          hit.business_name !== excludeBusinessName && (
             <li key={hit.id} className="my-2 flex">
               <CustomHit hit={hit} />
             </li>
@@ -127,6 +142,9 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
             <Highlight attribute="business_name" hit={hit} />
           </h3>
+          <p className="truncate text-sm">
+            <Highlight attribute="category" hit={hit} />
+          </p>
           <p className="truncate text-xs">{business_location}</p>
         </div>
       </a>
