@@ -1,15 +1,6 @@
 import { autocomplete } from "@algolia/autocomplete-js";
-import { createElement, Fragment, useEffect, useRef, useState } from "react";
+import { createElement, Fragment, useEffect, useRef } from "react";
 import { render } from "react-dom";
-
-const placeholderArray = [
-  "a hair stylist",
-  "an event planner",
-  "a caterer",
-  "a make-up artist",
-  "a photographer",
-  "a business",
-];
 
 export function Autocomplete({ ...props }: any) {
   const containerRef = useRef(null);

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowLeftIcon } from "@heroicons/react/outline";
 import dynamic from "next/dynamic";
 import qs from "qs";
 import { useEffect, useState, useRef } from "react";
@@ -91,8 +93,8 @@ export default function Page(props: {
 
   const isBrowser = typeof window !== "undefined";
 
-  // const isExplorePage =
-  //   searchState?.menu?.category === "" || searchState?.menu?.category === "all";
+  const isExplorePage =
+    searchState?.menu?.category === "" || searchState?.menu?.category === "all";
 
   useEffect(() => {
     if (isBrowser) {
@@ -122,14 +124,14 @@ export default function Page(props: {
       <main className="mb-16 min-h-screen pt-12">
         <div className="flex flex-col items-center">
           <div className="my-container mb-8 flex flex-col items-center">
-            {/* {!isExplorePage && (
+            {!isExplorePage && (
               <Link href="/search/all">
                 <a className="mb-5 -mt-4 flex gap-2 self-start rounded-3xl text-gray-500">
                   <ArrowLeftIcon className="h-6 w-6" strokeWidth={0.8} />
-                  Back to search
+                  Back to all categories
                 </a>
               </Link>
-            )} */}
+            )}
             <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
               {props.searchState?.menu?.category || "Explore"}
             </h1>
