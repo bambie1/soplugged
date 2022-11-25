@@ -6,8 +6,9 @@ import {
 } from "@heroicons/react/outline";
 
 import PopularBusinesses from "@/components/PopularBusinesses";
-import CategoriesGrid from "@/components/CategoriesGrid";
+import CategoriesGrid from "@/components/home/CategoriesGrid";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { FC } from "react";
 
 const secondaryLinks = [
   {
@@ -42,13 +43,14 @@ const secondaryLinks = [
   },
 ];
 
-const BuyOrSell = dynamic(() => import("../components/BuyOrSell"));
+const BuyOrSell = dynamic(() => import("../components/home/BuyOrSell"));
 const FilterByLocation = dynamic(
-  () => import("../components/FilterByLocation")
+  () => import("../components/home/FilterByLocation")
 );
-const FAQs = dynamic(() => import("../components/FAQs"));
+const FAQs = dynamic(() => import("../components/home/FAQs"));
+const Blogs = dynamic(() => import("../components/home/Blogs"));
 
-const HomePage = () => {
+const HomePage: FC = (props) => {
   return (
     <>
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
@@ -91,7 +93,7 @@ const HomePage = () => {
               <dl className="mt-10 space-y-10">
                 {secondaryLinks.map((item) => (
                   <span key={item.linkText} className="relative block">
-                    <dt>
+                    <div>
                       <div
                         className={`absolute flex h-12 w-12 items-center justify-center rounded-md ${item.color} border text-primary transition duration-200 group-hover:scale-[90%]`}
                       >
@@ -100,8 +102,8 @@ const HomePage = () => {
                       <p className="ml-16 font-semibold uppercase leading-6 text-gray-900 lg:text-lg">
                         {item.name}
                       </p>
-                    </dt>
-                    <dd className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
+                    </div>
+                    <div className="mt-2 ml-16 grid justify-items-start text-base text-gray-700">
                       <p className="mb-4">{item.description}</p>
                       <ButtonLink
                         variant="text"
@@ -111,7 +113,7 @@ const HomePage = () => {
                       >
                         {item.linkText}
                       </ButtonLink>
-                    </dd>
+                    </div>
                   </span>
                 ))}
               </dl>
@@ -122,6 +124,8 @@ const HomePage = () => {
         <FilterByLocation />
 
         <BuyOrSell />
+
+        <Blogs {...props} />
         <FAQs />
       </div>
     </>
