@@ -4,10 +4,9 @@ import Image from "next/image";
 
 interface Props {
   post: any;
-  hideDate?: boolean;
 }
 
-const BlogCard: FC<Props> = ({ post, hideDate }) => {
+const BlogCard: FC<Props> = ({ post }) => {
   const { excerpt, blogImage, slug, createdAt, title } = post;
 
   return (

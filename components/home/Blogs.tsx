@@ -30,7 +30,7 @@ const Blogs: FC = ({ posts }: any) => {
                   key={post.slug}
                   className="inline-flex w-64 cursor-pointer snap-center flex-col lg:w-auto"
                 >
-                  <BlogCard post={post} hideDate />
+                  <BlogCard post={post} />
                 </li>
               );
             })}

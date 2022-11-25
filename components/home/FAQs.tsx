@@ -1,3 +1,5 @@
+import { ArrowButton } from "@/styled/ArrowButton";
+
 const faqs = [
   {
     id: 1,
@@ -8,8 +10,15 @@ const faqs = [
   {
     id: 2,
     question: "How do I add my business?",
-    answer:
-      "Adding your business is free, quick and easy. Please click the button below to get started (you'll need to be signed in to add a business).",
+    answer: (
+      <div>
+        <p className="mb-3">
+          Adding your business is free, quick and easy. Please click the button
+          below to get started (you'll need to be signed in to add a business).
+        </p>
+        <ArrowButton href="/my-business">Add my business</ArrowButton>
+      </div>
+    ),
   },
   {
     id: 3,
@@ -29,7 +38,7 @@ const FAQs = () => {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="max-w-2xl lg:mx-auto lg:text-center">
+        <div className="max-w-2xl text-center lg:mx-auto">
           <h2 className="text-3xl font-bold xl:text-4xl">
             <span className="relative text-primary">
               Frequently asked questions
@@ -37,14 +46,16 @@ const FAQs = () => {
             </span>
           </h2>
         </div>
-        <div className="mt-20">
+        <div className="mt-10 lg:mt-20">
           <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
             {faqs.map((faq) => (
               <div key={faq.id}>
-                <dt className="font-semibold text-gray-900 lg:text-lg">
+                <div className="font-semibold text-gray-900 lg:text-lg">
                   {faq.question}
-                </dt>
-                <dd className="mt-3 text-gray-600 lg:text-lg">{faq.answer}</dd>
+                </div>
+                <div className="mt-3 text-gray-600 lg:text-lg">
+                  {faq.answer}
+                </div>
               </div>
             ))}
           </dl>
