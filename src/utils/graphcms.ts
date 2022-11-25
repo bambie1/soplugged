@@ -67,10 +67,16 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 4, stage: PUBLISHED) {
+        posts(
+          where: { displayOnHomePage: true }
+          orderBy: createdAt_DESC
+          first: 4
+          stage: PUBLISHED
+        ) {
           title
           slug
           createdAt
+          excerpt
           blogImage {
             url
           }

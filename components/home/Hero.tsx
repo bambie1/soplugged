@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { popularCategories } from "@/lib/popularCategories";
 import useAlgolia from "@/hooks/useAlgolia";
 
-const Searchbar = dynamic(() => import("./algolia/Searchbar"));
+const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const popularSearches = [
   { title: "Hair", category: "Hair / Beauty" },

@@ -4,9 +4,10 @@ import Image from "next/image";
 
 interface Props {
   post: any;
+  hideDate?: boolean;
 }
 
-const BlogCard: FC<Props> = ({ post }) => {
+const BlogCard: FC<Props> = ({ post, hideDate }) => {
   const { excerpt, blogImage, slug, createdAt, title } = post;
 
   return (
@@ -29,8 +30,9 @@ const BlogCard: FC<Props> = ({ post }) => {
           >
             {title}
           </h3>
-          <p className="mb-2 hidden text-sm lg:block lg:truncate">{excerpt}</p>
-          <p className="mt-auto text-sm">
+          <p className="mb-1 truncate text-sm lg:block">{excerpt}</p>
+
+          <p className="text-xs text-gray-600">
             {new Date(createdAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",

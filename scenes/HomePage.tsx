@@ -6,8 +6,9 @@ import {
 } from "@heroicons/react/outline";
 
 import PopularBusinesses from "@/components/PopularBusinesses";
-import CategoriesGrid from "@/components/CategoriesGrid";
+import CategoriesGrid from "@/components/home/CategoriesGrid";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { FC } from "react";
 
 const secondaryLinks = [
   {
@@ -42,13 +43,14 @@ const secondaryLinks = [
   },
 ];
 
-const BuyOrSell = dynamic(() => import("../components/BuyOrSell"));
+const BuyOrSell = dynamic(() => import("../components/home/BuyOrSell"));
 const FilterByLocation = dynamic(
-  () => import("../components/FilterByLocation")
+  () => import("../components/home/FilterByLocation")
 );
-const FAQs = dynamic(() => import("../components/FAQs"));
+const FAQs = dynamic(() => import("../components/home/FAQs"));
+const Blogs = dynamic(() => import("../components/home/Blogs"));
 
-const HomePage = () => {
+const HomePage: FC = (props) => {
   return (
     <>
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
@@ -122,6 +124,8 @@ const HomePage = () => {
         <FilterByLocation />
 
         <BuyOrSell />
+
+        <Blogs {...props} />
         <FAQs />
       </div>
     </>
