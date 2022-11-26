@@ -25,23 +25,3 @@
     column-gap: 1.25rem;
   }
 }
-
-.progress {
-  display: none;
-
-  @include mobile_only {
-    display: block;
-    border-radius: 7px;
-    width: 100%;
-    height: 4px;
-  }
-}
-
-.progress::-webkit-progress-bar {
-  background-color: $lightSecondary;
-  border-radius: 7px;
-}
-.progress::-webkit-progress-value {
-  background-color: $secondary;
-  border-radius: 7px;
-}

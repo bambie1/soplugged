@@ -1,20 +1,17 @@
-import { useEffect } from "react";
 import Image from "next/image";
-import { useFormikContext } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 
 import { FileDropzone } from "@/components/FileDropzone";
 
 import useImageUploader from "@/hooks/useImageUploader";
+import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
+import { BusinessForm } from "layouts/BusinessForm";
+import { Button } from "@/styled/Button";
 
 const Images = () => {
-  const { setFieldValue, values } = useFormikContext<any>();
   const { url, error, uploadImage, uploading } = useImageUploader();
-
-  useEffect(() => {
-    if (url) setFieldValue("logo_url", url);
-  }, [url, setFieldValue]);
+  const { business, handleNextStep } = useBusinessStore();
 
   const handleFileUpload = async (e: any) => {
     const file = e.target.files[0];
@@ -23,9 +20,16 @@ const Images = () => {
     }
   };
 
+  const handleConfirm = () => {
+    handleNextStep();
+  };
+
   return (
-    <>
-      <div className="lg:hidden">
+    <BusinessForm
+      title="Images"
+      subtitle="Upload a logo and sample images of your work"
+    >
+      <div className="">
         <label htmlFor="business-logo">Business logo:</label>
         <input
           accept="image/png, image/jpeg"
@@ -46,13 +50,13 @@ const Images = () => {
             }`}
           >
             <FontAwesomeIcon icon={faCloudUploadAlt} />
-            {values.logo_url ? "Change Logo" : "Upload Logo"}
+            {business?.logo_url ? "Change Logo" : "Upload Logo"}
           </label>
 
-          {values.logo_url && (
+          {business?.logo_url && (
             <div className="relative aspect-square w-10 overflow-hidden rounded-full border border-primary">
               <Image
-                src={values.logo_url}
+                src={business?.logo_url}
                 layout="fill"
                 objectFit="cover"
                 alt="logo preview"
@@ -64,7 +68,9 @@ const Images = () => {
         {error && <p className="error">{error}</p>}
       </div>
       <FileDropzone />
-    </>
+
+      <Button onClick={handleConfirm}>Next</Button>
+    </BusinessForm>
   );
 };
 

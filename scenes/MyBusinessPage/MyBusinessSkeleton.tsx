@@ -6,14 +6,12 @@ const MyBusinessSkeleton = () => {
   return (
     <>
       <Header variant="auth" className="hidden lg:block" />
-      <BusinessForm skeleton>
-        <div className="flex w-full flex-col place-content-center items-center self-center">
-          <Skeleton type="input" />
-          <Skeleton type="input" />
-          <Skeleton type="input" />
-          <Skeleton type="input" />
-        </div>
-      </BusinessForm>
+      <div className="flex w-full flex-col place-content-center items-center self-center">
+        <Skeleton type="input" />
+        <Skeleton type="input" />
+        <Skeleton type="input" />
+        <Skeleton type="input" />
+      </div>
     </>
   );
 };

@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import { Button } from "@/styled/Button";
-import { useBusinessFormContext } from "@/context/businessFormContext";
 
 import styles from "./TermsAndConditions.module.scss";
+import { BusinessForm } from "layouts/BusinessForm";
+import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 
 const referralSources = [
   { label: "Instagram (@sopluggd)", value: "SoPlugged" },
@@ -18,17 +19,7 @@ const referralSources = [
 
 const TermsAndConditions: FC = () => {
   const router = useRouter();
-
-  const {
-    agreementSigned,
-    setAgreementSigned,
-    setReferralSource,
-    setReferringBusiness,
-  } = useBusinessFormContext();
-
-  if (agreementSigned) {
-    router.push("/my-business");
-  }
+  const { handleNextStep } = useBusinessStore();
 
   const [adhereCheck, setAdhereCheck] = useState(false);
   const [blackBusiness, setBlackBusiness] = useState(false);
@@ -50,14 +41,12 @@ const TermsAndConditions: FC = () => {
       ) || [];
 
   const handleConfirm = () => {
-    setAgreementSigned(true);
-    setReferralSource(referralInput);
-    setReferringBusiness(refBusiness);
+    handleNextStep();
   };
 
   return (
     <>
-      <div>
+      <BusinessForm title="Welcome" subtitle="Terms and conditions">
         <div className={`my-container ${styles.content}`}>
           <div className={styles.checkbox}>
             <input
@@ -151,23 +140,10 @@ const TermsAndConditions: FC = () => {
           )}
 
           <div className={styles.action}>
-            <Button
-              disabled={
-                !(
-                  adhereCheck &&
-                  blackBusiness &&
-                  canadaResident &&
-                  referralInput &&
-                  (referralInput == "Business" ? refBusiness : true)
-                )
-              }
-              onClick={handleConfirm}
-            >
-              Get Started
-            </Button>
+            <Button onClick={handleConfirm}>Get Started</Button>
           </div>
         </div>
-      </div>
+      </BusinessForm>
     </>
   );
 };

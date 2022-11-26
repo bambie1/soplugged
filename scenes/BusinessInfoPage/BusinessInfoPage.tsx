@@ -104,7 +104,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
                 You can easily change that for FREE!
               </p>
               <ButtonLink
-                href="/my-business?start=0"
+                href="/my-business"
                 variant="outlined"
                 showArrow
                 onClick={() =>

@@ -9,15 +9,16 @@ import { useFormikContext } from "formik";
 import useImageUploader from "@/hooks/useImageUploader";
 
 import styles from "./FileDropzone.module.scss";
+import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 
 const MAX_FILES = 3; //file upload limit
 
 const FileDropzone: FC = () => {
-  const { setFieldValue, values } = useFormikContext<any>();
+  const { business } = useBusinessStore();
 
   let currentImages: any = [];
-  if (values.sample_images !== "")
-    currentImages = values.sample_images?.split(",") || [];
+  if (business?.sample_images !== "")
+    currentImages = business?.sample_images?.split(",") || [];
   const [myFiles, setMyFiles] = useState(currentImages);
   const [errorMessage, setErrorMessage] = useState("");
   const { url, error, uploadImage, uploading } = useImageUploader();
@@ -37,7 +38,7 @@ const FileDropzone: FC = () => {
   }, [url, error]);
 
   useEffect(() => {
-    setFieldValue("sample_images", myFiles?.join());
+    // setFieldValue("sample_images", myFiles?.join());
   }, [myFiles]);
 
   const onDrop = useCallback(

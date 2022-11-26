@@ -1,22 +1,22 @@
 import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
-import { Form, Formik } from "formik";
+import { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
+import create from "zustand";
 
-import { BusinessForm } from "layouts/BusinessForm";
 import Header from "@/components/Header/Header";
-import { businessFormSchema } from "@/components/formik";
-import NameLocation from "@/components/BusinessForm/forms/1_NameLocation";
-import Categories from "@/components/BusinessForm/forms/2_Categories";
-import Description from "@/components/BusinessForm/forms/3_Description";
-import Contact from "@/components/BusinessForm/forms/4_Contact";
-import Images from "@/components/BusinessForm/forms/5_Images";
-import Review from "@/components/BusinessForm/forms/6_Review";
-import { useBusinessFormContext } from "@/context/businessFormContext";
+import NameLocation from "@/components/BusinessForm/1_NameLocation";
+import Categories from "@/components/BusinessForm/2_Categories";
+import Description from "@/components/BusinessForm/3_Description";
+import Contact from "@/components/BusinessForm/4_Contact";
+import Images from "@/components/BusinessForm/5_Images";
+import Review from "@/components/BusinessForm/6_Review";
+import { TermsAndConditions } from "@/components/BusinessForm/TermsAndConditions";
+
 import { Button } from "@/styled/Button";
-import { ButtonLink } from "@/styled/ButtonLink";
-import { TermsAndConditions } from "../TermsAndConditions";
+
+import { steps as BusinessSteps } from "@/lib/stepsObject";
+import { IBusiness } from "@/types/Business";
 
 import styles from "./MyBusinessPage.module.scss";
 
@@ -24,66 +24,51 @@ interface Props {
   business: any;
 }
 
+interface FormState {
+  currentStep: number;
+  business: IBusiness | null;
+  updateBusiness: (business: IBusiness) => void;
+  handleNextStep: () => void;
+  handlePreviousStep: () => void;
+  steps: typeof BusinessSteps;
+}
+
+export const useBusinessStore = create<FormState>()((set) => ({
+  currentStep: 0,
+  steps: BusinessSteps,
+  business: null,
+  updateBusiness: (business) => set(() => ({ business })),
+  handleNextStep: () =>
+    set((state) => ({ currentStep: state.currentStep + 1 })),
+  handlePreviousStep: () => {
+    return set(({ currentStep }) => ({ currentStep: currentStep - 1 }));
+  },
+}));
+
 const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {
-    referralSource,
-    referringBusiness,
-    currentStep,
-    setCurrentStep,
-    formSteps,
-    agreementSigned,
-  } = useBusinessFormContext();
-
-  const isLastStep = currentStep === formSteps.length - 1;
-  const isWideStep = currentStep === 1 || currentStep === 2;
-
-  const queryStep = parseInt(
-    typeof router.query?.start === "string" ? router.query.start : "-1"
-  );
-
-  useEffect(() => {
-    if (queryStep !== -1) setCurrentStep(queryStep);
-  }, []);
+  const { currentStep, steps } = useBusinessStore();
 
   function _renderStepContent() {
-    if (!agreementSigned && !business) {
-      return <TermsAndConditions />;
-    }
-
     switch (currentStep) {
+      case 0:
+        return <TermsAndConditions />;
       case 1:
-        return <Categories />;
-      case 2:
-        return <Description />;
-      case 3:
-        return <Images />;
-      case 4:
-        return <Contact />;
-      case 5:
-        return <Review />;
-      default:
         return <NameLocation />;
+      case 2:
+        return <Categories />;
+      case 3:
+        return <Description />;
+      case 4:
+        return <Images />;
+      case 5:
+        return <Contact />;
+      default:
+        return <Review />;
     }
   }
-
-  const renderButtons = () => {
-    if (!agreementSigned && !business) {
-      return null;
-    }
-
-    return (
-      <div className="mx-auto flex w-full max-w-xl p-2 [&>*]:flex-1">
-        <Button type="submit" disabled={isSubmitting}>
-          {currentStep === formSteps.length - 1
-            ? "Submit and view page"
-            : "Next"}
-        </Button>
-      </div>
-    );
-  };
 
   async function _submitForm(values: any, actions: any) {
     setIsSubmitting(true);
@@ -95,8 +80,8 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
             values.business_url && values.business_url !== "undefined"
               ? "https://" + values.business_url
               : "",
-          referral_source: referralSource,
-          referral_business_slug: referringBusiness,
+          // referral_source: referralSource,
+          // referral_business_slug: referringBusiness,
         }
       : { ...values, business_url: "https://" + values.business_url };
 
@@ -127,109 +112,13 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
     actions.setSubmitting(false);
   }
 
-  function _handleSubmit(values: any, actions: any) {
-    if (isLastStep) {
-      _submitForm(values, actions);
-    } else {
-      setCurrentStep((prevStep: number) => prevStep + 1);
-    }
-  }
-
-  const handleBack = () => {
-    setCurrentStep((prevStep: number) => prevStep - 1);
-  };
-
   return (
     <>
-      <Header variant="auth" className="hidden lg:block" />
-      <BusinessForm business={business}>
-        <Formik
-          initialValues={{
-            ...business,
-            business_url: business?.business_url
-              ?.replace("https://", "")
-              .replace("https://", ""),
-          }}
-          validationSchema={businessFormSchema[currentStep]}
-          onSubmit={_handleSubmit}
-          validateOnBlur={false}
-          validateOnChange={false}
-        >
-          {() => (
-            <>
-              <Form
-                id="businessForm"
-                className={`flex w-full flex-col gap-7 px-2 ${
-                  !isWideStep && "max-w-xl"
-                } mx-auto`}
-              >
-                {!isSubmitting && (
-                  <div className="absolute top-0 left-0 inline-flex w-full items-center justify-between md:left-0 md:-top-10 md:w-auto">
-                    {currentStep > 0 && (
-                      <Button type="button" variant="text" onClick={handleBack}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1}
-                          stroke="currentColor"
-                          className="mr-2 h-6 w-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                          />
-                        </svg>
-                        Go Back
-                      </Button>
-                    )}
+      <Header variant="auth" />
 
-                    <ButtonLink
-                      href="/dashboard"
-                      variant="text"
-                      className="ml-auto md:hidden"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={0.5}
-                        stroke="currentColor"
-                        className="h-12 w-12"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </ButtonLink>
-                  </div>
-                )}
-
-                {_renderStepContent()}
-                <div className="fixed bottom-0 left-0 flex w-full flex-col bg-white shadow-bottom-nav md:absolute md:shadow-none">
-                  <progress
-                    value={(currentStep / (formSteps.length - 1)) * 100}
-                    max="100"
-                    className={styles.progress}
-                  >
-                    {(currentStep / (formSteps.length - 1)) * 100}%
-                  </progress>
-                  {renderButtons()}
-                </div>
-              </Form>
-            </>
-          )}
-        </Formik>
-      </BusinessForm>
+      {_renderStepContent()}
     </>
   );
 };
-
-const SubmitButton: FC = ({ children }) => (
-  <button className="button text-lg">{children}</button>
-);
 
 export default MyBusinessPage;

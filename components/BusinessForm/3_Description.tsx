@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { useFormikContext, useField } from "formik";
 
 import "react-quill/dist/quill.snow.css";
+import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
+import { BusinessForm } from "layouts/BusinessForm";
+import { Button } from "@/styled/Button";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
@@ -14,11 +16,10 @@ const toolbarOptions = [
 ];
 
 const Description = () => {
-  const { setFieldValue, values } = useFormikContext<any>();
-  const [content, setContent] = useState(values.business_description || "");
-  const [_, meta] = useField("business_description");
+  const { business, handleNextStep } = useBusinessStore();
+  const [content, setContent] = useState(business?.business_description || "");
 
-  const isError = meta.touched && meta.error;
+  const isError = false;
 
   const handleUpdate = (content: any) => {
     if (typeof content === "string") {
@@ -38,13 +39,20 @@ const Description = () => {
           .replace(/<\/h6>/, "</p>")
           .replace(/style="[^"]*"/g, "")
       );
-      setFieldValue("business_description", content);
+      // setFieldValue("business_description", content);
     }
   };
 
+  const handleConfirm = () => {
+    handleNextStep();
+  };
+
   return (
-    <>
-      <div className="flex max-w-full flex-col gap-2">
+    <BusinessForm
+      title="Description"
+      subtitle="Elaborate on the services you provide"
+    >
+      <form className="flex max-w-full flex-col gap-2">
         <label
           htmlFor="business_description"
           className={`text-sm font-medium uppercase lg:text-base ${
@@ -68,10 +76,12 @@ const Description = () => {
           }}
         />
         {isError && (
-          <p className="text-xs text-red-500 lg:text-sm ">{meta.error}</p>
+          <p className="text-xs text-red-500 lg:text-sm ">Error message</p>
         )}
-      </div>
-    </>
+
+        <Button onClick={handleConfirm}>Next</Button>
+      </form>
+    </BusinessForm>
   );
 };
 
