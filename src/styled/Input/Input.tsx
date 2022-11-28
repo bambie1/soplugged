@@ -30,8 +30,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           ref={ref}
           {...props}
           className={`rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:italic placeholder:text-slate-400 ${
-            !!error &&
-            "border-red-500 focus:outline-2 focus:outline-transparent"
+            !!error && "border-red-500 focus:outline-2 focus:outline-red-500"
           }`}
         />
         {!noHelper && renderHelperText()}

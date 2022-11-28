@@ -1,7 +1,7 @@
 import useSWR from "swr";
-import { FC, useState } from "react";
-import { useRouter } from "next/router";
+import { FC } from "react";
 import Link from "next/link";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import { Button } from "@/styled/Button";
 
@@ -17,15 +17,27 @@ const referralSources = [
   { label: "Other", value: "Other" },
 ];
 
-const TermsAndConditions: FC = () => {
-  const router = useRouter();
-  const { handleNextStep } = useBusinessStore();
+interface IFormInput {
+  hasReadGuidelines: boolean;
+  isBlackEntrepreneur: boolean;
+  isCanadaResident: boolean;
+  referral_source: string;
+  referral_business_slug?: string;
+}
 
-  const [adhereCheck, setAdhereCheck] = useState(false);
-  const [blackBusiness, setBlackBusiness] = useState(false);
-  const [canadaResident, setCanadaResident] = useState(false);
-  const [referralInput, setReferralInput] = useState<string>("");
-  const [refBusiness, setRefBusiness] = useState<string>("");
+const TermsAndConditions: FC = () => {
+  const { handleNextStep, updateBusiness, business } = useBusinessStore();
+
+  const agreementSigned = !!business?.referral_source;
+
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+  } = useForm<IFormInput>();
+
+  const watchReferralSource = watch("referral_source");
 
   const { data: businesses } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
@@ -40,68 +52,76 @@ const TermsAndConditions: FC = () => {
           .localeCompare(b.business_name.toLowerCase())
       ) || [];
 
-  const handleConfirm = () => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    updateBusiness({
+      ...business,
+      referral_source: data.referral_source,
+      referral_business_slug: data.referral_business_slug,
+    });
+
     handleNextStep();
   };
 
   return (
     <>
       <BusinessForm title="Welcome" subtitle="Terms and conditions">
-        <div className={`my-container ${styles.content}`}>
-          <div className={styles.checkbox}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="relative grid h-full content-center gap-6"
+        >
+          <div className="my-2 flex items-center gap-4 text-left">
             <input
               type="checkbox"
-              id="adhereToGuidelines"
-              name="adhereToGuidelines"
-              value="I will adhere to the Community Guidelines"
-              checked={adhereCheck}
-              onChange={() => setAdhereCheck(!adhereCheck)}
+              id="hasReadGuidelines"
+              {...register("hasReadGuidelines", {
+                required: true,
+                value: agreementSigned,
+              })}
             />
-            <label className={styles.label} htmlFor="adhereToGuidelines">
+            <label className="text-base" htmlFor="hasReadGuidelines">
               I have read and will adhere to the{" "}
               <Link href="/guidelines">
-                <a target="_blank" className={styles.link}>
+                <a target="_blank" className="text-primary underline">
                   Community Guidelines
                 </a>
               </Link>
             </label>
           </div>
 
-          <div className={styles.checkbox}>
+          <div className="my-2 flex items-center gap-4 text-left">
             <input
               type="checkbox"
-              id="blackEntrepreneur"
-              name="blackEntrepreneur"
-              value="I am a black entrepreneur"
-              checked={blackBusiness}
-              onChange={() => setBlackBusiness(!blackBusiness)}
+              id="isBlackEntrepreneur"
+              {...register("isBlackEntrepreneur", {
+                required: true,
+                value: agreementSigned,
+              })}
             />
-            <label className={styles.label} htmlFor="blackEntrepreneur">
+            <label className="text-base" htmlFor="isBlackEntrepreneur">
               I am a black entrepreneur
             </label>
           </div>
-          <div className={styles.checkbox}>
+          <div className="my-2 flex items-center gap-4 text-left">
             <input
               type="checkbox"
-              id="canadaResident"
-              name="canadaResident"
-              value=" I currently reside in Canada"
-              checked={canadaResident}
-              onChange={() => setCanadaResident(!canadaResident)}
+              id="isCanadaResident"
+              {...register("isCanadaResident", {
+                required: true,
+                value: agreementSigned,
+              })}
             />
-            <label className={styles.label} htmlFor="canadaResident">
+            <label className="text-base" htmlFor="isCanadaResident">
               I currently reside in Canada
             </label>
           </div>
 
-          <label htmlFor="referral-source" className={styles.selectLabel}>
+          <label htmlFor="referralSource" className={styles.selectLabel}>
             How did you hear about SoPlugged?
-            <div className={styles.selectWrapper}>
+            <div className="relative mt-1 w-full rounded py-1 pr-2 pl-0">
               <select
-                name="referralSource"
-                id="referral-source"
-                onChange={(e) => setReferralInput(e.target.value)}
-                defaultValue=""
+                {...register("referral_source", { required: true })}
+                id="referral_source"
+                defaultValue={business.referral_source}
                 className="cursor-pointer"
               >
                 <option value="" disabled>
@@ -116,14 +136,18 @@ const TermsAndConditions: FC = () => {
             </div>
           </label>
 
-          {referralInput === "Business" && businesses?.length && (
-            <label htmlFor="referral-source" className={styles.selectLabel}>
+          {watchReferralSource === "Business" && businesses?.length && (
+            <label
+              htmlFor="referral_business_slug"
+              className={styles.selectLabel}
+            >
               Please select business that referred you:
-              <div className={styles.selectWrapper}>
+              <div className="relative mt-1 w-full rounded py-1 pr-2 pl-0">
                 <select
-                  name="referralSource"
-                  id="referral-source"
-                  onChange={(e) => setRefBusiness(e.target.value)}
+                  {...register("referral_business_slug", {
+                    required: watchReferralSource === "Business",
+                  })}
+                  id="referral_business_slug"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -139,10 +163,12 @@ const TermsAndConditions: FC = () => {
             </label>
           )}
 
-          <div className={styles.action}>
-            <Button onClick={handleConfirm}>Get Started</Button>
+          <div className="fixed bottom-0 left-0 flex w-full justify-center bg-white p-2 shadow-bottom-nav">
+            <div className="grid w-full max-w-xl">
+              <Button type="submit">Get Started</Button>
+            </div>
           </div>
-        </div>
+        </form>
       </BusinessForm>
     </>
   );

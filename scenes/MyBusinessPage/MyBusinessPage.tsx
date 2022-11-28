@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 import create from "zustand";
@@ -13,21 +13,22 @@ import Images from "@/components/BusinessForm/5_Images";
 import Review from "@/components/BusinessForm/6_Review";
 import { TermsAndConditions } from "@/components/BusinessForm/TermsAndConditions";
 
-import { Button } from "@/styled/Button";
-
 import { steps as BusinessSteps } from "@/lib/stepsObject";
 import { IBusiness } from "@/types/Business";
-
-import styles from "./MyBusinessPage.module.scss";
 
 interface Props {
   business: any;
 }
 
+interface NewOrOldBusiness extends IBusiness {
+  referral_source?: string;
+  referral_business_slug?: string;
+}
+
 interface FormState {
   currentStep: number;
-  business: IBusiness | null;
-  updateBusiness: (business: IBusiness) => void;
+  business: NewOrOldBusiness;
+  updateBusiness: (business: NewOrOldBusiness) => void;
   handleNextStep: () => void;
   handlePreviousStep: () => void;
   steps: typeof BusinessSteps;
@@ -36,7 +37,14 @@ interface FormState {
 export const useBusinessStore = create<FormState>()((set) => ({
   currentStep: 0,
   steps: BusinessSteps,
-  business: null,
+  business: {
+    business_description: "",
+    business_location: "",
+    business_name: "",
+    category: "",
+    slug: "",
+    verified: true,
+  },
   updateBusiness: (business) => set(() => ({ business })),
   handleNextStep: () =>
     set((state) => ({ currentStep: state.currentStep + 1 })),
@@ -49,7 +57,12 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { currentStep, steps } = useBusinessStore();
+  const { currentStep, steps, updateBusiness } = useBusinessStore();
+
+  useEffect(() => {
+    if (business) updateBusiness(business);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [business]);
 
   function _renderStepContent() {
     switch (currentStep) {
@@ -73,17 +86,13 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   async function _submitForm(values: any, actions: any) {
     setIsSubmitting(true);
 
-    const businessObj = !business
-      ? {
-          ...values,
-          business_url:
-            values.business_url && values.business_url !== "undefined"
-              ? "https://" + values.business_url
-              : "",
-          // referral_source: referralSource,
-          // referral_business_slug: referringBusiness,
-        }
-      : { ...values, business_url: "https://" + values.business_url };
+    const businessObj = {
+      ...values,
+      business_url:
+        values.business_url && values.business_url !== "undefined"
+          ? "https://" + values.business_url
+          : "",
+    };
 
     const updatedBusiness = await fetch("/api/user/updateBusiness", {
       method: !business ? "POST" : "PATCH",
@@ -115,7 +124,6 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header variant="auth" />
-
       {_renderStepContent()}
     </>
   );

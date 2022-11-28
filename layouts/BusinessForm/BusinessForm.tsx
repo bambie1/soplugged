@@ -8,9 +8,16 @@ interface Props {
   skeleton?: boolean;
   title: string;
   subtitle: string;
+  isWide?: boolean;
 }
 
-const BusinessForm: FC<Props> = ({ children, title, subtitle, skeleton }) => {
+const BusinessForm: FC<Props> = ({
+  children,
+  title,
+  isWide,
+  subtitle,
+  skeleton,
+}) => {
   const { currentStep, steps, handlePreviousStep } = useBusinessStore();
 
   const renderSteps = () => {
@@ -56,9 +63,12 @@ const BusinessForm: FC<Props> = ({ children, title, subtitle, skeleton }) => {
     <>
       <div className="relative flex min-h-screen flex-col">
         <div className="absolute top-0 left-0 -z-[1] h-1/3 w-full bg-gradient-to-b from-secondary/40"></div>
-        <div className="px-4 pt-10 pb-10 lg:pt-24">{renderStepInfo()}</div>
-        <div className="my-container pb-20 lg:max-w-2xl">
-          <div className="flex w-full flex-col bg-white shadow-bottom-nav md:shadow-none">
+        <div
+          className={`my-container px-4 pt-20 pb-20 lg:pt-24 ${
+            isWide ? "lg:max-w-3xl" : "lg:max-w-2xl"
+          }`}
+        >
+          <div className="mx-auto flex w-[90%] max-w-2xl flex-col bg-white">
             <progress
               value={(currentStep / (steps.length - 1)) * 100}
               max="100"
@@ -74,6 +84,7 @@ const BusinessForm: FC<Props> = ({ children, title, subtitle, skeleton }) => {
           >
             Back
           </Button>
+          <div className="pb-10">{renderStepInfo()}</div>
           {children}
         </div>
       </div>

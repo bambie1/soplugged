@@ -18,29 +18,3 @@
     border-color: $primary;
   }
 }
-
-.categoryImage {
-  border: 1px solid $secondary;
-  color: $secondary;
-  cursor: pointer;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 0.5rem;
-  word-break: break-word;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  span {
-    flex-shrink: 0;
-  }
-
-  &:hover {
-    border-color: $primary;
-  }
-
-  @include tablet {
-    margin: 0.125rem 0.25rem;
-    padding: 0.75rem;
-  }
-}
