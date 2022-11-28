@@ -11,7 +11,7 @@ const OurStoryPage = () => {
           <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
             Our story
           </h1>
-          <div className="prose">
+          <div className="prose-lg">
             <p>
               Hi, I'm Nina, creator, and founder of SoPlugged - an online
               platform that makes <b>#buyingblack</b> easy! Our biggest
