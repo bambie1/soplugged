@@ -22,7 +22,7 @@ interface Props {
   phoneNumber?: string;
 }
 
-const ContactForm: FC<Props> = ({ businessEmail, phoneNumber }) => {
+const ContactForm: FC<Props> = ({ businessEmail }) => {
   const { data: session } = useSession();
   const plausible = usePlausible<MyEvents>();
 
@@ -91,9 +91,9 @@ const ContactForm: FC<Props> = ({ businessEmail, phoneNumber }) => {
           Message
         </label>
         <textarea
-          placeholder="Hi there! I would like to employ your services"
+          placeholder="Begin your message..."
           id="message"
-          className="rounded-lg shadow-sm focus:border-primary focus:ring-transparent"
+          className="rounded-lg shadow-sm placeholder:text-gray-300 focus:border-primary focus:ring-transparent"
           rows={10}
           disabled={disabled}
           {...register("message", { required: true })}
