@@ -28,8 +28,8 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
         </section>
 
         <div className="my-container">
-          <div className="">
-            <ul className="mt-4 inline-flex grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3">
+          <div className="flex">
+            <ul className="mt-4 inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3">
               {posts?.map((post: any) => (
                 <li key={post.slug} className="w-full">
                   <BlogCard post={post} />

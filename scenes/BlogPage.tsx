@@ -160,7 +160,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           <div className="border-t border-gray-200 pt-6">
             <h3>READ MORE...</h3>
             <div className="overflow-x-auto pb-2">
-              <ul className="mt-4 inline-flex gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
+              <ul className="mt-4 inline-flex w-full gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
                 {morePosts?.map((post: any) => (
                   <li
                     key={post.slug}
