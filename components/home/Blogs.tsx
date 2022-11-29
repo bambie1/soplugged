@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/styled/ButtonLink";
 import { FC } from "react";
 
 import BlogCard from "../BlogCard";
@@ -35,6 +36,12 @@ const Blogs: FC = ({ posts }: any) => {
               );
             })}
           </ul>
+        </div>
+
+        <div className="mt-6 flex justify-center lg:mt-12">
+          <ButtonLink href="/blog" showArrow variant="text">
+            View all posts
+          </ButtonLink>
         </div>
       </div>
     </div>

@@ -85,6 +85,10 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
               dangerouslySetInnerHTML={{ __html: content.html }}
               className="prose col-span-2 col-start-1 mb-20 max-w-none lg:mr-10"
             />
+
+            {/* {plugSoPluggedPro && <div>
+              
+              </div>} */}
             <hr className="mt-10 mb-4 lg:hidden" />
             <div className="top-20 lg:sticky lg:my-20">
               <div className="mb-6 flex flex-col items-start rounded-xl border-secondary p-4 lg:p-0">

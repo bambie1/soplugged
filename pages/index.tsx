@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import type { GetStaticProps, NextPage } from "next";
 
-import { getAllPostsForHome } from "@/utils/graphcms";
 import Hero from "@/components/home/Hero";
 import { SEO } from "@/components/SEO";
+import { fetchAPI } from "@/utils/graphcms";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
@@ -34,5 +34,32 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { posts },
   };
 };
+
+// GraphCMS queries
+const gql = String.raw;
+export async function getAllPostsForHome() {
+  const data = await fetchAPI(
+    gql`
+      {
+        posts(orderBy: createdAt_DESC, first: 4, stage: PUBLISHED) {
+          title
+          slug
+          createdAt
+          excerpt
+          blogImage {
+            url
+          }
+          author {
+            name
+          }
+          categories(first: 10) {
+            title
+          }
+        }
+      }
+    `
+  );
+  return data.posts;
+}
 
 export default Home;

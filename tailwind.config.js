@@ -52,9 +52,6 @@ module.exports = {
         "radial-pro":
           "radial-gradient(50% 50% at 50% 50%, rgba(147, 170, 205, 0.8) 0%, rgba(147, 170, 205, 0) 100%);",
       },
-      fontFamily: {
-        handwriting: ["Gloria Hallelujah", "cursive"],
-      },
       listStyleType: {
         square: "square",
       },

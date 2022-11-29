@@ -54,6 +54,7 @@ async function getPostAndMorePosts(slug: any) {
           title
           slug
           excerpt
+          plugSoPluggedPro
           content {
             html
           }
