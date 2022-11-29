@@ -32,7 +32,7 @@ Router.events.on("routeChangeComplete", nProgress.done);
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
-      <PlausibleProvider domain="soplugged.com">
+      <PlausibleProvider domain="soplugged.com" trackOutboundLinks={true}>
         <SessionProvider session={session}>
           <SWRConfig
             value={{
@@ -50,23 +50,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           </SWRConfig>
         </SessionProvider>
       </PlausibleProvider>
-
-      {/* {process.env.NODE_ENV !== "development" && (
-        <Script
-          id="smartLook"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.smartlook||(function(d) {
-              var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-              var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-              c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-              })(document);
-              smartlook('init', 'bfdb10310ff6ee36c72a4b764001a8f2165bd99b', { region: 'eu' });
-          `,
-          }}
-        />
-      )} */}
     </>
   );
 }
