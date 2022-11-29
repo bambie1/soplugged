@@ -78,8 +78,8 @@ export const categories = [
     tags: "souvenirs, gift boxes, handmade, customized apparel, favours",
   },
   {
-    value: "housekeeping-domestic",
-    label: "Housekeeping / Domestic Services",
+    value: "housekeeping",
+    label: "Housekeeping Services",
     imageSrc: "/images/household.png",
     tags: "cleaning, housekeeping, office cleaning, house sitting",
   },
