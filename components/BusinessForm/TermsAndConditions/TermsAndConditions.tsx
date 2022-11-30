@@ -64,7 +64,10 @@ const TermsAndConditions: FC = () => {
 
   return (
     <>
-      <BusinessForm title="Welcome" subtitle="Terms and conditions">
+      <BusinessForm
+        title="We're excited to have you here!"
+        subtitle="Please confirm the following to get started"
+      >
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="relative grid h-full content-center gap-6"
@@ -136,32 +139,34 @@ const TermsAndConditions: FC = () => {
             </div>
           </label>
 
-          {watchReferralSource === "Business" && businesses?.length && (
-            <label
-              htmlFor="referral_business_slug"
-              className={styles.selectLabel}
-            >
-              Please select business that referred you:
-              <div className="relative mt-1 w-full rounded py-1 pr-2 pl-0">
-                <select
-                  {...register("referral_business_slug", {
-                    required: watchReferralSource === "Business",
-                  })}
-                  id="referral_business_slug"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Select a business
-                  </option>
-                  {orderedBusinesses.map(({ business_name, slug }: any) => (
-                    <option key={slug} value={slug}>
-                      {business_name}
+          {(watchReferralSource === "Business" ||
+            business.referral_source === "Business") &&
+            businesses?.length && (
+              <label
+                htmlFor="referral_business_slug"
+                className={styles.selectLabel}
+              >
+                Please select business that referred you:
+                <div className="relative mt-1 w-full rounded py-1 pr-2 pl-0">
+                  <select
+                    {...register("referral_business_slug", {
+                      required: watchReferralSource === "Business",
+                    })}
+                    id="referral_business_slug"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select a business
                     </option>
-                  ))}
-                </select>
-              </div>
-            </label>
-          )}
+                    {orderedBusinesses.map(({ business_name, slug }: any) => (
+                      <option key={slug} value={slug}>
+                        {business_name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </label>
+            )}
 
           <div className="fixed bottom-0 left-0 flex w-full justify-center bg-white p-2 shadow-bottom-nav">
             <div className="grid w-full max-w-xl">

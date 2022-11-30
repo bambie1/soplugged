@@ -16,10 +16,12 @@ const Input = forwardRef<HTMLInputElement, Props>(
       return <span className={`${styles.helperText} ${styles.hidden}`}>.</span>;
     };
 
+    const tempId = label.split(" ").at(-1);
+
     return (
       <div className="grid w-full text-left">
         <label
-          htmlFor=""
+          htmlFor={tempId}
           className={`mb-1 block text-sm font-bold uppercase ${
             !!error && "text-red-500"
           }`}
@@ -27,6 +29,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           {label}
         </label>
         <input
+          id={tempId}
           ref={ref}
           {...props}
           className={`rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:italic placeholder:text-slate-400 ${

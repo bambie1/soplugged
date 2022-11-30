@@ -57,7 +57,7 @@ const Categories = () => {
                         ? "ring-1 ring-white ring-opacity-60 ring-offset-1 ring-offset-primary"
                         : ""
                     }
-                  ${checked ? "bg-secondary bg-opacity-75" : "bg-white"}
+                  ${checked ? "bg-secondary bg-opacity-75" : ""}
                     relative flex cursor-pointer rounded-lg border px-5 py-4 shadow-sm focus:outline-none`
                   }
                 >

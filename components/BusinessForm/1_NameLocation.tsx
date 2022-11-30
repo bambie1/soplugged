@@ -55,7 +55,10 @@ const NameLocation: FC = () => {
         <Input
           label="What is the name of your business?"
           {...register("business_name", {
-            required: { message: "needed", value: true },
+            required: {
+              message: "Please enter a name for your business",
+              value: true,
+            },
             value: business.business_name,
           })}
           error={errors.business_name?.message}
