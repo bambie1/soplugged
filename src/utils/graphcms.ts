@@ -63,36 +63,6 @@ export async function getPostBySlug(slug: any) {
   return data.post;
 }
 
-export async function getAllPostsForHome() {
-  const data = await fetchAPI(
-    gql`
-      {
-        posts(
-          where: { displayOnHomePage: true }
-          orderBy: createdAt_DESC
-          first: 4
-          stage: PUBLISHED
-        ) {
-          title
-          slug
-          createdAt
-          excerpt
-          blogImage {
-            url
-          }
-          author {
-            name
-          }
-          categories(first: 10) {
-            title
-          }
-        }
-      }
-    `
-  );
-  return data.posts;
-}
-
 export async function getAllBlogPosts() {
   const data = await fetchAPI(
     gql`

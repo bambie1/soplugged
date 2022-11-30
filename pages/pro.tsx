@@ -1,10 +1,9 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 
 import ProPage from "@/scenes/ProPage";
 import { SEO } from "@/components/SEO";
-import { getAllPostsForHome } from "@/utils/graphcms";
 
-const Pro: NextPage = (props) => {
+const Pro: NextPage = () => {
   return (
     <>
       <SEO
@@ -13,17 +12,9 @@ const Pro: NextPage = (props) => {
         title="SoPlugged Pro | Grow your online presence with ease"
         variant="pro"
       />
-      <ProPage {...props} />
+      <ProPage />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = (await getAllPostsForHome()) || [];
-
-  return {
-    props: { posts },
-  };
 };
 
 export default Pro;

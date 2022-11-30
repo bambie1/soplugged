@@ -1,4 +1,5 @@
 import { ArrowButton } from "@/styled/ArrowButton";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const faqs = [
   {
@@ -16,7 +17,9 @@ const faqs = [
           Adding your business is free, quick and easy. Please click the button
           below to get started (you'll need to be signed in to add a business).
         </p>
-        <ArrowButton href="/my-business">Add my business</ArrowButton>
+        <ButtonLink href="/my-business" showArrow>
+          Add my business
+        </ButtonLink>
       </div>
     ),
   },
