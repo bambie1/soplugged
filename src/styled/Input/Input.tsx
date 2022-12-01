@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import styles from "./Input.module.scss";
 
@@ -19,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     const tempId = label.split(" ").at(-1);
 
     return (
-      <div className="grid w-full text-left">
+      <div className="relative grid w-full text-left">
         <label
           htmlFor={tempId}
           className={`mb-1 block text-sm font-bold uppercase ${
@@ -33,9 +34,19 @@ const Input = forwardRef<HTMLInputElement, Props>(
           ref={ref}
           {...props}
           className={`rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:italic placeholder:text-slate-400 ${
-            !!error && "border-red-500 focus:outline-2 focus:outline-red-500"
+            !!error
+              ? "border-red-500 focus:outline-2 focus:outline-red-500"
+              : "border-gray-400 focus:border-primary focus:ring-primary"
           }`}
         />
+        {!!error && (
+          <div className="pointer-events-none absolute inset-y-0 right-0 mt-1 flex items-center pr-3">
+            <ExclamationCircleIcon
+              className="h-5 w-5 text-red-500"
+              aria-hidden="true"
+            />
+          </div>
+        )}
         {!noHelper && renderHelperText()}
       </div>
     );

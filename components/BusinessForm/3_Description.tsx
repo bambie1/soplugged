@@ -4,7 +4,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import "react-quill/dist/quill.snow.css";
 import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 import { BusinessForm } from "layouts/BusinessForm";
-import { Button } from "@/styled/Button";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
@@ -60,57 +60,59 @@ const Description = () => {
   };
 
   return (
-    <BusinessForm
-      title="Description"
-      subtitle="Elaborate on the services you provide"
-    >
-      <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <label
-          htmlFor="business_description"
-          className={`text-sm font-medium uppercase lg:text-base ${
-            isError && "text-red-500"
-          }`}
-        >
-          Business Description
-        </label>
-        <Controller
-          control={control}
-          name="business_description"
-          defaultValue={business.business_description}
-          rules={{
-            validate: (value) => {
-              const plainText = value.replace(/<\/?[^>]+(>|$)/g, "");
-              return plainText !== "";
-            },
-          }}
-          render={({ field: { value } }) => (
-            <ReactQuill
-              placeholder="Enter a description for your business"
-              value={value}
-              onChange={handleUpdate}
-              id="business_description"
-              className={`${isError && "quillError"} flex max-w-full`}
-              modules={{
-                clipboard: {
-                  matchVisual: false,
-                },
-                toolbar: toolbarOptions,
-              }}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <BusinessForm>
+        {errors.business_description && (
+          <div className="mb-3 flex items-center justify-center gap-3 text-center font-medium text-red-500">
+            <ExclamationCircleIcon
+              className="h-5 w-5 text-red-500"
+              aria-hidden="true"
             />
-          )}
-        />
-
-        {isError && (
-          <p className="text-xs text-red-500 lg:text-sm ">Error message</p>
-        )}
-
-        <div className="fixed bottom-0 left-0 flex w-full justify-center bg-white p-2 shadow-bottom-nav">
-          <div className="grid w-full max-w-xl">
-            <Button type="submit">Next</Button>
+            <p>Please add a description for your business</p>
           </div>
+        )}
+        <div className="grid gap-4">
+          <label
+            htmlFor="business_description"
+            className={`text-sm font-medium uppercase lg:text-base ${
+              isError && "text-red-500"
+            }`}
+          >
+            Business Description
+          </label>
+          <Controller
+            control={control}
+            name="business_description"
+            defaultValue={business.business_description}
+            rules={{
+              validate: (value) => {
+                const plainText = value.replace(/<\/?[^>]+(>|$)/g, "");
+                return plainText !== "";
+              },
+            }}
+            render={({ field: { value } }) => (
+              <ReactQuill
+                placeholder="Enter a description for your business"
+                value={value}
+                onChange={handleUpdate}
+                id="business_description"
+                className={`${isError && "quillError"} flex max-w-full`}
+                modules={{
+                  clipboard: {
+                    matchVisual: false,
+                  },
+                  toolbar: toolbarOptions,
+                }}
+              />
+            )}
+          />
+
+          {isError && (
+            <p className="text-xs text-red-500 lg:text-sm ">Error message</p>
+          )}
         </div>
-      </form>
-    </BusinessForm>
+      </BusinessForm>
+    </form>
   );
 };
 

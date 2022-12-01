@@ -1,56 +1,41 @@
-export const stepsObject: any = {
-  welcome: 0,
-  name_location: 1,
-  category: 2,
-  description: 3,
-  contact: 4,
-  images: 5,
-  review: 6,
-};
-
 export const steps = [
-  {
-    number: 0,
-    step: "welcome",
-    name: "Welcome",
-    description: "Terms and conditions",
-  },
   {
     number: 1,
     step: "name_location",
-    name: "Name & Location",
-    description: "Important details of your business",
+    name: "Tell us about your business",
+    description: "Add your business name and location",
   },
   {
     number: 2,
     step: "category",
-    name: "Category",
-    description: "Select the category that your business falls under",
+    name: "Select a category",
+    description:
+      "Choose the most-fitting category to be easily found by customers",
   },
   {
     number: 3,
     step: "description",
-    name: "Description",
+    name: "Describe your business",
     description:
-      "Detailed description about your business and the services you provide",
+      "Talk about your products you sell or the services your provide",
   },
   {
     number: 4,
-    step: "contact",
-    name: "Contact",
-    description: "Alternative ways that your potential customer can reach you",
+    step: "images",
+    name: "Upload images",
+    description:
+      "Add a logo, and showcase your skill by uploading up to 3 images",
   },
   {
     number: 5,
-    step: "images",
-    name: "Images",
-    description:
-      "The most important part of your business page. Upload a logo and sample images",
+    step: "contact",
+    name: "How can customers shop with you?",
+    description: "Add your website url, Instagram handle, and/or phone number",
   },
   {
     number: 6,
     step: "review",
-    name: "Review",
-    description: "Confirm your changes",
+    name: "Review & Submit",
+    description: "Look over the details you’ve entered, and click Submit.",
   },
 ];

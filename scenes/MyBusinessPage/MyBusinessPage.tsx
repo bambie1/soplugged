@@ -4,17 +4,18 @@ import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 import create from "zustand";
 
-import Header from "@/components/Header/Header";
 import NameLocation from "@/components/BusinessForm/1_NameLocation";
 import Categories from "@/components/BusinessForm/2_Categories";
 import Description from "@/components/BusinessForm/3_Description";
 import Contact from "@/components/BusinessForm/4_Contact";
 import Images from "@/components/BusinessForm/5_Images";
 import Review from "@/components/BusinessForm/6_Review";
-import { TermsAndConditions } from "@/components/BusinessForm/TermsAndConditions";
 
 import { steps as BusinessSteps } from "@/lib/stepsObject";
 import { IBusiness } from "@/types/Business";
+import { ButtonLink } from "@/styled/ButtonLink";
+import { BackArrowButton } from "@/styled/BackArrowButton";
+import Introduction from "@/components/BusinessForm/0_Introduction";
 
 interface Props {
   business: any;
@@ -57,17 +58,20 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { currentStep, steps, updateBusiness } = useBusinessStore();
+  const { currentStep, steps, updateBusiness, handlePreviousStep } =
+    useBusinessStore();
 
   useEffect(() => {
     if (business) updateBusiness(business);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [business]);
 
+  const percentage = (currentStep / steps.length) * 100;
+
   function _renderStepContent() {
     switch (currentStep) {
       case 0:
-        return <TermsAndConditions />;
+        return <Introduction />;
       case 1:
         return <NameLocation />;
       case 2:
@@ -123,7 +127,25 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header variant="auth" />
+      <div className="my-container fixed left-0 right-0 top-0 z-10 bg-white">
+        <div className="flex h-16 items-center justify-between">
+          <BackArrowButton
+            disabled={currentStep === 0}
+            onClick={handlePreviousStep}
+          >
+            Go back
+          </BackArrowButton>
+          <ButtonLink variant="text">Exit</ButtonLink>
+        </div>
+
+        <div className="mx-auto flex h-1 w-[90%] max-w-xl flex-col overflow-hidden rounded-lg bg-secondary/30">
+          <div
+            style={{ width: `${percentage}%` }}
+            className="h-full bg-gradient-to-r from-secondary to-primary transition-width duration-300"
+          ></div>
+        </div>
+      </div>
+
       {_renderStepContent()}
     </>
   );

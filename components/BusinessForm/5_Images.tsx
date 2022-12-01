@@ -8,7 +8,6 @@ import { FileDropzone } from "@/components/FileDropzone";
 import useImageUploader from "@/hooks/useImageUploader";
 import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 import { BusinessForm } from "layouts/BusinessForm";
-import { Button } from "@/styled/Button";
 
 interface IFormInput {
   business_images: string;
@@ -43,55 +42,49 @@ const Images = () => {
   };
 
   return (
-    <BusinessForm
-      title="Images"
-      subtitle="Upload a logo and sample images of your work"
-    >
-      <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="business-logo">Business logo:</label>
-        <input
-          accept="image/png, image/jpeg"
-          className="hidden"
-          id="business-logo"
-          name="logo_url"
-          type="file"
-          onChange={handleFileUpload}
-          value=""
-          disabled={uploading}
-        />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <BusinessForm>
+        <div className="grid gap-4">
+          <label htmlFor="business-logo">Business logo:</label>
+          <input
+            accept="image/png, image/jpeg"
+            className="hidden"
+            id="business-logo"
+            name="logo_url"
+            type="file"
+            onChange={handleFileUpload}
+            value=""
+            disabled={uploading}
+          />
 
-        <div className="flex items-center gap-4">
-          <label
-            htmlFor="business-logo"
-            className={`button outlined withIcon inline-flex ${
-              uploading && "disabled"
-            }`}
-          >
-            <FontAwesomeIcon icon={faCloudUploadAlt} />
-            {business?.logo_url ? "Change Logo" : "Upload Logo"}
-          </label>
+          <div className="flex items-center gap-4">
+            <label
+              htmlFor="business-logo"
+              className={`button outlined withIcon inline-flex ${
+                uploading && "disabled"
+              }`}
+            >
+              <FontAwesomeIcon icon={faCloudUploadAlt} />
+              {business?.logo_url ? "Change Logo" : "Upload Logo"}
+            </label>
 
-          {business?.logo_url && (
-            <div className="relative aspect-square w-10 overflow-hidden rounded-full border border-primary">
-              <Image
-                src={business?.logo_url}
-                layout="fill"
-                objectFit="cover"
-                alt="logo preview"
-              />
-            </div>
-          )}
-        </div>
-
-        {error && <p className="error">{error}</p>}
-        <FileDropzone />
-        <div className="fixed bottom-0 left-0 flex w-full justify-center bg-white p-2 shadow-bottom-nav">
-          <div className="grid w-full max-w-xl">
-            <Button type="submit">Next</Button>
+            {business?.logo_url && (
+              <div className="relative aspect-square w-10 overflow-hidden rounded-full border border-primary">
+                <Image
+                  src={business?.logo_url}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="logo preview"
+                />
+              </div>
+            )}
           </div>
+
+          {error && <p className="error">{error}</p>}
+          <FileDropzone />
         </div>
-      </form>
-    </BusinessForm>
+      </BusinessForm>
+    </form>
   );
 };
 

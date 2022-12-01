@@ -75,6 +75,9 @@ module.exports = {
           },
         },
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [

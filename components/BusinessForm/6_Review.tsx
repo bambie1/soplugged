@@ -9,7 +9,6 @@ import {
 
 import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 import { BusinessForm } from "layouts/BusinessForm";
-import { Button } from "@/styled/Button";
 
 const Review = () => {
   const { handleNextStep, business, updateBusiness } = useBusinessStore();
@@ -27,10 +26,7 @@ const Review = () => {
   } = business;
 
   return (
-    <BusinessForm
-      title="Review business"
-      subtitle="Confirm your business details"
-    >
+    <BusinessForm>
       <div className="grid gap-5 rounded-md bg-gray-100 p-4 text-gray-700">
         <div className="flex items-center gap-3">
           {logo_url && (
@@ -103,12 +99,6 @@ const Review = () => {
               {business_url}
             </p>
           )}
-        </div>
-      </div>
-
-      <div className="fixed bottom-0 left-0 flex w-full justify-center bg-white p-2 shadow-bottom-nav">
-        <div className="grid w-full max-w-xl">
-          <Button>Next</Button>
         </div>
       </div>
     </BusinessForm>
