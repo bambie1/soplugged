@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 import create from "zustand";
@@ -13,9 +13,14 @@ import Review from "@/components/BusinessForm/6_Review";
 
 import { steps as BusinessSteps } from "@/lib/stepsObject";
 import { IBusiness } from "@/types/Business";
-import { ButtonLink } from "@/styled/ButtonLink";
 import { BackArrowButton } from "@/styled/BackArrowButton";
 import Introduction from "@/components/BusinessForm/0_Introduction";
+import { Button } from "@/styled/Button";
+import {
+  AlertDialog,
+  AlertDialogDescription,
+  AlertDialogLabel,
+} from "@reach/alert-dialog";
 
 interface Props {
   business: any;
@@ -58,8 +63,18 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
   const { currentStep, steps, updateBusiness, handlePreviousStep } =
     useBusinessStore();
+
+  const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
+
+  const open = () => setShowExitModal(true);
+  const close = () => setShowExitModal(false);
+
+  const handleExit = () => {
+    router.push("/dashboard");
+  };
 
   useEffect(() => {
     if (business) updateBusiness(business);
@@ -127,7 +142,9 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <div className="my-container fixed left-0 right-0 top-0 z-10 bg-white">
+      {_renderStepContent()}
+
+      <div className="my-container fixed left-0 right-0 top-0 bg-white">
         <div className="flex h-16 items-center justify-between">
           <BackArrowButton
             disabled={currentStep === 0}
@@ -135,7 +152,9 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           >
             Go back
           </BackArrowButton>
-          <ButtonLink variant="text">Exit</ButtonLink>
+          <Button variant="text" onClick={open}>
+            Exit
+          </Button>
         </div>
 
         {currentStep > 0 && (
@@ -148,7 +167,28 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         )}
       </div>
 
-      {_renderStepContent()}
+      {showExitModal && (
+        <AlertDialog
+          leastDestructiveRef={cancelRef}
+          className=""
+          onDismiss={close}
+        >
+          <AlertDialogLabel className="">Please Confirm</AlertDialogLabel>
+
+          <AlertDialogDescription>
+            Do you want to exit without saving your changes?
+          </AlertDialogDescription>
+
+          <div className="">
+            <Button variant="text" ref={cancelRef} onClick={close}>
+              No, go back
+            </Button>
+            <Button variant="outlined" onClick={handleExit}>
+              Yes, Exit
+            </Button>
+          </div>
+        </AlertDialog>
+      )}
     </>
   );
 };
