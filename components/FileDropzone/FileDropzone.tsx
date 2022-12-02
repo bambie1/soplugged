@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useFormContext } from "react-hook-form";
 
 import useImageUploader from "@/hooks/useImageUploader";
 
@@ -14,6 +15,7 @@ const MAX_FILES = 3; //file upload limit
 
 const FileDropzone: FC = () => {
   const { business } = useBusinessStore();
+  const { setValue } = useFormContext();
 
   let currentImages: any = [];
   if (business?.sample_images !== "")
@@ -37,7 +39,7 @@ const FileDropzone: FC = () => {
   }, [url, error]);
 
   useEffect(() => {
-    // setFieldValue("sample_images", myFiles?.join());
+    setValue("sample_images", myFiles?.join());
   }, [myFiles]);
 
   const onDrop = useCallback(
@@ -163,8 +165,8 @@ const FileDropzone: FC = () => {
 
       {files?.length > 0 && (
         <>
-          <aside className="flex flex-wrap items-center gap-4">
-            {files}
+          <aside className="flex flex-col items-center gap-2">
+            <div className="flex flex-wrap gap-4">{files}</div>
 
             <button
               type="button"

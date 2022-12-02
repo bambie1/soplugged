@@ -6,7 +6,7 @@ import { FC } from "react";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import MobileHeader from "./MobileHeader";
-import { SignOutButton } from "../SignOutButton";
+import SignOutButton from "../SignOutButton";
 
 import styles from "../../styles/Header.module.scss";
 

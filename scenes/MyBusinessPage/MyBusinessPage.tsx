@@ -14,11 +14,7 @@ import { IBusiness } from "@/types/Business";
 import { BackArrowButton } from "@/styled/BackArrowButton";
 import Introduction from "@/components/BusinessForm/0_Introduction";
 import { Button } from "@/styled/Button";
-import {
-  AlertDialog,
-  AlertDialogDescription,
-  AlertDialogLabel,
-} from "@reach/alert-dialog";
+import ConfirmModal from "@/components/ConfirmModal";
 
 interface Props {
   business: any;
@@ -128,26 +124,13 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       </div>
 
       {showExitModal && (
-        <AlertDialog
-          leastDestructiveRef={cancelRef}
-          className=""
+        <ConfirmModal
+          cancelRef={cancelRef}
           onDismiss={close}
-        >
-          <AlertDialogLabel className="">Please Confirm</AlertDialogLabel>
-
-          <AlertDialogDescription>
-            Do you want to exit without saving your changes?
-          </AlertDialogDescription>
-
-          <div className="">
-            <Button variant="text" ref={cancelRef} onClick={close}>
-              No, go back
-            </Button>
-            <Button variant="outlined" onClick={handleExit}>
-              Yes, Exit
-            </Button>
-          </div>
-        </AlertDialog>
+          handleSuccess={handleExit}
+          description="Do you want to exit without saving your changes?"
+          successTitle="Yes, Exit"
+        />
       )}
     </>
   );

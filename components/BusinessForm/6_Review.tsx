@@ -93,12 +93,12 @@ const Review = () => {
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
               <Avatar name={business_name} url={logo_url} />
-              <h1 className="text-center text-4xl font-bold lg:text-5xl">
+              <h1 className="text-center text-3xl font-bold lg:text-4xl">
                 {business_name.toUpperCase()}
               </h1>
             </div>
 
-            <div className="">
+            <div className="flex justify-center gap-2">
               {category && (
                 <Button variant="text">
                   <FontAwesomeIcon icon={faShapes} className="mr-2" />

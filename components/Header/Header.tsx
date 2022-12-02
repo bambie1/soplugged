@@ -11,7 +11,7 @@ import MobileHeader from "./MobileHeader";
 import styles from "../../styles/Header.module.scss";
 
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
-const SignOutButton = dynamic(() => import("../SignOutButton/SignOutButton"));
+const SignOutButton = dynamic(() => import("../SignOutButton"));
 
 const links = [
   { id: 1, text: "Find a business", link: "/search/all" },
