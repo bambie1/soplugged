@@ -9,12 +9,14 @@ interface Props {
   title?: string;
   subtitle?: string;
   isWide?: boolean;
+  isSubmitting?: boolean;
 }
 
 const BusinessForm: FC<Props> = ({
   children,
   title,
   isWide,
+  isSubmitting,
   subtitle,
   skeleton,
 }) => {
@@ -54,11 +56,11 @@ const BusinessForm: FC<Props> = ({
 
       <div className="fixed bottom-0 left-0 flex w-full justify-center border-primary/20 bg-white p-2 shadow-bottom-nav lg:border-t lg:shadow-none">
         <div className="grid w-full max-w-xl">
-          <Button type="submit">
+          <Button type="submit" disabled={isSubmitting}>
             {currentStep === 0
               ? "Get started"
               : currentStep === steps.length
-              ? "Submit"
+              ? "Submit and view page"
               : "Next"}
           </Button>
         </div>

@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import slugify from "slugify";
@@ -65,7 +66,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       slug: newSlug,
     });
   } catch (err: any) {
-    console.log({ err });
+    Sentry.captureException(err);
     res.status(500).json({ statusCode: 500, message: err.message });
   }
 };

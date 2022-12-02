@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSWRConfig } from "swr";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +12,7 @@ import {
 import ReactImageGallery from "react-image-gallery";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { usePlausible } from "next-plausible";
 
 import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 import { BusinessForm } from "layouts/BusinessForm";
@@ -23,6 +25,8 @@ const Review = () => {
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const { handleSubmit } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const plausible = usePlausible();
 
   const {
     business_description,
@@ -54,7 +58,7 @@ const Review = () => {
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
 
   async function submitForm() {
-    // setIsSubmitting(true);
+    setIsSubmitting(true);
 
     const businessObj = {
       ...business,
@@ -78,6 +82,10 @@ const Review = () => {
           ? "Business created successfully"
           : "Business updated successfully"
       );
+      plausible("Completed registration", {
+        props: { business: business.business_name },
+      });
+
       mutate(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business`);
       mutate(
         `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${updatedBusiness.slug}`
@@ -85,13 +93,13 @@ const Review = () => {
       router.push(`/business/${updatedBusiness.slug}`);
     } else {
       toast.error("An error occurred");
-      // setIsSubmitting(false);
+      setIsSubmitting(false);
     }
   }
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <BusinessForm isWide>
+      <BusinessForm isWide isSubmitting={isSubmitting}>
         <div className="grid gap-5 rounded-md bg-secondary/5 px-4 py-7 text-gray-700">
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
