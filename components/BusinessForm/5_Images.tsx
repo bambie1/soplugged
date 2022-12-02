@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { FileDropzone } from "@/components/FileDropzone";
@@ -56,27 +54,28 @@ const Images = () => {
             disabled={uploading}
           />
 
-          <div className="flex items-center gap-4">
-            <label
-              htmlFor="business-logo"
-              className={`button outlined withIcon inline-flex justify-center ${
-                uploading && "disabled"
-              }`}
-            >
-              <FontAwesomeIcon icon={faCloudUploadAlt} />
-              {business?.logo_url ? "Change Logo" : "Upload Logo"}
-            </label>
-
-            {business?.logo_url && (
-              <div className="relative aspect-square w-10 overflow-hidden rounded-full border border-primary">
+          <div className="flex flex-col items-center gap-2">
+            <div className="relative flex aspect-square w-14 items-center justify-center overflow-hidden rounded-full border border-primary bg-secondary">
+              {business?.logo_url ? (
                 <Image
                   src={business?.logo_url}
                   layout="fill"
                   objectFit="cover"
                   alt="logo preview"
                 />
-              </div>
-            )}
+              ) : (
+                <span>{business.business_name?.toUpperCase().charAt(0)}</span>
+              )}
+            </div>
+
+            <label
+              htmlFor="business-logo"
+              className={`button text-inverse withIcon inline-flex cursor-pointer justify-center ${
+                uploading && "disabled"
+              }`}
+            >
+              {business?.logo_url ? "Change Logo" : "Upload Logo"}
+            </label>
           </div>
 
           {error && <p className="error">{error}</p>}

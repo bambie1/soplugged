@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
   border-width: 1px;
   border-radius: 10px;
   border-color: rgb(78, 53, 5);
@@ -15,6 +14,11 @@
   transition: border 0.24s ease-in-out 0s;
   margin-bottom: 8px;
   cursor: default;
+  max-width: 30rem;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 5rem 4rem 1.5rem;
+  text-align: center;
 }
 
 .removeButton {
@@ -36,8 +40,4 @@
 }
 .rejectStyle {
   border-color: #ff1744;
-}
-
-.uploadText {
-  color: grey;
 }

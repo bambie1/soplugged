@@ -29,7 +29,7 @@ export const steps = [
   {
     number: 5,
     step: "contact",
-    name: "How can customers shop with you?",
+    name: "Contact info",
     description: "Add your website url, Instagram handle, and/or phone number",
   },
   {

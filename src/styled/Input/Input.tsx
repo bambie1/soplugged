@@ -36,7 +36,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           className={`rounded-xl border border-primary bg-white p-4 transition duration-150 placeholder:italic placeholder:text-slate-400 ${
             !!error
               ? "border-red-500 focus:outline-2 focus:outline-red-500"
-              : "border-gray-400 focus:border-primary focus:ring-primary"
+              : "border-primary focus:border-primary focus:ring-primary"
           }`}
         />
         {!!error && (

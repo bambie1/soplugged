@@ -35,6 +35,18 @@
     }
   }
 
+  &.text-inverse {
+    position: relative;
+    border-bottom: 1px solid;
+    padding: 0;
+    border-radius: 0;
+
+    &:hover,
+    &:active {
+      border-color: transparent;
+    }
+  }
+
   &.filled {
     background-color: $secondary;
     color: #fff;
