@@ -19,8 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       strict: true,
     });
 
-    const businessObject: any = {
-      ...data,
+    const editedParams = {
       business_name: data.business_name.trim(),
       slug: newSlug,
       business_url: data.business_url?.trim(),
@@ -28,6 +27,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       tags: "",
       business_description: data.business_description.trim(),
     };
+
+    const businessObject = isNew
+      ? {
+          ...data,
+          ...editedParams,
+          referral_source: "Other",
+          referral_business_slug: "",
+        }
+      : {
+          ...data,
+          ...editedParams,
+        };
 
     const fetchUrl = isNew
       ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`

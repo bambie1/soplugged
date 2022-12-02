@@ -38,7 +38,7 @@ const features = [
     icon: GlobeAltIcon,
   },
   {
-    name: "Mobile notifications",
+    name: "Something something",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. ",
     icon: ScaleIcon,
   },

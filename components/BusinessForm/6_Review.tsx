@@ -34,7 +34,10 @@ const Review = () => {
     business_location,
     logo_url,
     sample_images,
+    slug,
   } = business;
+
+  const isNewBusiness = !slug;
 
   const cleanDescription = business_description.replace(/style="[^"]*"/g, "");
 
@@ -62,16 +65,16 @@ const Review = () => {
     };
 
     const updatedBusiness = await fetch("/api/user/updateBusiness", {
-      method: !business ? "POST" : "PATCH",
+      method: isNewBusiness ? "POST" : "PATCH",
       body: JSON.stringify({
         data: businessObj,
-        isNew: !business,
+        isNew: isNewBusiness,
       }),
     }).then((res) => res.json());
 
     if (updatedBusiness.statusCode !== 500) {
       toast.success(
-        !business
+        isNewBusiness
           ? "Business created successfully"
           : "Business updated successfully"
       );
