@@ -58,13 +58,18 @@ export const useBusinessStore = create<FormState>()((set) => ({
 const MyBusinessPage: FC<Props> = ({ business }) => {
   const router = useRouter();
   const [showExitModal, setShowExitModal] = useState(false);
-  const { currentStep, steps, updateBusiness, handlePreviousStep } =
-    useBusinessStore();
+  const {
+    currentStep,
+    steps,
+    updateBusiness,
+    handlePreviousStep,
+    business: StoreBusiness,
+  } = useBusinessStore();
 
   const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
 
-  const open = () => setShowExitModal(true);
-  const close = () => setShowExitModal(false);
+  const openModal = () => setShowExitModal(true);
+  const closeModal = () => setShowExitModal(false);
 
   const handleExit = () => {
     router.push("/dashboard");
@@ -108,7 +113,13 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           >
             Go back
           </BackArrowButton>
-          <Button variant="text" onClick={open}>
+          <Button
+            variant="text"
+            onClick={() => {
+              if (shallowEqual(StoreBusiness, business)) handleExit();
+              else openModal();
+            }}
+          >
             Exit
           </Button>
         </div>
@@ -126,7 +137,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       {showExitModal && (
         <ConfirmModal
           cancelRef={cancelRef}
-          onDismiss={close}
+          onDismiss={closeModal}
           handleSuccess={handleExit}
           description="Do you want to exit without saving your changes?"
           successTitle="Yes, Exit"
@@ -137,3 +148,17 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 };
 
 export default MyBusinessPage;
+
+function shallowEqual(object1: any, object2: any) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (let key of keys1) {
+    if (object1[key] !== object2[key]) {
+      return false;
+    }
+  }
+  return true;
+}

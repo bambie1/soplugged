@@ -36,7 +36,7 @@ const ConfirmModal: FC<Props> = ({
         <AlertDialogDescription>{description}</AlertDialogDescription>
 
         <div className="mt-4 flex flex-wrap justify-end gap-x-3 gap-y-4 md:gap-x-12">
-          <Button variant="text" ref={cancelRef} onClick={close}>
+          <Button variant="text" ref={cancelRef} onClick={onDismiss}>
             No, go back
           </Button>
           <Button variant="outlined" onClick={handleSuccess}>
