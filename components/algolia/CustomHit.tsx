@@ -53,7 +53,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           )}
         </div>
 
-        <div className="mt-3">
+        <div className="mt-3 max-w-full">
           <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
             <Highlight attribute="business_name" hit={hit} />
           </h3>
