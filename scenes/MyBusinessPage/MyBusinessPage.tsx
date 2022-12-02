@@ -139,7 +139,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
         </div>
 
         {currentStep > 0 && (
-          <div className="mx-auto mt-5 flex h-1 w-[90%] max-w-xl flex-col overflow-hidden rounded-lg bg-secondary/30">
+          <div className="mx-auto mt-5 flex h-1 w-[90%] max-w-lg flex-col overflow-hidden rounded-lg bg-secondary/30">
             <div
               style={{ width: `${percentage}%` }}
               className="h-full bg-gradient-to-r from-secondary to-primary transition-width duration-300"

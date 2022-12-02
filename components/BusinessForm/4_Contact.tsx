@@ -55,9 +55,11 @@ const Contact = () => {
               },
             })}
             type="tel"
+            prefix="+1"
           />
           <Input
             label="IG Handle"
+            prefix="@"
             {...register("ig_handle", {
               value: business.ig_handle,
             })}
