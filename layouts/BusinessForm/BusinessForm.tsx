@@ -44,7 +44,7 @@ const BusinessForm: FC<Props> = ({
     <>
       <div className="relative flex min-h-screen flex-col">
         <div className="my-container px-4 pt-8 pb-20 lg:pt-12">
-          <div className="pb-10">{renderStepInfo()}</div>
+          <div className="pb-10 pt-10">{renderStepInfo()}</div>
 
           <div className={`mx-auto ${isWide ? "max-w-3xl" : "max-w-2xl"}`}>
             {children}
@@ -54,7 +54,13 @@ const BusinessForm: FC<Props> = ({
 
       <div className="fixed bottom-0 left-0 flex w-full justify-center border-primary/20 bg-white p-2 shadow-bottom-nav lg:border-t lg:shadow-none">
         <div className="grid w-full max-w-xl">
-          <Button type="submit">Next</Button>
+          <Button type="submit">
+            {currentStep === 0
+              ? "Get started"
+              : currentStep === steps.length
+              ? "Submit"
+              : "Next"}
+          </Button>
         </div>
       </div>
     </>

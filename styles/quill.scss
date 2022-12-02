@@ -28,8 +28,12 @@
   min-height: 250px;
   max-height: 350px;
   font-family: "Raleway";
-  font-size: 0.9rem;
   padding: 1rem !important;
+
+  * {
+    font-size: 1rem !important;
+    color: rgb(72, 75, 83) !important;
+  }
 }
 .ql-snow {
   border-color: $secondary !important;

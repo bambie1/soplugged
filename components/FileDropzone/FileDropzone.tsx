@@ -4,7 +4,6 @@ import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
-import { useFormikContext } from "formik";
 
 import useImageUploader from "@/hooks/useImageUploader";
 

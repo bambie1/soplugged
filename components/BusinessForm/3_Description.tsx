@@ -71,10 +71,10 @@ const Description = () => {
             <p>Please add a description for your business</p>
           </div>
         )}
-        <div className="grid gap-4">
+        <div className="grid">
           <label
             htmlFor="business_description"
-            className={`text-sm font-medium uppercase lg:text-base ${
+            className={`mb-1 text-sm font-bold uppercase ${
               isError && "text-red-500"
             }`}
           >
@@ -92,7 +92,6 @@ const Description = () => {
             }}
             render={({ field: { value } }) => (
               <ReactQuill
-                placeholder="Enter a description for your business"
                 value={value}
                 onChange={handleUpdate}
                 id="business_description"

@@ -138,12 +138,14 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           <ButtonLink variant="text">Exit</ButtonLink>
         </div>
 
-        <div className="mx-auto flex h-1 w-[90%] max-w-xl flex-col overflow-hidden rounded-lg bg-secondary/30">
-          <div
-            style={{ width: `${percentage}%` }}
-            className="h-full bg-gradient-to-r from-secondary to-primary transition-width duration-300"
-          ></div>
-        </div>
+        {currentStep > 0 && (
+          <div className="mx-auto mt-5 flex h-1 w-[90%] max-w-xl flex-col overflow-hidden rounded-lg bg-secondary/30">
+            <div
+              style={{ width: `${percentage}%` }}
+              className="h-full bg-gradient-to-r from-secondary to-primary transition-width duration-300"
+            ></div>
+          </div>
+        )}
       </div>
 
       {_renderStepContent()}

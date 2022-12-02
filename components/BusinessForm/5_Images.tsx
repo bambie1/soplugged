@@ -44,8 +44,7 @@ const Images = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <BusinessForm>
-        <div className="grid gap-4">
-          <label htmlFor="business-logo">Business logo:</label>
+        <div className="grid items-center gap-4">
           <input
             accept="image/png, image/jpeg"
             className="hidden"
@@ -60,7 +59,7 @@ const Images = () => {
           <div className="flex items-center gap-4">
             <label
               htmlFor="business-logo"
-              className={`button outlined withIcon inline-flex ${
+              className={`button outlined withIcon inline-flex justify-center ${
                 uploading && "disabled"
               }`}
             >
