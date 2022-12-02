@@ -37,22 +37,27 @@ const Contact = () => {
           <Input
             label="Website Url"
             prefix="https://"
-            placeholder="www.soplugged.com"
             {...register("business_url", {
               value: business.business_url,
             })}
           />
           <Input
             label="Phone Number"
-            placeholder="6131234567"
             {...register("phone_number", {
               value: business.phone_number,
+              minLength: {
+                message: "Your phone number must be 10 digits long",
+                value: 10,
+              },
+              maxLength: {
+                message: "Your phone number must be 10 digits long",
+                value: 10,
+              },
             })}
             type="tel"
           />
           <Input
             label="IG Handle"
-            placeholder="sopluggd"
             {...register("ig_handle", {
               value: business.ig_handle,
             })}

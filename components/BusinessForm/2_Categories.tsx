@@ -31,7 +31,7 @@ const Categories = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <BusinessForm>
+      <BusinessForm isWide>
         {errors.category && (
           <div className="mb-3 flex items-center justify-center gap-3 text-center font-medium text-red-500">
             <ExclamationCircleIcon
