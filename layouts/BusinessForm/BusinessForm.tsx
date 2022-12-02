@@ -8,6 +8,7 @@ interface Props {
   skeleton?: boolean;
   title?: string;
   subtitle?: string;
+  fixedText?: string;
   isWide?: boolean;
 }
 
@@ -16,6 +17,7 @@ const BusinessForm: FC<Props> = ({
   title,
   isWide,
   subtitle,
+  fixedText,
   skeleton,
 }) => {
   const { currentStep, steps } = useBusinessStore();
@@ -36,6 +38,9 @@ const BusinessForm: FC<Props> = ({
         <h2 className="mb-4 mt-3 text-center md:text-lg lg:mb-10 lg:text-xl">
           {steps[currentStep - 1]?.description || subtitle}
         </h2>
+        {fixedText && (
+          <p className="text-center text-gray-500 lg:text-base">{fixedText}</p>
+        )}
       </>
     );
   };
