@@ -18,7 +18,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       return <span className={`${styles.helperText} ${styles.hidden}`}>.</span>;
     };
 
-    const tempId = label.split(" ").at(-1);
+    const tempId = label.split(" ")[0];
 
     return (
       <div className="relative grid w-full text-left">
