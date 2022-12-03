@@ -1,3 +1,4 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
@@ -13,30 +14,56 @@ interface IFormInput {
 }
 
 const Images = () => {
-  const { url, error, uploadImage, uploading } = useImageUploader();
+  const { error, uploadImage, uploading } = useImageUploader();
   const { handleNextStep, business, updateBusiness } = useBusinessStore();
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [preview, setPreview] = useState<string>("");
 
   const methods = useForm<IFormInput>();
 
+  const displayLogoUrl = preview?.length > 0 ? preview : business?.logo_url;
+
   const {
     handleSubmit,
-    register,
     formState: { errors },
-    setValue,
   } = methods;
 
-  const handleFileUpload = async (e: any) => {
-    const file = e.target.files[0];
-    if (file && file !== null) {
-      await uploadImage(file, "business_logos");
+  useEffect(() => {
+    if (!selectedFile) {
+      return;
     }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+
+    setSelectedFile(e.target.files[0]);
   };
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    updateBusiness({
-      ...business,
-      ...data,
-    });
+    if (selectedFile) {
+      const logoUrl = await uploadImage(selectedFile, "business_logos");
+
+      updateBusiness({
+        ...business,
+        ...data,
+        logo_url: logoUrl,
+      });
+    } else {
+      updateBusiness({
+        ...business,
+        ...data,
+      });
+    }
 
     handleNextStep();
   };
@@ -52,16 +79,16 @@ const Images = () => {
               id="business-logo"
               name="logo_url"
               type="file"
-              onChange={handleFileUpload}
+              onChange={onSelectFile}
               value=""
               disabled={uploading}
             />
 
             <div className="flex flex-col items-center gap-2">
               <div className="relative flex aspect-square w-14 items-center justify-center overflow-hidden rounded-full border border-primary bg-secondary">
-                {business?.logo_url ? (
+                {displayLogoUrl ? (
                   <Image
-                    src={business?.logo_url}
+                    src={displayLogoUrl}
                     layout="fill"
                     objectFit="cover"
                     alt="logo preview"
@@ -73,7 +100,7 @@ const Images = () => {
 
               <label
                 htmlFor="business-logo"
-                className={`button text-inverse withIcon inline-flex cursor-pointer justify-center ${
+                className={`button text-inverse inline-flex cursor-pointer justify-center ${
                   uploading && "disabled"
                 }`}
               >

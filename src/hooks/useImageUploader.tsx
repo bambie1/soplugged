@@ -27,6 +27,9 @@ const useImageUploader = () => {
       const data = await res.json();
       if (data.error) throw new Error(data.error.message);
       setUrl(data.url);
+      setUploading(false);
+
+      return data.url;
     } catch (error: any) {
       if (error.name === "AbortError")
         setError(
