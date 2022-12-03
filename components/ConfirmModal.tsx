@@ -26,7 +26,7 @@ const ConfirmModal: FC<Props> = ({
     <>
       <AlertDialog
         leastDestructiveRef={cancelRef}
-        className="flex w-[90%] max-w-lg flex-col gap-2 self-baseline rounded-lg"
+        className="flex !w-[90%] max-w-lg flex-col gap-2 self-baseline rounded-lg"
         onDismiss={onDismiss}
       >
         <AlertDialogLabel className="text-xl font-bold text-primary">

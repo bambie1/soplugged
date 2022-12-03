@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import {
   ArrowRightIcon,
-  GlobeAltIcon,
-  ScaleIcon,
+  HeartIcon,
+  LightBulbIcon,
+  OfficeBuildingIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/outline";
 
 import { BusinessForm } from "layouts/BusinessForm";
@@ -23,24 +25,25 @@ const features = [
         </Link>
       </>
     ),
-    icon: GlobeAltIcon,
+    icon: HeartIcon,
   },
   {
     name: "Your dashboard",
     description:
       "After registering your business, you can always update your info from your dashboard",
-    icon: ScaleIcon,
+    icon: OfficeBuildingIcon,
   },
   {
     name: "Need a hand?",
     description:
-      "If you run into any issues while adding your business, please let us know using the chat icon at the bottom",
-    icon: GlobeAltIcon,
+      "If you run into any issues, please click the 'question-mark button at the top to let us know",
+    icon: QuestionMarkCircleIcon,
   },
   {
-    name: "Something something",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. ",
-    icon: ScaleIcon,
+    name: "Helpul tip",
+    description:
+      "To rank higher in our directory, make sure to upload sample images of your business",
+    icon: LightBulbIcon,
   },
 ];
 
@@ -71,10 +74,10 @@ const Introduction: FC = () => {
             />
           </div>
           <div className="sm:min-w-0 sm:flex-1">
-            <p className="text-lg font-semibold text-gray-900">
+            <p className="font-medium text-gray-900 md:text-lg lg:font-semibold">
               {feature.name}
             </p>
-            <p className="mt-2 leading-7 text-gray-600 lg:text-base">
+            <p className="mt-1 leading-7 text-gray-600 lg:text-base">
               {feature.description}
             </p>
           </div>

@@ -12,7 +12,11 @@ interface IFormInput {
   business_location: string;
 }
 
-const NameLocation: FC = () => {
+interface Props {
+  initialName: string;
+}
+
+const NameLocation: FC<Props> = ({ initialName }) => {
   const { handleNextStep, business, updateBusiness } = useBusinessStore();
   const [address, setAddress] = useState(business.business_location);
 
@@ -64,7 +68,7 @@ const NameLocation: FC = () => {
               },
               value: business.business_name,
               validate: async (value) => {
-                if (value === business.business_name) return true;
+                if (value == initialName) return true;
 
                 const res = await fetch("/api/validateBusinessName", {
                   method: "POST",

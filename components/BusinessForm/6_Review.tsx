@@ -109,7 +109,7 @@ const Review = () => {
               </h1>
             </div>
 
-            <div className="flex justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {category && (
                 <Button variant="text">
                   <FontAwesomeIcon icon={faShapes} className="mr-2" />

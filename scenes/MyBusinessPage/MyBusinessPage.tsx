@@ -15,6 +15,8 @@ import { BackArrowButton } from "@/styled/BackArrowButton";
 import Introduction from "@/components/BusinessForm/0_Introduction";
 import { Button } from "@/styled/Button";
 import ConfirmModal from "@/components/ConfirmModal";
+import { QuestionMarkCircleIcon } from "@heroicons/react/outline";
+import MessageModal from "@/components/MessageModal";
 
 interface Props {
   business: any;
@@ -58,6 +60,7 @@ export const useBusinessStore = create<FormState>()((set) => ({
 const MyBusinessPage: FC<Props> = ({ business }) => {
   const router = useRouter();
   const [showExitModal, setShowExitModal] = useState(false);
+  const [showMessageModal, setShowMessageModal] = useState(false);
   const {
     currentStep,
     steps,
@@ -68,15 +71,24 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 
   const cancelRef = useRef() as React.MutableRefObject<HTMLButtonElement>;
 
-  const openModal = () => setShowExitModal(true);
-  const closeModal = () => setShowExitModal(false);
+  const openExitModal = () => setShowExitModal(true);
+  const closeExitModal = () => setShowExitModal(false);
+
+  const openMessageModal = () => setShowMessageModal(true);
+  const closeMessageModal = () => setShowMessageModal(false);
 
   const handleExit = () => {
     router.push("/dashboard");
   };
 
   useEffect(() => {
-    if (business) updateBusiness(business);
+    if (business)
+      updateBusiness({
+        ...business,
+        business_url: business?.business_url
+          ?.replace("https://", "")
+          .replace("https://", ""),
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [business]);
 
@@ -87,7 +99,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       case 0:
         return <Introduction />;
       case 1:
-        return <NameLocation />;
+        return <NameLocation initialName={business?.business_name} />;
       case 2:
         return <Categories />;
       case 3:
@@ -113,15 +125,42 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
           >
             Go back
           </BackArrowButton>
-          <Button
-            variant="text"
-            onClick={() => {
-              if (shallowEqual(StoreBusiness, business)) handleExit();
-              else openModal();
-            }}
-          >
-            Exit
-          </Button>
+
+          <div className="flex items-center gap-2 md:gap-4">
+            <button title="Help" onClick={openMessageModal}>
+              <QuestionMarkCircleIcon
+                className="mr-1 h-8 w-8"
+                strokeWidth={0.8}
+              />
+            </button>
+            <Button
+              variant="text"
+              onClick={() => {
+                if (
+                  !StoreBusiness?.business_name ||
+                  shallowEqual(StoreBusiness, business)
+                )
+                  handleExit();
+                else openExitModal();
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={0.5}
+                stroke="currentColor"
+                className="mr-1 h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                />
+              </svg>
+              Exit
+            </Button>
+          </div>
         </div>
 
         {currentStep > 0 && (
@@ -137,11 +176,15 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       {showExitModal && (
         <ConfirmModal
           cancelRef={cancelRef}
-          onDismiss={closeModal}
+          onDismiss={closeExitModal}
           handleSuccess={handleExit}
           description="Do you want to exit without saving your changes?"
           successTitle="Yes, Exit"
         />
+      )}
+
+      {showMessageModal && (
+        <MessageModal cancelRef={cancelRef} onDismiss={closeMessageModal} />
       )}
     </>
   );
@@ -150,11 +193,16 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
 export default MyBusinessPage;
 
 function shallowEqual(object1: any, object2: any) {
+  if (!object1 && !object2) return true;
+
+  if (!object1 || !object2) return false;
+
   const keys1 = Object.keys(object1);
   const keys2 = Object.keys(object2);
   if (keys1.length !== keys2.length) {
     return false;
   }
+
   for (let key of keys1) {
     if (object1[key] !== object2[key]) {
       return false;

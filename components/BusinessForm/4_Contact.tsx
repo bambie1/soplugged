@@ -47,6 +47,21 @@ const Contact = () => {
             })}
             error={errors.business_url?.message}
           />
+
+          <Input
+            label="IG Handle"
+            prefix="@"
+            {...register("ig_handle", {
+              value: business.ig_handle,
+              pattern: {
+                value: /^[a-zA-Z0-9_.]+([-.][a-zA-Z0-9_]+)*$/,
+                message:
+                  "Your IG handle can't contain special characters or spaces",
+              },
+            })}
+            error={errors.ig_handle?.message}
+          />
+
           <Input
             label="Phone Number"
             {...register("phone_number", {
@@ -67,19 +82,6 @@ const Contact = () => {
             type="tel"
             prefix="+1"
             error={errors.phone_number?.message}
-          />
-          <Input
-            label="IG Handle"
-            prefix="@"
-            {...register("ig_handle", {
-              value: business.ig_handle,
-              pattern: {
-                value: /^[a-zA-Z0-9_.]+([-.][a-zA-Z0-9_]+)*$/,
-                message:
-                  "Your IG handle can't contain special characters or spaces",
-              },
-            })}
-            error={errors.ig_handle?.message}
           />
         </div>
       </BusinessForm>
