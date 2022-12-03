@@ -92,7 +92,7 @@ const Introduction: FC = () => {
             <button
               key={step.number}
               onClick={() => updateCurrentStep(step.number)}
-              className="group flex flex-col rounded-lg border border-transparent p-2 text-left transition duration-150 hover:shadow-sm disabled:hover:shadow-none md:p-3"
+              className="group flex flex-col rounded-lg border-[.5px] border-primary/20 p-4 text-left transition duration-150 hover:shadow-sm disabled:hover:shadow-none md:p-6"
               disabled={isDisabled}
             >
               <p className="flex items-center gap-3 text-lg font-semibold text-gray-700">
@@ -119,7 +119,7 @@ const Introduction: FC = () => {
         subtitle={
           isNewBusiness
             ? "We're happy to have your business listed on our directory"
-            : "Pick any step from below to edit, or just 'Begin editing'"
+            : "Pick any step from below to edit, or just 'Get started'"
         }
         isWide
       >

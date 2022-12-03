@@ -39,12 +39,22 @@ const Contact = () => {
             prefix="https://"
             {...register("business_url", {
               value: business.business_url,
+              pattern: {
+                value:
+                  /^(www\.)[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+                message: "Please enter a valid url starting with www.",
+              },
             })}
+            error={errors.business_url?.message}
           />
           <Input
             label="Phone Number"
             {...register("phone_number", {
               value: business.phone_number,
+              pattern: {
+                value: /^\d+$/,
+                message: "Your phone number must consist only of digits",
+              },
               minLength: {
                 message: "Your phone number must be 10 digits long",
                 value: 10,
@@ -56,13 +66,20 @@ const Contact = () => {
             })}
             type="tel"
             prefix="+1"
+            error={errors.phone_number?.message}
           />
           <Input
             label="IG Handle"
             prefix="@"
             {...register("ig_handle", {
               value: business.ig_handle,
+              pattern: {
+                value: /^[a-zA-Z0-9_.]+([-.][a-zA-Z0-9_]+)*$/,
+                message:
+                  "Your IG handle can't contain special characters or spaces",
+              },
             })}
+            error={errors.ig_handle?.message}
           />
         </div>
       </BusinessForm>

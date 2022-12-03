@@ -23,6 +23,12 @@ const NameLocation: FC = () => {
     setValue,
   } = useForm<IFormInput>();
 
+  const businessNameErrorMessage =
+    errors.business_name &&
+    (errors.business_name?.message ||
+      (errors.business_name.type === "validate" &&
+        "This business name is already taken"));
+
   const isLocationError = errors.business_location;
 
   const handleSelect = (value: string) => {
@@ -57,8 +63,20 @@ const NameLocation: FC = () => {
                 value: true,
               },
               value: business.business_name,
+              validate: async (value) => {
+                if (value === business.business_name) return true;
+
+                const res = await fetch("/api/validateBusinessName", {
+                  method: "POST",
+                  body: JSON.stringify({
+                    businessName: value,
+                  }),
+                });
+
+                return res.ok;
+              },
             })}
-            error={errors.business_name?.message}
+            error={businessNameErrorMessage || ""}
           />
 
           <PlacesAutocomplete
@@ -87,7 +105,10 @@ const NameLocation: FC = () => {
                   Where is your business located?
                   <input
                     {...register("business_location", {
-                      required: true,
+                      required: {
+                        value: true,
+                        message: "Please enter a location for your business",
+                      },
                       value: business.business_location,
                     })}
                     // @ts-ignore
@@ -102,7 +123,7 @@ const NameLocation: FC = () => {
                         : "border-primary focus:border-primary focus:ring-primary"
                     }`}
                   />
-                  <div className="pointer-events-none absolute inset-y-0 right-0 mt-4 flex items-center pr-3">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                     {isLocationError && (
                       <ExclamationCircleIcon
                         className="h-5 w-5 text-red-500"
