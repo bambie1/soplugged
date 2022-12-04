@@ -36,7 +36,7 @@ const features = [
   {
     name: "Need a hand?",
     description:
-      "If you run into any issues, please click the 'question-mark button at the top to let us know",
+      "If you run into any issues, please click the 'question-mark' icon at the top to let us know",
     icon: QuestionMarkCircleIcon,
   },
   {

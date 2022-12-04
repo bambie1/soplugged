@@ -47,7 +47,7 @@ const MessageModal: FC<Props> = ({ cancelRef, onDismiss }) => {
     <>
       <AlertDialog
         leastDestructiveRef={cancelRef}
-        className="flex !w-[90%] max-w-lg flex-col gap-2 self-baseline rounded-lg"
+        className="!mx-2 flex !w-auto max-w-lg flex-col gap-2 self-baseline rounded-lg !px-3 !py-4 sm:!mx-auto md:!p-8"
         onDismiss={onDismiss}
       >
         <AlertDialogLabel className="text-xl font-bold text-primary">
