@@ -8,7 +8,6 @@ import { usePlausible } from "next-plausible";
 
 import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
-import { sendEmail } from "@/utils/sendEmail";
 
 import styles from "./ContactForm.module.scss";
 
@@ -34,8 +33,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     reset,
   } = useForm<IFormInput>();
 
-  const disabled =
-    !session?.user || session?.user.email === businessEmail || messageSent;
+  const disabled = !session?.user || session?.user.email === businessEmail;
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (!session?.user?.email) return;
@@ -50,7 +48,10 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
       reply_to: userEmail,
     };
 
-    const res = await sendEmail(email);
+    const res = await fetch("/api/sendEmail", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    });
 
     if (res?.ok) {
       toast.success("Message sent");
@@ -77,14 +78,6 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
   };
 
   const renderContent = () => {
-    if (messageSent)
-      return (
-        <div className={`${styles.successDiv} flex-center column`}>
-          <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
-          <p>Your message is on it's way!</p>
-        </div>
-      );
-
     return (
       <div className="grid">
         <label htmlFor="message" className="mb-1 block text-sm font-medium">

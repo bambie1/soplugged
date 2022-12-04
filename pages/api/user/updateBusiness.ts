@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import slugify from "slugify";
@@ -19,8 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       strict: true,
     });
 
-    const businessObject: any = {
-      ...data,
+    const editedParams = {
       business_name: data.business_name.trim(),
       slug: newSlug,
       business_url: data.business_url?.trim(),
@@ -28,6 +28,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       tags: "",
       business_description: data.business_description.trim(),
     };
+
+    const businessObject = isNew
+      ? {
+          ...data,
+          ...editedParams,
+          referral_source: "Other",
+          referral_business_slug: "",
+        }
+      : {
+          ...data,
+          ...editedParams,
+        };
 
     const fetchUrl = isNew
       ? `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
@@ -54,7 +66,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       slug: newSlug,
     });
   } catch (err: any) {
-    console.log({ err });
+    Sentry.captureException(err);
     res.status(500).json({ statusCode: 500, message: err.message });
   }
 };

@@ -30,6 +30,17 @@ interface Props {
   business: IBusiness;
 }
 
+export const NoPreviewAvailable = () => (
+  <div className="relative flex h-60 w-full items-center justify-center overflow-hidden bg-secondary/20 lg:mb-10 lg:h-80 lg:rounded-lg">
+    <span className="whitespace-nowrap font-light tracking-wider text-primary/70 lg:text-lg">
+      No preview available.
+    </span>
+
+    <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+    <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+  </div>
+);
+
 const BusinessPage: FC<Props> = ({ business }) => {
   const router = useRouter();
   const {
@@ -62,17 +73,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
-  const renderBlankPreview = () => (
-    <div className="relative flex h-60 w-full items-center justify-center overflow-hidden bg-secondary/20 lg:mb-10 lg:h-80 lg:rounded-lg">
-      <span className="whitespace-nowrap font-light tracking-wider text-primary/70 lg:text-lg">
-        No preview available.
-      </span>
-
-      <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-      <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-    </div>
-  );
-
   const handleCategoryClick = () => {
     router.push(
       `${createURL({
@@ -99,7 +99,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
         {hasPreview ? (
           <ReactImageGallery items={images} showPlayButton={false} />
         ) : (
-          renderBlankPreview()
+          <NoPreviewAvailable />
         )}
 
         {business_description && (

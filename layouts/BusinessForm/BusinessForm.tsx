@@ -1,39 +1,26 @@
 import { FC } from "react";
 
-import { useBusinessFormContext } from "@/context/businessFormContext";
 import Skeleton from "@/components/skeletons/Skeleton";
+import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
+import { Button } from "@/styled/Button";
 
 interface Props {
   skeleton?: boolean;
-  business?: any;
+  title?: string;
+  subtitle?: string;
+  isWide?: boolean;
+  isSubmitting?: boolean;
 }
 
-const BusinessForm: FC<Props> = ({ children, business, skeleton }) => {
-  const { currentStep, formSteps, agreementSigned } = useBusinessFormContext();
-
-  const step = formSteps[currentStep];
-
-  const renderSteps = () => {
-    return (
-      <aside className="flex items-center">
-        <ul className="flex flex-1 flex-col gap-4">
-          {formSteps.map((step: any) => (
-            <li
-              key={step.title}
-              className={`${
-                step.number === currentStep && (agreementSigned || !!business)
-                  ? "font-bold"
-                  : "text-gray-600"
-              } transition duration-150 lg:text-lg`}
-            >
-              {step.title}
-            </li>
-          ))}
-          <li></li>
-        </ul>
-      </aside>
-    );
-  };
+const BusinessForm: FC<Props> = ({
+  children,
+  title,
+  isWide,
+  isSubmitting,
+  subtitle,
+  skeleton,
+}) => {
+  const { currentStep, steps } = useBusinessStore();
 
   const renderStepInfo = () => {
     if (skeleton)
@@ -45,13 +32,11 @@ const BusinessForm: FC<Props> = ({ children, business, skeleton }) => {
 
     return (
       <>
-        <h1 className="mx-auto mt-12 max-w-lg text-center text-4xl font-bold text-primary lg:text-5xl">
-          {agreementSigned || !!business ? step.title : "Welcome aboard!"}
+        <h1 className="mx-auto mt-12 max-w-xl text-center text-4xl font-bold text-primary lg:text-5xl">
+          {steps[currentStep - 1]?.name || title}
         </h1>
-        <h2 className="mb-4 mt-2 text-center md:text-lg lg:mb-10 lg:text-xl">
-          {agreementSigned || !!business
-            ? step.description
-            : "Please confirm the following to get started"}
+        <h2 className="mb-4 mt-3 text-center md:text-lg lg:mb-10 lg:text-xl">
+          {steps[currentStep - 1]?.description || subtitle}
         </h2>
       </>
     );
@@ -59,24 +44,27 @@ const BusinessForm: FC<Props> = ({ children, business, skeleton }) => {
 
   return (
     <>
-      {/* mobile view */}
-      <div className="relative flex min-h-screen flex-col md:hidden">
-        <div className="absolute top-0 left-0 -z-[1] h-1/3 w-full bg-gradient-to-b from-secondary/40"></div>
-        <div className="px-4 pt-10 pb-10 lg:pt-24">{renderStepInfo()}</div>
-        <div className={`${skeleton && "px-2"} pb-20`}>{children}</div>
-      </div>
+      <div className="relative flex min-h-screen flex-col">
+        <div className="my-container px-4 pt-8 pb-20 lg:pt-12">
+          <div className="pb-10 pt-10">{renderStepInfo()}</div>
 
-      {/* tablet+ view */}
-      <div className="absolute left-0 -z-[1] hidden min-h-screen w-[30%] bg-gradient-to-b from-secondary to-accent md:block"></div>
-      <section className="my-container hidden min-h-screen grid-cols-3 pt-24 md:grid">
-        {renderSteps()}
-        <div className="relative col-span-2 col-start-2 mx-auto flex w-full justify-center">
-          <div className="flex w-full flex-col">
-            {renderStepInfo()}
+          <div className={`mx-auto ${isWide ? "max-w-3xl" : "max-w-xl"}`}>
             {children}
           </div>
         </div>
-      </section>
+      </div>
+
+      <div className="fixed bottom-0 left-0 flex w-full justify-center border-primary/20 bg-white p-2 shadow-bottom-nav lg:border-t lg:shadow-none">
+        <div className="grid w-full max-w-xl">
+          <Button type="submit" disabled={isSubmitting}>
+            {currentStep === 0
+              ? "Get started"
+              : currentStep === steps.length
+              ? "Submit and view page"
+              : "Next"}
+          </Button>
+        </div>
+      </div>
     </>
   );
 };

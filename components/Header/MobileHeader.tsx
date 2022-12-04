@@ -7,7 +7,7 @@ import { DialogOverlay, DialogContent } from "@reach/dialog";
 
 import styles from "styles/MobileHeader.module.css";
 
-const SignOutButton = dynamic(() => import("../SignOutButton/SignOutButton"));
+const SignOutButton = dynamic(() => import("../SignOutButton"));
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const MobileHeader = ({ currentNav }: any) => {

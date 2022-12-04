@@ -7,7 +7,6 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { PageWrapper } from "@/components/PageWrapper";
 import TextArea from "@/styled/TextArea/TextArea";
 import { Button } from "@/styled/Button";
-import { sendEmail } from "@/utils/sendEmail";
 
 const SoRandomPage = () => {
   const [message, setMessage] = useState("");
@@ -23,10 +22,13 @@ const SoRandomPage = () => {
       reply_to: "hello@soplugged.com",
     };
 
+    await fetch("/api/sendEmail", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    });
+
     setMessage("");
     toast.success("Your message was sent successfully!");
-
-    const res = await sendEmail(email);
   };
 
   return (

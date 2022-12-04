@@ -1,4 +1,10 @@
 export interface IBusiness {
+  business_name: string;
+  category: string;
+  verified: boolean;
+  slug: string;
+  business_description: string;
+  business_location: string;
   id?: 144;
   creator?: {
     id: 5;
@@ -6,20 +12,14 @@ export interface IBusiness {
     email: "jdoe6@gmail.com";
   };
   services?: string[];
-  phone_number: string;
-  business_name: string;
-  business_url: string;
-  ig_handle: string;
+  phone_number?: string;
+  business_url?: string;
+  ig_handle?: string;
   street_address?: string;
-  business_location: string;
-  fixed_to_one_location: boolean;
-  business_description: string;
-  logo_url: string;
-  sample_images: string;
-  category: string;
-  tags: string;
-  slug: string;
-  number_of_likes: number;
-  verified: boolean;
+  fixed_to_one_location?: boolean;
+  logo_url?: string;
+  sample_images?: string;
+  tags?: string;
+  number_of_likes?: number;
   created_at?: string;
 }

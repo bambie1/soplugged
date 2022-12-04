@@ -1,14 +1,7 @@
 import { FC, useRef, useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogLabel,
-  AlertDialogDescription,
-} from "@reach/alert-dialog";
 import { signOut } from "next-auth/react";
 
-import { Button } from "@/styled/Button";
-
-import styles from "./SignOutButton.module.scss";
+import ConfirmModal from "./ConfirmModal";
 
 const SignOutButton: FC = () => {
   const [showSignOut, setShowSignOut] = useState(false);
@@ -47,28 +40,13 @@ const SignOutButton: FC = () => {
         </span>
       </button>
       {showSignOut && (
-        <AlertDialog
-          leastDestructiveRef={cancelRef}
-          className={styles.dialog}
+        <ConfirmModal
+          cancelRef={cancelRef}
           onDismiss={close}
-        >
-          <AlertDialogLabel className={styles.label}>
-            Please Confirm
-          </AlertDialogLabel>
-
-          <AlertDialogDescription>
-            Are you sure you want to sign out?
-          </AlertDialogDescription>
-
-          <div className={styles.actionButtons}>
-            <Button variant="text" ref={cancelRef} onClick={close}>
-              No, go back
-            </Button>
-            <Button variant="outlined" onClick={handleSignOut}>
-              Yes, Sign me out
-            </Button>
-          </div>
-        </AlertDialog>
+          handleSuccess={handleSignOut}
+          description="Are you sure you want to sign out?"
+          successTitle="Yes, Sign me out"
+        />
       )}
     </>
   );
