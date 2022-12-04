@@ -66,6 +66,10 @@ const NameLocation: FC<Props> = ({ initialName }) => {
                 message: "Please enter a name for your business",
                 value: true,
               },
+              maxLength: {
+                value: 30,
+                message: "Business name is too long",
+              },
               value: business.business_name,
               validate: async (value) => {
                 if (value == initialName) return true;

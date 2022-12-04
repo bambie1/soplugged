@@ -95,7 +95,7 @@ const Introduction: FC = () => {
             <button
               key={step.number}
               onClick={() => updateCurrentStep(step.number)}
-              className="group flex flex-col rounded-lg border-[.5px] border-primary/20 p-4 text-left transition duration-150 hover:shadow-sm disabled:hover:shadow-none md:p-6"
+              className="group flex flex-col rounded-lg border-[.5px] border-primary/20 p-4 text-left transition duration-150 hover:border-primary hover:shadow-sm disabled:hover:shadow-none md:p-6"
               disabled={isDisabled}
             >
               <p className="flex items-center gap-3 text-lg font-semibold text-gray-700">
