@@ -36,42 +36,45 @@ const PluggedInHomePage = () => {
 
       <>
         <Header />
-        <div className="my-container relative pt-28 text-center">
-          <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div>
-          <p>SoPlugged's 2nd anniversary!</p>
-          <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-7xl">
-            <span className="pluggedIn relative">
-              <span className="outlinedText absolute top-[6px] left-[2px] -z-10 md:top-2 md:left-1 lg:left-[3px] lg:top-[10px]">
+        <div className="my-container pt-28 text-center">
+          <div className="light-gradient mb-3 inline-flex rounded-2xl p-3">
+            <p>SoPlugged's 2nd anniversary!</p>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div>
+            <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-7xl">
+              <span className="pluggedIn relative">
+                <span className="outlinedText absolute top-[6px] left-[2px] -z-10 md:top-2 md:left-1 lg:left-[3px] lg:top-[10px]">
+                  PluggedIn
+                </span>
                 PluggedIn
-              </span>
-              PluggedIn
-            </span>{" "}
-            <span className="conference outlinedText">Conference</span>
-          </h1>
-          <p className="mx-auto mb-4 max-w-3xl font-light lg:text-xl">
-            Simply the place to be as an entrepreneur in Canada! Network with
-            fellow business-owners, share ideas and learn how to manage your
-            finances as a business owner
-          </p>
-          <p className="mb-4">@ The BedRock, Toronto</p>
-
-          <button className="neuButton">
-            Get your tickets
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </button>
+              </span>{" "}
+              <span className="conference outlinedText">Conference</span>
+            </h1>
+            <p className="mx-auto mb-4 max-w-3xl font-light lg:text-xl">
+              Simply the place to be as an entrepreneur in Canada! Network with
+              fellow business-owners, share ideas and learn how to manage your
+              finances as a business owner
+            </p>
+            <p className="mb-4">@ The BedRock, Toronto</p>
+            <button className="neuButton">
+              Get your tickets
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="mt-10">
@@ -102,7 +105,7 @@ const PluggedInHomePage = () => {
               </div>
             </div>
 
-            <div className="my-container grid items-center sm:grid-cols-2 lg:grid-cols-4">
+            <div className="my-container grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
               <div>
                 <img
                   src="reni.jpg"
@@ -114,11 +117,14 @@ const PluggedInHomePage = () => {
                 <p>Marketing consultant and finance enthusiast</p>
               </div>
               {otherGuests.map(({ name, imageUrl, title, description }) => (
-                <div key={name} className="mx-auto w-[80%] lg:mr-0 lg:ml-auto">
+                <div
+                  key={name}
+                  className="mx-auto sm:ml-0 md:w-[80%] lg:ml-auto lg:mr-0"
+                >
                   <img
                     src={imageUrl}
                     alt={`Portrait of ${name}`}
-                    className="aspect-[3/4] w-full rounded-lg border border-primary object-cover lg:mb-4"
+                    className="aspect-square w-full rounded-lg border border-primary object-cover object-top sm:aspect-[3/4] lg:mb-4"
                   />
                   <p>{title}</p>
                   <p>{name}</p>
