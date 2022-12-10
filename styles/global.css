@@ -149,3 +149,7 @@ p {
   @apply relative mt-4 inline-flex items-center gap-2 rounded-lg bg-primary py-4 px-8 text-lg text-white transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:text-xl;
   box-shadow: 6px 5px white, 6px 5px 0px 1px black;
 }
+
+.transparentShadow {
+  box-shadow: 6px 5px white, 6px 5px 0px 1px black;
+}
