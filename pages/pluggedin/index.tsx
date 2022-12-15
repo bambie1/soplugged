@@ -1,7 +1,9 @@
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import Countdown from "@/components/pluggedIn/Countdown";
+import Tickets from "@/components/pluggedIn/Tickets";
 import { SEO } from "@/components/SEO";
+import Link from "next/link";
 
 const otherGuests = [
   {
@@ -36,44 +38,51 @@ const PluggedInHomePage = () => {
 
       <>
         <Header />
-        <div className="my-container pt-12 text-center lg:pt-28">
-          <div className="light-gradient mb-3 inline-flex rounded-2xl p-3">
-            <p>SoPlugged's 2nd anniversary!</p>
+        <div className="my-container pt-12 text-center lg:pt-20">
+          <div className="light-gradient relative mb-3 inline-flex  rounded-xl px-3 py-2">
+            <img
+              src="/tada.svg"
+              alt=""
+              className="absolute -left-4 top-1 h-7"
+            />
+            <p className="ml-1">SoPlugged's 2nd anniversary!</p>
           </div>
           <div className="relative">
             <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div>
-            <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-7xl">
+            <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-8xl">
               <span className="pluggedIn relative">
                 <span className="outlinedText absolute top-[6px] left-[2px] -z-10 md:top-2 md:left-1 lg:left-[3px] lg:top-[10px]">
-                  PluggedIn
+                  Plugged
                 </span>
-                PluggedIn
-              </span>{" "}
-              <span className="conference outlinedText">Conference</span>
+                Plugged
+              </span>
+              <span className="outlinedText conference ml-1">In</span>
             </h1>
             <p className="mx-auto mb-4 max-w-3xl font-light lg:text-xl">
-              Simply the place to be as an entrepreneur in Canada! Network with
-              fellow business-owners, share ideas and learn how to manage your
-              finances as a business owner
+              Simply the place to be as an entrepreneur! Network with fellow
+              Canadian business-owners, share ideas and learn how to manage your
+              finances as a business owner.
             </p>
             <p className="mb-4">@ The BedRock, Toronto</p>
-            <button className="neuButton">
-              Get your tickets
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                />
-              </svg>
-            </button>
+            <Link href="#tickets">
+              <a className="neuButton">
+                Get your tickets
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                  />
+                </svg>
+              </a>
+            </Link>
           </div>
         </div>
 
@@ -93,9 +102,11 @@ const PluggedInHomePage = () => {
                   alt="Portrait of Reni Odetoyinbo"
                   className="transparentShadow mb-3 aspect-[3/4] w-full rounded-lg border border-primary object-cover lg:mb-4"
                 />
-                <p>KEYNOTE SPEAKER</p>
-                <p>Reni Odetoyinbo</p>
-                <p>Marketing consultant and finance enthusiast</p>
+                <p className="font-light lg:text-base">KEYNOTE SPEAKER</p>
+                <p className="font-medium">Reni Odetoyinbo</p>
+                <p className="font-light text-gray-800 lg:text-sm">
+                  Marketing consultant and finance enthusiast
+                </p>
               </div>
               {otherGuests.map(({ name, imageUrl, title, description }) => (
                 <div
@@ -105,16 +116,20 @@ const PluggedInHomePage = () => {
                   <img
                     src={imageUrl}
                     alt={`Portrait of ${name}`}
-                    className="aspect-square w-full rounded-lg border border-primary object-cover object-top sm:aspect-[3/4] lg:mb-4"
+                    className="mb-3 aspect-square w-full rounded-lg border border-primary object-cover object-top sm:aspect-[3/4] lg:mb-4"
                   />
-                  <p>{title}</p>
-                  <p>{name}</p>
-                  <p className="lg:text-base">{description}</p>
+                  <p className="font-light lg:text-base">{title}</p>
+                  <p className="font-medium">{name}</p>
+                  <p className="text-sm font-light text-gray-800 lg:text-sm">
+                    {description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        <Tickets />
 
         <Footer />
       </>

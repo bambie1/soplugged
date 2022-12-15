@@ -35,7 +35,7 @@ const ProHero: FC = () => {
             <SparklesIcon className="h-5 w-5" strokeWidth={1} />
             <p className="text-sm lg:text-base">Introducing SoPlugged PRO</p>
           </div>
-          <h1 className="relative mx-auto mb-3 text-6xl font-semibold transition duration-1000 lg:text-7xl xl:mb-6 xl:text-[5rem]">
+          <h1 className="font-semibold relative mx-auto mb-3 text-6xl transition duration-1000 lg:text-7xl xl:mb-6 xl:text-[5rem]">
             <span className="">We help</span> grow{" "}
             <span
               key={textIndex}

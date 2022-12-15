@@ -143,13 +143,19 @@ p {
 .conference {
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   text-shadow: 3px 5px 4px rgba(0, 0, 0, 0.05);
+  -webkit-text-stroke-width: 1.75px;
 }
 
 .neuButton {
-  @apply relative mt-4 inline-flex items-center gap-2 rounded-lg bg-primary py-4 px-8 text-lg text-white transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:text-xl;
+  @apply relative mt-4 inline-flex items-center gap-2 rounded-lg bg-primary py-3 px-6 text-lg text-white transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:py-4 lg:px-8 lg:text-xl;
   box-shadow: 6px 5px white, 6px 5px 0px 1px black;
 }
 
 .transparentShadow {
   box-shadow: 6px 5px white, 6px 5px 0px 1px black;
+}
+
+.priceButton {
+  @apply relative transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none;
+  box-shadow: 6px 5px white, 6px 5px 0px 1px #dcd7cd;
 }
