@@ -1,11 +1,11 @@
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header/Header";
+import Countdown from "@/components/pluggedIn/Countdown";
 import { SEO } from "@/components/SEO";
 
 const otherGuests = [
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1618085222100-93f0eecad0aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGJsYWNrJTIwd29tYW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    imageUrl: "/nina.jpg",
     name: "Nina Barango",
     title: "Host",
     description: "Creator and founder, SoPlugged",
@@ -36,7 +36,7 @@ const PluggedInHomePage = () => {
 
       <>
         <Header />
-        <div className="my-container pt-28 text-center">
+        <div className="my-container pt-12 text-center lg:pt-28">
           <div className="light-gradient mb-3 inline-flex rounded-2xl p-3">
             <p>SoPlugged's 2nd anniversary!</p>
           </div>
@@ -84,26 +84,7 @@ const PluggedInHomePage = () => {
           </div>
 
           <div className="light-gradient relative mt-20 py-10 pt-28 lg:py-20">
-            <div className="absolute -top-20 left-0 w-full">
-              <div className="mx-auto mt-3 grid max-w-md grid-cols-4 items-center px-2">
-                <div className="flex aspect-[3/4] flex-col items-center justify-center gap-1 rounded-lg border border-primary bg-white p-2">
-                  <p className="text-3xl font-bold lg:text-5xl">15</p>
-                  <p className="text-sm font-light lg:text-base">Days</p>
-                </div>
-                <div className="ml-auto flex aspect-[3/4] w-[85%] flex-col items-center justify-center rounded-lg border border-primary bg-white p-2">
-                  <p className="text-2xl lg:text-3xl">20</p>
-                  <p className="text-xs font-light lg:text-sm">Hours</p>
-                </div>
-                <div className="ml-auto flex aspect-[3/4] w-[85%] flex-col items-center justify-center rounded-lg border border-primary bg-white p-2">
-                  <p className="text-2xl lg:text-3xl">40</p>
-                  <p className="text-xs font-light lg:text-sm">Minutes</p>
-                </div>
-                <div className="ml-auto flex aspect-[3/4] w-[85%] flex-col items-center justify-center rounded-lg border border-primary bg-white p-2">
-                  <p className="text-2xl lg:text-3xl">10</p>
-                  <p className="text-xs font-light lg:text-sm">Seconds</p>
-                </div>
-              </div>
-            </div>
+            <Countdown />
 
             <div className="my-container grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
               <div>
