@@ -134,7 +134,7 @@ p {
 .outlinedText {
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: #4e3505;
 }
 
 .pluggedIn {
@@ -148,14 +148,14 @@ p {
 
 .neuButton {
   @apply relative mt-4 inline-flex items-center gap-2 rounded-lg bg-primary py-3 px-6 text-lg text-white transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:py-4 lg:px-8 lg:text-xl;
-  box-shadow: 6px 5px white, 6px 5px 0px 1px black;
+  box-shadow: 6px 5px white, 6px 5px 0px 1px #4e3505;
 }
 
 .transparentShadow {
-  box-shadow: 6px 5px white, 6px 5px 0px 1px black;
+  box-shadow: 6px 5px white, 6px 5px 0px 1px #4e3505;
 }
 
 .priceButton {
   @apply relative transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none;
-  box-shadow: 6px 5px white, 6px 5px 0px 1px #dcd7cd;
+  box-shadow: 6px 5px #4e3505, 6px 5px 0px 1px #dcd7cd;
 }
