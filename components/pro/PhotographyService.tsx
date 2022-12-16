@@ -32,12 +32,12 @@ const features = [
   },
 ];
 
-const SocialMediaService = () => {
+const PhotographyService = () => {
   return (
     <div>
       <div className="my-container my-10 grid gap-6 lg:my-24 lg:grid-cols-2 lg:gap-40">
         <h2 className="text-3xl font-semibold lg:text-4xl">
-          Social media marketing & management
+          Product photography & Self-portraits
         </h2>
         <p>
           You get access to a team of professionals with expertise in areas such
@@ -45,9 +45,9 @@ const SocialMediaService = () => {
         </p>
       </div>
 
-      <div className="grid aspect-video w-full grid-cols-2 bg-indigo-100 lg:aspect-[3/1]">
-        <div className="h-full bg-indigo-400"></div>
+      <div className="grid aspect-video w-full grid-cols-2 bg-yellow-100 lg:aspect-[3/1]">
         <div></div>
+        <div className="h-full bg-yellow-400"></div>
       </div>
 
       <div className="my-container mt-10 grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:mt-16">
@@ -56,7 +56,7 @@ const SocialMediaService = () => {
             key={feature.name}
             className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-400 text-indigo-400 sm:shrink-0">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-400 text-yellow-400 sm:shrink-0">
               <feature.icon
                 className="h-8 w-8"
                 aria-hidden="true"
@@ -78,4 +78,4 @@ const SocialMediaService = () => {
   );
 };
 
-export default SocialMediaService;
+export default PhotographyService;

@@ -32,31 +32,37 @@ const features = [
   },
 ];
 
-const SocialMediaService = () => {
+const WhySoPluggedPro = () => {
   return (
-    <div>
-      <div className="my-container my-10 grid gap-6 lg:my-24 lg:grid-cols-2 lg:gap-40">
-        <h2 className="text-3xl font-semibold lg:text-4xl">
-          Social media marketing & management
-        </h2>
-        <p>
-          You get access to a team of professionals with expertise in areas such
-          as website design, SEO, social media strategy, and content marketing
-        </p>
+    <div className="my-container">
+      <div className="text-center">
+        <p className="font-light tracking-widest">WHY SOPLUGGED PRO?</p>
+        <div className="relative inline-flex">
+          <h2 className="mx-auto mb-4 mt-3 max-w-4xl text-3xl font-medium lg:text-4xl">
+            SoPlugged Pro allows me to focus on other aspects of operating a
+            business
+          </h2>
+
+          <img
+            src="/quotes.svg"
+            alt=""
+            className="absolute -top-10 -left-10 w-40"
+          />
+        </div>
+
+        <div>
+          <p>Owner, Stripped Bare Soap</p>
+          <p>Deinye E.</p>
+        </div>
       </div>
 
-      <div className="grid aspect-video w-full grid-cols-2 bg-indigo-100 lg:aspect-[3/1]">
-        <div className="h-full bg-indigo-400"></div>
-        <div></div>
-      </div>
-
-      <div className="my-container mt-10 grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:mt-16">
+      <div className="mt-10 grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:mt-16">
         {features.map((feature) => (
           <div
             key={feature.name}
             className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-400 text-indigo-400 sm:shrink-0">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent-dark text-accent-dark sm:shrink-0">
               <feature.icon
                 className="h-8 w-8"
                 aria-hidden="true"
@@ -78,4 +84,4 @@ const SocialMediaService = () => {
   );
 };
 
-export default SocialMediaService;
+export default WhySoPluggedPro;
