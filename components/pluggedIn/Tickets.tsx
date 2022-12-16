@@ -30,17 +30,14 @@ const Tickets = () => {
         Tickets
       </h2>
 
-      <div className="mt-6 grid lg:grid-cols-2">
-        <div>
+      <div className="mt-10 grid items-center gap-10 lg:grid-cols-2">
+        <div className="">
           <p>With a ticket purchase, you get access to:</p>
-          <ul role="list" className="mt-6 space-y-6 divide-y divide-gray-200">
+          <ul role="list" className="mt-6 space-y-6 divide-y divide-gray-100">
             {features.map((feature) => (
-              <li key={feature} className="flex">
-                <CheckIcon
-                  className="h-6 w-6 flex-shrink-0 text-indigo-500"
-                  aria-hidden="true"
-                />
-                <span className="ml-3 text-gray-500">{feature}</span>
+              <li key={feature} className="flex pt-6">
+                <span className="listItem aspect-square h-4 rounded-sm border border-primary bg-white"></span>
+                <span className="ml-3 text-gray-800 lg:text-lg">{feature}</span>
               </li>
             ))}
           </ul>

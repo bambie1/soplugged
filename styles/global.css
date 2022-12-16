@@ -159,3 +159,7 @@ p {
   @apply relative transition duration-200 hover:translate-x-2 hover:translate-y-2 hover:shadow-none;
   box-shadow: 6px 5px #4e3505, 6px 5px 0px 1px #dcd7cd;
 }
+
+.listItem {
+  box-shadow: 3px 3px #4e3505;
+}

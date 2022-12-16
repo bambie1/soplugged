@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header/Header";
+import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
 import { SEO } from "@/components/SEO";
@@ -131,6 +132,7 @@ const PluggedInHomePage = () => {
 
         <Tickets />
 
+        <ConferenceFAQs />
         <Footer />
       </>
     </>
