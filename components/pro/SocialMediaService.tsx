@@ -1,34 +1,49 @@
 import {
-  GlobeAltIcon,
-  LightningBoltIcon,
-  PhoneIcon,
-  ScaleIcon,
+  AtSymbolIcon,
+  ChartBarIcon,
+  HashtagIcon,
 } from "@heroicons/react/outline";
+
+const ArrowTrendingUpIcon = (props: React.ComponentProps<"svg">) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    {...props}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+    />
+  </svg>
+);
 
 const features = [
   {
-    name: "Creativity and strategy",
+    name: "Content creation and curation",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: GlobeAltIcon,
+      "Designed Instagram post templates for reels, single feed posts, story, polls, and quotes.",
+    icon: HashtagIcon,
   },
   {
-    name: "Expertise and experience",
+    name: "Strategy development",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: ScaleIcon,
+      "We develop a comprehensive social media strategy that aligns with the business's overall goals and objectives",
+    icon: ArrowTrendingUpIcon,
   },
   {
-    name: "Freedom to focus on your business",
+    name: "Social media advertising",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: LightningBoltIcon,
+      "Based on your needs, we effectively advertise on social media platforms, including targeting the right audience, setting up campaigns, and more.",
+    icon: ChartBarIcon,
   },
   {
-    name: "Ongoing support",
+    name: "Social-media management",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: PhoneIcon,
+      "You can opt to hand-off the day-to-day management of your business social media accounts, including responding to comments and messages, etc.",
+    icon: AtSymbolIcon,
   },
 ];
 
@@ -39,9 +54,10 @@ const SocialMediaService = () => {
         <h2 className="text-3xl font-semibold lg:text-4xl">
           Social media marketing & management
         </h2>
-        <p>
-          You get access to a team of professionals with expertise in areas such
-          as website design, SEO, social media strategy, and content marketing
+        <p className="text-lg font-light lg:text-xl">
+          A social media presence increases brand awareness, drives traffic to
+          the business's website, and builds trust and relationships with
+          customers.
         </p>
       </div>
 
@@ -50,29 +66,31 @@ const SocialMediaService = () => {
         <div></div>
       </div>
 
-      <div className="my-container mt-10 grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:mt-16">
-        {features.map((feature) => (
-          <div
-            key={feature.name}
-            className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-400 text-indigo-400 sm:shrink-0">
-              <feature.icon
-                className="h-8 w-8"
-                aria-hidden="true"
-                strokeWidth={0.8}
-              />
+      <div className="flex bg-indigo-100/20 py-10 lg:py-16">
+        <div className="my-container grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
+          {features.map((feature) => (
+            <div
+              key={feature.name}
+              className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-400 text-indigo-400 sm:shrink-0">
+                <feature.icon
+                  className="h-8 w-8"
+                  aria-hidden="true"
+                  strokeWidth={1}
+                />
+              </div>
+              <div className="sm:min-w-0 sm:flex-1">
+                <p className="text-lg font-medium leading-8 text-gray-900">
+                  {feature.name}
+                </p>
+                <p className="mt-2 text-base leading-7 text-gray-600">
+                  {feature.description}
+                </p>
+              </div>
             </div>
-            <div className="sm:min-w-0 sm:flex-1">
-              <p className="text-lg font-semibold leading-8 text-gray-900">
-                {feature.name}
-              </p>
-              <p className="mt-2 text-base leading-7 text-gray-600">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -6,13 +6,10 @@ import OurProcess from "@/components/pro/OurProcess";
 import WhySoPluggedPro from "@/components/pro/WhySoPluggedPro";
 import OurServices from "@/components/pro/OurServices";
 import OurReviews from "@/components/pro/OurReviews";
+import ProFAQs from "@/components/pro/ProFAQs";
 
 const Header = dynamic(() => import("../components/Header/Header"));
-const SocialMediaService = dynamic(
-  () => import("../components/pro/SocialMediaService")
-);
 
-const ConsultForm = dynamic(() => import("../components/pro/ConsultForm"));
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 const ProPage: FC = () => {
@@ -25,6 +22,7 @@ const ProPage: FC = () => {
         <OurServices />
         <OurReviews />
         <OurProcess />
+        <ProFAQs />
         <Footer tertiary />
       </div>
     </>

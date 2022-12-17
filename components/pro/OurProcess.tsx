@@ -1,4 +1,4 @@
-import { InlineWidget } from "react-calendly";
+import { useEffect, useState } from "react";
 
 const OurProcess = () => {
   return (
@@ -9,10 +9,7 @@ const OurProcess = () => {
         It all starts with a consult
       </h2>
 
-      <InlineWidget
-        url="https://calendly.com/soplugged/consultation?hide_gdpr_banner=1"
-        styles={{ height: "1200px", marginBottom: "-5rem" }}
-      />
+      <div id="root"></div>
     </div>
   );
 };

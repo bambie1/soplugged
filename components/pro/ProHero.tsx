@@ -34,7 +34,7 @@ const ProHero: FC = () => {
               Book a FREE consultation
             </a>
           </Link>
-          <Link href="#our-process">
+          <Link href="#learn-more">
             <a className="flex items-center gap-2 font-light uppercase lg:text-lg">
               Learn more
               <ArrowCircleDownIcon

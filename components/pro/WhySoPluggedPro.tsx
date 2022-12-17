@@ -1,40 +1,40 @@
 import {
+  ClockIcon,
   GlobeAltIcon,
+  LightBulbIcon,
   LightningBoltIcon,
-  PhoneIcon,
-  ScaleIcon,
 } from "@heroicons/react/outline";
 
 const features = [
   {
-    name: "Creativity and strategy",
+    name: "Improved brand image",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: GlobeAltIcon,
-  },
-  {
-    name: "Expertise and experience",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: ScaleIcon,
-  },
-  {
-    name: "Freedom to focus on your business",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      "We create a cohesive and consistent look and feel for your business across all online channels.",
     icon: LightningBoltIcon,
   },
   {
-    name: "Ongoing support",
+    name: "Expert guidance",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: PhoneIcon,
+      "Get access to a team of professionals with expertise in areas such as website design, SEO, social media strategy, and more.",
+    icon: LightBulbIcon,
+  },
+  {
+    name: "Free up time to serve customers",
+    description:
+      "Offloading other tasks to our team allows you to focus on providing quality service to your customers",
+    icon: ClockIcon,
+  },
+  {
+    name: "Increased online presence",
+    description:
+      "Reach a wider audience and attract more customers with scheduled, frequent and diverse posts.",
+    icon: GlobeAltIcon,
   },
 ];
 
 const WhySoPluggedPro = () => {
   return (
-    <div className="my-container">
+    <div id="learn-more" className="my-container">
       <div className="text-center">
         <p className="font-light tracking-widest">WHY SOPLUGGED PRO?</p>
         <div className="relative inline-flex">
@@ -66,7 +66,7 @@ const WhySoPluggedPro = () => {
               <feature.icon
                 className="h-8 w-8"
                 aria-hidden="true"
-                strokeWidth={0.8}
+                strokeWidth={1}
               />
             </div>
             <div className="sm:min-w-0 sm:flex-1">
