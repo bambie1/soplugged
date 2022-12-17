@@ -14,11 +14,7 @@ import { CustomStateResults } from "./CustomStateResults";
 import { SEO } from "@/components/SEO";
 
 const CustomMenu = dynamic(() => import("./CustomMenu"));
-const CustomRefinements = dynamic(() =>
-  import("../algolia-old/CustomRefinements").then(
-    (mod: any) => mod.CustomRefinements
-  )
-);
+const CustomRefinements = dynamic(() => import("../algolia/CustomRefinements"));
 
 const INSTANT_SEARCH_INDEX_NAME = "Business";
 

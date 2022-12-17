@@ -19,7 +19,7 @@ import {
   StateResultsProvided,
 } from "react-instantsearch-core";
 
-import { CustomRefinements } from "@/components/algolia-old/CustomRefinements";
+import CustomRefinements from "@/components/algolia/CustomRefinements";
 import CustomMenu from "@/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/components/algolia/CustomStateResults";
 import { SEO } from "@/components/SEO";
