@@ -5,6 +5,7 @@ import ProHero from "@/components/pro/ProHero";
 import OurProcess from "@/components/pro/OurProcess";
 import WhySoPluggedPro from "@/components/pro/WhySoPluggedPro";
 import OurServices from "@/components/pro/OurServices";
+import OurReviews from "@/components/pro/OurReviews";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const SocialMediaService = dynamic(
@@ -22,6 +23,8 @@ const ProPage: FC = () => {
         <ProHero />
         <WhySoPluggedPro />
         <OurServices />
+        <OurReviews />
+        <OurProcess />
         <Footer tertiary />
       </div>
     </>

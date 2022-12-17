@@ -10,12 +10,20 @@ const features = [
 
 const ProHero: FC = () => {
   return (
-    <div className="py-10 lg:pt-32">
+    <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
-        <h1 className="relative mx-auto mb-3 max-w-5xl text-5xl font-semibold transition duration-1000 lg:text-7xl xl:mb-6">
+        {/* mobile h1 styling */}
+        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-semibold sm:hidden">
+          Provide the <span className="block">best online</span> experience to
+          your customers
+        </h1>
+
+        {/* tablet+ h1 styling */}
+        <h1 className="mx-auto mb-3 hidden max-w-5xl text-5xl font-semibold sm:block lg:text-7xl xl:mb-6">
           Provide the best online experience to your customers
         </h1>
-        <p className="mx-auto max-w-3xl text-lg font-light lg:text-2xl">
+
+        <p className="mx-auto max-w-3xl text-lg font-light text-gray-700 lg:text-2xl">
           Hire our team of experts to handle your digital needs, from custom
           websites to social media management
         </p>

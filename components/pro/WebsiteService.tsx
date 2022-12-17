@@ -35,7 +35,7 @@ const features = [
 const WebsiteService = () => {
   return (
     <div>
-      <div className="my-container my-10 grid gap-6 lg:my-24 lg:grid-cols-2 lg:gap-40">
+      <div className="my-container mb-8 mt-10 grid gap-6 lg:mt-24 lg:mb-12 lg:grid-cols-2 lg:gap-40">
         <h2 className="text-3xl font-semibold lg:text-4xl">
           Website design & development
         </h2>
