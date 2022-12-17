@@ -13,7 +13,7 @@ const ProHero: FC = () => {
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
         {/* mobile h1 styling */}
-        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-semibold sm:hidden">
+        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-semibold leading-tight sm:hidden">
           Provide the <span className="block">best online</span> experience to
           your customers
         </h1>
