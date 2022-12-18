@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 
 import { BusinessInfoPage } from "@/scenes/BusinessInfoPage";
 import BusinessInfoSkeleton from "@/scenes/BusinessInfoPage/BusinessInfoSkeleton";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import DashboardPage from "@/scenes/DashboardPage";
 import UnauthDashboardView from "@/scenes/BusinessInfoPage/UnauthDashboardView";
 

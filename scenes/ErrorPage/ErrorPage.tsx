@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 
-import { PageWrapper } from "@/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import styles from "./ErrorPage.module.scss";

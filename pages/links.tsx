@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import {
   HeartIcon,
   PencilIcon,

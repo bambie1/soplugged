@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import { getAllBlogPosts } from "@/utils/graphcms";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import BlogsHomePage from "@/scenes/BlogsHomePage";
 
 interface Props {
