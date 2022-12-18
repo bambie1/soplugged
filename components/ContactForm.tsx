@@ -1,15 +1,9 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { signIn, useSession } from "next-auth/react";
-import { usePlausible } from "next-plausible";
 
-import { MyEvents } from "@/types/Plausible";
 import { Button } from "@/styled/Button";
-
-import styles from "./ContactForm.module.scss";
 
 interface IFormInput {
   message: string;
@@ -23,15 +17,8 @@ interface Props {
 
 const ContactForm: FC<Props> = ({ businessEmail }) => {
   const { data: session } = useSession();
-  const plausible = usePlausible<MyEvents>();
 
-  const [messageSent, setMessageSent] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<IFormInput>();
+  const { register, handleSubmit, reset } = useForm<IFormInput>();
 
   const disabled = !session?.user || session?.user.email === businessEmail;
 
@@ -56,7 +43,6 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     if (res?.ok) {
       toast.success("Message sent");
       reset();
-      setMessageSent(true);
     } else toast.error("An error occurred");
   };
 
@@ -96,7 +82,10 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="grid gap-4 pt-4 text-left"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <h3 className="center text-lg font-bold uppercase text-primary">
         Contact owner
       </h3>

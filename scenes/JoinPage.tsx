@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
-import { PageWrapper } from "@/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 import { ArrowButton } from "@/styled/ArrowButton";
 import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";

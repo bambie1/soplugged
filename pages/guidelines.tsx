@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { SEO } from "@/components/SEO";
-import { GuidelinesPage } from "@/scenes/GuidelinesPage";
+import SEO from "@/components/SEO";
+import GuidelinesPage from "@/scenes/GuidelinesPage";
 
 const Guidelines: FC = () => {
   return (

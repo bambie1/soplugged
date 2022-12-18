@@ -6,8 +6,6 @@ import { SessionProvider } from "next-auth/react";
 import { SWRConfig } from "swr";
 import PlausibleProvider from "next-plausible";
 
-import { BusinessFormProvider } from "@/context/businessFormContext";
-
 import "../styles/button.scss";
 import "../styles/global.css";
 import "../styles/algolia.scss";
@@ -41,12 +39,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
                 fetch(resource, init).then((res) => res.json()),
             }}
           >
-            <BusinessFormProvider>
-              <div className="">
-                <Component {...pageProps} />
-              </div>
-              <Toaster position="bottom-left" />
-            </BusinessFormProvider>
+            <div className="">
+              <Component {...pageProps} />
+            </div>
+            <Toaster position="bottom-left" />
           </SWRConfig>
         </SessionProvider>
       </PlausibleProvider>

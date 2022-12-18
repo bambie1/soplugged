@@ -7,7 +7,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import { Button } from "@/styled/Button";
 import SocialLinks from "@/components/SocialLinks";
-import Avatar from "@/components/Avatar/Avatar";
+import Avatar from "@/components/Avatar";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessPage.module.scss";
@@ -16,12 +16,8 @@ import { createURL } from "@/utils/algolia";
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer/Footer"));
 
-const ContactForm = dynamic(
-  () => import("../../components/ContactForm/ContactForm")
-);
-const ShareButton = dynamic(
-  () => import("../../components/ShareButton/ShareButton")
-);
+const ContactForm = dynamic(() => import("../../components/ContactForm"));
+const ShareButton = dynamic(() => import("../../components/ShareButton"));
 const ReactImageGallery = dynamic(() => import("react-image-gallery"), {
   loading: () => <div className="aspect-video w-full rounded-lg bg-gray-200" />,
 });

@@ -2,8 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-import { SEO } from "@/components/SEO";
-import { swrFetcher } from "@/utils/swrFetcher";
+import SEO from "@/components/SEO";
 
 const BusinessPageSkeleton = dynamic(
   () => import("../../scenes/BusinessPage/BusinessPageSkeleton")
@@ -16,7 +15,6 @@ const PageNotFound = dynamic(() => import("../../scenes/404Page/404Page"));
 const Business: NextPage = ({ slug, fallbackData }: any) => {
   const { data: business, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`,
-    swrFetcher,
     {
       fallbackData,
       revalidateOnMount: false,

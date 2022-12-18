@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Link from "next/link";
 
-import { Avatar } from "../Avatar";
+import Avatar from "../Avatar";
 import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessCard.module.scss";

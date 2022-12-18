@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import BlogPage from "@/scenes/BlogPage";
 import { fetchAPI } from "@/utils/graphcms";
 

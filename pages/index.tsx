@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import type { GetStaticProps, NextPage } from "next";
 
 import Hero from "@/components/home/Hero";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 
 const Header = dynamic(() => import("../components/Header/Header"));

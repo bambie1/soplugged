@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.soplugged.com
+
+# Sitemaps
+Sitemap: https://www.soplugged.com/sitemap.xml

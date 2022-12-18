@@ -22,7 +22,7 @@ import {
 import CustomRefinements from "@/components/algolia/CustomRefinements";
 import CustomMenu from "@/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/components/algolia/CustomStateResults";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import { createURL, getCategoryName, encodedCategories } from "@/utils/algolia";
 
 const Header = dynamic(() => import("../../components/Header/Header"));

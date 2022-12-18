@@ -4,7 +4,7 @@ import Script from "next/script";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 
 const MyBusinessPage = dynamic(
   () => import("../scenes/MyBusinessPage/MyBusinessPage")
