@@ -1,24 +1,22 @@
-import { CheckIcon } from "@heroicons/react/outline";
+import { SparklesIcon } from "@heroicons/react/outline";
 
 const features = [
-  "5 products",
-  "Up to 1,000 subscribers",
-  "Basic analytics",
-  "48-hour support response time",
+  "Business website design",
+  "Product photography session",
+  "1 month's worth of social media designs",
 ];
+
 const options = [
   {
     title: "Early bird",
-    price: "$19.99",
-    description:
-      "Get full access to all of standard license features for solo projects that make less than $20k gross revenue for $29.",
+    price: 19,
+    description: "Available to businesses registered on SoPlugged",
     isAvailable: true,
   },
   {
     title: "Regular",
-    price: "$24.99",
-    description:
-      "Get full access to all of standard license features for solo projects that make less than $20k gross revenue for $29.",
+    price: 24,
+    description: "",
     isAvailable: false,
   },
 ];
@@ -32,7 +30,18 @@ const Tickets = () => {
 
       <div className="mt-10 grid items-center gap-10 lg:grid-cols-2">
         <div className="">
-          <p>With a ticket purchase, you get access to:</p>
+          <SparklesIcon className="h-10 w-10" strokeWidth={1} />
+          <p>
+            As a registered business on SoPlugged, you'll receive a special
+            discount on tickets to this event. Simply use the promo code
+            provided in the email from our team to take advantage of this
+            exclusive offer.
+          </p>
+          <p className="mt-4">
+            When you purchase a ticket, you're automatically entered into our
+            raffle draw for a chance to win a free business makeover. This
+            includes:
+          </p>
           <ul role="list" className="mt-6 space-y-6 divide-y divide-gray-100">
             {features.map((feature) => (
               <li key={feature} className="flex pt-6">
@@ -47,34 +56,31 @@ const Tickets = () => {
             <li key={option.title}>
               <button
                 disabled={!option.isAvailable}
-                className={`flex flex-col gap-4 rounded-3xl p-6 text-left sm:p-10 ${
+                className={`flex w-full flex-col gap-4 rounded-3xl p-6 text-left sm:p-10 ${
                   option.isAvailable
                     ? "priceButton border border-primary bg-white"
                     : "bg-gray-50"
                 }`}
               >
-                <div className="lg:min-w-0 lg:flex-1">
-                  {!option.isAvailable && (
-                    <span className="text-gray-600">Not available</span>
-                  )}
-                  <h3 className="text-lg font-bold leading-8 tracking-tight text-primary">
-                    {option.title} ticket
-                  </h3>
-                  <div className="mt-2 text-base leading-7 text-gray-600">
-                    {option.description}
+                <div className="flex w-full items-center justify-between gap-2 lg:flex-1">
+                  <div>
+                    {!option.isAvailable && (
+                      <span className="text-gray-600">Not available</span>
+                    )}
+                    <h3 className="text-lg font-bold leading-8 tracking-tight text-primary lg:text-xl">
+                      {option.title} ticket
+                    </h3>
+                    <p className="w-[80%] text-gray-600 lg:text-base">
+                      {option.description}
+                    </p>
+                  </div>
+
+                  <div className="inline-flex items-center">
+                    <span>$</span>
+                    <p className="text-3xl font-medium">{option.price}</p>
+                    <span className="mb-6 text-sm text-gray-600">99</span>
                   </div>
                 </div>
-                {option.isAvailable && (
-                  <div>
-                    <a
-                      href="#"
-                      className="inline-block rounded-lg bg-primary/5 px-4 py-2.5 text-center text-sm font-bold leading-5 text-primary hover:bg-primary/10"
-                    >
-                      Buy {option.title} ticket{" "}
-                      <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </div>
-                )}
               </button>
             </li>
           ))}

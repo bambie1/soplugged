@@ -3,7 +3,7 @@ import Header from "@/components/Header/Header";
 import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import Link from "next/link";
 
 const otherGuests = [

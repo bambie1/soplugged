@@ -3,29 +3,36 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 
 const faqs = [
   {
-    question: "Who can attend the networking event?",
+    question:
+      "What is the format of the event? Will there be presentations or workshops, or will it be more informal with time for mingling and making connections?",
     answer:
-      "The networking event is open to all black entrepreneurs and business owners. We welcome attendees from all industries and at all stages of their business journey.",
+      "The format of the event will include both structured presentations and workshops, as well as ample time for informal networking and mingling. Attendees will have the opportunity to participate in interactive Q&A sessions and meet with other attendees to discuss their businesses and ideas.",
   },
   {
-    question: "How do I register for the networking event?",
+    question: "What is the purpose of this event?",
     answer:
-      "To register for the networking event, you can visit our website and follow the instructions to sign up. Registration is typically done online, but we may also offer in-person registration options depending on the event.",
+      "To celebrate our 2nd anniversary, we are providing a platform for black entrepreneurs to connect with each other, exchange ideas, and learn about industry trends and best practices. It is an opportunity for you to build relationships and make meaningful connections with other entrepreneurs around Canada",
   },
   {
-    question: "What should I bring to the networking event?",
+    question: "How can I register to attend the event?",
     answer:
-      "We recommend that you bring business cards and any promotional materials that you would like to share with other attendees. It is also a good idea to bring a notebook and pen to take notes during the event.",
+      "Please see our Tickets section to get started. Payment can be made online via credit card or through an invoice request.",
   },
   {
-    question: "What should I wear to the networking event?",
+    question: "Is there a dress code for the event?",
     answer:
-      "Business casual attire is typically appropriate for a networking event. We recommend dressing in a way that is comfortable and professional, and that reflects your personal style and the image you want to convey for your business.",
+      "The dress code for the event is business casual. We recommend dressing in comfortable, professional attire that allows you to feel confident and comfortable during the event.",
   },
   {
-    question: "How do I register for the networking event?",
+    question: "Will there be any special guests or speakers at the event?",
     answer:
-      "To register for the networking event, you can visit our website and follow the instructions to sign up. Registration is typically done online, but we may also offer in-person registration options depending on the event.",
+      "Yes, we are excited to have Reni Odetoyinbo at this event. She will be speaking on how to manage your finances as a small business owner and answering any questions you might have.",
+  },
+  {
+    question:
+      "Will there be any follow-up or ongoing opportunities for networking after the event?",
+    answer:
+      "Yes, we will be hosting several follow-up events and opportunities for ongoing networking after the main event. Make sure you connect with us on our socials to stay plugged in!",
   },
 ];
 
