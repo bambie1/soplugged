@@ -54,34 +54,36 @@ const Tickets = () => {
         <ul className="grid gap-4">
           {options.map((option) => (
             <li key={option.title}>
-              <button
-                disabled={!option.isAvailable}
-                className={`flex w-full flex-col gap-4 rounded-3xl p-6 text-left sm:p-10 ${
-                  option.isAvailable
-                    ? "priceButton border border-primary bg-white"
-                    : "bg-gray-50"
-                }`}
-              >
-                <div className="flex w-full items-center justify-between gap-2 lg:flex-1">
-                  <div>
-                    {!option.isAvailable && (
-                      <span className="text-gray-600">Not available</span>
-                    )}
-                    <h3 className="text-lg font-bold leading-8 tracking-tight text-primary lg:text-xl">
-                      {option.title} ticket
-                    </h3>
-                    <p className="w-[80%] text-gray-600 lg:text-base">
-                      {option.description}
-                    </p>
-                  </div>
+              <form action="/api/stripe/checkout_sessions" method="POST">
+                <button
+                  disabled={!option.isAvailable}
+                  className={`flex w-full flex-col gap-4 rounded-3xl p-6 text-left sm:p-10 ${
+                    option.isAvailable
+                      ? "priceButton border border-primary bg-white"
+                      : "bg-gray-50"
+                  }`}
+                >
+                  <div className="flex w-full items-center justify-between gap-2 lg:flex-1">
+                    <div>
+                      {!option.isAvailable && (
+                        <span className="text-gray-600">Not available</span>
+                      )}
+                      <h3 className="text-lg font-bold leading-8 tracking-tight text-primary lg:text-xl">
+                        {option.title} ticket
+                      </h3>
+                      <p className="w-[80%] text-gray-600 lg:text-base">
+                        {option.description}
+                      </p>
+                    </div>
 
-                  <div className="inline-flex items-center">
-                    <span>$</span>
-                    <p className="text-3xl font-medium">{option.price}</p>
-                    <span className="mb-6 text-sm text-gray-600">99</span>
+                    <div className="inline-flex items-center">
+                      <span>$</span>
+                      <p className="text-3xl font-medium">{option.price}</p>
+                      <span className="mb-6 text-sm text-gray-600">99</span>
+                    </div>
                   </div>
-                </div>
-              </button>
+                </button>
+              </form>
             </li>
           ))}
         </ul>

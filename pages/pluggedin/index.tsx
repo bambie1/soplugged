@@ -1,10 +1,17 @@
+import Link from "next/link";
+import { loadStripe } from "@stripe/stripe-js";
+
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
 import SEO from "@/components/SEO";
-import Link from "next/link";
+import { useEffect } from "react";
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
 
 const otherGuests = [
   {
@@ -30,11 +37,26 @@ const otherGuests = [
 ];
 
 const PluggedInHomePage = () => {
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      console.log("Order placed! You will receive an email confirmation.");
+    }
+
+    if (query.get("canceled")) {
+      console.log(
+        "Order canceled -- continue to shop around and checkout when you’re ready."
+      );
+    }
+  }, []);
+
   return (
     <>
       <SEO
         title="Plugged In Conference | SoPlugged"
         description="Network with fellow business-owners, share ideas and learn how to manage your finances as a business owner"
+        variant="pluggedin"
       />
 
       <>
