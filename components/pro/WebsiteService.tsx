@@ -1,10 +1,6 @@
 import {
   BookOpenIcon,
-  GlobeAltIcon,
   LightningBoltIcon,
-  PencilIcon,
-  PhoneIcon,
-  ScaleIcon,
   SparklesIcon,
 } from "@heroicons/react/outline";
 
@@ -64,9 +60,13 @@ const WebsiteService = () => {
         </p>
       </div>
 
-      <div className="grid aspect-video w-full grid-cols-2 bg-pink-100 lg:aspect-[3/1]">
-        <div></div>
-        <div className="h-full bg-pink-400"></div>
+      <div className="relative flex aspect-video w-full items-center justify-center py-2 lg:aspect-[3/1]">
+        <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-pink-100">
+          <div></div>
+          <div className="h-full bg-pink-400"></div>
+        </div>
+
+        <div className="mx-auto aspect-video w-[70%] rounded-xl border border-black bg-white/60 lg:aspect-[2/1] lg:max-w-3xl"></div>
       </div>
 
       <div className="flex bg-pink-100/20 py-10 lg:py-16">
