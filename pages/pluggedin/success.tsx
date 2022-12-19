@@ -26,27 +26,20 @@ const PluggedInSuccessPage = (
       <Header />
 
       <div className="my-container pt-12 text-center lg:pt-20">
-        <div className="light-gradient relative mb-3 inline-flex  rounded-xl px-3 py-2">
+        <div className="light-gradient relative inline-flex  rounded-xl px-3 py-2">
           <img src="/tada.svg" alt="" className="absolute -left-4 top-1 h-7" />
           <p className="ml-1">We've saved you a seat, {firstName}!</p>
         </div>
-        <p className="uppercase text-gray-600 lg:text-base">
-          @ The BedRock, Toronto
-        </p>
-        <div className="relative mt-4">
+        <div className="relative mt-2">
           <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div>
           <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-8xl">
-            <span className="pluggedIn relative">
-              <span className="outlinedText absolute top-[6px] left-[2px] -z-10 md:top-2 md:left-1 lg:left-[3px] lg:top-[10px]">
-                Plugged
-              </span>
-              Plugged
+            <span className="outlinedText conference ml-1">
+              Ticket confirmed
             </span>
-            <span className="outlinedText conference ml-1">In</span>
           </h1>
-          <p className="mx-auto mb-4 font-light text-gray-600">
-            Check your email for a confirmation, and more info about what to
-            expect at the event.
+          <p className="mx-auto mb-4 max-w-2xl text-lg font-light text-gray-600 lg:text-2xl">
+            Please check your email for your e-ticket, and more info about what
+            to expect at the event.
           </p>
           <Link href="#tickets">
             <a className="neuButton">
@@ -58,9 +51,7 @@ const PluggedInSuccessPage = (
       </div>
 
       <div className="my-container mt-10 text-center lg:mt-20">
-        <p>
-          We've created a shareable link, if you don't mind spreading the word
-        </p>
+        <p>soplugged.com/pluggedin</p>
 
         <img
           src="/og-pluggedin.png"
