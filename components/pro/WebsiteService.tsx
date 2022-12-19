@@ -61,22 +61,27 @@ const WebsiteService = () => {
       </div>
 
       <div className="relative flex aspect-video w-full items-center justify-center py-2 lg:aspect-[3/1]">
-        <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-pink-100">
+        <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-orange-100">
           <div></div>
-          <div className="h-full bg-pink-400"></div>
+          <div className="h-full bg-orange-400"></div>
         </div>
 
-        <div className="mx-auto aspect-video w-[70%] rounded-xl border border-black bg-white/60 lg:aspect-[2/1] lg:max-w-3xl"></div>
+        <div className="mx-auto w-[70%] overflow-hidden rounded-xl border border-black bg-white/60 lg:max-w-3xl">
+          <img
+            src="/website_showcase.png"
+            alt="Screenshot of a modelling website"
+          />
+        </div>
       </div>
 
-      <div className="flex bg-pink-100/20 py-10 lg:py-16">
+      <div className="flex bg-orange-100/20 py-10 lg:py-16">
         <div className="my-container grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
           {features.map((feature) => (
             <div
               key={feature.name}
               className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-pink-400 text-pink-400 sm:shrink-0">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-orange-400 text-orange-400 sm:shrink-0">
                 <feature.icon
                   className="h-8 w-8"
                   aria-hidden="true"

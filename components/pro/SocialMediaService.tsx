@@ -61,9 +61,17 @@ const SocialMediaService = () => {
         </p>
       </div>
 
-      <div className="grid aspect-video w-full grid-cols-2 bg-indigo-100 lg:aspect-[3/1]">
-        <div className="h-full bg-indigo-400"></div>
-        <div></div>
+      <div className="relative flex aspect-video w-full items-center justify-center py-2 lg:aspect-[3/1]">
+        <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-indigo-100">
+          <div className="h-full bg-indigo-400"></div>
+          <div></div>
+        </div>
+
+        {/* <img
+          src="/ig_post.png"
+          alt="Screenshot of a modelling website"
+          className="mx-auto h-[90%] overflow-hidden rounded-xl border border-black bg-white/60 object-contain lg:max-w-3xl"
+        /> */}
       </div>
 
       <div className="flex bg-indigo-100/20 py-10 lg:py-16">
