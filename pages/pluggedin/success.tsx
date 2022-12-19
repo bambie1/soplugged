@@ -51,7 +51,7 @@ const PluggedInSuccessPage = (
 
           <TwitterShareButton
             url={shareUrl}
-            title="Just got my ticket for PluggedIn by SoPlugged, claim yours!"
+            // title="Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
             className="mt-20"
           >
             <div className="neuButton">
