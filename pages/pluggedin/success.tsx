@@ -49,7 +49,9 @@ const PluggedInSuccessPage = (
           </p>
 
           <a
-            href={`https://twitter.com/intent/tweet?text=Just got my ticket for #PluggedIn by SoPlugged, claim yours!&url=${shareUrl}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              "Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
+            )}&url=${shareUrl}`}
             className="neuButton mt-20"
             target="_blank"
             rel="noreferrer"
