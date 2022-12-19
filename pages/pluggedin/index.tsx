@@ -88,7 +88,7 @@ const PluggedInHomePage = () => {
             </p>
             <p className="mb-4">@ The BedRock, Toronto</p>
             <Link href="#tickets">
-              <a className="neuButton">
+              <a className="neuButton mt-4">
                 Get your tickets
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
