@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { TwitterShareButton } from "react-share";
 
@@ -10,9 +11,16 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const PluggedInSuccessPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
+  const [shareUrl, setShareUrl] = useState("");
   const { name } = props.customer;
 
   const firstName = name.split(" ")[0];
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setShareUrl(`${window.location.origin}/pluggedin`);
+    }
+  }, []);
 
   return (
     <>
@@ -42,7 +50,7 @@ const PluggedInSuccessPage = (
           </p>
 
           <TwitterShareButton
-            url={`${window.location.origin}/pluggedin`}
+            url={shareUrl}
             title="Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
           >
             <div className="neuButton mt-20">
