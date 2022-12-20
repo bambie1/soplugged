@@ -33,7 +33,7 @@ const Tickets = () => {
 
       <div className="mt-10 grid items-center gap-10 lg:grid-cols-2">
         <div className="">
-          <div className="relative rounded-xl bg-gradient-to-r from-secondary/20 via-white to-secondary/20 p-4">
+          <div className="relative rounded-xl border bg-gradient-to-r from-secondary/20 via-white to-secondary/20 p-4">
             <SparklesIcon
               className="absolute -top-4 -left-4 h-10 w-10 text-primary"
               strokeWidth={1}
@@ -50,7 +50,7 @@ const Tickets = () => {
             </p>
             <p className="mt-2 lg:text-base">Check your email for more info!</p>
           </div>
-          <p className="mt-4">
+          <p className="mt-6">
             When you purchase a ticket, you're automatically entered into our{" "}
             <span className="font-bold underline">raffle draw</span> for a
             chance to win a free business makeover.{" "}
@@ -92,7 +92,7 @@ const Tickets = () => {
                         {option.title} ticket
                       </h3>
                       <p
-                        className={`mt-3 w-[80%] lg:text-base ${
+                        className={`mt-3 w-[80%] text-sm lg:text-base ${
                           option.isAvailable ? "text-gray-600" : "text-gray-400"
                         }`}
                       >
