@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { FC } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -35,6 +35,14 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />
       <meta property="og:url" content={url} />
+      <meta property="og:site_name" content="SoPlugged" />
+      <meta property="og:type" content="website" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
+
       <meta
         httpEquiv="Content-Security-Policy"
         content="upgrade-insecure-requests"
