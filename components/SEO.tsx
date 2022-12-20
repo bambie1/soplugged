@@ -9,9 +9,9 @@ interface Props {
 }
 
 const SEO: FC<Props> = ({ description, title, variant }) => {
-  const router = useRouter();
-  const firstUrl = router.asPath || "not-found";
-  const url = "https://www.soplugged.com" + firstUrl;
+  // const router = useRouter();
+  // const firstUrl = router.asPath || "not-found";
+  // const url = "https://www.soplugged.com" + firstUrl;
 
   const ogImage =
     variant === "blog"
@@ -31,11 +31,10 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
         name="keywords"
         content="black-owned, business, Canada, Ottawa, Toronto, hair, Calgary, buyblack, black, fashion"
       />
-      <meta name="robots" content="follow, index" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />
-      <meta property="og:url" content={url} />
+      {/* <meta property="og:url" content={url} /> */}
       <meta property="og:site_name" content="SoPlugged" />
       <meta property="og:type" content="website" />
 
@@ -51,7 +50,7 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
 
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/favicon.ico" />
-      <link rel="canonical" href={url} />
+      {/* <link rel="canonical" href={url} /> */}
       <title>{title}</title>
     </Head>
   );
