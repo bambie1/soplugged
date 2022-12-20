@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 interface Props {
   description?: string;
@@ -9,10 +8,6 @@ interface Props {
 }
 
 const SEO: FC<Props> = ({ description, title, variant }) => {
-  // const router = useRouter();
-  // const firstUrl = router.asPath || "not-found";
-  // const url = "https://www.soplugged.com" + firstUrl;
-
   const ogImage =
     variant === "blog"
       ? "https://res.cloudinary.com/denbpv9kp/image/upload/v1661476048/soplugged_images/og_images/blog-og-image_l3ives.png"
@@ -34,7 +29,6 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
       <meta property="og:image" content={ogImage} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description || ""} />
-      {/* <meta property="og:url" content={url} /> */}
       <meta property="og:site_name" content="SoPlugged" />
       <meta property="og:type" content="website" />
 
@@ -50,7 +44,6 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
 
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/favicon.ico" />
-      {/* <link rel="canonical" href={url} /> */}
       <title>{title}</title>
     </Head>
   );
