@@ -53,7 +53,7 @@ const Countdown = () => {
   return (
     <div className="absolute -top-20 left-0 w-full">
       <div className="mx-auto mt-3 grid max-w-md grid-cols-4 items-center px-2">
-        <div className="flex aspect-[3/4] flex-col items-center justify-center gap-1 rounded-lg border border-primary bg-white p-2">
+        <div className="listItem flex aspect-[3/4] flex-col items-center justify-center gap-1 rounded-lg border border-primary bg-white p-2">
           <p className="text-3xl font-bold lg:text-5xl">{days}</p>
           <p className="text-sm font-light lg:text-base">Days</p>
         </div>

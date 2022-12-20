@@ -7,7 +7,6 @@ import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
 import SEO from "@/components/SEO";
-import { useEffect } from "react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -17,7 +16,7 @@ const otherGuests = [
   {
     imageUrl: "/nina.jpg",
     name: "Nina Barango",
-    title: "Host",
+    title: "HOST",
     description: "Creator and founder, SoPlugged",
   },
   {
@@ -37,20 +36,6 @@ const otherGuests = [
 ];
 
 const PluggedInHomePage = () => {
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-    if (query.get("success")) {
-      console.log("Order placed! You will receive an email confirmation.");
-    }
-
-    if (query.get("canceled")) {
-      console.log(
-        "Order canceled -- continue to shop around and checkout when you’re ready."
-      );
-    }
-  }, []);
-
   return (
     <>
       <SEO
@@ -71,7 +56,6 @@ const PluggedInHomePage = () => {
             <p className="ml-1">SoPlugged's 2nd anniversary!</p>
           </div>
           <div className="relative">
-            <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div>
             <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-8xl">
               <span className="pluggedIn relative">
                 <span className="outlinedText absolute top-[6px] left-[2px] -z-10 md:top-2 md:left-1 lg:left-[3px] lg:top-[10px]">
@@ -115,15 +99,22 @@ const PluggedInHomePage = () => {
             <p>6PM</p>
           </div>
 
-          <div className="light-gradient relative mt-20 py-10 pt-28 lg:py-20">
+          <div className="relative mt-20 py-10 pt-28 lg:pb-20">
+            <div className="absolute -top-10 left-0 -bottom-10 -z-10 w-full bg-gradient-to-b from-white via-secondary/40 to-white"></div>
+
             <Countdown />
 
             <div className="my-container grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-              <div>
+              <div className="relative">
                 <img
                   src="reni.jpg"
                   alt="Portrait of Reni Odetoyinbo"
                   className="transparentShadow mb-3 aspect-[3/4] w-full rounded-lg border border-primary object-cover lg:mb-4"
+                />
+                <img
+                  src="/keynote_sticker.png"
+                  alt=""
+                  className="absolute -top-8 -left-8 h-24"
                 />
                 <p className="font-light lg:text-base">KEYNOTE SPEAKER</p>
                 <p className="font-medium">Reni Odetoyinbo</p>

@@ -17,7 +17,7 @@ const PluggedInSuccessPage = (
 
   useEffect(() => {
     if (typeof window !== undefined) {
-      setShareUrl(`${window.location.origin}/pluggedin`);
+      setShareUrl(`${window.location.host}/pluggedin`);
     }
   }, []);
 
@@ -37,7 +37,6 @@ const PluggedInSuccessPage = (
           <p className="ml-1">We've saved you a seat, {firstName}!</p>
         </div>
         <div className="relative mt-2">
-          {/* <div className="absolute inset-0 -z-10 bg-radial-pluggedin"></div> */}
           <h1 className="mb-4 text-5xl font-extrabold sm:text-6xl lg:text-8xl">
             <span className="outlinedText conference ml-1">
               Ticket confirmed!
@@ -89,14 +88,25 @@ const PluggedInSuccessPage = (
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const session = await stripe.checkout.sessions.retrieve(query.session_id);
-  const customer = await stripe.customers.retrieve(session.customer);
+  try {
+    const session = await stripe.checkout.sessions.retrieve(query.session_id);
+    const customer = await stripe.customers.retrieve(session.customer);
 
-  return {
-    props: {
-      customer,
-    },
-  };
+    if (!customer) throw new Error();
+
+    return {
+      props: {
+        customer,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/pluggedin",
+      },
+    };
+  }
 };
 
 export default PluggedInSuccessPage;
