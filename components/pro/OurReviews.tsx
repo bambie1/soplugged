@@ -41,7 +41,7 @@ const OurReviews = () => {
         </div>
 
         <div className="hidden grid-cols-2 gap-4 text-left lg:grid">
-          <div className="flex aspect-square items-center rounded-lg border border-pink-400 py-10 pr-20 pl-8">
+          <div className="flex aspect-square items-center rounded-lg border border-pink-400 bg-gradient-to-t from-pink-50/30 py-10 pr-20 pl-8">
             <div>
               <p>Kudos to the team for a job well done.</p>
               <p className="mt-4 font-light lg:text-3xl lg:leading-snug">
@@ -61,7 +61,7 @@ const OurReviews = () => {
           </div>
 
           <div className="grid gap-4">
-            <div className="flex items-center rounded-lg border border-indigo-400 px-4 py-10">
+            <div className="flex items-center rounded-lg border border-indigo-400 bg-gradient-to-t from-indigo-50/30 px-4 py-10">
               <div>
                 <p>Working with the team was easy!</p>
                 <p className="mt-4 font-light lg:text-2xl lg:leading-snug">
