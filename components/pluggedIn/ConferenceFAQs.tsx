@@ -38,7 +38,7 @@ const faqs = [
 
 const ConferenceFAQs = () => {
   return (
-    <div id="tickets" className="relative my-20 lg:mt-32">
+    <div className="relative my-20 lg:mt-32">
       <h2 className="outlinedText my-container conference text-center text-5xl font-extrabold uppercase lg:text-6xl">
         FAQs
       </h2>

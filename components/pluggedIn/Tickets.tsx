@@ -23,7 +23,10 @@ const options = [
 
 const Tickets = () => {
   return (
-    <div id="tickets" className="my-container mt-20 scroll-mt-20">
+    <div
+      id="tickets"
+      className="my-container mt-20 scroll-mt-20 overflow-hidden"
+    >
       <h2 className="outlinedText conference text-center text-5xl font-extrabold uppercase lg:text-6xl">
         Tickets
       </h2>
