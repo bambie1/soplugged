@@ -25,11 +25,15 @@ const MessageModal: FC<Props> = ({ cancelRef, onDismiss }) => {
     const userEmail = session.user.email;
 
     const email = {
-      from: "hello@soplugged.com",
-      to: "hello@soplugged.com",
-      subject: `SoPlugged business needs help: ${userEmail}`,
-      content: message,
-      reply_to: userEmail,
+      From: "hello@soplugged.com",
+      To: "hello@soplugged.com",
+      ReplyTo: userEmail,
+      TemplateId: "30186083",
+      TemplateModel: {
+        product_name: "SoPlugged Business",
+        body: message,
+        user_email: userEmail,
+      },
     };
 
     await fetch("/api/sendEmail", {
