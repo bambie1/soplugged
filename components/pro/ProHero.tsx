@@ -1,4 +1,4 @@
-import { ArrowCircleDownIcon, SparklesIcon } from "@heroicons/react/outline";
+import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -46,7 +46,13 @@ const ProHero: FC = () => {
         </div>
       </div>
 
-      <div className="my-container mt-16 aspect-video w-full border border-gray-400 lg:mt-20 lg:aspect-[3/1] lg:w-auto lg:rounded-xl"></div>
+      <div className="my-container mt-16 aspect-[2/1] w-full md:-mb-10 md:aspect-[3/1] lg:mt-20 lg:w-auto">
+        <img
+          src="/pro_hero.png"
+          alt=""
+          className="h-full object-cover object-top"
+        />
+      </div>
     </div>
   );
 };
