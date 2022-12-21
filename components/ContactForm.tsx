@@ -28,11 +28,15 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
     const { email: userEmail } = session.user;
 
     const email = {
-      from: "hello@soplugged.com",
-      to: businessEmail,
-      subject: `New Message on SoPlugged from ${userEmail || "a customer"}`,
-      content: data.message,
-      reply_to: userEmail,
+      From: "hello@soplugged.com",
+      To: businessEmail,
+      ReplyTo: businessEmail,
+      TemplateId: "30186364",
+      TemplateModel: {
+        product_name: "SoPlugged Business",
+        body: data.message,
+        user_email: userEmail,
+      },
     };
 
     const res = await fetch("/api/sendEmail", {

@@ -36,6 +36,7 @@
     "next-plausible": "^3.6.3",
     "nodemailer": "^6.7.8",
     "nprogress": "^0.2.0",
+    "postmark": "^3.0.15",
     "qs": "^6.10.3",
     "react": "17.0.2",
     "react-calendly": "^4.1.0",
