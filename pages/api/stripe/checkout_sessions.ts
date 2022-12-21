@@ -18,8 +18,12 @@ export default async function handler(
           },
         ],
         mode: "payment",
+        allow_promotion_codes: true,
         success_url: `${req.headers.origin}/pluggedin/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/pluggedin?canceled=true`,
+        invoice_creation: {
+          enabled: true,
+        },
       });
       res.redirect(303, session.url);
     } catch (err: any) {

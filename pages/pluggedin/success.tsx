@@ -11,13 +11,46 @@ const PluggedInSuccessPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
   const [shareUrl, setShareUrl] = useState("");
-  const { name } = props.customer;
+  const { name, email: userEmail } = props.customer;
 
   const firstName = name.split(" ")[0];
+
+  const sendEmailConfirmation = async () => {
+    try {
+      const email = {
+        From: "hello@soplugged.com",
+        To: userEmail,
+        TemplateId: "30186074",
+        TemplateModel: {
+          product_name: "PluggedIn Conference",
+          user_email: userEmail,
+          name: firstName,
+          share_url: `${window.location.host}/pluggedin`,
+        },
+      };
+
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      });
+
+      localStorage.setItem("hasSentconfirmation", "true");
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== undefined) {
       setShareUrl(`${window.location.host}/pluggedin`);
+
+      const hasSentconfirmation = JSON.parse(
+        localStorage.getItem("hasSentconfirmation") || ""
+      );
+
+      if (!hasSentconfirmation) {
+        sendEmailConfirmation();
+      }
     }
   }, []);
 
