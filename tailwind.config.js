@@ -17,6 +17,8 @@ module.exports = {
         "accent-dark": "#5479B0",
         light: "#f3f2f2",
         black: "#100b01",
+        "tr-pink-100": "#fceff3",
+        "tr-pink-900": "#e06287",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",
