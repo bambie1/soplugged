@@ -46,9 +46,21 @@ const PhotographyService = () => {
         </p>
       </div>
 
-      <div className="grid aspect-video w-full grid-cols-2 bg-yellow-100 lg:aspect-[3/1]">
-        <div></div>
-        <div className="h-full bg-yellow-400"></div>
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden py-2 lg:aspect-[3/1]">
+        <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-yellow-100">
+          <div></div>
+          <div className="h-full bg-yellow-400"></div>
+        </div>
+
+        <div className="relative mx-auto w-[70%] rounded-xl bg-white/60 opacity-90 lg:max-w-3xl">
+          <img
+            src="/photography_showcase.png"
+            alt="Screenshot of a modelling website"
+            className="rounded-xl border border-yellow-900"
+          />
+          <div className="absolute top-1 -left-1 -z-10 h-full w-full rounded-xl border border-black lg:top-2 lg:-left-2"></div>
+          <div className="absolute top-2 -left-2 -z-10 h-full w-full rounded-xl border border-black lg:top-4 lg:-left-4"></div>
+        </div>
       </div>
 
       <div className="flex bg-yellow-100/20 py-10 lg:py-16">

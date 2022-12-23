@@ -72,7 +72,8 @@ const WebsiteService = () => {
             alt="Screenshot of a modelling website"
             className="rounded-xl"
           />
-          <div className="absolute -top-20 -right-10 -z-10 aspect-square w-28 rounded-full border border-gray-300 lg:-top-52 lg:-right-36 lg:w-72"></div>
+          <div className="absolute top-1 -left-1 -z-10 h-full w-full rounded-xl border border-black lg:top-2 lg:-left-2"></div>
+          <div className="absolute top-2 -left-2 -z-10 h-full w-full rounded-xl border border-black lg:top-4 lg:-left-4"></div>
         </div>
       </div>
 

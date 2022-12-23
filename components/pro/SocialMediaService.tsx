@@ -67,11 +67,14 @@ const SocialMediaService = () => {
           <div></div>
         </div>
 
-        <img
-          src="/social_media_showcase.png"
-          alt="Screenshot of a modelling website"
-          className="mx-auto w-[60%] lg:w-[40%]"
-        />
+        <div className="relative mx-auto w-[60%] lg:w-[40%]">
+          <img
+            src="/social_media_showcase.png"
+            alt="Screenshot of a modelling website"
+          />
+          <div className="inset-center absolute -z-10 aspect-square h-40 rounded-full border border-black lg:h-80"></div>
+          <div className="inset-center absolute -z-10 mt-2 aspect-square h-40 rounded-full border border-black lg:mt-3 lg:h-80"></div>
+        </div>
       </div>
 
       <div className="flex bg-indigo-100/20 py-10 lg:py-16">
