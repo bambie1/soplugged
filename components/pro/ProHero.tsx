@@ -6,7 +6,7 @@ const ProHero: FC = () => {
   return (
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
-        <h1 className="mx-auto mb-3 max-w-4xl text-4xl font-bold lg:text-7xl xl:mb-6">
+        <h1 className="mx-auto mb-3 max-w-4xl text-5xl font-bold lg:text-7xl xl:mb-6">
           We create{" "}
           <span className="relative inline-block bg-gradient-to-r from-black to-gray-500 bg-clip-text text-transparent">
             exceptional
