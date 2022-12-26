@@ -2,24 +2,18 @@ import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FC } from "react";
 
-const features = [
-  { title: "brand" },
-  { title: "audience" },
-  { title: "business" },
-];
-
 const ProHero: FC = () => {
   return (
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
         {/* mobile h1 styling */}
-        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-semibold leading-tight sm:hidden">
+        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-bold leading-none sm:hidden">
           Provide the <span className="block">best online</span> experience to
           your customers
         </h1>
 
         {/* tablet+ h1 styling */}
-        <h1 className="mx-auto mb-3 hidden max-w-5xl text-5xl font-semibold sm:block lg:text-7xl xl:mb-6">
+        <h1 className="mx-auto mb-3 hidden max-w-5xl text-5xl font-bold sm:block lg:text-7xl xl:mb-6">
           Provide the best online experience to your customers
         </h1>
 
@@ -46,13 +40,7 @@ const ProHero: FC = () => {
         </div>
       </div>
 
-      <div className="my-container mt-16 aspect-[2/1] w-full md:-mb-10 md:aspect-[3/1] lg:mt-20 lg:w-auto">
-        <img
-          src="/pro_hero.png"
-          alt=""
-          className="h-full object-cover object-top"
-        />
-      </div>
+      <div className="my-container pro-hero mt-16 aspect-[2/1] w-full md:-mb-10 md:aspect-[3/1] lg:mt-20"></div>
     </div>
   );
 };

@@ -51,8 +51,6 @@ module.exports = {
       backgroundImage: {
         "pro-gradient":
           "linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(147, 170, 205, 0.3) 22.4%, rgba(147, 170, 205, 0.3) 75.52%, rgba(147, 170, 205, 0) 100%);",
-        "radial-pro":
-          "radial-gradient(50% 50% at 50% 50%, rgba(147, 170, 205, 0.8) 0%, rgba(147, 170, 205, 0) 100%);",
       },
       listStyleType: {
         square: "square",
