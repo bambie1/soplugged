@@ -40,7 +40,7 @@ const ProHero: FC = () => {
         </div>
       </div>
 
-      <div className="my-container pro-hero mt-16 aspect-[2/1] w-full md:-mb-10 md:aspect-[3/1] lg:mt-20"></div>
+      <div className="my-container mt-16 aspect-square w-full bg-[url('/pro_hero.png')] bg-cover sm:bg-contain md:-mb-10 md:aspect-[3/1] lg:mt-20"></div>
     </div>
   );
 };
