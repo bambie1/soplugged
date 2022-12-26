@@ -34,7 +34,7 @@ const features = [
 
 const WhySoPluggedPro = () => {
   return (
-    <div id="learn-more" className="my-container">
+    <div id="learn-more" className="my-container scroll-mt-20">
       <div className="text-center">
         <p className="font-light tracking-widest">WHY SOPLUGGED PRO?</p>
         <div className="relative inline-flex">

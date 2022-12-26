@@ -1,4 +1,4 @@
-import { ArrowCircleDownIcon } from "@heroicons/react/outline";
+import { ArrowCircleDownIcon, SparklesIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -6,23 +6,24 @@ const ProHero: FC = () => {
   return (
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
-        {/* mobile h1 styling */}
-        <h1 className="mx-auto mb-3 max-w-5xl text-5xl text-[2.9rem] font-bold leading-none sm:hidden">
-          Provide the <span className="block">best online</span> experience to
-          your customers
+        <h1 className="mx-auto mb-3 max-w-4xl text-4xl font-bold lg:text-7xl xl:mb-6">
+          We create{" "}
+          <span className="relative inline-block bg-gradient-to-r from-black to-gray-500 bg-clip-text text-transparent">
+            exceptional
+            <SparklesIcon
+              className="absolute -top-2 -right-5 aspect-square h-6 text-yellow-500 md:-right-8 md:-top-4 md:h-10"
+              strokeWidth={1.2}
+            />
+          </span>{" "}
+          <span className="block">digital experiences</span>
         </h1>
 
-        {/* tablet+ h1 styling */}
-        <h1 className="mx-auto mb-3 hidden max-w-5xl text-5xl font-bold sm:block lg:text-7xl xl:mb-6">
-          Provide the best online experience to your customers
-        </h1>
-
-        <p className="mx-auto max-w-3xl text-lg font-light text-gray-700 lg:text-2xl">
+        <p className="mx-auto max-w-3xl font-light text-gray-500 lg:text-2xl">
           Hire our team of experts to handle your digital needs, from custom
           websites to social media management
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 xl:mt-20 xl:flex-row xl:gap-10">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 xl:mt-14 xl:flex-row xl:gap-10">
           <Link href="#book-consult">
             <a className="rounded-md bg-black px-4 py-3 text-lg text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 xl:py-4 xl:px-5 xl:text-xl">
               Book a FREE consultation
