@@ -7,8 +7,8 @@ const ProHero: FC = () => {
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
         <h1 className="mx-auto mb-3 max-w-5xl text-[2.9rem] text-5xl font-bold lg:text-7xl xl:mb-6">
-          Provide the best online experience to{" "}
-          <span className="text-gray-500">your customers</span>
+          Provide the <span className="block sm:inline-block">best online</span>{" "}
+          experience to <span className="text-gray-500">your customers</span>
         </h1>
 
         <p className="mx-auto max-w-3xl font-light text-gray-500 lg:text-2xl">
@@ -16,7 +16,7 @@ const ProHero: FC = () => {
           websites to social media management
         </p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 xl:mt-14 xl:flex-row xl:gap-10">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row xl:mt-14 xl:gap-10">
           <Link href="#book-consult">
             <a className="rounded-md bg-black px-4 py-3 text-lg text-white transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 xl:py-4 xl:px-5 xl:text-xl">
               Book a FREE consultation
