@@ -1,4 +1,8 @@
-import { InlineWidget } from "react-calendly";
+import dynamic from "next/dynamic";
+
+const InlineWidget = dynamic(() =>
+  import("react-calendly").then((mod) => mod.InlineWidget)
+);
 
 const CalendlyForm = () => {
   return (
@@ -15,7 +19,9 @@ const CalendlyForm = () => {
         Use the Calendly form below to book a free consult with our team.
       </p>
 
-      <InlineWidget url="https://calendly.com/soplugged/consultation?hide_gdpr_banner=1" />
+      <div className="overflow-hidden rounded-lg border border-black md:rounded-none md:border-none">
+        <InlineWidget url="https://calendly.com/soplugged/consultation?hide_gdpr_banner=1" />
+      </div>
     </div>
   );
 };

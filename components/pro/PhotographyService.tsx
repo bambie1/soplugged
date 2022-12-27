@@ -4,6 +4,7 @@ import {
   PhoneIcon,
   ScaleIcon,
 } from "@heroicons/react/outline";
+import Image from "next/image";
 
 const features = [
   {
@@ -54,11 +55,14 @@ const PhotographyService = () => {
         </div>
 
         <div className="relative mx-auto w-[70%] rounded-xl bg-white/60 opacity-90 lg:max-w-3xl">
-          <img
-            src="/photography_showcase.png"
-            alt="Screenshot of a modelling website"
-            className="rounded-xl border border-yellow-900"
-          />
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-yellow-900">
+            <Image
+              src="/photography_showcase.png"
+              alt="Grid layout of a photoshoot session"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
           <div className="absolute top-1 -left-1 -z-10 h-full w-full rounded-xl border border-black lg:top-2 lg:-left-2"></div>
           <div className="absolute top-2 -left-2 -z-10 h-full w-full rounded-xl border border-black lg:top-4 lg:-left-4"></div>
         </div>

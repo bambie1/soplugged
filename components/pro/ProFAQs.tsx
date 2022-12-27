@@ -27,25 +27,26 @@ const faqs = [
 
 const ProFAQs = () => {
   return (
-    <div className="my-container">
-      <div className="text-center">
-        <p className="font-light tracking-widest">FAQs</p>
-        <h2 className="mx-auto max-w-4xl text-3xl font-bold lg:text-4xl">
-          Got any questions?
-        </h2>
-      </div>
-
-      <div className="mt-10 lg:mt-20">
-        <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
-          {faqs.map((faq) => (
-            <div key={faq.id}>
-              <div className="font-semibold text-gray-900 lg:text-lg">
-                {faq.question}
+    <div className="border-y border-accent bg-accent/5 py-6 lg:py-16">
+      <div className="my-container">
+        <div className="text-center">
+          <p className="font-light tracking-widest">FAQs</p>
+          <h2 className="mx-auto max-w-4xl text-3xl font-bold lg:text-4xl">
+            Got any questions?
+          </h2>
+        </div>
+        <div className="mt-10 lg:mt-20">
+          <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
+            {faqs.map((faq) => (
+              <div key={faq.id}>
+                <div className="font-semibold text-gray-900 lg:text-lg">
+                  {faq.question}
+                </div>
+                <div className="mt-3 text-gray-600">{faq.answer}</div>
               </div>
-              <div className="mt-3 text-gray-600">{faq.answer}</div>
-            </div>
-          ))}
-        </dl>
+            ))}
+          </dl>
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,11 @@
 import {
+  ArrowRightIcon,
   BookOpenIcon,
   LightningBoltIcon,
   SparklesIcon,
 } from "@heroicons/react/outline";
+import Link from "next/link";
+import Image from "next/image";
 
 const MagnifyingGlassIcon = (props: React.ComponentProps<"svg">) => (
   <svg
@@ -63,28 +66,31 @@ const WebsiteService = () => {
       <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden py-2 lg:aspect-[3/1]">
         <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-tr-pink-100">
           <div></div>
-          <div className="h-full bg-tr-pink-900"></div>
+          <div className="h-full bg-tr-pink-500"></div>
         </div>
 
-        <div className="relative mx-auto w-[70%] rounded-xl border border-tr-pink-900 bg-white/60 lg:max-w-3xl">
-          <img
-            src="/website_showcase.png"
-            alt="Screenshot of a modelling website"
-            className="rounded-xl"
-          />
+        <div className="relative mx-auto w-[70%] rounded-xl border border-tr-pink-500 bg-white/60 lg:max-w-3xl">
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl">
+            <Image
+              src="/website_showcase.png"
+              alt="Screenshot of a bakery website"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
           <div className="absolute top-1 -left-1 -z-10 h-full w-full rounded-xl border border-black lg:top-2 lg:-left-2"></div>
           <div className="absolute top-2 -left-2 -z-10 h-full w-full rounded-xl border border-black lg:top-4 lg:-left-4"></div>
         </div>
       </div>
 
-      <div className="flex bg-tr-pink-100/20 py-10 lg:py-16">
+      <div className="flex flex-col items-center gap-16 bg-tr-pink-100/20 py-10 lg:py-16">
         <div className="my-container grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
           {features.map((feature) => (
             <div
               key={feature.name}
               className="relative flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row lg:gap-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-tr-pink-900 text-tr-pink-900 sm:shrink-0">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-tr-pink-500 text-tr-pink-500 sm:shrink-0">
                 <feature.icon
                   className="h-8 w-8"
                   aria-hidden="true"
@@ -102,6 +108,12 @@ const WebsiteService = () => {
             </div>
           ))}
         </div>
+        <Link href="#book-consult">
+          <a className="flex items-center gap-2 rounded-md border border-tr-pink-900 px-4 py-3 text-base text-tr-pink-900 transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
+            Book a FREE consultation
+            <ArrowRightIcon className="aspect-square h-6" strokeWidth={1} />
+          </a>
+        </Link>
       </div>
     </div>
   );

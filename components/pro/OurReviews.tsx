@@ -3,6 +3,9 @@ import {
   ArrowCircleLeftIcon,
   ArrowCircleRightIcon,
 } from "@heroicons/react/outline";
+import { ArrowButton } from "@/styled/ArrowButton";
+import Link from "next/link";
+import Image from "next/image";
 
 const reviews = [
   {
@@ -41,6 +44,7 @@ const OurReviews = () => {
       <div className="mt-10 text-center lg:mt-16">
         <section className="relative">
           <button
+            aria-label="Next review"
             onClick={() => setIndex(1 - index)}
             className="absolute right-0 top-1/2 hidden -translate-y-1/2 transform text-gray-600 md:block"
           >
@@ -50,6 +54,7 @@ const OurReviews = () => {
             />
           </button>
           <button
+            aria-label="Previous review"
             onClick={() => setIndex(1 - index)}
             className="absolute left-0 top-1/2 hidden -translate-y-1/2 transform text-gray-600 md:block"
           >
@@ -77,11 +82,18 @@ const OurReviews = () => {
               </div>
               <footer className="mt-8">
                 <div className="grid items-center justify-center gap-2 md:flex md:gap-4">
-                  <img
-                    className={`${index == 0 ? "h-8" : "h-5"} mx-auto md:mx-0`}
-                    src={logo}
-                    alt={logoAlt}
-                  />
+                  <div
+                    className={`${
+                      index == 0 ? "h-8" : "h-5"
+                    } relative mx-auto aspect-[2/1] md:mx-0`}
+                  >
+                    <Image
+                      src={logo}
+                      alt={logoAlt}
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </div>
                   <div className="md:text-left">
                     <p className="mb-1 text-base font-medium leading-none text-gray-900">
                       {clientName}
@@ -97,13 +109,19 @@ const OurReviews = () => {
           </div>
 
           <div className="mt-7 flex items-center justify-center gap-7 md:hidden">
-            <button onClick={() => setIndex(1 - index)} className="">
+            <button
+              aria-label="Previous review"
+              onClick={() => setIndex(1 - index)}
+            >
               <ArrowCircleLeftIcon
                 className="aspect-square h-10"
                 strokeWidth={0.8}
               />
             </button>
-            <button onClick={() => setIndex(1 - index)} className="">
+            <button
+              aria-label="Next review"
+              onClick={() => setIndex(1 - index)}
+            >
               <ArrowCircleRightIcon
                 className="aspect-square h-10"
                 strokeWidth={0.8}
@@ -111,6 +129,14 @@ const OurReviews = () => {
             </button>
           </div>
         </section>
+
+        <div className="mx-auto mt-6 flex items-center justify-center lg:mt-16">
+          <Link href="#book-consult">
+            <a className="rounded-md border border-black px-4 py-3 text-base transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
+              Book a FREE consultation
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

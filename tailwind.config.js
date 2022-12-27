@@ -18,7 +18,8 @@ module.exports = {
         light: "#f3f2f2",
         black: "#100b01",
         "tr-pink-100": "#fceff3",
-        "tr-pink-900": "#e06287",
+        "tr-pink-500": "#e06287",
+        "tr-pink-900": "#AF224C",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",

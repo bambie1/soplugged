@@ -1,8 +1,11 @@
 import {
+  ArrowRightIcon,
   AtSymbolIcon,
   ChartBarIcon,
   HashtagIcon,
 } from "@heroicons/react/outline";
+import Link from "next/link";
+import Image from "next/image";
 
 const ArrowTrendingUpIcon = (props: React.ComponentProps<"svg">) => (
   <svg
@@ -62,23 +65,28 @@ const SocialMediaService = () => {
         </p>
       </div>
 
-      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden py-2 lg:aspect-[3/1]">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden lg:aspect-[3/1]">
         <div className="absolute inset-0 -z-10 grid grid-cols-2 bg-indigo-100">
           <div className="h-full bg-indigo-400"></div>
           <div></div>
         </div>
 
-        <div className="relative mx-auto w-[60%] lg:w-[40%]">
-          <img
-            src="/social_media_showcase.png"
-            alt="Screenshot of a modelling website"
-          />
+        <div className="relative mx-auto h-full w-[60%] lg:w-[40%]">
+          <div className="relative h-full w-full overflow-hidden">
+            <Image
+              src="/social_media_showcase.png"
+              alt="2 phones placed side-by-side showing an instagram story"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+
           <div className="inset-center absolute -z-10 aspect-square h-40 rounded-full border border-black lg:h-80"></div>
           <div className="inset-center absolute -z-10 mt-2 aspect-square h-40 rounded-full border border-black lg:mt-3 lg:h-80"></div>
         </div>
       </div>
 
-      <div className="flex bg-indigo-100/20 py-10 lg:py-16">
+      <div className="flex flex-col items-center gap-10 bg-indigo-100/20 py-10 lg:gap-14 lg:py-16">
         <div className="my-container grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
           {features.map((feature) => (
             <div
@@ -103,6 +111,13 @@ const SocialMediaService = () => {
             </div>
           ))}
         </div>
+
+        <Link href="#book-consult">
+          <a className="flex items-center gap-2 rounded-md border border-indigo-700 px-4 py-3 text-base text-indigo-700 transition duration-200 hover:-translate-y-1 focus-visible:outline-offset-2 lg:text-lg">
+            Book a FREE consultation
+            <ArrowRightIcon className="aspect-square h-6" strokeWidth={1} />
+          </a>
+        </Link>
       </div>
     </div>
   );
