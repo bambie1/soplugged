@@ -1,4 +1,3 @@
-import { ArrowButton } from "@/styled/ArrowButton";
 import { ButtonLink } from "@/styled/ButtonLink";
 
 const faqs = [

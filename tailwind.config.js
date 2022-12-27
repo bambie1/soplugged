@@ -17,6 +17,9 @@ module.exports = {
         "accent-dark": "#5479B0",
         light: "#f3f2f2",
         black: "#100b01",
+        "tr-pink-100": "#fceff3",
+        "tr-pink-500": "#e06287",
+        "tr-pink-900": "#AF224C",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",
@@ -49,8 +52,6 @@ module.exports = {
       backgroundImage: {
         "pro-gradient":
           "linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(147, 170, 205, 0.3) 22.4%, rgba(147, 170, 205, 0.3) 75.52%, rgba(147, 170, 205, 0) 100%);",
-        "radial-pro":
-          "radial-gradient(50% 50% at 50% 50%, rgba(147, 170, 205, 0.8) 0%, rgba(147, 170, 205, 0) 100%);",
       },
       listStyleType: {
         square: "square",

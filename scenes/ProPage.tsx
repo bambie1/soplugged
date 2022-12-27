@@ -2,38 +2,26 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import ProHero from "@/components/pro/ProHero";
-import OurProcess from "@/components/pro/OurProcess";
+import WhySoPluggedPro from "@/components/pro/WhySoPluggedPro";
+import OurServices from "@/components/pro/OurServices";
+import OurReviews from "@/components/pro/OurReviews";
 
 const Header = dynamic(() => import("../components/Header/Header"));
-const SocialMediaService = dynamic(
-  () => import("../components/pro/SocialMediaService")
-);
-const CustomWebsiteService = dynamic(
-  () => import("../components/pro/CustomWebsiteService")
-);
-const ConsultForm = dynamic(() => import("../components/pro/ConsultForm"));
-const Pricing = dynamic(() => import("../components/pro/Pricing"));
-const SatisfactionGuarantee = dynamic(
-  () => import("../components/pro/SatisfactionGuarantee")
-);
 const Footer = dynamic(() => import("../components/Footer/Footer"));
+const CalendlyForm = dynamic(() => import("../components/pro/CalendlyForm"));
+const ProFAQs = dynamic(() => import("../components/pro/ProFAQs"));
 
 const ProPage: FC = () => {
   return (
     <>
       <Header variant="pro" />
-      <div className="overflow-hidden">
+      <div className="grid gap-20 overflow-hidden lg:gap-40">
         <ProHero />
-        <div className="relative mx-auto ">
-          <div className="grid gap-20 lg:gap-36">
-            <OurProcess />
-            <CustomWebsiteService />
-            <SatisfactionGuarantee />
-            <SocialMediaService />
-            <Pricing />
-            <ConsultForm />
-          </div>
-        </div>
+        <WhySoPluggedPro />
+        <OurServices />
+        <OurReviews />
+        <ProFAQs />
+        <CalendlyForm />
         <Footer tertiary />
       </div>
     </>
