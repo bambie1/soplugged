@@ -37,7 +37,8 @@ const PhotographyService = () => {
     <div>
       <div className="my-container mb-8 mt-10 grid gap-6 lg:mt-24 lg:mb-12 lg:grid-cols-2 lg:gap-40">
         <h2 className="text-3xl font-semibold lg:text-4xl">
-          Product photography & <span className="block">Self-portraits</span>
+          Product photography &{" "}
+          <span className="block text-gray-500">Self-portraits</span>
         </h2>
         <p className="text-lg font-light lg:text-xl">
           Create visually-appealing images that showcase the products in the

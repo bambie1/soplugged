@@ -52,7 +52,8 @@ const SocialMediaService = () => {
     <div>
       <div className="my-container mb-8 mt-10 grid gap-6 lg:mt-24 lg:mb-12 lg:grid-cols-2 lg:gap-40">
         <h2 className="text-3xl font-semibold lg:text-4xl">
-          Social media marketing & management
+          Social media marketing &{" "}
+          <span className="text-gray-500">management</span>
         </h2>
         <p className="text-lg font-light lg:text-xl">
           A social media presence increases brand awareness, drives traffic to

@@ -6,16 +6,9 @@ const ProHero: FC = () => {
   return (
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
-        <h1 className="mx-auto mb-3 max-w-4xl text-5xl font-bold lg:text-7xl xl:mb-6">
-          We create{" "}
-          <span className="relative inline-block bg-gradient-to-r from-black to-gray-500 bg-clip-text text-transparent">
-            exceptional
-            <SparklesIcon
-              className="absolute -top-2 -right-5 aspect-square h-6 text-yellow-500 md:-right-8 md:-top-4 md:h-10"
-              strokeWidth={1.2}
-            />
-          </span>{" "}
-          <span className="block">digital experiences</span>
+        <h1 className="mx-auto mb-3 max-w-5xl text-[2.9rem] text-5xl font-bold lg:text-7xl xl:mb-6">
+          Provide the best online experience to{" "}
+          <span className="text-gray-500">your customers</span>
         </h1>
 
         <p className="mx-auto max-w-3xl font-light text-gray-500 lg:text-2xl">

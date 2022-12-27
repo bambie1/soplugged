@@ -1,11 +1,22 @@
+const reviews = [
+  {
+    id: 1,
+    logo: "/tr_pink_logo.webp",
+    summary: "Kudos to the team for a job well done!",
+    review: `"The time, detail, and care put into this project is greatly appreciated. Every step of the way, the team provided exceptional services with their great expertise and professionalism."`,
+    clientName: "Princess A.",
+    clientPosition: "Owner, Treats Royale",
+  },
+];
+
 const OurReviews = () => {
   return (
     <div className="my-container text-center">
-      <p className="font-light tracking-widest">RECENT CLIENTS</p>
+      <p className="font-light tracking-widest text-gray-500">REVIEWS</p>
 
       <h2 className="text-3xl font-semibold lg:text-4xl">
-        Don't take our word for it.{" "}
-        <span className="block">Trust our clients</span>
+        Don't take our word for it,{" "}
+        <span className="block text-gray-500">Trust our clients</span>
       </h2>
 
       <div className="mt-10 lg:mt-16">
@@ -48,7 +59,7 @@ const OurReviews = () => {
                 src="/tr_pink_logo.webp"
                 alt="Treats Royale logo"
               />
-              <p className="font-light uppercase">
+              <p className="font-light uppercase text-gray-500">
                 Kudos to the team for a job well done!
               </p>
               <p className="mt-4 font-light lg:text-3xl lg:leading-snug">
@@ -73,19 +84,41 @@ const OurReviews = () => {
                   src="/bare_logo.png"
                   alt="Stripped Bare Soap logo"
                 />
-                <p>Working with the team was easy!</p>
+                <p className="font-light uppercase text-gray-500">
+                  Working with the team was easy!
+                </p>
                 <p className="mt-4 font-light lg:text-2xl lg:leading-snug">
                   They allow me to focus on other aspects of operating a
                   business.
                 </p>
 
                 <div className="mt-10">
-                  <p>Deinye E.</p>
-                  <p>Owner, Bare Soap</p>
+                  <p className="font-bold">Deinye E.</p>
+                  <p className="lg:text-base">Owner, Stripped Bare</p>
                 </div>
               </div>
             </div>
-            <div className="rounded-lg border border-yellow-400 px-4 py-20"></div>
+            <div className="rounded-lg border border-yellow-400 px-4 py-6">
+              <div>
+                <img
+                  className="mb-6 h-5"
+                  src="/bare_logo.png"
+                  alt="Stripped Bare Soap logo"
+                />
+                <p className="font-light uppercase text-gray-500">
+                  Working with the team was easy!
+                </p>
+                <p className="mt-4 font-light lg:text-2xl lg:leading-snug">
+                  They allow me to focus on other aspects of operating a
+                  business.
+                </p>
+
+                <div className="mt-10">
+                  <p className="font-bold">Seun D.</p>
+                  <p className="lg:text-base">Owner, SGD Foods</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -36,11 +36,13 @@ const WhySoPluggedPro = () => {
   return (
     <div id="learn-more" className="my-container scroll-mt-20">
       <div className="text-center">
-        <p className="font-light tracking-widest">WHY SOPLUGGED PRO?</p>
+        <p className="font-light tracking-widest text-gray-500">
+          WHY SOPLUGGED PRO?
+        </p>
         <div className="relative inline-flex">
           <h2 className="mx-auto mb-4 mt-3 max-w-4xl text-3xl font-medium lg:text-4xl">
-            SoPlugged Pro allows me to focus on other aspects of operating a
-            business
+            <span className="text-gray-500">SoPlugged Pro</span> allows me to
+            focus on other aspects of operating a business
           </h2>
 
           <img
@@ -50,9 +52,11 @@ const WhySoPluggedPro = () => {
           />
         </div>
 
-        <div>
-          <p>Owner, Stripped Bare Soap</p>
-          <p>Deinye E.</p>
+        <div className="mt-4">
+          <p className="font-medium uppercase">Deinye E.</p>
+          <p className="text-gray-500 lg:text-base">
+            Owner, Stripped Bare Soap
+          </p>
         </div>
       </div>
 
