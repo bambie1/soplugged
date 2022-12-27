@@ -1,126 +1,116 @@
+import { useState } from "react";
+import {
+  ArrowCircleLeftIcon,
+  ArrowCircleRightIcon,
+} from "@heroicons/react/outline";
+
 const reviews = [
   {
-    id: 1,
     logo: "/tr_pink_logo.webp",
+    logoAlt: "Logo for Treats Royale",
     summary: "Kudos to the team for a job well done!",
-    review: `"The time, detail, and care put into this project is greatly appreciated. Every step of the way, the team provided exceptional services with their great expertise and professionalism."`,
+    content: `The time, detail, and care put into this project is greatly appreciated. Every step of the way, the team provided exceptional services with their great expertise and professionalism.`,
     clientName: "Princess A.",
     clientPosition: "Owner, Treats Royale",
+  },
+  {
+    logo: "/bare_logo.png",
+    logoAlt: "Logo for Stripped Bare",
+    summary: "Working with the team was easy!",
+    content: `SoPlugged Pro allows me to focus on other aspects of operating a business.`,
+    clientName: "Deinye E.",
+    clientPosition: "Owner, Stripped Bare",
   },
 ];
 
 const OurReviews = () => {
+  const [index, setIndex] = useState(0);
+
+  const { logo, logoAlt, summary, content, clientName, clientPosition } =
+    reviews[index];
+
   return (
-    <div className="my-container text-center">
-      <p className="font-light tracking-widest text-gray-500">REVIEWS</p>
+    <div className="my-container">
+      <div className="text-center">
+        <p className="font-light tracking-widest text-gray-500">REVIEWS</p>
+        <h2 className="text-3xl font-semibold lg:text-4xl">
+          What our clients say
+        </h2>
+      </div>
 
-      <h2 className="text-3xl font-semibold lg:text-4xl">
-        Don't take our word for it,{" "}
-        <span className="block text-gray-500">Trust our clients</span>
-      </h2>
+      <div className="mt-10 text-center lg:mt-16">
+        <section className="relative">
+          <button
+            onClick={() => setIndex(1 - index)}
+            className="absolute right-0 top-1/2 hidden -translate-y-1/2 transform text-gray-600 md:block"
+          >
+            <ArrowCircleRightIcon
+              className="aspect-square h-10"
+              strokeWidth={1}
+            />
+          </button>
+          <button
+            onClick={() => setIndex(1 - index)}
+            className="absolute left-0 top-1/2 hidden -translate-y-1/2 transform text-gray-600 md:block"
+          >
+            <ArrowCircleLeftIcon
+              className="aspect-square h-10"
+              strokeWidth={1}
+            />
+          </button>
 
-      <div className="mt-10 lg:mt-16">
-        <div className="lg:hidden">
-          <blockquote className="mt-10">
-            <div className="mx-auto max-w-3xl leading-9 text-gray-900">
-              <p className="text-lg font-light">
-                The time, detail, and care put into this project is greatly
-                appreciated. Every step of the way, the team provided
-                exceptional services with their great expertise and
-                professionalism.
-              </p>
-            </div>
-            <footer className="mt-8">
-              <div className="">
-                <img
-                  className="mx-auto h-8"
-                  src="/tr_pink_logo.webp"
-                  alt="Treats Royale logo"
-                />
-                <div className="mt-3">
-                  <div className="text-base font-medium text-gray-900">
-                    Princess A.
-                  </div>
+          <div className="relative inline-block">
+            <svg
+              className="absolute top-0 left-0 aspect-square h-8 -translate-x-3 -translate-y-2 transform text-gray-200 lg:h-14"
+              fill="currentColor"
+              viewBox="0 0 32 32"
+              aria-hidden="true"
+            >
+              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+            </svg>
+            <blockquote className="flex min-h-[200px] flex-col">
+              <div className="mx-auto flex max-w-3xl flex-1 flex-col justify-center leading-9">
+                <p className="mb-2 uppercase text-gray-500">{summary}</p>
+                <p className="text-lg font-light text-gray-900 lg:text-2xl lg:leading-normal">
+                  {content}
+                </p>
+              </div>
+              <footer className="mt-8">
+                <div className="grid items-center justify-center gap-2 md:flex md:gap-4">
+                  <img
+                    className={`${index == 0 ? "h-8" : "h-5"} mx-auto md:mx-0`}
+                    src={logo}
+                    alt={logoAlt}
+                  />
+                  <div className="md:text-left">
+                    <p className="mb-1 text-base font-medium leading-none text-gray-900">
+                      {clientName}
+                    </p>
 
-                  <div className="text-base font-medium text-gray-500">
-                    Owner
+                    <p className="text-base font-medium leading-none text-gray-500">
+                      {clientPosition}
+                    </p>
                   </div>
                 </div>
-              </div>
-            </footer>
-          </blockquote>
-        </div>
+              </footer>
+            </blockquote>
+          </div>
 
-        <div className="hidden grid-cols-2 gap-4 text-left lg:grid">
-          <div className="flex aspect-square items-center rounded-lg border border-pink-400 bg-gradient-to-t from-pink-50/30 py-10 pr-20 pl-8">
-            <div>
-              <img
-                className="mb-6 h-10"
-                src="/tr_pink_logo.webp"
-                alt="Treats Royale logo"
+          <div className="mt-7 flex items-center justify-center gap-7 md:hidden">
+            <button onClick={() => setIndex(1 - index)} className="">
+              <ArrowCircleLeftIcon
+                className="aspect-square h-10"
+                strokeWidth={0.8}
               />
-              <p className="font-light uppercase text-gray-500">
-                Kudos to the team for a job well done!
-              </p>
-              <p className="mt-4 font-light lg:text-3xl lg:leading-snug">
-                "The time, detail, and care put into this project is greatly
-                appreciated. Every step of the way, the team provided
-                exceptional services with their great expertise and
-                professionalism."
-              </p>
-
-              <div className="mt-10">
-                <p className="font-bold">Princess A.</p>
-                <p className="lg:text-base">Owner, Treats Royale</p>
-              </div>
-            </div>
+            </button>
+            <button onClick={() => setIndex(1 - index)} className="">
+              <ArrowCircleRightIcon
+                className="aspect-square h-10"
+                strokeWidth={0.8}
+              />
+            </button>
           </div>
-
-          <div className="grid gap-4">
-            <div className="flex items-center rounded-lg border border-indigo-400 bg-gradient-to-t from-indigo-50/30 px-4 py-6">
-              <div>
-                <img
-                  className="mb-6 h-5"
-                  src="/bare_logo.png"
-                  alt="Stripped Bare Soap logo"
-                />
-                <p className="font-light uppercase text-gray-500">
-                  Working with the team was easy!
-                </p>
-                <p className="mt-4 font-light lg:text-2xl lg:leading-snug">
-                  They allow me to focus on other aspects of operating a
-                  business.
-                </p>
-
-                <div className="mt-10">
-                  <p className="font-bold">Deinye E.</p>
-                  <p className="lg:text-base">Owner, Stripped Bare</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border border-yellow-400 px-4 py-6">
-              <div>
-                <img
-                  className="mb-6 h-5"
-                  src="/bare_logo.png"
-                  alt="Stripped Bare Soap logo"
-                />
-                <p className="font-light uppercase text-gray-500">
-                  Working with the team was easy!
-                </p>
-                <p className="mt-4 font-light lg:text-2xl lg:leading-snug">
-                  They allow me to focus on other aspects of operating a
-                  business.
-                </p>
-
-                <div className="mt-10">
-                  <p className="font-bold">Seun D.</p>
-                  <p className="lg:text-base">Owner, SGD Foods</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   );
