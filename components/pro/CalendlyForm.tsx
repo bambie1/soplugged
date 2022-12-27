@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const InlineWidget = dynamic(() =>
+const InlineWidget = dynamic<any>(() =>
   import("react-calendly").then((mod) => mod.InlineWidget)
 );
 
