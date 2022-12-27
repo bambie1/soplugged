@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-import { PageWrapper } from "@/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 import TextArea from "@/styled/TextArea/TextArea";
 import { Button } from "@/styled/Button";
 
@@ -15,11 +15,13 @@ const SoRandomPage = () => {
     e.preventDefault();
 
     const email = {
-      from: "hello@soplugged.com",
-      to: "hello@soplugged.com",
-      subject: "New Talk-show question on SoPlugged",
-      content: message,
-      reply_to: "hello@soplugged.com",
+      From: "hello@soplugged.com",
+      To: "hello@soplugged.com",
+      TemplateId: "30186082",
+      TemplateModel: {
+        product_name: "SoRandom",
+        body: message,
+      },
     };
 
     await fetch("/api/sendEmail", {

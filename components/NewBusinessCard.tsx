@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 
-import Avatar from "@/components/Avatar/Avatar";
+import Avatar from "@/components/Avatar";
 
 interface Props {
   hit: any;

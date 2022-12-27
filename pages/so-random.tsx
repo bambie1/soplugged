@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import SoRandomPage from "@/scenes/SoRandomPage";
 
 const SoRandom: NextPage = () => {

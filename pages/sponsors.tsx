@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
 import SponsorsPage from "@/scenes/SponsorsPage";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 
 const Sponsors: NextPage = () => {
   return (

@@ -17,7 +17,7 @@ import { usePlausible } from "next-plausible";
 import { useBusinessStore } from "@/scenes/MyBusinessPage/MyBusinessPage";
 import { BusinessForm } from "layouts/BusinessForm";
 import { Button } from "@/styled/Button";
-import { Avatar } from "../Avatar";
+import Avatar from "../Avatar";
 import { NoPreviewAvailable } from "@/scenes/BusinessPage/BusinessPage";
 
 const Review = () => {

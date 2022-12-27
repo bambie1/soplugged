@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import { FC, ReactNode } from "react";
 
-const Header = dynamic(() => import("../Header/Header"));
-const Footer = dynamic(() => import("../Footer/Footer"));
+const Header = dynamic(() => import("./Header/Header"));
+const Footer = dynamic(() => import("./Footer/Footer"));
 
 interface Props {
   center?: boolean;

@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { PageWrapper } from "@/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { ButtonLink } from "@/styled/ButtonLink";
-import { PageWrapper } from "@/components/PageWrapper";
+import PageWrapper from "@/components/PageWrapper";
 
 const OurStoryPage = () => {
   return (

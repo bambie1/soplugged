@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import { PageNotFound } from "@/scenes/404Page";
 
 const NotFound: NextPage = () => {
