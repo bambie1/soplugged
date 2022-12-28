@@ -1,9 +1,11 @@
-import { ButtonLink } from "@/styled/ButtonLink";
 import { FC } from "react";
+
+import { ButtonLink } from "@/styled/ButtonLink";
+import { BlogPost } from "@/types/BlogPost";
 
 import BlogCard from "../BlogCard";
 
-const Blogs: FC = ({ posts }: any) => {
+const Blogs: FC<{ posts: BlogPost[] }> = ({ posts }) => {
   return (
     <div className="bg-white">
       <div className="mx-auto w-full py-16 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -25,7 +27,7 @@ const Blogs: FC = ({ posts }: any) => {
             role="list"
             className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0"
           >
-            {posts?.map((post: any) => {
+            {posts?.map((post) => {
               return (
                 <li
                   key={post.slug}

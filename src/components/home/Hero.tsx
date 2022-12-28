@@ -13,7 +13,7 @@ const popularSearches = [
   { title: "Fashion", category: "Fashion" },
 ];
 
-const HeroImage = ({ index }: any) => {
+const HeroImage = ({ index }: { index: number }) => {
   const { handleCategoryClick } = useAlgolia();
 
   const category = popularCategories[index];

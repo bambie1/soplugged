@@ -9,13 +9,14 @@ import {
 import Image from "next/image";
 
 import BlogCard from "@/src/components/BlogCard";
+import { BlogPost } from "@/types/BlogPost";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 
 interface Props {
-  post: any;
-  morePosts: any;
+  post: BlogPost;
+  morePosts: BlogPost[];
 }
 
 const BlogPage: FC<Props> = ({ post, morePosts }) => {
@@ -39,7 +40,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
               {title}
             </h1>
             <div className="flex flex-wrap gap-3">
-              {categories.map(({ title, color }: any) => {
+              {categories.map(({ title, color }) => {
                 const { r, g, b } = color.rgba;
                 const bgColor = `rgba(${r}, ${g}, ${b}, .2)`;
 
@@ -165,7 +166,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             <h3>READ MORE...</h3>
             <div className="overflow-x-auto pb-2">
               <ul className="mt-4 inline-flex w-full gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
-                {morePosts?.map((post: any) => (
+                {morePosts?.map((post) => (
                   <li
                     key={post.slug}
                     className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"

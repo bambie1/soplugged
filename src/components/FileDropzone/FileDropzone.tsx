@@ -17,7 +17,7 @@ const FileDropzone: FC = () => {
   const { business } = useBusinessStore();
   const { setValue } = useFormContext();
 
-  let currentImages: any = [];
+  let currentImages: string[] = [];
   if (business?.sample_images !== "")
     currentImages = business?.sample_images?.split(",") || [];
   const [myFiles, setMyFiles] = useState(currentImages);
@@ -76,8 +76,8 @@ const FileDropzone: FC = () => {
     return build;
   };
 
-  const removeFile = (file: any) => () => {
-    let filtered = myFiles.filter((item: any) => item !== file);
+  const removeFile = (file: string) => () => {
+    let filtered = myFiles.filter((item) => item !== file);
 
     setMyFiles(filtered);
     setErrorMessage("");
@@ -88,8 +88,9 @@ const FileDropzone: FC = () => {
     setErrorMessage("");
   };
 
-  const files = myFiles?.map((file: any, index: any) => {
+  const files = myFiles?.map((file, index) => {
     if (file == "") return null;
+
     return (
       <Fragment key={index}>
         <div key={index} className="relative inline-flex p-1">

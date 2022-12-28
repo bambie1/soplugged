@@ -4,4 +4,10 @@ export interface BlogPost {
   slug: string;
   createdAt: string;
   title: string;
+  content: { html: string };
+  author: { name: string };
+  categories: {
+    title: string;
+    color: { rgba: { r: number; g: number; b: number } };
+  }[];
 }

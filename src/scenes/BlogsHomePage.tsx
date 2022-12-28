@@ -2,12 +2,13 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import BlogCard from "@/src/components/BlogCard";
+import { BlogPost } from "@/types/BlogPost";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 
 interface Props {
-  posts: any[];
+  posts: BlogPost[];
 }
 
 const BlogsHomePage: FC<Props> = ({ posts }) => {
@@ -30,7 +31,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
         <div className="my-container">
           <div className="flex">
             <ul className="mt-4 inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3">
-              {posts?.map((post: any) => (
+              {posts?.map((post) => (
                 <li key={post.slug} className="w-full">
                   <BlogCard post={post} />
                 </li>

@@ -19,7 +19,7 @@ import { QuestionMarkCircleIcon } from "@heroicons/react/outline";
 import MessageModal from "@/src/components/MessageModal";
 
 interface Props {
-  business: any;
+  business: IBusiness;
 }
 
 interface NewOrOldBusiness extends IBusiness {

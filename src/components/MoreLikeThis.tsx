@@ -89,7 +89,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
   const { slug, business_name, business_location, sample_images } = hit;
 
   const rawImages = sample_images?.split(",") || [];
-  const images = rawImages.map((item: any) => {
+  const images = rawImages.map((item) => {
     const arr = item.split("/upload/");
     const newImage = arr[1] ? `${arr[0]}/upload/w_1200/${arr[1]}` : item;
 

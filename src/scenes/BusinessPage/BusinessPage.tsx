@@ -57,7 +57,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const cleanDescription = business_description.replace(/style="[^"]*"/g, "");
 
   const rawImages = sample_images?.split(",") || [];
-  const images = rawImages.map((item: any) => {
+  const images = rawImages.map((item) => {
     const arr = item.split("/upload/");
     const newImage = arr[1] ? `${arr[0]}/upload/w_1200/${arr[1]}` : item;
 

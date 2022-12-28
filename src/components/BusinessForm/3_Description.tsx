@@ -30,7 +30,7 @@ const Description = () => {
 
   const isError = false;
 
-  const handleUpdate = (content: any) => {
+  const handleUpdate = (content: string) => {
     if (typeof content === "string") {
       const strippedContent = content
         .replace(/<h1>/, "<p>")
