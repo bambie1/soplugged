@@ -1,4 +1,4 @@
-import { Footer } from "@/src/components/Footer";
+import Footer from "@/src/components/Footer";
 import Header from "@/src/components/Header/Header";
 import Skeleton from "@/src/components/skeletons/Skeleton";
 

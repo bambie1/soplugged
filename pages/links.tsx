@@ -1,7 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-
-import SEO from "@/src/components/SEO";
 import {
   HeartIcon,
   PencilIcon,
@@ -10,8 +8,10 @@ import {
   StarIcon,
   VideoCameraIcon,
 } from "@heroicons/react/outline";
+
+import SEO from "@/src/components/SEO";
 import Header from "@/src/components/Header/Header";
-import { Footer } from "@/src/components/Footer";
+import Footer from "@/src/components/Footer";
 
 const linksArray = [
   {
