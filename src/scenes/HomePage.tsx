@@ -10,6 +10,8 @@ import CategoriesGrid from "@/src/components/home/CategoriesGrid";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { FC } from "react";
 
+import { BlogPost } from "@/types/BlogPost";
+
 const secondaryLinks = [
   {
     id: 2,
@@ -50,7 +52,7 @@ const FilterByLocation = dynamic(
 const FAQs = dynamic(() => import("../components/home/FAQs"));
 const Blogs = dynamic(() => import("../components/home/Blogs"));
 
-const HomePage: FC = (props) => {
+const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
   return (
     <>
       <div className="mt-10 flex flex-col overflow-hidden lg:mt-20">
