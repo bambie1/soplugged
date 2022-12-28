@@ -1,13 +1,14 @@
 import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import SEO from "@/components/SEO";
-import BlogPage from "@/scenes/BlogPage";
+import SEO from "@/src/components/SEO";
+import BlogPage from "@/src/scenes/BlogPage";
 import { fetchAPI } from "@/utils/graphcms";
+import { BlogPost } from "@/types/BlogPost";
 
 interface Props {
-  post: any;
-  morePosts: any;
+  post: BlogPost;
+  morePosts: BlogPost[];
 }
 
 const GuidePage: FC<Props> = ({ post, morePosts }) => {
@@ -26,7 +27,7 @@ const GuidePage: FC<Props> = ({ post, morePosts }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPostsWithSlug();
   return {
-    paths: posts.map(({ slug }: any) => ({
+    paths: posts.map(({ slug }: BlogPost) => ({
       params: { id: slug },
     })),
     fallback: true,
@@ -34,6 +35,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (typeof params?.id !== "string")
+    return {
+      redirect: {
+        destination: "/blog",
+        permanent: false,
+      },
+    };
+
   const { post, morePosts } =
     (await getPostAndMorePosts(params?.id || "")) || {};
 
@@ -46,7 +55,7 @@ export default GuidePage;
 
 // GraphCMS queries
 const gql = String.raw;
-async function getPostAndMorePosts(slug: any) {
+async function getPostAndMorePosts(slug: string) {
   const data = await fetchAPI(
     gql`
       query PostBySlug($slug: String!) {

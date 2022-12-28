@@ -4,14 +4,14 @@ import Script from "next/script";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 
-import SEO from "@/components/SEO";
+import SEO from "@/src/components/SEO";
 
 const MyBusinessPage = dynamic(
-  () => import("../scenes/MyBusinessPage/MyBusinessPage")
+  () => import("../src/scenes/MyBusinessPage/MyBusinessPage")
 );
-const SignInModal = dynamic(() => import("../components/SignInModal"));
+const SignInModal = dynamic(() => import("../src/components/SignInModal"));
 const MyBusinessSkeleton = dynamic(
-  () => import("../scenes/MyBusinessPage/MyBusinessSkeleton")
+  () => import("../src/scenes/MyBusinessPage/MyBusinessSkeleton")
 );
 
 const MyBusiness: NextPage = () => {

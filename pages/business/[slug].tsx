@@ -2,17 +2,21 @@ import type { GetStaticProps, NextPage } from "next";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-import SEO from "@/components/SEO";
+import SEO from "@/src/components/SEO";
+import { IBusiness } from "@/types/Business";
 
 const BusinessPageSkeleton = dynamic(
-  () => import("../../scenes/BusinessPage/BusinessPageSkeleton")
+  () => import("../../src/scenes/BusinessPage/BusinessPageSkeleton")
 );
 const BusinessPage = dynamic(
-  () => import("../../scenes/BusinessPage/BusinessPage")
+  () => import("../../src/scenes/BusinessPage/BusinessPage")
 );
-const PageNotFound = dynamic(() => import("../../scenes/404Page/404Page"));
+const PageNotFound = dynamic(() => import("../../src/scenes/404Page"));
 
-const Business: NextPage = ({ slug, fallbackData }: any) => {
+const Business: NextPage<{ slug: string; fallbackData: IBusiness }> = ({
+  slug,
+  fallbackData,
+}) => {
   const { data: business, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`,
     {
@@ -58,11 +62,11 @@ export const getStaticPaths = async () => {
   ).then((res) => res.json());
 
   const filteredBusinesses = businesses.filter(
-    ({ verified, slug }: any) => verified && !!slug
+    ({ verified, slug }: IBusiness) => verified && !!slug
   );
 
   return {
-    paths: filteredBusinesses.map(({ slug }: any) => ({
+    paths: filteredBusinesses.map(({ slug }: IBusiness) => ({
       params: { slug },
     })),
     fallback: true,

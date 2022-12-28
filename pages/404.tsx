@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import SEO from "@/components/SEO";
-import { PageNotFound } from "@/scenes/404Page";
+import SEO from "@/src/components/SEO";
+import PageNotFound from "@/src/scenes/404Page";
 
 const NotFound: NextPage = () => {
   return (

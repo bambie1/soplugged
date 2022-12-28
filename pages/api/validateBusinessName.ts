@@ -32,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     } else {
       res.status(200).json({});
     }
-  } catch (err: any) {
+  } catch (err) {
     console.log({ err });
     res.status(200).json({});
   }

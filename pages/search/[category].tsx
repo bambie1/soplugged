@@ -19,14 +19,14 @@ import {
   StateResultsProvided,
 } from "react-instantsearch-core";
 
-import CustomRefinements from "@/components/algolia/CustomRefinements";
-import CustomMenu from "@/components/algolia/CustomMenu";
-import { CustomStateResults } from "@/components/algolia/CustomStateResults";
-import SEO from "@/components/SEO";
+import CustomRefinements from "@/src/components/algolia/CustomRefinements";
+import CustomMenu from "@/src/components/algolia/CustomMenu";
+import { CustomStateResults } from "@/src/components/algolia/CustomStateResults";
+import SEO from "@/src/components/SEO";
 import { createURL, getCategoryName, encodedCategories } from "@/utils/algolia";
 
-const Header = dynamic(() => import("../../components/Header/Header"));
-const Footer = dynamic(() => import("../../components/Footer/Footer"));
+const Header = dynamic(() => import("../../src/components/Header/Header"));
+const Footer = dynamic(() => import("../../src/components/Footer"));
 
 const VirtualSearchBox = connectSearchBox(() => null);
 

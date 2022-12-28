@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import OurStoryPage from "@/scenes/OurStoryPage";
-import SEO from "@/components/SEO";
+import OurStoryPage from "@/src/scenes/OurStoryPage";
+import SEO from "@/src/components/SEO";
 
 const OurStory: NextPage = () => {
   return (

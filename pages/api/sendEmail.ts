@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     client.sendEmailWithTemplate(email);
 
     res.status(200).json({});
-  } catch (err: any) {
+  } catch (err) {
     console.log({ err });
     Sentry.captureException(err);
 

@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import ProPage from "@/scenes/ProPage";
-import SEO from "@/components/SEO";
+import ProPage from "@/src/scenes/ProPage";
+import SEO from "@/src/components/SEO";
 
 const Pro: NextPage = () => {
   return (

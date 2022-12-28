@@ -26,7 +26,7 @@ export async function fetchAPI(query: any, { variables, preview }: any = {}) {
   return json.data;
 }
 
-export async function getPostBySlug(slug: any) {
+export async function getPostBySlug(slug: string) {
   const data = await fetchAPI(
     gql`
       query PostBySlug($slug: String!) {
