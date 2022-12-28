@@ -5,11 +5,7 @@ export async function fetchAPI(query: any, { variables, preview }: any = {}) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${
-        preview
-          ? process.env.GRAPHCMS_DEV_AUTH_TOKEN
-          : process.env.GRAPHCMS_PROD_AUTH_TOKEN
-      }`,
+      Authorization: `Bearer ${process.env.GRAPHCMS_PROD_AUTH_TOKEN}`,
     },
     body: JSON.stringify({
       query,
