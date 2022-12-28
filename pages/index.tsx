@@ -4,12 +4,13 @@ import type { GetStaticProps, NextPage } from "next";
 import Hero from "@/src/components/home/Hero";
 import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
+import { BlogPost } from "@/types/BlogPost";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
 const Footer = dynamic(() => import("../src/components/Footer"));
 const HomePage = dynamic(() => import("../src/scenes/HomePage"));
 
-const Home: NextPage = (props) => {
+const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
   return (
     <>
       <SEO
