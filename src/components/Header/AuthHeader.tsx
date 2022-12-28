@@ -8,7 +8,7 @@ import { ButtonLink } from "@/styled/ButtonLink";
 import MobileHeader from "./MobileHeader";
 import SignOutButton from "../SignOutButton";
 
-import styles from "../../styles/Header.module.scss";
+import styles from "./Header.module.scss";
 
 const currentNav = {
   cta: { text: "Back to soplugged.com", link: "/" },

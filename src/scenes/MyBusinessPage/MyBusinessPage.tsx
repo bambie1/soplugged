@@ -19,7 +19,7 @@ import { QuestionMarkCircleIcon } from "@heroicons/react/outline";
 import MessageModal from "@/src/components/MessageModal";
 
 interface Props {
-  business: IBusiness;
+  business: IBusiness | null;
 }
 
 interface NewOrOldBusiness extends IBusiness {
@@ -99,7 +99,7 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       case 0:
         return <Introduction />;
       case 1:
-        return <NameLocation initialName={business?.business_name} />;
+        return <NameLocation initialName={business?.business_name || ""} />;
       case 2:
         return <Categories />;
       case 3:
