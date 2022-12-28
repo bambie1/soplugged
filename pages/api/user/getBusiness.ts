@@ -30,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       res.status(200).json(resBusiness);
     }
-  } catch (err: any) {
+  } catch (err) {
     res.status(500).json({ statusCode: 500, message: err.message });
   }
 };

@@ -65,7 +65,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json({
       slug: newSlug,
     });
-  } catch (err: any) {
+  } catch (err) {
     Sentry.captureException(err);
     res.status(500).json({ statusCode: 500, message: err.message });
   }

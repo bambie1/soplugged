@@ -16,10 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
+      "@/components/*": ["src/components/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/styled/*": ["src/styled/*"],
-      "@/scenes/*": ["scenes/*"],
+      "@/scenes/*": ["src/scenes/*"],
       "@/context/*": ["context/*"],
       "@/lib/*": ["src/lib/*"],
       "@/types/*": ["src/types/*"],

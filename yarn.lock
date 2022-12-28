@@ -1012,15 +1012,6 @@
     prop-types "^15.7.2"
     tslib "^2.3.0"
 
-"@reach/window-size@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@reach/window-size/-/window-size-0.16.0.tgz#b37903b7333b683b0c7ebc8a840affd07df9246c"
-  integrity sha512-8avB4RCPiTn5yOD5YYlO7szNjtTa3hZWddCpSaJwVEN7PGBFrRPeIihgfXLMSA5Vo8SUP6eP5uKAsk1zyccMYA==
-  dependencies:
-    "@reach/utils" "0.16.0"
-    prop-types "^15.7.2"
-    tslib "^2.3.0"
-
 "@rushstack/eslint-patch@^1.0.6":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"

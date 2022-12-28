@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { getCsrfToken } from "next-auth/react";
 
-import SEO from "@/components/SEO";
-import JoinPage from "@/scenes/JoinPage";
+import SEO from "@/src/components/SEO";
+import JoinPage from "@/src/scenes/JoinPage";
 
 const Join: NextPage = (props) => {
   return (
