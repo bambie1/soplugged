@@ -78,16 +78,16 @@ const MobileHeader = () => {
           aria-label="Mobile nav links"
           className={styles.dialogContent}
         >
-          <ul className={`grid w-full gap-10 px-4`}>
+          <ul className={`grid w-full gap-8 px-4`}>
             {mobileMenu.map((item) => {
               const { id, href, title, subLinks } = item;
 
               if (href)
                 return (
-                  <li key={id}>
+                  <li key={id} className="grid">
                     <Link href={href}>
                       <a
-                        className="flex items-center gap-3 text-xl"
+                        className="flex items-center gap-3 text-lg font-medium uppercase"
                         onClick={() => setshowMenu(false)}
                       >
                         <SearchIcon className="h-6 w-6" strokeWidth={1} />
@@ -99,16 +99,20 @@ const MobileHeader = () => {
 
               return (
                 <li key={id}>
-                  <span className="text-xl">{title}</span>
-                  <ul className="ml-3 mt-2 grid gap-4">
+                  <span className="text-lg font-medium uppercase">{title}</span>
+                  <ul className="mt-2 grid gap-4 border-l pl-3">
                     {subLinks?.map((link) => {
                       const { id, href, title } = link;
 
                       return (
-                        <li key={id}>
+                        <li key={id} className="grid">
                           <Link href={href}>
                             <a
-                              className="text-lg text-gray-600"
+                              className={`text-lg ${
+                                router.asPath.startsWith(href)
+                                  ? "border-l border-gray-800 pl-2 font-medium text-gray-800"
+                                  : "text-gray-600"
+                              }`}
                               onClick={() => setshowMenu(false)}
                             >
                               {title}
