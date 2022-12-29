@@ -27,7 +27,7 @@ const mobileMenu = [
     subLinks: [
       { id: "3a", title: "Our story", href: "/our-story" },
       { id: "3b", title: "Read our blog", href: "/blog" },
-      { id: "3c", title: "SoRandom series", href: "/so-random" },
+      // { id: "3c", title: "SoRandom series", href: "/so-random" },
       { id: "3d", title: "Become a sponsor", href: "/sponsors" },
       {
         id: "3e",
