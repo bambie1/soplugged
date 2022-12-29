@@ -78,7 +78,7 @@ const MobileHeader = () => {
           aria-label="Mobile nav links"
           className={styles.dialogContent}
         >
-          <ul className={`grid w-full gap-8 px-4`}>
+          <ul className={`grid w-full gap-10 px-4`}>
             {mobileMenu.map((item) => {
               const { id, href, title, subLinks } = item;
 
