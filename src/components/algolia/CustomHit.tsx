@@ -60,7 +60,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           <p className="truncate text-sm">
             <Highlight attribute="category" hit={hit} />
           </p>
-          <p className="mt-2 truncate text-xs">{business_location}</p>
+          <p className="truncate text-sm text-gray-600">{business_location}</p>
         </div>
       </a>
     </Link>
