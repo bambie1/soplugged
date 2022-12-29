@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-import { Footer } from "@/components/Footer";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import SEO from "@/components/SEO";
 
