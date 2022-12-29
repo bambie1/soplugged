@@ -34,7 +34,7 @@ const AuthHeader: FC = () => {
       <nav
         className={`sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 md:py-0`}
       >
-        <MobileHeader currentNav={currentNav} />
+        <MobileHeader />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block">
           <div className="flex h-16 items-center justify-between">

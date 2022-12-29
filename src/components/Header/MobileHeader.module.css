@@ -40,10 +40,17 @@
 
 .dialogContent {
   width: 100% !important;
-  padding: 6rem 1rem 0 !important;
-  height: 100% !important;
+  padding: 6rem 0 1rem !important;
+  min-height: 100% !important;
   margin: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .dialogContent,
+  .dialogOverlay {
+    display: none;
+  }
 }
