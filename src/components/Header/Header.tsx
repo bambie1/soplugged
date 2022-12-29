@@ -77,7 +77,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
           variant === "auth" ? "fixed bg-transparent" : "sticky bg-white"
         } py-3 transition duration-100 md:py-0 ${className}`}
       >
-        <MobileHeader currentNav={currentNav} />
+        <MobileHeader />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block">
           <div className="flex h-16 items-center justify-between">
