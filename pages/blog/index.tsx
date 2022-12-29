@@ -1,11 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import { getAllBlogPosts } from "@/utils/graphcms";
-import SEO from "@/components/SEO";
-import BlogsHomePage from "@/scenes/BlogsHomePage";
+import SEO from "@/src/components/SEO";
+import BlogsHomePage from "@/src/scenes/BlogsHomePage";
+import { BlogPost } from "@/types/BlogPost";
 
 interface Props {
-  posts: any[];
+  posts: BlogPost[];
 }
 
 const GuidesHomePage: NextPage<Props> = ({ posts }) => {

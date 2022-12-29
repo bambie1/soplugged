@@ -1,0 +1,56 @@
+.burger {
+  display: flex;
+  flex-shrink: 0;
+  outline: none;
+  height: 20px;
+  width: 2.25rem;
+  border: 0px;
+  padding: 0px;
+  background: transparent;
+  transition: all 250ms ease-out;
+  margin-top: 0.1rem;
+}
+
+.burger:before,
+.burger:after {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  position: absolute;
+  background: #1a1a1a;
+  transition: all 250ms ease-out;
+  will-change: transform;
+}
+
+.burger:before {
+  transform: translateY(4px);
+}
+
+.burger:after {
+  transform: translateY(16px);
+}
+
+.active.burger:before {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.active.burger:after {
+  transform: translateY(12px) rotate(-45deg);
+}
+
+.dialogContent {
+  width: 100% !important;
+  padding: 6rem 0 1rem !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .dialogContent,
+  .dialogOverlay {
+    display: none;
+  }
+}

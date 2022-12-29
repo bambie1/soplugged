@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 
-import { BusinessInfoPage } from "@/scenes/BusinessInfoPage";
-import BusinessInfoSkeleton from "@/scenes/BusinessInfoPage/BusinessInfoSkeleton";
-import SEO from "@/components/SEO";
-import DashboardPage from "@/scenes/DashboardPage";
-import UnauthDashboardView from "@/scenes/BusinessInfoPage/UnauthDashboardView";
+import { BusinessInfoPage } from "@/src/scenes/BusinessInfoPage";
+import BusinessInfoSkeleton from "@/src/scenes/BusinessInfoPage/BusinessInfoSkeleton";
+import SEO from "@/src/components/SEO";
+import DashboardPage from "@/src/scenes/DashboardPage";
+import UnauthDashboardView from "@/src/scenes/BusinessInfoPage/UnauthDashboardView";
 
 const DashboardHome: NextPage = () => {
   const { data: session, status } = useSession();

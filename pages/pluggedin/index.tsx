@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { loadStripe } from "@stripe/stripe-js";
 
-import { Footer } from "@/components/Footer";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
@@ -65,7 +65,7 @@ const PluggedInHomePage = () => {
               </span>
               <span className="outlinedText conference ml-1">In</span>
             </h1>
-            <p className="mx-auto mb-4 max-w-3xl font-light lg:text-xl">
+            <p className="mx-auto mb-4 max-w-3xl font-light text-gray-600 lg:text-xl">
               Simply the place to be as an entrepreneur! Network with fellow
               Canadian business-owners, share ideas and learn how to manage your
               finances as a business owner.
