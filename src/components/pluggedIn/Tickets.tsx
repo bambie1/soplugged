@@ -10,13 +10,15 @@ const options = [
     price: 19,
     description:
       "Reserved for businesses registered on SoPlugged. Check your e-mail for your discount code",
+    subText: "Offer ends January 31st, 2023",
     isDiscount: true,
   },
   {
     title: "Regular seat",
     price: 24,
     description:
-      "Looks like you're an early-bird! Click above to purchase your discounted ticket.",
+      "Not on our directory, but still want to attend? We'd be thrilled to have you!",
+    subText: "Tickets available till February 16th, 2023",
     isDiscount: false,
   },
 ];
@@ -58,6 +60,9 @@ const Tickets = () => {
                       className={`mt-2 w-[80%] text-sm text-gray-600 lg:text-base`}
                     >
                       {option.description}
+                    </p>
+                    <p className="mt-2 w-[80%] text-sm text-gray-600 lg:text-sm">
+                      *{option.subText}
                     </p>
                   </div>
 
