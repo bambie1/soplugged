@@ -11,39 +11,33 @@ import MobileHeader from "./MobileHeader";
 import styles from "./Header.module.scss";
 
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
-const SignOutButton = dynamic(() => import("../SignOutButton"));
 
 const links = [
-  { id: 1, text: "Find a business", link: "/search/all" },
+  { id: 1, text: "Explore businesses", link: "/search/all" },
   { id: 2, text: "PRO", link: "/pro", isNew: true },
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
 const nav = {
   main: {
-    cta: { text: "I am an entrepreneur", link: "/dashboard" },
+    cta: { text: "Add your business", link: "/my-business" },
+    subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
   pro: {
     cta: { text: "Book a consult", link: "#book-consult" },
+    subCta: { text: "Learn more", link: "/dashboard" },
     links,
   },
   blog: {
-    cta: { text: "I am an entrepreneur", link: "/dashboard" },
+    cta: { text: "Add your business", link: "/my-business" },
+    subCta: { text: "Log in", link: "/dashboard" },
     links,
-  },
-  auth: {
-    cta: { text: "Back to dashboard", link: "/dashboard" },
-    links: [
-      // { id: 1, text: "Find a business", link: "/search/all" },
-      // { id: 2, text: "PRO", link: "/pro", isNew: true },
-      // { id: 3, text: "Blog", link: "/blog" },
-    ],
   },
 };
 
 interface Props {
-  variant?: "main" | "pro" | "blog" | "auth";
+  variant?: "main" | "pro" | "blog";
   className?: string;
 }
 
@@ -73,13 +67,11 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
       <nav
         className={`top-0 z-20 w-full overflow-hidden ${
           isStyled && "border-b"
-        } ${
-          variant === "auth" ? "fixed bg-transparent" : "sticky bg-white"
-        } py-3 transition duration-100 md:py-0 ${className}`}
+        } sticky bg-white py-3 transition duration-100 md:py-0 ${className}`}
       >
         <MobileHeader />
 
-        <div className="mx-auto hidden w-full max-w-7xl px-8 md:block">
+        <div className="mx-auto hidden w-full max-w-screen-2xl px-8 md:block">
           <div className="flex h-16 items-center justify-between">
             <div className="flex md:px-0">
               <Link href="/">
@@ -119,13 +111,23 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
               </ul>
             </div>
             <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
-              <div className="w-full max-w-sm lg:mr-4">
+              <div className="w-full max-w-sm md:hidden lg:mr-4 lg:block">
                 {router.asPath.startsWith("/search") && <Searchbar />}
               </div>
             </div>
-            <ButtonLink href={currentNav.cta.link} variant="text" showArrow>
-              {currentNav.cta.text}
-            </ButtonLink>
+
+            <div className="flex items-center gap-2">
+              <ButtonLink href={currentNav.subCta.link} variant="text">
+                {currentNav.subCta.text}
+              </ButtonLink>
+              <ButtonLink
+                href={currentNav.cta.link}
+                variant="outlined"
+                showArrow
+              >
+                {currentNav.cta.text}
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </nav>

@@ -70,7 +70,7 @@ const Footer: FC<Props> = ({ tertiary, noBackground }) => {
         tertiary ? "from-accent/60" : !noBackground ? "from-secondary/60" : ""
       }`}
     >
-      <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex max-w-screen-2xl flex-col px-4 sm:px-6 lg:px-8">
         <Link href="/">
           <a className="relative -mt-7 mb-10 inline-flex aspect-square w-14 self-center transition duration-150 hover:grayscale">
             <Image

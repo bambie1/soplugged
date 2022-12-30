@@ -30,7 +30,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
 
         <div className="my-container">
           <div className="flex">
-            <ul className="mt-4 inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3">
+            <ul className="mt-4 inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3 2xl:grid-cols-4">
               {posts?.map((post) => (
                 <li key={post.slug} className="w-full">
                   <BlogCard post={post} />
