@@ -21,6 +21,11 @@ const nav = {
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
+  search: {
+    cta: { text: "Add your business", link: "/my-business" },
+    subCta: { text: "Log in", link: "/dashboard" },
+    links,
+  },
   pro: {
     cta: { text: "Book a consult", link: "#book-consult" },
     subCta: { text: "Learn more", link: "#learn-more" },
@@ -34,7 +39,7 @@ const nav = {
 };
 
 interface Props {
-  variant?: "main" | "pro" | "blog";
+  variant?: "main" | "pro" | "blog" | "search";
   className?: string;
 }
 
@@ -43,6 +48,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
   const [isStyled, setIsStyled] = useState(false);
 
   const currentNav = nav[variant];
+  const isSearch = variant === "search";
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -64,7 +70,9 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
       <nav
         className={`top-0 z-20 w-full overflow-hidden ${
           isStyled && "border-b"
-        } sticky bg-white py-3 transition duration-100 md:py-0 ${className}`}
+        } ${isSearch ? "fixed" : "sticky bg-white"} ${
+          isSearch && isStyled && "bg-white"
+        } py-3 transition duration-100 md:py-0 ${className}`}
       >
         <MobileHeader />
 

@@ -81,10 +81,10 @@ export default function Page(props: {
         title="Explore all businesses | SoPlugged"
         description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
+      <Header variant="search" />
       <main className="mb-16 min-h-screen">
-        {/* <Header /> */}
         <div className="flex w-full flex-col items-center">
-          <div className="relative w-full bg-secondary/10 py-12">
+          <div className="relative w-full bg-secondary/10 pb-12 pt-20 lg:pt-28">
             <div className="my-container mb-8 flex flex-col items-center text-center">
               <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
                 Explore
@@ -93,11 +93,15 @@ export default function Page(props: {
                 Discover some of the best black-owned businesses near you
               </p>
 
-              <div className="absolute -bottom-6 left-1/2 mx-auto w-full max-w-lg -translate-x-1/2">
+              <div className="absolute -bottom-6 left-1/2 mx-auto w-full max-w-lg -translate-x-1/2 px-4 lg:px-0">
                 <Searchbar />
               </div>
             </div>
           </div>
+
+          <div className="w-full">Categories</div>
+
+          <hr className="mt-10 w-full" />
 
           <App
             {...DEFAULT_PROPS}
