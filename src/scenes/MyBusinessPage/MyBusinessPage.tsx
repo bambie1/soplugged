@@ -8,6 +8,7 @@ import Description from "@/src/components/BusinessForm/3_Description";
 import Contact from "@/src/components/BusinessForm/4_Contact";
 import Images from "@/src/components/BusinessForm/5_Images";
 import Review from "@/src/components/BusinessForm/6_Review";
+import Tags from "@/components/BusinessForm/Tags";
 
 import { steps as BusinessSteps } from "@/lib/stepsObject";
 import { IBusiness } from "@/types/Business";
@@ -45,6 +46,7 @@ export const useBusinessStore = create<FormState>()((set) => ({
     business_location: "",
     business_name: "",
     category: "",
+    tags: "",
     slug: "",
     verified: true,
   },
@@ -103,10 +105,12 @@ const MyBusinessPage: FC<Props> = ({ business }) => {
       case 2:
         return <Categories />;
       case 3:
-        return <Description />;
+        return <Tags />;
       case 4:
-        return <Images />;
+        return <Description />;
       case 5:
+        return <Images />;
+      case 6:
         return <Contact />;
       default:
         return <Review />;
