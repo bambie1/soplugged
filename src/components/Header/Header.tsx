@@ -23,7 +23,7 @@ const nav = {
   },
   pro: {
     cta: { text: "Book a consult", link: "#book-consult" },
-    subCta: { text: "Learn more", link: "/dashboard" },
+    subCta: { text: "Learn more", link: "#learn-more" },
     links,
   },
   blog: {
