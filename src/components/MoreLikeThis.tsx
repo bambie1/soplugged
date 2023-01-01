@@ -73,7 +73,7 @@ const Hits = ({ hits, excludeBusiness }: any) => {
       )}
 
       <li>
-        <Link href="/search/all">
+        <Link href="/search">
           <a className="my-2 flex aspect-video w-full rounded-lg bg-secondary/20">
             Find other businesses
           </a>

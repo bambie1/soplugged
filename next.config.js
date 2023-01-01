@@ -23,7 +23,7 @@ const moduleExports = {
     return [
       {
         source: "/search",
-        destination: "/search/all",
+        destination: "/search",
         permanent: true,
       },
     ];

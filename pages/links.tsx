@@ -16,7 +16,7 @@ import Footer from "@/src/components/Footer";
 const linksArray = [
   {
     title: "Find black-owned businesses",
-    href: "/search/all",
+    href: "/search",
     icon: (
       <SearchIcon
         className="h-6 w-6 flex-shrink-0 text-primary"

@@ -9,10 +9,9 @@ import { SearchIcon } from "@heroicons/react/outline";
 import styles from "./MobileHeader.module.css";
 
 const SignOutButton = dynamic(() => import("../SignOutButton"));
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const mobileMenu = [
-  { id: 1, title: "Browse businesses", href: "/search/all", isSearch: true },
+  { id: 1, title: "Browse businesses", href: "/search", isSearch: true },
   {
     id: 2,
     title: "SoPlugged Pro",
@@ -59,9 +58,6 @@ const MobileHeader = () => {
             />
           </a>
         </Link>
-        <div className="w-[calc(100%-100px)]">
-          {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
-        </div>
         <button
           aria-label="Mobile menu toggle"
           onClick={() => setshowMenu(!showMenu)}

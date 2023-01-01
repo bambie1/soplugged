@@ -125,7 +125,7 @@ export default function Page(props: {
         <div className="flex flex-col items-center">
           <div className="my-container mb-8 flex flex-col items-center">
             {!isExplorePage && (
-              <Link href="/search/all">
+              <Link href="/search">
                 <a className="mb-5 -mt-4 flex gap-2 self-start rounded-3xl text-gray-500">
                   <ArrowLeftIcon className="h-6 w-6" strokeWidth={0.8} />
                   Back to all categories
@@ -149,7 +149,7 @@ export default function Page(props: {
 
               // @ts-ignore
               debouncedSetState.current = setTimeout(() => {
-                const href = searchStateToURL(nextSearchState) || "/search/all";
+                const href = searchStateToURL(nextSearchState) || "/search";
 
                 router.push(href, href);
               }, updateAfter);
@@ -185,7 +185,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (typeof params?.category !== "string")
     return {
       redirect: {
-        destination: "/search/all",
+        destination: "/search",
         permanent: false,
       },
     };
@@ -216,7 +216,7 @@ export function App(props: InstantSearchProps) {
     <InstantSearch {...props}>
       <VirtualSearchBox />
 
-      <Configure hitsPerPage={12} />
+      <Configure hitsPerPage={28} />
 
       <CustomRefinements />
       <div className="top-[3.9rem] mt-4 w-full py-2">

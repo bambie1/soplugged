@@ -87,7 +87,7 @@ const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
                 Black-owned businesses in one place, right at your fingertips.
               </p>
 
-              <ButtonLink href="/search/all" variant="outlined" showArrow>
+              <ButtonLink href="/search" variant="outlined" showArrow>
                 Explore businesses
               </ButtonLink>
             </div>

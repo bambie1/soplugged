@@ -1,8 +1,7 @@
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { FC, useEffect, useState } from "react";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
@@ -10,10 +9,8 @@ import MobileHeader from "./MobileHeader";
 
 import styles from "./Header.module.scss";
 
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
-
 const links = [
-  { id: 1, text: "Explore businesses", link: "/search/all" },
+  { id: 1, text: "Explore businesses", link: "/search" },
   { id: 2, text: "PRO", link: "/pro", isNew: true },
   { id: 3, text: "Blog", link: "/blog" },
 ];
@@ -109,11 +106,6 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="flex max-w-[65%] flex-1 items-center justify-center md:ml-6 md:max-w-none md:justify-end">
-              <div className="w-full max-w-sm md:hidden lg:mr-4 lg:block">
-                {router.asPath.startsWith("/search") && <Searchbar />}
-              </div>
             </div>
 
             <div className="flex items-center gap-2">

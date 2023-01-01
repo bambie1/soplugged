@@ -62,7 +62,7 @@ export const createURL = (state: SearchState) => {
     !state.query &&
     state.page === 1 &&
     state.menu &&
-    state.menu.category.length === 0;
+    state.menu?.category?.length === 0;
 
   const queryParameters = {} as any;
 
