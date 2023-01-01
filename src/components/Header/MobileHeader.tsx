@@ -17,7 +17,7 @@ const mobileMenu = [
     id: 2,
     title: "SoPlugged Pro",
     subLinks: [
-      { id: "2a", title: "Learn more", href: "/pro#learn-more" },
+      { id: "2a", title: "Learn more", href: "/pro" },
       { id: "2b", title: "Book a FREE consult", href: "/pro#book-consult" },
     ],
   },
