@@ -31,7 +31,7 @@ const Tags = () => {
 
   const categoryTags = categories
     .find((category) => category.label === business.category)
-    ?.tags.split(",");
+    ?.tags.split(", ");
 
   const defaultBusinessTags = business.tags?.split(", ");
 
@@ -57,7 +57,6 @@ const Tags = () => {
                 className="peer hidden"
                 defaultChecked={defaultBusinessTags?.includes(tag)}
                 {...register("tags", { required: true })}
-                // onChange={(e) => console.log(e.target.value)}
               />
               <label
                 htmlFor={`${tag}-tag`}

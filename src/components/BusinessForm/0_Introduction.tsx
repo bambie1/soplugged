@@ -90,20 +90,18 @@ const Introduction: FC = () => {
     return (
       <div className="grid grid-cols-1 gap-y-7 md:grid-cols-2 md:gap-y-10 md:gap-x-10">
         {steps.map((step) => {
-          const isDisabled = step.number === steps.length;
+          if (step.number === steps.length) return null;
+
           return (
             <button
               key={step.number}
               onClick={() => updateCurrentStep(step.number)}
               className="group flex flex-col rounded-lg border-[.5px] border-primary/20 p-4 text-left transition duration-150 hover:border-primary hover:shadow-sm disabled:hover:shadow-none md:p-6"
-              disabled={isDisabled}
             >
               <p className="flex items-center gap-3 text-lg font-semibold text-gray-700">
                 {step.name}
                 <ArrowRightIcon
-                  className={`h-6 w-6 transition duration-150 ${
-                    !isDisabled && "group-hover:translate-x-2"
-                  }`}
+                  className={`h-6 w-6 transition duration-150 ${"group-hover:translate-x-2"}`}
                   strokeWidth={0.5}
                 />
               </p>

@@ -39,6 +39,7 @@ const Review = () => {
     logo_url,
     sample_images,
     slug,
+    tags,
   } = business;
 
   const isNewBusiness = !slug;
@@ -56,6 +57,7 @@ const Review = () => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
+  const tagsArray = tags?.split(",");
 
   async function submitForm() {
     setIsSubmitting(true);
@@ -111,14 +113,14 @@ const Review = () => {
 
             <div className="flex flex-wrap justify-center gap-2">
               {category && (
-                <Button variant="text">
+                <Button variant="text" type="button">
                   <FontAwesomeIcon icon={faShapes} className="mr-2" />
                   {category}
                 </Button>
               )}
 
               {business_location && (
-                <Button variant="text">
+                <Button variant="text" type="button">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
                   {business_location}
                 </Button>
@@ -146,6 +148,20 @@ const Review = () => {
                 ></section>
               </div>
             )}
+
+            <div className="mt-6 flex w-full flex-wrap gap-4 border-t border-gray-200 pt-5">
+              <p>TAGS:</p>
+              <ul className="flex flex-wrap">
+                {tagsArray?.map((tag) => (
+                  <p
+                    key={tag}
+                    className="rounded-2xl border border-gray-300 px-2 py-1 text-sm lg:text-base"
+                  >
+                    {tag}
+                  </p>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-5">
