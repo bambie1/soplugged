@@ -117,9 +117,12 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <ButtonLink href={currentNav.subCta.link} variant="text">
-                {currentNav.subCta.text}
-              </ButtonLink>
+              {!router.asPath.startsWith("/search") && (
+                <ButtonLink href={currentNav.subCta.link} variant="text">
+                  {currentNav.subCta.text}
+                </ButtonLink>
+              )}
+
               <ButtonLink
                 href={currentNav.cta.link}
                 variant="outlined"
