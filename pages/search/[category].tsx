@@ -208,15 +208,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export function App(props: InstantSearchProps) {
-  // const isExplorePage =
-  //   props.searchState.menu.category === "" ||
-  //   props.searchState.menu.category === "all";
-
   return (
     <InstantSearch {...props}>
       <VirtualSearchBox />
 
-      <Configure hitsPerPage={12} />
+      <Configure hitsPerPage={32} />
 
       <CustomRefinements />
       <div className="top-[3.9rem] mt-4 w-full py-2">
