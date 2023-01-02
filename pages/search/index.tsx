@@ -21,6 +21,8 @@ import { CustomStateResults } from "@/src/components/algolia/CustomStateResults"
 import SEO from "@/src/components/SEO";
 import { createURL } from "@/utils/algolia";
 import Searchbar from "@/components/algolia/Searchbar";
+import { categories } from "@/lib/categoryList";
+import Image from "next/image";
 
 const Header = dynamic(() => import("../../src/components/Header/Header"));
 const Footer = dynamic(() => import("../../src/components/Footer"));
@@ -99,7 +101,36 @@ export default function Page(props: {
             </div>
           </div>
 
-          <div className="w-full">Categories</div>
+          <div className="mt-14 w-full lg:mx-auto lg:mt-20 lg:max-w-screen-2xl lg:overflow-x-auto lg:px-8">
+            <h2>Categories</h2>
+
+            <div className="relative w-full overflow-x-auto">
+              <ul
+                role="list"
+                className="mx-4 inline-flex space-x-3 sm:mx-6 lg:mx-0"
+              >
+                {categories.map((category) => (
+                  <li
+                    key={category.value}
+                    className="relative flex w-64 cursor-pointer flex-col overflow-hidden rounded-lg"
+                  >
+                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 p-2 font-medium text-white">
+                      {category.label}
+                    </div>
+                    <div className="relative -z-10 aspect-video w-full flex-shrink-0">
+                      <Image
+                        src={category.image}
+                        alt={category.imageAlt}
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="top"
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
           <hr className="mt-10 w-full" />
 

@@ -53,7 +53,7 @@ const Categories = () => {
                 onChange={onChange}
                 className="grid gap-4 lg:grid-cols-2"
               >
-                {categories.map(({ label, imageSrc }) => (
+                {categories.map(({ label, illustration }) => (
                   <RadioGroup.Option
                     key={label}
                     value={label}
@@ -73,7 +73,7 @@ const Categories = () => {
                           <div className="flex items-center gap-2">
                             <div className="relative h-5 w-5 shrink-0">
                               <Image
-                                src={imageSrc}
+                                src={illustration}
                                 objectFit="cover"
                                 layout="fill"
                                 alt={label}
