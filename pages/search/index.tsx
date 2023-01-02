@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import qs from "qs";
 import { useEffect, useState, useRef } from "react";
@@ -22,7 +24,6 @@ import SEO from "@/src/components/SEO";
 import { createURL } from "@/utils/algolia";
 import Searchbar from "@/components/algolia/Searchbar";
 import { categories } from "@/lib/categoryList";
-import Image from "next/image";
 
 const Header = dynamic(() => import("../../src/components/Header/Header"));
 const Footer = dynamic(() => import("../../src/components/Footer"));
@@ -102,7 +103,9 @@ export default function Page(props: {
           </div>
 
           <div className="mt-14 w-full lg:mx-auto lg:mt-20 lg:max-w-screen-2xl lg:overflow-x-auto lg:px-8">
-            <h2>Categories</h2>
+            <h2 className="mb-2 px-4 text-xl font-semibold sm:px-6 lg:px-0">
+              Categories
+            </h2>
 
             <div className="relative w-full overflow-x-auto">
               <ul
@@ -110,22 +113,23 @@ export default function Page(props: {
                 className="mx-4 inline-flex space-x-3 sm:mx-6 lg:mx-0"
               >
                 {categories.map((category) => (
-                  <li
-                    key={category.value}
-                    className="relative flex w-64 cursor-pointer flex-col overflow-hidden rounded-lg"
-                  >
-                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 p-2 font-medium text-white">
-                      {category.label}
-                    </div>
-                    <div className="relative -z-10 aspect-video w-full flex-shrink-0">
-                      <Image
-                        src={category.image}
-                        alt={category.imageAlt}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="top"
-                      />
-                    </div>
+                  <li key={category.value} className="flex">
+                    <Link href={`/search/${category.value}`}>
+                      <a className="relative flex w-64 cursor-pointer flex-col overflow-hidden rounded-lg">
+                        <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 p-2 text-white lg:px-3">
+                          {category.label}
+                        </div>
+                        <div className="relative -z-10 aspect-video w-full flex-shrink-0">
+                          <Image
+                            src={category.image}
+                            alt={category.imageAlt}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="top"
+                          />
+                        </div>
+                      </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
