@@ -13,8 +13,6 @@ const moduleExports = {
       "firebasestorage.googleapis.com",
       "res.cloudinary.com",
       "media.graphcms.com",
-      "unsplash.com",
-      "images.unsplash.com",
       "media.graphassets.com",
       "cdn.shopify.com",
     ],
