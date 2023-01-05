@@ -4,29 +4,11 @@ A platform for black-owned businesses in Canada. Visit [here](https://www.soplug
 
 ## Run Locally
 
-Clone the project
-
 ```bash
   git clone https://github.com/bambie1/soplugged.git
-```
-
-Go to the project directory
-
-```bash
   cd soplugged
-```
-
-Install dependencies
-
-```bash
   npm install
-```
-
-Start Next.js dev server
-
-```bash
   npm run dev
-
 ```
 
 ---
@@ -36,9 +18,7 @@ Start Next.js dev server
 
 ---
 
-## VS Code tips
-
-Recommended extensions:
+## Recommended VS Code extensions
 
 - [Tailwind CSS Intellisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
