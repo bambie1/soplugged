@@ -60,7 +60,7 @@ export async function getAllPostsForHome() {
       }
     `
   );
-  return data.posts;
+  return data?.posts;
 }
 
 export default Home;
