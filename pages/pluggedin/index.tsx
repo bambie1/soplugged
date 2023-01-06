@@ -45,7 +45,7 @@ const PluggedInHomePage = () => {
       />
 
       <>
-        <Header />
+        <Header variant="conf" />
         <div className="my-container pt-12 text-center lg:pt-20">
           <div className="light-gradient relative mb-3 inline-flex  rounded-xl px-3 py-2">
             <img
@@ -93,7 +93,7 @@ const PluggedInHomePage = () => {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-10" id="learn-more">
           <div className="flex justify-center gap-2">
             <p>FEBRUARY 18, 2023</p>
             <p>6PM</p>

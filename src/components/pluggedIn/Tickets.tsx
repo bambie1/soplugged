@@ -1,9 +1,3 @@
-const features = [
-  "Business website design",
-  "Product photography session",
-  "1 month's worth of social media designs",
-];
-
 const options = [
   {
     title: "Business special",
@@ -23,6 +17,42 @@ const options = [
   },
 ];
 
+const features = [
+  {
+    title: "Business talk with Reni",
+    category: {
+      name: "Workshops",
+      color: "bg-purple-100 text-purple-800",
+    },
+    description:
+      "Our keynote speaker will be speaking on how to manage your finances as a small business owner and answering any questions you might have",
+    footer: {
+      href: "https://renitheresource.com/",
+      title: "Learn more about Reni",
+    },
+  },
+  {
+    title: "SoPlugged Pro Raffle draw",
+    category: { name: "Fun activities", color: "bg-pink-100 text-pink-800" },
+    description:
+      "You're automatically entered into our raffle draw for a chance to win a *FREE* business makeover from our Pro team, including website design.",
+    footer: { href: "/pro", title: "Discover SoPlugged Pro" },
+  },
+  {
+    title: "Goodie-filled gift bag",
+    category: {
+      name: "Gift bags",
+      color: "bg-secondary/40 text-primary",
+    },
+    description:
+      "As a little thank-you for celebrating with us, we've curated an amazing gift box with some of our favorite black-owned products!",
+  },
+];
+
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(" ");
+}
+
 const Tickets = () => {
   return (
     <div
@@ -33,7 +63,7 @@ const Tickets = () => {
         Tickets
       </h2>
 
-      <ul className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-10">
+      <ul className="my-10 grid gap-6 lg:grid-cols-2 lg:gap-10">
         {options.map((option) => (
           <li key={option.title}>
             <form action="/api/stripe/checkout_sessions" method="POST">
@@ -52,12 +82,12 @@ const Tickets = () => {
                 <div className="flex w-full items-center justify-between gap-2 lg:flex-1">
                   <div>
                     <h3
-                      className={`text-xl font-bold leading-8 tracking-tight text-primary`}
+                      className={`text-xl font-bold leading-8 tracking-tight text-primary lg:text-2xl`}
                     >
                       {option.title}
                     </h3>
                     <p
-                      className={`mt-2 w-[80%] text-sm text-gray-600 lg:text-base`}
+                      className={`mt-2 w-[80%] text-sm text-gray-600 lg:text-lg`}
                     >
                       {option.description}
                     </p>
@@ -82,22 +112,45 @@ const Tickets = () => {
         ))}
       </ul>
 
-      <div className="mx-auto mt-10 max-w-3xl rounded-lg bg-secondary/20 p-4">
-        <h3 className="text-center">Raffle draw</h3>
-        <p className="mt-6">
-          When you purchase a ticket, you're automatically entered into our{" "}
-          <span className="font-bold underline">raffle draw</span> for a chance
-          to win a free business makeover.{" "}
-          <span className="mt-2 block">This includes:</span>
+      <div>
+        <p className="font-semibold underline">
+          All tickets grant access to the following:
         </p>
-        <ul role="list" className="mt-3 space-y-3 divide-y divide-gray-100">
+        <div className="mt-5 grid gap-16 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-12">
           {features.map((feature) => (
-            <li key={feature} className="flex pt-3">
-              <span className="listItem aspect-square h-3 rounded-sm border border-primary bg-white"></span>
-              <span className="ml-3 text-gray-800">{feature}</span>
-            </li>
+            <div className="relative" key={feature.title}>
+              <div>
+                <span
+                  className={classNames(
+                    feature.category.color,
+                    "inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium"
+                  )}
+                >
+                  {feature.category.name}
+                </span>
+              </div>
+              <div className="mt-2 block lg:mt-4">
+                <p className="text-xl font-bold text-gray-900">
+                  {feature.title}
+                </p>
+                <p className="mt-3 text-base text-gray-500">
+                  {feature.description}
+                </p>
+              </div>
+              <div className="mt-3 items-center">
+                <a
+                  href={feature.footer?.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm font-medium text-gray-900 underline"
+                >
+                  {feature.footer?.title}
+                </a>
+              </div>
+              <hr className="absolute -bottom-6 left-0 w-full lg:hidden" />
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

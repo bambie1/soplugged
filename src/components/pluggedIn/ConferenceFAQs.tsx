@@ -13,8 +13,7 @@ const faqs = [
       "Please see our Tickets section to get started. Payment can be made online via credit card or through an invoice request.",
   },
   {
-    question:
-      "What is the format of the event? Will there be presentations or workshops, or will it be more informal with time for mingling and making connections?",
+    question: "What is the format of the event?",
     answer:
       "The format of the event will include both structured presentations and workshops, as well as ample time for informal networking and mingling. Attendees will have the opportunity to participate in interactive Q&A sessions and meet with other attendees to discuss their businesses and ideas.",
   },
@@ -29,8 +28,7 @@ const faqs = [
       "Yes, we are excited to have Reni Odetoyinbo at this event. She will be speaking on how to manage your finances as a small business owner and answering any questions you might have.",
   },
   {
-    question:
-      "Will there be any follow-up or ongoing opportunities for networking after the event?",
+    question: "Will there be any opportunities for networking after the event?",
     answer:
       "Yes, we will be hosting several follow-up events and opportunities for ongoing networking after the main event. Make sure you connect with us on our socials to stay plugged in!",
   },
@@ -51,7 +49,7 @@ const ConferenceFAQs = () => {
         <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 md:space-y-0">
           {faqs.map((faq) => (
             <div key={faq.question}>
-              <dt className="text-lg font-medium leading-6 text-gray-900">
+              <dt className="text-lg font-medium leading-6 text-primary">
                 {faq.question}
               </dt>
               <dd className="mt-2 text-base text-gray-500">{faq.answer}</dd>
