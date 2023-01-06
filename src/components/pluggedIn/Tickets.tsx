@@ -55,10 +55,7 @@ function classNames(...classes: any) {
 
 const Tickets = () => {
   return (
-    <div
-      id="tickets"
-      className="my-container mt-20 scroll-mt-20 overflow-hidden"
-    >
+    <div className="my-container overflow-hidden">
       <h2 className="outlinedText conference text-center text-5xl font-extrabold uppercase lg:text-6xl">
         Tickets
       </h2>
@@ -91,7 +88,7 @@ const Tickets = () => {
                     >
                       {option.description}
                     </p>
-                    <p className="mt-2 w-[80%] text-sm text-gray-600 lg:text-sm">
+                    <p className="mt-2 w-[80%] text-xs text-gray-600 lg:text-sm">
                       *{option.subText}
                     </p>
                   </div>
@@ -130,7 +127,7 @@ const Tickets = () => {
                 </span>
               </div>
               <div className="mt-2 block lg:mt-4">
-                <p className="text-xl font-bold text-gray-900">
+                <p className="text-lg font-bold text-gray-900 lg:text-xl">
                   {feature.title}
                 </p>
                 <p className="mt-3 text-base text-gray-500">
