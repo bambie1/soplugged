@@ -55,7 +55,8 @@ const WebsiteService = () => {
     <div>
       <div className="my-container mb-8 mt-6 grid gap-6 lg:mt-16 lg:mb-12 lg:grid-cols-2 lg:gap-40">
         <h2 className="text-3xl font-semibold lg:text-4xl">
-          Website design & <span className="text-gray-500">development</span>
+          Website design &{" "}
+          <span className="text-gray-500 xl:block">development</span>
         </h2>
         <p className="text-lg font-light lg:text-xl">
           A website is essential to your online presence. It's the face of your
