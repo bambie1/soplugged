@@ -99,19 +99,6 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <NoPreviewAvailable />
         )}
 
-        {tags && (
-          <ul className="flex w-full max-w-3xl flex-wrap gap-2 px-4 sm:px-6 lg:mb-4 lg:px-0">
-            {tags?.split(", ")?.map((tag) => (
-              <p
-                key={tag}
-                className="rounded-2xl bg-secondary/20 px-3 py-1 text-sm shadow-sm lg:text-base"
-              >
-                {tag}
-              </p>
-            ))}
-          </ul>
-        )}
-
         {business_description && (
           <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
             <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
@@ -123,6 +110,21 @@ const BusinessPage: FC<Props> = ({ business }) => {
               }}
               className="prose max-w-none text-gray-500"
             ></section>
+          </div>
+        )}
+
+        {tags && (
+          <div className="w-full max-w-3xl flex-wrap border-y border-gray-100 py-5 px-4 sm:px-6 lg:mt-4 lg:px-0">
+            <ul className="flex gap-2">
+              {tags?.split(", ")?.map((tag) => (
+                <p
+                  key={tag}
+                  className="rounded-lg bg-secondary/20 px-3 py-1 text-sm shadow-sm lg:text-base"
+                >
+                  {tag}
+                </p>
+              ))}
+            </ul>
           </div>
         )}
       </div>
