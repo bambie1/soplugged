@@ -57,7 +57,7 @@ const Review = () => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const tagsArray = tags?.split(",");
+  const tagsArray = tags?.split(", ");
 
   async function submitForm() {
     setIsSubmitting(true);

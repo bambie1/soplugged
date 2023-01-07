@@ -52,6 +52,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     ig_handle,
     phone_number,
     business_url,
+    tags,
   } = business;
 
   const cleanDescription = business_description.replace(/style="[^"]*"/g, "");
@@ -91,11 +92,24 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   const renderFullView = () => (
     <section className={styles.fullView}>
-      <div className="flex w-full flex-col items-center gap-8 lg:gap-0">
+      <div className="flex w-full flex-col items-center gap-4 lg:gap-0">
         {hasPreview ? (
           <ReactImageGallery items={images} showPlayButton={false} />
         ) : (
           <NoPreviewAvailable />
+        )}
+
+        {tags && (
+          <ul className="flex w-full max-w-3xl flex-wrap gap-2 px-4 sm:px-6 lg:mb-4 lg:px-0">
+            {tags?.split(", ")?.map((tag) => (
+              <p
+                key={tag}
+                className="rounded-2xl bg-secondary/20 px-3 py-1 text-sm shadow-sm lg:text-base"
+              >
+                {tag}
+              </p>
+            ))}
+          </ul>
         )}
 
         {business_description && (
