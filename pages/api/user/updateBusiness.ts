@@ -25,7 +25,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       slug: newSlug,
       business_url: data.business_url?.trim(),
       fixed_to_one_location: false,
-      tags: "",
       business_description: data.business_description.trim(),
     };
 

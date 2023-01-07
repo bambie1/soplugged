@@ -19,7 +19,7 @@ const Tags = () => {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const tags = data.tags?.join(",");
+    const tags = data.tags?.join(", ");
 
     updateBusiness({
       ...business,

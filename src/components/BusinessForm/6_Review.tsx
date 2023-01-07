@@ -21,7 +21,7 @@ import Avatar from "../Avatar";
 import { NoPreviewAvailable } from "@/src/scenes/BusinessPage/BusinessPage";
 
 const Review = () => {
-  const { business } = useBusinessStore();
+  const { business, updateCurrentStep } = useBusinessStore();
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const { handleSubmit } = useForm();
@@ -93,6 +93,7 @@ const Review = () => {
         `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${updatedBusiness.slug}`
       );
       router.push(`/business/${updatedBusiness.slug}`);
+      updateCurrentStep(0);
     } else {
       toast.error("An error occurred");
       setIsSubmitting(false);
@@ -151,7 +152,7 @@ const Review = () => {
 
             <div className="mt-6 flex w-full flex-wrap gap-4 border-t border-gray-200 pt-5">
               <p>TAGS:</p>
-              <ul className="flex flex-wrap">
+              <ul className="flex flex-wrap gap-2">
                 {tagsArray?.map((tag) => (
                   <p
                     key={tag}
