@@ -34,6 +34,7 @@ const nav = {
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
+<<<<<<< HEAD
   conf: {
     cta: { text: "Get your ticket", link: "#tickets" },
     subCta: { text: "Learn more", link: "#learn-more" },
@@ -43,6 +44,12 @@ const nav = {
 
 interface Props {
   variant?: "main" | "pro" | "blog" | "conf";
+=======
+};
+
+interface Props {
+  variant?: "main" | "pro" | "blog";
+>>>>>>> main
   className?: string;
 }
 
@@ -109,7 +116,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
 
         <MobileHeader />
 
-        <div className="mx-auto hidden w-full max-w-screen-2xl px-8 md:block">
+        <div className="mx-auto hidden w-full max-w-7xl px-8 md:block xl:max-w-screen-2xl">
           <div className="flex h-16 items-center justify-between">
             <div className="flex md:px-0">
               <Link href="/">

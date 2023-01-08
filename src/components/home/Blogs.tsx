@@ -8,7 +8,7 @@ import BlogCard from "../BlogCard";
 const Blogs: FC<{ posts: BlogPost[] }> = ({ posts }) => {
   return (
     <div className="bg-white">
-      <div className="mx-auto w-full py-16 sm:py-24 lg:max-w-screen-2xl lg:px-8">
+      <div className="mx-auto w-full py-16 sm:py-24 lg:max-w-7xl lg:px-8 xl:max-w-screen-2xl">
         <div className="mx-auto mb-8 grid max-w-2xl gap-4 px-4 text-center sm:px-6">
           <h2 className="text-3xl font-bold xl:text-4xl">
             <span className="relative text-primary">
