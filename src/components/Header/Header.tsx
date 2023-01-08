@@ -34,22 +34,10 @@ const nav = {
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
-<<<<<<< HEAD
-  conf: {
-    cta: { text: "Get your ticket", link: "#tickets" },
-    subCta: { text: "Learn more", link: "#learn-more" },
-    links,
-  },
-};
-
-interface Props {
-  variant?: "main" | "pro" | "blog" | "conf";
-=======
 };
 
 interface Props {
   variant?: "main" | "pro" | "blog";
->>>>>>> main
   className?: string;
 }
 
