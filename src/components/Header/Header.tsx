@@ -34,10 +34,15 @@ const nav = {
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
+  conf: {
+    cta: { text: "Get your ticket", link: "#tickets" },
+    subCta: { text: "Learn more", link: "#learn-more" },
+    links,
+  },
 };
 
 interface Props {
-  variant?: "main" | "pro" | "blog";
+  variant?: "main" | "pro" | "blog" | "conf";
   className?: string;
 }
 
