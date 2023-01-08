@@ -25,7 +25,7 @@ const features = [
       color: "bg-purple-100 text-purple-800",
     },
     description:
-      "Our keynote speaker will be speaking on how to manage your finances as a small business owner and answering any questions you might have",
+      "A 45 minute keynote speech from Reni the Resource on how to manage your finances as a small business owner with an interactive Q&A session",
     footer: {
       href: "https://renitheresource.com/",
       title: "Learn more about Reni",
@@ -35,17 +35,22 @@ const features = [
     title: "SoPlugged Pro Raffle draw",
     category: { name: "Fun activities", color: "bg-pink-100 text-pink-800" },
     description:
-      "You're automatically entered into our raffle draw for a chance to win a *FREE* business makeover from our Pro team, including website design.",
+      "You're automatically entered into our raffle draw for a chance to win a *FREE* business makeover from our Pro team (valued at over $1,000), including a business logo, website design and product images",
     footer: { href: "/pro", title: "Discover SoPlugged Pro" },
   },
   {
-    title: "Goodie-filled gift bag",
+    title: "Personalized Self-care box",
     category: {
       name: "Gift bags",
       color: "bg-secondary/40 text-primary",
     },
     description:
-      "As a little thank-you for celebrating with us, we've curated an amazing gift box with some of our favorite black-owned products!",
+      "As a little thank-you for celebrating with us, we've curated a personalized gift box filled with luxury skin care products from StrippedBare Soap, a local black-owned business",
+
+    footer: {
+      href: "https://www.strippedbaresoap.com/",
+      title: "Shop StrippedBare",
+    },
   },
 ];
 

@@ -94,7 +94,7 @@ const PluggedInHomePage = () => {
         <div className="mt-10" id="learn-more">
           <div className="flex justify-center gap-2">
             <p>FEBRUARY 18, 2023</p>
-            <p>6PM</p>
+            <p>6:30PM</p>
           </div>
 
           <div className="relative mt-20 py-10 pt-28 lg:pb-20">

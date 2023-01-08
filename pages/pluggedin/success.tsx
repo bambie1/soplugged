@@ -27,8 +27,8 @@ const PluggedInSuccessPage = (
           name: firstName,
           share_url: `${window.location.host}/pluggedin`,
           action_url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            "Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
-          )}&url=${shareUrl}`,
+            "Just got my ticket for #PluggedIn by @sopluggd, claim yours!"
+          )}&url=${window.location.host}/pluggedin`,
           support_email: "hello@soplugged.com",
         },
       };
@@ -84,7 +84,7 @@ const PluggedInSuccessPage = (
 
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              "Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
+              "Just got my ticket for #PluggedIn by @sopluggd, claim yours!"
             )}&url=${shareUrl}`}
             className="neuButton mt-20"
             target="_blank"
