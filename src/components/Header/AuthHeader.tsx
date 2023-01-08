@@ -36,7 +36,7 @@ const AuthHeader: FC = () => {
       >
         <MobileHeader />
 
-        <div className="mx-auto hidden w-full max-w-screen-2xl px-8 md:block">
+        <div className="mx-auto hidden w-full max-w-7xl px-8 md:block xl:max-w-screen-2xl">
           <div className="flex h-16 items-center justify-between">
             <div className="flex md:px-0">
               <Link href="/">
