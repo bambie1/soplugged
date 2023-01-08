@@ -14,24 +14,22 @@ const stripePromise = loadStripe(
 
 const otherGuests = [
   {
+    imageUrl: "/toffy.webp",
+    name: "Toffy Olowo",
+    title: "RED CARPET HOST",
+    description: "Digital creator",
+  },
+  {
     imageUrl: "/nina.jpg",
     name: "Nina Barango",
     title: "HOST",
     description: "Creator and founder, SoPlugged",
   },
   {
-    imageUrl:
-      "https://plus.unsplash.com/premium_photo-1663050697267-35243ea0817d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRqfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-    name: "Leon Suave",
-    title: "DJ",
-    description: "Award-winning DJ",
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1581368129682-e2d66324045b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG9zdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-    name: "Fikayo A.",
-    title: "MC",
-    description: "Canadian TV Personality",
+    imageUrl: "/ben.jpg",
+    name: "Benaiah Barango",
+    title: "CO-HOST",
+    description: "CTO, SoPlugged",
   },
 ];
 
