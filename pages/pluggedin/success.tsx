@@ -44,9 +44,7 @@ const PluggedInSuccessPage = (
     if (typeof window !== undefined) {
       setShareUrl(`${window.location.host}/pluggedin`);
 
-      const hasSentconfirmation = JSON.parse(
-        localStorage.getItem("hasSentconfirmation") || ""
-      );
+      const hasSentconfirmation = localStorage.getItem("hasSentconfirmation");
 
       if (!hasSentconfirmation) {
         sendEmailConfirmation();
