@@ -26,6 +26,10 @@ const PluggedInSuccessPage = (
           user_email: userEmail,
           name: firstName,
           share_url: `${window.location.host}/pluggedin`,
+          action_url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            "Just got my ticket for #PluggedIn by SoPlugged, claim yours!"
+          )}&url=${shareUrl}`,
+          support_email: "hello@soplugged.com",
         },
       };
 
