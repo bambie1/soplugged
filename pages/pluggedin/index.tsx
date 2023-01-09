@@ -37,8 +37,8 @@ const PluggedInHomePage = () => {
   return (
     <>
       <SEO
-        title="Plugged In Conference | SoPlugged"
-        description="Network with fellow business-owners, share ideas and learn how to manage your finances as a business owner"
+        title="PluggedIn Conference | SoPlugged"
+        description="Network with fellow business-owners, and learn how to manage your finances as a business owner at SoPlugged's 2nd anniversary"
         variant="pluggedin"
       />
 
