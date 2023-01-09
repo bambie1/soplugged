@@ -111,7 +111,7 @@ const PluggedInSuccessPage = (
 
       <div className="my-container mt-6 text-center">
         <img
-          src="/og-pluggedin.png"
+          src="https://res.cloudinary.com/denbpv9kp/image/upload/v1673299410/soplugged_images/og_images/og-pluggedin_d8bor7.png"
           alt="OG image preview for plugged-in page"
           className="mx-auto w-full max-w-xl rounded-2xl border border-primary/40"
         />

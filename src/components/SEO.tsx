@@ -22,7 +22,7 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
       break;
     case "pluggedin":
       ogImage =
-        "https://res.cloudinary.com/denbpv9kp/image/upload/v1673292093/soplugged_images/og_images/og-pluggedin_nyzi71.png";
+        "https://res.cloudinary.com/denbpv9kp/image/upload/v1673299410/soplugged_images/og_images/og-pluggedin_d8bor7.png";
       break;
     default:
       break;
