@@ -22,13 +22,13 @@ const otherGuests = [
   {
     imageUrl: "/nina.jpg",
     name: "Nina Barango",
-    title: "HOST",
+    title: "MC",
     description: "Creator and founder, SoPlugged",
   },
   {
     imageUrl: "/ben.jpg",
     name: "Benaiah Barango",
-    title: "CO-HOST",
+    title: "Co-MC",
     description: "CTO, SoPlugged",
   },
 ];

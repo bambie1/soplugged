@@ -1,5 +1,3 @@
-import Dialog from "@reach/dialog";
-
 const options = [
   {
     title: "Business special",
@@ -35,10 +33,10 @@ const features = [
   },
   {
     title: "SoPlugged Pro Raffle draw",
-    category: { name: "Fun activities", color: "bg-pink-100 text-pink-800" },
+    category: { name: "Activities", color: "bg-pink-100 text-pink-800" },
     description:
       "You're automatically entered into our raffle draw for a chance to win a *FREE* business makeover from our Pro team (valued at over $1,000), including a business logo, website design and product images",
-    footer: { href: "/pro", title: "Discover SoPlugged Pro" },
+    footer: { href: "/pluggedin/raffle-terms", title: "Terms and Conditions" },
   },
   {
     title: "Personalized Self-care box",
@@ -101,14 +99,19 @@ const Tickets = () => {
                       </p>
                     </div>
 
-                    <div
-                      className={`absolute right-0 mr-6 inline-flex items-center text-primary sm:mr-10`}
-                    >
-                      <span>$</span>
-                      <p className="text-3xl font-medium lg:text-4xl">
-                        {option.price}
-                      </p>
-                      <span className="mb-6 text-sm">99</span>
+                    <div className="absolute right-0 mr-6 sm:mr-10">
+                      <div className="inline-flex items-center text-primary">
+                        <span>$</span>
+                        <p className="text-3xl font-medium lg:text-4xl">
+                          {option.price}
+                        </p>
+                        <span className="mb-6 text-sm">99</span>
+                      </div>
+                      {option.isDiscount && (
+                        <p className="mt-2 text-center text-sm text-gray-400">
+                          20% off
+                        </p>
+                      )}
                     </div>
                   </div>
                 </button>
@@ -141,14 +144,6 @@ const Tickets = () => {
                   <p className="mt-3 text-base text-gray-500">
                     {feature.description}
                   </p>
-                  {/* {index === 1 && (
-                    <button
-                      className="inline-flex text-sm underline"
-                      onClick={() => alert("T&Cs")}
-                    >
-                      Terms & Conditions apply
-                    </button>
-                  )} */}
                 </div>
                 <div className="mt-3 items-center">
                   <a
@@ -166,11 +161,6 @@ const Tickets = () => {
           </div>
         </div>
       </div>
-      {/* <Dialog
-        aria-label="Authentication requirement to view dashboard"
-        className="!w-[90%] max-w-lg rounded-lg"
-        isOpen={false}
-      ></Dialog> */}
     </>
   );
 };
