@@ -6,6 +6,9 @@ import Header from "@/components/Header/Header";
 import SEO from "@/components/SEO";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+var postmark = require("postmark");
+
+var client = new postmark.ServerClient(process.env.POSTMARK_SERVER_API_TOKEN);
 
 const PluggedInSuccessPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
@@ -84,10 +87,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
 }) => {
   const host = req.headers.host;
-
-  var postmark = require("postmark");
-
-  var client = new postmark.ServerClient(process.env.POSTMARK_SERVER_API_TOKEN);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(query.session_id);
