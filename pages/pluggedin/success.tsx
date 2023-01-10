@@ -1,20 +1,60 @@
+import { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import * as Sentry from "@sentry/nextjs";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import SEO from "@/components/SEO";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-var postmark = require("postmark");
-
-var client = new postmark.ServerClient(process.env.POSTMARK_SERVER_API_TOKEN);
 
 const PluggedInSuccessPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  const { name } = props.customer;
+  const [shareUrl, setShareUrl] = useState("");
+  const { name, email: userEmail } = props.customer;
+
   const firstName = name.split(" ")[0];
+
+  const sendEmailConfirmation = async () => {
+    try {
+      const email = {
+        From: "hello@soplugged.com",
+        To: userEmail,
+        TemplateId: "30186074",
+        TemplateModel: {
+          product_name: "PluggedIn Conference",
+          user_email: userEmail,
+          name: firstName,
+          share_url: `${window.location.host}/pluggedin`,
+          action_url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            "Just got my ticket for #PluggedIn by @sopluggd, claim yours!"
+          )}&url=${window.location.host}/pluggedin`,
+          support_email: "hello@soplugged.com",
+        },
+      };
+
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      });
+
+      localStorage.setItem("hasSentconfirmation", "true");
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setShareUrl(`${window.location.host}/pluggedin`);
+
+      const hasSentconfirmation = localStorage.getItem("hasSentconfirmation");
+
+      if (!hasSentconfirmation) {
+        sendEmailConfirmation();
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -24,7 +64,7 @@ const PluggedInSuccessPage = (
         variant="pluggedin"
       />
 
-      <Header variant="conf" />
+      <Header />
 
       <div className="my-container pt-12 text-center lg:pt-20">
         <div className="light-gradient relative inline-flex  rounded-xl px-3 py-2">
@@ -45,7 +85,7 @@ const PluggedInSuccessPage = (
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               "Just got my ticket for #PluggedIn by @sopluggd, claim yours!"
-            )}&url=${props.shareUrl}`}
+            )}&url=${shareUrl}`}
             className="neuButton mt-20"
             target="_blank"
             rel="noreferrer"
@@ -82,51 +122,19 @@ const PluggedInSuccessPage = (
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  req,
-}) => {
-  const host = req.headers.host;
-
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(query.session_id);
     const customer = await stripe.customers.retrieve(session.customer);
-    const shareUrl = `${host}/pluggedin`;
 
     if (!customer) throw new Error();
-
-    const email = {
-      From: "hello@soplugged.com",
-      To: customer.email,
-      TemplateId: "30186074",
-      TemplateModel: {
-        product_name: "PluggedIn Conference",
-        user_email: customer.email,
-        name: customer.name.split(" ")[0],
-        share_url: `${host}/pluggedin`,
-        action_url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          "Just got my ticket for #PluggedIn by @sopluggd, claim yours!"
-        )}&url=${host}/pluggedin`,
-        support_email: "hello@soplugged.com",
-      },
-    };
-
-    console.log({ email });
-
-    const postmarkResponse = await client.sendEmailWithTemplate(email);
-
-    console.log({ postmarkResponse });
 
     return {
       props: {
         customer,
-        shareUrl,
       },
     };
   } catch (error) {
-    console.log({ error });
-    Sentry.captureException(error);
-
     return {
       redirect: {
         permanent: false,
