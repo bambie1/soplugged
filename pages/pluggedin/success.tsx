@@ -111,7 +111,11 @@ export const getServerSideProps: GetServerSideProps = async ({
       },
     };
 
-    client.sendEmailWithTemplate(email);
+    console.log({ email });
+
+    const postmarkResponse = await client.sendEmailWithTemplate(email);
+
+    console.log({ postmarkResponse });
 
     return {
       props: {
