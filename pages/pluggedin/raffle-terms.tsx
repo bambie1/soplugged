@@ -23,6 +23,10 @@ const RaffleTerms = () => {
           <span className="outlinedText conference ml-1"> & Conditions</span>
         </h1>
 
+        <p className="text-center uppercase text-gray-500">
+          PluggedIn Raffle Draw
+        </p>
+
         <div className="prose mx-auto mt-10 lg:prose-lg">
           <p>
             <span className="font-bold underline">Eligibility:</span> To be
