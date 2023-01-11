@@ -6,7 +6,7 @@ const RaffleTerms = () => {
   return (
     <>
       <SEO
-        title="Raffle draw T&Cs - Plugged In Conference | SoPlugged"
+        title="Raffle draw T&Cs - Plugged In 2023 | SoPlugged"
         description="Terms and conditions for the SoPluggedPro raffle draw at PluggedIn 2023"
         variant="pluggedin"
       />

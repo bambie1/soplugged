@@ -22,7 +22,7 @@ const PluggedInSuccessPage = (
         To: userEmail,
         TemplateId: "30186074",
         TemplateModel: {
-          product_name: "PluggedIn Conference",
+          product_name: "PluggedIn 2023",
           user_email: userEmail,
           name: firstName,
           share_url: `${window.location.host}/pluggedin`,
@@ -59,7 +59,7 @@ const PluggedInSuccessPage = (
   return (
     <>
       <SEO
-        title="Plugged In Conference | SoPlugged"
+        title="Plugged In 2023 | SoPlugged"
         description="Network with fellow business-owners, share ideas and learn how to manage your finances as a business owner"
         variant="pluggedin"
       />
