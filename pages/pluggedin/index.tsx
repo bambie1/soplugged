@@ -15,7 +15,7 @@ const stripePromise = loadStripe(
 const otherGuests = [
   {
     imageUrl: "/toffy.jpeg",
-    name: "Toffy Olowo",
+    name: "Tofunmi Olowo",
     title: "RED CARPET HOST",
     description: "Digital creator",
   },
