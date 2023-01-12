@@ -34,10 +34,15 @@ const nav = {
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
+  conf: {
+    cta: { text: "Get your ticket", link: "#tickets" },
+    subCta: { text: "Learn more", link: "#learn-more" },
+    links,
+  },
 };
 
 interface Props {
-  variant?: "main" | "pro" | "blog";
+  variant?: "main" | "pro" | "blog" | "conf";
   className?: string;
 }
 
@@ -69,6 +74,39 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
           isStyled && "border-b"
         } sticky bg-white py-3 transition duration-100 md:py-0 ${className}`}
       >
+        {!router.asPath.startsWith("/pluggedin") && (
+          <div className="light-gradient -mt-3 border-b border-primary/5 p-2 md:mt-0">
+            <div className="my-container flex items-center justify-center">
+              <Link href="/pluggedin">
+                <a className="group flex items-center justify-center gap-4">
+                  <span>Register for #PluggedIn 2023</span>
+                  <div className="flex gap-1 border-b border-secondary group-hover:border-transparent">
+                    <span className="hidden transition duration-150 sm:inline">
+                      Tickets here
+                    </span>
+                    <span className="">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        className="h-6 w-6 transition duration-150 group-hover:translate-x-2"
+                        strokeWidth={0.8}
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </div>
+        )}
+
         <MobileHeader />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block xl:max-w-screen-2xl">

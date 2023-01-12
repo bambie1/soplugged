@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email } = JSON.parse(req.body);
 
-    client.sendEmailWithTemplate(email);
+    await client.sendEmailWithTemplate(email);
 
     res.status(200).json({});
   } catch (err) {

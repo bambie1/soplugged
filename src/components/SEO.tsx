@@ -4,16 +4,29 @@ import Head from "next/head";
 interface Props {
   description?: string;
   title?: string;
-  variant?: "pro" | "blog";
+  variant?: "pro" | "blog" | "pluggedin";
 }
 
 const SEO: FC<Props> = ({ description, title, variant }) => {
-  const ogImage =
-    variant === "blog"
-      ? "https://res.cloudinary.com/denbpv9kp/image/upload/v1661476048/soplugged_images/og_images/blog-og-image_l3ives.png"
-      : variant === "pro"
-      ? "https://res.cloudinary.com/denbpv9kp/image/upload/v1661476048/soplugged_images/og_images/pro-og-image_t2qdfh.png"
-      : "https://res.cloudinary.com/denbpv9kp/image/upload/v1660913947/soplugged_images/og_images/og-img_ouruhc.png";
+  let ogImage =
+    "https://res.cloudinary.com/denbpv9kp/image/upload/v1660913947/soplugged_images/og_images/og-img_ouruhc.png";
+
+  switch (variant) {
+    case "blog":
+      ogImage =
+        "https://res.cloudinary.com/denbpv9kp/image/upload/v1661476048/soplugged_images/og_images/blog-og-image_l3ives.png";
+      break;
+    case "pro":
+      ogImage =
+        "https://res.cloudinary.com/denbpv9kp/image/upload/v1661476048/soplugged_images/og_images/pro-og-image_t2qdfh.png";
+      break;
+    case "pluggedin":
+      ogImage =
+        "https://res.cloudinary.com/denbpv9kp/image/upload/v1673299410/soplugged_images/og_images/og-pluggedin_d8bor7.png";
+      break;
+    default:
+      break;
+  }
 
   return (
     <Head>

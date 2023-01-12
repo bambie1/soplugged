@@ -1,6 +1,13 @@
 module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontWeight: {
+      light: 300,
+      normal: 400,
+      medium: 500,
+      bold: 600,
+      extrabold: 800,
+    },
     extend: {
       colors: {
         primary: "#4e3505",
