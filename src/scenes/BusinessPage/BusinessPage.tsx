@@ -12,6 +12,7 @@ import { IBusiness } from "@/types/Business";
 
 import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
+import MoreLikeThis from "@/components/MoreLikeThis";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -112,7 +113,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           </div>
         )}
       </div>
-      <aside className={styles.stickyWrapper}>
+      <aside className="relative mb-4 lg:mb-20">
         <div className={styles.pageActions}>
           {hasContactLinks && <SocialLinks business={business} />}
           <div className={styles.contactForm}>
@@ -133,59 +134,67 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main className="mb-20 min-h-[90vh] pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
-        <section className="px-4 sm:px-6 lg:px-0">
-          <div className="flex flex-wrap justify-center gap-4">
-            <Avatar name={business_name} url={logo_url} />
-            <h1 className="text-center text-4xl font-bold lg:text-5xl">
-              {business_name.toUpperCase()}
-            </h1>
-          </div>
-
-          <div className={styles.info}>
-            {category && (
-              <Button variant="text" onClick={handleCategoryClick}>
-                <FontAwesomeIcon icon={faShapes} className="mr-2" />
-                {category}
-              </Button>
-            )}
-
-            {business_location && (
-              <Button variant="text" onClick={handleLocationClick}>
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
-                {business_location}
-              </Button>
-            )}
-
-            {!fixed_to_one_location && !business_location && (
-              <button className="button noPointer">CANADA-WIDE</button>
-            )}
-          </div>
-        </section>
-
-        {!verified && (
-          <div className={styles.claimBusiness}>
-            <div className={`mb-2 text-center ${styles.unverified}`}>
-              This business hasn't been claimed by it's owner
+      <main>
+        <div className="min-h-[90vh] pt-6 lg:mx-auto lg:mb-20 lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
+          <section className="px-4 sm:px-6 lg:px-0">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Avatar name={business_name} url={logo_url} />
+              <h1 className="text-center text-4xl font-bold lg:text-5xl">
+                {business_name.toUpperCase()}
+              </h1>
             </div>
 
-            <a href="mailto:hello@soplugged.com">
-              <Button variant="outlined">
-                <div className="flex items-center gap-2">
-                  <ExclamationCircleIcon
-                    className="h-8 w-8"
-                    strokeWidth={0.75}
-                  />
-                  I own this business
-                </div>
-              </Button>
-            </a>
-          </div>
-        )}
+            <div className={styles.info}>
+              {category && (
+                <Button variant="text" onClick={handleCategoryClick}>
+                  <FontAwesomeIcon icon={faShapes} className="mr-2" />
+                  {category}
+                </Button>
+              )}
 
-        <div className="">{renderFullView()}</div>
+              {business_location && (
+                <Button variant="text" onClick={handleLocationClick}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
+                  {business_location}
+                </Button>
+              )}
+
+              {!fixed_to_one_location && !business_location && (
+                <button className="button noPointer">CANADA-WIDE</button>
+              )}
+            </div>
+          </section>
+
+          {!verified && (
+            <div className={styles.claimBusiness}>
+              <div className={`mb-2 text-center ${styles.unverified}`}>
+                This business hasn't been claimed by it's owner
+              </div>
+
+              <a href="mailto:hello@soplugged.com">
+                <Button variant="outlined">
+                  <div className="flex items-center gap-2">
+                    <ExclamationCircleIcon
+                      className="h-8 w-8"
+                      strokeWidth={0.75}
+                    />
+                    I own this business
+                  </div>
+                </Button>
+              </a>
+            </div>
+          )}
+
+          <div className="">{renderFullView()}</div>
+        </div>
+
+        <MoreLikeThis
+          category={category}
+          excludeBusiness={business_name}
+          location={business_location}
+        />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
