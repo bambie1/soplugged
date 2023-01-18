@@ -17,6 +17,9 @@ const PluggedInSuccessPage = (
 
   const sendEmailConfirmation = async () => {
     try {
+      if (userEmail === "nbarango@railz.ai")
+        throw new Error("skip this user email");
+
       const email = {
         From: "hello@soplugged.com",
         To: userEmail,
