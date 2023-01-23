@@ -81,15 +81,12 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
         </section>
         <div className="my-container">
-          <div className="relative my-10 grid-cols-3 items-start gap-4 lg:grid lg:gap-8">
+          <div className="relative grid-cols-3 items-start gap-4 lg:my-10 lg:grid lg:gap-8">
             <div
               dangerouslySetInnerHTML={{ __html: content.html }}
-              className="prose col-span-2 col-start-1 mb-20 max-w-none lg:mr-10"
+              className="prose col-span-2 col-start-1 mb-20 max-w-none lg:prose-lg lg:mr-10"
             />
 
-            {/* {plugSoPluggedPro && <div>
-              
-              </div>} */}
             <hr className="mt-10 mb-4 lg:hidden" />
             <div className="top-20 lg:sticky lg:my-20">
               <div className="mb-6 flex flex-col items-start rounded-xl border-secondary p-4 lg:p-0">

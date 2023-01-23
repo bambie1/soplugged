@@ -5,6 +5,7 @@ module.exports = {
       light: 300,
       normal: 400,
       medium: 500,
+      semibold: 600,
       bold: 600,
       extrabold: 800,
     },
@@ -52,6 +53,18 @@ module.exports = {
             },
             strong: {
               color: "currentColor",
+            },
+            h2: {
+              strong: {
+                fontWeight: 600,
+              },
+            },
+          },
+        },
+        lg: {
+          css: {
+            ol: {
+              listStyleType: "decimal",
             },
           },
         },
