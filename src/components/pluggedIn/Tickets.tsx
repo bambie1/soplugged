@@ -69,11 +69,19 @@ const Tickets = () => {
         <ul className="my-10 grid gap-6 lg:grid-cols-2 lg:gap-10">
           {options.map((option) => (
             <li key={option.title}>
-              <form action="/api/stripe/checkout_sessions" method="POST">
+              <form
+                action="/api/stripe/checkout_sessions"
+                method="POST"
+                className="relative"
+              >
+                <div className="absolute inset-0 z-[1] flex items-center justify-center rounded-3xl text-2xl font-medium text-gray-600 underline ">
+                  SOLD OUT
+                </div>
                 <button
+                  disabled
                   className={`${
                     option.isDiscount ? "border-2" : "border"
-                  } relative flex w-full flex-col gap-4 rounded-3xl border-primary bg-white p-6 text-left transition duration-150 hover:scale-[.98] sm:p-10`}
+                  } relative flex w-full flex-col gap-4 rounded-3xl border-primary bg-white p-6 text-left blur-sm transition duration-150 sm:p-10`}
                 >
                   {option.isDiscount && (
                     <img
