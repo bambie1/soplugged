@@ -9,6 +9,11 @@
 .image-gallery-content.bottom .image-gallery-slide-wrapper.bottom {
   display: flex;
   // width: 100%;
+
+  @include large_tablet_down {
+    border-top: 1px solid $lightSecondary;
+    border-bottom: 1px solid $lightSecondary;
+  }
 }
 
 .image-gallery-slides {
