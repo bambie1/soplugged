@@ -22,6 +22,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       );
 
       const sortedBusinesses = filteredBusinesses
+        // @ts-ignore
+        .sort((a, b) => !!b.verified - !!a.verified)
+        // @ts-ignore
+        .sort((a, b) => !!b.sample_images?.length - !!a.sample_images?.length)
         .sort((a, b) => {
           if (a.category === category && b.category !== category) {
             return -1;
