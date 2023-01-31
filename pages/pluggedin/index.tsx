@@ -68,7 +68,7 @@ const PluggedInHomePage = () => {
               Canadian business-owners, share ideas and learn how to manage your
               finances as a business owner.
             </p>
-            <p className="mb-4">@ The BedRock, Toronto</p>
+            <p className="mb-4">Toronto, ON, Canada</p>
             <Link href="#tickets">
               <a className="neuButton mt-4">
                 Get your tickets
