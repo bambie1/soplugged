@@ -14,48 +14,34 @@ interface Props {
 
 const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
   const { data: businesses, error } = useSWR<IBusiness[]>(
-    `/api/getSimilarBusinesses/${encodeURIComponent(category)}`
+    `/api/getSimilarBusinesses?category=${encodeURIComponent(
+      category
+    )}&location=${encodeURIComponent(
+      location
+    )}&business_name=${encodeURIComponent(excludeBusiness)}`
   );
 
   if (!businesses || error) return null;
 
-  const filteredBusinesses = businesses.filter(
-    (business) => business.business_name !== excludeBusiness
-  );
-
-  const sortedBusinesses = filteredBusinesses
-    .sort((a, b) => {
-      if (
-        a.business_location === location &&
-        b.business_location !== location
-      ) {
-        return -1;
-      }
-      if (
-        a.business_location !== location &&
-        b.business_location === location
-      ) {
-        return 1;
-      }
-      return 0;
-    })
-    .slice(0, 4);
-
-  // /  const;
-
   return (
     <div className="mt-4 flex w-full flex-col border-t bg-gradient-to-t from-secondary/60 to-white">
       <div className="my-container py-4">
-        <p className="-mb-4 block text-xl font-bold uppercase lg:text-2xl">
-          More like this
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="block text-xl font-bold uppercase text-primary lg:text-2xl">
+            More like this
+          </p>
+          <Link href="/search/all">
+            <a className="font-medium underline">Back to directory</a>
+          </Link>
+        </div>
 
-        <ul className="my-8 flex w-full flex-col gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {sortedBusinesses.map((business) => {
+        <ul className="mt-4 mb-8 flex w-full flex-col gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {businesses.map((business) => {
             const {
               id,
               slug,
               business_name,
+              category,
               business_location,
               sample_images,
             } = business;
@@ -99,7 +85,7 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
                     </div>
 
                     <div className="mt-3 max-w-full">
-                      <h3 className="font-semibold truncate uppercase text-gray-600 lg:text-lg">
+                      <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
                         {business_name}
                       </h3>
                       <p className="truncate text-sm">{category}</p>
