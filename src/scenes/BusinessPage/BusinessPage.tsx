@@ -134,8 +134,8 @@ const BusinessPage: FC<Props> = ({ business }) => {
   return (
     <>
       <Header />
-      <main>
-        <div className="min-h-[90vh] pt-6 lg:mx-auto lg:mb-20 lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
+      <main className="min-h-[90vh] lg:mb-20">
+        <div className="pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
               <Avatar name={business_name} url={logo_url} />
@@ -194,7 +194,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           location={business_location}
         />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

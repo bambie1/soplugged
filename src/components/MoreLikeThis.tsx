@@ -4,7 +4,6 @@ import Image from "next/image";
 import useSWR from "swr";
 
 import { IBusiness } from "@/types/Business";
-import Footer from "./Footer";
 
 interface Props {
   category: string;
@@ -24,8 +23,8 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
   if (!businesses || error) return null;
 
   return (
-    <div className="mt-4 flex w-full flex-col border-t bg-gradient-to-t from-secondary/60 to-white">
-      <div className="my-container py-4">
+    <div className="mt-4 flex w-full flex-col border-t">
+      <div className="my-container pt-8 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="block text-xl font-bold uppercase text-primary lg:text-2xl">
             More like this
@@ -100,9 +99,6 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
           })}
         </ul>
       </div>
-
-      <hr />
-      <Footer noBackground />
     </div>
   );
 };

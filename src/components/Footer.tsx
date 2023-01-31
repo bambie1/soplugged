@@ -66,9 +66,9 @@ const navigation = {
 const Footer: FC<Props> = ({ tertiary, noBackground }) => {
   return (
     <footer
-      className={`mt-auto flex flex-col overflow-hidden pt-20 pb-10 ${
-        noBackground ? "" : "bg-gradient-to-t to-white"
-      } ${tertiary ? "from-accent/60" : "from-secondary/60"}`}
+      className={`mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ${
+        tertiary ? "from-accent/60" : !noBackground ? "from-secondary/60" : ""
+      }`}
     >
       <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8 xl:max-w-screen-2xl">
         <Link href="/">
