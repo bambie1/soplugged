@@ -7,8 +7,8 @@ A platform for black-owned businesses in Canada. Visit [here](https://www.soplug
 ```bash
   git clone https://github.com/bambie1/soplugged.git
   cd soplugged
-  npm install
-  npm run dev
+  yarn install
+  yarn dev
 ```
 
 ---
