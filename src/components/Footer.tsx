@@ -1,3 +1,4 @@
+import { MailIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -93,6 +94,12 @@ const Footer: FC<Props> = ({ tertiary, noBackground }) => {
             </div>
           ))}
         </nav>
+        <Link href="mailto:hello@soplugged.com">
+          <a className="mt-4 inline-flex items-center justify-center gap-2 text-center underline lg:text-lg">
+            <MailIcon className="aspect-square w-6" strokeWidth={1} />
+            Contact us
+          </a>
+        </Link>
         <div className="mt-8 flex justify-center space-x-6">
           {navigation.social.map((item) => (
             <a

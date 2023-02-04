@@ -1,16 +1,9 @@
-import Link from "next/link";
-import { loadStripe } from "@stripe/stripe-js";
-
 import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
 import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
 import SEO from "@/components/SEO";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
 
 const otherGuests = [
   {
@@ -69,25 +62,26 @@ const PluggedInHomePage = () => {
               finances as a business owner.
             </p>
             <p className="mb-4">Toronto, ON, Canada</p>
-            <Link href="#tickets">
-              <a className="neuButton mt-4">
-                Get your tickets
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </a>
-            </Link>
+            <button className="neuButton mt-4 cursor-not-allowed line-through">
+              Get your tickets
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </button>
+            <p className="mt-2 italic text-gray-600">
+              Tickets are now SOLD OUT
+            </p>
           </div>
         </div>
 
@@ -147,26 +141,25 @@ const PluggedInHomePage = () => {
 
         <ConferenceFAQs />
 
-        <div className="flex justify-center">
-          <Link href="#tickets">
-            <a className="neuButton mt-4">
-              Get your tickets
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                />
-              </svg>
-            </a>
-          </Link>
+        <div className="flex flex-col items-center justify-center">
+          <button disabled className="neuButton mt-4 cursor-not-allowed">
+            Get your tickets
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </button>
+          <p className="mt-2 italic text-gray-600">Tickets are now SOLD OUT</p>
         </div>
 
         <Footer />
