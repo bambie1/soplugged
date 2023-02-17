@@ -1,7 +1,10 @@
-import { ExternalLinkIcon } from "@heroicons/react/outline";
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import {
+  ExternalLinkIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/outline";
 
 interface Props {
   adType: "website" | "social-media";
@@ -19,24 +22,28 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
       : "Hire our social-media experts to launch and grow your business's online presence";
 
   return (
-    <Link href="/pro">
-      <a target="_blank" className="group my-4 flex flex-col">
-        <div className="relative flex aspect-video w-full flex-col overflow-hidden rounded-lg bg-gradient-to-b from-tr-pink-100 to-indigo-100 p-4 shadow-md transition duration-200 group-hover:scale-[.98] md:aspect-video lg:p-5">
-          <div className="mb-2 flex items-center justify-between">
-            <div className="relative aspect-video h-8">
-              <Image src={imageSource} alt="" className="" layout="fill" />
+    <li>
+      <Link href="/pro">
+        <a
+          target="_blank"
+          key="main-link"
+          className="group relative mt-4 flex w-full flex-col overflow-hidden rounded-lg bg-gradient-to-b from-tr-pink-100 to-indigo-100 p-4 shadow-md transition duration-200 hover:scale-[.98]"
+        >
+          <div className="mb-1 flex items-center justify-between">
+            <div className="relative aspect-video h-10">
+              <Image src={imageSource} alt="" layout="fill" />
             </div>
-            <ExternalLinkIcon className="h-6 w-6" />
+            <ExternalLinkIcon className="h-6 w-6 transition duration-200 group-hover:text-gray-500" />
           </div>
           <p className="mb-2 text-xl font-bold">
             Try <span className="text-primary underline">SoPlugged PRO</span>{" "}
             today
           </p>
-          <p className="mb-2 text-sm text-gray-700 lg:w-[90%]">{adText}</p>
+          <p className="mb-4 text-sm text-gray-700 lg:w-[90%]">{adText}</p>
           <div className="mt-auto flex items-center justify-between">
-            <Link href="/pro">
-              <a className="text-sm underline">Learn more</a>
-            </Link>
+            <span className="text-sm underline transition duration-200 group-hover:no-underline">
+              Learn more
+            </span>
             <div>
               <span className="text-sm font-semibold text-primary">
                 SoPlugged
@@ -46,12 +53,17 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
               </span>
             </div>
           </div>
-        </div>
-        <div className="mt-3 flex items-center justify-between">
-          <p className="font-bold text-gray-500 lg:text-sm">PROMOTED</p>
-        </div>
-      </a>
-    </Link>
+        </a>
+      </Link>
+      <div className="mt-2 flex items-center justify-between">
+        <p className="font-bold text-gray-500 lg:text-base">PROMOTED</p>
+        <Link href="/pro">
+          <a key="info" aria-label="Learn more">
+            <InformationCircleIcon className="h-5 w-5 text-gray-500" />
+          </a>
+        </Link>
+      </div>
+    </li>
   );
 };
 
