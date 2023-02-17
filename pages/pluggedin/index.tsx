@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header/Header";
 import ConferenceFAQs from "@/components/pluggedIn/ConferenceFAQs";
-import Countdown from "@/components/pluggedIn/Countdown";
 import Tickets from "@/components/pluggedIn/Tickets";
 import SEO from "@/components/SEO";
 
@@ -91,10 +90,8 @@ const PluggedInHomePage = () => {
             <p>6:30PM</p>
           </div>
 
-          <div className="relative mt-20 py-10 pt-28 lg:pb-20">
+          <div className="relative mt-8 py-10 pt-16 lg:pb-20">
             <div className="absolute -top-10 left-0 -bottom-10 -z-10 w-full bg-gradient-to-b from-white via-secondary/40 to-white"></div>
-
-            <Countdown />
 
             <div className="my-container grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
               <div className="relative">
@@ -142,7 +139,10 @@ const PluggedInHomePage = () => {
         <ConferenceFAQs />
 
         <div className="flex flex-col items-center justify-center">
-          <button disabled className="neuButton mt-4 cursor-not-allowed">
+          <button
+            disabled
+            className="neuButton mt-4 cursor-not-allowed line-through"
+          >
             Get your tickets
             <svg
               xmlns="http://www.w3.org/2000/svg"
