@@ -26,7 +26,12 @@ const moduleExports = {
       },
       {
         source: "/raffle",
-        destination: "https://app.sli.do/event/8fopXff3aXdFBaSLnox2p6",
+        destination: "https://app.sli.do/event/8fopXff3aXdFBaSLnox2p6/live/polls",
+        permanent: true,
+      },
+      {
+        source: "/keynote",
+        destination: "https://app.sli.do/event/8fopXff3aXdFBaSLnox2p6/live/questions",
         permanent: true,
       }
     ];
