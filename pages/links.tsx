@@ -1,21 +1,18 @@
 import { FC } from "react";
 import Link from "next/link";
 import {
-  HeartIcon,
-  PencilIcon,
+  BookOpenIcon,
   PlusIcon,
   SearchIcon,
   StarIcon,
-  VideoCameraIcon,
 } from "@heroicons/react/outline";
+import Image from "next/image";
 
 import SEO from "@/src/components/SEO";
-import Header from "@/src/components/Header/Header";
-import Footer from "@/src/components/Footer";
 
 const linksArray = [
   {
-    title: "Find black-owned businesses",
+    title: "Explore our directory",
     href: "/search/all",
     icon: (
       <SearchIcon
@@ -25,7 +22,7 @@ const linksArray = [
     ),
   },
   {
-    title: "Add your business to our directory",
+    title: "Add your business",
     href: "/my-business",
     icon: (
       <PlusIcon
@@ -35,7 +32,7 @@ const linksArray = [
     ),
   },
   {
-    title: "Grow your brand with SoPlugged PRO",
+    title: "Try SoPlugged PRO",
     href: "/pro",
     icon: (
       <StarIcon
@@ -45,32 +42,58 @@ const linksArray = [
     ),
   },
   {
-    title: "Submit a question",
-    href: "/so-random",
-    icon: (
-      <VideoCameraIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
-      />
-    ),
-  },
-  {
     title: "Read our monthly blog",
     href: "/blog",
     icon: (
-      <PencilIcon
+      <BookOpenIcon
         className="h-6 w-6 flex-shrink-0 text-primary"
         strokeWidth={0.75}
       />
     ),
   },
+];
+
+const socialsArray = [
   {
-    title: "Become a SoPlugged sponsor",
-    href: "/sponsors",
-    icon: (
-      <HeartIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
+    name: "Instagram",
+    href: "https://www.instagram.com/sopluggd/",
+    icon: () => (
+      <Image
+        src="/logos/instagram.svg"
+        alt="Instagram Logo"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/sopluggd",
+    icon: () => (
+      <Image
+        src="/logos/twitter.svg"
+        alt="Twitter Logo"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+  {
+    name: "Tiktok",
+    href: "https://www.tiktok.com/@sopluggd",
+    icon: () => (
+      <Image src="/logos/tiktok.svg" alt="Tiktok Logo" width={24} height={24} />
+    ),
+  },
+  {
+    name: "LinkedIn",
+    href: "https://ca.linkedin.com/company/soplugged",
+    icon: () => (
+      <Image
+        src="/logos/linkedin.svg"
+        alt="LinkedIn Logo"
+        width={24}
+        height={24}
       />
     ),
   },
@@ -84,30 +107,55 @@ const Links: FC = () => {
         title="SoPlugged | Discover black-owned businesses in Canada"
       />
 
-      <Header />
-      <div className="flex min-h-screen flex-col items-center justify-center px-4">
-        <div className="mx-auto mt-10 flex max-w-3xl flex-1 flex-col items-center py-10">
-          <h1 className="text-3xl font-bold text-primary lg:text-4xl">
-            <span className="relative text-primary">
-              Welcome to SoPlugged
-              <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
-            </span>{" "}
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-secondary">
+        <div className="mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center">
+          <Link href="/">
+            <a className="flex flex-shrink-0 rounded-full border border-primary p-3">
+              <Image
+                src="/logos/logo-black.svg"
+                alt="SoPlugged Logo"
+                width={40}
+                height={40}
+              />
+            </a>
+          </Link>
+          <h1 className="mt-2 text-3xl font-bold text-primary lg:text-4xl">
+            SoPlugged
           </h1>
-          <ul className="mb-20 mt-10 grid gap-5">
+          <p className="text-xs text-neutral-400">@sopluggd</p>
+          <p className="mt-3 text-neutral-500">
+            The FREE platform connecting you with black-owned business in Canada
+          </p>
+          <div className="mt-8 flex justify-center space-x-6">
+            {socialsArray.map((item) => (
+              <a
+                key={item.name}
+                target="_blank"
+                rel="noreferrer"
+                href={item.href}
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+          <ul className="mb-20 mt-10 w-full">
             {linksArray.map(({ title, href, icon }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="group relative mt-5 flex items-center gap-2 overflow-hidden rounded-md border border-primary/40 p-4 text-xl shadow-md transition duration-150 hover:border-primary hover:shadow-none">
+                  <a className="mt-5 flex w-full gap-2 rounded-md border border-primary/40 bg-white p-4 text-xl opacity-60 shadow-md transition duration-150 hover:border-primary hover:shadow-none">
                     {icon}
-                    {title}
+                    <span className="flex-1 text-center">{title}</span>
                   </a>
                 </Link>
               </li>
             ))}
           </ul>
+          <p className="mt-auto text-neutral-500">
+            Copyright&copy; {new Date().getFullYear()}, SoPlugged
+          </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
