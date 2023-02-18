@@ -24,6 +24,11 @@ const moduleExports = {
         destination: "/search/all",
         permanent: true,
       },
+      {
+        source: "/raffle",
+        destination: "https://app.sli.do/event/8fopXff3aXdFBaSLnox2p6",
+        permanent: true,
+      }
     ];
   },
 };
