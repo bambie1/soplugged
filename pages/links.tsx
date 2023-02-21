@@ -124,7 +124,7 @@ const Links: FC = () => {
           </h1>
           <p className="text-neutral-400">@sopluggd</p>
           <p className="mt-3 text-neutral-500">
-            The FREE platform connecting you with black-owned business in Canada
+            The FREE online platform connecting you to black-owned businesses across Canada
           </p>
           <div className="mt-8 flex justify-center space-x-6">
             {socialsArray.map((item) => (
