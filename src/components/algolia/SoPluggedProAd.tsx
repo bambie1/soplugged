@@ -44,13 +44,12 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
           <ExternalLinkIcon className="h-6 w-6 transition duration-200 group-hover:text-gray-500" />
         </div>
         <p className="mb-2 text-xl font-bold">
-          Try <span className="text-primary underline">SoPlugged PRO</span>{" "}
-          today
+          Try <span className="text-primary">SoPlugged PRO</span> today
         </p>
         <p className="mb-4 text-sm text-gray-700 lg:w-[90%]">{adText}</p>
         <div className="mt-auto flex items-center justify-between">
           <span className="text-sm underline transition duration-200 group-hover:no-underline">
-            Learn more
+            Book a FREE consult
           </span>
           <div>
             <span className="text-sm font-semibold text-primary">

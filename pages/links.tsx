@@ -80,7 +80,7 @@ const socialsArray = [
   },
   {
     name: "Tiktok",
-    href: "https://www.tiktok.com/@sopluggd",
+    href: "https://www.tiktok.com/@soplugged",
     icon: () => (
       <Image src="/logos/tiktok.svg" alt="Tiktok Logo" width={24} height={24} />
     ),
@@ -122,7 +122,7 @@ const Links: FC = () => {
           <h1 className="mt-2 text-3xl font-bold text-primary lg:text-4xl">
             SoPlugged
           </h1>
-          <p className="text-xs text-neutral-400">@sopluggd</p>
+          <p className="text-neutral-400">@sopluggd</p>
           <p className="mt-3 text-neutral-500">
             The FREE platform connecting you with black-owned business in Canada
           </p>
@@ -139,11 +139,12 @@ const Links: FC = () => {
               </a>
             ))}
           </div>
-          <ul className="mb-20 mt-10 w-full">
+          <hr className="my-10 w-[70%] border border-primary/50" />
+          <ul className="mb-20 w-full space-y-5">
             {linksArray.map(({ title, href, icon }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="mt-5 flex w-full gap-2 rounded-md border border-primary/40 bg-white p-4 text-xl opacity-60 shadow-md transition duration-150 hover:border-primary hover:shadow-none">
+                  <a className="flex w-full gap-2 rounded-md border border-primary/40 bg-white p-4 text-xl opacity-60 shadow-md transition duration-150 hover:border-primary hover:shadow-none">
                     {icon}
                     <span className="flex-1 text-center">{title}</span>
                   </a>
@@ -152,7 +153,7 @@ const Links: FC = () => {
             ))}
           </ul>
           <p className="mt-auto text-neutral-500">
-            Copyright&copy; {new Date().getFullYear()}, SoPlugged
+            &copy; {new Date().getFullYear()}, SoPlugged
           </p>
         </div>
       </div>
