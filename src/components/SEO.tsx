@@ -37,7 +37,7 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
       <meta name="theme-color" content="#fff" />
       <meta
         name="keywords"
-        content="black-owned, business, Canada, Ottawa, Toronto, hair, Calgary, buyblack, black, fashion"
+        content="Black-owned, business, Canada, Ottawa, Toronto, hair, Calgary, buyblack, black, fashion"
       />
       <meta property="og:image" content={ogImage} />
       <meta property="og:title" content={title} />

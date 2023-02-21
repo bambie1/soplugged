@@ -4,7 +4,7 @@ import Link from "next/link";
 const cardInfo = [
   {
     number: 1,
-    title: "I'm looking for a black-owned business",
+    title: "I'm looking for a Black-owned business",
     text: "Discover all businesses",
     linkText: "Explore",
     href: "/search/all",

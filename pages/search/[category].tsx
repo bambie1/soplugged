@@ -118,7 +118,7 @@ export default function Page(props: {
             ? props.searchState?.menu?.category
             : "Discover all"
         } businesses | SoPlugged`}
-        description="Online platform connecting you to black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
+        description="Online platform connecting you to Black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
       <Header />
       <main className="mb-16 min-h-screen pt-12">

@@ -103,8 +103,8 @@ const Links: FC = () => {
   return (
     <>
       <SEO
-        description="Online platform connecting you to black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform."
-        title="SoPlugged | Discover black-owned businesses in Canada"
+        description="Online platform connecting you to Black-owned businesses across Canada. If you're an entrepreneur, register your business to be featured on our platform."
+        title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
       <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-secondary">
@@ -124,7 +124,8 @@ const Links: FC = () => {
           </h1>
           <p className="text-neutral-400">@sopluggd</p>
           <p className="mt-3 text-neutral-500">
-            The FREE online platform connecting you to black-owned businesses across Canada
+            The FREE online platform connecting you to Black-owned businesses
+            across Canada
           </p>
           <div className="mt-8 flex justify-center space-x-6">
             {socialsArray.map((item) => (

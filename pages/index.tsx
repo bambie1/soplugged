@@ -14,8 +14,8 @@ const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
   return (
     <>
       <SEO
-        description="Online platform connecting you to black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
-        title="SoPlugged | Discover black-owned businesses in Canada"
+        description="Online platform connecting you to Black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
+        title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
       <Header />

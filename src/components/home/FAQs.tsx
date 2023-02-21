@@ -5,7 +5,7 @@ const faqs = [
     id: 1,
     question: "Is SoPlugged free?",
     answer:
-      "Yes, SoPlugged is free to use and register (if you're a black-owned business in Canada). We rely on our amazing sponsors to keep our platform free and accessible to Black-owned businesses across Canada.",
+      "Yes, SoPlugged is free to use and register (if you're a Black-owned business in Canada). We rely on our amazing sponsors to keep our platform free and accessible to Black-owned businesses across Canada.",
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const faqs = [
     id: 4,
     question: "How can I support the team?",
     answer:
-      "We rely on amazing people like you to spread the word about our platform to black-owned businesses that you know",
+      "We rely on amazing people like you to spread the word about our platform to Black-owned businesses that you know",
   },
 ];
 

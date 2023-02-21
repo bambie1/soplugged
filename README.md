@@ -1,6 +1,6 @@
 # SoPlugged
 
-A platform for black-owned businesses in Canada. Visit [here](https://www.soplugged.com)
+A platform for Black-owned businesses in Canada. Visit [here](https://www.soplugged.com)
 
 ## Run Locally
 
@@ -12,7 +12,9 @@ A platform for black-owned businesses in Canada. Visit [here](https://www.soplug
 ```
 
 ---
+
 **NOTE:**
+
 > Some pages require environment variables (e.g. `/search`, `/blog`, `/dashboard`, `/join`, `/my-business`, `/business/[slug]`) to run properly. If you encounter an error when accessing these pages, it's likely because these variables are missing.
 > However, they exist in the Vercel environment, so, when you create a PR, you'll be able to test ALL functionality seamlessly
 
@@ -23,7 +25,6 @@ A platform for black-owned businesses in Canada. Visit [here](https://www.soplug
 - [Tailwind CSS Intellisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Sass](https://marketplace.visualstudio.com/items?itemName=Syler.sass-indented) - there are still a few `.scss` files that haven't been ported to Tailwind yet
-
 
 ## Tech stack
 

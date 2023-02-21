@@ -17,7 +17,7 @@ const FilterByLocation = () => {
           </span>
         </h2>
         <p className="font-medium lg:mb-4 lg:text-lg">
-          There is a black-owned business near you
+          There is a Black-owned business near you
         </p>
       </>
     );
@@ -56,7 +56,7 @@ const FilterByLocation = () => {
           <div className="hidden lg:block">{renderHeading()}</div>
 
           <p className="mb-6">
-            Our mission is to connect you with the best black-owned businesses
+            Our mission is to connect you with the best Black-owned businesses
             in your city and around Canada.
           </p>
           <ButtonLink href="/search/all" showArrow variant="outlined">

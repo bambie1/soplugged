@@ -35,7 +35,7 @@ const HeroImage = ({ index }: { index: number }) => {
         <Image
           src={category.url}
           objectFit="cover"
-          alt={`Picture of a black-owned ${category.title} business`}
+          alt={`Picture of a Black-owned ${category.title} business`}
           layout="fill"
         />
         <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
@@ -58,7 +58,7 @@ const Hero = () => {
             <h1 className="text-5xl font-bold leading-[1.05] sm:text-6xl lg:leading-[1.2]">
               Discover{" "}
               <div className="relative inline-block text-primary">
-                <span>black-owned</span>
+                <span>Black-owned</span>
                 <img
                   src="/underline_draw.svg"
                   className="absolute -bottom-6"

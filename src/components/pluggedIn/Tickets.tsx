@@ -26,7 +26,7 @@ const features = [
       color: "bg-secondary/40 text-primary",
     },
     description:
-      "As a little thank-you for celebrating with us, we've curated a personalized gift box filled with luxury skin care products from StrippedBare Soap, a local black-owned business",
+      "As a little thank-you for celebrating with us, we've curated a personalized gift box filled with luxury skin care products from StrippedBare Soap, a local Black-owned business",
 
     footer: {
       href: "https://www.strippedbaresoap.com/",
