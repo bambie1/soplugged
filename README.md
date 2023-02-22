@@ -15,7 +15,7 @@ A platform for Black-owned businesses in Canada. Visit [here](https://www.soplug
 
 **NOTE:**
 
-> Some pages require environment variables (e.g. `/search`, `/blog`, `/dashboard`, `/join`, `/my-business`, `/business/[slug]`) to run properly. If you encounter an error when accessing these pages, it's likely because these variables are missing.
+> Some pages require environment variables (e.g. `/black-businesses`, `/blog`, `/dashboard`, `/join`, `/my-business`, `/business/[slug]`) to run properly. If you encounter an error when accessing these pages, it's likely because these variables are missing.
 > However, they exist in the Vercel environment, so, when you create a PR, you'll be able to test ALL functionality seamlessly
 
 ---

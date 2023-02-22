@@ -99,7 +99,7 @@ export default function Page(props: {
   useEffect(() => {
     if (isBrowser) {
       const urlToState = urlToSearchState({
-        urlCategory: window.location.pathname?.split("/search/")?.[1],
+        urlCategory: window.location.pathname?.split("/black-businesses/")?.[1],
         search: window.location.search,
       });
       setSearchState(urlToState);
@@ -109,15 +109,16 @@ export default function Page(props: {
   let filteredLocation = searchState?.menu?.business_location || null;
   if (Array.isArray(filteredLocation)) filteredLocation = filteredLocation[0];
 
+  const SEOTitle =
+    props.searchState?.menu?.category &&
+    !props.searchState?.menu?.category.includes("?")
+      ? `Black-owned ${props.searchState?.menu?.category} businesses | SoPlugged`
+      : "Discover all Black-owned businesses | SoPlugged";
+
   return (
     <>
       <SEO
-        title={`${
-          props.searchState?.menu?.category &&
-          !props.searchState?.menu?.category.includes("?")
-            ? props.searchState?.menu?.category
-            : "Discover all"
-        } businesses | SoPlugged`}
+        title={SEOTitle}
         description="Online platform connecting you to Black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
       />
       <Header />
@@ -125,7 +126,7 @@ export default function Page(props: {
         <div className="flex flex-col items-center">
           <div className="my-container mb-8 flex flex-col items-center">
             {!isExplorePage && (
-              <Link href="/search/all">
+              <Link href="/black-businesses/all">
                 <a className="mb-5 -mt-4 flex gap-2 self-start rounded-3xl text-gray-500">
                   <ArrowLeftIcon className="h-6 w-6" strokeWidth={0.8} />
                   Back to all categories
@@ -136,7 +137,8 @@ export default function Page(props: {
               {props.searchState?.menu?.category || "Explore"}
             </h1>
             <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
-              Businesses in {filteredLocation?.split(", Canada")[0] || "Canada"}
+              Black-owned businesses in{" "}
+              {filteredLocation?.split(", Canada")[0] || "Canada"}
             </span>
           </div>
 
@@ -149,7 +151,8 @@ export default function Page(props: {
 
               // @ts-ignore
               debouncedSetState.current = setTimeout(() => {
-                const href = searchStateToURL(nextSearchState) || "/search/all";
+                const href =
+                  searchStateToURL(nextSearchState) || "/black-businesses/all";
 
                 router.push(href, href);
               }, updateAfter);
@@ -185,7 +188,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (typeof params?.category !== "string")
     return {
       redirect: {
-        destination: "/search/all",
+        destination: "/black-businesses/all",
         permanent: false,
       },
     };

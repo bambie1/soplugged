@@ -82,14 +82,14 @@ export const createURL = (state: SearchState) => {
   });
 
   if (isDefaultRoute) {
-    return `/search/${queryString}`;
+    return `/black-businesses/${queryString}`;
   }
 
   const categoryPath = state?.menu?.category
     ? `${getCategorySlug(state.menu.category)}/`
     : "";
 
-  const url = `/search/${categoryPath}${queryString}`;
+  const url = `/black-businesses/${categoryPath}${queryString}`;
 
   return url;
 };

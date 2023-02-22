@@ -56,7 +56,7 @@ const SignInModal = () => {
       </div>
 
       <div className="flex flex-wrap justify-end gap-3">
-        <ButtonLink variant="text" href="/search/all">
+        <ButtonLink variant="text" href="/black-businesses/all">
           Go back to directory
         </ButtonLink>
       </div>

@@ -116,7 +116,7 @@ export const categories = [
   {
     value: "other",
     label: "Other",
-    imageSrc: "/illustrations/search.png",
+    imageSrc: "/illustrations/black-businesses.png",
     tags: "We'll reach out to you to find out more",
   },
 ];

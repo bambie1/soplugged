@@ -13,7 +13,7 @@ import styles from "./Header.module.scss";
 const currentNav = {
   cta: { text: "Back to soplugged.com", link: "/" },
   links: [
-    { id: 1, text: "Find a business", link: "/search/all" },
+    { id: 1, text: "Find a business", link: "/black-businesses/all" },
     { id: 2, text: "PRO", link: "/pro", isNew: true },
     { id: 3, text: "Blog", link: "/blog" },
   ],

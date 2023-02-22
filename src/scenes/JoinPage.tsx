@@ -157,7 +157,9 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
 
           {renderEmailSignIn()}
         </div>
-        <ArrowButton href="/search/all">I'm just browsing</ArrowButton>
+        <ArrowButton href="/black-businesses/all">
+          I'm just browsing
+        </ArrowButton>
       </PageWrapper>
     </>
   );

@@ -22,7 +22,7 @@ const ErrorPage = () => {
             <br /> In the meantime, please checkout our other pages:
           </p>
 
-          <ButtonLink href="/search/all" variant="outlined">
+          <ButtonLink href="/black-businesses/all" variant="outlined">
             Visit Directory
           </ButtonLink>
           <ButtonLink href="/" variant="text">

@@ -21,7 +21,7 @@ const FAQPage = () => {
 
           <p>We suggest trying our most frequented pages:</p>
 
-          <ButtonLink href="/search/all" variant="outlined">
+          <ButtonLink href="/black-businesses/all" variant="outlined">
             Visit Directory
           </ButtonLink>
           <ButtonLink href="/" variant="text">

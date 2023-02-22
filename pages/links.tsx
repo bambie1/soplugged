@@ -13,7 +13,7 @@ import SEO from "@/src/components/SEO";
 const linksArray = [
   {
     title: "Explore our directory",
-    href: "/search/all",
+    href: "/black-businesses/all",
     icon: (
       <SearchIcon
         className="h-6 w-6 flex-shrink-0 text-primary"

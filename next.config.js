@@ -20,8 +20,18 @@ const moduleExports = {
   async redirects() {
     return [
       {
+        source: "/black-businesses",
+        destination: "/black-businesses/all",
+        permanent: true,
+      },
+      {
         source: "/search",
-        destination: "/search/all",
+        destination: "/black-businesses/all",
+        permanent: true,
+      },
+      {
+        source: "/search/all",
+        destination: "/black-businesses/all",
         permanent: true,
       },
     ];
