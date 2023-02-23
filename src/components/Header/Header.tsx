@@ -74,18 +74,6 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
           isStyled && "border-b"
         } sticky bg-white py-3 transition duration-100 md:py-0 ${className}`}
       >
-        {!router.asPath.startsWith("/pluggedin") && (
-          <div className="light-gradient -mt-3 hidden border-b border-primary/5 p-2 md:mt-0 md:block">
-            <div className="my-container flex items-center justify-center">
-              <Link href="/pluggedin">
-                <a className="group flex items-center justify-center gap-4 font-bold underline transition duration-200 hover:text-primary hover:no-underline">
-                  <span>#PluggedIn 2023 is HERE!</span>
-                </a>
-              </Link>
-            </div>
-          </div>
-        )}
-
         <MobileHeader />
 
         <div className="mx-auto hidden w-full max-w-7xl px-8 md:block xl:max-w-screen-2xl">
