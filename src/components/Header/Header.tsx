@@ -76,7 +76,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
       >
         <MobileHeader />
 
-        <div className="mx-auto hidden w-full max-w-7xl px-8 md:block xl:max-w-screen-2xl">
+        <div className="mx-auto hidden w-full max-w-7xl px-8 md:block 2xl:max-w-screen-2xl">
           <div className="flex h-16 items-center justify-between">
             <div className="flex md:px-0">
               <Link href="/">
