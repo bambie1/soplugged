@@ -8,7 +8,7 @@ const Sponsors: NextPage = () => {
     <>
       <SEO
         title="Become a Sponsor | SoPlugged"
-        description="Our goal is to give black business a wider platform in Canada for free. Help us maintain this goal by donating."
+        description="Join SoPlugged in promoting and supporting Black-owned businesses across Canada. By becoming a sponsor, you'll help us invest in building and growing our platform, allowing us to connect even more communities with local Black-owned businesses."
       />
       <SponsorsPage />
     </>

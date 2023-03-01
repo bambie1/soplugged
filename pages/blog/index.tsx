@@ -13,8 +13,8 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <SEO
-        title="Helpful guides to create or improve your business' digital presence and stay updated with SoPlugged news | SoPlugged Blog"
-        description="Explore our free guides and resources that we've compiled to help you grow your business with ease."
+        title="Stay updated with SoPlugged news and helpful business tips | SoPlugged Blog"
+        description="Explore SoPlugged's blog for helpful guides on creating or improving your business' digital presence. Stay up-to-date with the latest SoPlugged news and spotlights on Black-owned businesses across Canada."
         variant="blog"
       />
 
