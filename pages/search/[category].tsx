@@ -109,17 +109,22 @@ export default function Page(props: {
   let filteredLocation = searchState?.menu?.business_location || null;
   if (Array.isArray(filteredLocation)) filteredLocation = filteredLocation[0];
 
+  const seoTitle = `${
+    props.searchState?.menu?.category &&
+    !props.searchState?.menu?.category.includes("?")
+      ? props.searchState?.menu?.category
+      : "Discover all"
+  } businesses | SoPlugged`;
+
+  const seoDescription = `${
+    props.searchState?.menu?.category
+      ? `${props.searchState?.menu?.category}`
+      : "Explore the best black-owned businesses in Canada with SoPlugged's online directory. Discover a wide range of businesses and services, from restaurants and shops to professional services and more. Support economic diversity and empowerment by visiting SoPlugged's directory and finding your next go-to business."
+  } Join us in promoting black-owned businesses across the country. Start your search today.`;
+
   return (
     <>
-      <SEO
-        title={`${
-          props.searchState?.menu?.category &&
-          !props.searchState?.menu?.category.includes("?")
-            ? props.searchState?.menu?.category
-            : "Discover all"
-        } businesses | SoPlugged`}
-        description="Online platform connecting you to Black-owned businesses across Canada. Find the perfect business for your needs on our rich directory"
-      />
+      <SEO title={seoTitle} description={seoDescription} />
       <Header />
       <main className="mb-16 min-h-screen pt-12">
         <div className="flex flex-col items-center">

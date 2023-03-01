@@ -8,9 +8,7 @@ const OurStory: NextPage = () => {
     <>
       <SEO
         title="Our Story | SoPlugged"
-        description="SoPlugged is an online platform that makes #buyingblack easy! Our
-              search-friendly platform helps end-users connect to Black-owned
-              businesses across Canada"
+        description="Learn about SoPlugged and our mission to support and empower black-owned businesses across Canada. Our free online directory connects communities with local black-owned businesses, helping to promote economic growth and diversity. Join us in our mission today."
       />
       <OurStoryPage />
     </>

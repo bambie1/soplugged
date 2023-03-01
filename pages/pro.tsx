@@ -7,8 +7,7 @@ const Pro: NextPage = () => {
   return (
     <>
       <SEO
-        description="Hire our team of experts to handle your digital needs, from custom
-        websites to social media management"
+        description="Get the digital expertise you need with SoPlugged Pro. Our team of experts will handle your custom website design, social media management, and more. Focus on what you do best and let us take care of your digital needs. Contact us today to learn more."
         title="SoPlugged Pro | Grow your online presence with ease"
         variant="pro"
       />

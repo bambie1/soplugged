@@ -14,7 +14,7 @@ const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
   return (
     <>
       <SEO
-        description="Online platform connecting you to Black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
+        description="Find and support black-owned businesses across Canada with SoPlugged. Our free online directory connects you with the best black-owned businesses in your community. Discover local gems and help empower black entrepreneurs today!"
         title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 

@@ -37,11 +37,7 @@ const Business: NextPage<{ slug: string; fallbackData: IBusiness }> = ({
     <>
       {!!business?.business_name ? (
         <SEO
-          description={`SoPlugged page for ${
-            business?.business_name || "a business"
-          }. A ${business?.category?.toLowerCase()} business based in ${
-            business?.business_location
-          }.`}
+          description={`Discover and support local black-owned businesses in ${business.business_location} with SoPlugged's online directory. Explore ${business?.business_name}'s page for ${business?.category}, and learn more about their products and services. Join us in promoting economic diversity and empowering black-owned businesses. Visit SoPlugged today and find your next favorite business.`}
           title={`${business?.business_name.toUpperCase()} | SoPlugged`}
         />
       ) : (
