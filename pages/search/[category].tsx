@@ -121,7 +121,9 @@ export default function Page(props: {
       ? // @ts-ignore
         `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory. ${categoryMetaDescriptions[category]}`
       : "Explore the best Black-owned businesses in Canada with SoPlugged's online directory. Discover a wide range of businesses and services, from restaurants and shops to professional services and more."
-  } Join us in promoting Black-owned businesses across the country. Start your search today.`;
+  } Start your search today. ${
+    searchState?.page && `Page ${searchState?.page}`
+  }`;
 
   return (
     <>
