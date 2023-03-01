@@ -24,6 +24,7 @@ import CustomMenu from "@/src/components/algolia/CustomMenu";
 import { CustomStateResults } from "@/src/components/algolia/CustomStateResults";
 import SEO from "@/src/components/SEO";
 import { createURL, getCategoryName, encodedCategories } from "@/utils/algolia";
+import { categoryMetaDescriptions } from "@/lib/categoryMetaDescriptions";
 
 const Header = dynamic(() => import("../../src/components/Header/Header"));
 const Footer = dynamic(() => import("../../src/components/Footer"));
@@ -109,18 +110,18 @@ export default function Page(props: {
   let filteredLocation = searchState?.menu?.business_location || null;
   if (Array.isArray(filteredLocation)) filteredLocation = filteredLocation[0];
 
+  const category = props.searchState?.menu?.category;
+
   const seoTitle = `${
-    props.searchState?.menu?.category &&
-    !props.searchState?.menu?.category.includes("?")
-      ? props.searchState?.menu?.category
-      : "Discover all"
-  } businesses | SoPlugged`;
+    category && !category.includes("?") ? category : "Discover all"
+  } Black-owned businesses | SoPlugged`;
 
   const seoDescription = `${
-    props.searchState?.menu?.category
-      ? `${props.searchState?.menu?.category}`
-      : "Explore the best black-owned businesses in Canada with SoPlugged's online directory. Discover a wide range of businesses and services, from restaurants and shops to professional services and more. Support economic diversity and empowerment by visiting SoPlugged's directory and finding your next go-to business."
-  } Join us in promoting black-owned businesses across the country. Start your search today.`;
+    category
+      ? // @ts-ignore
+        `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory. ${categoryMetaDescriptions[category]}`
+      : "Explore the best Black-owned businesses in Canada with SoPlugged's online directory. Discover a wide range of businesses and services, from restaurants and shops to professional services and more."
+  } Join us in promoting Black-owned businesses across the country. Start your search today.`;
 
   return (
     <>

@@ -8,7 +8,7 @@ const OurStory: NextPage = () => {
     <>
       <SEO
         title="Our Story | SoPlugged"
-        description="Learn about SoPlugged and our mission to support and empower black-owned businesses across Canada. Our free online directory connects communities with local black-owned businesses, helping to promote economic growth and diversity. Join us in our mission today."
+        description="Learn about SoPlugged and our mission to support and empower Black-owned businesses across Canada. Our free online directory connects communities with local Black-owned businesses, helping to promote economic growth and diversity. Join us in our mission today."
       />
       <OurStoryPage />
     </>

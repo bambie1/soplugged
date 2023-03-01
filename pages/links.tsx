@@ -103,7 +103,7 @@ const Links: FC = () => {
   return (
     <>
       <SEO
-        description="Explore a collection of helpful links to black-owned businesses across Canada with SoPlugged. Our free online directory connects you with local black-owned businesses in your city. Browse our links page today and discover even more businesses to support."
+        description="Explore a collection of helpful links to Black-owned businesses across Canada with SoPlugged. Our free online directory connects you with local Black-owned businesses in your city. Browse our links page today and discover even more businesses to support."
         title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
