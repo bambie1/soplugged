@@ -70,7 +70,7 @@ const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
           </span>
           <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-10">
             <div className="flex flex-col items-start">
-              <h2 className="text-3xl font-bold xl:text-4xl">
+              <h2 className="text-3xl font-semibold xl:text-4xl">
                 <span className="relative text-primary">
                   #Buyingblack
                   <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />

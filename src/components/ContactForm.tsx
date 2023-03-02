@@ -90,7 +90,7 @@ const ContactForm: FC<Props> = ({ businessEmail }) => {
       className="grid gap-4 pt-4 text-left"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h3 className="center text-lg font-bold uppercase text-primary">
+      <h3 className="center text-lg font-semibold uppercase text-primary">
         Contact owner
       </h3>
 

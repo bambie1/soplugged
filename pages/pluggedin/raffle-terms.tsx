@@ -29,7 +29,7 @@ const RaffleTerms = () => {
 
         <div className="prose mx-auto mt-10 lg:prose-lg">
           <p>
-            <span className="font-bold underline">Eligibility:</span> To be
+            <span className="font-semibold underline">Eligibility:</span> To be
             eligible to participate in the raffle draw, you must meet all of the
             following criteria:
           </p>
@@ -40,19 +40,19 @@ const RaffleTerms = () => {
           </ul>
 
           <p className="mt-4">
-            <span className="font-bold underline">Drawing:</span>The raffle draw
-            will take place on the day of the event. One winner will be selected
-            at random from all eligible participants.
+            <span className="font-semibold underline">Drawing:</span>The raffle
+            draw will take place on the day of the event. One winner will be
+            selected at random from all eligible participants.
           </p>
 
           <p className="mt-4">
-            <span className="font-bold underline">Prize:</span> The prize for
-            the raffle draw is a free business makeover, including a new
+            <span className="font-semibold underline">Prize:</span> The prize
+            for the raffle draw is a free business makeover, including a new
             website, logo, and product images. The prize has an approximate
             value of $1,000.
           </p>
 
-          <p className="mt-4 font-bold underline">Conditions:</p>
+          <p className="mt-4 font-semibold underline">Conditions:</p>
           <ul>
             <li>
               The prize is non-transferable and cannot be exchanged for cash or

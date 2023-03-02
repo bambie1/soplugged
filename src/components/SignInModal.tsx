@@ -10,7 +10,7 @@ const SignInModal = () => {
       aria-label="Authentication requirement to view dashboard"
       className="!w-[90%] max-w-lg rounded-lg"
     >
-      <h1 className="mb-2 text-2xl font-bold text-primary">
+      <h1 className="mb-2 text-2xl font-semibold text-primary">
         Please sign in first
       </h1>
 

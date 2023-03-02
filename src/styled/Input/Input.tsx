@@ -24,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       <div className="relative grid w-full text-left">
         <label
           htmlFor={tempId}
-          className={`mb-1 block text-sm font-bold uppercase ${
+          className={`mb-1 block text-sm font-semibold uppercase ${
             !!error && "text-red-500"
           }`}
         >

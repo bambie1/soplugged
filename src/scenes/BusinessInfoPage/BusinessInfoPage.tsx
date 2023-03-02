@@ -191,7 +191,7 @@ const BusinessInfoPage: FC<Props> = ({ business }) => {
   return (
     <>
       <div className="mb-4 flex flex-wrap items-center justify-between lg:mb-2">
-        <h1 className="text-4xl font-bold text-primary lg:text-5xl">
+        <h1 className="text-4xl font-semibold text-primary lg:text-5xl">
           Hi {session?.user?.name?.split(" ")[0] || "entrepreneur"}
         </h1>
         <p className="text-gray-600 underline">{session?.user?.email}</p>

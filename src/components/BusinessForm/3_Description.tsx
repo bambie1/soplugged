@@ -74,7 +74,7 @@ const Description = () => {
         <div className="grid">
           <label
             htmlFor="business_description"
-            className={`mb-1 text-sm font-bold uppercase ${
+            className={`mb-1 text-sm font-semibold uppercase ${
               isError && "text-red-500"
             }`}
           >

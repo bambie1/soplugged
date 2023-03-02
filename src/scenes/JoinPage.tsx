@@ -85,7 +85,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
   return (
     <>
       <PageWrapper center>
-        <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
+        <h1 className="mb-6 text-5xl font-semibold text-primary sm:text-6xl">
           Join SoPlugged
         </h1>
         <p>

@@ -10,7 +10,7 @@ const FilterByLocation = () => {
   const renderHeading = () => {
     return (
       <>
-        <h2 className="mb-1 text-3xl font-bold xl:text-4xl">
+        <h2 className="mb-1 text-3xl font-semibold xl:text-4xl">
           <span className="relative text-primary">
             Filter by location
             <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />

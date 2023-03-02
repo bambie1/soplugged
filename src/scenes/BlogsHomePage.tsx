@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 import BlogCard from "@/src/components/BlogCard";
 import { BlogPost } from "@/types/BlogPost";
+import MostRecentBlogCard from "@/components/MostRecentBlogCard";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -29,13 +30,19 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
         </section>
 
         <div className="my-container">
-          <div className="flex">
-            <ul className="mt-4 inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-3 2xl:grid-cols-4">
-              {posts?.map((post) => (
-                <li key={post.slug} className="w-full">
-                  <BlogCard post={post} />
-                </li>
-              ))}
+          <MostRecentBlogCard post={posts[0]} />
+          <hr />
+          <div className="mt-8 flex">
+            <ul className="inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-2 2xl:grid-cols-3">
+              {posts?.map((post, index) => {
+                return (
+                  index > 0 && (
+                    <li key={post.slug} className="w-full">
+                      <BlogCard post={post} />
+                    </li>
+                  )
+                );
+              })}
             </ul>
           </div>
         </div>

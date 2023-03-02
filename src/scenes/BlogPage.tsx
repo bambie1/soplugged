@@ -36,7 +36,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
       <main className="mx-auto mb-10 max-w-2xl  lg:max-w-none">
         <section className="my-container relative grid items-center gap-4 py-10 lg:grid-cols-2 lg:gap-10">
           <div className="flex flex-col items-start py-4 lg:py-20">
-            <h1 className="relative mb-4 text-3xl font-bold leading-[1.05] lg:text-5xl lg:leading-[1.2]">
+            <h1 className="relative mb-4 text-3xl font-semibold leading-[1.05] lg:text-5xl lg:leading-[1.2]">
               {title}
             </h1>
             <div className="flex flex-wrap gap-3">

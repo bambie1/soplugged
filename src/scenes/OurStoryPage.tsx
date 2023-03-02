@@ -8,7 +8,7 @@ const OurStoryPage = () => {
     <PageWrapper>
       <div className="my-8 grid items-center gap-10 lg:grid-cols-2">
         <section>
-          <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
+          <h1 className="mb-6 text-5xl font-semibold text-primary sm:text-6xl">
             Our story
           </h1>
           <div className="prose-lg">

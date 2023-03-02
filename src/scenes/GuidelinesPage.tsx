@@ -8,7 +8,7 @@ const GuidelinesPage: FC = () => {
   return (
     <>
       <PageWrapper isSlim>
-        <h1 className="relative mb-4 block text-5xl font-bold text-primary">
+        <h1 className="relative mb-4 block text-5xl font-semibold text-primary">
           Community Guidelines
         </h1>
 

@@ -7,13 +7,13 @@ interface Props {
   post: BlogPost;
 }
 
-const BlogCard: FC<Props> = ({ post }) => {
+const MostRecentBlogCard: FC<Props> = ({ post }) => {
   const { excerpt, blogImage, slug, createdAt, title } = post;
 
   return (
     <Link href={`/blog/${slug}`}>
-      <a className="group flex h-full flex-col">
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent">
+      <a className="group mb-6 flex h-full flex-col gap-4 lg:flex-row lg:gap-8">
+        <div className="relative aspect-video w-full flex-shrink-0 overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent lg:w-[50%]">
           <Image
             src={blogImage.url}
             alt=""
@@ -25,14 +25,14 @@ const BlogCard: FC<Props> = ({ post }) => {
         </div>
         <div className="mt-2 flex flex-col">
           <h3
-            className="mb-2 font-semibold uppercase lg:truncate"
+            className="mb-2 text-xl font-semibold transition duration-200 group-hover:underline lg:text-3xl"
             title={title}
           >
             {title}
           </h3>
-          <p className="mb-1 truncate text-sm lg:block">{excerpt}</p>
+          <p className="mb-1 text-gray-600 lg:block">{excerpt}</p>
 
-          <p className="text-xs text-gray-600">
+          <p className="text-gray-600">
             {new Date(createdAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",
@@ -45,4 +45,4 @@ const BlogCard: FC<Props> = ({ post }) => {
   );
 };
 
-export default BlogCard;
+export default MostRecentBlogCard;

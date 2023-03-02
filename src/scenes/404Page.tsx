@@ -16,7 +16,7 @@ const FAQPage = () => {
             icon={faExclamation}
             className="justify-self-center !text-5xl text-gray-500"
           />
-          <h1 className="text-4xl font-bold text-gray-500">404</h1>
+          <h1 className="text-4xl font-semibold text-gray-500">404</h1>
           <h2 className="text-2xl font-medium">Page not found</h2>
 
           <p>We suggest trying our most frequented pages:</p>

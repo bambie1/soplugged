@@ -41,7 +41,7 @@ const FAQs = () => {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
         <div className="max-w-2xl text-center lg:mx-auto">
-          <h2 className="text-3xl font-bold xl:text-4xl">
+          <h2 className="text-3xl font-semibold xl:text-4xl">
             <span className="relative text-primary">
               Frequently asked questions
               <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />

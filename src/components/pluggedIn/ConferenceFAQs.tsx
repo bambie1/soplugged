@@ -41,7 +41,7 @@ const ConferenceFAQs = () => {
         FAQs
       </h2>
 
-      <p className="outlinedText absolute top-0 right-0 text-[20rem] font-bold leading-none opacity-20 lg:top-40 lg:text-[40rem]">
+      <p className="outlinedText absolute top-0 right-0 text-[20rem] font-semibold leading-none opacity-20 lg:top-40 lg:text-[40rem]">
         ?
       </p>
 

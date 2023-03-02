@@ -10,7 +10,7 @@ const Blogs: FC<{ posts: BlogPost[] }> = ({ posts }) => {
     <div className="bg-white">
       <div className="mx-auto w-full py-16 sm:py-24 lg:max-w-7xl lg:px-8 2xl:max-w-screen-2xl">
         <div className="mx-auto mb-8 grid max-w-2xl gap-4 px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-bold xl:text-4xl">
+          <h2 className="text-3xl font-semibold xl:text-4xl">
             <span className="relative text-primary">
               Check out our blog
               <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />

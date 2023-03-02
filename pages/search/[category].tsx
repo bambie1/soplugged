@@ -140,7 +140,7 @@ export default function Page(props: {
                 </a>
               </Link>
             )}
-            <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-bold text-primary lg:text-5xl">
+            <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-semibold text-primary lg:text-5xl">
               {props.searchState?.menu?.category || "Explore"}
             </h1>
             <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">

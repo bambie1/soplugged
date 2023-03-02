@@ -43,7 +43,7 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
           </div>
           <ExternalLinkIcon className="h-6 w-6 transition duration-200 group-hover:text-gray-500" />
         </div>
-        <p className="mb-2 text-xl font-bold">
+        <p className="mb-2 text-xl font-semibold">
           Try <span className="text-primary">SoPlugged PRO</span> today
         </p>
         <p className="mb-4 text-sm text-gray-700 lg:w-[90%]">{adText}</p>
@@ -62,7 +62,7 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
         </div>
       </a>
       <div className="mt-2 flex items-center justify-between">
-        <p className="font-bold text-gray-500 lg:text-base">PROMOTED</p>
+        <p className="font-semibold text-gray-500 lg:text-base">PROMOTED</p>
         <Link href="/pro?ref=explore_page">
           <a key="info" aria-label="Learn more">
             <InformationCircleIcon className="h-5 w-5 text-gray-500" />

@@ -29,7 +29,7 @@ const ConfirmModal: FC<Props> = ({
         className="flex !w-[90%] max-w-lg flex-col gap-2 self-baseline rounded-lg"
         onDismiss={onDismiss}
       >
-        <AlertDialogLabel className="text-xl font-bold text-primary">
+        <AlertDialogLabel className="text-xl font-semibold text-primary">
           Please Confirm
         </AlertDialogLabel>
 

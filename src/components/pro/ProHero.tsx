@@ -6,7 +6,7 @@ const ProHero: FC = () => {
   return (
     <div className="pt-10 lg:pt-32">
       <div className="my-container text-center">
-        <h1 className="mx-auto mb-3 max-w-5xl text-[2.9rem] text-5xl font-bold lg:text-7xl xl:mb-6">
+        <h1 className="mx-auto mb-3 max-w-5xl text-[2.9rem] text-5xl font-semibold lg:text-7xl xl:mb-6">
           Provide the <span className="block sm:inline-block">best online</span>{" "}
           experience to <span className="text-gray-500">your customers</span>
         </h1>
