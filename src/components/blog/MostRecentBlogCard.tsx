@@ -35,7 +35,7 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
           </h3>
           <div className="mt-4 flex flex-wrap gap-3">
             {categories.map((category) => (
-              <CategoryPill category={category} isTiny />
+              <CategoryPill key={category.title} category={category} isTiny />
             ))}
           </div>
           <p className="mt-6 mb-1 text-gray-600 line-clamp-4">{excerpt}</p>

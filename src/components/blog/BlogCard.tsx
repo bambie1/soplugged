@@ -38,7 +38,7 @@ const BlogCard: FC<Props> = ({ post }) => {
             </h3>
             <div className="mt-1 mb-4 flex flex-wrap gap-3">
               {categories.map((category) => (
-                <CategoryPill category={category} isTiny />
+                <CategoryPill category={category} isTiny key={category.title} />
               ))}
             </div>
 
