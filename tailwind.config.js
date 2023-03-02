@@ -54,6 +54,9 @@ module.exports = {
             strong: {
               color: "currentColor",
             },
+            h1: {
+              fontWeight: 600,
+            },
             h2: {
               strong: {
                 fontWeight: 600,
