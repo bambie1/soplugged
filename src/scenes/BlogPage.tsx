@@ -8,8 +8,9 @@ import {
 } from "react-share";
 import Image from "next/image";
 
-import BlogCard from "@/src/components/BlogCard";
+import BlogCard from "@/components/blog/BlogCard";
 import { BlogPost } from "@/types/BlogPost";
+import CategoryPill from "@/components/blog/CategoryPill";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -40,20 +41,9 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
               {title}
             </h1>
             <div className="flex flex-wrap gap-3">
-              {categories.map(({ title, color }) => {
-                const { r, g, b } = color.rgba;
-                const bgColor = `rgba(${r}, ${g}, ${b}, .2)`;
-
-                return (
-                  <span
-                    key={title}
-                    style={{ background: bgColor }}
-                    className={`inline-flex items-center rounded-full px-3 py-0.5 text-sm text-primary`}
-                  >
-                    {title}
-                  </span>
-                );
-              })}
+              {categories.map((category) => (
+                <CategoryPill category={category} />
+              ))}
             </div>
 
             <div className="mt-6">
@@ -162,7 +152,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           <div className="border-t border-gray-200 pt-6">
             <h3>READ MORE...</h3>
             <div className="overflow-x-auto pb-2">
-              <ul className="mt-4 inline-flex w-full gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
+              <ul className="mt-4 inline-flex w-full gap-4 lg:grid lg:grid-cols-2 lg:gap-16">
                 {morePosts?.map((post) => (
                   <li
                     key={post.slug}

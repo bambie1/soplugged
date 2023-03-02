@@ -55,6 +55,14 @@ export async function getAllPostsForHome() {
           }
           categories(first: 10) {
             title
+            color {
+              hex
+              rgba {
+                r
+                g
+                b
+              }
+            }
           }
         }
       }

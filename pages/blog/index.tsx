@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { getAllBlogPosts } from "@/utils/graphcms";
 import SEO from "@/src/components/SEO";
 import BlogsHomePage from "@/src/scenes/BlogsHomePage";
 import { BlogPost } from "@/types/BlogPost";
+import { fetchAPI } from "@/utils/graphcms";
 
 interface Props {
   posts: BlogPost[];
@@ -32,3 +32,38 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { posts },
   };
 };
+
+// GraphCMS queries
+const gql = String.raw;
+async function getAllBlogPosts() {
+  const data = await fetchAPI(
+    gql`
+      {
+        posts(orderBy: createdAt_DESC, first: 20, stage: PUBLISHED) {
+          title
+          slug
+          createdAt
+          excerpt
+          author {
+            name
+          }
+          blogImage {
+            url
+          }
+          categories(first: 10) {
+            title
+            color {
+              hex
+              rgba {
+                r
+                g
+                b
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+  return data?.posts;
+}

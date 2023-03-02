@@ -102,6 +102,17 @@ async function getPostAndMorePosts(slug: string) {
           blogImage {
             url
           }
+          categories(first: 10) {
+            title
+            color {
+              hex
+              rgba {
+                r
+                g
+                b
+              }
+            }
+          }
         }
       }
     `,

@@ -1,3 +1,5 @@
+import { BlogCategory } from "./BlogCategory";
+
 export interface BlogPost {
   excerpt: string;
   blogImage: { url: string };
@@ -6,8 +8,5 @@ export interface BlogPost {
   title: string;
   content: { html: string };
   author: { name: string };
-  categories: {
-    title: string;
-    color: { rgba: { r: number; g: number; b: number } };
-  }[];
+  categories: BlogCategory[];
 }

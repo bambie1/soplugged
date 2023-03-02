@@ -3,7 +3,7 @@ import { FC } from "react";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { BlogPost } from "@/types/BlogPost";
 
-import BlogCard from "../BlogCard";
+import BlogCard from "../blog/BlogCard";
 
 const Blogs: FC<{ posts: BlogPost[] }> = ({ posts }) => {
   return (
