@@ -8,9 +8,9 @@ import {
 } from "react-share";
 import Image from "next/image";
 
-import BlogCard from "@/components/blog/BlogCard";
 import { BlogPost } from "@/types/BlogPost";
 import CategoryPill from "@/components/blog/CategoryPill";
+import BlogList from "@/components/blog/BlogList";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -74,7 +74,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           <div className="relative grid-cols-3 items-start gap-4 lg:my-10 lg:grid lg:gap-8">
             <div
               dangerouslySetInnerHTML={{ __html: content.html }}
-              className="prose col-span-2 col-start-1 mb-20 max-w-none lg:prose-lg lg:mr-10"
+              className="prose col-span-2 col-start-1 mb-10 max-w-none lg:prose-lg lg:mb-20 lg:mr-10"
             />
 
             <hr className="mt-10 mb-4 lg:hidden" />
@@ -134,7 +134,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
                   </LinkedinShareButton>
                 </div>
               </div>
-              <div className="flex min-h-[10rem] flex-col items-start rounded-xl bg-accent/10 p-4 shadow shadow-accent/40 lg:p-8">
+              <div className="hidden min-h-[10rem] flex-col items-start rounded-xl bg-accent/10 p-4 shadow shadow-accent/40 lg:flex lg:p-8">
                 <h3 className="mb-4 text-lg font-semibold lg:text-xl">
                   List your business on SoPlugged for FREE
                 </h3>
@@ -149,24 +149,22 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-200 pt-6">
-            <h3>READ MORE...</h3>
-            <div className="overflow-x-auto pb-2">
-              <ul className="mt-4 inline-flex w-full gap-4 lg:grid lg:grid-cols-2 lg:gap-16">
-                {morePosts?.map((post) => (
-                  <li
-                    key={post.slug}
-                    className="min-w-[70vw] md:min-w-[20rem] lg:min-w-0"
-                  >
-                    <BlogCard post={post} />
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="relative mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex">
+                <h2 className="bg-white pr-4 text-lg font-semibold text-gray-700 lg:text-2xl">
+                  Read more
+                </h2>
+              </div>
             </div>
+            <BlogList posts={morePosts} />
           </div>
         </div>
       </main>
-      <Footer tertiary />
+      <Footer />
     </>
   );
 };

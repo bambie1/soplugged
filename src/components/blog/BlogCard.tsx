@@ -7,7 +7,6 @@ import CategoryPill from "./CategoryPill";
 
 interface Props {
   post: BlogPost;
-  isExtended?: boolean;
 }
 
 const BlogCard: FC<Props> = ({ post }) => {

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import dynamic from "next/dynamic";
 
-import BlogCard from "@/components/blog/BlogCard";
 import { BlogPost } from "@/types/BlogPost";
 import MostRecentBlogCard from "@/components/blog/MostRecentBlogCard";
+import BlogList from "@/components/blog/BlogList";
 
 const Header = dynamic(() => import("../components/Header/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
@@ -49,20 +49,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
               </div>
             </div>
 
-            <ul className="inline-flex w-full flex-wrap gap-8 md:grid md:grid-cols-2 xl:gap-12 xl:gap-y-20">
-              {posts?.map((post, index) => {
-                return (
-                  index > 0 && (
-                    <li
-                      key={post.slug}
-                      className="w-full border-b-2 md:border-none"
-                    >
-                      <BlogCard post={post} isExtended />
-                    </li>
-                  )
-                );
-              })}
-            </ul>
+            <BlogList posts={posts.filter((_, i) => i !== 0)} />
           </div>
         </div>
       </main>

@@ -51,7 +51,7 @@ html {
 }
 
 p {
-  @apply lg:text-lg;
+  @apply xl:text-lg;
 }
 
 .my-container {
