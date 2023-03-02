@@ -17,8 +17,8 @@ const BlogCard: FC<Props> = ({ post }) => {
   return (
     <Link href={`/blog/${slug}`}>
       <a className="group flex h-full flex-col">
-        <div className="mb-2 flex flex-1 items-start gap-3">
-          <div className="relative aspect-square w-[20%] flex-shrink-0 overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent">
+        <div className="mb-2 flex flex-1 flex-col items-start gap-3 xl:flex-row">
+          <div className="relative aspect-video w-full flex-shrink-0 overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent xl:aspect-square xl:w-[30%]">
             <Image
               src={blogImage.url}
               alt=""
@@ -29,34 +29,33 @@ const BlogCard: FC<Props> = ({ post }) => {
             />
           </div>
 
-          <div>
+          <div className="flex h-full flex-1 flex-col">
             <h3
-              className="mb-2 text-lg font-semibold transition duration-200 group-hover:text-primary group-hover:underline lg:text-2xl"
+              className="text-lg font-semibold transition duration-200 group-hover:text-primary group-hover:underline lg:text-2xl"
               title={title}
             >
               {title}
             </h3>
             <div className="mt-1 mb-4 flex flex-wrap gap-3">
               {categories.map((category) => (
-                <CategoryPill category={category} />
+                <CategoryPill category={category} isTiny />
               ))}
             </div>
-          </div>
-        </div>
-        <div className="mt-auto flex flex-col">
-          <p className="mb-4 text-gray-600 line-clamp-2 lg:text-base">
-            {excerpt}
-          </p>
 
-          <div className="mt-auto">
-            <p className="lg:text-base">{author.name}</p>
-            <p className="text-sm text-gray-600 lg:text-sm">
-              {new Date(createdAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
+            <p className="mb-4 text-gray-600 line-clamp-2 lg:text-base">
+              {excerpt}
             </p>
+
+            <div className="mt-auto">
+              <p className="lg:text-base">{author.name}</p>
+              <p className="text-sm text-gray-600 lg:text-sm">
+                {new Date(createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </p>
+            </div>
           </div>
         </div>
       </a>

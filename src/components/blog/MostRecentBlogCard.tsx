@@ -28,17 +28,17 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
         </div>
         <div className="flex flex-col">
           <h3
-            className="text-xl font-bold transition duration-200 group-hover:text-primary group-hover:underline lg:text-4xl"
+            className="text-xl font-semibold transition duration-200 group-hover:text-primary group-hover:underline md:font-bold lg:text-4xl"
             title={title}
           >
             {title}
           </h3>
           <div className="mt-4 flex flex-wrap gap-3">
             {categories.map((category) => (
-              <CategoryPill category={category} />
+              <CategoryPill category={category} isTiny />
             ))}
           </div>
-          <p className="mt-6 mb-1 text-gray-600 lg:block">{excerpt}</p>
+          <p className="mt-6 mb-1 text-gray-600 line-clamp-4">{excerpt}</p>
 
           <div className="mt-6">
             <p>{author.name}</p>

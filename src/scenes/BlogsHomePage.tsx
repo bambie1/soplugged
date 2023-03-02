@@ -37,7 +37,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
         <div className="my-container">
           <MostRecentBlogCard post={posts[0]} />
 
-          <div className="mt-8 flex flex-col pt-10">
+          <div className="mt-8 flex flex-col lg:mt-20">
             <div className="relative mb-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300" />
@@ -49,11 +49,14 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
               </div>
             </div>
 
-            <ul className="inline-flex w-full grid-cols-2 flex-wrap gap-8 md:grid lg:grid-cols-2 xl:gap-12 xl:gap-y-20">
+            <ul className="inline-flex w-full flex-wrap gap-8 md:grid md:grid-cols-2 xl:gap-12 xl:gap-y-20">
               {posts?.map((post, index) => {
                 return (
                   index > 0 && (
-                    <li key={post.slug} className="w-full">
+                    <li
+                      key={post.slug}
+                      className="w-full border-b-2 md:border-none"
+                    >
                       <BlogCard post={post} isExtended />
                     </li>
                   )
@@ -63,7 +66,7 @@ const BlogsHomePage: FC<Props> = ({ posts }) => {
           </div>
         </div>
       </main>
-      <Footer tertiary />
+      <Footer />
     </>
   );
 };
