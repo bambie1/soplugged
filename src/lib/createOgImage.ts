@@ -2,17 +2,14 @@ import base64url from "base64url";
 
 export const createOgImage = ({
   title,
-  authorName,
   categories,
   imageUrl,
-  createdDate,
+  authorAndDate,
 }: {
   title: string;
-  authorName: string;
-  authorImage: string;
   categories: string;
   imageUrl: string;
-  createdDate: string;
+  authorAndDate: string;
 }) =>
   [
     // ACCOUNT PREFIX
@@ -21,20 +18,16 @@ export const createOgImage = ({
     `w_1600,h_836,q_100`,
 
     // Categories
-    `l_text:Raleway_28:${e(categories)},co_rgb:4e350580,c_fit,w_1400`,
-    `fl_layer_apply,g_south_west,x_180,y_440`,
+    `l_text:Raleway_32:${e(categories)},co_rgb:4e3505,c_fit,w_1400`,
+    `fl_layer_apply,g_south_west,x_180,y_450`,
 
     // TITLE
-    `l_text:Raleway_72_bold:${e(title)},co_rgb:4e3505,c_fit,w_700,h_240`,
-    `fl_layer_apply,g_south_west,x_180,y_280`,
-
-    // Date
-    `l_text:Raleway_28:${e(createdDate)},co_rgb:4e350580,c_fit,w_1400`,
-    `fl_layer_apply,g_south_west,x_180,y_220`,
+    `l_text:Raleway_72_bold:${e(title)},co_rgb:4e3505,c_fit,w_800,h_240`,
+    `fl_layer_apply,g_south_west,x_180,y_290`,
 
     // Author info
-    `l_text:Raleway_28:${e(authorName)},co_rgb:4e3505,c_fit,w_1400`,
-    `fl_layer_apply,g_south_west,x_180,y_170`,
+    `l_text:Raleway_36:${e(authorAndDate)},co_rgb:4e3505,c_fit,w_1400`,
+    `fl_layer_apply,g_south_west,x_180,y_190`,
 
     //  Blog image
     `l_fetch:${base64url(imageUrl)}`,
@@ -42,7 +35,7 @@ export const createOgImage = ({
     `fl_layer_apply,g_east,x_116,fl_no_overflow`,
 
     // BG
-    `v1677876163/soplugged_images/og_images/blog_og_cddrpx.png`,
+    `v1677883387/soplugged_images/og_images/blog_post_og_e6r01f.png`,
   ].join("/");
 
 // double escape for commas and slashes

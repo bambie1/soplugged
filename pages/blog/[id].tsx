@@ -14,23 +14,6 @@ interface Props {
 }
 
 const GuidePage: FC<Props> = ({ post, morePosts, ogImage }) => {
-  // const ogImage = createOgImage({
-  //   title: post?.title,
-  //   authorName: post?.author.name,
-  //   authorImage: "",
-  //   imageUrl: post.blogImage.url,
-  //   createdDate: new Date(post.createdAt).toLocaleDateString("en-US", {
-  //     year: "numeric",
-  //     month: "short",
-  //     day: "numeric",
-  //   }),
-  //   categories: post.categories
-  //     ?.map((item) => item.title.toUpperCase())
-  //     .join(" · "),
-  // });
-
-  // console.log(ogImage);
-
   return (
     <>
       <SEO
@@ -68,17 +51,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const ogImage = createOgImage({
     title: post?.title,
-    authorName: post?.author.name,
-    authorImage: "",
     imageUrl: post.blogImage.url,
-    createdDate: new Date(post.createdAt).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }),
-    categories: post.categories
-      ?.map((item) => item.title.toUpperCase())
-      .join(" · "),
+    categories: post.categories?.[0].title,
+    authorAndDate: [
+      post?.author.name,
+      new Date(post.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+    ].join(" · "),
   });
 
   return {
