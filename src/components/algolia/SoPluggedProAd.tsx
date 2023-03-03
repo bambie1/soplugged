@@ -63,7 +63,7 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
       </a>
       <div className="mt-2 flex items-center justify-between">
         <p className="font-bold text-gray-500 lg:text-base">PROMOTED</p>
-        <Link href="/pro?ref=explore_page">
+        <Link href="/pro">
           <a key="info" aria-label="Learn more">
             <InformationCircleIcon className="h-5 w-5 text-gray-500" />
           </a>
