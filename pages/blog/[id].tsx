@@ -10,23 +10,10 @@ import { createOgImage } from "@/lib/createOgImage";
 interface Props {
   post: BlogPost;
   morePosts: BlogPost[];
+  ogImage: string;
 }
 
-const GuidePage: FC<Props> = ({ post, morePosts }) => {
-  const ogImage = createOgImage({
-    title: post.title,
-    meta: [
-      post.author.name,
-      new Date(post.createdAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-      post.categories?.[0]?.title,
-    ].join(" · "),
-    imageUrl: post.blogImage.url,
-  });
-
+const GuidePage: FC<Props> = ({ post, morePosts, ogImage }) => {
   return (
     <>
       <SEO
@@ -62,8 +49,22 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { post, morePosts } =
     (await getPostAndMorePosts(params?.id || "")) || {};
 
+  const ogImage = createOgImage({
+    title: post?.title,
+    meta: [
+      post.author.name,
+      new Date(post.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      post.categories?.[0]?.title,
+    ].join(" · "),
+    imageUrl: post.blogImage.url,
+  });
+
   return {
-    props: { post, morePosts },
+    props: { post, morePosts, ogImage },
   };
 };
 
