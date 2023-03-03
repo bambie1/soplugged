@@ -5,9 +5,10 @@ interface Props {
   description?: string;
   title?: string;
   variant?: "pro" | "blog" | "pluggedin";
+  overrideImage?: string;
 }
 
-const SEO: FC<Props> = ({ description, title, variant }) => {
+const SEO: FC<Props> = ({ description, title, variant, overrideImage }) => {
   let ogImage =
     "https://res.cloudinary.com/denbpv9kp/image/upload/v1660913947/soplugged_images/og_images/og-img_ouruhc.png";
 
@@ -27,6 +28,8 @@ const SEO: FC<Props> = ({ description, title, variant }) => {
     default:
       break;
   }
+
+  if (overrideImage) ogImage = overrideImage;
 
   return (
     <Head>

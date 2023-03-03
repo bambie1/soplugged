@@ -5,6 +5,7 @@ import SEO from "@/src/components/SEO";
 import BlogPage from "@/src/scenes/BlogPage";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
+import { createOgImage } from "@/lib/createOgImage";
 
 interface Props {
   post: BlogPost;
@@ -12,12 +13,27 @@ interface Props {
 }
 
 const GuidePage: FC<Props> = ({ post, morePosts }) => {
+  const ogImage = createOgImage({
+    title: post.title,
+    meta: [
+      post.author.name,
+      new Date(post.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      post.categories?.[0].title,
+    ].join(" · "),
+    imageUrl: post.blogImage.url,
+  });
+
   return (
     <>
       <SEO
         title={`${post?.title || "Guides"} | SoPlugged Blog`}
         description={post?.excerpt}
         variant="blog"
+        overrideImage={ogImage}
       />
       <BlogPage post={post} morePosts={morePosts} />
     </>
