@@ -30,6 +30,7 @@
     "@stripe/stripe-js": "^1.46.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "algoliasearch": "4.12.1",
+    "base64url": "^3.0.1",
     "classnames": "^2.3.1",
     "instantsearch.js": "^4.43.1",
     "next": "12.2.0",
