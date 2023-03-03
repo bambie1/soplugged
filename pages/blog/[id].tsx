@@ -14,6 +14,23 @@ interface Props {
 }
 
 const GuidePage: FC<Props> = ({ post, morePosts, ogImage }) => {
+  // const ogImage = createOgImage({
+  //   title: post?.title,
+  //   authorName: post?.author.name,
+  //   authorImage: "",
+  //   imageUrl: post.blogImage.url,
+  //   createdDate: new Date(post.createdAt).toLocaleDateString("en-US", {
+  //     year: "numeric",
+  //     month: "short",
+  //     day: "numeric",
+  //   }),
+  //   categories: post.categories
+  //     ?.map((item) => item.title.toUpperCase())
+  //     .join(" · "),
+  // });
+
+  // console.log(ogImage);
+
   return (
     <>
       <SEO
@@ -51,20 +68,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const ogImage = createOgImage({
     title: post?.title,
-    meta: [
-      post.author.name,
-      new Date(post.createdAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-      post.categories?.[0]?.title,
-    ].join(" · "),
+    authorName: post?.author.name,
+    authorImage: "",
     imageUrl: post.blogImage.url,
+    createdDate: new Date(post.createdAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
+    categories: post.categories
+      ?.map((item) => item.title.toUpperCase())
+      .join(" · "),
   });
 
   return {
-    props: { post, morePosts, ogImage },
+    props: {
+      post,
+      morePosts,
+      // ogImage
+    },
   };
 };
 
@@ -72,7 +94,9 @@ export default GuidePage;
 
 // GraphCMS queries
 const gql = String.raw;
-async function getPostAndMorePosts(slug: string) {
+async function getPostAndMorePosts(
+  slug: string
+): Promise<{ post: BlogPost; morePosts: BlogPost[] }> {
   const data = await fetchAPI(
     gql`
       query PostBySlug($slug: String!) {

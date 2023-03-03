@@ -31,7 +31,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
       <Header variant="blog" />
       <main className="relative mb-20">
         <div className="relative w-full">
-          <div className="absolute top-0 left-0 right-0 bottom-20 -z-10 bg-secondary/[.15] xl:bottom-40" />
+          <div className="absolute left-0 right-0 bottom-0 -z-10 h-1/3 bg-secondary/[.15] xl:bottom-6 xl:h-1/3" />
 
           <div className="mx-auto max-w-[52rem] px-4 pb-6 pt-12 sm:px-6 lg:py-20">
             <div className="mb-2 flex flex-wrap gap-3">
@@ -44,7 +44,6 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             </h1>
             <div className="mt-6 mb-8 flex flex-wrap items-start justify-between">
               <div className="flex items-center gap-3">
-                {/* <Image src={""} /> */}
                 <div className="aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400" />
                 <div>
                   <p className="uppercase text-gray-600">{author.name}</p>
@@ -79,7 +78,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
           <div
             dangerouslySetInnerHTML={{ __html: content.html }}
-            className="prose mx-auto mt-6 mb-10 border-t pt-6 lg:prose-xl lg:mb-20 xl:mt-0"
+            className="prose mx-auto mt-6 mb-10 border-t pt-6 lg:prose-xl lg:mb-20 xl:mt-0 xl:border-none"
           />
 
           <div>
