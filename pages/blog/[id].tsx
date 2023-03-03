@@ -22,7 +22,7 @@ const GuidePage: FC<Props> = ({ post, morePosts }) => {
         month: "short",
         day: "numeric",
       }),
-      post.categories?.[0].title,
+      post.categories?.[0]?.title,
     ].join(" · "),
     imageUrl: post.blogImage.url,
   });

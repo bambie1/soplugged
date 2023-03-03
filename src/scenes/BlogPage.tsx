@@ -31,9 +31,9 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
       <Header variant="blog" />
       <main className="relative mb-20">
         <div className="relative w-full">
-          <div className="light-gradient absolute top-0 left-0 right-0 bottom-40 -z-10" />
+          <div className="absolute top-0 left-0 right-0 bottom-20 -z-10 bg-secondary/[.15] xl:bottom-40" />
 
-          <div className="mx-auto max-w-[52rem] py-4 px-4 sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-[52rem] px-4 pb-6 pt-12 sm:px-6 lg:py-20">
             <div className="mb-2 flex flex-wrap gap-3">
               {categories.map((category) => (
                 <CategoryPill category={category} key={category.title} />
@@ -42,8 +42,17 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             <h1 className="relative text-3xl font-semibold leading-[1.05] lg:text-5xl lg:leading-[1.2]">
               {title}
             </h1>
-            <div className="mt-6 mb-8 flex flex-wrap items-center justify-between">
-              <p className="uppercase">{author?.name || "SoPlugged team"}</p>
+            <div className="mt-6 mb-8 flex flex-wrap items-start justify-between">
+              <div className="flex items-center gap-3">
+                {/* <Image src={""} /> */}
+                <div className="aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400" />
+                <div>
+                  <p className="uppercase text-gray-600">{author.name}</p>
+                  <p className="text-sm font-semibold text-gray-600">
+                    SoPlugged team
+                  </p>
+                </div>
+              </div>
               <p className="text-gray-600">
                 {new Date(createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -70,7 +79,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
           <div
             dangerouslySetInnerHTML={{ __html: content.html }}
-            className="prose mx-auto mt-8 mb-10 lg:prose-xl lg:mb-20 xl:mt-0"
+            className="prose mx-auto mt-6 mb-10 border-t pt-6 lg:prose-xl lg:mb-20 xl:mt-0"
           />
 
           <div>
