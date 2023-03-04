@@ -43,14 +43,25 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
           </p>
 
           <div className="mt-6">
-            <p>{author.name}</p>
-            <p className="text-gray-600">
-              {new Date(createdAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </p>
+            <div className="flex items-center gap-3">
+              <div className="relative aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400">
+                <Image
+                  src={post.author.picture.url}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div>
+                <p>{author.name}</p>
+                <p className="text-gray-600">
+                  {new Date(createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </a>

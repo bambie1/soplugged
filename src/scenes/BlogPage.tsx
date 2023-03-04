@@ -44,7 +44,13 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             </h1>
             <div className="mt-6 mb-8 flex flex-wrap items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400" />
+                <div className="relative aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400">
+                  <Image
+                    src={post.author.picture.url}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
                 <div>
                   <p className="uppercase text-gray-600">{author.name}</p>
                   <p className="text-sm font-semibold text-gray-600">

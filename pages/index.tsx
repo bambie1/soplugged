@@ -52,6 +52,9 @@ export async function getAllPostsForHome() {
           }
           author {
             name
+            picture {
+              url
+            }
           }
           categories(first: 10) {
             title

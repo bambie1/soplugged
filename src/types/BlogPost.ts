@@ -7,6 +7,6 @@ export interface BlogPost {
   createdAt: string;
   title: string;
   content: { html: string };
-  author: { name: string };
+  author: { name: string; picture: { url: string } };
   categories: BlogCategory[];
 }

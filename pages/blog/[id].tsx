@@ -93,6 +93,9 @@ async function getPostAndMorePosts(
           createdAt
           author {
             name
+            picture {
+              url
+            }
           }
           blogImage {
             url
@@ -121,6 +124,9 @@ async function getPostAndMorePosts(
           excerpt
           author {
             name
+            picture {
+              url
+            }
           }
           blogImage {
             url

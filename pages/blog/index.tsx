@@ -46,6 +46,9 @@ async function getAllBlogPosts() {
           excerpt
           author {
             name
+            picture {
+              url
+            }
           }
           blogImage {
             url
