@@ -34,12 +34,12 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           <div className="absolute left-0 right-0 bottom-0 -z-10 h-1/3 bg-secondary/[.15] xl:bottom-6 xl:h-1/3" />
 
           <div className="mx-auto max-w-[52rem] px-4 pb-6 pt-12 sm:px-6 lg:py-20">
-            <div className="mb-2 flex flex-wrap gap-3">
+            <div className="mb-4 flex flex-wrap gap-3">
               {categories.map((category) => (
                 <CategoryPill category={category} key={category.title} />
               ))}
             </div>
-            <h1 className="relative text-3xl font-semibold leading-[1.05] lg:text-5xl lg:leading-[1.2]">
+            <h1 className="relative text-3xl font-semibold lg:text-5xl lg:leading-[1.2]">
               {title}
             </h1>
             <div className="mt-6 mb-8 flex flex-wrap items-start justify-between">
@@ -72,7 +72,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
         </div>
 
         <div className="my-container relative">
-          <div className="top-0 left-0 mx-auto mt-4 max-w-[50rem] xl:absolute xl:mx-6 xl:w-[10rem]">
+          <div className="top-0 left-0 mx-auto mt-6 max-w-[50rem] xl:absolute xl:mx-6 xl:w-[10rem]">
             <p className="xl:hidden">Share this article on:</p>
             <ShareButtons blogUrl={blogUrl} />
           </div>
