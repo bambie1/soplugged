@@ -36,7 +36,7 @@ const SoRandomPage = () => {
   return (
     <PageWrapper whiteFooter>
       <div className="mx-auto w-full max-w-3xl text-center">
-        <h1 className="mb-6 text-5xl font-bold text-primary sm:text-6xl">
+        <h1 className="mb-6 text-5xl font-semibold text-primary sm:text-6xl">
           So random!
         </h1>
         <p>

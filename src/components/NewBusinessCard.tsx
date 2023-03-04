@@ -17,7 +17,7 @@ const NewBusinessCard: FC<Props> = ({ hit }) => {
           <div className="absolute -top-7 flex rounded-full shadow-lg grayscale-[.8] group-hover:grayscale-0">
             <Avatar name={business_name} url={logo_url} />
           </div>
-          <h3 className="truncate font-bold uppercase text-gray-600">
+          <h3 className="truncate font-semibold uppercase text-gray-600">
             {business_name}
           </h3>
 

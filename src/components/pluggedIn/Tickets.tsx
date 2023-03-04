@@ -61,7 +61,7 @@ const Tickets = () => {
                   </span>
                 </div>
                 <div className="mt-2 block lg:mt-4">
-                  <p className="text-lg font-bold text-gray-900 lg:text-xl">
+                  <p className="text-lg font-semibold text-gray-900 lg:text-xl">
                     {feature.title}
                   </p>
                   <p className="mt-3 text-base text-gray-500">

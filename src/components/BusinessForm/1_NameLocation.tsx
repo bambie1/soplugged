@@ -105,7 +105,7 @@ const NameLocation: FC<Props> = ({ initialName }) => {
             }) => (
               <div className="relative">
                 <label
-                  className={`mb-1 block text-sm font-bold uppercase ${
+                  className={`mb-1 block text-sm font-semibold uppercase ${
                     isLocationError ? "text-red-500" : ""
                   }`}
                   htmlFor="business_location"

@@ -101,7 +101,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
         {business_description && (
           <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
-            <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
+            <h3 className="mb-2 text-lg font-semibold uppercase text-gray-800 lg:text-xl">
               About
             </h3>
             <section
@@ -139,7 +139,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
               <Avatar name={business_name} url={logo_url} />
-              <h1 className="text-center text-4xl font-bold lg:text-5xl">
+              <h1 className="text-center text-4xl font-semibold lg:text-5xl">
                 {business_name.toUpperCase()}
               </h1>
             </div>

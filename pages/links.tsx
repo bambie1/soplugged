@@ -119,7 +119,7 @@ const Links: FC = () => {
               />
             </a>
           </Link>
-          <h1 className="mt-2 text-3xl font-bold text-primary lg:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold text-primary lg:text-4xl">
             SoPlugged
           </h1>
           <p className="text-neutral-400">@sopluggd</p>

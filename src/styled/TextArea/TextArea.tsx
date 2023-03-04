@@ -15,7 +15,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, Props>(
       <div className={styles.formGroup}>
         <label
           htmlFor={name}
-          className="mb-1 block text-sm font-bold uppercase"
+          className="mb-1 block text-sm font-semibold uppercase"
         >
           {label}
         </label>

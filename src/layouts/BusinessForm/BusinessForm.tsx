@@ -32,7 +32,7 @@ const BusinessForm: FC<Props> = ({
 
     return (
       <>
-        <h1 className="mx-auto mt-12 max-w-xl text-center text-4xl font-bold text-primary lg:text-5xl">
+        <h1 className="mx-auto mt-12 max-w-xl text-center text-4xl font-semibold text-primary lg:text-5xl">
           {steps[currentStep - 1]?.name || title}
         </h1>
         <h2 className="mb-4 mt-3 text-center md:text-lg lg:mb-10 lg:text-xl">

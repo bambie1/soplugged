@@ -4,13 +4,20 @@ import {
   LightningBoltIcon,
   PlusIcon,
 } from "@heroicons/react/outline";
+import { FC } from "react";
 
 import PopularBusinesses from "@/src/components/PopularBusinesses";
 import CategoriesGrid from "@/src/components/home/CategoriesGrid";
 import { ButtonLink } from "@/styled/ButtonLink";
-import { FC } from "react";
 
 import { BlogPost } from "@/types/BlogPost";
+import BlogList from "@/components/blog/BlogList";
+
+const BuyOrSell = dynamic(() => import("../components/home/BuyOrSell"));
+const FilterByLocation = dynamic(
+  () => import("../components/home/FilterByLocation")
+);
+const FAQs = dynamic(() => import("../components/home/FAQs"));
 
 const secondaryLinks = [
   {
@@ -45,13 +52,6 @@ const secondaryLinks = [
   },
 ];
 
-const BuyOrSell = dynamic(() => import("../components/home/BuyOrSell"));
-const FilterByLocation = dynamic(
-  () => import("../components/home/FilterByLocation")
-);
-const FAQs = dynamic(() => import("../components/home/FAQs"));
-const Blogs = dynamic(() => import("../components/home/Blogs"));
-
 const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
   return (
     <>
@@ -70,7 +70,7 @@ const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
           </span>
           <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-10">
             <div className="flex flex-col items-start">
-              <h2 className="text-3xl font-bold xl:text-4xl">
+              <h2 className="text-3xl font-semibold xl:text-4xl">
                 <span className="relative text-primary">
                   #Buyingblack
                   <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
@@ -127,7 +127,28 @@ const HomePage: FC<{ posts: BlogPost[] }> = (props) => {
 
         <BuyOrSell />
 
-        <Blogs {...props} />
+        <div className="my-container bg-white py-16 pb-4 sm:py-24 sm:pb-10">
+          <div className="mx-auto mb-8 grid max-w-2xl gap-4 px-4 text-center sm:px-6">
+            <h2 className="text-3xl font-semibold xl:text-4xl">
+              <span className="relative text-primary">
+                Check out our blog
+                <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
+              </span>
+            </h2>
+            <p>
+              We've penned-down some of our thoughts and general guidelines that
+              have worked for us so far.
+            </p>
+          </div>
+
+          <BlogList {...props} />
+
+          <div className="mt-6 flex justify-center lg:mt-12">
+            <ButtonLink href="/blog" showArrow variant="text">
+              View all posts
+            </ButtonLink>
+          </div>
+        </div>
         <FAQs />
       </div>
     </>

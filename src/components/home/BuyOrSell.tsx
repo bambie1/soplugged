@@ -36,7 +36,7 @@ const BuyOrSell = () => {
                 } lg:min-h-[20rem]`}
               >
                 <div className="transition duration-300 group-hover:translate-x-5">
-                  <h2 className="mb-4 text-2xl font-bold xl:text-3xl">
+                  <h2 className="mb-4 text-2xl font-semibold xl:text-3xl">
                     {title}
                   </h2>
 

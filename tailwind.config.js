@@ -6,7 +6,7 @@ module.exports = {
       normal: 400,
       medium: 500,
       semibold: 600,
-      bold: 600,
+      bold: 700,
       extrabold: 800,
     },
     extend: {
@@ -54,6 +54,9 @@ module.exports = {
             strong: {
               color: "currentColor",
             },
+            h1: {
+              fontWeight: 600,
+            },
             h2: {
               strong: {
                 fontWeight: 600,
@@ -78,5 +81,6 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("prettier-plugin-tailwindcss"),
     require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
   ],
 };

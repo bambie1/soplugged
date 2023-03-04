@@ -26,7 +26,7 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
     <div className="mt-4 flex w-full flex-col border-t">
       <div className="my-container pt-8 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <p className="block text-xl font-bold uppercase text-primary lg:text-2xl">
+          <p className="block text-xl font-semibold uppercase text-primary lg:text-2xl">
             More like this
           </p>
           <Link href="/search/all">

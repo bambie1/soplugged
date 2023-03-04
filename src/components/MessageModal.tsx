@@ -54,7 +54,7 @@ const MessageModal: FC<Props> = ({ cancelRef, onDismiss }) => {
         className="!mx-2 flex !w-auto max-w-lg flex-col gap-2 self-baseline rounded-lg !px-3 !py-4 sm:!mx-auto md:!p-8"
         onDismiss={onDismiss}
       >
-        <AlertDialogLabel className="text-xl font-bold text-primary">
+        <AlertDialogLabel className="text-xl font-semibold text-primary">
           Request help
         </AlertDialogLabel>
 

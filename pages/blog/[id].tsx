@@ -5,19 +5,22 @@ import SEO from "@/src/components/SEO";
 import BlogPage from "@/src/scenes/BlogPage";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
+import { createOgImage } from "@/lib/createOgImage";
 
 interface Props {
   post: BlogPost;
   morePosts: BlogPost[];
+  ogImage: string;
 }
 
-const GuidePage: FC<Props> = ({ post, morePosts }) => {
+const GuidePage: FC<Props> = ({ post, morePosts, ogImage }) => {
   return (
     <>
       <SEO
         title={`${post?.title || "Guides"} | SoPlugged Blog`}
         description={post?.excerpt}
         variant="blog"
+        overrideImage={ogImage}
       />
       <BlogPage post={post} morePosts={morePosts} />
     </>
@@ -46,8 +49,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { post, morePosts } =
     (await getPostAndMorePosts(params?.id || "")) || {};
 
+  const ogImage = createOgImage({
+    title: post?.title,
+    imageUrl: post.blogImage.url,
+    categories: post.categories?.[0].title,
+    authorAndDate: [
+      post?.author.name,
+      new Date(post.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+    ].join(" · "),
+  });
+
   return {
-    props: { post, morePosts },
+    props: {
+      post,
+      morePosts,
+      ogImage,
+    },
   };
 };
 
@@ -55,7 +76,9 @@ export default GuidePage;
 
 // GraphCMS queries
 const gql = String.raw;
-async function getPostAndMorePosts(slug: string) {
+async function getPostAndMorePosts(
+  slug: string
+): Promise<{ post: BlogPost; morePosts: BlogPost[] }> {
   const data = await fetchAPI(
     gql`
       query PostBySlug($slug: String!) {
@@ -70,6 +93,9 @@ async function getPostAndMorePosts(slug: string) {
           createdAt
           author {
             name
+            picture {
+              url
+            }
           }
           blogImage {
             url
@@ -98,9 +124,23 @@ async function getPostAndMorePosts(slug: string) {
           excerpt
           author {
             name
+            picture {
+              url
+            }
           }
           blogImage {
             url
+          }
+          categories(first: 10) {
+            title
+            color {
+              hex
+              rgba {
+                r
+                g
+                b
+              }
+            }
           }
         }
       }

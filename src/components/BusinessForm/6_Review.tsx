@@ -104,7 +104,7 @@ const Review = () => {
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
               <Avatar name={business_name} url={logo_url} />
-              <h1 className="text-center text-3xl font-bold lg:text-4xl">
+              <h1 className="text-center text-3xl font-semibold lg:text-4xl">
                 {business_name.toUpperCase()}
               </h1>
             </div>
@@ -135,7 +135,7 @@ const Review = () => {
 
             {business_description && (
               <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
-                <h3 className="mb-2 text-lg font-bold uppercase text-gray-800 lg:text-xl">
+                <h3 className="mb-2 text-lg font-semibold uppercase text-gray-800 lg:text-xl">
                   About
                 </h3>
                 <section

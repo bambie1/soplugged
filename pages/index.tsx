@@ -42,7 +42,7 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 4, stage: PUBLISHED) {
+        posts(orderBy: createdAt_DESC, first: 2, stage: PUBLISHED) {
           title
           slug
           createdAt
@@ -52,9 +52,20 @@ export async function getAllPostsForHome() {
           }
           author {
             name
+            picture {
+              url
+            }
           }
           categories(first: 10) {
             title
+            color {
+              hex
+              rgba {
+                r
+                g
+                b
+              }
+            }
           }
         }
       }
