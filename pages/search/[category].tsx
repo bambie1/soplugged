@@ -114,7 +114,9 @@ export default function Page(props: {
 
   const seoTitle = `${
     category && !category.includes("?") ? category : "Discover all"
-  } Black-owned businesses | SoPlugged`;
+  } Black-owned businesses ${
+    searchState?.page && `- Page ${searchState?.page}`
+  } | SoPlugged`;
 
   const seoDescription = `${
     category
