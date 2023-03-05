@@ -50,10 +50,6 @@ html {
   }
 }
 
-p {
-  @apply xl:text-lg;
-}
-
 .my-container {
   @apply mx-auto w-full px-4 sm:px-6 lg:max-w-7xl lg:px-8 2xl:max-w-screen-2xl;
 }
