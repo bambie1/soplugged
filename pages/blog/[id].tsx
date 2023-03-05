@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const ogImage = createOgImage({
     title: post?.title,
     imageUrl: post.blogImage.url,
-    categories: post.categories?.[0].title,
+    categories: post.categories?.[0].title.toUpperCase(),
     authorAndDate: [
       post?.author.name,
       new Date(post.createdAt).toLocaleDateString("en-US", {

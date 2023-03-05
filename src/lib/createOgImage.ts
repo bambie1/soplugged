@@ -18,7 +18,7 @@ export const createOgImage = ({
     `w_1600,h_836,q_100`,
 
     // Categories
-    `l_text:Raleway_28:${e(categories)},co_rgb:808080,c_fit,w_1400`,
+    `l_text:Raleway_32:${e(categories)},co_rgb:808080,c_fit,w_1400`,
     `fl_layer_apply,g_south_west,x_95,y_460`,
 
     // TITLE

@@ -108,7 +108,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               dangerouslySetInnerHTML={{
                 __html: cleanDescription,
               }}
-              className="prose max-w-none text-gray-500"
+              className="prose max-w-none text-gray-500 prose-p:my-0 prose-strong:text-current"
             ></section>
           </div>
         )}
