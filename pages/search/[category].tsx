@@ -222,7 +222,7 @@ export function App(props: InstantSearchProps) {
     <InstantSearch {...props}>
       <VirtualSearchBox />
 
-      <Configure hitsPerPage={32} />
+      <Configure hitsPerPage={34} />
 
       <CustomRefinements />
       <div className="top-[3.9rem] mt-4 w-full py-2">
