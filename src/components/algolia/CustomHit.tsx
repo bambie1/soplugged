@@ -35,7 +35,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           {featuredImage ? (
             <Image
               src={featuredImage}
-              alt=""
+              alt={`Featured image for ${business_name}`}
               objectFit="cover"
               layout="fill"
               placeholder="blur"

@@ -45,7 +45,12 @@ const FilterByLocation = () => {
                     <p className="text-lg uppercase">{city}</p>
                   </button>
                   <div className="absolute -top-5 -left-5 aspect-square w-14 overflow-hidden rounded-full border-2 border-transparent shadow-lg transition duration-200 group-hover:border-primary group-hover:shadow-none">
-                    <Image src={url} alt="" layout="fill" objectFit="cover" />
+                    <Image
+                      src={url}
+                      alt={categoryFull}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
                 </li>
               )

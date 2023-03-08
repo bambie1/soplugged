@@ -10,8 +10,16 @@ interface Props {
 }
 
 const BlogCard: FC<Props> = ({ post }) => {
-  const { excerpt, blogImage, slug, createdAt, title, categories, author } =
-    post;
+  const {
+    excerpt,
+    blogImage,
+    blogImageAlt,
+    slug,
+    createdAt,
+    title,
+    categories,
+    author,
+  } = post;
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -20,7 +28,7 @@ const BlogCard: FC<Props> = ({ post }) => {
           <div className="relative aspect-video w-full flex-shrink-0 overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent xl:aspect-square xl:w-[30%]">
             <Image
               src={blogImage.url}
-              alt=""
+              alt={blogImageAlt}
               layout="fill"
               objectFit="cover"
               placeholder="blur"

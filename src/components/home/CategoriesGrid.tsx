@@ -27,7 +27,7 @@ const CategoriesGrid: FC = () => {
             >
               <div className="absolute inset-0 flex h-full w-full  bg-secondary/20"></div>
 
-              <Image src={url} objectFit="cover" alt="" layout="fill" />
+              <Image src={url} objectFit="cover" alt={title} layout="fill" />
               <div className="absolute bottom-0 flex w-full items-center bg-gradient-to-t from-black to-black/5 py-2 px-2">
                 <p className="text-sm text-white">{title}</p>
               </div>

@@ -100,6 +100,7 @@ async function getPostAndMorePosts(
           blogImage {
             url
           }
+          blogImageAlt
           categories(first: 10) {
             title
             color {
@@ -130,7 +131,7 @@ async function getPostAndMorePosts(
           }
           blogImage {
             url
-          }
+          }blogImageAlt
           categories(first: 10) {
             title
             color {

@@ -10,8 +10,16 @@ interface Props {
 }
 
 const MostRecentBlogCard: FC<Props> = ({ post }) => {
-  const { excerpt, blogImage, slug, createdAt, title, categories, author } =
-    post;
+  const {
+    excerpt,
+    blogImage,
+    blogImageAlt,
+    slug,
+    createdAt,
+    title,
+    categories,
+    author,
+  } = post;
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -19,7 +27,7 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
         <div className="relative aspect-video w-full flex-shrink-0 overflow-hidden rounded-lg border border-white object-cover shadow-none transition duration-200 group-hover:scale-[99%] group-hover:border-accent lg:w-[50%]">
           <Image
             src={blogImage.url}
-            alt=""
+            alt={blogImageAlt}
             layout="fill"
             objectFit="cover"
             placeholder="blur"
@@ -44,11 +52,12 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
 
           <div className="mt-6">
             <div className="flex items-center gap-3">
-              <div className="relative aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400">
+              <div className="relative aspect-square w-8 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
                 <Image
                   src={post.author.picture.url}
                   layout="fill"
                   objectFit="cover"
+                  alt={`Profile picture for ${post.author.name}`}
                 />
               </div>
               <div>

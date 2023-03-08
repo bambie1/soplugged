@@ -24,7 +24,15 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
 
   if (!post) return null;
 
-  const { title, content, author, createdAt, categories, blogImage } = post;
+  const {
+    title,
+    content,
+    author,
+    createdAt,
+    categories,
+    blogImage,
+    blogImageAlt,
+  } = post;
 
   return (
     <>
@@ -44,11 +52,12 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             </h1>
             <div className="mt-6 mb-8 flex flex-wrap items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="relative aspect-square w-8 flex-shrink-0 rounded-full bg-gray-400">
+                <div className="relative aspect-square w-8 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
                   <Image
                     src={post.author.picture.url}
                     layout="fill"
                     objectFit="cover"
+                    alt={`Profile picture for ${post.author.name}`}
                   />
                 </div>
                 <div>
@@ -69,7 +78,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
             <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow">
               <Image
                 src={blogImage.url}
-                alt=""
+                alt={blogImageAlt}
                 objectFit="cover"
                 layout="fill"
               />

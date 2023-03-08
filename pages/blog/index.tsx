@@ -53,6 +53,7 @@ async function getAllBlogPosts() {
           blogImage {
             url
           }
+          blogImageAlt
           categories(first: 10) {
             title
             color {

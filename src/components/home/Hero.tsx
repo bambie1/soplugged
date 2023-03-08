@@ -35,7 +35,7 @@ const HeroImage = ({ index }: { index: number }) => {
         <Image
           src={category.url}
           objectFit="cover"
-          alt={`Picture of a Black-owned ${category.title} business`}
+          alt={category.title}
           layout="fill"
         />
         <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">

@@ -50,6 +50,7 @@ export async function getAllPostsForHome() {
           blogImage {
             url
           }
+          blogImageAlt
           author {
             name
             picture {
