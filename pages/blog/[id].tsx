@@ -5,22 +5,20 @@ import SEO from "@/src/components/SEO";
 import BlogPage from "@/src/scenes/BlogPage";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
-import { createOgImage } from "@/lib/createOgImage";
 
 interface Props {
   post: BlogPost;
   morePosts: BlogPost[];
-  ogImage: string;
 }
 
-const GuidePage: FC<Props> = ({ post, morePosts, ogImage }) => {
+const GuidePage: FC<Props> = ({ post, morePosts }) => {
   return (
     <>
       <SEO
         title={`${post?.title || "Guides"} | SoPlugged Blog`}
         description={post?.excerpt}
         variant="blog"
-        overrideImage={ogImage}
+        overrideImage={post?.blogImage.url}
       />
       <BlogPage post={post} morePosts={morePosts} />
     </>
@@ -49,25 +47,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { post, morePosts } =
     (await getPostAndMorePosts(params?.id || "")) || {};
 
-  const ogImage = createOgImage({
-    title: post?.title,
-    imageUrl: post.blogImage.url,
-    categories: post.categories?.[0].title.toUpperCase(),
-    authorAndDate: [
-      post?.author.name,
-      new Date(post.createdAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-    ].join(" · "),
-  });
-
   return {
     props: {
       post,
       morePosts,
-      ogImage,
     },
   };
 };
@@ -131,7 +114,8 @@ async function getPostAndMorePosts(
           }
           blogImage {
             url
-          }blogImageAlt
+          }
+          blogImageAlt
           categories(first: 10) {
             title
             color {
