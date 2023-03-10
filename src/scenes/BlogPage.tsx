@@ -93,7 +93,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
           </div>
           <div
             dangerouslySetInnerHTML={{ __html: content.html }}
-            className="prose mx-auto mt-6 mb-10 border-t pt-6 prose-h2:text-primary prose-a:text-primary prose-strong:font-semibold lg:prose-lg lg:mb-20 xl:mt-0 xl:border-none"
+            className="prose mx-auto mt-6 mb-10 border-t pt-6 prose-h2:mb-2 prose-h2:text-primary prose-a:text-primary prose-blockquote:mt-2 prose-blockquote:text-gray-600 prose-strong:font-semibold prose-img:mb-2 prose-img:rounded-lg lg:prose-lg lg:mb-20 lg:prose-h2:mb-2 lg:prose-blockquote:mt-2 lg:prose-blockquote:text-base lg:prose-img:mb-2 xl:mt-0 xl:border-none"
           />
 
           <div>
