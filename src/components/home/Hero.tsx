@@ -39,7 +39,7 @@ const HeroImage = ({ index }: { index: number }) => {
           layout="fill"
         />
         <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
-          <p className="truncate text-sm text-white">{category.title}</p>
+          <p className="truncate font-medium text-white">{category.title}</p>
         </div>
         <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
       </button>
@@ -96,7 +96,7 @@ const Hero = () => {
           </div>
           <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">
             <div className="ml-auto w-full">
-              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-1">
+              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-2">
                 {[0, 1, 2, 3, 4].map((index) => (
                   <HeroImage index={index} key={index} />
                 ))}

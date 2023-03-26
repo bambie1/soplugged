@@ -24,7 +24,7 @@ const FilterByLocation = () => {
   };
 
   return (
-    <section className="light-gradient relative mt-20 mb-20 pt-5 pb-12 lg:pt-10">
+    <section className="light-gradient relative pt-5 pb-12 lg:pt-10">
       <div className="my-container grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
         <div className="text-center lg:hidden">{renderHeading()}</div>
         <div className="mt-10">

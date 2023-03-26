@@ -5,12 +5,23 @@ import Hero from "@/src/components/home/Hero";
 import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
+import { IBusiness } from "@/types/Business";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
 const Footer = dynamic(() => import("../src/components/Footer"));
 const HomePage = dynamic(() => import("../src/scenes/HomePage"));
 
-const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
+const FEATURED_BUSINESSES = [
+  "en-vogue-afrika",
+  "f10-studio",
+  "tianah-beaute",
+  "flour-queen-pastries",
+  "mills-kitchen",
+];
+
+const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
+  props
+) => {
   return (
     <>
       <SEO
@@ -31,8 +42,28 @@ const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const posts = (await getAllPostsForHome()) || [];
 
+  let hasValidSlugs = true;
+
+  const featuredBusinesses = await Promise.all(
+    FEATURED_BUSINESSES.map((slug) => {
+      const business = fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
+      )
+        .then((res) => res.json())
+        .catch((e) => {
+          hasValidSlugs = false;
+          return null;
+        });
+
+      return business;
+    })
+  );
+
   return {
-    props: { posts },
+    props: {
+      posts,
+      featuredBusinesses: hasValidSlugs ? featuredBusinesses : [],
+    },
   };
 };
 
