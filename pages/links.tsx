@@ -34,22 +34,22 @@ const socialsArray = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/sopluggd/",
-    icon: <FontAwesomeIcon icon={faInstagram} size="lg" />,
+    icon: <FontAwesomeIcon icon={faInstagram} size="2x" />,
   },
   {
     name: "Twitter",
     href: "https://twitter.com/sopluggd",
-    icon: <FontAwesomeIcon icon={faTwitter} size="lg" />,
+    icon: <FontAwesomeIcon icon={faTwitter} size="2x" />,
   },
   {
     name: "Tiktok",
     href: "https://www.tiktok.com/@soplugged",
-    icon: <FontAwesomeIcon icon={faTiktok} size="lg" />,
+    icon: <FontAwesomeIcon icon={faTiktok} size="2x" />,
   },
   {
     name: "LinkedIn",
     href: "https://ca.linkedin.com/company/soplugged",
-    icon: <FontAwesomeIcon icon={faLinkedin} size="lg" />,
+    icon: <FontAwesomeIcon icon={faLinkedin} size="2x" />,
   },
 ];
 
@@ -62,7 +62,7 @@ const Links: FC = () => {
       />
 
       <div className="relative flex min-h-screen flex-col items-center justify-center bg-[url('/nina_and_ben.jpeg')] from-white to-secondary bg-cover bg-center lg:bg-gradient-to-b">
-        <div className="absolute inset-0 bg-primary/30 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-primary/30 backdrop-blur-[2px]"></div>
         <div className="z-10 mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center text-white lg:text-primary">
           <Link href="/">
             <a className="flex flex-shrink-0 rounded-full bg-white p-4">
@@ -80,7 +80,7 @@ const Links: FC = () => {
             The FREE online platform connecting you to Black-owned businesses
             across Canada
           </p>
-          <div className="mt-8 flex justify-center space-x-6">
+          <div className="mt-8 flex justify-center space-x-8">
             {socialsArray.map((item) => (
               <a
                 key={item.name}
