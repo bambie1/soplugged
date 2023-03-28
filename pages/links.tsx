@@ -1,12 +1,13 @@
 import { FC } from "react";
 import Link from "next/link";
-import {
-  BookOpenIcon,
-  PlusIcon,
-  SearchIcon,
-  StarIcon,
-} from "@heroicons/react/outline";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faLinkedin,
+  faTiktok,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 import SEO from "@/src/components/SEO";
 
@@ -14,42 +15,18 @@ const linksArray = [
   {
     title: "Explore our directory",
     href: "/search/all",
-    icon: (
-      <SearchIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
-      />
-    ),
   },
   {
-    title: "Add your business",
+    title: "Add your business for FREE",
     href: "/my-business",
-    icon: (
-      <PlusIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
-      />
-    ),
   },
   {
-    title: "Try SoPlugged PRO",
+    title: "Need a website for your business?",
     href: "/pro",
-    icon: (
-      <StarIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
-      />
-    ),
   },
   {
     title: "Read our monthly blog",
     href: "/blog",
-    icon: (
-      <BookOpenIcon
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        strokeWidth={0.75}
-      />
-    ),
   },
 ];
 
@@ -57,45 +34,22 @@ const socialsArray = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/sopluggd/",
-    icon: () => (
-      <Image
-        src="/logos/instagram.svg"
-        alt="Instagram Logo"
-        width={24}
-        height={24}
-      />
-    ),
+    icon: <FontAwesomeIcon icon={faInstagram} size="lg" />,
   },
   {
     name: "Twitter",
     href: "https://twitter.com/sopluggd",
-    icon: () => (
-      <Image
-        src="/logos/twitter.svg"
-        alt="Twitter Logo"
-        width={24}
-        height={24}
-      />
-    ),
+    icon: <FontAwesomeIcon icon={faTwitter} size="lg" />,
   },
   {
     name: "Tiktok",
     href: "https://www.tiktok.com/@soplugged",
-    icon: () => (
-      <Image src="/logos/tiktok.svg" alt="Tiktok Logo" width={24} height={24} />
-    ),
+    icon: <FontAwesomeIcon icon={faTiktok} size="lg" />,
   },
   {
     name: "LinkedIn",
     href: "https://ca.linkedin.com/company/soplugged",
-    icon: () => (
-      <Image
-        src="/logos/linkedin.svg"
-        alt="LinkedIn Logo"
-        width={24}
-        height={24}
-      />
-    ),
+    icon: <FontAwesomeIcon icon={faLinkedin} size="lg" />,
   },
 ];
 
@@ -107,10 +61,11 @@ const Links: FC = () => {
         title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-secondary">
-        <div className="mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center">
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[url('/nina_and_ben.jpeg')] from-white to-secondary bg-cover bg-center lg:bg-gradient-to-b">
+        <div className="absolute inset-0 bg-primary/30 backdrop-blur-sm"></div>
+        <div className="z-10 mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center text-white lg:text-primary">
           <Link href="/">
-            <a className="flex flex-shrink-0 rounded-full border border-primary p-3">
+            <a className="flex flex-shrink-0 rounded-full bg-white p-4">
               <Image
                 src="/logos/logo-black.svg"
                 alt="SoPlugged Logo"
@@ -119,11 +74,9 @@ const Links: FC = () => {
               />
             </a>
           </Link>
-          <h1 className="mt-2 text-3xl font-semibold text-primary lg:text-4xl">
-            SoPlugged
-          </h1>
-          <p className="text-neutral-400">@sopluggd</p>
-          <p className="mt-3 text-neutral-500">
+          <h1 className="mt-2 text-2xl font-semibold lg:text-4xl">SoPlugged</h1>
+          <p className="text-gray-200 lg:text-primary">@sopluggd</p>
+          <p className="mt-3 font-medium">
             The FREE online platform connecting you to Black-owned businesses
             across Canada
           </p>
@@ -136,24 +89,23 @@ const Links: FC = () => {
                 href={item.href}
               >
                 <span className="sr-only">{item.name}</span>
-                <item.icon aria-hidden="true" />
+                {item.icon}
               </a>
             ))}
           </div>
-          <hr className="my-10 w-[70%] border border-primary/50" />
+          <hr className="my-10 w-[70%] border border-white/50" />
           <ul className="mb-20 w-full space-y-5">
-            {linksArray.map(({ title, href, icon }) => (
+            {linksArray.map(({ title, href }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="flex w-full gap-2 rounded-md border border-primary/40 bg-white p-4 text-xl opacity-60 shadow-md transition duration-150 hover:border-primary hover:shadow-none">
-                    {icon}
-                    <span className="flex-1 text-center">{title}</span>
+                  <a className="inline-block w-full rounded-md border border-primary/40 bg-white/80 p-4 text-center text-lg text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
+                    {title}
                   </a>
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-auto text-neutral-500">
+          <p className="mt-auto">
             &copy; {new Date().getFullYear()}, SoPlugged
           </p>
         </div>
