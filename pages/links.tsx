@@ -76,8 +76,8 @@ const Links: FC = () => {
             </a>
           </Link>
           <h1 className="mt-2 text-2xl font-semibold lg:text-4xl">SoPlugged</h1>
-          <p className="text-gray-200 lg:text-primary">@sopluggd</p>
-          <p className="mt-3 font-medium">
+          <p className="text-gray-300 lg:text-primary">@sopluggd</p>
+          <p className="mt-3 text-lg leading-snug">
             The FREE online platform connecting you to Black-owned businesses
             across Canada
           </p>
@@ -94,12 +94,12 @@ const Links: FC = () => {
               </a>
             ))}
           </div>
-          <hr className="my-10 w-[70%] border border-white/50" />
+          <hr className="my-8 w-[70%] border border-white/50" />
           <ul className="mb-20 w-full space-y-5">
             {linksArray.map(({ title, href }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="inline-block w-full rounded-md border border-primary/40 bg-white/80 p-4 text-center text-lg text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
+                  <a className="inline-block w-full rounded-md border border-primary/40 bg-white/80 p-4 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
                     {title}
                   </a>
                 </Link>
