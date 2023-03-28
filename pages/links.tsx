@@ -63,9 +63,10 @@ const Links: FC = () => {
 
       <div className="relative flex min-h-screen flex-col items-center justify-center bg-[url('/nina_and_ben.jpeg')] from-white to-secondary bg-cover bg-center lg:bg-gradient-to-b">
         <div className="absolute inset-0 bg-primary/30 backdrop-blur-[2px]"></div>
+        <div className="absolute top-0 left-0 right-0 h-1/2 bg-primary/30 backdrop-blur-sm lg:hidden"></div>
         <div className="z-10 mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center text-white lg:text-primary">
           <Link href="/">
-            <a className="flex flex-shrink-0 rounded-full bg-white p-4">
+            <a className="flex flex-shrink-0 rounded-full border-primary bg-white p-4 lg:border lg:bg-transparent">
               <Image
                 src="/logos/logo-black.svg"
                 alt="SoPlugged Logo"
