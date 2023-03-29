@@ -5,8 +5,9 @@ import { categories } from "@/lib/categoryList";
 import { ButtonLink } from "@/styled/ButtonLink";
 import { useState } from "react";
 import classNames from "classnames";
+import { Input } from "@/styled/Input";
 
-const CategoryHighlight = () => {
+const LocationHighlight = () => {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   const handleMouseEnter = (index: number) => {
@@ -15,27 +16,27 @@ const CategoryHighlight = () => {
 
   return (
     <section className="relative">
-      <div className="absolute right-0 top-0 bottom-0 -z-10 w-[25%] bg-new-light"></div>
-      <span className="absolute -left-24 bottom-20 -z-[1] -rotate-90 whitespace-nowrap font-extrabold text-primary/[.025] lg:text-[10rem] lg:leading-[.7]">
-        black-<span className="block">owned</span>
-      </span>
-      <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-20 xl:gap-36">
+      <div className="absolute left-0 top-0 bottom-0 -z-10 w-[25%] bg-new-light"></div>
+
+      <div className="my-container grid items-center gap-4 lg:grid-cols-2 lg:gap-20">
+        <div className="relative mx-auto aspect-[3/4] h-[80%] overflow-hidden rounded-lg shadow-lg xl:rounded-xl">
+          <Image
+            src={categories[hoveredIndex].imageSrc}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>{" "}
         <div className="flex flex-col items-start">
           <h2 className="text-3xl font-semibold xl:text-4xl">
-            <span className="relative text-primary">
-              #Buyingblack
-              <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
-            </span>{" "}
-            just got easier
+            Find your city and explore
           </h2>
-          <p className="mt-3 text-gray-700 lg:text-lg">
-            Find a local Black-owned business near you. From restaurants,
-            hairstylists and salons to tutoring, tech and healthcare services.
-          </p>
           <p className="mt-3 mb-6 text-gray-700 lg:text-lg">
             With our search friendly directory, you now have various Black-owned
             businesses in one place, right at your fingertips.
           </p>
+
+          <Input label="" />
 
           <div className="my-10 flex flex-wrap gap-x-4 gap-y-3">
             {categories.slice(6).map((category, index) => (
@@ -57,17 +58,9 @@ const CategoryHighlight = () => {
             Explore businesses
           </ButtonLink>
         </div>
-        <div className="relative mx-auto aspect-[3/4] h-[80%] overflow-hidden rounded-lg shadow-lg xl:rounded-xl">
-          <Image
-            src={categories[hoveredIndex].imageSrc}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
       </div>
     </section>
   );
 };
 
-export default CategoryHighlight;
+export default LocationHighlight;

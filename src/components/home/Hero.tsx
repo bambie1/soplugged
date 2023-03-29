@@ -52,7 +52,7 @@ const Hero = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="my-container flex flex-col py-10 text-center md:py-24 lg:text-left">
+      <div className="my-container flex flex-col py-10 text-center md:pt-24 lg:text-left">
         <section className="relative flex-1 items-center justify-center gap-10 py-5 lg:grid lg:grid-cols-5 lg:py-0">
           <div className="relative col-span-3 col-start-1 flex w-full flex-col">
             <h1 className="text-5xl font-semibold leading-[1.05] sm:text-6xl lg:leading-[1.2]">
@@ -96,7 +96,7 @@ const Hero = () => {
           </div>
           <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">
             <div className="ml-auto w-full">
-              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-2">
+              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-3">
                 {[0, 1, 2, 3, 4].map((index) => (
                   <HeroImage index={index} key={index} />
                 ))}
