@@ -81,6 +81,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
                 alt={blogImageAlt}
                 objectFit="cover"
                 layout="fill"
+                priority
               />
             </div>
           </div>
