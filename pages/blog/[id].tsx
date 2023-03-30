@@ -69,8 +69,7 @@ async function getPostAndMorePosts(
           title
           slug
           excerpt
-          plugSoPluggedPro
-          content {
+           content {
             html
           }
           createdAt
