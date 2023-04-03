@@ -64,24 +64,12 @@ const navigation = {
   ],
 };
 
-const Footer: FC<Props> = ({ tertiary, noBackground }) => {
+const Footer: FC<Props> = () => {
   return (
     <footer
-      className={`mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ${
-        tertiary ? "from-accent/60" : !noBackground ? "from-secondary/60" : ""
-      }`}
+      className={`mt-auto flex flex-col overflow-hidden border-t border-gray-100`}
     >
-      <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
-        <Link href="/">
-          <a className="relative -mt-7 mb-10 inline-flex aspect-square w-14 self-center transition duration-150 hover:grayscale">
-            <Image
-              src="/logos/logo-white-bg.svg"
-              alt="SoPlugged Logo"
-              layout="fill"
-            />
-          </a>
-        </Link>
-
+      <div className="relative mx-auto flex max-w-7xl flex-col px-4 py-10 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
         <nav
           className="-mx-5 -my-2 flex max-w-2xl flex-wrap justify-center"
           aria-label="Footer"
@@ -114,10 +102,20 @@ const Footer: FC<Props> = ({ tertiary, noBackground }) => {
             </a>
           ))}
         </div>
+      </div>
 
-        <p className="mt-10 text-center">
-          Copyright&copy; {new Date().getFullYear()}, SoPlugged
-        </p>
+      <div className="bg-gray-100">
+        <div className="my-container flex items-center justify-between gap-10 py-4">
+          <p className="">
+            Copyright&copy; {new Date().getFullYear()}. SoPlugged
+          </p>
+
+          <Link href="/pro">
+            <a className="font-medium text-primary underline">
+              Website by SoPlugged Pro
+            </a>
+          </Link>
+        </div>
       </div>
     </footer>
   );

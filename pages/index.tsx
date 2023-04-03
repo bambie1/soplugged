@@ -6,6 +6,7 @@ import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
 import { IBusiness } from "@/types/Business";
+import JoinTheCommunity from "@/components/JoinTheCommunity";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
 const Footer = dynamic(() => import("../src/components/Footer"));
@@ -34,6 +35,8 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
       <Hero />
       <HomePage {...props} />
       <div className="mt-10 lg:mt-20"></div>
+
+      <JoinTheCommunity />
       <Footer />
     </>
   );

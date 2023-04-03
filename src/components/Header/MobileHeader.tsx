@@ -7,6 +7,7 @@ import { DialogOverlay, DialogContent } from "@reach/dialog";
 import { SearchIcon } from "@heroicons/react/outline";
 
 import styles from "./MobileHeader.module.css";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const SignOutButton = dynamic(() => import("../SignOutButton"));
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
@@ -62,6 +63,11 @@ const MobileHeader = () => {
         <div className="w-[calc(100%-100px)]">
           {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
         </div>
+
+        {!router.asPath.startsWith("/search") && (
+          <ButtonLink variant="outlined">Add your business</ButtonLink>
+        )}
+
         <button
           aria-label="Mobile menu toggle"
           onClick={() => setshowMenu(!showMenu)}

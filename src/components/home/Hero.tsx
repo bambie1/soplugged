@@ -30,7 +30,7 @@ const HeroImage = ({ index }: { index: number }) => {
     >
       <button
         onClick={() => handleCategoryClick(category.title)}
-        className="group relative aspect-[2/3] w-full overflow-hidden rounded-xl border border-transparent focus:border-primary"
+        className="group relative aspect-[2/3] w-full overflow-hidden rounded-xl shadow-sm shadow-secondary transition duration-200 hover:shadow-2xl"
       >
         <Image
           src={category.url}
@@ -41,7 +41,6 @@ const HeroImage = ({ index }: { index: number }) => {
         <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
           <p className="truncate font-medium text-white">{category.title}</p>
         </div>
-        <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
       </button>
     </li>
   );

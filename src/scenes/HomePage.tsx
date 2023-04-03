@@ -4,14 +4,12 @@ import { FC } from "react";
 
 import PopularBusinesses from "@/src/components/PopularBusinesses";
 import CategoriesGrid from "@/src/components/home/CategoriesGrid";
-import { ButtonLink } from "@/styled/ButtonLink";
 
 import { BlogPost } from "@/types/BlogPost";
 import BlogList from "@/components/blog/BlogList";
 import { IBusiness } from "@/types/Business";
-import CategoryHighlight from "@/components/home/CategoryHighlight";
 import LogoCloud from "@/components/home/LogoCloud";
-import AddYourBusiness from "@/components/home/AddYourBusiness";
+import BuyBlackHighlight from "@/components/home/BuyBlackHighlight";
 
 const LocationHighlight = dynamic(
   () => import("../components/home/LocationHighlight")
@@ -23,7 +21,7 @@ const HomePage: FC<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 ) => {
   return (
     <>
-      <div className="mt-10 flex flex-col gap-20 overflow-hidden lg:mt-20 lg:gap-40">
+      <div className="my-10 flex flex-col gap-20 overflow-hidden lg:mt-20 lg:gap-40">
         <LogoCloud />
 
         <section className="mb-10 lg:hidden">
@@ -32,11 +30,7 @@ const HomePage: FC<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 
         <PopularBusinesses businesses={props.featuredBusinesses} />
 
-        <CategoryHighlight />
-
-        <AddYourBusiness />
-
-        <LocationHighlight />
+        <BuyBlackHighlight />
 
         <div className="my-container bg-white pb-4 sm:pb-10">
           <div className="mb-8 grid max-w-2xl gap-4">
