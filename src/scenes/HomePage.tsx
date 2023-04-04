@@ -14,7 +14,7 @@ const HomePage: FC<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 ) => {
   return (
     <>
-      <div className="my-10 flex flex-col gap-20 overflow-hidden lg:mt-20 lg:gap-40">
+      <div className="flex flex-col gap-20 overflow-hidden md:my-10 lg:mt-20 lg:gap-40">
         <PopularBusinesses businesses={props.featuredBusinesses} />
 
         <AddYourBusiness />

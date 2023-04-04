@@ -1,5 +1,4 @@
 import { MailIcon } from "@heroicons/react/outline";
-import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -71,7 +70,7 @@ const Footer: FC<Props> = () => {
     >
       <div className="relative mx-auto flex max-w-7xl flex-col px-4 py-10 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
         <nav
-          className="-mx-5 -my-2 flex max-w-2xl flex-wrap justify-center"
+          className="-mx-5 -my-2 flex flex-wrap justify-center"
           aria-label="Footer"
         >
           {navigation.main.map((item) => (
@@ -104,7 +103,7 @@ const Footer: FC<Props> = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100">
+      <div className="bg-gray-100/50">
         <div className="my-container flex items-center justify-between gap-10 py-4">
           <p className="">
             Copyright&copy; {new Date().getFullYear()}. SoPlugged
