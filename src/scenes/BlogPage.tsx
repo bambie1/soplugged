@@ -39,7 +39,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
       <Header variant="blog" />
       <main className="relative mb-20">
         <div className="relative w-full">
-          <div className="absolute left-0 right-0 bottom-0 -z-10 h-1/3 bg-secondary/[.15] xl:bottom-6 xl:h-1/3" />
+          <div className="absolute left-0 right-0 bottom-0 -z-10 h-1/3 bg-gray-100/[.5] xl:bottom-6 xl:h-1/3" />
 
           <div className="mx-auto max-w-[52rem] px-4 pb-6 pt-12 sm:px-6 lg:py-20">
             <div className="mb-4 flex flex-wrap gap-3">
@@ -81,6 +81,7 @@ const BlogPage: FC<Props> = ({ post, morePosts }) => {
                 alt={blogImageAlt}
                 objectFit="cover"
                 layout="fill"
+                priority
               />
             </div>
           </div>
