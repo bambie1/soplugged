@@ -96,7 +96,7 @@ const Hero = () => {
           </div>
           <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">
             <div className="ml-auto w-full">
-              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-1">
+              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-2">
                 {[0, 1, 2, 3, 4].map((index) => (
                   <HeroImage index={index} key={index} />
                 ))}
