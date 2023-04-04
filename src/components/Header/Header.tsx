@@ -128,7 +128,11 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
                 </ButtonLink>
               )}
 
-              <ButtonLink href={currentNav.cta.link} variant="filled" showArrow>
+              <ButtonLink
+                href={currentNav.cta.link}
+                variant={isStyled ? "outlined" : "filled"}
+                showArrow
+              >
                 {currentNav.cta.text}
               </ButtonLink>
             </div>

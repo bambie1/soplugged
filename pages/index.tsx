@@ -18,6 +18,9 @@ const FEATURED_BUSINESSES = [
   "tianah-beaute",
   "flour-queen-pastries",
   "mills-kitchen",
+  "rqc-designs",
+  "the-hair-essence",
+  "mazic-beauty",
 ];
 
 const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
@@ -34,7 +37,7 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 
       <Hero />
       <HomePage {...props} />
-      <div className="mt-10 lg:mt-20"></div>
+      <div className="mt-20 lg:mt-40"></div>
 
       <JoinTheCommunity />
       <Footer />

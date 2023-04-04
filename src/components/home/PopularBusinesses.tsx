@@ -1,28 +1,64 @@
 import Link from "next/link";
 import Image from "next/image";
+import classNames from "classnames";
 
 import { IBusiness } from "@/types/Business";
+import { popularCategories } from "@/lib/popularCategories";
+import { getCategorySlug } from "@/utils/algolia";
+import { useRouter } from "next/router";
+
+const listedCategories = [
+  { title: "All categories", href: "/search/all" },
+  ...popularCategories,
+  { title: "...and more", href: "/search/all" },
+];
 
 const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
+  const { push } = useRouter();
   if (!businesses?.length) return null;
 
   return (
-    <section className="relative mt-0 hidden pb-10 lg:block">
+    <section className="relative mt-0 bg-[#FCFAF8] py-10 lg:block">
       <div className="my-container">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-semibold xl:text-4xl">
             Popular Businesses
           </h2>
-
-          <Link href="/search/all">
-            <a className="underline">See all</a>
-          </Link>
         </div>
 
-        <div className="mt-6 grid grid-cols-4 gap-6 xl:grid-cols-5">
+        <ul className="mt-6 mb-12 flex items-center gap-2">
+          {listedCategories.map((category, index) => (
+            <li
+              key={category.title}
+              className={classNames(
+                "flex-shrink-0 rounded-full border py-2 px-3",
+                {
+                  "bg-secondary": index === 0,
+                }
+              )}
+            >
+              <Link
+                href={
+                  // @ts-ignore
+                  category.href || `/search/${getCategorySlug(category.title)}`
+                }
+              >
+                <a>{category.title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
           {businesses.map((business) => {
-            const { id, slug, business_name, category, sample_images } =
-              business;
+            const {
+              id,
+              slug,
+              business_name,
+              category,
+              business_location,
+              sample_images,
+            } = business;
 
             const rawImages = sample_images?.split(",") || [];
             const images = rawImages.map((item: string) => {
@@ -40,12 +76,13 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
               <div key={id} className="group">
                 <Link href={`/business/${slug}`}>
                   <a className="relative flex flex-col overflow-hidden rounded-lg ">
-                    <div className="relative aspect-[3/4] w-full border brightness-[.85] transition duration-200 group-hover:scale-[1.05] group-focus:border-primary group-focus-visible:border-primary ">
+                    <div className="relative aspect-square w-full border brightness-[.85] transition duration-200 group-hover:scale-[1.05] group-focus:border-primary group-focus-visible:border-primary">
                       {featuredImage ? (
                         <Image
                           src={featuredImage}
                           alt={`Featured image for ${business_name}`}
                           objectFit="cover"
+                          objectPosition="top"
                           layout="fill"
                           placeholder="blur"
                           blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8u21yPQAHBQKXKv8OfQAAAABJRU5ErkJggg==`}
@@ -64,12 +101,27 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
                   </a>
                 </Link>
 
-                <p className="mt-2 text-lg font-bold">{business_name}</p>
+                <div className="mt-2 grid items-center lg:grid-cols-2">
+                  <p className="w-full truncate text-lg font-bold">
+                    {business_name}
+                  </p>
+                  <p className="hidden text-right text-sm text-gray-600 lg:block">
+                    {business_location}
+                  </p>
+                </div>
                 <p className="text-sm uppercase">{category}</p>
               </div>
             );
           })}
         </div>
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-56 pb-8">
+        <Link href="/search/all">
+          <a className="button filled pointer-events-auto">
+            Explore all businesses
+          </a>
+        </Link>
       </div>
     </section>
   );

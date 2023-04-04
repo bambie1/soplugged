@@ -1,5 +1,3 @@
-import { ButtonLink } from "@/styled/ButtonLink";
-
 const faqs = [
   {
     id: 1,
@@ -14,11 +12,9 @@ const faqs = [
       <div>
         <p className="mb-3">
           Adding your business is free, quick and easy. Please click the button
-          below to get started (you'll need to be signed in to add a business).
+          in the top-right corner to get started (you'll need to be signed in to
+          add a business).
         </p>
-        <ButtonLink href="/my-business" showArrow>
-          Add my business
-        </ButtonLink>
       </div>
     ),
   },
@@ -49,7 +45,7 @@ const FAQs = () => {
           </h2>
         </div>
         <div className="mt-10 lg:mt-20">
-          <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10 lg:space-y-0">
+          <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 lg:space-y-0">
             {faqs.map((faq) => (
               <div key={faq.id}>
                 <div className="font-semibold text-gray-900 lg:text-lg">
