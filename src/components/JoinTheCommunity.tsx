@@ -39,7 +39,7 @@ const JoinTheCommunity = () => {
           objectFit="cover"
         />
       </div>
-      <div className="my-container grid gap-8 lg:grid-cols-2">
+      <div className="mx-auto grid w-full gap-8 lg:max-w-7xl lg:grid-cols-2 lg:px-8 2xl:max-w-screen-2xl">
         <div className="relative aspect-video w-full lg:hidden">
           <Image
             src="/nina_and_ben.jpeg"
@@ -48,7 +48,7 @@ const JoinTheCommunity = () => {
             objectFit="cover"
           />
         </div>
-        <div className="py-4 lg:col-start-2 lg:py-10">
+        <div className="py-4 px-4 sm:px-6 lg:col-start-2 lg:py-10">
           <h3 className="text-2xl font-bold text-primary lg:text-4xl">
             Join the SoPlugged community!
           </h3>
