@@ -1,6 +1,3 @@
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-
 const faqs = [
   {
     question: "What is the purpose of this event?",
