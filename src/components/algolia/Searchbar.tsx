@@ -26,7 +26,7 @@ const Searchbar = () => {
                     indexName: "Category",
                     query,
                     params: {
-                      hitsPerPage: 4,
+                      hitsPerPage: 6,
                     },
                   },
                 ],
@@ -48,7 +48,7 @@ const Searchbar = () => {
                     indexName: "Business",
                     query,
                     params: {
-                      hitsPerPage: 4,
+                      hitsPerPage: 3,
                     },
                   },
                 ],

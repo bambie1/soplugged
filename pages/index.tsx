@@ -9,7 +9,7 @@ import { IBusiness } from "@/types/Business";
 import JoinTheCommunity from "@/components/JoinTheCommunity";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
-const Footer = dynamic(() => import("../src/components/Footer"));
+const NewFooter = dynamic(() => import("../src/components/NewFooter"));
 const HomePage = dynamic(() => import("../src/scenes/HomePage"));
 
 const FEATURED_BUSINESSES = [
@@ -40,7 +40,7 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
       <div className="mt-20 lg:mt-40"></div>
 
       <JoinTheCommunity />
-      <Footer />
+      <NewFooter />
     </>
   );
 };

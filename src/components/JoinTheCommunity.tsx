@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   faInstagram,
   faLinkedin,
@@ -29,6 +30,17 @@ const socialsArray = [
 ];
 
 const JoinTheCommunity = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ email, first_name: "", last_name: "" }),
+    });
+  };
+
   return (
     <div className="relative min-h-[10rem] bg-new-light">
       <div className="absolute left-0 top-0 bottom-0 hidden w-[49%] lg:block">
@@ -48,7 +60,7 @@ const JoinTheCommunity = () => {
             objectFit="cover"
           />
         </div>
-        <div className="py-4 px-4 sm:px-6 lg:col-start-2 lg:py-10">
+        <div className="px-4 pb-8 sm:px-6 lg:col-start-2 lg:py-10 xl:py-20">
           <h3 className="text-2xl font-bold text-primary lg:text-4xl">
             Join the SoPlugged community!
           </h3>
@@ -77,7 +89,7 @@ const JoinTheCommunity = () => {
             </div>
           </div>
 
-          <hr className="my-6" />
+          <hr className="my-6 lg:mb-12" />
 
           <p className="mb-2 text-lg font-semibold lg:text-xl">
             Subscribe to our monthly newsletter
@@ -87,8 +99,17 @@ const JoinTheCommunity = () => {
             updates sent straight to your inbox every month!
           </p>
 
-          <form className="mt-8 grid max-w-lg flex-col items-start lg:flex">
-            <Input label="Email address" autoComplete="off" />
+          <form
+            onSubmit={handleSubscribe}
+            className="mt-8 grid max-w-lg flex-col items-start lg:flex"
+          >
+            <Input
+              label="Email address"
+              autoComplete="off"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <Button>Subscribe</Button>
           </form>
         </div>

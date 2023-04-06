@@ -16,7 +16,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   if (!businesses?.length) return null;
 
   return (
-    <section className="relative mt-0 bg-[#FCFAF8] pb-20 pt-10 lg:block">
+    <section className="relative mt-0 -mb-10 bg-[#FCFAF8] pb-20 pt-10 lg:block">
       <div className="my-container">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-semibold xl:text-4xl">
@@ -27,15 +27,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
         <div className="overflow-x-auto">
           <ul className="mt-6 mb-8 flex items-center gap-2 lg:mb-12">
             {listedCategories.map((category, index) => (
-              <li
-                key={category.title}
-                className={classNames(
-                  "flex-shrink-0 rounded-full border py-2 px-3",
-                  {
-                    "bg-secondary": index === 0,
-                  }
-                )}
-              >
+              <li key={category.title} className="flex-shrink-0">
                 <Link
                   href={
                     // @ts-ignore
@@ -43,7 +35,16 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
                     `/search/${getCategorySlug(category.title)}`
                   }
                 >
-                  <a>{category.title}</a>
+                  <a
+                    className={classNames(
+                      "rounded-full border py-1 px-3 text-sm transition duration-150 hover:border-primary lg:py-2 lg:text-base",
+                      {
+                        "bg-secondary": index === 0,
+                      }
+                    )}
+                  >
+                    {category.title}
+                  </a>
                 </Link>
               </li>
             ))}

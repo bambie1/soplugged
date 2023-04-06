@@ -38,6 +38,8 @@ const HeroImage = ({ index }: { index: number }) => {
           <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
             <p className="truncate font-medium text-white">{category.title}</p>
           </div>
+
+          <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
         </a>
       </Link>
     </li>
@@ -64,7 +66,8 @@ const Hero = () => {
               <br></br> businesses in Canada
             </h1>
             <p className="mt-6 text-lg lg:hidden">
-              Connecting black businesses with the consumers that love them.
+              Empowering Black Entrepreneurs by Connecting Them with Like-Minded
+              Customers.
             </p>
             <p className="mt-3 hidden w-[90%] text-lg lg:block">
               Find everything from restaurants, hairstylists and salons to
