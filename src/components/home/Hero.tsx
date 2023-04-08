@@ -69,9 +69,10 @@ const Hero = () => {
               Empowering Black Entrepreneurs by Connecting Them with Like-Minded
               Customers.
             </p>
-            <p className="mt-3 hidden w-[90%] text-lg lg:block">
-              Find everything from restaurants, hairstylists and salons to
-              tutoring, tech and healthcare services.
+            <p className="mt-3 hidden w-[80%] text-lg text-gray-700 lg:block">
+              Our free directory connects you with Black-owned businesses across
+              the country, making it easy to shop local and support the
+              entrepreneurs who are driving change.
             </p>
             <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0 lg:mt-10">
               <Searchbar />

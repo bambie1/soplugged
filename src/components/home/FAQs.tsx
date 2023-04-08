@@ -1,34 +1,27 @@
 const faqs = [
   {
     id: 1,
-    question: "Is SoPlugged free?",
+    question: "What types of businesses can be listed on SoPlugged",
     answer:
-      "Yes, SoPlugged is free to use and register (if you're a Black-owned business in Canada). We rely on our amazing sponsors to keep our platform free and accessible to Black-owned businesses across Canada.",
+      "We welcome all types of businesses that are Black-owned and operated in Canada. Whether you're a retail store, restaurant, service provider, or anything in between, we encourage you to add your business to our directory",
   },
   {
     id: 2,
-    question: "How do I add my business?",
-    answer: (
-      <div>
-        <p className="mb-3">
-          Adding your business is free, quick and easy. Please click the button
-          in the top-right corner to get started (you'll need to be signed in to
-          add a business).
-        </p>
-      </div>
-    ),
+    question: "Is there a cost to add my business on SoPlugged?",
+    answer:
+      "No, SoPlugged is completely FREE. Our goal is to support and promote Black-owned businesses in Canada, and we believe that offering a free directory is one way we can help achieve this goal.",
   },
   {
     id: 3,
-    question: "What's the difference between SoPlugged and SoPluggedPro?",
+    question: "Can businesses outside of Canada be listed on Soplugged?",
     answer:
-      "SoPlugged is a FREE directory of Black-owned businesses across Canada. SoPluggedPro is professional help for your business' digital needs",
+      "At this time, SoPlugged is focused on promoting and supporting Black-owned businesses in Canada. However, we encourage you to support Black-owned businesses in your own community and promote them on social media.",
   },
   {
     id: 4,
     question: "How can I support the team?",
     answer:
-      "We rely on amazing people like you to spread the word about our platform to Black-owned businesses that you know",
+      "One of the best ways to support us is to spread the word about our directory to others who might be interested in supporting Black-owned businesses in Canada. If you'd like to support financially, check out our sponsors page!",
   },
 ];
 
@@ -51,9 +44,7 @@ const FAQs = () => {
                 <div className="font-semibold text-gray-900 lg:text-lg">
                   {faq.question}
                 </div>
-                <div className="mt-3 text-gray-600 lg:text-lg">
-                  {faq.answer}
-                </div>
+                <div className="mt-3 text-gray-600">{faq.answer}</div>
               </div>
             ))}
           </dl>

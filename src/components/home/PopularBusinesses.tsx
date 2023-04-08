@@ -20,7 +20,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
       <div className="my-container">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-semibold xl:text-4xl">
-            Popular Businesses
+            Featured Businesses
           </h2>
         </div>
 
@@ -124,7 +124,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-56 pb-8">
         <Link href="/search/all">
-          <a className="button filled pointer-events-auto">
+          <a className="button outlined pointer-events-auto">
             Explore all businesses
           </a>
         </Link>

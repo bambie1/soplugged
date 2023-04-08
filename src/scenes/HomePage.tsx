@@ -22,7 +22,7 @@ const HomePage: FC<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
         <div className="relative">
           <div className="absolute left-0 bottom-0 -z-[1] hidden h-28 w-full bg-[#FCFAF8] lg:block"></div>
           <div className="my-container pb-4 sm:pb-10">
-            <div className="mb-8 grid max-w-2xl gap-4">
+            <div className="mb-8 grid max-w-xl gap-4">
               <h2 className="text-3xl font-semibold xl:text-4xl">
                 <span className="relative text-primary">
                   Check out our blog
