@@ -105,13 +105,13 @@ const NewFooter: FC<Props> = () => {
 
       <div className="bg-gray-100/50">
         <div className="my-container flex items-center justify-between gap-10 py-4">
-          <p className="">
-            Copyright&copy; {new Date().getFullYear()}. SoPlugged
+          <p className="text-sm lg:text-base">
+            &copy; {new Date().getFullYear()}. SoPlugged
           </p>
 
           <Link href="/pro">
-            <a className="font-medium text-primary underline">
-              Website by SoPlugged Pro
+            <a className="text-sm font-medium text-primary underline lg:text-base">
+              By SoPlugged Pro
             </a>
           </Link>
         </div>

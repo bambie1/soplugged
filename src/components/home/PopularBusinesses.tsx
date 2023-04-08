@@ -25,7 +25,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
         </div>
 
         <div className="overflow-x-auto">
-          <ul className="mt-6 mb-8 flex items-center gap-2 lg:mb-12">
+          <ul className="mt-6 mb-8 flex items-center gap-1 lg:mb-12 lg:gap-2">
             {listedCategories.map((category, index) => (
               <li key={category.title} className="flex-shrink-0">
                 <Link
@@ -37,7 +37,7 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
                 >
                   <a
                     className={classNames(
-                      "rounded-full border py-1 px-3 text-sm transition duration-150 hover:border-primary lg:py-2 lg:text-base",
+                      "rounded-full border py-2 px-3 text-sm transition duration-150 hover:border-primary lg:text-base",
                       {
                         "bg-secondary": index === 0,
                       }
