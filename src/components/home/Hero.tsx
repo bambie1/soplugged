@@ -65,14 +65,9 @@ const Hero = () => {
               </div>
               <br></br> businesses in Canada
             </h1>
-            <p className="mt-6 text-lg lg:hidden">
-              Empowering Black Entrepreneurs by Connecting Them with Like-Minded
-              Customers.
-            </p>
-            <p className="mt-3 hidden w-[80%] text-lg text-gray-700 lg:block">
-              Our free directory connects you with Black-owned businesses across
-              the country, making it easy to shop local and support the
-              entrepreneurs who are driving change.
+            <p className="mt-3 text-gray-700 lg:w-[80%] lg:text-lg">
+              Our free directory makes it easy to support Black entrepreneurs
+              and discover new products and services in your area.
             </p>
             <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0 lg:mt-10">
               <Searchbar />

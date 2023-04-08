@@ -58,7 +58,7 @@ const AddYourBusiness = () => {
           ))}
         </div>
         <div className="mx-auto xl:w-1/2">
-          <h2 className="mb-4 text-2xl font-semibold md:text-4xl xl:text-5xl">
+          <h2 className="mb-4 text-3xl font-semibold md:text-4xl xl:text-5xl">
             Add your business to our directory{" "}
             <span className="font-bold text-primary/80 underline">
               for FREE
