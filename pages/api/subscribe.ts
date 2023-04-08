@@ -1,27 +1,38 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as Sentry from "@sentry/nextjs";
+var Airtable = require("airtable");
+
+Airtable.configure({
+  endpointUrl: "https://api.airtable.com",
+  apiKey: process.env.AIRTABLE_API_KEY,
+});
+var base = Airtable.base("appgdjdPKc3Rv2EFn");
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = JSON.parse(req.body);
-
-    const fetchPromise = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/subscriptions`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+    base("Table 1").create(
+      [
+        {
+          fields: {
+            Email: data.email,
+            "Date added": new Date().toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            }),
+          },
         },
-        body: JSON.stringify({
-          subscription: { ...data, subscription_type: "newsletter" },
-        }),
+      ],
+      function (err: any) {
+        if (err) {
+          Sentry.captureException(err);
+
+          res.status(500).json({ err });
+        }
       }
     );
-
-    if (fetchPromise.ok) {
-      res.status(200).json({});
-    } else throw new Error("Newsletter subscription failed");
+    res.status(200).json({});
   } catch (err) {
     Sentry.captureException(err);
     res.status(500).json({});

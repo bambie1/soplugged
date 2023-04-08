@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
@@ -35,10 +36,16 @@ const JoinTheCommunity = () => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch("/api/subscribe", {
+    await fetch("/api/subscribe", {
       method: "POST",
       body: JSON.stringify({ email, first_name: "", last_name: "" }),
     });
+
+    toast.success("Successfully subscribed!", {
+      position: "top-center",
+    });
+
+    setEmail("");
   };
 
   return (
@@ -107,6 +114,7 @@ const JoinTheCommunity = () => {
               label="Email address"
               autoComplete="off"
               required
+              placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
