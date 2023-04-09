@@ -49,7 +49,7 @@ const JoinTheCommunity = () => {
   };
 
   return (
-    <div className="relative min-h-[10rem] bg-new-light">
+    <div id="newsletter" className="relative min-h-[10rem] bg-new-light">
       <div className="absolute left-0 top-0 bottom-0 hidden w-[49%] lg:block">
         <Image
           src="/nina_and_ben.jpeg"
@@ -102,7 +102,7 @@ const JoinTheCommunity = () => {
             Subscribe to our monthly newsletter
           </p>
           <p className="text-gray-600">
-            Entrepreneurial tips, black-owned business highlights, and SoPlugged
+            Entrepreneurial tips, Black-owned business highlights, and SoPlugged
             updates sent straight to your inbox every month!
           </p>
 

@@ -71,7 +71,7 @@ const AddYourBusiness = () => {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center lg:mt-12">
-            <ButtonLink href="/search/all" variant="filled" showArrow>
+            <ButtonLink href="/join" variant="filled" showArrow>
               Add your business
             </ButtonLink>
             <p className="mt-2 text-sm italic text-gray-600 lg:text-base">

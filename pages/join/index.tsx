@@ -9,7 +9,7 @@ const Join: NextPage = (props) => {
   const { data: session } = useSession();
   const router = useRouter();
 
-  if (session?.user) router.push("/dashboard");
+  if (session?.user) router.push("/my-business");
 
   return (
     <>

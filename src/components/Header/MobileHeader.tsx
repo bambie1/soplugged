@@ -146,7 +146,7 @@ const MobileHeader = () => {
               </Link>
             )}
 
-            <Link href="/my-business">
+            <Link href="/join">
               <a className="flex justify-center rounded-lg border border-primary p-2 text-lg">
                 Add your business
               </a>
