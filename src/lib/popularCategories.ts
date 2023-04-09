@@ -23,4 +23,8 @@ export const popularCategories = [
     url: "/unsplash/event-planning.jpg",
     title: "Event Planning",
   },
+  {
+    url: "/unsplash/event-planning.jpg",
+    title: "Entertainment",
+  },
 ];

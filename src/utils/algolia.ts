@@ -45,7 +45,7 @@ const decodedCategories: IObjectKeys = Object.keys(encodedCategories).reduce(
   {}
 );
 
-function getCategorySlug(name: string) {
+export function getCategorySlug(name: string) {
   const encodedName = decodedCategories[name] || name;
 
   return encodedName.split(" ").map(encodeURIComponent).join("+");

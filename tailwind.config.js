@@ -18,6 +18,7 @@ module.exports = {
         accent: "#93aacd",
         "accent-dark": "#5479B0",
         light: "#f3f2f2",
+        "new-light": "#F4EEE6",
         black: "#100b01",
         "tr-pink-100": "#fceff3",
         "tr-pink-500": "#e06287",

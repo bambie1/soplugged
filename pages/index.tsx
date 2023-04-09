@@ -5,12 +5,27 @@ import Hero from "@/src/components/home/Hero";
 import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
+import { IBusiness } from "@/types/Business";
+import JoinTheCommunity from "@/components/JoinTheCommunity";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
-const Footer = dynamic(() => import("../src/components/Footer"));
+const NewFooter = dynamic(() => import("../src/components/NewFooter"));
 const HomePage = dynamic(() => import("../src/scenes/HomePage"));
 
-const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
+const FEATURED_BUSINESSES = [
+  "en-vogue-afrika",
+  "f10-studio",
+  "tianah-beaute",
+  "flour-queen-pastries",
+  "mills-kitchen",
+  "rqc-designs",
+  "the-hair-essence",
+  "mazic-beauty",
+];
+
+const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
+  props
+) => {
   return (
     <>
       <SEO
@@ -22,8 +37,10 @@ const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
 
       <Hero />
       <HomePage {...props} />
-      <div className="mt-10 lg:mt-20"></div>
-      <Footer />
+      <div className="mt-20 lg:mt-40"></div>
+
+      <JoinTheCommunity />
+      <NewFooter />
     </>
   );
 };
@@ -31,8 +48,28 @@ const Home: NextPage<{ posts: BlogPost[] }> = (props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const posts = (await getAllPostsForHome()) || [];
 
+  let hasValidSlugs = true;
+
+  const featuredBusinesses = await Promise.all(
+    FEATURED_BUSINESSES.map((slug) => {
+      const business = fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
+      )
+        .then((res) => res.json())
+        .catch((e) => {
+          hasValidSlugs = false;
+          return null;
+        });
+
+      return business;
+    })
+  );
+
   return {
-    props: { posts },
+    props: {
+      posts,
+      featuredBusinesses: hasValidSlugs ? featuredBusinesses : [],
+    },
   };
 };
 

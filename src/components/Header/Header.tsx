@@ -20,7 +20,7 @@ const links = [
 
 const nav = {
   main: {
-    cta: { text: "Add your business", link: "/my-business" },
+    cta: { text: "Add your business", link: "/join" },
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
@@ -30,7 +30,7 @@ const nav = {
     links,
   },
   blog: {
-    cta: { text: "Add your business", link: "/my-business" },
+    cta: { text: "Add your business", link: "/join" },
     subCta: { text: "Log in", link: "/dashboard" },
     links,
   },
@@ -130,7 +130,7 @@ const Header: FC<Props> = ({ variant = "main", className }) => {
 
               <ButtonLink
                 href={currentNav.cta.link}
-                variant="outlined"
+                variant={isStyled ? "outlined" : "filled"}
                 showArrow
               >
                 {currentNav.cta.text}

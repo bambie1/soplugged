@@ -18,7 +18,7 @@ const linksArray = [
   },
   {
     title: "Add your business for FREE",
-    href: "/my-business",
+    href: "/join",
   },
   {
     title: "Need a website for your business?",
