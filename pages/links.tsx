@@ -28,6 +28,10 @@ const linksArray = [
     title: "Read our monthly blog",
     href: "/blog",
   },
+  {
+    title: "Sign up for our newsletter",
+    href: "/#newsletter",
+  },
 ];
 
 const socialsArray = [
