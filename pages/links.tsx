@@ -25,7 +25,7 @@ const linksArray = [
     href: "/pro",
   },
   {
-    title: "Read our monthly blog",
+    title: "Check out our latest blog post",
     href: "/blog",
   },
   {
