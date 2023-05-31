@@ -8,7 +8,7 @@ const Newsletter: NextPage = () => {
     <>
       <SEO
         title="Newsletter | SoPlugged"
-        description="Entrepreneurial tips, Black-owned business highlights, and SoPlugged updates sent straight to your inbox every month!"
+        description="Business tips, resources, and grants specifically available to Black entrepreneurs, delivered to your inbox every month!"
       />
       <NewsletterPage />
     </>

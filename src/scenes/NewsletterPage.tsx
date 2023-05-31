@@ -35,9 +35,9 @@ const NewsletterPage = () => {
           <p className="mb-2 text-lg font-semibold lg:text-xl">
             Subscribe to our monthly newsletter
           </p>
-          <p className="text-gray-600">
-            Entrepreneurial tips, Black-owned business highlights, and SoPlugged
-            updates sent straight to your inbox every month!
+          <p className="max-w-[40rem] text-gray-600">
+            Business tips, resources, and grants specifically available to Black
+            entrepreneurs, delivered to your inbox every month!
           </p>
 
           <form
