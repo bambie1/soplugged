@@ -29,8 +29,8 @@ const linksArray = [
     href: "/blog",
   },
   {
-    title: "Sign up for our newsletter",
-    href: "/#newsletter",
+    title: "Subscribe to our newsletter",
+    href: "/newsletter",
   },
 ];
 

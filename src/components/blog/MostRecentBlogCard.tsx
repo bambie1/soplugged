@@ -32,6 +32,7 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
             objectFit="cover"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOcPGlSPQAFrwI48uvwCAAAAABJRU5ErkJggg==`}
+            priority
           />
         </div>
         <div className="flex flex-col">
