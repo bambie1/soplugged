@@ -65,7 +65,7 @@ const MobileHeader = () => {
         </div>
 
         {!router.asPath.startsWith("/search") && (
-          <ButtonLink variant="outlined">Add your business</ButtonLink>
+          <ButtonLink variant="outlined" href="/join">Add your business</ButtonLink>
         )}
 
         <button
