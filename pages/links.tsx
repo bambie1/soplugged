@@ -13,6 +13,11 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
+    title: "Listen to TBM podcast",
+    href: "https://tbmpodcast.soplugged.com",
+    isNew: true,
+  },
+  {
     title: "Explore our directory",
     href: "/search/all",
   },
@@ -47,7 +52,7 @@ const socialsArray = [
   },
   {
     name: "Tiktok",
-    href: "https://www.tiktok.com/@soplugged",
+    href: "https://www.tiktok.com/@tbm_pod",
     icon: <FontAwesomeIcon icon={faTiktok} size="2x" />,
   },
   {
@@ -100,11 +105,16 @@ const Links: FC = () => {
           </div>
           <hr className="my-8 w-[70%] border border-white/50" />
           <ul className="mb-20 w-full space-y-5">
-            {linksArray.map(({ title, href }) => (
+            {linksArray.map(({ title, href, isNew }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="inline-block w-full rounded-md border border-primary/40 bg-white/80 p-4 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
+                  <a className="relative inline-flex w-full justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
                     {title}
+                    {isNew && (
+                      <span className="flex items-center justify-center rounded-lg bg-primary p-1 text-xs text-white">
+                        NEW
+                      </span>
+                    )}
                   </a>
                 </Link>
               </li>

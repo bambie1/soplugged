@@ -20,7 +20,7 @@ const socialsArray = [
   },
   {
     name: "Tiktok",
-    href: "https://www.tiktok.com/@soplugged",
+    href: "https://www.tiktok.com/@tbm_pod",
     icon: <FontAwesomeIcon icon={faTiktok} size="lg" />,
   },
   {
