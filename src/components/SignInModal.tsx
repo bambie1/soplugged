@@ -14,12 +14,10 @@ const SignInModal = () => {
         Please sign in first
       </h1>
 
-      <p className="">
-        Verify your identity via one of the following sign-in methods:
-      </p>
+      <p className="">Verify your identity to proceed to the dashboard</p>
 
-      <div className="mt-6 mb-16 flex w-full max-w-lg flex-col gap-4">
-        <button
+      <div className="mt-10 mb-16 flex w-full max-w-lg flex-col gap-4">
+        {/* <button
           onClick={() => signIn("google")}
           className="mt-4 w-full rounded-md border bg-white px-6 py-3 text-lg font-medium text-gray-900 shadow outline-none hover:border-primary hover:bg-secondary/10 focus:outline-none"
         >
@@ -48,7 +46,7 @@ const SignInModal = () => {
             ></path>
           </svg>
           Sign in with Google
-        </button>
+        </button> */}
 
         <Button onClick={() => signIn()} variant="outlined">
           Sign in with Email

@@ -88,9 +88,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
         <h1 className="mb-6 text-5xl font-semibold text-primary sm:text-6xl">
           Join SoPlugged
         </h1>
-        <p>
-          Please verify your identity via one of the following sign-in methods:
-        </p>
+        <p>Please enter your email address to verify your identity</p>
         <div className="mt-6 mb-20 w-full max-w-lg">
           {query.error && (
             <p className="inline-flex text-red-500 underline">
@@ -113,7 +111,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
             </p>
           )}
 
-          <button
+          {/* <button
             onClick={() => signIn("google")}
             className="mt-4 w-full rounded-md border bg-white px-6 py-3 font-semibold text-gray-900 shadow outline-none hover:border-primary hover:bg-secondary/10 focus:outline-none"
           >
@@ -153,7 +151,7 @@ const JoinPage: FC<Props> = ({ csrfToken, stage }) => {
                 Or continue with
               </span>
             </div>
-          </div>
+          </div> */}
 
           {renderEmailSignIn()}
         </div>
