@@ -2,6 +2,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import classNames from "classnames";
 import Link from "next/link";
+import { MicrophoneIcon } from "@heroicons/react/solid";
 
 import { popularCategories } from "@/lib/popularCategories";
 import { getCategorySlug } from "@/utils/algolia";
@@ -51,7 +52,19 @@ const Hero = () => {
     <div className="overflow-x-hidden">
       <div className="my-container flex flex-col py-10 text-center md:pt-24 lg:text-left">
         <section className="relative flex-1 items-center justify-center gap-10 py-5 lg:grid lg:grid-cols-5 lg:py-0">
-          <div className="relative col-span-3 col-start-1 flex w-full flex-col">
+          <div className="relative col-span-3 col-start-1 flex w-full flex-col items-start">
+            <a
+              href="https://tbmpodcast.soplugged.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="group mb-4 flex items-center gap-4 rounded-full bg-secondary/30 py-1 px-4 pl-2 text-sm transition duration-150 hover:bg-secondary/50"
+            >
+              <MicrophoneIcon className="h-4 w-4 text-primary" />
+
+              <span className="ml-0 transition-all duration-150 group-hover:ml-2">
+                Check out The Business Mindset Podcast
+              </span>
+            </a>
             <h1 className="text-5xl font-semibold leading-[1.05] sm:text-6xl lg:leading-[1.2]">
               Discover{" "}
               <div className="relative inline-block text-primary">
