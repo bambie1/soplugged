@@ -29,6 +29,11 @@ const moduleExports = {
         destination: "https://tbmpodcast.soplugged.com/",
         permanent: true,
       },
+      {
+        source: "/pro",
+        destination: "https://studio.soplugged.com/",
+        permanent: true,
+      },
     ];
   },
 };
