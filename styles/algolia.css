@@ -7,7 +7,6 @@
   /* autocomplete variables */
   --aa-primary-color-rgb: 78, 53, 5 !important;
   --aa-muted-color-rgb: 35, 24, 13 !important;
-  /* --aa-panel-border-color-rgb: 78, 53, 5 !important; */
   --aa-input-border-color-rgb: 78, 53, 5 !important;
   --aa-selected-color-rgb: 205, 182, 147 !important;
   --aa-search-input-height: 50px !important;
@@ -55,18 +54,18 @@
   display: inline-flex;
   margin-top: 8px;
   font-size: 0.8rem;
+}
 
-  &:hover {
-    background-color: var(--secondary);
-    color: var(--primary);
-  }
+.ais-ClearRefinements-button:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
 
-  &:focus-visible,
-  &:focus {
-    box-shadow: 0 0 0 3px var(--secondary-light);
-    background-color: var(--secondary);
-    color: var(--primary);
-  }
+.ais-ClearRefinements-button:focus-visible,
+.ais-ClearRefinements-button:focus {
+  box-shadow: 0 0 0 3px var(--secondary-light);
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
 /* highlight: matching letters/words */
