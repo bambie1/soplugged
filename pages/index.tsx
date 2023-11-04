@@ -6,7 +6,6 @@ import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
 import { IBusiness } from "@/types/Business";
-import JoinTheCommunity from "@/components/JoinTheCommunity";
 
 const Header = dynamic(() => import("../src/components/Header/Header"));
 const NewFooter = dynamic(() => import("../src/components/NewFooter"));
@@ -33,13 +32,12 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
         title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
-      <Header />
+      <Header isHomePage />
 
       <Hero />
       <HomePage {...props} />
       <div className="mt-20 lg:mt-40"></div>
 
-      <JoinTheCommunity />
       <NewFooter />
     </>
   );

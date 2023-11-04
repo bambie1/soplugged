@@ -17,12 +17,8 @@ module.exports = {
         secondary: "#cdb693",
         accent: "#93aacd",
         "accent-dark": "#5479B0",
-        light: "#f3f2f2",
-        "new-light": "#F4EEE6",
+        light: "#F8F4EF",
         black: "#100b01",
-        "tr-pink-100": "#fceff3",
-        "tr-pink-500": "#e06287",
-        "tr-pink-900": "#AF224C",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",

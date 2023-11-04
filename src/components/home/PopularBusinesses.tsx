@@ -1,54 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
-import classNames from "classnames";
 
 import { IBusiness } from "@/types/Business";
-import { popularCategories } from "@/lib/popularCategories";
-import { getCategorySlug } from "@/utils/algolia";
-
-const listedCategories = [
-  { title: "All categories", href: "/search/all" },
-  ...popularCategories,
-  { title: "...and more", href: "/search/all" },
-];
 
 const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   if (!businesses?.length) return null;
 
   return (
-    <section className="relative mt-0 -mb-10 bg-[#FCFAF8] pb-20 pt-10 lg:block">
+    <section className="relative mt-0 -mb-10 pb-20 pt-10 lg:block">
       <div className="my-container">
-        <div className="flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between lg:mb-8">
           <h2 className="text-3xl font-semibold xl:text-4xl">
             Featured Businesses
           </h2>
-        </div>
-
-        <div className="overflow-x-auto">
-          <ul className="mt-6 mb-8 flex items-center gap-1 lg:mb-12 lg:gap-2">
-            {listedCategories.map((category, index) => (
-              <li key={category.title} className="flex-shrink-0">
-                <Link
-                  href={
-                    // @ts-ignore
-                    category.href ||
-                    `/search/${getCategorySlug(category.title)}`
-                  }
-                >
-                  <a
-                    className={classNames(
-                      "rounded-full border py-2 px-3 text-sm transition duration-150 hover:border-primary lg:text-base",
-                      {
-                        "bg-secondary": index === 0,
-                      }
-                    )}
-                  >
-                    {category.title}
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">

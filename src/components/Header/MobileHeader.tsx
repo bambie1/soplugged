@@ -45,7 +45,7 @@ const MobileHeader = () => {
   const router = useRouter();
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <header className="flex h-12 items-center justify-between gap-3 px-3">
         <Link href="/">
           <a
@@ -65,7 +65,9 @@ const MobileHeader = () => {
         </div>
 
         {!router.asPath.startsWith("/search") && (
-          <ButtonLink variant="outlined" href="/join">Add your business</ButtonLink>
+          <ButtonLink variant="outlined" href="/join">
+            Add your business
+          </ButtonLink>
         )}
 
         <button

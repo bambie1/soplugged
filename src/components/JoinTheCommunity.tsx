@@ -49,16 +49,8 @@ const JoinTheCommunity = () => {
   };
 
   return (
-    <div id="newsletter" className="relative min-h-[10rem] bg-new-light">
-      <div className="absolute left-0 top-0 bottom-0 hidden w-[49%] lg:block">
-        <Image
-          src="/nina_and_ben.jpeg"
-          alt=""
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
-      <div className="mx-auto grid w-full gap-8 lg:max-w-7xl lg:grid-cols-2 lg:px-8 2xl:max-w-screen-2xl">
+    <div id="newsletter" className="relative min-h-[10rem] bg-light">
+      <div className="mx-auto grid w-full gap-8 lg:max-w-7xl lg:px-8 2xl:max-w-screen-2xl">
         <div className="relative aspect-video w-full lg:hidden">
           <Image
             src="/nina_and_ben.jpeg"
@@ -67,10 +59,10 @@ const JoinTheCommunity = () => {
             objectFit="cover"
           />
         </div>
-        <div className="px-4 pb-8 sm:px-6 lg:col-start-2 lg:py-10 xl:py-20">
-          <h3 className="text-2xl font-bold text-primary lg:text-4xl">
-            Join the SoPlugged community!
-          </h3>
+        <div className="max-w-4xl px-4 pb-8 sm:px-6 lg:py-10 xl:py-20">
+          <h2 className="mb-2 text-3xl font-semibold text-primary xl:text-4xl">
+            AMPLIFYING the voices of Black entrepreneurs in Canada
+          </h2>
           <div className="mt-4 flex items-center">
             <a
               href="https://www.instagram.com/sopluggd/"
@@ -121,6 +113,14 @@ const JoinTheCommunity = () => {
             <Button>Subscribe</Button>
           </form>
         </div>
+      </div>
+      <div className="absolute right-0 top-0 bottom-0 hidden w-[35%] lg:block">
+        <Image
+          src="/nina_and_ben.jpeg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
     </div>
   );
