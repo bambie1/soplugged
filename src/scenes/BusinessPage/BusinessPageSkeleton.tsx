@@ -2,8 +2,6 @@ import Footer from "@/src/components/Footer";
 import Header from "@/src/components/Header/Header";
 import Skeleton from "@/src/components/skeletons/Skeleton";
 
-import styles from "./BusinessPage.module.scss";
-
 const BusinessPageSkeleton = () => {
   return (
     <>
@@ -14,16 +12,14 @@ const BusinessPageSkeleton = () => {
           <Skeleton type="heading" />
         </div>
 
-        <section className={styles.skeletonView}>
-          <div className={styles.info}>
+        <section className="mx-auto max-w-3xl">
+          <div className="">
             <Skeleton type="image" />
             <Skeleton type="button" />
             <Skeleton type="text" />
           </div>
-          <div className={styles.contact}>
-            <Skeleton type="contact" />
-            <Skeleton type="input" />
-            <Skeleton type="input" />
+          <div className="mt-10 flex justify-center">
+            <Skeleton type="button" />
           </div>
         </section>
       </div>

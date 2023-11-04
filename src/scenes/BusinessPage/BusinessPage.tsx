@@ -3,22 +3,18 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
-import { ExclamationCircleIcon } from "@heroicons/react/solid";
 
 import { Button } from "@/styled/Button";
 import SocialLinks from "@/src/components/SocialLinks";
 import Avatar from "@/src/components/Avatar";
 import { IBusiness } from "@/types/Business";
 
-import styles from "./BusinessPage.module.scss";
 import { createURL } from "@/utils/algolia";
 import MoreLikeThis from "@/components/MoreLikeThis";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
 
-const ContactForm = dynamic(() => import("../../components/ContactForm"));
-const ShareButton = dynamic(() => import("../../components/ShareButton"));
 const ReactImageGallery = dynamic(() => import("react-image-gallery"), {
   loading: () => <div className="aspect-video w-full rounded-lg bg-gray-200" />,
 });
@@ -90,52 +86,11 @@ const BusinessPage: FC<Props> = ({ business }) => {
     );
   };
 
-  const renderFullView = () => (
-    <section className={styles.fullView}>
-      <div className="flex w-full flex-col items-center gap-8 lg:gap-0">
-        {hasPreview ? (
-          <ReactImageGallery items={images} showPlayButton={false} />
-        ) : (
-          <NoPreviewAvailable />
-        )}
-
-        {business_description && (
-          <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
-            <h3 className="mb-2 text-lg font-semibold uppercase text-gray-800 lg:text-xl">
-              About
-            </h3>
-            <section
-              dangerouslySetInnerHTML={{
-                __html: cleanDescription,
-              }}
-              className="prose max-w-none text-gray-500 prose-p:my-0 prose-strong:text-current"
-            ></section>
-          </div>
-        )}
-      </div>
-      <aside className="relative mb-4 lg:mb-20">
-        <div className={styles.pageActions}>
-          {hasContactLinks && <SocialLinks business={business} />}
-          <div className={styles.contactForm}>
-            <ContactForm
-              businessEmail={creator?.email || ""}
-              businessName={business_name}
-              phoneNumber={phone_number}
-            />
-          </div>
-          <div className="grid gap-2 overflow-hidden">
-            <ShareButton />
-          </div>
-        </div>
-      </aside>
-    </section>
-  );
-
   return (
     <>
       <Header />
       <main className="min-h-[90vh] lg:mb-20">
-        <div className="pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
+        <div className="mb-14 pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
           <section className="px-4 sm:px-6 lg:px-0">
             <div className="flex flex-wrap justify-center gap-4">
               <Avatar name={business_name} url={logo_url} />
@@ -144,7 +99,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
               </h1>
             </div>
 
-            <div className={styles.info}>
+            <div className="flex justify-center gap-4">
               {category && (
                 <Button variant="text" onClick={handleCategoryClick}>
                   <FontAwesomeIcon icon={faShapes} className="mr-2" />
@@ -165,27 +120,32 @@ const BusinessPage: FC<Props> = ({ business }) => {
             </div>
           </section>
 
-          {!verified && (
-            <div className={styles.claimBusiness}>
-              <div className={`mb-2 text-center ${styles.unverified}`}>
-                This business hasn't been claimed by it's owner
-              </div>
+          <section className="mx-auto mt-10 max-w-3xl">
+            <div className="flex w-full flex-col items-center gap-8 lg:gap-0">
+              {hasPreview ? (
+                <ReactImageGallery items={images} showPlayButton={false} />
+              ) : (
+                <NoPreviewAvailable />
+              )}
 
-              <a href="mailto:hello@soplugged.com">
-                <Button variant="outlined">
-                  <div className="flex items-center gap-2">
-                    <ExclamationCircleIcon
-                      className="h-8 w-8"
-                      strokeWidth={0.75}
-                    />
-                    I own this business
-                  </div>
-                </Button>
-              </a>
+              {business_description && (
+                <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-0">
+                  <h3 className="mb-2 text-lg font-semibold uppercase text-gray-800 lg:text-xl">
+                    About
+                  </h3>
+                  <section
+                    dangerouslySetInnerHTML={{
+                      __html: cleanDescription,
+                    }}
+                    className="prose max-w-none text-gray-500 prose-p:my-0 prose-strong:text-current"
+                  ></section>
+                </div>
+              )}
             </div>
-          )}
-
-          <div className="">{renderFullView()}</div>
+            <div className="mt-10">
+              {hasContactLinks && <SocialLinks business={business} />}
+            </div>
+          </section>
         </div>
 
         <MoreLikeThis

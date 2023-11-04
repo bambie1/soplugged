@@ -1,19 +1,17 @@
-@import "./mixins";
-
-// algolia
+/* algolia */
 :root {
   --primary: #4e3505;
   --secondary: #cdb693;
+  --secondary-light: #4e350563;
 
-  // autocomplete variables
+  /* autocomplete variables */
   --aa-primary-color-rgb: 78, 53, 5 !important;
   --aa-muted-color-rgb: 35, 24, 13 !important;
-  // --aa-panel-border-color-rgb: 78, 53, 5 !important;
+  /* --aa-panel-border-color-rgb: 78, 53, 5 !important; */
   --aa-input-border-color-rgb: 78, 53, 5 !important;
   --aa-selected-color-rgb: 205, 182, 147 !important;
   --aa-search-input-height: 50px !important;
 }
-
 
 .aa-Form {
   border-radius: 10px !important;
@@ -48,7 +46,6 @@
 .ais-ClearRefinements {
   display: flex;
   margin-top: 1rem;
-  // display: none;
 }
 .ais-ClearRefinements-button[disabled] {
   display: none;
@@ -66,7 +63,7 @@
 
   &:focus-visible,
   &:focus {
-    box-shadow: 0 0 0 3px $lightSecondary;
+    box-shadow: 0 0 0 3px var(--secondary-light);
     background-color: var(--secondary);
     color: var(--primary);
   }
@@ -79,5 +76,5 @@ ais-highlight-0000000000,
   font-weight: bold;
   background-color: transparent;
   font-style: inherit;
-  color: $secondary;
+  color: var(--secondary);
 }
