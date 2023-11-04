@@ -12,7 +12,6 @@ import "../styles/imageGallery.scss";
 import "../styles/quill.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
-import "@reach/tooltip/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 

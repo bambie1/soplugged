@@ -9,7 +9,6 @@ import { SearchIcon } from "@heroicons/react/outline";
 import styles from "./MobileHeader.module.css";
 import { ButtonLink } from "@/styled/ButtonLink";
 
-const SignOutButton = dynamic(() => import("../SignOutButton"));
 const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const mobileMenu = [
@@ -136,21 +135,9 @@ const MobileHeader = () => {
           </ul>
 
           <div className="mt-auto grid w-full gap-2 border-t border-gray-100 px-4">
-            {router.asPath.startsWith("/dashboard") ? (
-              <span className="mt-2 flex justify-center p-2 text-lg text-red-500">
-                <SignOutButton />
-              </span>
-            ) : (
-              <Link href="/dashboard">
-                <a className="mt-2 flex justify-center rounded-lg p-2 text-lg">
-                  Log in to dashboard
-                </a>
-              </Link>
-            )}
-
             <Link href="/join">
               <a className="flex justify-center rounded-lg border border-primary p-2 text-lg">
-                Add your business
+                Join the Community
               </a>
             </Link>
           </div>
