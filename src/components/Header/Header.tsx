@@ -53,6 +53,9 @@ const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
 
   return (
     <>
+      <div className="w-full bg-gradient-to-tr from-accent/50 to-secondary/50 p-2 text-center">
+        PluggedIn is HERE!
+      </div>
       <nav
         className={classNames(
           "sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 md:py-0",
