@@ -55,7 +55,7 @@ const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
     <>
       <nav
         className={classNames(
-          "sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 lg:py-0",
+          "sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 lg:py-2",
           {
             "border-b bg-white": isStyled,
             "bg-light": isHomePage && !isStyled,
