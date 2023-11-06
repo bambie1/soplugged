@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import type { GetStaticProps, NextPage } from "next";
 
 import Hero from "@/src/components/home/Hero";
@@ -7,9 +6,8 @@ import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
 import { IBusiness } from "@/types/Business";
 import Footer from "@/components/Footer";
-
-const Header = dynamic(() => import("../src/components/Header/Header"));
-const HomePage = dynamic(() => import("../src/scenes/HomePage"));
+import { Header } from "@/components/Header";
+import HomePage from "@/scenes/HomePage";
 
 const FEATURED_BUSINESSES = [
   "en-vogue-afrika",

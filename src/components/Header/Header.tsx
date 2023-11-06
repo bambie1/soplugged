@@ -10,10 +10,9 @@ import NavLink from "@/styled/NavLink";
 
 const links = [
   { id: 4, text: "Our Story", link: "/our-story" },
+  { id: 1, text: "PluggedIn Conference", link: "/pluggedin" },
   { id: 5, text: "Directory", link: "/search/all" },
   { id: 3, text: "Blog", link: "/blog" },
-  { id: 1, text: "PluggedIn Conference", link: "/pluggedin" },
-  { id: 2, text: "Partners", link: "/partners" },
 ];
 
 const nav = {
@@ -91,7 +90,7 @@ const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
             <div className="flex items-center gap-2">
               <ButtonLink
                 href={currentNav.cta.link}
-                variant={isStyled ? "filled" : "outlined"}
+                variant="outlined"
                 showArrow
               >
                 {currentNav.cta.text}

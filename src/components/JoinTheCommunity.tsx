@@ -49,7 +49,7 @@ const JoinTheCommunity = () => {
   };
 
   return (
-    <div id="newsletter" className="relative min-h-[10rem] bg-light">
+    <div className="relative flex min-h-[10rem] bg-light lg:min-h-[40rem]">
       <div className="mx-auto grid w-full gap-8 lg:max-w-7xl lg:px-8 2xl:max-w-screen-2xl">
         <div className="relative aspect-video w-full lg:hidden">
           <Image
@@ -59,62 +59,22 @@ const JoinTheCommunity = () => {
             objectFit="cover"
           />
         </div>
-        <div className="max-w-4xl px-4 pb-8 sm:px-6 lg:py-10 xl:py-20">
-          <h2 className="mb-2 text-3xl font-semibold text-primary xl:text-4xl">
+        <div className="flex h-full max-w-xl flex-col justify-center px-4 pb-8 sm:px-6 lg:py-10 xl:py-20 2xl:max-w-3xl">
+          <h2 className="mb-4 text-3xl font-semibold text-primary xl:text-4xl">
             AMPLIFYING the voices of Black entrepreneurs in Canada
           </h2>
-          <div className="mt-4 flex items-center">
-            <a
-              href="https://www.instagram.com/sopluggd/"
-              className="flex items-center gap-2 lg:text-lg"
-            >
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-              <p className="underline">Follow us on IG</p>
-            </a>
-
-            <div className="ml-5 flex gap-4 border-l border-primary pl-5">
-              {socialsArray.map((item) => (
-                <a
-                  key={item.name}
-                  target="_blank"
-                  rel="noreferrer"
-                  href={item.href}
-                  className="text-primary/40 transition duration-150 hover:text-primary"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  {item.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <hr className="my-6 lg:mb-12" />
-
-          <p className="mb-2 text-lg font-semibold lg:text-xl">
-            Subscribe to our monthly newsletter
+          <p className="mb-2">
+            We started SoPlugged in 2021 to empower Black entrepreneurs by
+            sharing inspiring stories, practical tips, and valuable insights
+            from successful Black entrepreneurs in Canada.
           </p>
-          <p className="text-gray-600">
-            Entrepreneurial tips, Black-owned business highlights, and SoPlugged
-            updates sent straight to your inbox every month!
+          <p>
+            Since then, we've empower Black entrepreneurs by sharing inspiring
+            stories, practical tips, and value.
           </p>
-
-          <form
-            onSubmit={handleSubscribe}
-            className="mt-8 grid max-w-lg flex-col items-start lg:flex"
-          >
-            <Input
-              label="Email address"
-              autoComplete="off"
-              required
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Button>Subscribe</Button>
-          </form>
         </div>
       </div>
-      <div className="absolute right-0 top-0 bottom-0 hidden w-[35%] lg:block">
+      <div className="absolute right-0 top-0 bottom-0 hidden w-[45%] lg:block">
         <Image
           src="/nina_and_ben.jpeg"
           alt=""

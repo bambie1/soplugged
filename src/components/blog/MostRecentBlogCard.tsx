@@ -37,7 +37,7 @@ const MostRecentBlogCard: FC<Props> = ({ post }) => {
         </div>
         <div className="flex flex-col">
           <h3
-            className="text-xl font-semibold transition duration-200 group-hover:text-primary group-hover:underline md:font-bold lg:text-3xl xl:text-4xl"
+            className="text-xl font-semibold transition duration-200 group-hover:text-primary group-hover:underline lg:text-3xl xl:text-4xl"
             title={title}
           >
             {title}

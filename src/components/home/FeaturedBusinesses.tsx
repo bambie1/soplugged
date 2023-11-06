@@ -3,11 +3,11 @@ import Image from "next/image";
 
 import { IBusiness } from "@/types/Business";
 
-const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
+const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   if (!businesses?.length) return null;
 
   return (
-    <section className="relative mt-0 -mb-10 pb-20 pt-10 lg:block">
+    <section className="relative -mb-10 pb-20 lg:block">
       <div className="my-container">
         <div className="mb-4 flex items-center justify-between lg:mb-8">
           <h2 className="text-3xl font-semibold xl:text-4xl">
@@ -97,4 +97,4 @@ const PopularBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   );
 };
 
-export default PopularBusinesses;
+export default FeaturedBusinesses;

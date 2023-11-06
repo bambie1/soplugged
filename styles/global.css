@@ -23,27 +23,6 @@ html {
   }
 }
 
-.roll-out {
-  animation: rollout 0.5s;
-}
-
-.pro_hero_image {
-  background-image: url(/website_mockup.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  mask-image: url(/mask_grid.png);
-  mask-repeat: no-repeat;
-  mask-position: center;
-}
-
-@media (min-width: 1024px) {
-  .pro_hero_image {
-    mask-image: url(/mask_grid_laptop.png);
-  }
-}
-
 @layer base {
   body {
     color: #100b01;
@@ -60,10 +39,6 @@ html {
 
 .light-gradient {
   @apply bg-gradient-to-r from-secondary/5 to-secondary/[.12];
-}
-
-.inset-center {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
 }
 
 /* pricing checkbox */

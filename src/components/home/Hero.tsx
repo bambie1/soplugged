@@ -5,8 +5,8 @@ import { ButtonLink } from "@/styled/ButtonLink";
 const Hero = () => {
   return (
     <div className="relative overflow-x-hidden">
-      <div className="absolute top-0 left-0 right-0 bottom-60 bg-light lg:bottom-64"></div>
-      <div className="my-container flex flex-col py-10">
+      <div className="absolute top-0 left-0 right-0 bottom-60 -z-10 bg-light lg:bottom-64"></div>
+      <div className="my-container flex items-center justify-between gap-10 pt-10">
         <div className="relative flex w-full max-w-3xl shrink-0 flex-col items-start lg:mt-20">
           <a
             href="https://tbmpodcast.soplugged.com/"
@@ -37,17 +37,19 @@ const Hero = () => {
             </ButtonLink>
           </div>
         </div>
-        <div className="mt-20 hidden w-full grid-cols-5 items-center gap-6 overflow-hidden lg:grid [&>*:nth-child(even)]:mt-20">
-          <HeroImage url="/people/nina_and_toffy.jpeg" />
-          <HeroImage url="/people/group_1.jpeg" />
-          <HeroImage url="/people/leon_suave.jpeg" />
-          <HeroImage url="/people/large_group.jpeg" />
-          <HeroImage url="/people/group_2.jpeg" />
-        </div>
-        <div className="mt-10 grid w-full grid-cols-2 items-center gap-4 overflow-hidden lg:hidden [&>*:nth-child(even)]:mt-20">
-          <HeroImage url="/people/nina_and_toffy.jpeg" />
-          <HeroImage url="/people/group_1.jpeg" />
-        </div>
+
+        <div className="hidden aspect-video w-80 border p-4 lg:block"></div>
+      </div>
+      <div className="my-container mt-20 hidden grid-cols-5 items-center gap-6 overflow-hidden px-4 lg:grid [&>*:nth-child(even)]:mt-20">
+        <HeroImage url="/people/nina_and_toffy.jpeg" />
+        <HeroImage url="/people/group_1.jpeg" />
+        <HeroImage url="/people/leon_suave.jpeg" />
+        <HeroImage url="/people/large_group.jpeg" />
+        <HeroImage url="/people/group_2.jpeg" />
+      </div>
+      <div className="my-container mt-10 grid grid-cols-2 items-center gap-4 overflow-hidden lg:hidden [&>*:nth-child(even)]:mt-20">
+        <HeroImage url="/people/nina_and_toffy.jpeg" />
+        <HeroImage url="/people/group_1.jpeg" />
       </div>
     </div>
   );

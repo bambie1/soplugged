@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 
 import SEO from "@/src/components/SEO";
+import { Header } from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Join: NextPage = () => {
   return (
@@ -9,7 +11,9 @@ const Join: NextPage = () => {
         description="Whether you have a need, provide solutions, or both, SoPlugged is for you"
         title="Join SoPlugged"
       />
-      Join Us
+      <Header />
+      <main className="h-screen"></main>
+      <Footer />
     </>
   );
 };
