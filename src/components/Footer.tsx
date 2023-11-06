@@ -1,12 +1,6 @@
 import { MailIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
-
-interface Props {
-  tertiary?: boolean;
-  noBackground?: boolean;
-}
 
 const navigation = {
   main: [
@@ -64,13 +58,9 @@ const navigation = {
   ],
 };
 
-const Footer: FC<Props> = ({ tertiary, noBackground }) => {
+const Footer = () => {
   return (
-    <footer
-      className={`mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ${
-        tertiary ? "from-accent/60" : !noBackground ? "from-secondary/60" : ""
-      }`}
-    >
+    <footer className="mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ">
       <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
         <Link href="/">
           <a className="relative -mt-7 mb-10 inline-flex aspect-square w-14 self-center transition duration-150 hover:grayscale">
