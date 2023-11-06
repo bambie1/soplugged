@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import classNames from "classnames";
 
 import { ButtonLink } from "@/styled/ButtonLink";
@@ -38,27 +38,14 @@ interface Props {
 }
 
 const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
-  const [isStyled, setIsStyled] = useState(false);
-
   const currentNav = nav[variant];
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setIsStyled(window.pageYOffset > 40)
-      );
-    }
-  }, []);
 
   return (
     <>
       <nav
         className={classNames(
-          "sticky top-0 z-20 w-full overflow-hidden py-3 transition duration-100 lg:py-2",
-          {
-            "border-b bg-white": isStyled,
-            "bg-light": isHomePage && !isStyled,
-          },
+          "z-20 w-full overflow-hidden bg-light py-3 transition duration-100 lg:py-2",
+
           className
         )}
       >

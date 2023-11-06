@@ -1,17 +1,15 @@
-import dynamic from "next/dynamic";
 import { FC, ReactNode } from "react";
 
-const Header = dynamic(() => import("../components/Header/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
 
 interface Props {
   center?: boolean;
   isSlim?: boolean;
-  whiteFooter?: boolean;
   children: ReactNode;
 }
 
-const PageWrapper: FC<Props> = ({ children, center, isSlim, whiteFooter }) => {
+const PageWrapper: FC<Props> = ({ children, center, isSlim }) => {
   return (
     <>
       <Header />
@@ -23,7 +21,7 @@ const PageWrapper: FC<Props> = ({ children, center, isSlim, whiteFooter }) => {
         >
           {children}
         </main>
-        <Footer noBackground={whiteFooter} />
+        <Footer />
       </div>
     </>
   );
