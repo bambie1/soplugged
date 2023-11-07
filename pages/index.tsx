@@ -13,11 +13,7 @@ const FEATURED_BUSINESSES = [
   "en-vogue-afrika",
   "f10-studio",
   "tianah-beaute",
-  "flour-queen-pastries",
   "mills-kitchen",
-  "rqc-designs",
-  "the-hair-essence",
-  "mazic-beauty",
 ];
 
 const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
@@ -75,7 +71,7 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 2, stage: PUBLISHED) {
+        posts(orderBy: createdAt_DESC, first: 3, stage: PUBLISHED) {
           title
           slug
           createdAt

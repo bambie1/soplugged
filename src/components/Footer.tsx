@@ -5,10 +5,8 @@ import Link from "next/link";
 const navigation = {
   main: [
     { name: "Our story", href: "/our-story" },
-    { name: "Grow your business", href: "/pro" },
     { name: "Read our blog", href: "/blog" },
-    { name: "Become a sponsor", href: "/sponsors" },
-    { name: "Community guidelines", href: "/guidelines" },
+    { name: "Become a partner", href: "/partners" },
   ],
   social: [
     {
@@ -60,7 +58,7 @@ const navigation = {
 
 const Footer = () => {
   return (
-    <footer className="mt-auto flex flex-col overflow-hidden bg-gradient-to-t to-white pt-20 pb-10 ">
+    <footer className="mt-auto flex flex-col overflow-hidden bg-primary pt-20 pb-10 text-white">
       <div className="relative mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8 2xl:max-w-screen-2xl">
         <Link href="/">
           <a className="relative -mt-7 mb-10 inline-flex aspect-square w-14 self-center transition duration-150 hover:grayscale">

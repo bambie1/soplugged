@@ -18,7 +18,7 @@ const OurStory: NextPage = () => {
       >
         <div className="my-8 grid items-center gap-10 lg:grid-cols-2">
           <section>
-            <div className="prose-lg">
+            <div className="prose lg:prose-lg">
               <p>
                 Hi, I'm Nina, creator, and founder of SoPlugged - an online
                 platform that makes <b>#buyingblack</b> easy! Our biggest
@@ -44,7 +44,7 @@ const OurStory: NextPage = () => {
             </div>
           </section>
 
-          <div className="relative aspect-square w-full justify-self-center lg:row-start-auto lg:mx-auto lg:max-w-lg">
+          <div className="relative aspect-square w-full justify-self-center lg:row-start-auto lg:mx-auto lg:-mt-40 lg:max-w-lg xl:-mt-60">
             <Image
               src="/soplugged_team.png"
               alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"

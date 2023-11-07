@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { IBusiness } from "@/types/Business";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   if (!businesses?.length) return null;
@@ -9,10 +10,12 @@ const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   return (
     <section className="relative -mb-10 pb-20 lg:block">
       <div className="my-container">
-        <div className="mb-4 flex items-center justify-between lg:mb-8">
+        <div className="mb-4 flex items-center justify-between">
           <h2 className="text-3xl font-semibold xl:text-4xl">
             Featured Businesses
           </h2>
+
+          <ButtonLink href="/search/all">Explore all businesses</ButtonLink>
         </div>
 
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
@@ -84,14 +87,6 @@ const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
             );
           })}
         </div>
-      </div>
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pt-56 pb-8">
-        <Link href="/search/all">
-          <a className="button outlined pointer-events-auto">
-            Explore all businesses
-          </a>
-        </Link>
       </div>
     </section>
   );

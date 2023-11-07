@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="relative overflow-x-hidden">
       <div className="absolute top-0 left-0 right-0 bottom-60 -z-10 bg-light lg:bottom-64"></div>
-      <div className="my-container flex items-center justify-between gap-10 pt-10">
+      <div className="my-container relative flex items-center justify-between gap-10 pt-10">
         <div className="relative flex w-full max-w-3xl shrink-0 flex-col items-start lg:mt-20">
           <a
             href="https://tbmpodcast.soplugged.com/"
@@ -38,7 +38,9 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden aspect-video w-80 border p-4 lg:block"></div>
+        <div className="absolute top-0 right-0 bottom-0 hidden aspect-square w-1/2 opacity-50 lg:block">
+          <img src="/hero_lines.svg" alt="" className="object-cover" />
+        </div>
       </div>
       <div className="my-container mt-20 hidden grid-cols-5 items-center gap-6 overflow-hidden px-4 lg:grid [&>*:nth-child(even)]:mt-20">
         <HeroImage url="/people/nina_and_toffy.jpeg" />
