@@ -26,7 +26,7 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
         title="SoPlugged | Discover Black-owned businesses in Canada"
       />
 
-      <Header isHomePage />
+      <Header />
 
       <Hero />
       <HomePage {...props} />

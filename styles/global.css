@@ -90,3 +90,7 @@ html {
 .listItem {
   box-shadow: 3px 3px #4e3505;
 }
+
+.pluggedInGradient {
+  background: linear-gradient(135deg, #ffd071b1 0%, #2377ddbd 100%);
+}

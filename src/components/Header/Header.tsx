@@ -21,18 +21,17 @@ const currentNav = {
 };
 
 interface Props {
+  whiteBg?: boolean;
   className?: string;
-  isHomePage?: boolean;
 }
 
-const Header: FC<Props> = ({ className }) => {
+const Header: FC<Props> = ({ whiteBg, className }) => {
   return (
     <>
       <nav
         className={classNames(
-          "relative z-20 w-full overflow-hidden bg-light py-3 transition duration-100 lg:py-2",
-
-          className
+          "relative z-20 w-full overflow-hidden py-3 transition duration-100 lg:py-2",
+          { "bg-light": !whiteBg }
         )}
       >
         <MobileHeader />
