@@ -38,7 +38,7 @@ const OurStory: NextPage = () => {
               </p>
             </div>
             <div className="mt-8">
-              <ButtonLink href="/search/all" variant="outlined" showArrow>
+              <ButtonLink href="/search/all" variant="outlined">
                 Visit our directory
               </ButtonLink>
             </div>

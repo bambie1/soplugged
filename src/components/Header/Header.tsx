@@ -75,11 +75,7 @@ const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
             </ul>
 
             <div className="flex items-center gap-2">
-              <ButtonLink
-                href={currentNav.cta.link}
-                variant="outlined"
-                showArrow
-              >
+              <ButtonLink href={currentNav.cta.link} variant="outlined">
                 {currentNav.cta.text}
               </ButtonLink>
             </div>

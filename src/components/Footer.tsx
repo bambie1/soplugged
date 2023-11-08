@@ -9,8 +9,16 @@ const navigation = {
     { name: "Partners", href: "/partners" },
   ],
   external: [
-    { name: "SoPlugged Studio", href: "https://studio.soplugged.com/" },
-    { name: "TBM Podcast", href: "https://tbmpodcast.soplugged.com/" },
+    {
+      name: "SoPlugged Studio",
+      href: "https://studio.soplugged.com/",
+      isExternal: true,
+    },
+    {
+      name: "TBM Podcast",
+      href: "https://tbmpodcast.soplugged.com/",
+      isExternal: true,
+    },
     { name: "Business Directory", href: "/search/all" },
   ],
   social: [
@@ -70,9 +78,9 @@ export default function Footer() {
           </a>
         </Link>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            <ul role="list" className="mt-6 space-y-4">
+        <div className="grid gap-4 md:mt-10 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
+            <ul role="list" className="space-y-4">
               {navigation.main.map((item) => (
                 <li key={item.name}>
                   <a
@@ -84,12 +92,14 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <ul role="list" className="mt-6 space-y-4">
+            <ul role="list" className="space-y-4">
               {navigation.external.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
                     className="leading-6 text-gray-300 hover:text-white"
+                    target={item.isExternal ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
                   >
                     {item.name}
                   </a>
@@ -97,11 +107,11 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="mt-10 xl:mt-0">
-            <h3 className="font-semibold leading-6 text-white">
+          <div className="mt-10 max-w-md lg:mt-0">
+            <h3 className="font-semibold leading-6 text-white lg:text-lg">
               Subscribe to our newsletter
             </h3>
-            <p className="mt-2  leading-6 text-gray-300">
+            <p className="mt-2 leading-6 text-gray-300">
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
@@ -115,13 +125,13 @@ export default function Footer() {
                 id="email-address"
                 autoComplete="email"
                 required
-                className="sm: w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/50 placeholder:text-white/30 focus:ring-2 focus:ring-inset focus:ring-white sm:w-64 sm:leading-6 xl:w-full"
+                className="sm: w-full min-w-0 appearance-none rounded-md border-0 bg-transparent px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/50 placeholder:text-white/30 focus:ring-2 focus:ring-inset focus:ring-white sm:w-64 sm:leading-6 xl:w-full"
                 placeholder="Enter your email"
               />
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center rounded-md bg-white px-3 py-2 font-semibold text-primary shadow-sm hover:bg-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="flex w-full items-center justify-center rounded-md bg-white px-4 py-2 font-semibold text-primary shadow-sm hover:bg-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Subscribe
                 </button>
@@ -133,17 +143,13 @@ export default function Footer() {
       <div className="my-container mt-8 border-t border-white/10 py-8 md:flex md:items-center md:justify-between lg:mt-16">
         <div className="flex space-x-6 md:order-2">
           {navigation.social.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-500 hover:text-gray-400"
-            >
+            <a key={item.name} href={item.href} className="text-white/70">
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
         </div>
-        <p className="mt-8 text-sm leading-5 text-gray-400 md:order-1 md:mt-0">
+        <p className="mt-8 leading-5 text-white/70 md:order-1 md:mt-0">
           &copy; 2020 Your Company, Inc. All rights reserved.
         </p>
       </div>

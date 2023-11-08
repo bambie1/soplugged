@@ -16,7 +16,7 @@ const PageWrapper: FC<Props> = ({ center, title, subTitle, children }) => {
       <Header />
       <div className="flex min-h-screen flex-col">
         {title && subTitle && (
-          <div className="relative overflow-hidden bg-light py-10 shadow-sm xl:pt-20">
+          <div className="relative -z-10 overflow-hidden bg-light py-10 shadow-sm xl:pt-20">
             <section className="my-container">
               <h1 className="mb-6 max-w-2xl text-4xl font-semibold text-primary sm:text-5xl">
                 {title}
