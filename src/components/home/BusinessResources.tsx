@@ -8,8 +8,7 @@ interface Props {
 }
 const BusinessResources: FC<Props> = ({ posts }) => {
   return (
-    <div className="relative py-10 lg:py-20">
-      <div className="absolute top-0 left-0 right-0 -z-10 h-full bg-light lg:h-1/2"></div>
+    <div className="bg-light py-10 lg:py-20">
       <div className="my-container">
         <div className="mb-8 grid max-w-xl gap-4">
           <h2 className="text-3xl font-semibold text-primary xl:text-4xl">

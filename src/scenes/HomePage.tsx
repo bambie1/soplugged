@@ -4,7 +4,7 @@ import { BlogPost } from "@/types/BlogPost";
 import { IBusiness } from "@/types/Business";
 import FeaturedBusinesses from "@/components/home/FeaturedBusinesses";
 import PluggedInAd from "@/components/home/PluggedInAd";
-import JoinTheCommunity from "@/components/JoinTheCommunity";
+import MissionStatement from "@/components/MissionStatement";
 import BusinessResources from "@/components/home/BusinessResources";
 import FAQs from "@/components/home/FAQs";
 
@@ -14,7 +14,7 @@ const HomePage: FC<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
   return (
     <div className="flex flex-col gap-20 overflow-hidden md:my-10 lg:mt-20 lg:gap-40 xl:mt-36">
       <PluggedInAd />
-      <JoinTheCommunity />
+      <MissionStatement />
 
       <FeaturedBusinesses businesses={props.featuredBusinesses} />
 

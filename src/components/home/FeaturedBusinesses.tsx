@@ -11,7 +11,7 @@ const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
     <section className="relative -mb-10 pb-20 lg:block">
       <div className="my-container">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-3xl font-semibold xl:text-4xl">
+          <h2 className="text-3xl font-semibold text-primary xl:text-4xl">
             Featured Businesses
           </h2>
 
