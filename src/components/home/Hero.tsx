@@ -4,8 +4,8 @@ import { ButtonLink } from "@/styled/ButtonLink";
 
 const Hero = () => {
   return (
-    <div className="relative overflow-x-hidden">
-      <div className="absolute top-0 left-0 right-0 bottom-60 -z-10 bg-light lg:bottom-64"></div>
+    <div className="relative mb-10 overflow-x-hidden lg:mb-0">
+      <div className="absolute top-0 left-0 bottom-0 right-0 -z-10 bg-light md:bottom-60 lg:bottom-64"></div>
       <div className="my-container relative flex items-center justify-between gap-10 pt-10">
         <div className="relative flex w-full max-w-3xl shrink-0 flex-col items-start lg:mt-20">
           <a
@@ -20,7 +20,7 @@ const Hero = () => {
               Check out The Business Mindset Podcast
             </span>
           </a>
-          <h1 className="text-5xl font-semibold tracking-tight text-primary sm:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-primary sm:text-6xl lg:text-7xl">
             A Thriving Community of Black Entrepreneurs
           </h1>
           <p className="mt-3 text-gray-700 lg:text-lg">
@@ -28,11 +28,22 @@ const Hero = () => {
             discover new products and services in your area.
           </p>
 
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-10 grid w-full gap-4 md:flex md:items-center">
             <ButtonLink href="/join" variant="filled">
               Join the Community
             </ButtonLink>
-            <ButtonLink href="/partners" variant="text">
+            <ButtonLink
+              href="/partners"
+              variant="text"
+              className="hidden md:block"
+            >
+              Become a Partner
+            </ButtonLink>
+            <ButtonLink
+              href="/partners"
+              variant="outlined"
+              className="md:hidden"
+            >
               Become a Partner
             </ButtonLink>
           </div>
@@ -49,7 +60,7 @@ const Hero = () => {
         <HeroImage url="/people/large_group.jpeg" />
         <HeroImage url="/people/group_2.jpeg" />
       </div>
-      <div className="my-container mt-10 grid grid-cols-2 items-center gap-4 overflow-hidden lg:hidden [&>*:nth-child(even)]:mt-20">
+      <div className="my-container mb-10 grid grid-cols-2 items-center gap-4 overflow-hidden lg:hidden [&>*:nth-child(even)]:mt-20">
         <HeroImage url="/people/nina_and_toffy.jpeg" />
         <HeroImage url="/people/group_1.jpeg" />
       </div>

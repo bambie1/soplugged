@@ -79,7 +79,7 @@ export default function Footer() {
         </Link>
 
         <div className="grid gap-4 md:mt-10 md:grid-cols-2">
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-4">
             <ul role="list" className="space-y-4">
               {navigation.main.map((item) => (
                 <li key={item.name}>
@@ -92,6 +92,8 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            <hr className="opacity-10 md:hidden" />
             <ul role="list" className="space-y-4">
               {navigation.external.map((item) => (
                 <li key={item.name}>

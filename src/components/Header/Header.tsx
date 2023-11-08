@@ -15,36 +15,22 @@ const links = [
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
-const nav = {
-  main: {
-    cta: { text: "Join the Community", link: "/join" },
-    links,
-  },
-  blog: {
-    cta: { text: "Join the Community", link: "/join" },
-    links,
-  },
-  conf: {
-    cta: { text: "Get your ticket", link: "#tickets" },
-    subCta: { text: "Learn more", link: "#learn-more" },
-    links,
-  },
+const currentNav = {
+  cta: { text: "Join the Community", link: "/join" },
+  links,
 };
 
 interface Props {
-  variant?: "main" | "blog" | "conf";
   className?: string;
   isHomePage?: boolean;
 }
 
-const Header: FC<Props> = ({ variant = "main", isHomePage, className }) => {
-  const currentNav = nav[variant];
-
+const Header: FC<Props> = ({ className }) => {
   return (
     <>
       <nav
         className={classNames(
-          "z-20 w-full overflow-hidden bg-light py-3 transition duration-100 lg:py-2",
+          "relative z-20 w-full overflow-hidden bg-light py-3 transition duration-100 lg:py-2",
 
           className
         )}
