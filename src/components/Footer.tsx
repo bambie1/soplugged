@@ -4,11 +4,12 @@ import Image from "next/image";
 const navigation = {
   main: [
     { name: "Our Story", href: "/our-story" },
-    { name: "Blog", href: "/blog" },
-    { name: "PluggedIn Conference", href: "/pluggedin" },
+    { name: "Newsletter", href: "/newsletter" },
     { name: "Partners", href: "/partners" },
+    { name: "Blog", href: "/blog" },
   ],
   external: [
+    { name: "PluggedIn Conference", href: "/pluggedin" },
     {
       name: "SoPlugged Studio",
       href: "https://studio.soplugged.com/",

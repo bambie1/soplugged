@@ -1,11 +1,10 @@
-import type { NextPage } from "next";
 import Image from "next/image";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import PageWrapper from "@/src/layouts/PageWrapper";
 import SEO from "@/src/components/SEO";
 
-const OurStory: NextPage = () => {
+const OurStory = () => {
   return (
     <>
       <SEO
@@ -16,7 +15,7 @@ const OurStory: NextPage = () => {
         title="Our Story"
         subTitle="More than just a platform, we're a powerful ecosystem dedicated to lifting up black entrepreneurs across Canada"
       >
-        <div className="my-8 grid items-center gap-10 lg:grid-cols-2">
+        <div className="my-8 grid gap-10 lg:grid-cols-2">
           <section>
             <div className="prose lg:prose-lg">
               <p>
@@ -37,20 +36,52 @@ const OurStory: NextPage = () => {
                 become a part of it!
               </p>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex items-center gap-4">
               <ButtonLink href="/search/all" variant="outlined">
-                Visit our directory
+                Join our community
               </ButtonLink>
+              <ButtonLink href="/partners">Partner with us</ButtonLink>
             </div>
           </section>
 
-          <div className="relative aspect-square w-full justify-self-center lg:row-start-auto lg:mx-auto lg:-mt-40 lg:max-w-lg xl:-mt-60">
-            <Image
-              src="/soplugged_team.png"
-              alt="Image of the soplugged team from left-to-right: Theo, Nina, Benaiah"
-              layout="fill"
-              objectFit="contain"
-            />
+          <div className="ml-auto grid w-full grid-cols-2 gap-4 lg:-mt-40 lg:max-w-lg">
+            <div className="space-y-4">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-md shadow-primary/40">
+                <Image
+                  src="/people/nina_and_toffy.jpeg"
+                  alt="Nina and Toffy"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-md shadow-primary/40">
+                <Image
+                  src="/nina_and_ben.jpeg"
+                  alt="Nina and Benaiah"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+
+            <div className="mt-8 space-y-4 lg:mt-14">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-md shadow-primary/40">
+                <Image
+                  src="/people/theo.jpeg"
+                  alt="Theo"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-md shadow-primary/40">
+                <Image
+                  src="/people/nina_ben_marilyn.jpeg"
+                  alt="Nina, Benaiah and Marilyn"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </PageWrapper>

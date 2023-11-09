@@ -35,7 +35,7 @@ const PluggedInHomePage = () => {
       />
 
       <>
-        <Header />
+        <Header whiteBg />
         <div className="my-container pt-12 text-center lg:pt-20">
           <div className="light-gradient relative mb-3 inline-flex  rounded-xl px-3 py-2">
             <img
@@ -96,7 +96,7 @@ const PluggedInHomePage = () => {
             <div className="my-container grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
               <div className="relative">
                 <img
-                  src="reni.jpg"
+                  src="/reni.jpg"
                   alt="Portrait of Reni Odetoyinbo"
                   className="transparentShadow mb-3 aspect-[3/4] w-full rounded-lg border border-primary object-cover lg:mb-4"
                 />
