@@ -24,8 +24,9 @@ const Hero = () => {
             A Thriving Community of Black Entrepreneurs
           </h1>
           <p className="mt-3 text-gray-700 lg:text-lg">
-            Our free directory makes it easy to support Black entrepreneurs and
-            discover new products and services in your area.
+            At SoPlugged, we're committed to empowering black entrepreneurs
+            across Canada through useful business resources, networking
+            opportunities and lots more!
           </p>
 
           <div className="mt-10 grid w-full gap-4 md:flex md:items-center">

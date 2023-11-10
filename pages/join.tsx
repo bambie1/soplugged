@@ -15,7 +15,7 @@ const Join: NextPage = () => {
 
       <PageWrapper
         title="Join our Community"
-        subTitle="More than just a platform, we're a powerful ecosystem dedicated to lifting up black entrepreneurs across Canada"
+        subTitle="Become a part of our community of Black entrepreneurs and business leaders across Canada."
         center
       >
         <form className="mt-8 grid w-full max-w-2xl flex-col gap-4 lg:flex">

@@ -30,7 +30,7 @@ const FAQs = () => {
     <div className="bg-white">
       <div className="my-container">
         <h2 className="text-3xl font-semibold text-primary xl:text-4xl">
-          Frequently asked questions
+          Frequently Asked Questions
         </h2>
         <div className="mt-10 lg:mt-20">
           <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 lg:space-y-0">

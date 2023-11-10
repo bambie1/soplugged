@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 import PageWrapper from "@/src/layouts/PageWrapper";
@@ -13,27 +14,49 @@ const OurStory = () => {
       />
       <PageWrapper
         title="Our Story"
-        subTitle="More than just a platform, we're a powerful ecosystem dedicated to lifting up black entrepreneurs across Canada"
+        subTitle="Committed to empowering black entrepreneurs across Canada through useful business resources, networking opportunities and lots more!"
       >
         <div className="my-8 grid gap-10 lg:grid-cols-2">
           <section>
             <div className="prose lg:prose-lg">
               <p>
-                Hi, I'm Nina, creator, and founder of SoPlugged - an online
-                platform that makes <b>#buyingblack</b> easy! Our biggest
-                inspiration at SoPlugged is supporting Black entrepreneurs and
-                growing our community together.
+                SoPlugged was born out of a desire to address the visibility gap
+                Black-owned businesses face in Canada. Recognizing the
+                challenges that Black entrepreneurs encounter in promoting their
+                businesses, we launched SoPlugged as an{" "}
+                <Link href="/search/all">online directory</Link> that
+                facilitates connections between consumers and over 100
+                Black-owned businesses across the country. Our mission is to
+                empower these businesses by providing a platform to showcase
+                their offerings and connect with new customers.
               </p>
               <p>
-                Our search-friendly platform makes it easy to find and connect
-                with Black-owned businesses across Canada. It also gives Black
-                entrepreneurs the opportunity to increase brand visibility and
-                reach a thriving community of people looking to buy black.
+                Since our inception in 2021, SoPlugged has grown to more than a
+                directory. We started{" "}
+                <a
+                  href="https://tbmpodcast.soplugged.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  The Business Mindset Podcast
+                </a>{" "}
+                where we interview Black entrepreneurs in Canada as we explore
+                their journey to building a successful business.
               </p>
               <p>
-                It's always a beautiful thing to see people join the movement to
-                support Black-owned businesses. That's our story and we hope you
-                become a part of it!
+                We also host a yearly event -{" "}
+                <Link href="/pluggedin">PluggedIn Conference</Link>, a
+                networking event that brings Black entrepreneurs and business
+                leaders from across Canada together to learn from one another as
+                well as from our invited guests like{" "}
+                <a
+                  href="https://renitheresource.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Reni, the Resource
+                </a>
+                .
               </p>
             </div>
             <div className="mt-8 flex items-center gap-4">
