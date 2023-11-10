@@ -24,7 +24,7 @@ const PageWrapper: FC<Props> = ({ center, title, subTitle, children }) => {
                   "mx-auto text-center": center,
                 })}
               >
-                <h1 className="mb-6 max-w-2xl text-4xl font-semibold text-primary sm:text-5xl">
+                <h1 className="mb-6 max-w-2xl text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
                   {title}
                 </h1>
                 <p>{subTitle}</p>
