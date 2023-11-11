@@ -15,10 +15,13 @@ const PluggedInWaitlist = () => {
 
     await fetch("/api/subscribe", {
       method: "POST",
-      body: JSON.stringify({ email, first_name: "", last_name: "" }),
+      body: JSON.stringify({
+        email,
+        pluggedInConf: true,
+      }),
     });
 
-    toast.success("Successfully subscribed!", {
+    toast.success("Successfully added to the waitlist!", {
       position: "top-center",
     });
 

@@ -60,7 +60,7 @@ const OurStory = () => {
               </p>
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <ButtonLink href="/search/all" variant="outlined">
+              <ButtonLink href="/join" variant="outlined">
                 Join our community
               </ButtonLink>
               <ButtonLink href="/partners">Partner with us</ButtonLink>

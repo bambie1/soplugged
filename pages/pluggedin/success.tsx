@@ -17,9 +17,6 @@ const PluggedInSuccessPage = (
 
   const sendEmailConfirmation = async () => {
     try {
-      if (userEmail === "nbarango@railz.ai")
-        throw new Error("skip this user email");
-
       const email = {
         From: "hello@soplugged.com",
         To: userEmail,
@@ -36,7 +33,7 @@ const PluggedInSuccessPage = (
         },
       };
 
-      await fetch("/api/sendEmail", {
+      await fetch("/api/sendEmailWithTemplate", {
         method: "POST",
         body: JSON.stringify({ email }),
       });

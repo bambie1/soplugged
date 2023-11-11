@@ -24,7 +24,7 @@ const Hero = () => {
             A Thriving Community of Black Entrepreneurs
           </h1>
           <p className="mt-3 text-gray-700 lg:text-lg">
-            At SoPlugged, we're committed to empowering black entrepreneurs
+            At SoPlugged, we're committed to empowering Black entrepreneurs
             across Canada through useful business resources, networking
             opportunities and lots more!
           </p>

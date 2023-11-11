@@ -11,17 +11,19 @@ var base = Airtable.base("appgdjdPKc3Rv2EFn");
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = JSON.parse(req.body);
-    base("Newsletter").create(
+    base("Members").create(
       [
         {
           fields: {
-            Email: data.email,
+            "E-mail address": data.userEmail,
+            "Full Name": data.name,
+            "Business Name": data.businessName,
+            "Business website": data.businessWebsite,
             "Date added": new Date().toLocaleDateString("en-US", {
               year: "numeric",
               month: "numeric",
               day: "numeric",
             }),
-            "PluggedIn Conf": data.pluggedInConf,
           },
         },
       ],

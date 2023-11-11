@@ -22,8 +22,8 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
   return (
     <>
       <SEO
-        description="Find and support Black-owned businesses across Canada with SoPlugged. Our free online directory connects you with the best Black-owned businesses in your community. Discover local gems and help empower black entrepreneurs today!"
-        title="SoPlugged | Discover Black-owned businesses in Canada"
+        description="At SoPlugged, we're committed to empowering Black entrepreneurs across Canada through useful business resources, networking opportunities and lots more!"
+        title="SoPlugged | A Thriving Community of Black Entrepreneurs"
       />
 
       <Header />

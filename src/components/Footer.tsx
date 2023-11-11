@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const navigation = {
   main: [
@@ -62,6 +64,23 @@ const navigation = {
 };
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    await fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ email, first_name: "", last_name: "" }),
+    });
+
+    toast.success("Successfully subscribed!", {
+      position: "top-center",
+    });
+
+    setEmail("");
+  };
+
   return (
     <footer className="bg-primary" aria-labelledby="footer-heading">
       <div className="my-container pb-8 pt-14">
@@ -118,7 +137,7 @@ export default function Footer() {
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
-            <form className="mt-6 sm:flex">
+            <form className="mt-6 sm:flex" onSubmit={handleSubscribe}>
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -130,6 +149,8 @@ export default function Footer() {
                 required
                 className="sm: w-full min-w-0 appearance-none rounded-md border-0 bg-transparent px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/50 placeholder:text-white/30 focus:ring-2 focus:ring-inset focus:ring-white sm:w-64 sm:leading-6 xl:w-full"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                 <button
