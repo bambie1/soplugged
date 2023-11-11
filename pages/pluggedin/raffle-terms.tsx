@@ -10,7 +10,7 @@ const RaffleTerms = () => {
         description="Terms and conditions for the SoPluggedPro raffle draw at PluggedIn 2023"
         variant="pluggedin"
       />
-      <Header variant="conf" />
+      <Header whiteBg />
 
       <main className="mx-auto px-4 pt-12 sm:px-6">
         <h1 className="mb-4 text-center text-5xl font-extrabold sm:text-6xl lg:text-7xl">

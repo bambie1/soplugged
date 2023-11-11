@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             !!error && "text-red-500"
           }`}
         >
-          {label}
+          {label} {props.required && <span className="text-red-500">*</span>}
         </label>
 
         <div className="relative mt-1 grid overflow-hidden rounded-md">

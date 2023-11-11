@@ -2,18 +2,15 @@ import type { AppProps } from "next/app";
 import Router from "next/router";
 import nProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
-import { SessionProvider } from "next-auth/react";
 import { SWRConfig } from "swr";
 import PlausibleProvider from "next-plausible";
 
 import "../styles/button.scss";
 import "../styles/global.css";
-import "../styles/algolia.scss";
+import "../styles/algolia.css";
 import "../styles/imageGallery.scss";
-import "../styles/quill.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
-import "@reach/tooltip/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 
@@ -31,20 +28,18 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
       <PlausibleProvider domain="soplugged.com" trackOutboundLinks={true}>
-        <SessionProvider session={session}>
-          <SWRConfig
-            value={{
-              refreshInterval: 5000,
-              fetcher: (resource, init) =>
-                fetch(resource, init).then((res) => res.json()),
-            }}
-          >
-            <div className="">
-              <Component {...pageProps} />
-            </div>
-            <Toaster position="bottom-left" />
-          </SWRConfig>
-        </SessionProvider>
+        <SWRConfig
+          value={{
+            refreshInterval: 5000,
+            fetcher: (resource, init) =>
+              fetch(resource, init).then((res) => res.json()),
+          }}
+        >
+          <div className="">
+            <Component {...pageProps} />
+          </div>
+          <Toaster position="bottom-left" />
+        </SWRConfig>
       </PlausibleProvider>
     </>
   );

@@ -23,27 +23,6 @@ html {
   }
 }
 
-.roll-out {
-  animation: rollout 0.5s;
-}
-
-.pro_hero_image {
-  background-image: url(/website_mockup.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  mask-image: url(/mask_grid.png);
-  mask-repeat: no-repeat;
-  mask-position: center;
-}
-
-@media (min-width: 1024px) {
-  .pro_hero_image {
-    mask-image: url(/mask_grid_laptop.png);
-  }
-}
-
 @layer base {
   body {
     color: #100b01;
@@ -60,54 +39,6 @@ html {
 
 .light-gradient {
   @apply bg-gradient-to-r from-secondary/5 to-secondary/[.12];
-}
-
-.inset-center {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
-}
-
-/* pricing checkbox */
-
-.label {
-  @apply relative flex cursor-pointer items-center gap-3 rounded-lg bg-accent/20 p-4 lg:gap-4;
-}
-
-/* Hide the browser's default checkbox */
-.label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  height: 25px;
-  width: 25px;
-  @apply rounded border border-accent-dark;
-}
-
-/* On mouse-over, add a grey background color */
-.label:hover input ~ .checkmark {
-  @apply border-accent-dark/30;
-}
-
-/* When the checkbox is checked, add a blue background */
-.label input:checked ~ .checkmark {
-  @apply bg-accent-dark ring-2 ring-offset-2;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.label input:checked ~ .checkmark:after {
-  display: block;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -158,4 +89,8 @@ html {
 
 .listItem {
   box-shadow: 3px 3px #4e3505;
+}
+
+.pluggedInGradient {
+  background: linear-gradient(135deg, #ffd071b1 0%, #2377ddbd 100%);
 }

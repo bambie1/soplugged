@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import type { GetStaticProps, NextPage } from "next";
 
 import Hero from "@/src/components/home/Hero";
@@ -6,21 +5,15 @@ import SEO from "@/src/components/SEO";
 import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
 import { IBusiness } from "@/types/Business";
-import JoinTheCommunity from "@/components/JoinTheCommunity";
-
-const Header = dynamic(() => import("../src/components/Header/Header"));
-const NewFooter = dynamic(() => import("../src/components/NewFooter"));
-const HomePage = dynamic(() => import("../src/scenes/HomePage"));
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import HomePage from "@/scenes/HomePage";
 
 const FEATURED_BUSINESSES = [
   "en-vogue-afrika",
   "f10-studio",
   "tianah-beaute",
-  "flour-queen-pastries",
   "mills-kitchen",
-  "rqc-designs",
-  "the-hair-essence",
-  "mazic-beauty",
 ];
 
 const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
@@ -29,8 +22,8 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
   return (
     <>
       <SEO
-        description="Find and support Black-owned businesses across Canada with SoPlugged. Our free online directory connects you with the best Black-owned businesses in your community. Discover local gems and help empower black entrepreneurs today!"
-        title="SoPlugged | Discover Black-owned businesses in Canada"
+        description="At SoPlugged, we're committed to empowering Black entrepreneurs across Canada through useful business resources, networking opportunities and lots more!"
+        title="SoPlugged | A Thriving Community of Black Entrepreneurs"
       />
 
       <Header />
@@ -39,8 +32,7 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
       <HomePage {...props} />
       <div className="mt-20 lg:mt-40"></div>
 
-      <JoinTheCommunity />
-      <NewFooter />
+      <Footer />
     </>
   );
 };
@@ -79,7 +71,7 @@ export async function getAllPostsForHome() {
   const data = await fetchAPI(
     gql`
       {
-        posts(orderBy: createdAt_DESC, first: 2, stage: PUBLISHED) {
+        posts(orderBy: createdAt_DESC, first: 3, stage: PUBLISHED) {
           title
           slug
           createdAt

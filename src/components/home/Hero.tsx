@@ -1,118 +1,83 @@
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import classNames from "classnames";
-import Link from "next/link";
 import { MicrophoneIcon } from "@heroicons/react/solid";
 
-import { popularCategories } from "@/lib/popularCategories";
-import { getCategorySlug } from "@/utils/algolia";
-
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
-
-const popularSearches = [
-  { title: "Hair", category: "Hair / Beauty" },
-  { title: "Catering", category: "Baking / Catering" },
-  { title: "Fashion", category: "Fashion" },
-];
-
-const HeroImage = ({ index }: { index: number }) => {
-  const category = popularCategories[index];
-
-  return (
-    <li
-      key={index}
-      className={classNames("w-full", {
-        "col-span-2 row-span-2 row-start-1": index === 0,
-        "mt-8": index === 1,
-        "mt-16": index === 2,
-        "-mt-8": index === 3,
-      })}
-    >
-      <Link href={`/search/${getCategorySlug(category.title)}`}>
-        <a className="group relative inline-flex aspect-[2/3] w-full overflow-hidden rounded-xl shadow-sm shadow-secondary transition duration-200 hover:shadow-2xl">
-          <Image
-            src={category.url}
-            objectFit="cover"
-            alt={category.title}
-            layout="fill"
-          />
-          <div className="absolute bottom-0 flex max-h-[30%] w-full items-center bg-gradient-to-t from-black to-transparent py-2 px-2">
-            <p className="truncate font-medium text-white">{category.title}</p>
-          </div>
-
-          <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-secondary/30 transition duration-200 hover:bg-transparent"></div>
-        </a>
-      </Link>
-    </li>
-  );
-};
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const Hero = () => {
   return (
-    <div className="overflow-x-hidden">
-      <div className="my-container flex flex-col py-10 text-center md:pt-24 lg:text-left">
-        <section className="relative flex-1 items-center justify-center gap-10 py-5 lg:grid lg:grid-cols-5 lg:py-0">
-          <div className="relative col-span-3 col-start-1 flex w-full flex-col items-start">
-            <a
-              href="https://tbmpodcast.soplugged.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="group mb-4 flex items-center gap-4 rounded-full bg-secondary/30 py-1 px-4 pl-2 text-sm transition duration-150 hover:bg-secondary/50"
-            >
-              <MicrophoneIcon className="h-4 w-4 text-primary" />
+    <div className="relative mb-10 overflow-x-hidden lg:mb-0">
+      <div className="absolute top-0 left-0 bottom-0 right-0 -z-10 bg-light md:bottom-60 lg:bottom-64"></div>
+      <div className="my-container relative flex items-center justify-between gap-10 pt-10">
+        <div className="relative flex w-full max-w-3xl shrink-0 flex-col items-start lg:mt-20">
+          <a
+            href="https://tbmpodcast.soplugged.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="group mb-4 flex items-center gap-4 rounded-full bg-secondary/30 py-1 px-4 pl-2 text-sm transition duration-150 hover:bg-secondary/50"
+          >
+            <MicrophoneIcon className="h-4 w-4 text-primary" />
 
-              <span className="ml-0 transition-all duration-150 group-hover:ml-2">
-                Check out The Business Mindset Podcast
-              </span>
-            </a>
-            <h1 className="text-5xl font-semibold leading-[1.05] sm:text-6xl lg:leading-[1.2]">
-              Discover{" "}
-              <div className="relative inline-block text-primary">
-                <span>Black-owned</span>
-                <img
-                  src="/underline_draw.svg"
-                  className="absolute -bottom-6"
-                  loading="lazy"
-                  alt=""
-                />
-              </div>
-              <br></br> businesses in Canada
-            </h1>
-            <p className="mt-3 text-gray-700 lg:w-[80%] lg:text-lg">
-              Our free directory makes it easy to support Black entrepreneurs
-              and discover new products and services in your area.
-            </p>
-            <div className="mx-auto mt-6 flex w-full max-w-xl flex-col items-end lg:mx-0 lg:mt-10">
-              <Searchbar />
-            </div>
-            <div className="mt-6 hidden items-center justify-center md:flex lg:justify-start">
-              <p className=" italic underline">Popular searches:</p>
-              <ul className="ml-4 inline-flex flex-wrap gap-2">
-                {popularSearches.map(({ title, category }) => (
-                  <li key={title}>
-                    <Link href={`/search/${getCategorySlug(category)}`}>
-                      <a className="inline-flex rounded-2xl border border-transparent bg-secondary/30 py-1 px-3 text-sm text-primary transition duration-200 hover:border-primary hover:bg-white">
-                        {title}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <span className="ml-0 transition-all duration-150 group-hover:ml-2">
+              Check out The Business Mindset Podcast
+            </span>
+          </a>
+          <h1 className="text-4xl font-semibold tracking-tight text-primary sm:text-6xl lg:text-7xl">
+            A Thriving Community of Black Entrepreneurs
+          </h1>
+          <p className="mt-3 text-gray-700 lg:text-lg">
+            At SoPlugged, we're committed to empowering Black entrepreneurs
+            across Canada through useful business resources, networking
+            opportunities and lots more!
+          </p>
+
+          <div className="mt-10 grid w-full gap-4 md:flex md:items-center">
+            <ButtonLink href="/join" variant="filled">
+              Join the Community
+            </ButtonLink>
+            <ButtonLink
+              href="/partners"
+              variant="text"
+              className="hidden md:block"
+            >
+              Become a Partner
+            </ButtonLink>
+            <ButtonLink
+              href="/partners"
+              variant="outlined"
+              className="md:hidden"
+            >
+              Become a Partner
+            </ButtonLink>
           </div>
-          <aside className="col-span-2 col-start-4 hidden w-[120%] lg:flex">
-            <div className="ml-auto w-full">
-              <ul className="grid flex-1 grid-cols-4 justify-items-end gap-2">
-                {[0, 1, 2, 3, 4].map((index) => (
-                  <HeroImage index={index} key={index} />
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </section>
+        </div>
+
+        <div className="absolute top-0 right-0 bottom-0 hidden aspect-square w-1/2 opacity-50 lg:block">
+          <img src="/hero_lines.svg" alt="" className="object-cover" />
+        </div>
+      </div>
+      <div className="my-container mt-20 hidden grid-cols-5 items-center gap-6 overflow-hidden px-4 lg:grid [&>*:nth-child(even)]:mt-20">
+        <HeroImage url="/people/nina_and_toffy.jpeg" />
+        <HeroImage url="/people/group_1.jpeg" />
+        <HeroImage url="/people/leon_suave.jpeg" />
+        <HeroImage url="/people/large_group.jpeg" />
+        <HeroImage url="/people/group_2.jpeg" />
+      </div>
+      <div className="my-container mb-10 grid grid-cols-2 items-center gap-4 overflow-hidden lg:hidden [&>*:nth-child(even)]:mt-20">
+        <HeroImage url="/people/nina_and_toffy.jpeg" />
+        <HeroImage url="/people/group_1.jpeg" />
       </div>
     </div>
   );
 };
+
+const HeroImage = ({ url }: { url: string }) => (
+  <div className="relative">
+    <img
+      src={url}
+      alt=""
+      className="pointer-events-none aspect-[3/4] w-full rounded-xl bg-primary/5 object-cover shadow-lg"
+    />
+    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/10" />
+  </div>
+);
 
 export default Hero;

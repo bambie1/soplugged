@@ -1,9 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import SEO from "@/src/components/SEO";
-import BlogsHomePage from "@/src/scenes/BlogsHomePage";
 import { BlogPost } from "@/types/BlogPost";
 import { fetchAPI } from "@/utils/graphcms";
+import PageWrapper from "@/src/layouts/PageWrapper";
+import BlogCard from "@/components/blog/BlogCard";
 
 interface Props {
   posts: BlogPost[];
@@ -18,7 +19,25 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
         variant="blog"
       />
 
-      <BlogsHomePage posts={posts} />
+      <PageWrapper
+        title="Blog"
+        subTitle="Explore our blog for helpful guides on creating or improving
+                your business' digital presence and to stay up-to-date with the
+                latest SoPlugged news."
+      >
+        <ul className="mt-10 inline-flex w-full flex-wrap gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:gap-12 xl:gap-y-16">
+          {posts?.map((post) => {
+            return (
+              <li
+                key={post.slug}
+                className="w-full border-b-2 pb-4 last:border-none md:border-none md:pb-0"
+              >
+                <BlogCard post={post} />
+              </li>
+            );
+          })}
+        </ul>
+      </PageWrapper>
     </>
   );
 };

@@ -29,14 +29,9 @@ const FAQs = () => {
   return (
     <div className="bg-white">
       <div className="my-container">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold xl:text-4xl">
-            <span className="relative text-primary">
-              Frequently asked questions
-              <span className="absolute left-0 -bottom-1 h-3 w-full -rotate-2 bg-secondary/40" />
-            </span>
-          </h2>
-        </div>
+        <h2 className="text-3xl font-semibold text-primary xl:text-4xl">
+          Frequently Asked Questions
+        </h2>
         <div className="mt-10 lg:mt-20">
           <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 lg:space-y-0">
             {faqs.map((faq) => (

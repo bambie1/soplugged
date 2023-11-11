@@ -18,24 +18,21 @@ const linksArray = [
     isNew: true,
   },
   {
-    title: "Explore our directory",
-    href: "/search/all",
+    title: "Subscribe to our newsletter",
+    href: "/newsletter",
   },
-  {
-    title: "Add your business for FREE",
-    href: "/join",
-  },
+
   {
     title: "Need a website for your business?",
-    href: "/pro",
+    href: "https://studio.soplugged.com",
   },
   {
     title: "Check out our latest blog post",
     href: "/blog",
   },
   {
-    title: "Subscribe to our newsletter",
-    href: "/newsletter",
+    title: "Explore our directory",
+    href: "/search/all",
   },
 ];
 
@@ -87,8 +84,7 @@ const Links: FC = () => {
           <h1 className="mt-2 text-2xl font-semibold lg:text-4xl">SoPlugged</h1>
           <p className="text-gray-300 lg:text-primary">@sopluggd</p>
           <p className="mt-3 text-lg leading-snug">
-            The FREE online platform connecting you to Black-owned businesses
-            across Canada
+            Empowering Black entrepreneurs across Canada!
           </p>
           <div className="mt-8 flex justify-center space-x-8">
             {socialsArray.map((item) => (

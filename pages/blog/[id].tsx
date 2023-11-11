@@ -69,7 +69,7 @@ async function getPostAndMorePosts(
           title
           slug
           excerpt
-           content {
+          content {
             html
           }
           createdAt
@@ -97,7 +97,7 @@ async function getPostAndMorePosts(
         }
         morePosts: posts(
           orderBy: createdAt_DESC
-          first: 4
+          first: 2
           where: { slug_not_in: [$slug] }
           stage: PUBLISHED
         ) {
