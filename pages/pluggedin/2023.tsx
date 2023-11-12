@@ -31,7 +31,7 @@ const PluggedInHomePage = () => {
       <SEO
         title="PluggedIn 2023 | SoPlugged"
         description="Network with fellow business-owners, and learn how to manage your finances as a business owner at SoPlugged's 2nd anniversary"
-        variant="pluggedin"
+        overrideImage="https://res.cloudinary.com/denbpv9kp/image/upload/v1673299410/soplugged_images/og_images/og-pluggedin_d8bor7.png"
       />
 
       <>

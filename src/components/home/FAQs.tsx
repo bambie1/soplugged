@@ -1,13 +1,26 @@
+import Link from "next/link";
+
 const faqs = [
   {
     id: 1,
-    question: "What types of businesses can be listed on SoPlugged",
-    answer:
-      "We welcome all types of businesses that are Black-owned and operated in Canada. Whether you're a retail store, restaurant, service provider, or anything in between, we encourage you to add your business to our directory",
+    question: "How can I join the SoPlugged community?",
+    answer: (
+      <p>
+        You can join by filling out the form{" "}
+        <Link href="/join">
+          <a className="underline">here</a>
+        </Link>
+        . You'll receive a welcome email, have your business listed on{" "}
+        <Link href="/search/all">
+          <a className="underline">our directory</a>
+        </Link>
+        , and be the first to know about upcoming events and opportunities.
+      </p>
+    ),
   },
   {
     id: 2,
-    question: "Is there a cost to add my business on SoPlugged?",
+    question: "Is there a cost to join SoPlugged?",
     answer:
       "No, SoPlugged is completely FREE. Our goal is to support and promote Black-owned businesses in Canada, and we believe that offering a free directory is one way we can help achieve this goal.",
   },
@@ -20,8 +33,16 @@ const faqs = [
   {
     id: 4,
     question: "How can I support the team?",
-    answer:
-      "One of the best ways to support us is to spread the word about our directory to others who might be interested in supporting Black-owned businesses in Canada. If you'd like to support financially, check out our sponsors page!",
+    answer: (
+      <p>
+        One of the best ways to support us is to spread the word about the
+        community. If you'd like support financially, please refer to our{" "}
+        <Link href="/partners">
+          <a className="underline">Partners page</a>
+        </Link>
+        .
+      </p>
+    ),
   },
 ];
 
@@ -33,16 +54,16 @@ const FAQs = () => {
           Frequently Asked Questions
         </h2>
         <div className="mt-10 lg:mt-20">
-          <dl className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 lg:space-y-0">
+          <ul className="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 lg:space-y-0">
             {faqs.map((faq) => (
-              <div key={faq.id}>
+              <li key={faq.id}>
                 <div className="font-semibold text-gray-900 lg:text-lg">
                   {faq.question}
                 </div>
                 <div className="mt-3 text-gray-600">{faq.answer}</div>
-              </div>
+              </li>
             ))}
-          </dl>
+          </ul>
         </div>
       </div>
     </div>

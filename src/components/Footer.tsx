@@ -180,7 +180,15 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-8 leading-5 text-white/70 md:order-1 md:mt-0">
-          &copy; {new Date().getFullYear()}, SoPlugged
+          &copy; {new Date().getFullYear()}, Website by{" "}
+          <a
+            href="https://studio.soplugged.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            SoPlugged Studio
+          </a>
         </p>
       </div>
     </footer>
