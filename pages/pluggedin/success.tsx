@@ -61,7 +61,6 @@ const PluggedInSuccessPage = (
       <SEO
         title="Plugged In 2023 | SoPlugged"
         description="Network with fellow business-owners, share ideas and learn how to manage your finances as a business owner"
-        variant="pluggedin"
       />
 
       <Header />

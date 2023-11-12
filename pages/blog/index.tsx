@@ -16,7 +16,6 @@ const GuidesHomePage: NextPage<Props> = ({ posts }) => {
       <SEO
         title="Stay updated with SoPlugged news and helpful business tips | SoPlugged Blog"
         description="Explore SoPlugged's blog for helpful guides on creating or improving your business' digital presence. Stay up-to-date with the latest SoPlugged news and spotlights on Black-owned businesses across Canada."
-        variant="blog"
       />
 
       <PageWrapper
