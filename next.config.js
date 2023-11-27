@@ -34,6 +34,11 @@ const moduleExports = {
         destination: "https://studio.soplugged.com/",
         permanent: true,
       },
+      {
+        source: "/pluggedin",
+        destination: "https://pluggedin.soplugged.com/",
+        permanent: true,
+      },
     ];
   },
 };

@@ -10,7 +10,12 @@ import NavLink from "@/styled/NavLink";
 
 const links = [
   { id: 4, text: "Our Story", link: "/our-story" },
-  { id: 1, text: "PluggedIn Conference", link: "/pluggedin" },
+  {
+    id: 1,
+    text: "PluggedIn Conference",
+    link: "https://pluggedin.soplugged.com/",
+    isExternal: true,
+  },
   { id: 5, text: "Directory", link: "/search/all" },
   { id: 3, text: "Blog", link: "/blog" },
 ];
@@ -52,9 +57,11 @@ const Header: FC<Props> = ({ whiteBg, className }) => {
               </a>
             </Link>
             <ul className="flex items-center gap-4">
-              {currentNav.links.map(({ id, text, link }) => (
+              {currentNav.links.map(({ id, text, link, isExternal }) => (
                 <li key={id}>
-                  <NavLink href={link}>{text}</NavLink>
+                  <NavLink href={link} isExternal={isExternal}>
+                    {text}
+                  </NavLink>
                 </li>
               ))}
             </ul>
