@@ -17,6 +17,8 @@ module.exports = {
         secondary: "#cdb693",
         light: "#F8F4EF",
         black: "#100b01",
+        "pluggedin-black": "#140D01",
+        "pluggedin-pink": "#F3B5B7",
       },
       animation: {
         slide: "100s linear 0s infinite normal none slide",

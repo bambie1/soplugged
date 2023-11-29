@@ -11,7 +11,11 @@ const navigation = {
     { name: "Blog", href: "/blog" },
   ],
   external: [
-    { name: "PluggedIn Conference", href: "/pluggedin" },
+    {
+      name: "PluggedIn Conference",
+      href: "https://pluggedin.soplugged.com/",
+      isExternal: true,
+    },
     {
       name: "SoPlugged Studio",
       href: "https://studio.soplugged.com/",

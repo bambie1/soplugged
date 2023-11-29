@@ -16,7 +16,8 @@ const mobileMenu = [
   {
     id: 2,
     title: "PluggedIn Conference",
-    href: "/pluggedin",
+    href: "https://pluggedin.soplugged.com/",
+    isExternal: true,
   },
   {
     id: 3,

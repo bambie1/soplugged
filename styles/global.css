@@ -94,3 +94,10 @@ html {
 .pluggedInGradient {
   background: linear-gradient(135deg, #ffd071b1 0%, #2377ddbd 100%);
 }
+
+.stroke-text {
+  color: transparent;
+  -webkit-text-fill-color: #140d01;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #f3b5b7;
+}
