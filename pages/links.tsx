@@ -13,9 +13,18 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
+    title: "PluggedIn Early-Bird Tickets",
+    href: "https://pluggedin.soplugged.com",
+    isNew: true,
+  },
+  {
+    title: "Become a PluggedIn Partner",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSeTDtSgvUq1sswjZr2c65QqQsDLc1brNCjGblWL1YbPpJq8Gg/viewform",
+    isNew: true,
+  },
+  {
     title: "Listen to TBM podcast",
     href: "https://tbmpodcast.soplugged.com",
-    isNew: true,
   },
   {
     title: "Subscribe to our newsletter",
@@ -104,7 +113,7 @@ const Links: FC = () => {
             {linksArray.map(({ title, href, isNew }) => (
               <li key={href}>
                 <Link href={href}>
-                  <a className="relative inline-flex w-full justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
+                  <a className="relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
                     {title}
                     {isNew && (
                       <span className="flex items-center justify-center rounded-lg bg-primary p-1 text-xs text-white">
