@@ -14,7 +14,7 @@ import SEO from "@/src/components/SEO";
 const linksArray = [
   {
     title: "PluggedIn Early-Bird Tickets",
-    href: "https://pluggedin.soplugged.com",
+    href: "https://lu.ma/2ru2h6ak",
     isNew: true,
   },
   {
