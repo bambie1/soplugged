@@ -3,10 +3,10 @@ import { Fragment } from "react";
 import CustomHit from "./CustomHit";
 import SoPluggedProAd from "./SoPluggedProAd";
 
-const CustomHits = ({ hits }: any) => {
+const Grid = ({ businesses }: any) => {
   return (
     <ul className="my-8 flex w-full flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-      {hits.map((hit: any, index: number) => {
+      {businesses.map((hit: any, index: number) => {
         return (
           <Fragment key={hit.id}>
             {index === 4 && <SoPluggedProAd adType="website" />}
@@ -21,4 +21,4 @@ const CustomHits = ({ hits }: any) => {
   );
 };
 
-export default CustomHits;
+export default Grid;

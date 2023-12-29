@@ -87,7 +87,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
   return (
     <>
-      <Header />
+      <Header whiteBg />
       <main className="min-h-[90vh] lg:mb-20">
         <div className="mb-14 pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
           <section className="px-4 sm:px-6 lg:px-0">

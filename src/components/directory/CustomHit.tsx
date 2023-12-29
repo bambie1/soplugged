@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Highlight } from "react-instantsearch-dom";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,11 +9,13 @@ type HitProps = {
     logo_url: string;
     business_location: string[];
     sample_images: string;
+    category: string;
   };
 };
 
 const CustomHit: FC<HitProps> = ({ hit }) => {
-  const { slug, business_name, business_location, sample_images } = hit;
+  const { slug, business_name, business_location, sample_images, category } =
+    hit;
 
   const rawImages = sample_images?.split(",") || [];
   const images = rawImages.map((item: string) => {
@@ -53,11 +54,9 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
 
         <div className="mt-3 max-w-full">
           <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
-            <Highlight attribute="business_name" hit={hit} />
+            {business_name}
           </h3>
-          <p className="truncate text-sm">
-            <Highlight attribute="category" hit={hit} />
-          </p>
+          <p className="truncate text-sm">{category}</p>
           <p className="truncate text-sm text-gray-600">{business_location}</p>
         </div>
       </a>
