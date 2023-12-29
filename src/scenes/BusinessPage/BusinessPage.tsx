@@ -9,7 +9,6 @@ import SocialLinks from "@/src/components/SocialLinks";
 import Avatar from "@/src/components/Avatar";
 import { IBusiness } from "@/types/Business";
 
-import { createURL } from "@/utils/algolia";
 import MoreLikeThis from "@/components/MoreLikeThis";
 
 const Header = dynamic(() => import("../../components/Header/Header"));

@@ -26,7 +26,7 @@ const navigation = {
       href: "https://tbmpodcast.soplugged.com/",
       isExternal: true,
     },
-    { name: "Business Directory", href: "/search/all" },
+    { name: "Business Directory", href: "/directory" },
   ],
   social: [
     {

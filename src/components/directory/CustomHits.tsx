@@ -1,10 +1,9 @@
 import { Fragment } from "react";
-import { connectHits } from "react-instantsearch-dom";
 
 import CustomHit from "./CustomHit";
 import SoPluggedProAd from "./SoPluggedProAd";
 
-const Hits = ({ hits }: any) => {
+const CustomHits = ({ hits }: any) => {
   return (
     <ul className="my-8 flex w-full flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
       {hits.map((hit: any, index: number) => {
@@ -21,7 +20,5 @@ const Hits = ({ hits }: any) => {
     </ul>
   );
 };
-
-const CustomHits = connectHits(Hits);
 
 export default CustomHits;

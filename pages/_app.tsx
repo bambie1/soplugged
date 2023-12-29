@@ -7,7 +7,6 @@ import PlausibleProvider from "next-plausible";
 
 import "../styles/button.scss";
 import "../styles/global.css";
-import "../styles/algolia.css";
 import "../styles/imageGallery.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";

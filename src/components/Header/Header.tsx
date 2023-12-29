@@ -16,7 +16,7 @@ const links = [
     link: "https://pluggedin.soplugged.com/",
     isExternal: true,
   },
-  { id: 5, text: "Directory", link: "/search/all" },
+  { id: 5, text: "Directory", link: "/directory" },
   { id: 3, text: "Blog", link: "/blog" },
 ];
 

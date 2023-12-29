@@ -20,8 +20,8 @@ const moduleExports = {
   async redirects() {
     return [
       {
-        source: "/search",
-        destination: "/search/all",
+        source: "/search/:path*",
+        destination: "/directory/c/:path*",
         permanent: true,
       },
       {

@@ -14,7 +14,7 @@ const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
           Featured Businesses
         </h2>
 
-        <ButtonLink href="/search/all">Explore all businesses</ButtonLink>
+        <ButtonLink href="/directory">Explore all businesses</ButtonLink>
       </div>
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">

@@ -11,7 +11,7 @@ const faqs = [
           <a className="underline">here</a>
         </Link>
         . You'll receive a welcome email, have your business listed on{" "}
-        <Link href="/search/all">
+        <Link href="/directory">
           <a className="underline">our directory</a>
         </Link>
         , and be the first to know about upcoming events and opportunities.

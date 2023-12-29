@@ -3,16 +3,14 @@ import { Highlight } from "react-instantsearch-dom";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Hit as AlgoliaHit } from "instantsearch.js/es/types";
-
 type HitProps = {
-  hit: AlgoliaHit<{
+  hit: {
     slug: string;
     business_name: string;
     logo_url: string;
     business_location: string[];
     sample_images: string;
-  }>;
+  };
 };
 
 const CustomHit: FC<HitProps> = ({ hit }) => {

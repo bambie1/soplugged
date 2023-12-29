@@ -1,15 +1,10 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import { SearchIcon } from "@heroicons/react/outline";
 
 import styles from "./MobileHeader.module.css";
 import { ButtonLink } from "@/styled/ButtonLink";
-
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const mobileMenu = [
   { id: 1, title: "Our Story", href: "/our-story" },
@@ -22,7 +17,7 @@ const mobileMenu = [
   {
     id: 3,
     title: "Business Directory",
-    href: "/search/all",
+    href: "/directory",
   },
   {
     id: 4,
@@ -38,7 +33,6 @@ const mobileMenu = [
 
 const MobileHeader = () => {
   const [showMenu, setshowMenu] = useState(false);
-  const router = useRouter();
 
   return (
     <div className="lg:hidden">
@@ -56,9 +50,6 @@ const MobileHeader = () => {
             />
           </a>
         </Link>
-        <div className="w-[calc(100%-100px)]">
-          {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
-        </div>
         <ButtonLink variant="outlined" href="/join">
           Join Today
         </ButtonLink>
