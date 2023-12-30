@@ -20,17 +20,12 @@ const links = [
   { id: 3, text: "Blog", link: "/blog" },
 ];
 
-const currentNav = {
-  cta: { text: "Join the Community", link: "/join" },
-  links,
-};
-
 interface Props {
   whiteBg?: boolean;
   className?: string;
 }
 
-const Header: FC<Props> = ({ whiteBg, className }) => {
+const Header: FC<Props> = ({ whiteBg }) => {
   return (
     <>
       <nav
@@ -56,8 +51,8 @@ const Header: FC<Props> = ({ whiteBg, className }) => {
                 </span>
               </a>
             </Link>
-            <ul className="flex items-center gap-4">
-              {currentNav.links.map(({ id, text, link, isExternal }) => (
+            <ul className="flex items-center gap-4 rounded-full bg-light px-6 py-4">
+              {links.map(({ id, text, link, isExternal }) => (
                 <li key={id}>
                   <NavLink href={link} isExternal={isExternal}>
                     {text}
@@ -67,8 +62,8 @@ const Header: FC<Props> = ({ whiteBg, className }) => {
             </ul>
 
             <div className="flex items-center gap-2">
-              <ButtonLink href={currentNav.cta.link} variant="outlined">
-                {currentNav.cta.text}
+              <ButtonLink href="/join" variant="outlined">
+                Join the Community
               </ButtonLink>
             </div>
           </div>

@@ -19,10 +19,7 @@ const NavLink = ({ href, isExternal, children, ...props }: Props) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={classNames("border-b text-base", {
-          "border-primary": isActive,
-          "border-transparent": !isActive,
-        })}
+        className={classNames("text-base tracking-wide")}
       >
         {children}
       </a>
@@ -32,7 +29,7 @@ const NavLink = ({ href, isExternal, children, ...props }: Props) => {
     <Link href={href || "#"}>
       <a
         {...props}
-        className={classNames("border-b text-base", {
+        className={classNames("border-b text-base tracking-wide", {
           "border-primary": isActive,
           "border-transparent": !isActive,
         })}

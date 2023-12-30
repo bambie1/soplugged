@@ -1,26 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import dynamic from "next/dynamic";
 
 import SEO from "@/src/components/SEO";
 import { IBusiness } from "@/types/Business";
+import { BusinessPage } from "@/scenes/BusinessPage";
 
 var Airtable = require("airtable");
 
-const BusinessPageSkeleton = dynamic(
-  () => import("../../src/scenes/BusinessPage/BusinessPageSkeleton")
-);
-const BusinessPage = dynamic(
-  () => import("../../src/scenes/BusinessPage/BusinessPage")
-);
-const PageNotFound = dynamic(() => import("../../src/scenes/404Page"));
-
 const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
-  const renderContent = () => {
-    if (!business) return <BusinessPageSkeleton />;
-
-    return <BusinessPage business={business} />;
-  };
-
   return (
     <>
       {!!business?.business_name ? (
@@ -35,7 +21,7 @@ const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
         />
       )}
 
-      {renderContent()}
+      <BusinessPage business={business} />
     </>
   );
 };
@@ -81,10 +67,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
   }).base("appMt18vrIMQC8k6h");
 
-  const formula = `"slug" = "${params?.slug}"`;
+  const formula = `slug = "${params?.slug}"`;
 
   const records = await base("Businesses")
     .select({
+      maxRecords: 1,
       filterByFormula: formula,
     })
     .all();
@@ -93,8 +80,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     business = record.fields;
   });
 
+  if (!business) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
-    props: { fallbackData: business, slug: params?.slug },
+    props: { business, slug: params?.slug },
   };
 };
 

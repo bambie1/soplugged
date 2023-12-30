@@ -1,5 +1,3 @@
-import { connectCurrentRefinements } from "react-instantsearch-dom";
-
 const CurrentRefinements = ({ items, refine, createURL }: any) => {
   return (
     <ul className="flex gap-2">
@@ -28,4 +26,4 @@ const CurrentRefinements = ({ items, refine, createURL }: any) => {
   );
 };
 
-export default connectCurrentRefinements(CurrentRefinements);
+export default CurrentRefinements;
