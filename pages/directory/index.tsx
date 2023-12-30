@@ -2,10 +2,16 @@ import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import SEO from "@/components/SEO";
 import Grid from "@/components/directory/Grid";
+import { encodedCategories } from "@/lib/encodedCategories";
+import { encodedLocations } from "@/lib/encodedLocations";
 import { GetStaticProps } from "next";
+import Link from "next/link";
+import { useRouter } from "next/router";
 var Airtable = require("airtable");
 
 const DirectoryPage = ({ businesses }) => {
+  const { query } = useRouter();
+
   return (
     <>
       <SEO
@@ -25,6 +31,28 @@ const DirectoryPage = ({ businesses }) => {
           </div>
 
           <div className="my-container mt-10 w-full">
+            {query.filter === "location" ? (
+              <div>
+                {Object.keys(encodedLocations).map((location) => (
+                  <Link href={`/directory/l/${location}`} key={location}>
+                    <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+                      {encodedLocations[location]}
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div>
+                {Object.keys(encodedCategories).map((category) => (
+                  <Link href={`/directory/c/${category}`} key={category}>
+                    <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+                      {encodedCategories[category]}
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            )}
+
             <Grid businesses={businesses} />
           </div>
         </div>

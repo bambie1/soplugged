@@ -20,17 +20,6 @@ module.exports = {
         "pluggedin-black": "#140D01",
         "pluggedin-pink": "#F3B5B7",
       },
-      animation: {
-        slide: "100s linear 0s infinite normal none slide",
-        "bounce-slow": "bounce 2s linear infinite",
-        "pulse-slow": "pulse 3s linear infinite",
-      },
-      keyframes: {
-        slide: {
-          "0%": { transform: "translate3d(0px, 0px, 0px)" },
-          "100%": { transform: "translate3d(-100%, 0px, 0px)" },
-        },
-      },
       listStyleType: {
         square: "square",
       },

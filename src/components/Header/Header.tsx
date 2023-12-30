@@ -2,11 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { FC } from "react";
 import classNames from "classnames";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import MobileHeader from "./MobileHeader";
 import NavLink from "@/styled/NavLink";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 
 const links = [
   { id: 4, text: "Our Story", link: "/our-story" },
@@ -22,7 +24,7 @@ const links = [
     link: "/directory",
     items: [
       { text: "By Category", link: "/directory" },
-      { text: "By Location", link: "/directory/location" },
+      { text: "By Location", link: "/directory?filter=location" },
     ],
   },
   { id: 3, text: "Blog", link: "/blog" },
@@ -38,7 +40,7 @@ const Header: FC<Props> = ({ whiteBg }) => {
     <>
       <nav
         className={classNames(
-          "relative z-20 w-full overflow-hidden py-3 transition duration-100 lg:py-2",
+          "relative z-20 w-full py-3 transition duration-100 lg:py-2",
           { "bg-light": !whiteBg }
         )}
       >
@@ -59,15 +61,46 @@ const Header: FC<Props> = ({ whiteBg }) => {
                 </span>
               </a>
             </Link>
-            <ul className="flex items-center gap-4 rounded-full bg-light px-6 py-4">
-              {links.map(({ id, text, link, isExternal }) => (
-                <li key={id}>
-                  <NavLink href={link} isExternal={isExternal}>
-                    {text}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
+
+            <NavigationMenu.Root className="relative z-[1] flex justify-center">
+              <NavigationMenu.List>
+                <ul className="flex items-center gap-4 rounded-full bg-light px-6 py-4">
+                  {links.map(({ id, text, link, isExternal, items }) =>
+                    items ? (
+                      <NavigationMenu.Item key={id}>
+                        <NavigationMenu.Trigger className="group flex items-center gap-[2px]">
+                          {text}
+
+                          <ChevronDownIcon
+                            className="group-data-[state=open]:-rotate-180 relative h-4 w-4 transition-transform duration-200 ease-in"
+                            strokeWidth={1}
+                            aria-hidden
+                          />
+                        </NavigationMenu.Trigger>
+
+                        <NavigationMenu.Content className="absolute top-0 left-0 w-full">
+                          <ul className="flex flex-col gap-2">
+                            {items.map(({ text, link }) => (
+                              <li key={text}>
+                                <NavLink href={link}>{text}</NavLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenu.Content>
+                      </NavigationMenu.Item>
+                    ) : (
+                      <li key={id}>
+                        <NavLink href={link} isExternal={isExternal}>
+                          {text}
+                        </NavLink>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </NavigationMenu.List>
+
+              <NavigationMenu.Viewport />
+            </NavigationMenu.Root>
 
             <div className="flex items-center gap-2">
               <ButtonLink href="/join" variant="outlined">

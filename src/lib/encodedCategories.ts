@@ -3,28 +3,26 @@ interface IObjectKeys {
 }
 
 export const encodedCategories: IObjectKeys = {
-  art: "Art",
-  "baking-and-catering": "Baking / Catering",
-  "coaching-tutoring": "Coaching / Tutoring",
-  consultancy: "Consultancy",
-  "content-creating-and-writing": "Content Creating / Writing",
-  entertainment: "Entertainment",
-  "event-planning": "Event Planning",
-  fashion: "Fashion",
-  fitness: "Fitness",
-  "graphic-design": "Graphic Design",
-  groceries: "Groceries",
   "hair-and-beauty": "Hair / Beauty",
-  "handcraft-gifting": "Handcraft / Gifting Services",
-  "housekeeping-domestic": "Housekeeping / Domestic Services",
-  "interior-decor": "Interior Decor",
-  "maintenance-repair": "Maintenance/Repair Services",
+  "baking-and-catering": "Baking / Catering",
+  fashion: "Fashion",
   "media-services": "Media services",
-  "travel-tourism": "Travel / Tourism Service",
-  "web-dev-design": "Web Development / Design",
+  "event-planning": "Event Planning",
+  "handcraft-gifting": "Handcraft / Gifting Services",
+  consultancy: "Consultancy",
+  "coaching-tutoring": "Coaching / Tutoring",
+  entertainment: "Entertainment",
   other: "Other",
 
-  // staging categories
-  hair: "Hair",
-  beauty: "Beauty",
+  //  UNUSED CATEGORIES
+
+  // "content-creating-and-writing": "Content Creating / Writing",
+  // fitness: "Fitness",
+  // "graphic-design": "Graphic Design",
+  // groceries: "Groceries",
+  // "housekeeping-domestic": "Housekeeping / Domestic Services",
+  // "interior-decor": "Interior Decor",
+  // "maintenance-repair": "Maintenance/Repair Services",
+  // "travel-tourism": "Travel / Tourism Service",
+  // "web-dev-design": "Web Development / Design",
 };
