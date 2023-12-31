@@ -41,7 +41,7 @@ const linksArray = [
   },
   {
     title: "Explore our directory",
-    href: "/search/all",
+    href: "/directory",
   },
 ];
 

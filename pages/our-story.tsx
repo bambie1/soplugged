@@ -24,11 +24,11 @@ const OurStory = () => {
                 Black-owned businesses face in Canada. Recognizing the
                 challenges that Black entrepreneurs encounter in promoting their
                 businesses, we launched SoPlugged as an{" "}
-                <Link href="/search/all">online directory</Link> that
-                facilitates connections between consumers and over 100
-                Black-owned businesses across the country. Our mission is to
-                empower these businesses by providing a platform to showcase
-                their offerings and connect with new customers.
+                <Link href="/directory">online directory</Link> that facilitates
+                connections between consumers and over 100 Black-owned
+                businesses across the country. Our mission is to empower these
+                businesses by providing a platform to showcase their offerings
+                and connect with new customers.
               </p>
               <p>
                 Since our inception in 2021, SoPlugged has grown to more than a

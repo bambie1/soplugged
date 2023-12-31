@@ -8,6 +8,7 @@ import { IBusiness } from "@/types/Business";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import HomePage from "@/scenes/HomePage";
+import Airtable from "airtable";
 
 const FEATURED_BUSINESSES = [
   "en-vogue-afrika",
@@ -38,20 +39,30 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const base = new Airtable({
+    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
+  }).base("appMt18vrIMQC8k6h");
+
   const posts = (await getAllPostsForHome()) || [];
 
   let hasValidSlugs = true;
 
   const featuredBusinesses = await Promise.all(
-    FEATURED_BUSINESSES.map((slug) => {
-      const business = fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`
-      )
-        .then((res) => res.json())
-        .catch((e) => {
-          hasValidSlugs = false;
-          return null;
-        });
+    FEATURED_BUSINESSES.map(async (slug) => {
+      let business = null;
+
+      const formula = `slug = "${slug}"`;
+
+      const records = await base("Businesses")
+        .select({
+          maxRecords: 1,
+          filterByFormula: formula,
+        })
+        .all();
+
+      records.forEach((record) => {
+        business = record.fields;
+      });
 
       return business;
     })

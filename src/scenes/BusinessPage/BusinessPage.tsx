@@ -4,13 +4,13 @@ import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
 
-import { Button } from "@/styled/Button";
 import SocialLinks from "@/src/components/SocialLinks";
 import Avatar from "@/src/components/Avatar";
 import { IBusiness } from "@/types/Business";
 
-import { createURL } from "@/utils/algolia";
 import MoreLikeThis from "@/components/MoreLikeThis";
+import { ButtonLink } from "@/styled/ButtonLink";
+import { getCategorySlug, getLocationSlug } from "@/utils/index";
 
 const Header = dynamic(() => import("../../components/Header/Header"));
 const Footer = dynamic(() => import("../../components/Footer"));
@@ -66,29 +66,9 @@ const BusinessPage: FC<Props> = ({ business }) => {
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
   const hasContactLinks = ig_handle || phone_number || business_url;
 
-  const handleCategoryClick = () => {
-    router.push(
-      `${createURL({
-        menu: {
-          category,
-        },
-      })}`
-    );
-  };
-
-  const handleLocationClick = () => {
-    router.push(
-      `${createURL({
-        menu: {
-          business_location,
-        },
-      })}`
-    );
-  };
-
   return (
     <>
-      <Header />
+      <Header whiteBg />
       <main className="min-h-[90vh] lg:mb-20">
         <div className="mb-14 pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8 lg:pt-14">
           <section className="px-4 sm:px-6 lg:px-0">
@@ -101,17 +81,23 @@ const BusinessPage: FC<Props> = ({ business }) => {
 
             <div className="flex justify-center gap-4">
               {category && (
-                <Button variant="text" onClick={handleCategoryClick}>
+                <ButtonLink
+                  variant="text"
+                  href={`/directory/c/${getCategorySlug(category)}`}
+                >
                   <FontAwesomeIcon icon={faShapes} className="mr-2" />
                   {category}
-                </Button>
+                </ButtonLink>
               )}
 
               {business_location && (
-                <Button variant="text" onClick={handleLocationClick}>
+                <ButtonLink
+                  variant="text"
+                  href={`/directory/l/${getLocationSlug(business_location)}`}
+                >
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
                   {business_location}
-                </Button>
+                </ButtonLink>
               )}
 
               {!fixed_to_one_location && !business_location && (

@@ -1,87 +1,92 @@
-import type { GetStaticProps, NextPage } from "next";
-import useSWR from "swr";
-import dynamic from "next/dynamic";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import SEO from "@/src/components/SEO";
 import { IBusiness } from "@/types/Business";
+import { BusinessPage } from "@/scenes/BusinessPage";
 
-const BusinessPageSkeleton = dynamic(
-  () => import("../../src/scenes/BusinessPage/BusinessPageSkeleton")
-);
-const BusinessPage = dynamic(
-  () => import("../../src/scenes/BusinessPage/BusinessPage")
-);
-const PageNotFound = dynamic(() => import("../../src/scenes/404Page"));
+var Airtable = require("airtable");
 
-const Business: NextPage<{ slug: string; fallbackData: IBusiness }> = ({
-  slug,
-  fallbackData,
-}) => {
-  const { data: business, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${slug}`,
-    {
-      fallbackData,
-      revalidateOnMount: false,
-    }
-  );
-
-  if (error) return <PageNotFound />;
-
-  const renderContent = () => {
-    if (!business) return <BusinessPageSkeleton />;
-
-    return <BusinessPage business={business} />;
-  };
+const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
+  if (!business?.business_name) return null;
 
   return (
     <>
-      {!!business?.business_name ? (
-        <SEO
-          description={`Discover and support local Black-owned businesses in ${business.business_location} with SoPlugged's online directory. Explore ${business?.business_name}'s page for ${business?.category}, and learn more about their products and services. Visit SoPlugged today and find your next favorite business.`}
-          title={`${business?.business_name.toUpperCase()} | SoPlugged`}
-        />
-      ) : (
-        <SEO
-          description="Online platform connecting you to Black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
-          title="SoPlugged | Discover Black-owned businesses in Canada"
-        />
-      )}
+      <SEO
+        description={`Discover and support local Black-owned businesses in ${business.business_location} with SoPlugged's online directory. Explore ${business?.business_name}'s page for ${business?.category}, and learn more about their products and services. Visit SoPlugged today and find your next favorite business.`}
+        title={`${business?.business_name.toUpperCase()} | SoPlugged`}
+      />
 
-      {renderContent()}
+      <BusinessPage business={business} />
     </>
   );
 };
 
-export const getStaticPaths = async () => {
-  const businesses = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/businesses`
-  ).then((res) => res.json());
+export const getStaticPaths: GetStaticPaths = async () => {
+  const base = new Airtable({
+    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
+  }).base("appMt18vrIMQC8k6h");
 
-  const filteredBusinesses = businesses.filter(
-    ({ verified, slug }: IBusiness) => verified && !!slug
-  );
+  const paths: {
+    params: { slug: string };
+  }[] = [];
+
+  const records = await base("Businesses")
+    .select({
+      maxRecords: 100,
+      fields: ["slug"],
+      sort: [
+        { field: "sample_images", direction: "desc" },
+        { field: "verified", direction: "desc" },
+        {
+          field: "logo_url",
+          direction: "desc",
+        },
+      ],
+    })
+    .all();
+
+  // @ts-ignore
+  records.forEach((record) => {
+    if (!record.fields.slug) return;
+
+    paths.push({ params: { slug: record.fields.slug } });
+  });
 
   return {
-    paths: filteredBusinesses.map(({ slug }: IBusiness) => ({
-      params: { slug },
-    })),
+    paths,
     fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let business = null;
-  try {
-    business = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/business?slug=${params?.slug}`
-    ).then((res) => res.json());
-  } catch (error) {
-    console.error(error);
-    business = null;
+
+  const base = new Airtable({
+    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
+  }).base("appMt18vrIMQC8k6h");
+
+  const formula = `slug = "${params?.slug}"`;
+
+  const records = await base("Businesses")
+    .select({
+      maxRecords: 1,
+      filterByFormula: formula,
+    })
+    .all();
+
+  // @ts-ignore
+  records.forEach((record) => {
+    business = record.fields;
+  });
+
+  if (!business) {
+    return {
+      notFound: true,
+    };
   }
 
   return {
-    props: { fallbackData: business, slug: params?.slug },
+    props: { business, slug: params?.slug },
   };
 };
 

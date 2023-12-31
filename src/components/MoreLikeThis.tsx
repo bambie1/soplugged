@@ -29,7 +29,7 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
           <p className="block text-xl font-semibold uppercase text-primary lg:text-2xl">
             More like this
           </p>
-          <Link href="/search/all">
+          <Link href="/directory">
             <a className="font-medium underline">Back to directory</a>
           </Link>
         </div>

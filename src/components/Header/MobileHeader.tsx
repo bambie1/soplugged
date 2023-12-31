@@ -1,15 +1,10 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import { SearchIcon } from "@heroicons/react/outline";
 
 import styles from "./MobileHeader.module.css";
 import { ButtonLink } from "@/styled/ButtonLink";
-
-const Searchbar = dynamic(() => import("../algolia/Searchbar"));
 
 const mobileMenu = [
   { id: 1, title: "Our Story", href: "/our-story" },
@@ -22,7 +17,11 @@ const mobileMenu = [
   {
     id: 3,
     title: "Business Directory",
-    href: "/search/all",
+    href: "/directory",
+    subItems: [
+      { title: "By Category", href: "/directory" },
+      { title: "By Location", href: "/directory?filter=location" },
+    ],
   },
   {
     id: 4,
@@ -38,11 +37,10 @@ const mobileMenu = [
 
 const MobileHeader = () => {
   const [showMenu, setshowMenu] = useState(false);
-  const router = useRouter();
 
   return (
     <div className="lg:hidden">
-      <header className="flex h-12 items-center justify-between gap-3 px-3">
+      <header className="subItems-center flex h-12 justify-between gap-3 px-3">
         <Link href="/">
           <a
             className="flex flex-shrink-0 items-center"
@@ -56,18 +54,18 @@ const MobileHeader = () => {
             />
           </a>
         </Link>
-        <div className="w-[calc(100%-100px)]">
-          {router.asPath.startsWith("/search") && !showMenu && <Searchbar />}
-        </div>
-        <ButtonLink variant="outlined" href="/join">
-          Join Today
-        </ButtonLink>
 
-        <button
-          aria-label="Mobile menu toggle"
-          onClick={() => setshowMenu(!showMenu)}
-          className={`${styles.burger} ${showMenu && styles.active}`}
-        ></button>
+        <div className="flex items-center gap-4">
+          <ButtonLink variant="outlined" href="/join">
+            Join Today
+          </ButtonLink>
+
+          <button
+            aria-label="Mobile menu toggle"
+            onClick={() => setshowMenu(!showMenu)}
+            className={`${styles.burger} ${showMenu && styles.active}`}
+          ></button>
+        </div>
       </header>
 
       <DialogOverlay
@@ -81,7 +79,36 @@ const MobileHeader = () => {
         >
           <ul className="grid w-full flex-1 content-center gap-10 px-4">
             {mobileMenu.map((item) => {
-              const { id, href, title } = item;
+              const { id, href, title, subItems } = item;
+
+              if (subItems) {
+                return (
+                  <li key={id} className="grid">
+                    <div className="flex items-center gap-3 text-lg uppercase">
+                      {title}
+                    </div>
+
+                    <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
+                      {subItems.map((item) => {
+                        const { title, href } = item;
+
+                        return (
+                          <li key={title}>
+                            <Link href={href}>
+                              <a
+                                className="flex items-center gap-3 py-2 text-base"
+                                onClick={() => setshowMenu(false)}
+                              >
+                                {title}
+                              </a>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                );
+              }
 
               return (
                 <li key={id} className="grid">
