@@ -24,6 +24,10 @@ export default function CityPageDirectory({
       <PageWrapper
         title={`Explore Black-Owned businesses in ${city}`}
         subTitle="Looking for hair stylists, event planners, or photographers? We've got you covered."
+        backAction={{
+          text: "Back to all cities",
+          link: "/directory?filter=location",
+        }}
       >
         <Grid businesses={businesses} />
       </PageWrapper>

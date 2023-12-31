@@ -18,6 +18,10 @@ const mobileMenu = [
     id: 3,
     title: "Business Directory",
     href: "/directory",
+    subItems: [
+      { title: "By Category", href: "/directory" },
+      { title: "By Location", href: "/directory?filter=location" },
+    ],
   },
   {
     id: 4,
@@ -36,7 +40,7 @@ const MobileHeader = () => {
 
   return (
     <div className="lg:hidden">
-      <header className="flex h-12 items-center justify-between gap-3 px-3">
+      <header className="subItems-center flex h-12 justify-between gap-3 px-3">
         <Link href="/">
           <a
             className="flex flex-shrink-0 items-center"
@@ -75,7 +79,36 @@ const MobileHeader = () => {
         >
           <ul className="grid w-full flex-1 content-center gap-10 px-4">
             {mobileMenu.map((item) => {
-              const { id, href, title } = item;
+              const { id, href, title, subItems } = item;
+
+              if (subItems) {
+                return (
+                  <li key={id} className="grid">
+                    <div className="flex items-center gap-3 text-lg uppercase">
+                      {title}
+                    </div>
+
+                    <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
+                      {subItems.map((item) => {
+                        const { title, href } = item;
+
+                        return (
+                          <li key={title}>
+                            <Link href={href}>
+                              <a
+                                className="flex items-center gap-3 py-2 text-base"
+                                onClick={() => setshowMenu(false)}
+                              >
+                                {title}
+                              </a>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                );
+              }
 
               return (
                 <li key={id} className="grid">

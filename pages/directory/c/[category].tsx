@@ -17,18 +17,7 @@ export default function Page({
 }) {
   const seoTitle = `Black-Owned ${category} businesses | SoPlugged`;
 
-  type CategoryMetaDescriptions = {
-    [key: string]: string;
-  };
-
-  const categoryMetaDescriptions: CategoryMetaDescriptions = {
-    Art: "Description for Art category",
-    "Baking / Catering": "Description for Baking / Catering category",
-    "Coaching / Tutoring": "Description for Coaching / Tutoring category",
-    // Add descriptions for other categories here
-  };
-
-  const seoDescription = `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory. ${categoryMetaDescriptions[category]}`;
+  const seoDescription = `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory.`;
 
   return (
     <>
@@ -36,6 +25,10 @@ export default function Page({
       <PageWrapper
         title={`Explore Black-Owned ${category} businesses in Canada`}
         subTitle="Looking for hair stylists, event planners, or photographers? We've got you covered."
+        backAction={{
+          text: "Explore all categories",
+          link: "/directory",
+        }}
       >
         <Grid businesses={businesses} />
       </PageWrapper>
