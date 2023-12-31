@@ -1,15 +1,14 @@
+import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
-
-import SocialLinks from "@/src/components/SocialLinks";
-import Avatar from "@/src/components/Avatar";
-import { IBusiness } from "@/types/Business";
 
 import MoreLikeThis from "@/components/MoreLikeThis";
+import Avatar from "@/src/components/Avatar";
+import SocialLinks from "@/src/components/SocialLinks";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { IBusiness } from "@/types/Business";
 import { getCategorySlug, getLocationSlug } from "@/utils/index";
 
 const Header = dynamic(() => import("../../components/Header/Header"));

@@ -2,7 +2,7 @@ import {
   ExternalLinkIcon,
   InformationCircleIcon,
 } from "@heroicons/react/outline";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { usePlausible } from "next-plausible";
 import { FC } from "react";
@@ -63,10 +63,10 @@ const SoPluggedProAd: FC<Props> = ({ adType }) => {
       </a>
       <div className="mt-2 flex items-center justify-between">
         <p className="font-semibold text-gray-500 lg:text-base">PROMOTED</p>
-        <Link href="/pro">
-          <a key="info" aria-label="Learn more">
-            <InformationCircleIcon className="h-5 w-5 text-gray-500" />
-          </a>
+        <Link href="/pro" key="info" aria-label="Learn more">
+
+          <InformationCircleIcon className="h-5 w-5 text-gray-500" />
+
         </Link>
       </div>
     </li>

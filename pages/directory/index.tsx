@@ -28,70 +28,72 @@ const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
     }
   };
 
-  return (
-    <>
-      <SEO
-        title="Discover Black-owned businesses | SoPlugged"
-        description="Discover the best Black-owned businesses in Canada with SoPlugged's online directory."
-      />
-      <Header whiteBg />
-      <main className="my-container mb-16 min-h-screen pt-12">
-        <div className="flex flex-col items-center">
-          <div className="mb-8 flex flex-col items-center">
-            <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-semibold text-primary lg:text-5xl">
-              Explore
-            </h1>
-            <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
-              Businesses in Canada
-            </span>
-          </div>
-
-          <div className="relative flex w-full overflow-auto">
-            <div
-              className={`pointer-events-none absolute left-0 bottom-0 flex w-10 justify-center bg-gradient-to-r from-white py-8 ${
-                isAtBeginning ? "hidden" : "block"
-              }`}
-            ></div>
-            <div
-              onScroll={onScroll}
-              className="overflow-x-auto bg-white"
-              ref={listInnerRef}
-            >
-              <ul className="flex">
-                {query.filter === "location"
-                  ? Object.keys(encodedLocations).map((location) => (
-                      <li key={location}>
-                        <Link href={`/directory/l/${location}`}>
-                          <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
-                            {encodedLocations[location]}
-                          </a>
-                        </Link>
-                      </li>
-                    ))
-                  : Object.keys(encodedCategories).map((category) => (
-                      <li key={category}>
-                        <Link href={`/directory/c/${category}`}>
-                          <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
-                            {encodedCategories[category]}
-                          </a>
-                        </Link>
-                      </li>
-                    ))}
-              </ul>
-            </div>
-            <div
-              className={`pointer-events-none absolute right-0  bottom-0 flex w-10 justify-center bg-gradient-to-l from-white py-8 ${
-                isAtEnd ? "hidden" : "block"
-              }`}
-            ></div>
-          </div>
-
-          <Grid businesses={businesses} />
+  return <>
+    <SEO
+      title="Discover Black-owned businesses | SoPlugged"
+      description="Discover the best Black-owned businesses in Canada with SoPlugged's online directory."
+    />
+    <Header whiteBg />
+    <main className="my-container mb-16 min-h-screen pt-12">
+      <div className="flex flex-col items-center">
+        <div className="mb-8 flex flex-col items-center">
+          <h1 className="relative inline-block max-w-lg break-words text-center text-4xl font-semibold text-primary lg:text-5xl">
+            Explore
+          </h1>
+          <span className="mt-2 text-lg lg:mt-4 lg:text-2xl">
+            Businesses in Canada
+          </span>
         </div>
-      </main>
-      <Footer />
-    </>
-  );
+
+        <div className="relative flex w-full overflow-auto">
+          <div
+            className={`pointer-events-none absolute left-0 bottom-0 flex w-10 justify-center bg-gradient-to-r from-white py-8 ${
+              isAtBeginning ? "hidden" : "block"
+            }`}
+          ></div>
+          <div
+            onScroll={onScroll}
+            className="overflow-x-auto bg-white"
+            ref={listInnerRef}
+          >
+            <ul className="flex">
+              {query.filter === "location"
+                ? Object.keys(encodedLocations).map((location) => (
+                    <li key={location}>
+                      <Link
+                        href={`/directory/l/${location}`}
+                        className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+
+                        {encodedLocations[location]}
+
+                      </Link>
+                    </li>
+                  ))
+                : Object.keys(encodedCategories).map((category) => (
+                    <li key={category}>
+                      <Link
+                        href={`/directory/c/${category}`}
+                        className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+
+                        {encodedCategories[category]}
+
+                      </Link>
+                    </li>
+                  ))}
+            </ul>
+          </div>
+          <div
+            className={`pointer-events-none absolute right-0  bottom-0 flex w-10 justify-center bg-gradient-to-l from-white py-8 ${
+              isAtEnd ? "hidden" : "block"
+            }`}
+          ></div>
+        </div>
+
+        <Grid businesses={businesses} />
+      </div>
+    </main>
+    <Footer />
+  </>;
 };
 
 export const getStaticProps: GetStaticProps = async () => {

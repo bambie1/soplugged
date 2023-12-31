@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { FC } from "react";
 import useSWR from "swr";
@@ -29,8 +29,8 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
           <p className="block text-xl font-semibold uppercase text-primary lg:text-2xl">
             More like this
           </p>
-          <Link href="/directory">
-            <a className="font-medium underline">Back to directory</a>
+          <Link href="/directory" className="font-medium underline">
+            Back to directory
           </Link>
         </div>
 
@@ -59,40 +59,41 @@ const MoreLikeThis: FC<Props> = ({ category, location, excludeBusiness }) => {
 
             return (
               <li key={id} className="my-4 flex">
-                <Link href={`/business/${slug}`}>
-                  <a className="group relative flex h-full w-full flex-col items-start focus:outline-none">
-                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
-                      {featuredImage ? (
-                        <Image
-                          src={featuredImage}
-                          alt=""
-                          objectFit="cover"
-                          layout="fill"
-                          placeholder="blur"
-                          blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8u21yPQAHBQKXKv8OfQAAAABJRU5ErkJggg==`}
-                        />
-                      ) : (
-                        <div className="relative flex aspect-video w-full items-center justify-center bg-secondary/20">
-                          <span className="whitespace-nowrap font-light uppercase tracking-wider text-primary/40">
-                            {business_name}
-                          </span>
+                <Link
+                  href={`/business/${slug}`}
+                  className="group relative flex h-full w-full flex-col items-start focus:outline-none">
 
-                          <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-                          <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-                        </div>
-                      )}
-                    </div>
+                  <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
+                    {featuredImage ? (
+                      <Image
+                        src={featuredImage}
+                        alt=""
+                        objectFit="cover"
+                        layout="fill"
+                        placeholder="blur"
+                        blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8u21yPQAHBQKXKv8OfQAAAABJRU5ErkJggg==`}
+                      />
+                    ) : (
+                      <div className="relative flex aspect-video w-full items-center justify-center bg-secondary/20">
+                        <span className="whitespace-nowrap font-light uppercase tracking-wider text-primary/40">
+                          {business_name}
+                        </span>
 
-                    <div className="mt-3 max-w-full">
-                      <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
-                        {business_name}
-                      </h3>
-                      <p className="truncate text-sm">{category}</p>
-                      <p className="truncate text-sm text-gray-600">
-                        {business_location}
-                      </p>
-                    </div>
-                  </a>
+                        <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+                        <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-3 max-w-full">
+                    <h3 className="truncate font-semibold uppercase text-gray-600 lg:text-lg">
+                      {business_name}
+                    </h3>
+                    <p className="truncate text-sm">{category}</p>
+                    <p className="truncate text-sm text-gray-600">
+                      {business_location}
+                    </p>
+                  </div>
+
                 </Link>
               </li>
             );

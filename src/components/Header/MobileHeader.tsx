@@ -1,5 +1,5 @@
-import { DialogContent,DialogOverlay } from "@reach/dialog";
-import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -42,18 +42,18 @@ const MobileHeader = () => {
   return (
     <div className="lg:hidden">
       <header className="subItems-center flex h-12 justify-between gap-3 px-3">
-        <Link href="/">
-          <a
-            className="flex flex-shrink-0 items-center"
-            onClick={() => setshowMenu(false)}
-          >
-            <Image
-              src="/logos/logo-brown.svg"
-              alt="SoPlugged Logo"
-              width={40}
-              height={40}
-            />
-          </a>
+        <Link
+          href="/"
+          className="flex flex-shrink-0 items-center"
+          onClick={() => setshowMenu(false)}
+          passHref
+        >
+          <Image
+            src="/logos/logo-brown.svg"
+            alt="SoPlugged Logo"
+            width={40}
+            height={40}
+          />
         </Link>
 
         <div className="flex items-center gap-4">
@@ -69,72 +69,73 @@ const MobileHeader = () => {
         </div>
       </header>
 
-      <DialogOverlay
-        className="lg:hidden"
-        isOpen={showMenu}
-        onDismiss={() => setshowMenu(false)}
+      <Dialog.Root
+        // className="lg:hidden"
+        open={showMenu}
+        onOpenChange={() => setshowMenu(!showMenu)}
       >
-        <DialogContent
-          aria-label="Mobile nav links"
-          className={styles.dialogContent}
-        >
-          <ul className="grid w-full flex-1 content-center gap-10 px-4">
-            {mobileMenu.map((item) => {
-              const { id, href, title, subItems } = item;
+        <Dialog.Portal>
+          <Dialog.Content
+            aria-label="Mobile nav links"
+            className={styles.dialogContent}
+          >
+            <ul className="grid w-full flex-1 content-center gap-10 px-4">
+              {mobileMenu.map((item) => {
+                const { id, href, title, subItems } = item;
 
-              if (subItems) {
-                return (
-                  <li key={id} className="grid">
-                    <div className="flex items-center gap-3 text-lg uppercase">
-                      {title}
-                    </div>
+                if (subItems) {
+                  return (
+                    <li key={id} className="grid">
+                      <div className="flex items-center gap-3 text-lg uppercase">
+                        {title}
+                      </div>
 
-                    <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
-                      {subItems.map((item) => {
-                        const { title, href } = item;
+                      <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
+                        {subItems.map((item) => {
+                          const { title, href } = item;
 
-                        return (
-                          <li key={title}>
-                            <Link href={href}>
-                              <a
+                          return (
+                            <li key={title}>
+                              <Link
+                                href={href}
                                 className="flex items-center gap-3 py-2 text-base"
                                 onClick={() => setshowMenu(false)}
                               >
                                 {title}
-                              </a>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </li>
-                );
-              }
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  );
+                }
 
-              return (
-                <li key={id} className="grid">
-                  <Link href={href}>
-                    <a
+                return (
+                  <li key={id} className="grid">
+                    <Link
+                      href={href}
                       className="flex items-center gap-3 text-lg uppercase"
                       onClick={() => setshowMenu(false)}
                     >
                       {title}
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
 
-          <div className="mt-auto grid w-full gap-2 border-t border-gray-100 px-4">
-            <Link href="/join">
-              <a className="flex justify-center rounded-lg border border-primary p-2 text-lg">
+            <div className="mt-auto grid w-full gap-2 border-t border-gray-100 px-4">
+              <Link
+                href="/join"
+                className="flex justify-center rounded-lg border border-primary p-2 text-lg"
+              >
                 Join the Community
-              </a>
-            </Link>
-          </div>
-        </DialogContent>
-      </DialogOverlay>
+              </Link>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </div>
   );
 };

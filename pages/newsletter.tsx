@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 

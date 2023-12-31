@@ -38,6 +38,5 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("prettier-plugin-tailwindcss"),
     require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
   ],
 };

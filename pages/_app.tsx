@@ -2,7 +2,6 @@ import "../styles/button.scss";
 import "../styles/global.css";
 import "../styles/imageGallery.scss";
 import "../styles/nprogress.css";
-import "@reach/dialog/styles.css";
 // This ensures that the icon CSS is loaded immediately before attempting to render icons
 import "@fortawesome/fontawesome-svg-core/styles.css";
 

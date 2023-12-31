@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -88,18 +88,20 @@ export default function Footer() {
   return (
     <footer className="bg-primary" aria-labelledby="footer-heading">
       <div className="my-container pb-8 pt-14">
-        <Link href="/">
-          <a className="mb-10 inline-flex flex-shrink-0 items-center gap-2 text-white">
-            <Image
-              src="/logos/logo-white.svg"
-              alt="SoPlugged Logo"
-              width={40}
-              height={40}
-            />
-            <span className="text-2xl font-medium tracking-tight">
-              SoPlugged
-            </span>
-          </a>
+        <Link
+          href="/"
+          className="mb-10 inline-flex flex-shrink-0 items-center gap-2 text-white">
+
+          <Image
+            src="/logos/logo-white.svg"
+            alt="SoPlugged Logo"
+            width={40}
+            height={40}
+          />
+          <span className="text-2xl font-medium tracking-tight">
+            SoPlugged
+          </span>
+
         </Link>
 
         <div className="grid gap-4 md:mt-10 md:grid-cols-2">

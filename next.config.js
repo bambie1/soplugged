@@ -2,10 +2,6 @@
 
 const { withSentryConfig } = require("@sentry/nextjs");
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
 const moduleExports = {
   reactStrictMode: true,
   images: {
@@ -43,4 +39,4 @@ const moduleExports = {
   },
 };
 
-module.exports = withBundleAnalyzer(withSentryConfig(moduleExports));
+module.exports = withSentryConfig(moduleExports);

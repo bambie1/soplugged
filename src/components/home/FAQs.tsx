@@ -7,12 +7,12 @@ const faqs = [
     answer: (
       <p>
         You can join by filling out the form{" "}
-        <Link href="/join">
-          <a className="underline">here</a>
+        <Link href="/join" className="underline">
+          here
         </Link>
         . You'll receive a welcome email, have your business listed on{" "}
-        <Link href="/directory">
-          <a className="underline">our directory</a>
+        <Link href="/directory" className="underline">
+          our directory
         </Link>
         , and be the first to know about upcoming events and opportunities.
       </p>
@@ -37,8 +37,8 @@ const faqs = [
       <p>
         One of the best ways to support us is to spread the word about the
         community. If you'd like support financially, please refer to our{" "}
-        <Link href="/partners">
-          <a className="underline">Partners page</a>
+        <Link href="/partners" className="underline">
+          Partners page
         </Link>
         .
       </p>
