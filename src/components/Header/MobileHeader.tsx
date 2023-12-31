@@ -50,15 +50,18 @@ const MobileHeader = () => {
             />
           </a>
         </Link>
-        <ButtonLink variant="outlined" href="/join">
-          Join Today
-        </ButtonLink>
 
-        <button
-          aria-label="Mobile menu toggle"
-          onClick={() => setshowMenu(!showMenu)}
-          className={`${styles.burger} ${showMenu && styles.active}`}
-        ></button>
+        <div className="flex items-center gap-4">
+          <ButtonLink variant="outlined" href="/join">
+            Join Today
+          </ButtonLink>
+
+          <button
+            aria-label="Mobile menu toggle"
+            onClick={() => setshowMenu(!showMenu)}
+            className={`${styles.burger} ${showMenu && styles.active}`}
+          ></button>
+        </div>
       </header>
 
       <DialogOverlay
