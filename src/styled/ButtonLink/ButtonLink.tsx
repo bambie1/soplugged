@@ -18,11 +18,10 @@ const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
     };
 
     return (
-      (<Link href={href || "#"} {...props} className={`${linkStyles()} ${className}`}>
-
+      // @ts-ignore
+      <Link href={href!} {...props} className={`${linkStyles()} ${className}`}>
         {children}
-
-      </Link>)
+      </Link>
     );
   }
 );
