@@ -7,19 +7,14 @@ import { BusinessPage } from "@/scenes/BusinessPage";
 var Airtable = require("airtable");
 
 const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
+  if (!business?.business_name) return null;
+
   return (
     <>
-      {!!business?.business_name ? (
-        <SEO
-          description={`Discover and support local Black-owned businesses in ${business.business_location} with SoPlugged's online directory. Explore ${business?.business_name}'s page for ${business?.category}, and learn more about their products and services. Visit SoPlugged today and find your next favorite business.`}
-          title={`${business?.business_name.toUpperCase()} | SoPlugged`}
-        />
-      ) : (
-        <SEO
-          description="Online platform connecting you to Black-owned businesses across Canada. Find everything from restaurants, hairstylists and salons to tutoring, tech and healthcare services on our directory."
-          title="SoPlugged | Discover Black-owned businesses in Canada"
-        />
-      )}
+      <SEO
+        description={`Discover and support local Black-owned businesses in ${business.business_location} with SoPlugged's online directory. Explore ${business?.business_name}'s page for ${business?.category}, and learn more about their products and services. Visit SoPlugged today and find your next favorite business.`}
+        title={`${business?.business_name.toUpperCase()} | SoPlugged`}
+      />
 
       <BusinessPage business={business} />
     </>

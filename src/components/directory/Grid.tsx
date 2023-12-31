@@ -8,7 +8,7 @@ import { PlusIcon } from "@heroicons/react/outline";
 const Grid = ({ businesses }: any) => {
   return (
     <ul className="my-8 flex w-full flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-      {businesses.map((hit: any, index: number) => (
+      {businesses?.map((hit: any, index: number) => (
         <Fragment key={hit.id}>
           {index === 4 && <SoPluggedProAd adType="website" />}
           {index === 16 && <SoPluggedProAd adType="social-media" />}
