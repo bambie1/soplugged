@@ -31,7 +31,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
   }).base("appMt18vrIMQC8k6h");
 
-  const paths = [];
+  const paths: {
+    params: { slug: string };
+  }[] = [];
 
   const records = await base("Businesses")
     .select({
@@ -48,6 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     })
     .all();
 
+  // @ts-ignore
   records.forEach((record) => {
     if (!record.fields.slug) return;
 
@@ -76,6 +79,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
     .all();
 
+  // @ts-ignore
   records.forEach((record) => {
     business = record.fields;
   });
