@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ButtonLink } from "@/styled/ButtonLink";
-import PageWrapper from "@/src/layouts/PageWrapper";
 import SEO from "@/src/components/SEO";
+import PageWrapper from "@/src/layouts/PageWrapper";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const OurStory = () => {
   return (

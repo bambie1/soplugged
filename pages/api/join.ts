@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import * as Sentry from "@sentry/nextjs";
+import { NextApiRequest, NextApiResponse } from "next";
 var Airtable = require("airtable");
 
 Airtable.configure({

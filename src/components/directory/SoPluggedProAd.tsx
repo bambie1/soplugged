@@ -1,11 +1,11 @@
-import { FC } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import {
   ExternalLinkIcon,
   InformationCircleIcon,
 } from "@heroicons/react/outline";
+import Image from "next/image";
+import Link from "next/link";
 import { usePlausible } from "next-plausible";
+import { FC } from "react";
 
 interface Props {
   adType: "website" | "social-media";

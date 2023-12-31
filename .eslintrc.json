@@ -23,6 +23,9 @@
     "spaced-comment": 0,
     "strict": 1,
     "no-else-return": 0,
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
-  }
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "plugins": ["simple-import-sort"]
 }

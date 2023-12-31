@@ -1,13 +1,13 @@
-import { FC } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
   faLinkedin,
   faTiktok,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import Link from "next/link";
+import { FC } from "react";
 
 import SEO from "@/src/components/SEO";
 

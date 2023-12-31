@@ -1,5 +1,6 @@
-import { ButtonLink } from "@/styled/ButtonLink";
 import Image from "next/image";
+
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const MissionStatement = () => {
   return (

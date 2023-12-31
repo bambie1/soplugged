@@ -1,9 +1,9 @@
+import { PlusIcon } from "@heroicons/react/outline";
+import Link from "next/link";
 import { Fragment } from "react";
 
 import CustomHit from "./CustomHit";
 import SoPluggedProAd from "./SoPluggedProAd";
-import Link from "next/link";
-import { PlusIcon } from "@heroicons/react/outline";
 
 const Grid = ({ businesses }: any) => {
   return (

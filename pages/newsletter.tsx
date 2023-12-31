@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import { Input } from "@/styled/Input";
-import { Button } from "@/styled/Button";
 import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
+import { Button } from "@/styled/Button";
+import { Input } from "@/styled/Input";
 
 const Newsletter: NextPage = () => {
   const [email, setEmail] = useState("");

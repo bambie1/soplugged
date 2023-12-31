@@ -1,11 +1,11 @@
-import type { NextPage } from "next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { NextPage } from "next";
 
-import SEO from "@/src/components/SEO";
-import { Header } from "@/components/Header";
-import { ButtonLink } from "@/styled/ButtonLink";
 import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import SEO from "@/src/components/SEO";
+import { ButtonLink } from "@/styled/ButtonLink";
 
 const NotFound: NextPage = () => {
   return (

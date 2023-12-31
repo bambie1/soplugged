@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import { IBusiness } from "@/types/Business";
 import { ButtonLink } from "@/styled/ButtonLink";
+import { IBusiness } from "@/types/Business";
 
 const FeaturedBusinesses = ({ businesses }: { businesses: IBusiness[] }) => {
   if (!businesses?.length) return null;

@@ -1,20 +1,18 @@
-import type { AppProps } from "next/app";
-import Router from "next/router";
-import nProgress from "nprogress";
-import { Toaster } from "react-hot-toast";
-import { SWRConfig } from "swr";
-import PlausibleProvider from "next-plausible";
-
 import "../styles/button.scss";
 import "../styles/global.css";
 import "../styles/imageGallery.scss";
 import "../styles/nprogress.css";
 import "@reach/dialog/styles.css";
-
-import { config } from "@fortawesome/fontawesome-svg-core";
-
 // This ensures that the icon CSS is loaded immediately before attempting to render icons
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import type { AppProps } from "next/app";
+import Router from "next/router";
+import PlausibleProvider from "next-plausible";
+import nProgress from "nprogress";
+import { Toaster } from "react-hot-toast";
+import { SWRConfig } from "swr";
 
 // Prevent fontawesome from dynamically adding its css since we did it manually above
 config.autoAddCss = false;

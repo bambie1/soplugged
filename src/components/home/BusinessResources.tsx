@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 import { BlogPost } from "@/types/BlogPost";
+
 import BlogCard from "../blog/BlogCard";
 
 interface Props {

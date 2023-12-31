@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import Image from "next/image";
 
 import { BlogPost } from "@/types/BlogPost";
+
 import CategoryPill from "./CategoryPill";
 
 interface Props {

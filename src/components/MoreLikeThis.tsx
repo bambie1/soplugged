@@ -1,6 +1,6 @@
-import { FC } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { FC } from "react";
 import useSWR from "swr";
 
 import { IBusiness } from "@/types/Business";

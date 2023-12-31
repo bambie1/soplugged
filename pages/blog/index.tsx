@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 
+import BlogCard from "@/components/blog/BlogCard";
 import SEO from "@/src/components/SEO";
+import PageWrapper from "@/src/layouts/PageWrapper";
 import { BlogPost } from "@/types/BlogPost";
 import { fetchAPI } from "@/utils/graphcms";
-import PageWrapper from "@/src/layouts/PageWrapper";
-import BlogCard from "@/components/blog/BlogCard";
 
 interface Props {
   posts: BlogPost[];

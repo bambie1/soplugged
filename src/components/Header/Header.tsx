@@ -1,14 +1,14 @@
-import Link from "next/link";
-import Image from "next/image";
-import { FC } from "react";
-import classNames from "classnames";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import classNames from "classnames";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { FC } from "react";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
 import MobileHeader from "./MobileHeader";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
 
 const links = [
   { id: 4, text: "Our Story", link: "/our-story" },

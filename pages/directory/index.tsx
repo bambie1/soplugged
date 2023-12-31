@@ -1,14 +1,15 @@
-import Footer from "@/components/Footer";
-import { Header } from "@/components/Header";
-import SEO from "@/components/SEO";
-import Grid from "@/components/directory/Grid";
-import { encodedCategories } from "@/lib/encodedCategories";
-import { encodedLocations } from "@/lib/encodedLocations";
-import { IBusiness } from "@/types/Business";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
+
+import Grid from "@/components/directory/Grid";
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import SEO from "@/components/SEO";
+import { encodedCategories } from "@/lib/encodedCategories";
+import { encodedLocations } from "@/lib/encodedLocations";
+import { IBusiness } from "@/types/Business";
 var Airtable = require("airtable");
 
 const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
