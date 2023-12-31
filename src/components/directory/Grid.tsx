@@ -18,18 +18,20 @@ const Grid = ({ businesses }: any) => {
         </Fragment>
       ))}
 
-      <Link href={`/join`}>
-        <a className="group relative my-4 flex h-full w-full flex-col items-start focus:outline-none">
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
-            <div className="relative flex aspect-video w-full flex-col items-center justify-center bg-secondary/10">
-              <PlusIcon className="h-10 w-10 text-primary" strokeWidth={1} />
-              <span className="mt-4 whitespace-nowrap font-light uppercase tracking-wider text-primary">
-                Add your business
-              </span>
+      <li>
+        <Link href={`/join`}>
+          <a className="group relative my-4 flex h-full w-full flex-col items-start focus:outline-none">
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
+              <div className="relative flex aspect-video w-full flex-col items-center justify-center bg-secondary/10">
+                <PlusIcon className="h-10 w-10 text-primary" strokeWidth={1} />
+                <span className="mt-4 whitespace-nowrap font-light uppercase tracking-wider text-primary">
+                  Add your business
+                </span>
+              </div>
             </div>
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </li>
     </ul>
   );
 };

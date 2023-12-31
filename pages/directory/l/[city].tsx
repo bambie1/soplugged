@@ -90,6 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .all();
 
   records.forEach((record) => {
+    // @ts-ignore
     businesses.push(record.fields);
   });
 

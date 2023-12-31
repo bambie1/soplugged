@@ -4,13 +4,14 @@ import SEO from "@/components/SEO";
 import Grid from "@/components/directory/Grid";
 import { encodedCategories } from "@/lib/encodedCategories";
 import { encodedLocations } from "@/lib/encodedLocations";
+import { IBusiness } from "@/types/Business";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 var Airtable = require("airtable");
 
-const DirectoryPage = ({ businesses }) => {
+const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
   const { query } = useRouter();
   const listInnerRef = useRef<any>();
 
@@ -58,18 +59,22 @@ const DirectoryPage = ({ businesses }) => {
               <ul className="flex">
                 {query.filter === "location"
                   ? Object.keys(encodedLocations).map((location) => (
-                      <Link href={`/directory/l/${location}`} key={location}>
-                        <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
-                          {encodedLocations[location]}
-                        </a>
-                      </Link>
+                      <li key={location}>
+                        <Link href={`/directory/l/${location}`}>
+                          <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+                            {encodedLocations[location]}
+                          </a>
+                        </Link>
+                      </li>
                     ))
                   : Object.keys(encodedCategories).map((category) => (
-                      <Link href={`/directory/c/${category}`} key={category}>
-                        <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
-                          {encodedCategories[category]}
-                        </a>
-                      </Link>
+                      <li key={category}>
+                        <Link href={`/directory/c/${category}`}>
+                          <a className="m-1 inline-block whitespace-nowrap rounded-md border border-primary p-2 text-sm hover:opacity-80 lg:text-base">
+                            {encodedCategories[category]}
+                          </a>
+                        </Link>
+                      </li>
                     ))}
               </ul>
             </div>
@@ -101,11 +106,11 @@ const getAllBusinesses = async () => {
     apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
   }).base("appMt18vrIMQC8k6h");
 
-  const businesses = [];
+  const businesses: IBusiness[] = [];
 
   const records = await base("Businesses")
     .select({
-      maxRecords: 50,
+      maxRecords: 150,
       fields: [
         "id",
         "business_name",
@@ -127,6 +132,7 @@ const getAllBusinesses = async () => {
     })
     .all();
 
+  // @ts-ignore
   records.forEach((record) => {
     businesses.push(record.fields);
   });

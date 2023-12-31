@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const records = await base("Businesses")
       .select({
-        maxRecords: 50,
+        maxRecords: 10,
         fields: [
           "id",
           "business_name",
@@ -37,6 +37,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
       .all();
 
+    // @ts-ignore
     records.forEach((record) => {
       businesses.push(record.fields);
     });
