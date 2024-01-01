@@ -1,7 +1,7 @@
-import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Dialog, DialogTrigger, Modal } from "react-aria-components";
 
 import { ButtonLink } from "@/styled/ButtonLink";
 
@@ -61,81 +61,74 @@ const MobileHeader = () => {
             Join Today
           </ButtonLink>
 
-          <button
-            aria-label="Mobile menu toggle"
-            onClick={() => setshowMenu(!showMenu)}
-            className={`${styles.burger} ${showMenu && styles.active}`}
-          ></button>
+          <DialogTrigger isOpen={showMenu}>
+            <button
+              aria-label="Mobile menu toggle"
+              onClick={() => setshowMenu(!showMenu)}
+              className={`${styles.burger} ${showMenu && styles.active}`}
+            ></button>
+
+            <Modal className="fixed inset-0 bg-light pt-24">
+              <Dialog>
+                <ul className="mt-10 grid w-full flex-1 content-center gap-10 px-4">
+                  {mobileMenu.map((item) => {
+                    const { id, href, title, subItems } = item;
+
+                    if (subItems) {
+                      return (
+                        <li key={id} className="grid">
+                          <div className="flex items-center gap-3 text-lg uppercase">
+                            {title}
+                          </div>
+
+                          <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
+                            {subItems.map((item) => {
+                              const { title, href } = item;
+
+                              return (
+                                <li key={title}>
+                                  <Link
+                                    href={href}
+                                    className="flex items-center gap-3 py-2 text-base"
+                                    onClick={() => setshowMenu(false)}
+                                  >
+                                    {title}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </li>
+                      );
+                    }
+
+                    return (
+                      <li key={id} className="grid">
+                        <Link
+                          href={href}
+                          className="flex items-center gap-3 text-lg uppercase"
+                          onClick={() => setshowMenu(false)}
+                        >
+                          {title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <div className="mt-16 grid w-full gap-2 border-t border-gray-100 px-4">
+                  <Link
+                    href="/join"
+                    className="flex justify-center rounded-lg border border-primary p-2 text-lg"
+                  >
+                    Join the Community
+                  </Link>
+                </div>
+              </Dialog>
+            </Modal>
+          </DialogTrigger>
         </div>
       </header>
-
-      <Dialog.Root
-        // className="lg:hidden"
-        open={showMenu}
-        onOpenChange={() => setshowMenu(!showMenu)}
-      >
-        <Dialog.Portal>
-          <Dialog.Content
-            aria-label="Mobile nav links"
-            className={styles.dialogContent}
-          >
-            <ul className="grid w-full flex-1 content-center gap-10 px-4">
-              {mobileMenu.map((item) => {
-                const { id, href, title, subItems } = item;
-
-                if (subItems) {
-                  return (
-                    <li key={id} className="grid">
-                      <div className="flex items-center gap-3 text-lg uppercase">
-                        {title}
-                      </div>
-
-                      <ul className="mt-4 grid gap-3 border-l border-primary/20 pl-4">
-                        {subItems.map((item) => {
-                          const { title, href } = item;
-
-                          return (
-                            <li key={title}>
-                              <Link
-                                href={href}
-                                className="flex items-center gap-3 py-2 text-base"
-                                onClick={() => setshowMenu(false)}
-                              >
-                                {title}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </li>
-                  );
-                }
-
-                return (
-                  <li key={id} className="grid">
-                    <Link
-                      href={href}
-                      className="flex items-center gap-3 text-lg uppercase"
-                      onClick={() => setshowMenu(false)}
-                    >
-                      {title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="mt-auto grid w-full gap-2 border-t border-gray-100 px-4">
-              <Link
-                href="/join"
-                className="flex justify-center rounded-lg border border-primary p-2 text-lg"
-              >
-                Join the Community
-              </Link>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
     </div>
   );
 };
