@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
+import { forwardRef } from "react";
 
 import styles from "./Input.module.scss";
 

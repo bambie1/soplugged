@@ -1,5 +1,6 @@
+import Image from "next/legacy/image";
+
 import { ButtonLink } from "@/styled/ButtonLink";
-import Image from "next/image";
 
 const MissionStatement = () => {
   return (

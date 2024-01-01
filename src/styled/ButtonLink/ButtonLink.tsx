@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import Link from "next/link";
+import { forwardRef } from "react";
 
 type IProps = {
   variant?: "outlined" | "filled" | "text";
@@ -18,10 +18,9 @@ const ButtonLink = forwardRef<HTMLAnchorElement, IProps>(
     };
 
     return (
-      <Link href={href || "#"}>
-        <a {...props} className={`${linkStyles()} ${className}`}>
-          {children}
-        </a>
+      // @ts-ignore
+      <Link href={href!} {...props} className={`${linkStyles()} ${className}`}>
+        {children}
       </Link>
     );
   }

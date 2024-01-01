@@ -1,11 +1,11 @@
-import type { GetStaticPathsResult, GetStaticProps } from "next";
 import Airtable from "airtable";
+import type { GetStaticPathsResult, GetStaticProps } from "next";
 
-import SEO from "@/src/components/SEO";
 import Grid from "@/components/directory/Grid";
-import { IBusiness } from "@/types/Business";
 import { encodedLocations } from "@/lib/encodedLocations";
+import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
+import { IBusiness } from "@/types/Business";
 
 export default function CityPageDirectory({
   city,

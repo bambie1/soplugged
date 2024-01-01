@@ -1,12 +1,12 @@
+import Airtable from "airtable";
 import type { GetStaticPathsResult, GetStaticProps } from "next";
 
-import SEO from "@/src/components/SEO";
-import { encodedCategories } from "@/lib/encodedCategories";
-import Airtable from "airtable";
 import Grid from "@/components/directory/Grid";
+import { encodedCategories } from "@/lib/encodedCategories";
+import SEO from "@/src/components/SEO";
+import PageWrapper from "@/src/layouts/PageWrapper";
 import { IBusiness } from "@/types/Business";
 import { getCategoryName } from "@/utils/index";
-import PageWrapper from "@/src/layouts/PageWrapper";
 
 export default function Page({
   category,

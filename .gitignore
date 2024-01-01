@@ -38,11 +38,6 @@ yarn-error.log*
 soplugged-stg-firebase-adminsdk-wb669-7fcf6ea519.json
 
 .vercel
-app-soplugged-firebase-adminsdk-6pk1o-2b15ee62de.json
-
-.vercel
-dbUpdate-prod.js
-dbUpdate-stg.js
 utils/tests/
 
 setupTests.js
@@ -50,9 +45,6 @@ setupTests.js
 babel.config.js
 jest.config.js
 
-# Sentry
-.sentryclirc
 
-# Sentry
+# Sentry Config File
 .sentryclirc
-prisma/migrations/

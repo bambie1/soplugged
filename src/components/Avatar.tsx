@@ -1,5 +1,5 @@
+import Image from "next/legacy/image";
 import { FC } from "react";
-import Image from "next/image";
 
 interface Props {
   name: string;

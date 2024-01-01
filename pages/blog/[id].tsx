@@ -1,10 +1,10 @@
-import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { FC } from "react";
 
 import SEO from "@/src/components/SEO";
 import BlogPage from "@/src/scenes/BlogPage";
-import { fetchAPI } from "@/utils/graphcms";
 import { BlogPost } from "@/types/BlogPost";
+import { fetchAPI } from "@/utils/graphcms";
 
 interface Props {
   post: BlogPost;

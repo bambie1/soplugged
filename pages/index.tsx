@@ -1,14 +1,14 @@
+import Airtable from "airtable";
 import type { GetStaticProps, NextPage } from "next";
 
-import Hero from "@/src/components/home/Hero";
-import SEO from "@/src/components/SEO";
-import { fetchAPI } from "@/utils/graphcms";
-import { BlogPost } from "@/types/BlogPost";
-import { IBusiness } from "@/types/Business";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import HomePage from "@/scenes/HomePage";
-import Airtable from "airtable";
+import Hero from "@/src/components/home/Hero";
+import SEO from "@/src/components/SEO";
+import { BlogPost } from "@/types/BlogPost";
+import { IBusiness } from "@/types/Business";
+import { fetchAPI } from "@/utils/graphcms";
 
 const FEATURED_BUSINESSES = [
   "en-vogue-afrika",

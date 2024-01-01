@@ -1,11 +1,11 @@
+import Image from "next/legacy/image";
 import { FC, useEffect, useState } from "react";
-import Image from "next/image";
 
-import { BlogPost } from "@/types/BlogPost";
-import CategoryPill from "@/components/blog/CategoryPill";
-import { Header } from "@/components/Header";
-import Footer from "@/components/Footer";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryPill from "@/components/blog/CategoryPill";
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { BlogPost } from "@/types/BlogPost";
 
 interface Props {
   post: BlogPost;

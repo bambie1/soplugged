@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import dynamic from "next/dynamic";
 
 import PageWrapper from "@/src/layouts/PageWrapper";
 import { ButtonLink } from "@/styled/ButtonLink";

@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 
 import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
-import { Input } from "@/styled/Input";
 import { Button } from "@/styled/Button";
+import { Input } from "@/styled/Input";
 
 const Partners = () => {
   const [userEmail, setUserEmail] = useState("");

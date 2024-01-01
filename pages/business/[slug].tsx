@@ -1,8 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
+import { BusinessPage } from "@/scenes/BusinessPage";
 import SEO from "@/src/components/SEO";
 import { IBusiness } from "@/types/Business";
-import { BusinessPage } from "@/scenes/BusinessPage";
 
 var Airtable = require("airtable");
 
