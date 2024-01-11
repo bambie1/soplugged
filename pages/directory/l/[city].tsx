@@ -103,6 +103,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       city,
       businesses,
     },
-    revalidate: 100 * 60 * 60,
+    revalidate: 5 * 60,
   };
 };

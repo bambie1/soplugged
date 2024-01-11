@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Image from "next/legacy/image";
 import { FC } from "react";
 
@@ -8,7 +9,15 @@ interface Props {
 
 const Avatar: FC<Props> = ({ name, url }) => {
   return (
-    <span className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-secondary text-primary">
+    <span
+      className={classNames(
+        "inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full",
+        {
+          "bg-secondary text-primary": !url,
+          "border border-primary/50 bg-white": url,
+        }
+      )}
+    >
       {url ? (
         <Image src={url} width={40} height={40} alt="avatar" />
       ) : (
