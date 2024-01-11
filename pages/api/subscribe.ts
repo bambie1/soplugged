@@ -4,14 +4,14 @@ var Airtable = require("airtable");
 
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
-  apiKey: process.env.AIRTABLE_API_KEY,
+  apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
 });
-var base = Airtable.base("appgdjdPKc3Rv2EFn");
+var base = Airtable.base("appMt18vrIMQC8k6h");
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const data = JSON.parse(req.body);
-    base("Newsletter").create(
+    base("Newsletter Subscription").create(
       [
         {
           fields: {
@@ -21,7 +21,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               month: "numeric",
               day: "numeric",
             }),
-            "PluggedIn Conf": data.pluggedInConf,
           },
         },
       ],

@@ -2,7 +2,7 @@
   "name": "soplugged-ts",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 2905",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
