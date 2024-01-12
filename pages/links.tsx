@@ -13,7 +13,7 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "PluggedIn Early-Bird Tickets",
+    title: "PluggedIn 2024 Tickets",
     href: "https://lu.ma/2ru2h6ak",
     isNew: true,
   },
@@ -69,71 +69,71 @@ const socialsArray = [
 ];
 
 const Links: FC = () => {
-  return <>
-    <SEO
-      description="Explore a collection of helpful links to Black-owned businesses across Canada with SoPlugged. Our free online directory connects you with local Black-owned businesses in your city. Browse our links page today and discover even more businesses to support."
-      title="SoPlugged | Discover Black-owned businesses in Canada"
-    />
+  return (
+    <>
+      <SEO
+        description="Explore a collection of helpful links to Black-owned businesses across Canada with SoPlugged. Our free online directory connects you with local Black-owned businesses in your city. Browse our links page today and discover even more businesses to support."
+        title="SoPlugged | Discover Black-owned businesses in Canada"
+      />
 
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[url('/nina_and_ben.jpeg')] from-white to-secondary bg-cover bg-center lg:bg-gradient-to-b">
-      <div className="absolute inset-0 bg-primary/30 backdrop-blur-[2px]"></div>
-      <div className="absolute top-0 left-0 right-0 h-1/2 bg-primary/30 backdrop-blur-sm lg:hidden"></div>
-      <div className="z-10 mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center text-white lg:text-primary">
-        <Link
-          href="/"
-          className="flex flex-shrink-0 rounded-full border-primary bg-white p-4 lg:border lg:bg-transparent">
-
-          <Image
-            src="/logos/logo-black.svg"
-            alt="SoPlugged Logo"
-            width={40}
-            height={40}
-          />
-
-        </Link>
-        <h1 className="mt-2 text-2xl font-semibold lg:text-4xl">SoPlugged</h1>
-        <p className="text-gray-300 lg:text-primary">@sopluggd</p>
-        <p className="mt-3 text-lg leading-snug">
-          Empowering Black entrepreneurs across Canada!
-        </p>
-        <div className="mt-8 flex justify-center space-x-8">
-          {socialsArray.map((item) => (
-            <a
-              key={item.name}
-              target="_blank"
-              rel="noreferrer"
-              href={item.href}
-            >
-              <span className="sr-only">{item.name}</span>
-              {item.icon}
-            </a>
-          ))}
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[url('/nina_and_ben.jpeg')] from-white to-secondary bg-cover bg-center lg:bg-gradient-to-b">
+        <div className="absolute inset-0 bg-primary/30 backdrop-blur-[2px]"></div>
+        <div className="absolute left-0 right-0 top-0 h-1/2 bg-primary/30 backdrop-blur-sm lg:hidden"></div>
+        <div className="z-10 mx-auto mt-10 flex w-full max-w-md flex-1 flex-col items-center p-4 text-center text-white lg:text-primary">
+          <Link
+            href="/"
+            className="flex flex-shrink-0 rounded-full border-primary bg-white p-4 lg:border lg:bg-transparent"
+          >
+            <Image
+              src="/logos/logo-black.svg"
+              alt="SoPlugged Logo"
+              width={40}
+              height={40}
+            />
+          </Link>
+          <h1 className="mt-2 text-2xl font-semibold lg:text-4xl">SoPlugged</h1>
+          <p className="text-gray-300 lg:text-primary">@sopluggd</p>
+          <p className="mt-3 text-lg leading-snug">
+            Empowering Black entrepreneurs across Canada!
+          </p>
+          <div className="mt-8 flex justify-center space-x-8">
+            {socialsArray.map((item) => (
+              <a
+                key={item.name}
+                target="_blank"
+                rel="noreferrer"
+                href={item.href}
+              >
+                <span className="sr-only">{item.name}</span>
+                {item.icon}
+              </a>
+            ))}
+          </div>
+          <hr className="my-8 w-[70%] border border-white/50" />
+          <ul className="mb-20 w-full space-y-5">
+            {linksArray.map(({ title, href, isNew }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none"
+                >
+                  {title}
+                  {isNew && (
+                    <span className="flex items-center justify-center rounded-lg bg-primary p-1 text-xs text-white">
+                      NEW
+                    </span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-auto">
+            &copy; {new Date().getFullYear()}, SoPlugged
+          </p>
         </div>
-        <hr className="my-8 w-[70%] border border-white/50" />
-        <ul className="mb-20 w-full space-y-5">
-          {linksArray.map(({ title, href, isNew }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className="relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none">
-
-                {title}
-                {isNew && (
-                  <span className="flex items-center justify-center rounded-lg bg-primary p-1 text-xs text-white">
-                    NEW
-                  </span>
-                )}
-
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-auto">
-          &copy; {new Date().getFullYear()}, SoPlugged
-        </p>
       </div>
-    </div>
-  </>;
+    </>
+  );
 };
 
 export default Links;

@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 const PluggedInAd = () => {
   return (
     <div className="my-container mt-10 text-white lg:mt-0">
-      <div className="relative mt-4 w-full gap-10 overflow-hidden rounded-lg bg-pluggedin-black py-16 px-8 text-center md:p-10 lg:grid-cols-5 lg:rounded-xl xl:py-24 xl:px-16">
+      <div className="relative mt-4 w-full gap-10 overflow-hidden rounded-lg bg-pluggedin-black px-8 py-16 text-center md:p-10 lg:grid-cols-5 lg:rounded-xl xl:px-16 xl:py-24">
         <div className="absolute inset-0">
           <Image
             src="/background_dots.png"
@@ -38,7 +38,7 @@ const PluggedInAd = () => {
             rel="noopener noreferrer"
             className="hover:bg-pink mt-10 inline-flex rounded-full bg-white px-4 py-3 font-medium text-pluggedin-black transition duration-200 hover:bg-pluggedin-pink hover:text-black"
           >
-            Join the waitlist
+            Get your ticket
           </a>
         </div>
       </div>
