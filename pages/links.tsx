@@ -14,7 +14,7 @@ import SEO from "@/src/components/SEO";
 const linksArray = [
   {
     title: "PluggedIn 2024 Tickets",
-    href: "https://lu.ma/2ru2h6ak",
+    href: "https://pluggedin.soplugged.com/",
     isNew: true,
   },
   {
