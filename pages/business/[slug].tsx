@@ -87,6 +87,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { business, slug: params?.slug },
+    revalidate: 5 * 60,
   };
 };
 
