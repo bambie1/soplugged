@@ -30,8 +30,8 @@ export default function Page({
         title={`Black-Owned ${category} businesses in Canada`}
         subTitle={
           // @ts-ignore
-          categoryMetaDescriptions[category] ||
-          `Check out the businesses listed below for your ${category.toLowerCase()} needs`
+          categoryMetaDescriptions[category] ??
+          `Check out the businesses listed below for your ${category?.toLowerCase()} needs`
         }
         backAction={{
           text: "Explore all categories",
