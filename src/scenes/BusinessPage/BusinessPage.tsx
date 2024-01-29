@@ -1,7 +1,6 @@
 import { faMapMarkerAlt, faShapes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { FC } from "react";
 
 import MoreLikeThis from "@/components/MoreLikeThis";
@@ -29,12 +28,11 @@ export const NoPreviewAvailable = () => (
     </span>
 
     <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-    <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+    <div className="absolute -bottom-5 -right-10 aspect-square w-36 rounded-full border border-primary/10"></div>
   </div>
 );
 
 const BusinessPage: FC<Props> = ({ business }) => {
-  const router = useRouter();
   const {
     business_name,
     business_location,
@@ -108,7 +106,11 @@ const BusinessPage: FC<Props> = ({ business }) => {
           <section className="mx-auto mt-10 max-w-3xl">
             <div className="flex w-full flex-col items-center gap-8 lg:gap-0">
               {hasPreview ? (
-                <ReactImageGallery items={images} showPlayButton={false} />
+                <ReactImageGallery
+                  items={images}
+                  showPlayButton={false}
+                  showFullscreenButton={false}
+                />
               ) : (
                 <NoPreviewAvailable />
               )}

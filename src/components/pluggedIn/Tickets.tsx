@@ -17,7 +17,6 @@ const features = [
     category: { name: "Activities", color: "bg-pink-100 text-pink-800" },
     description:
       "You're automatically entered into our raffle draw for a chance to win a *FREE* business makeover from our Pro team (valued at over $1,000), including a business logo, website design and product images",
-    footer: { href: "/pluggedin/raffle-terms", title: "Terms and Conditions" },
   },
   {
     title: "Personalized Self-care box",

@@ -2,6 +2,7 @@ import Airtable from "airtable";
 import type { GetStaticPathsResult, GetStaticProps } from "next";
 
 import Grid from "@/components/directory/Grid";
+import { categoryMetaDescriptions } from "@/lib/categoryMetaDescriptions";
 import { encodedCategories } from "@/lib/encodedCategories";
 import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
@@ -17,14 +18,21 @@ export default function Page({
 }) {
   const seoTitle = `Black-Owned ${category} businesses | SoPlugged`;
 
-  const seoDescription = `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory.`;
+  const seoDescription =
+    // @ts-ignore
+    categoryMetaDescriptions[category] ||
+    `Discover the best Black-owned ${category} businesses in Canada with SoPlugged's online directory.`;
 
   return (
     <>
       <SEO title={seoTitle} description={seoDescription} />
       <PageWrapper
-        title={`Explore Black-Owned ${category} businesses in Canada`}
-        subTitle="Looking for hair stylists, event planners, or photographers? We've got you covered."
+        title={`Black-Owned ${category} businesses in Canada`}
+        subTitle={
+          // @ts-ignore
+          categoryMetaDescriptions[category] ||
+          `Check out the businesses listed below for your ${category.toLowerCase()} needs`
+        }
         backAction={{
           text: "Explore all categories",
           link: "/directory",

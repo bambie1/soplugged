@@ -68,7 +68,7 @@ const MobileHeader = () => {
               className={`${styles.burger} ${showMenu && styles.active}`}
             ></button>
 
-            <Modal className="fixed inset-0 bg-light pt-24">
+            <Modal className="fixed inset-0 z-[1] bg-light pt-24">
               <Dialog>
                 <ul className="mt-10 grid w-full flex-1 content-center gap-10 px-4">
                   {mobileMenu.map((item) => {
