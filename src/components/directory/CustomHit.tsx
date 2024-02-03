@@ -28,10 +28,10 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
   const featuredImage = images.length ? images[0] : null;
 
   return (
-    (<Link
+    <Link
       href={`/business/${slug}`}
-      className="group relative flex h-full w-full flex-col items-start focus:outline-none">
-
+      className="group relative flex h-full w-full flex-col items-start focus:outline-none"
+    >
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
         {featuredImage ? (
           <Image
@@ -49,7 +49,7 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
             </span>
 
             <div className="absolute -left-10 -top-5 aspect-square w-36 rounded-full border border-primary/10"></div>
-            <div className="absolute -right-10 -bottom-5 aspect-square w-36 rounded-full border border-primary/10"></div>
+            <div className="absolute -bottom-5 -right-10 aspect-square w-36 rounded-full border border-primary/10"></div>
           </div>
         )}
       </div>
@@ -58,10 +58,11 @@ const CustomHit: FC<HitProps> = ({ hit }) => {
           {business_name}
         </h3>
         <p className="truncate text-sm">{category}</p>
-        <p className="truncate text-sm text-gray-600">{business_location}</p>
+        <p className="truncate text-sm text-gray-600">
+          {business_location ?? "Canada"}
+        </p>
       </div>
-
-    </Link>)
+    </Link>
   );
 };
 
