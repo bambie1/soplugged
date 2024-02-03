@@ -2,16 +2,20 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+import ImageUpload from "@/components/ImageUpload";
 import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
 import { Button } from "@/styled/Button";
 import { Input } from "@/styled/Input";
+import TextArea from "@/styled/TextArea";
 
 const Join: NextPage = () => {
   const [userEmail, setUserEmail] = useState("");
   const [name, setName] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [businessWebsite, setBusinessWebsite] = useState("");
+  const [businessDescription, setBusinessDescription] = useState("");
+  const [businessImages, setBusinessImages] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +28,8 @@ const Join: NextPage = () => {
           name,
           businessName,
           businessWebsite,
+          businessDescription,
+          businessImages,
         }),
       });
 
@@ -31,6 +37,8 @@ const Join: NextPage = () => {
       setName("");
       setBusinessName("");
       setBusinessWebsite("");
+      setBusinessDescription("");
+      setBusinessImages("");
 
       toast.success(
         "Thanks for joining! You'll receive an email from us soon",
@@ -39,6 +47,7 @@ const Join: NextPage = () => {
         }
       );
     } catch (error) {
+      console.error(error);
       toast.error("An error occurred", {
         position: "top-center",
       });
@@ -87,12 +96,32 @@ const Join: NextPage = () => {
             onChange={(e) => setBusinessName(e.target.value)}
           />
           <Input
-            label="Business website"
+            label="Business Url"
             autoComplete="off"
             name="website"
             value={businessWebsite}
             onChange={(e) => setBusinessWebsite(e.target.value)}
+            helperText="Website or social media link"
           />
+          <TextArea
+            label="Business Description"
+            name="description"
+            value={businessDescription}
+            onChange={(e) => setBusinessDescription(e.target.value)}
+            placeholder="Tell us about your business briefly"
+            required
+          />
+
+          <div className="grid gap-2 text-left">
+            <span className="text-sm font-semibold uppercase">
+              Image showcase
+            </span>
+
+            <ImageUpload
+              images={businessImages}
+              setImages={setBusinessImages}
+            />
+          </div>
           <Button isForm>Join</Button>
         </form>
       </PageWrapper>

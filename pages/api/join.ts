@@ -24,6 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               month: "numeric",
               day: "numeric",
             }),
+            "Business Description": data.businessDescription,
+            Images: data.businessImages,
           },
         },
       ],
