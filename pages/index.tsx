@@ -31,7 +31,7 @@ const Home: NextPage<{ posts: BlogPost[]; featuredBusinesses: IBusiness[] }> = (
 
       <Hero />
       <HomePage {...props} />
-      <div className="mt-20 lg:mt-40"></div>
+      <div className="mt-20 lg:mt-0"></div>
 
       <Footer />
     </>

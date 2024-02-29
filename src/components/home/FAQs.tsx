@@ -48,7 +48,7 @@ const faqs = [
 
 const FAQs = () => {
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="my-container">
         <h2 className="text-3xl font-semibold text-primary xl:text-4xl">
           Frequently Asked Questions
