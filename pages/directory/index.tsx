@@ -28,6 +28,8 @@ const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
     }
   };
 
+  const isLocationFilter = query.filter === "location";
+
   return (
     <>
       <SEO
@@ -58,7 +60,7 @@ const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
               ref={listInnerRef}
             >
               <ul className="flex">
-                {query.filter === "location"
+                {isLocationFilter
                   ? Object.keys(encodedLocations).map((location) => (
                       <li key={location}>
                         <Link
@@ -88,6 +90,16 @@ const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
             ></div>
           </div>
 
+          <div className="mt-4 flex w-full">
+            <Link
+              href={
+                isLocationFilter ? "/directory" : "/directory?filter=location"
+              }
+              className="z-10 ml-auto inline-flex text-sm underline"
+            >
+              Filter by {isLocationFilter ? "category" : "location"}
+            </Link>
+          </div>
           <Grid businesses={businesses} />
         </div>
       </main>

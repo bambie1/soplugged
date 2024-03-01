@@ -13,35 +13,29 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "PluggedIn 2024 Tickets",
-    href: "https://pluggedin.soplugged.com/",
+    title: "PluggedIn 2024 Recap",
+    href: "/blog/pluggedin-2024-recap",
     isNew: true,
   },
+  // {
+  //   title: "Become a PluggedIn Partner",
+  //   href: "https://docs.google.com/forms/d/e/1FAIpQLSeTDtSgvUq1sswjZr2c65QqQsDLc1brNCjGblWL1YbPpJq8Gg/viewform",
+  // },
   {
-    title: "Become a PluggedIn Partner",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSeTDtSgvUq1sswjZr2c65QqQsDLc1brNCjGblWL1YbPpJq8Gg/viewform",
-    isNew: true,
+    title: "Need a website for your business?",
+    href: "https://studio.soplugged.com",
   },
   {
     title: "Listen to TBM podcast",
     href: "https://tbmpodcast.soplugged.com",
   },
   {
-    title: "Subscribe to our newsletter",
-    href: "/newsletter",
-  },
-
-  {
-    title: "Need a website for your business?",
-    href: "https://studio.soplugged.com",
-  },
-  {
-    title: "Check out our latest blog post",
-    href: "/blog",
-  },
-  {
     title: "Explore our directory",
     href: "/directory",
+  },
+  {
+    title: "Subscribe to our newsletter",
+    href: "/newsletter",
   },
 ];
 
