@@ -9,7 +9,7 @@ interface Props {
 }
 const BusinessResources: FC<Props> = ({ posts }) => {
   return (
-    <div className="bg-light py-10 lg:py-20">
+    <div className="py-10">
       <div className="my-container">
         <div className="mb-8 grid max-w-xl gap-4">
           <h2 className="text-3xl font-semibold text-primary xl:text-4xl">
