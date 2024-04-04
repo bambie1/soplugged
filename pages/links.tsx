@@ -13,9 +13,13 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
+    title: "Business Taxes Workshop",
+    href: "https://lu.ma/26rlogrb",
+    isNew: true,
+  },
+  {
     title: "PluggedIn 2024 Recap",
     href: "/blog/pluggedin-2024-recap",
-    isNew: true,
   },
   // {
   //   title: "Become a PluggedIn Partner",
