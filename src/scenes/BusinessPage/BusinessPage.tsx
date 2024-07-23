@@ -41,14 +41,12 @@ const BusinessPage: FC<Props> = ({ business }) => {
     category,
     business_description,
     fixed_to_one_location,
-    verified,
-    creator,
     ig_handle,
     phone_number,
-    business_url,
+    website_url,
   } = business;
 
-  const cleanDescription = business_description.replace(/style="[^"]*"/g, "");
+  const cleanDescription = business_description.replace(/\\n/g, "<br>");
 
   const rawImages = sample_images?.split(",") || [];
   const images = rawImages.map((item) => {
@@ -61,7 +59,7 @@ const BusinessPage: FC<Props> = ({ business }) => {
     };
   });
   const hasPreview = images.length !== 0 && images[0]?.original?.length !== 0;
-  const hasContactLinks = ig_handle || phone_number || business_url;
+  const hasContactLinks = ig_handle || phone_number || website_url;
 
   return (
     <>
@@ -124,8 +122,8 @@ const BusinessPage: FC<Props> = ({ business }) => {
                     dangerouslySetInnerHTML={{
                       __html: cleanDescription,
                     }}
-                    className="prose max-w-none text-gray-500 prose-p:my-0 prose-strong:text-current"
-                  ></section>
+                    className="prose max-w-none whitespace-pre-wrap text-gray-500 prose-p:my-0 prose-strong:text-current"
+                  />
                 </div>
               )}
             </div>

@@ -3,6 +3,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { BusinessPage } from "@/scenes/BusinessPage";
 import SEO from "@/src/components/SEO";
 import { IBusiness } from "@/types/Business";
+import supabase from "@/utils/supabase";
 
 var Airtable = require("airtable");
 
@@ -59,25 +60,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let business = null;
-
-  const base = new Airtable({
-    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
-  }).base("appMt18vrIMQC8k6h");
-
-  const formula = `slug = "${params?.slug}"`;
-
-  const records = await base("Businesses")
-    .select({
-      maxRecords: 1,
-      filterByFormula: formula,
-    })
-    .all();
-
-  // @ts-ignore
-  records.forEach((record) => {
-    business = record.fields;
-  });
+  const { data: business } = await supabase
+    .from("businesses")
+    .select(`*`)
+    .eq("slug", params?.slug)
+    .single();
 
   if (!business) {
     return {
