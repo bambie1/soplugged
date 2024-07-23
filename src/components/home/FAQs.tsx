@@ -6,8 +6,12 @@ const faqs = [
     question: "How can I join the SoPlugged community?",
     answer: (
       <p>
-        You can join by filling out the form{" "}
-        <Link href="/join" className="underline">
+        You can join by signing up{" "}
+        <Link
+          href="https://dashboard.soplugged.com"
+          target="_blank"
+          className="underline"
+        >
           here
         </Link>
         . You'll receive a welcome email, have your business listed on{" "}

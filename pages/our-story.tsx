@@ -60,7 +60,11 @@ const OurStory = () => {
               </p>
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <ButtonLink href="/join" variant="outlined">
+              <ButtonLink
+                href="https://dashboard.soplugged.com"
+                target="_blank"
+                variant="outlined"
+              >
                 Join our community
               </ButtonLink>
               <ButtonLink href="/partners">Partner with us</ButtonLink>

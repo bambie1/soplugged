@@ -20,9 +20,10 @@ const Grid = ({ businesses }: any) => {
 
       <li>
         <Link
-          href={`/join`}
-          className="group relative my-4 flex h-full w-full flex-col items-start focus:outline-none">
-
+          href="https://dashboard.soplugged.com"
+          target="_blank"
+          className="group relative my-4 flex h-full w-full flex-col items-start focus:outline-none"
+        >
           <div className="relative aspect-video w-full overflow-hidden rounded-lg border transition duration-200 group-hover:scale-[.98] group-focus:border-primary group-focus-visible:border-primary ">
             <div className="relative flex aspect-video w-full flex-col items-center justify-center bg-secondary/10">
               <PlusIcon className="h-10 w-10 text-primary" strokeWidth={1} />
@@ -31,7 +32,6 @@ const Grid = ({ businesses }: any) => {
               </span>
             </div>
           </div>
-
         </Link>
       </li>
     </ul>

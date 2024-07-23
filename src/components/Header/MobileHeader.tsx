@@ -57,7 +57,11 @@ const MobileHeader = () => {
         </Link>
 
         <div className="flex items-center gap-4">
-          <ButtonLink variant="outlined" href="/join">
+          <ButtonLink
+            variant="outlined"
+            href="https://dashboard.soplugged.com"
+            target="_blank"
+          >
             Join Today
           </ButtonLink>
 
@@ -118,7 +122,8 @@ const MobileHeader = () => {
 
                 <div className="mt-16 grid w-full gap-2 border-t border-gray-100 px-4">
                   <Link
-                    href="/join"
+                    href="https://dashboard.soplugged.com"
+                    target="_blank"
                     className="flex justify-center rounded-lg border border-primary p-2 text-lg"
                   >
                     Join the Community

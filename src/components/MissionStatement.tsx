@@ -36,13 +36,17 @@ const MissionStatement = () => {
             <ButtonLink href="/our-story" variant="filled" className="mt-8">
               Learn More
             </ButtonLink>
-            <ButtonLink href="/join" className="mt-8">
+            <ButtonLink
+              href="https://dashboard.soplugged.com"
+              target="_blank"
+              className="mt-8"
+            >
               Join our community
             </ButtonLink>
           </div>
         </div>
       </div>
-      <div className="absolute right-0 top-0 bottom-0 hidden w-[45%] lg:block">
+      <div className="absolute bottom-0 right-0 top-0 hidden w-[45%] lg:block">
         <Image
           src="/nina_and_ben.jpeg"
           alt=""

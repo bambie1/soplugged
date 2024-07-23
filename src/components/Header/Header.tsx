@@ -97,7 +97,11 @@ const Header: FC<Props> = ({ whiteBg }) => {
             </NavigationMenu.Root>
 
             <div className="flex items-center gap-2">
-              <ButtonLink href="/join" variant="outlined">
+              <ButtonLink
+                href="https://dashboard.soplugged.com"
+                variant="outlined"
+                target="_blank"
+              >
                 Join the Community
               </ButtonLink>
             </div>

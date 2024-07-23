@@ -29,7 +29,11 @@ const Hero = () => {
           </p>
 
           <div className="mt-10 grid w-full gap-4 md:flex md:items-center">
-            <ButtonLink href="/join" variant="filled">
+            <ButtonLink
+              href="https://dashboard.soplugged.com"
+              variant="filled"
+              target="_blank"
+            >
               Join the Community
             </ButtonLink>
             <ButtonLink
