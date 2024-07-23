@@ -13,7 +13,7 @@ export interface IBusiness {
   };
   services?: string[];
   phone_number?: string;
-  business_url?: string;
+  website_url?: string;
   ig_handle?: string;
   street_address?: string;
   fixed_to_one_location?: boolean;
