@@ -51,6 +51,7 @@ const Newsletter: NextPage = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <br />
           <Button>Subscribe</Button>
         </form>
       </PageWrapper>

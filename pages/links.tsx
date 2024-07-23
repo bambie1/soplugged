@@ -13,9 +13,8 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "Business Taxes Workshop",
-    href: "https://lu.ma/26rlogrb",
-    isNew: true,
+    title: "List your business on our directory",
+    href: "https://dashboard.soplugged.com",
   },
   {
     title: "PluggedIn 2024 Recap",
@@ -25,10 +24,10 @@ const linksArray = [
   //   title: "Become a PluggedIn Partner",
   //   href: "https://docs.google.com/forms/d/e/1FAIpQLSeTDtSgvUq1sswjZr2c65QqQsDLc1brNCjGblWL1YbPpJq8Gg/viewform",
   // },
-  {
-    title: "Need a website for your business?",
-    href: "https://studio.soplugged.com",
-  },
+  // {
+  //   title: "Need a website for your business?",
+  //   href: "https://studio.soplugged.com",
+  // },
   {
     title: "Listen to TBM podcast",
     href: "https://tbmpodcast.soplugged.com",
@@ -109,18 +108,18 @@ const Links: FC = () => {
           </div>
           <hr className="my-8 w-[70%] border border-white/50" />
           <ul className="mb-20 w-full space-y-5">
-            {linksArray.map(({ title, href, isNew }) => (
+            {linksArray.map(({ title, href }) => (
               <li key={href}>
                 <Link
                   href={href}
                   className="relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/40 bg-white/80 p-4 pl-6 text-center text-lg font-medium text-primary shadow-md backdrop-blur-sm transition duration-150 hover:border-primary hover:shadow-none"
                 >
                   {title}
-                  {isNew && (
+                  {/* {isNew && (
                     <span className="flex items-center justify-center rounded-lg bg-primary p-1 text-xs text-white">
                       NEW
                     </span>
-                  )}
+                  )} */}
                 </Link>
               </li>
             ))}
