@@ -1,11 +1,10 @@
-import Airtable from "airtable";
 import type { GetStaticPathsResult, GetStaticProps } from "next";
 
 import Grid from "@/components/directory/Grid";
 import { encodedLocations } from "@/lib/encodedLocations";
 import SEO from "@/src/components/SEO";
 import PageWrapper from "@/src/layouts/PageWrapper";
-import { IBusiness } from "@/types/Business";
+import supabase from "@/utils/supabase";
 
 export default function CityPageDirectory({
   city,
@@ -59,44 +58,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
 
-  let base = new Airtable({
-    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
-  }).base("appMt18vrIMQC8k6h");
-
-  const businesses: IBusiness[] = [];
   const city = encodedLocations[params?.city];
 
-  const formula = `business_location = "${city}"`;
-
-  const records = await base("Businesses")
-    .select({
-      maxRecords: 50,
-      fields: [
-        "id",
-        "business_name",
-        "business_location",
-        "logo_url",
-        "sample_images",
-        "category",
-        "slug",
-        "verified",
-      ],
-      sort: [
-        { field: "sample_images", direction: "desc" },
-        { field: "verified", direction: "desc" },
-        {
-          field: "logo_url",
-          direction: "desc",
-        },
-      ],
-      filterByFormula: formula,
-    })
-    .all();
-
-  records.forEach((record) => {
-    // @ts-ignore
-    businesses.push(record.fields);
-  });
+  const { data: businesses } = await supabase
+    .from("businesses")
+    .select(`*`)
+    .eq("business_location", city)
+    .eq("is_listed", true)
+    .order("sample_images");
 
   return {
     props: {

@@ -5,8 +5,6 @@ import SEO from "@/src/components/SEO";
 import { IBusiness } from "@/types/Business";
 import supabase from "@/utils/supabase";
 
-var Airtable = require("airtable");
-
 const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
   if (!business?.business_name) return null;
 
@@ -23,34 +21,21 @@ const Business: NextPage<{ business: IBusiness }> = ({ business }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const base = new Airtable({
-    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
-  }).base("appMt18vrIMQC8k6h");
+  const { data: businesses } = await supabase
+    .from("businesses")
+    .select(`slug`)
+    .eq("is_listed", true)
+    .order("sample_images");
 
   const paths: {
     params: { slug: string };
   }[] = [];
 
-  const records = await base("Businesses")
-    .select({
-      maxRecords: 100,
-      fields: ["slug"],
-      sort: [
-        { field: "sample_images", direction: "desc" },
-        { field: "verified", direction: "desc" },
-        {
-          field: "logo_url",
-          direction: "desc",
-        },
-      ],
-    })
-    .all();
-
   // @ts-ignore
-  records.forEach((record) => {
-    if (!record.fields.slug) return;
+  businesses.forEach((business) => {
+    if (!business.slug) return;
 
-    paths.push({ params: { slug: record.fields.slug } });
+    paths.push({ params: { slug: business.slug } });
   });
 
   return {

@@ -10,7 +10,7 @@ import SEO from "@/components/SEO";
 import { encodedCategories } from "@/lib/encodedCategories";
 import { encodedLocations } from "@/lib/encodedLocations";
 import { IBusiness } from "@/types/Business";
-var Airtable = require("airtable");
+import supabase from "@/utils/supabase";
 
 const DirectoryPage = ({ businesses }: { businesses: IBusiness[] }) => {
   const { query } = useRouter();
@@ -118,40 +118,13 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const getAllBusinesses = async () => {
-  let base = new Airtable({
-    apiKey: process.env.AIRTABLE_SOPLUGGED_API_KEY,
-  }).base("appMt18vrIMQC8k6h");
-
-  const businesses: IBusiness[] = [];
-
-  const records = await base("Businesses")
-    .select({
-      maxRecords: 150,
-      fields: [
-        "id",
-        "business_name",
-        "business_location",
-        "logo_url",
-        "sample_images",
-        "category",
-        "slug",
-        "verified",
-      ],
-      sort: [
-        { field: "sample_images", direction: "desc" },
-        { field: "verified", direction: "desc" },
-        {
-          field: "logo_url",
-          direction: "desc",
-        },
-      ],
-    })
-    .all();
-
-  // @ts-ignore
-  records.forEach((record) => {
-    businesses.push(record.fields);
-  });
+  const { data: businesses } = await supabase
+    .from("businesses")
+    .select(`*`)
+    .eq("is_listed", true)
+    .order("sample_images")
+    .order("logo_url")
+    .order("business_description");
 
   return businesses;
 };
