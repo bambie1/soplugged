@@ -13,12 +13,16 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "List your business on our directory",
-    href: "https://dashboard.soplugged.com",
+    title: "Join the Black Market waitlist",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSfPJVGSfnBCEc6YbrogR1H-7GXDQSWeht53PqtXE9qoVfx4vA/viewform",
   },
   {
-    title: "PluggedIn 2024 Recap",
-    href: "/blog/pluggedin-2024-recap",
+    title: "Listen to TBM podcast",
+    href: "https://tbmpodcast.soplugged.com",
+  },
+  {
+    title: "List your business on our directory",
+    href: "https://dashboard.soplugged.com",
   },
   // {
   //   title: "Become a PluggedIn Partner",
@@ -28,10 +32,6 @@ const linksArray = [
   //   title: "Need a website for your business?",
   //   href: "https://studio.soplugged.com",
   // },
-  {
-    title: "Listen to TBM podcast",
-    href: "https://tbmpodcast.soplugged.com",
-  },
   {
     title: "Explore our directory",
     href: "/directory",
