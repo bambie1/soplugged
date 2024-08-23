@@ -13,8 +13,8 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "Join the Black Market waitlist",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSfPJVGSfnBCEc6YbrogR1H-7GXDQSWeht53PqtXE9qoVfx4vA/viewform",
+    title: "Black Market Vendor registration",
+    href: "https://ie6tqh3djo0.typeform.com/to/mhDB6n5Z?mc_cid=d28a5d89fd",
   },
   {
     title: "Listen to TBM podcast",
