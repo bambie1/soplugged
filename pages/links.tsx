@@ -14,7 +14,7 @@ import SEO from "@/src/components/SEO";
 const linksArray = [
   {
     title: "Black Market Vendor registration",
-    href: "https://ie6tqh3djo0.typeform.com/to/mhDB6n5Z?mc_cid=d28a5d89fd",
+    href: "https://www.eventbrite.ca/e/black-market-shop-from-100-black-owned-brands-in-toronto-registration-1003884474487",
   },
   {
     title: "Listen to TBM podcast",
