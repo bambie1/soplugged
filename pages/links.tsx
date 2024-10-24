@@ -13,8 +13,8 @@ import SEO from "@/src/components/SEO";
 
 const linksArray = [
   {
-    title: "Black Market Vendor registration",
-    href: "https://www.eventbrite.ca/e/black-market-shop-from-100-black-owned-brands-in-toronto-registration-1003884474487",
+    title: "The Creator Networking Event",
+    href: "https://lu.ma/wu9vupmr?locale=en-CA",
   },
   {
     title: "Listen to TBM podcast",
