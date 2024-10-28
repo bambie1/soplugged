@@ -7,13 +7,19 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
+import type { Metadata } from "next";
+import { NextStudio } from "next-sanity/studio";
 
-export const dynamic = 'force-static'
+import config from "../../../../sanity.config";
 
-export { metadata, viewport } from 'next-sanity/studio'
+export const dynamic = "force-static";
+
+export { viewport } from "next-sanity/studio";
+
+export const metadata: Metadata = {
+  title: "SoPlugged Admin",
+};
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return <NextStudio config={config} />;
 }
