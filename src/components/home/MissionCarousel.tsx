@@ -3,19 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export const MissionCarousel = ({
-  mission,
-}: {
-  mission: {
-    title: string;
-    missionCarousel: {
-      backgroundColor: string;
-      image: string;
-      title: string;
-      description: string;
-    }[];
-  };
-}) => {
+export const MissionCarousel = ({ mission }: { mission: any }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const items = mission.missionCarousel;
@@ -34,7 +22,7 @@ export const MissionCarousel = ({
 
         <div className="relative mt-16 flex gap-4">
           <AnimatePresence initial={false}>
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
               <motion.div
                 key={item.title}
                 className={`flex-grow
