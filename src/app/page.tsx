@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { FeaturedEvent } from "@/components/home/FeaturedEvent";
+import { MissionCarousel } from "@/components/home/MissionCarousel";
 import { client, getFileUrl } from "@/sanity/lib/client";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 
@@ -55,14 +56,14 @@ export default async function Home() {
         </div>
       </header>
 
-      <div>
-        {content.featuredEvent.event && (
-          <FeaturedEvent
-            event={content.featuredEvent.event}
-            title={content.featuredEvent.title}
-          />
-        )}
-      </div>
+      {content.featuredEvent.event && (
+        <FeaturedEvent
+          event={content.featuredEvent.event}
+          title={content.featuredEvent.title}
+        />
+      )}
+
+      {content.ourMission && <MissionCarousel mission={content.ourMission} />}
     </main>
   );
 }
