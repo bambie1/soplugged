@@ -42,4 +42,15 @@ export const structure: StructureResolver = (S) =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Pages")
+        .child(
+          S.list()
+            .title("Pages")
+            .items([
+              S.listItem()
+                .title("Home")
+                .child(S.document().schemaType("home").documentId("home")),
+            ]),
+        ),
     ]);

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .padded {
+    @apply px-4 w-full max-w-7xl mx-auto;
+  }
+}

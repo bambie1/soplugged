@@ -1,41 +1,44 @@
-import { client } from "@/sanity/lib/client";
+import { client, getFileUrl } from "@/sanity/lib/client";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
   const page = await client.fetch(HOME_PAGE_QUERY);
 
-  console.log(page);
+  const content = page?.[0];
+
+  const videoUrl = getFileUrl(content.video.asset._ref);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen space-y-8">
-      {page?.pageBuilder?.map((section: any, index: number) => {
-        switch (section._type) {
-          case "videoHero":
-            return (
-              <section key={index} className="hero-section text-center">
-                <h1 className="text-4xl font-bold">{section.heading}</h1>
-                <p className="text-xl">{section.tagline}</p>
-                {section.imageUrl && (
-                  <img
-                    src={section.imageUrl}
-                    alt={section.heading}
-                    className="mt-4"
-                  />
-                )}
-              </section>
-            );
-          case "callToAction":
-            return (
-              <section key={index} className="cta-section">
-                <a href={section.link} className="cta-button">
-                  {section.title}
-                </a>
-              </section>
-            );
-          default:
-            return null;
-        }
-      })}
+    <main className="">
+      <header className="relative text-white">
+        <div className="absolute inset-0">
+          <video
+            src={videoUrl}
+            autoPlay
+            muted
+            loop
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="relative z-10 flex flex-col min-h-[80vh] bg-black bg-opacity-50">
+          <nav className="padded py-10">Navbar</nav>
+          <section className="padded py-12 flex flex-1">
+            <div className="lg:w-2/3 mr-auto mt-auto h-full">
+              <h1 className="text-4xl lg:text-6xl font-bold">
+                {content.title}
+              </h1>
+              <p className="text-xl">{content.subtitle}</p>
+
+              <div className="mt-8">
+                <button className="btn">{content.cta.label}</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <div>Content</div>
     </main>
   );
 }

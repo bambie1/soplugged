@@ -1,7 +1,7 @@
 import { defineQuery, groq } from "next-sanity";
 
 export const HOME_PAGE_QUERY = groq`
-  *[_type == "page"][1]
+  *[_type == "home"]
 `;
 
 export const POST_QUERY =
