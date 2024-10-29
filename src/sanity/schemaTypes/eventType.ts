@@ -14,6 +14,9 @@ export const eventType = defineType({
       type: "slug",
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
+      options: {
+        source: "name",
+      },
     }),
     defineField({
       name: "eventType",

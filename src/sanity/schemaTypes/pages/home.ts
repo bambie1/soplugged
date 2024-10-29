@@ -22,5 +22,30 @@ export default {
         accept: "video/*",
       },
     },
+    // Featured Event section
+    {
+      name: "featuredEvent",
+      type: "object",
+      title: "Featured Event",
+      fields: [
+        { name: "title", type: "string", title: "Title" },
+        {
+          name: "event",
+          type: "reference",
+          title: "Select Event",
+          to: [{ type: "event" }],
+        },
+        {
+          name: "ctaLabel",
+          type: "string",
+          title: "CTA Label",
+        },
+        {
+          name: "ctaLink",
+          type: "url",
+          title: "CTA Link",
+        },
+      ],
+    },
   ],
 };
