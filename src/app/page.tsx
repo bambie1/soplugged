@@ -21,25 +21,25 @@ export default async function Home() {
   return (
     <main className="">
       <header className="relative text-white">
-        <div className="absolute bg-gradient-to-t from-black to-black/50 inset-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-black/50">
           <video
             src={videoUrl}
             autoPlay
             muted
             loop
-            className="object-cover w-full h-full"
+            className="h-full w-full object-cover"
           />
         </div>
 
-        <div className="relative z-10 flex flex-col min-h-[60vh] lg:min-h-[80vh] bg-black bg-opacity-50">
-          <nav className="padded py-10 flex items-center justify-between gap-10">
+        <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[80vh]">
+          <nav className="padded flex items-center justify-between gap-10 py-10">
             <img
               src="soplugged.svg"
               alt="SoPlugged logo"
               className="h-8 lg:h-10"
             />
 
-            <div className="hidden lg:flex items-center gap-4 text-white/80">
+            <div className="hidden items-center gap-4 text-white/80 lg:flex">
               <Link href="/about">About</Link>
               <Link href="/about">Events</Link>
               <Link href="/about">Directory</Link>
@@ -47,12 +47,12 @@ export default async function Home() {
               <Link href="/about">Join the community</Link>
             </div>
           </nav>
-          <section className="padded py-12 flex flex-1">
-            <div className="lg:w-2/3 mr-auto mt-auto h-full">
-              <h1 className="text-4xl mb-4 lg:text-6xl font-bold">
+          <section className="padded flex flex-1 py-12">
+            <div className="mr-auto mt-auto h-full lg:w-2/3">
+              <h1 className="mb-4 text-4xl font-bold lg:text-6xl">
                 {content.title}
               </h1>
-              <p className="lg:text-lg lg:w-3/4 font-light">
+              <p className="font-light lg:w-3/4 lg:text-lg">
                 {content.subtitle}
               </p>
 

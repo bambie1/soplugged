@@ -1,10 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import clsx from "clsx";
 import { useState } from "react";
 
+import { urlFor } from "@/sanity/lib/image";
+
 export const MissionCarousel = ({ mission }: { mission: any }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
 
   const items = mission.missionCarousel;
 
@@ -12,38 +14,39 @@ export const MissionCarousel = ({ mission }: { mission: any }) => {
     <div
       className="py-10 transition-colors duration-500 ease-in-out lg:py-20"
       style={{
-        backgroundColor: items[currentSlide].backgroundColor,
+        backgroundColor: items[activeItem].backgroundColor,
       }}
     >
       <div className="padded">
-        <span className="uppercase mb-8 block">{mission.title}</span>
-        <h2 className="text-4xl mb-4 font-bold">{items[currentSlide].title}</h2>
-        <p className="lg:w-1/2">{items[currentSlide].description}</p>
+        <span className="mb-4 block uppercase">{mission.title}</span>
+        <h2 className="mb-2 text-4xl font-bold">{items[activeItem].title}</h2>
+        <p className="lg:w-1/2">{items[activeItem].description}</p>
 
         <div className="relative mt-16 flex gap-4">
-          <AnimatePresence initial={false}>
-            {items.map((item: any, index: number) => (
-              <motion.div
-                key={item.title}
-                className={`flex-grow
-                  ${index === currentSlide ? "flex-grow-[2]" : "flex-grow-[1]"}
-                  bg-white rounded-lg overflow-hidden cursor-pointer transition-all duration-500 ease-in-out
-                `}
-                style={{ minWidth: "250px" }}
-                onClick={() => setCurrentSlide(index)}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="p-6 h-full flex items-center justify-center">
-                  <h3 className="text-2xl font-semibold text-gray-800">
-                    {/* {item.content} */}
-                  </h3>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {items.map((item: any, index: number) => (
+            <div
+              key={item.title}
+              className={clsx(
+                "relative h-96 flex-grow cursor-pointer overflow-hidden rounded-lg border p-4 transition-all duration-500 ease-in-out",
+                {
+                  "flex-grow-[2] border-black shadow-sm": index === activeItem,
+                  "flex-grow-[1] border-transparent opacity-85":
+                    index !== activeItem,
+                },
+              )}
+              style={{ minWidth: "250px" }}
+              onClick={() => setActiveItem(index)}
+            >
+              <div className="absolute inset-0">
+                <img
+                  src={urlFor(item.image).url()}
+                  alt=""
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-black/20"></div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
