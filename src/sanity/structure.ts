@@ -15,7 +15,7 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title("Home")
                 .child(S.document().schemaType("home").documentId("home")),
-            ])
+            ]),
         ),
       S.listItem()
         .title("Business Directory")
@@ -29,7 +29,7 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem("location")
                 .title("Locations")
                 .icon(PinIcon),
-            ])
+            ]),
         ),
       S.documentTypeListItem("event").title("Events").icon(CalendarIcon),
       S.divider(),
@@ -48,8 +48,8 @@ export const structure: StructureResolver = (S) =>
                 .child(
                   S.document()
                     .schemaType("siteSettings")
-                    .documentId("siteSettings")
+                    .documentId("siteSettings"),
                 ),
-            ])
+            ]),
         ),
     ]);
