@@ -3,7 +3,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export const MissionCarousel = ({ mission }) => {
+export const MissionCarousel = ({
+  mission,
+}: {
+  mission: {
+    title: string;
+    missionCarousel: {
+      backgroundColor: string;
+      image: string;
+      title: string;
+      description: string;
+    }[];
+  };
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const items = mission.missionCarousel;
@@ -38,7 +50,7 @@ export const MissionCarousel = ({ mission }) => {
               >
                 <div className="p-6 h-full flex items-center justify-center">
                   <h3 className="text-2xl font-semibold text-gray-800">
-                    {item.content}
+                    {/* {item.content} */}
                   </h3>
                 </div>
               </motion.div>
