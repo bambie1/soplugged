@@ -9,8 +9,6 @@ export const FeaturedEvent = ({
   event: any;
   title: string;
 }) => {
-  console.log(event);
-
   return (
     <div className="bg-black text-white py-10 lg:py-20">
       <div className="padded">

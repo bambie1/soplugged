@@ -27,7 +27,7 @@ export const HOME_PAGE_QUERY = groq`
     ourMission {
       title,
       missionCarousel[]{
-        backgroundColor,
+         backgroundColor,
         image,
         title,
         description
