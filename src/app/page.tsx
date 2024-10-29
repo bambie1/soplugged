@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <main className="">
       <header className="relative text-white">
-        <div className="absolute inset-0">
+        <div className="absolute bg-gradient-to-t from-black to-black/50 inset-0">
           <video
             src={videoUrl}
             autoPlay
@@ -23,11 +23,15 @@ export default async function Home() {
           />
         </div>
 
-        <div className="relative z-10 flex flex-col min-h-[80vh] bg-black bg-opacity-50">
+        <div className="relative z-10 flex flex-col min-h-[60vh] lg:min-h-[80vh] bg-black bg-opacity-50">
           <nav className="padded py-10 flex items-center justify-between gap-10">
-            <img src="soplugged.svg" alt="SoPlugged logo" className="h-10" />
+            <img
+              src="soplugged.svg"
+              alt="SoPlugged logo"
+              className="h-8 lg:h-10"
+            />
 
-            <div className="flex items-center gap-4 text-white/80">
+            <div className="hidden lg:flex items-center gap-4 text-white/80">
               <Link href="/about">About</Link>
               <Link href="/about">Events</Link>
               <Link href="/about">Directory</Link>
