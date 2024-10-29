@@ -52,8 +52,12 @@ export const eventType = defineType({
       of: [{ type: "block" }],
     }),
     defineField({
-      name: "tickets",
+      name: "ctaLink",
       type: "url",
+    }),
+    defineField({
+      name: "ctaLabel",
+      type: "string",
     }),
   ],
   preview: {

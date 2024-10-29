@@ -10,10 +10,7 @@ export const HOME_PAGE_QUERY = groq`
       link->{
         slug
       }
-    },
-    missionTitle,
-    missionDescription,
-    ourMission,
+    }, 
     featuredEvent {
       ctaLabel,
       ctaLink,
@@ -22,9 +19,20 @@ export const HOME_PAGE_QUERY = groq`
         name,
         details,
         date,
-        image
+        image,
+        ctaLink,
+        ctaLabel
       }
-    }
+    },
+    ourMission {
+      title,
+      missionCarousel[]{
+        backgroundColor,
+        image,
+        title,
+        description
+      }
+    }   
   }
 `;
 

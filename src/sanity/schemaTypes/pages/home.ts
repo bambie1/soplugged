@@ -32,15 +32,33 @@ export default {
           title: "Select Event",
           to: [{ type: "event" }],
         },
+      ],
+    },
+    {
+      name: "ourMission",
+      type: "object",
+      title: "Our Mission",
+      fields: [
+        { name: "title", type: "string", title: "Title" },
         {
-          name: "ctaLabel",
-          type: "string",
-          title: "CTA Label",
-        },
-        {
-          name: "ctaLink",
-          type: "url",
-          title: "CTA Link",
+          name: "missionCarousel",
+          type: "array",
+          title: "Mission Carousel Slides",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "backgroundColor",
+                  type: "string",
+                  title: "Background Color",
+                },
+                { name: "image", type: "image", title: "Image" },
+                { name: "title", type: "string", title: "Title" },
+                { name: "description", type: "text", title: "Description" },
+              ],
+            },
+          ],
         },
       ],
     },

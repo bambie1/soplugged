@@ -1,8 +1,7 @@
-import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 
+import { FeaturedEvent } from "@/components/home/FeaturedEvent";
 import { client, getFileUrl } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -58,33 +57,10 @@ export default async function Home() {
 
       <div>
         {content.featuredEvent.event && (
-          <div className="bg-black text-white py-10 lg:py-20">
-            <div className="padded">
-              <h2 className="font-semibold text-xl lg:text-4xl mb-10">
-                {content.featuredEvent.title}
-              </h2>
-
-              <div className="grid items-center lg:grid-cols-2 gap-10">
-                <img
-                  src={urlFor(content.featuredEvent.event.image).url()}
-                  alt=""
-                />
-                <div>
-                  <h3 className="mb-4 font-semibold text-3xl">
-                    {content.featuredEvent.event.name}
-                  </h3>
-                  <PortableText value={content.featuredEvent.event.details} />
-
-                  <a
-                    href={content.featuredEvent.ctaLink}
-                    className="inline-flex underline mt-10"
-                  >
-                    {content.featuredEvent.ctaLabel}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FeaturedEvent
+            event={content.featuredEvent.event}
+            title={content.featuredEvent.title}
+          />
         )}
       </div>
     </main>
