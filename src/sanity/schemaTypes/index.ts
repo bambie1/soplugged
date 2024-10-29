@@ -7,11 +7,5 @@ import home from "./pages/home";
 import siteSettings from "./site-settings";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [
-    eventType,
-    siteSettings,
-    ...businessSchemaTypes,
-    ...pageSchemaTypes,
-    home,
-  ],
+  types: [eventType, siteSettings, ...businessSchemaTypes, home],
 };

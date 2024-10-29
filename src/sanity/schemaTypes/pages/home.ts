@@ -9,10 +9,7 @@ export default {
       name: "cta",
       type: "object",
       title: "CTA Button",
-      fields: [
-        { name: "label", type: "string", title: "Button Text" },
-        { name: "link", type: "reference", to: [{ type: "page" }] },
-      ],
+      fields: [{ name: "label", type: "string", title: "Button Text" }],
     },
     {
       name: "video",
