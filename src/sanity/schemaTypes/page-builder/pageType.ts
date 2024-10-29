@@ -7,6 +7,18 @@ export const pageType = defineType({
   fields: [
     defineField({ name: "title", type: "string" }),
     defineField({
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      description:
+        "Unique identifier for the page URL (e.g., 'home' for the homepage)",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "pageBuilder",
       type: "array",
       title: "Page builder",

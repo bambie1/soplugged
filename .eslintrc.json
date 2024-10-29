@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": "@sanity/eslint-config-studio",
   "plugins": ["prettier", "simple-import-sort", "eslint-plugin-import"],
   "ignorePatterns": ["dist", "node_modules", ".sanity"],
   "rules": {
