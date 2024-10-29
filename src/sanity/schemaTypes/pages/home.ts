@@ -1,3 +1,5 @@
+import { defineField } from "sanity";
+
 export default {
   name: "home",
   type: "document",
@@ -5,27 +7,36 @@ export default {
   fields: [
     { name: "title", type: "string", title: "Title" },
     { name: "subtitle", type: "string", title: "Subtitle" },
-    {
+    defineField({
       name: "cta",
       type: "object",
       title: "CTA Button",
       fields: [{ name: "label", type: "string", title: "Button Text" }],
-    },
-    {
+      validation: (rule) => rule.required().error("A CTA button is required"),
+    }),
+    defineField({
       name: "video",
       type: "file",
       title: "Hero Video",
       options: {
         accept: "video/*",
       },
-    },
+      validation: (rule) =>
+        rule.required().error("A background video is required"),
+    }),
     // Featured Event section
     {
       name: "featuredEvent",
       type: "object",
       title: "Featured Event",
       fields: [
-        { name: "title", type: "string", title: "Title" },
+        defineField({
+          name: "title",
+          type: "string",
+          title: "Title",
+          validation: (rule) =>
+            rule.required().error("A section title is required"),
+        }),
         {
           name: "event",
           type: "reference",

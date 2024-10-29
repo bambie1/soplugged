@@ -5,10 +5,18 @@ import { MissionCarousel } from "@/components/home/MissionCarousel";
 import { client, getFileUrl } from "@/sanity/lib/client";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 
-export default async function Home() {
-  const content = await client.fetch(HOME_PAGE_QUERY);
+import type { HOME_PAGE_QUERYResult } from "../../sanity.types";
 
-  const videoUrl = getFileUrl(content.video.asset._ref);
+export default async function Home() {
+  const content = await client.fetch<HOME_PAGE_QUERYResult>(HOME_PAGE_QUERY);
+
+  if (!content) {
+    return null;
+  }
+
+  const videoUrl = content.video?.asset?._ref
+    ? getFileUrl(content.video.asset._ref)
+    : "";
 
   return (
     <main className="">
@@ -49,17 +57,17 @@ export default async function Home() {
               </p>
 
               <div className="mt-8">
-                <button className="btn">{content.cta.label}</button>
+                <button className="btn">{content.cta?.label}</button>
               </div>
             </div>
           </section>
         </div>
       </header>
 
-      {content.featuredEvent.event && (
+      {content.featuredEvent?.event && (
         <FeaturedEvent
           event={content.featuredEvent.event}
-          title={content.featuredEvent.title}
+          title={content.featuredEvent.title!}
         />
       )}
 

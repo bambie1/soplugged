@@ -8,6 +8,8 @@ export const eventType = defineType({
     defineField({
       name: "name",
       type: "string",
+      validation: (rule) =>
+        rule.required().error("A section title is required"),
     }),
     defineField({
       name: "slug",
