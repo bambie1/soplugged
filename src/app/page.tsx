@@ -43,7 +43,7 @@ export default async function Home() {
               <Link href="/about">About</Link>
               <Link href="/about">Events</Link>
               <Link href="/about">Directory</Link>
-              <Link href="/about">Resources</Link>
+              <Link href="/blog">Blog</Link>
               <Link href="/about">Join the community</Link>
             </div>
           </nav>
