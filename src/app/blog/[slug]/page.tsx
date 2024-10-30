@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   const posts = await client.fetch(POSTS_QUERY);
 
   return posts.map((post: any) => ({
-    slug: post.slug,
+    slug: post.slug.current,
   }));
 }
 
