@@ -18,7 +18,7 @@ export const businessType = defineType({
     defineField({
       name: "category",
       type: "reference",
-      to: [{ type: "category" }],
+      to: [{ type: "businessCategory" }],
       group: "business_info",
     }),
     defineField({

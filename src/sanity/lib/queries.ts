@@ -36,7 +36,17 @@ export const HOME_PAGE_QUERY = groq`
   }
 `;
 
+export const POSTS_QUERY = groq`*[_type == "post"]{
+  slug,title, body, mainImage
+}`;
+
 export const POST_QUERY =
   defineQuery(groq`*[_type == "post" && slug.current == $slug][0]{
-  title, body, mainImage
+  title, body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      asset->
+    }
+  }, mainImage
 }`);

@@ -1,4 +1,12 @@
-import { CalendarIcon, CogIcon, PinIcon, TiersIcon } from "@sanity/icons";
+import {
+  CalendarIcon,
+  CogIcon,
+  DocumentIcon,
+  EditIcon,
+  PinIcon,
+  TiersIcon,
+  UserIcon,
+} from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
 
 export const structure: StructureResolver = (S) =>
@@ -25,13 +33,25 @@ export const structure: StructureResolver = (S) =>
             .title("Business Directory")
             .items([
               S.documentTypeListItem("business").title("Businesses"),
-              S.documentTypeListItem("category").title("Categories"),
+              S.documentTypeListItem("businessCategory").title("Categories"),
               S.documentTypeListItem("location")
                 .title("Locations")
                 .icon(PinIcon),
             ]),
         ),
       S.documentTypeListItem("event").title("Events").icon(CalendarIcon),
+      S.listItem()
+        .title("Blogs")
+        .icon(DocumentIcon)
+        .child(
+          S.list()
+            .title("Blogs")
+            .items([
+              S.documentTypeListItem("post").title("Posts").icon(EditIcon),
+              S.documentTypeListItem("blogCategory").title("Categories"),
+              S.documentTypeListItem("author").title("Authors").icon(UserIcon),
+            ]),
+        ),
       S.divider(),
       S.listItem()
         .title("Site Settings")
