@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { PortableText } from "next-sanity";
 
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -12,13 +11,11 @@ export default async function Home() {
     return null;
   }
 
-  console.log(content);
-
   return (
     <main>
       Blog page
       <div className="padded grid gap-10 lg:grid-cols-3">
-        {content.map((post) => (
+        {content.map((post: any) => (
           <Link href={`/blog/${post.slug.current}`} key={post.title}>
             <article key={post.title}>
               <img src={urlFor(post.mainImage).url()} alt="" />
