@@ -12,7 +12,7 @@ export const MissionCarousel = ({ mission }: { mission: any }) => {
 
   return (
     <div
-      className="py-10 transition-colors duration-500 ease-in-out lg:py-20"
+      className="page-section text-black transition-colors duration-500 ease-in-out"
       style={{
         backgroundColor: items[activeItem].backgroundColor,
       }}

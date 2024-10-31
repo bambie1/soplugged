@@ -8,6 +8,16 @@ export const categoryType = defineType({
     defineField({
       name: "name",
       type: "string",
+      validation: (rule) => rule.required().error("A name is required"),
+    }),
+    defineField({
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLength: 96,
+      },
+      validation: (rule) => rule.required().error("A slug is required"),
     }),
   ],
 });

@@ -32,7 +32,26 @@ export const HOME_PAGE_QUERY = groq`
         title,
         description
       }
-    }   
+    } ,
+    featuredBusinesses {
+      title,
+      description,
+      featuredCategories[]{
+        category->{
+          name,
+          slug
+        },
+        selectedBusinesses[]->{
+          name,
+          slug,
+          sample_images[]{
+            asset-> {
+              url
+            }
+          }
+        }
+      }
+    }  
   }
 `;
 

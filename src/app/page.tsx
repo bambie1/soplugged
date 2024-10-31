@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BuyBlackSection } from "@/components/home/BuyBlackSection";
 import { FeaturedEvent } from "@/components/home/FeaturedEvent";
 import { MissionCarousel } from "@/components/home/MissionCarousel";
 import { client, getFileUrl } from "@/sanity/lib/client";
@@ -19,8 +20,8 @@ export default async function Home() {
     : "";
 
   return (
-    <main className="">
-      <header className="relative text-white">
+    <main className="bg-black text-white">
+      <header className="relative">
         <div className="absolute inset-0 bg-gradient-to-t from-black to-black/50">
           <video
             src={videoUrl}
@@ -72,6 +73,10 @@ export default async function Home() {
       )}
 
       {content.ourMission && <MissionCarousel mission={content.ourMission} />}
+
+      {content.featuredBusinesses && (
+        <BuyBlackSection content={content.featuredBusinesses} />
+      )}
     </main>
   );
 }

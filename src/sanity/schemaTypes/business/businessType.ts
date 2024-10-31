@@ -16,16 +16,16 @@ export const businessType = defineType({
       group: "business_info",
     }),
     defineField({
-      name: "category",
-      type: "reference",
-      to: [{ type: "businessCategory" }],
-      group: "business_info",
-    }),
-    defineField({
       name: "slug",
       type: "slug",
       options: { source: "name" },
       validation: (rule) => rule.required().error("A slug is required"),
+      group: "business_info",
+    }),
+    defineField({
+      name: "category",
+      type: "reference",
+      to: [{ type: "businessCategory" }],
       group: "business_info",
     }),
     defineField({
@@ -54,7 +54,8 @@ export const businessType = defineType({
     }),
     defineField({
       name: "sample_images",
-      type: "image",
+      type: "array",
+      of: [{ type: "image" }],
       group: "images",
     }),
     defineField({
