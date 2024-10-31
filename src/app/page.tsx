@@ -3,13 +3,15 @@ import Link from "next/link";
 import { BuyBlackSection } from "@/components/home/BuyBlackSection";
 import { FeaturedEvent } from "@/components/home/FeaturedEvent";
 import { MissionCarousel } from "@/components/home/MissionCarousel";
+import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { client, getFileUrl } from "@/sanity/lib/client";
-import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
+import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "@/sanity/lib/queries";
 
 import type { HOME_PAGE_QUERYResult } from "../../sanity.types";
 
 export default async function Home() {
   const content = await client.fetch<HOME_PAGE_QUERYResult>(HOME_PAGE_QUERY);
+  const recentBlogs = await client.fetch(HOME_POSTS_QUERY);
 
   if (!content) {
     return null;
@@ -22,7 +24,7 @@ export default async function Home() {
   return (
     <main className="bg-black text-white">
       <header className="relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-black/50">
+        <div className="absolute inset-0">
           <video
             src={videoUrl}
             autoPlay
@@ -31,6 +33,8 @@ export default async function Home() {
             className="h-full w-full object-cover"
           />
         </div>
+
+        <div className="absolute inset-0 z-10 bg-gradient-to-tr from-black via-black to-[#140701] opacity-50" />
 
         <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[80vh]">
           <nav className="padded flex items-center justify-between gap-10 py-10">
@@ -77,6 +81,8 @@ export default async function Home() {
       {content.featuredBusinesses && (
         <BuyBlackSection content={content.featuredBusinesses} />
       )}
+
+      {recentBlogs && <RecentBlogs posts={recentBlogs} />}
     </main>
   );
 }

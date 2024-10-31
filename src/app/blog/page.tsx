@@ -1,7 +1,5 @@
-import Link from "next/link";
-
+import BlogCard from "@/components/shared/BlogCard";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -16,12 +14,7 @@ export default async function Home() {
       Blog page
       <div className="padded grid gap-10 lg:grid-cols-3">
         {content.map((post: any) => (
-          <Link href={`/blog/${post.slug.current}`} key={post.title}>
-            <article key={post.title}>
-              <img src={urlFor(post.mainImage).url()} alt="" />
-              <h2>{post.title}</h2>
-            </article>
-          </Link>
+          <BlogCard post={post} key={post.title} />
         ))}
       </div>
     </main>

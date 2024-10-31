@@ -28,9 +28,13 @@ export default async function Page({
   return (
     <div>
       <div className="padded">
-        <h1 className="mb-10 text-4xl font-bold">{content.title}</h1>
-
         <div className="prose">
+          <img
+            src={urlFor(content.mainImage).url()}
+            alt=""
+            className="mb-4 aspect-video rounded-lg object-cover"
+          />
+          <h1 className="mb-10 text-4xl font-bold">{content.title}</h1>
           <PortableText
             value={content.body}
             components={{

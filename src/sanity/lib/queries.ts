@@ -55,8 +55,12 @@ export const HOME_PAGE_QUERY = groq`
   }
 `;
 
+export const HOME_POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc)[0...3]{
+  slug, title, body, mainImage, publishedAt
+}`;
+
 export const POSTS_QUERY = groq`*[_type == "post"]{
-  slug,title, body, mainImage
+  slug,title, body, mainImage, publishedAt
 }`;
 
 export const POST_QUERY =
@@ -67,5 +71,5 @@ export const POST_QUERY =
       ...,
       asset->
     }
-  }, mainImage
+  }, mainImage, publishedAt
 }`);
