@@ -4,7 +4,7 @@ import { getFileUrl } from "@/sanity/lib/client";
 
 import { Header } from "../Header";
 
-export const VideoHero = ({ content }) => {
+export const VideoHero = ({ content }: { content: any }) => {
   const videoUrl = content.video?.asset?._ref
     ? getFileUrl(content.video.asset._ref)
     : "";
@@ -26,7 +26,7 @@ export const VideoHero = ({ content }) => {
       <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[80vh]">
         <Header />
 
-        <section className="padded flex flex-1 py-12 lg:pt-40 xl:pt-64">
+        <section className="padded flex flex-1 py-12 pt-36 lg:pt-40 xl:pt-64">
           <div className="mr-auto mt-auto h-full lg:w-2/3">
             <h1 className="mb-4 text-4xl font-bold lg:text-6xl">
               {content.title}

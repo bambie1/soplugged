@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { urlFor } from "@/sanity/lib/image";
 
-const BlogCard = ({ post }) => {
+const BlogCard = ({ post }: { post: any }) => {
   return (
     <Link href={`/blog/${post.slug.current}`} key={post.title}>
       <article key={post.title}>

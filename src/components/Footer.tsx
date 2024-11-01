@@ -3,7 +3,7 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <div className="mt-auto bg-black text-white">
-      <div className="padded pb-10 pt-20">
+      <div className="padded py-10 lg:pt-20">
         <img
           src="/soplugged.svg"
           alt="SoPlugged logo"

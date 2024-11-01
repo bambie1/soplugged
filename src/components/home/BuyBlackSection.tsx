@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 
-export const BuyBlackSection = ({ content }) => {
+export const BuyBlackSection = ({ content }: { content: any }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const { title, description, featuredCategories } = content;
 
   const activeCategory = featuredCategories[activeIndex];
-
-  console.log(activeCategory.selectedBusinesses);
 
   return (
     <div className="page-section">
@@ -19,7 +17,7 @@ export const BuyBlackSection = ({ content }) => {
           <p className="">{description}</p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            {featuredCategories.map((category, index) => (
+            {featuredCategories.map((category: any, index: number) => (
               <button
                 key={category.category.slug.current}
                 className="rounded-full border border-white/40 p-4"

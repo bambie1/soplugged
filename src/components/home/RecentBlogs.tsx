@@ -1,6 +1,6 @@
 import BlogCard from "../shared/BlogCard";
 
-export const RecentBlogs = ({ posts }) => {
+export const RecentBlogs = ({ posts }: { posts: any[] }) => {
   return (
     <div className="page-section bg-[#EAECF6] text-black">
       <div className="padded">
