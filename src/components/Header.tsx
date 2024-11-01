@@ -91,14 +91,22 @@ export function Header() {
             </nav>
             <div className="md:hidden">
               <button
-                className={clsx("px-2 py-1 md:hidden", {
-                  "text-black": isMobileMenuOpen,
-                })}
                 onClick={toggleMobileMenu}
-                aria-expanded={isMobileMenuOpen}
-                aria-label="Toggle menu"
+                className="flex h-8 w-8 flex-col items-center justify-center"
+                aria-label="Open menu"
               >
-                {isMobileMenuOpen ? "Close" : "Menu"}
+                <span
+                  className={clsx(
+                    "h-0.5 w-8 transform bg-white transition-all duration-300",
+                    "translate-y-0.5",
+                  )}
+                />
+                <span
+                  className={clsx(
+                    "mt-2 h-0.5 w-8 transform bg-white transition-all duration-300",
+                    "-translate-y-0",
+                  )}
+                />
               </button>
             </div>
           </div>
@@ -121,18 +129,18 @@ export function Header() {
             </Link>
             <button
               onClick={toggleMobileMenu}
-              className="flex h-8 w-8 flex-col items-center justify-center text-black"
+              className="flex h-8 w-8 flex-col items-center justify-center"
               aria-label="Close menu"
             >
               <span
                 className={clsx(
-                  "h-0.5 w-6 transform bg-black transition-all duration-300",
+                  "h-0.5 w-8 transform bg-white transition-all duration-300",
                   "translate-y-0.5 rotate-45",
                 )}
               />
               <span
                 className={clsx(
-                  "h-0.5 w-6 transform bg-black transition-all duration-300",
+                  "h-0.5 w-8 transform bg-white transition-all duration-300",
                   "-translate-y-0 -rotate-45",
                 )}
               />
