@@ -61,7 +61,7 @@ export function Header() {
       <div
         className={clsx("w-full transition-all duration-300", {
           "bg-white shadow-md": isScrolled && !isHome,
-          "bg-black": isScrolled && isHome,
+          "bg-black border-b border-white/50": isScrolled && isHome,
         })}
       >
         <div className="padded">
@@ -105,7 +105,7 @@ export function Header() {
                       "translate-y-1 rotate-45 transform": isMobileMenuOpen,
                       "bg-white": isHome && !isMobileMenuOpen,
                       "bg-black": !isHome || (isHome && isMobileMenuOpen),
-                    },
+                    }
                   )}
                 ></span>
                 <span
@@ -115,7 +115,7 @@ export function Header() {
                       "-translate-y-1 -rotate-45 transform": isMobileMenuOpen,
                       "bg-white": isHome && !isMobileMenuOpen,
                       "bg-black": !isHome || (isHome && isMobileMenuOpen),
-                    },
+                    }
                   )}
                 ></span>
               </button>
@@ -128,7 +128,7 @@ export function Header() {
           "fixed inset-0 z-20 bg-white text-black transition-transform duration-300 md:hidden",
           {
             hidden: !isMobileMenuOpen,
-          },
+          }
         )}
       >
         <div className="padded flex h-full flex-col pt-24">

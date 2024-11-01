@@ -8,6 +8,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 
+import { Logo } from "./src/sanity/components/Logo";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
@@ -15,6 +16,7 @@ import { structure } from "./src/sanity/structure";
 
 export default defineConfig({
   basePath: "/admin",
+  icon: Logo,
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
