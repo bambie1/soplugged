@@ -22,32 +22,35 @@ export function Header() {
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
-    if (scrollPosition > 500) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
+    setIsScrolled(scrollPosition > 500);
+
+    // Close mobile menu when scrolling
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
     }
-  }, []);
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScrollDebounced = () => {
+      handleScroll();
+    };
+
+    window.addEventListener("scroll", handleScrollDebounced);
+    return () => {
+      window.removeEventListener("scroll", handleScrollDebounced);
+    };
   }, [handleScroll]);
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "unset"; // Ensure to reset on cleanup
     };
   }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
   return (
@@ -64,15 +67,17 @@ export function Header() {
       >
         <div className="padded">
           <div className="flex h-16 items-center justify-between sm:h-20">
-            <div className="flex items-center">
-              <Link href="/">
-                <img
-                  src={isHome ? "/soplugged.svg" : "/soplugged_black.svg"}
-                  alt="SoPlugged logo"
-                  className="h-8 lg:h-10"
-                />
-              </Link>
-            </div>
+            <Link href="/" className="z-30">
+              <img
+                src={
+                  isHome && !isMobileMenuOpen
+                    ? "/soplugged.svg"
+                    : "/soplugged_black.svg"
+                }
+                alt="SoPlugged logo"
+                className="h-8 lg:h-10"
+              />
+            </Link>
             <nav className="hidden md:block">
               <ul className="flex space-x-4">
                 {NAV_LINKS.map(({ href, label }) => (
@@ -92,21 +97,28 @@ export function Header() {
             <div className="md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="flex h-8 w-8 flex-col items-center justify-center"
-                aria-label="Open menu"
+                className="fixed right-4 top-6 z-30 flex flex-col items-center justify-center space-y-2"
               >
                 <span
                   className={clsx(
-                    "h-0.5 w-8 transform bg-white transition-all duration-300",
-                    "translate-y-0.5",
+                    "h-0.5 w-10 rounded-full transition-transform",
+                    {
+                      "translate-y-1 rotate-45 transform": isMobileMenuOpen,
+                      "bg-white": isHome && !isMobileMenuOpen,
+                      "bg-black": !isHome || (isHome && isMobileMenuOpen),
+                    },
                   )}
-                />
+                ></span>
                 <span
                   className={clsx(
-                    "mt-2 h-0.5 w-8 transform bg-white transition-all duration-300",
-                    "-translate-y-0",
+                    "h-0.5 w-10 rounded-full transition-transform",
+                    {
+                      "-translate-y-1 -rotate-45 transform": isMobileMenuOpen,
+                      "bg-white": isHome && !isMobileMenuOpen,
+                      "bg-black": !isHome || (isHome && isMobileMenuOpen),
+                    },
                   )}
-                />
+                ></span>
               </button>
             </div>
           </div>
@@ -114,39 +126,13 @@ export function Header() {
       </div>
       <div
         className={clsx(
-          "fixed inset-0 z-50 bg-white text-black transition-transform duration-300 md:hidden",
-          isMobileMenuOpen ? "translate-y-0" : "translate-y-full",
+          "fixed inset-0 z-20 bg-white text-black transition-transform duration-300 md:hidden",
+          {
+            hidden: !isMobileMenuOpen,
+          },
         )}
       >
-        <div className="container mx-auto flex h-full flex-col px-4 py-8">
-          <div className="mb-12 flex items-center justify-between">
-            <Link href="/">
-              <img
-                src="/soplugged_black.svg"
-                alt="SoPlugged logo"
-                className="h-8 lg:h-10"
-              />
-            </Link>
-            <button
-              onClick={toggleMobileMenu}
-              className="flex h-8 w-8 flex-col items-center justify-center"
-              aria-label="Close menu"
-            >
-              <span
-                className={clsx(
-                  "h-0.5 w-8 transform bg-white transition-all duration-300",
-                  "translate-y-0.5 rotate-45",
-                )}
-              />
-              <span
-                className={clsx(
-                  "h-0.5 w-8 transform bg-white transition-all duration-300",
-                  "-translate-y-0 -rotate-45",
-                )}
-              />
-            </button>
-          </div>
-
+        <div className="padded flex h-full flex-col pt-24">
           <nav className="flex-1">
             <ul className="mt-10 space-y-8 text-2xl">
               {NAV_LINKS.map(({ href, label }) => (
