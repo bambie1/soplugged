@@ -2,11 +2,23 @@
 
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+const NAV_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+  { href: "/directory", label: "Directory" },
+  { href: "/blog", label: "Blog" },
+  { href: "/join", label: "Join the community" },
+];
+
 export function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const isHome = pathname === "/";
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
@@ -28,20 +40,22 @@ export function Header() {
 
   return (
     <header
-      className={`w-full ${isScrolled ? "animate-slideDown fixed left-0 top-0" : ""} z-50`}
+      className={clsx("z-50 w-full", {
+        "animate-slideDown fixed left-0 top-0": isScrolled,
+      })}
     >
       <div
-        className={clsx(
-          "w-full transition-all duration-300",
-          isScrolled ? "bg-white shadow-md" : "bg-transparent",
-        )}
+        className={clsx("w-full transition-all duration-300", {
+          "bg-white shadow-md": isScrolled && !isHome,
+          "bg-black": isScrolled && isHome,
+        })}
       >
         <div className="padded">
           <div className="flex h-16 items-center justify-between sm:h-20">
             <div className="flex items-center">
-              <Link href="/" className="text-primary text-2xl font-bold">
+              <Link href="/">
                 <img
-                  src="/soplugged_black.svg"
+                  src={isHome ? "/soplugged.svg" : "/soplugged_black.svg"}
                   alt="SoPlugged logo"
                   className="h-8 lg:h-10"
                 />
@@ -49,35 +63,18 @@ export function Header() {
             </div>
             <nav className="hidden md:block">
               <ul className="flex space-x-4">
-                <li>
-                  <a href="/" className="text-primary hover:text-primary/80">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/about"
-                    className="text-primary hover:text-primary/80"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/services"
-                    className="text-primary hover:text-primary/80"
-                  >
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/contact"
-                    className="text-primary hover:text-primary/80"
-                  >
-                    Contact
-                  </a>
-                </li>
+                {NAV_LINKS.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className={clsx("text-primary hover:text-primary/80", {
+                        "font-bold": pathname === href,
+                      })}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
             <div className="md:hidden">
@@ -98,38 +95,16 @@ export function Header() {
           <div className="container mx-auto px-4 py-4">
             <nav>
               <ul className="space-y-4">
-                <li>
-                  <a
-                    href="/"
-                    className="text-primary hover:text-primary/80 block"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/about"
-                    className="text-primary hover:text-primary/80 block"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/services"
-                    className="text-primary hover:text-primary/80 block"
-                  >
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/contact"
-                    className="text-primary hover:text-primary/80 block"
-                  >
-                    Contact
-                  </a>
-                </li>
+                {NAV_LINKS.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="text-primary hover:text-primary/80 block"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>

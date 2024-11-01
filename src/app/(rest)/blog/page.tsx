@@ -10,13 +10,15 @@ export default async function BlogPage() {
   }
 
   return (
-    <main>
-      Blog page
-      <div className="padded grid gap-10 lg:grid-cols-3">
-        {content.map((post: any) => (
-          <BlogCard post={post} key={post.title} />
-        ))}
+    <div>
+      <div className="padded">
+        Blog page
+        <div className="grid gap-10 lg:grid-cols-3">
+          {content.map((post: any) => (
+            <BlogCard post={post} key={post.title} />
+          ))}
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
