@@ -32,7 +32,7 @@ export const VideoHero = ({ content }) => {
 
           <div className="hidden items-center gap-4 text-white/80 lg:flex">
             <Link href="/about">About</Link>
-            <Link href="/about">Events</Link>
+            <Link href="/events">Events</Link>
             <Link href="/about">Directory</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/about">Join the community</Link>

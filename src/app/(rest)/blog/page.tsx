@@ -2,7 +2,7 @@ import BlogCard from "@/components/shared/BlogCard";
 import { client } from "@/sanity/lib/client";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 
-export default async function Home() {
+export default async function BlogPage() {
   const content = await client.fetch(POSTS_QUERY);
 
   if (!content) {

@@ -11,6 +11,15 @@ const config: Config = {
       colors: {
         black: "#1F1F1F",
       },
+      keyframes: {
+        slideDown: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.3s ease-out",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

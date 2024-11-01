@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="bg-black text-white">
+    <div className="mt-auto bg-black text-white">
       <div className="padded pb-10 pt-20">
         <img
           src="soplugged.svg"

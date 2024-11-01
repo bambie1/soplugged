@@ -73,3 +73,7 @@ export const POST_QUERY =
     }
   }, mainImage, publishedAt
 }`);
+
+export const EVENTS_QUERY = groq`*[_type == "event"]{
+  name, slug, eventType, date, venue, image, details, ctaLink, ctaLabel
+}`;

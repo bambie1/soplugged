@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jakarta.className} bg-black antialiased`}>
+      <body
+        className={`${jakarta.className} flex min-h-screen flex-col antialiased`}
+      >
         {children}
 
         <Footer />
