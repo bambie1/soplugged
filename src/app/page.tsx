@@ -6,10 +6,8 @@ import { VideoHero } from "@/components/home/VideoHero";
 import { client } from "@/sanity/lib/client";
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "@/sanity/lib/queries";
 
-import type { HOME_PAGE_QUERYResult } from "../../sanity.types";
-
 export default async function Home() {
-  const content = await client.fetch<HOME_PAGE_QUERYResult>(HOME_PAGE_QUERY);
+  const content = await client.fetch<any>(HOME_PAGE_QUERY);
   const recentBlogs = await client.fetch(HOME_POSTS_QUERY);
 
   if (!content) {

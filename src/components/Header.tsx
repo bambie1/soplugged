@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { href: "/events", label: "Events" },
   { href: "/directory", label: "Directory" },
   { href: "/blog", label: "Blog" },
-  { href: "/join", label: "Join the community" },
 ];
 
 export function Header() {
