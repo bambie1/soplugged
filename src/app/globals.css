@@ -27,3 +27,18 @@ h3 {
 p {
   @apply font-light;
 }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide * {
+  display: block;
+  width: 100%;
+}
