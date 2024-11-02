@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         black: "#1F1F1F",
+        light: "#F8F4EF",
+        primary: "#4E3505",
       },
       keyframes: {
         slideDown: {

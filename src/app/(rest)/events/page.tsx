@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { EVENTS_QUERY } from "@/sanity/lib/queries";
@@ -11,8 +12,9 @@ export default async function EventsPage() {
 
   return (
     <main className="bg-white text-black">
-      <div className="padded">
-        Events page
+      <div className="padded mb-20">
+        <PageHeader title="Events" description="Upcoming events" />
+
         <div className="mx-auto grid max-w-3xl gap-10">
           {content.map((event: any) => (
             <div key={event.name}>
