@@ -11,3 +11,19 @@
     @apply py-12 lg:py-20;
   }
 }
+
+h1 {
+  @apply text-5xl font-extrabold tracking-tight xl:text-6xl;
+}
+
+h2 {
+  @apply text-3xl font-bold tracking-tight xl:text-4xl;
+}
+
+h3 {
+  @apply text-2xl font-semibold tracking-tight xl:text-3xl;
+}
+
+p {
+  @apply font-light;
+}

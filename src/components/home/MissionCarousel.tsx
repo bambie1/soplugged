@@ -19,7 +19,7 @@ export const MissionCarousel = ({ mission }: { mission: any }) => {
     >
       <div className="padded">
         <span className="mb-4 block uppercase">{mission.title}</span>
-        <h2 className="mb-2 text-4xl font-bold">{items[activeItem].title}</h2>
+        <h2 className="mb-2">{items[activeItem].title}</h2>
         <p className="lg:w-1/2">{items[activeItem].description}</p>
 
         <div className="relative mt-16 flex gap-4 overflow-hidden">

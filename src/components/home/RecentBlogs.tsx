@@ -5,7 +5,7 @@ export const RecentBlogs = ({ posts }: { posts: any[] }) => {
     <div className="page-section bg-[#EAECF6] text-black">
       <div className="padded">
         <p>OUR BLOG</p>
-        <h2 className="mt-4 text-3xl font-bold">The Business corner</h2>
+        <h2 className="mb-2 mt-4">The Business corner</h2>
         <p className="mb-10">
           SoPlugged updates, and helpful resources to grow your business as an
           entrepreneur

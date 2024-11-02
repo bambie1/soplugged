@@ -83,7 +83,7 @@ export function Header() {
                   <li key={href}>
                     <Link
                       href={href}
-                      className={clsx("hover:text-primary/80", {
+                      className={clsx({
                         "font-bold": pathname === href,
                       })}
                     >

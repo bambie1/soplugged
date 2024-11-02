@@ -13,8 +13,8 @@ export const BuyBlackSection = ({ content }: { content: any }) => {
     <div className="page-section">
       <div className="padded grid lg:grid-cols-3">
         <div>
-          <h2 className="mb-4 text-4xl font-bold">{title}</h2>
-          <p className="">{description}</p>
+          <h2 className="mb-4">{title}</h2>
+          <p>{description}</p>
 
           <div className="mt-10 flex flex-wrap gap-4">
             {featuredCategories.map((category: any, index: number) => (
