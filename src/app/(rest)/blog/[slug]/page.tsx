@@ -55,12 +55,12 @@ export default async function Page({
         title={content.title}
         description={`${getDate(content.publishedAt)} | ${content.author?.name}`}
       />
-      <div className="padded">
+      <div className="padded mb-20">
         <div className="prose mx-auto">
           <img
             src={urlFor(content.mainImage).url()}
             alt=""
-            className="mb-8 aspect-video rounded-lg object-cover"
+            className="mb-8 aspect-video w-full rounded-lg object-cover"
           />
           <PortableText
             value={content.body}
