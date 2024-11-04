@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -12,6 +13,27 @@ export async function generateStaticParams() {
   return posts.map((post: any) => ({
     slug: post.slug.current,
   }));
+}
+
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // read route params
+  const slug = (await params).slug;
+
+  // fetch data
+  const content = await client.fetch(POST_QUERY, { slug });
+
+  return {
+    title: `${content.title} | SoPlugged Blog`,
+    openGraph: {
+      images: [urlFor(content.mainImage).url()],
+      description: content.excerpt,
+    },
+  };
 }
 
 export default async function Page({

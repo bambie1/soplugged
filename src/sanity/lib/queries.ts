@@ -56,11 +56,11 @@ export const HOME_PAGE_QUERY = groq`
 `;
 
 export const HOME_POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc)[0...3]{
-  slug, title, body, mainImage, publishedAt
+  slug, title, body, mainImage, excerpt,publishedAt
 }`;
 
 export const POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc){
-  slug,title, body, mainImage, publishedAt, author
+  slug,title, body, mainImage, publishedAt,excerpt, author
 }`;
 
 export const POST_QUERY =
@@ -71,7 +71,7 @@ export const POST_QUERY =
       ...,
       asset->
     }
-  }, mainImage, publishedAt,author ->
+  }, mainImage, publishedAt, excerpt,author ->
 }`);
 
 export const EVENTS_QUERY = groq`*[_type == "event"]{
