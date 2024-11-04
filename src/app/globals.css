@@ -13,7 +13,7 @@
 }
 
 h1 {
-  @apply text-5xl font-extrabold tracking-tight xl:text-6xl;
+  @apply text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl;
 }
 
 h2 {
@@ -26,19 +26,4 @@ h3 {
 
 p {
   @apply font-light;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-}
-
-.swiper-slide * {
-  display: block;
-  width: 100%;
 }

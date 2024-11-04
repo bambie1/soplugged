@@ -21,7 +21,7 @@ export function Header() {
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
-    setIsScrolled(scrollPosition > 500);
+    setIsScrolled(scrollPosition > 200);
 
     // Close mobile menu when scrolling
     if (isMobileMenuOpen) {
@@ -54,8 +54,8 @@ export function Header() {
 
   return (
     <header
-      className={clsx("z-50 w-full", {
-        "animate-slideDown fixed left-0 top-0": isScrolled,
+      className={clsx("fixed left-0 top-0 z-50 w-full", {
+        "animate-slideDown": isScrolled,
       })}
     >
       <div
@@ -96,13 +96,17 @@ export function Header() {
             <div className="md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="fixed right-4 top-6 z-30 flex flex-col items-center justify-center space-y-2"
+                className={clsx(
+                  "flex flex-col items-center justify-center space-y-2",
+                  { "fixed right-4 top-6 z-30": isScrolled },
+                )}
               >
                 <span
                   className={clsx(
                     "h-0.5 w-10 rounded-full transition-transform",
                     {
-                      "translate-y-1 rotate-45 transform": isMobileMenuOpen,
+                      "translate-y-1 rotate-45 scale-75 transform":
+                        isMobileMenuOpen,
                       "bg-white": isHome && !isMobileMenuOpen,
                       "bg-black": !isHome || (isHome && isMobileMenuOpen),
                     },
@@ -112,7 +116,8 @@ export function Header() {
                   className={clsx(
                     "h-0.5 w-10 rounded-full transition-transform",
                     {
-                      "-translate-y-1 -rotate-45 transform": isMobileMenuOpen,
+                      "-translate-y-1 -rotate-45 scale-75 transform":
+                        isMobileMenuOpen,
                       "bg-white": isHome && !isMobileMenuOpen,
                       "bg-black": !isHome || (isHome && isMobileMenuOpen),
                     },
