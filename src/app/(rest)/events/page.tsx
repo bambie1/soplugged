@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -17,12 +19,12 @@ export default async function EventsPage() {
       <div className="padded mb-20">
         <div className="mx-auto grid max-w-2xl gap-10">
           {content.map((event: any) => (
-            <div key={event.name}>
+            <Link href={`/events/${event.slug.current}`} key={event.name}>
               <img src={urlFor(event.image).url()} alt="" className="mb-4" />
               <h3 className="mb-4">{event.name}</h3>
               <p>{getDate(event.date)}</p>
               {/* <p>{event.details}</p> */}
-            </div>
+            </Link>
           ))}
         </div>
       </div>

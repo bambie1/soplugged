@@ -77,3 +77,14 @@ export const POST_QUERY =
 export const EVENTS_QUERY = groq`*[_type == "event"]{
   name, slug, eventType, date, venue, image, details, ctaLink, ctaLabel
 }`;
+
+export const EVENT_QUERY =
+  defineQuery(groq`*[_type == "event" && slug.current == $slug][0]{
+  name, details[]{
+    ...,
+    _type == "image" => {
+      ...,
+      asset->
+    }
+  }, image,  
+}`);

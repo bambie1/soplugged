@@ -26,7 +26,7 @@ export const VideoHero = ({ content }: { content: any }) => {
       <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[80vh]">
         <Header />
 
-        <section className="padded flex flex-1 py-12 pt-36 lg:pt-40 xl:pt-64">
+        <section className="padded flex flex-1 pb-10 pt-64 xl:pt-64">
           <div className="mr-auto mt-auto h-full lg:w-2/3">
             <h1 className="mb-4">{content.title}</h1>
             <p className="font-light lg:w-3/4 lg:text-lg">{content.subtitle}</p>

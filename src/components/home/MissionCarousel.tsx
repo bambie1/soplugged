@@ -36,6 +36,7 @@ export const MissionCarousel = ({ mission }: { mission: any }) => {
 
   return (
     <>
+      {/* desktop */}
       <div
         className="page-section hidden text-black transition-colors duration-500 ease-in-out md:block"
         style={{
@@ -91,7 +92,7 @@ export const MissionCarousel = ({ mission }: { mission: any }) => {
         </div>
         <div
           ref={scrollRef}
-          className="flex snap-x snap-mandatory snap-start gap-4 overflow-x-auto px-4 pb-6"
+          className="flex snap-x snap-mandatory snap-center gap-4 overflow-x-auto px-4 pb-6"
           style={{ scrollBehavior: "smooth" }}
         >
           {items.map((item: any, index: number) => (
