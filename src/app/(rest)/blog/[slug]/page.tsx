@@ -1,8 +1,10 @@
 import { PortableText } from "next-sanity";
 
+import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { POST_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
+import { getDate } from "@/utils/getDate";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(POSTS_QUERY);
@@ -26,15 +28,18 @@ export default async function Page({
   }
 
   return (
-    <div>
+    <>
+      <PageHeader
+        title={content.title}
+        description={`${getDate(content.publishedAt)} | ${content.author?.name}`}
+      />
       <div className="padded">
-        <div className="prose">
+        <div className="prose mx-auto">
           <img
             src={urlFor(content.mainImage).url()}
             alt=""
-            className="mb-4 aspect-video rounded-lg object-cover"
+            className="mb-8 aspect-video rounded-lg object-cover"
           />
-          <h1 className="mb-10 text-4xl font-bold">{content.title}</h1>
           <PortableText
             value={content.body}
             components={{
@@ -47,6 +52,6 @@ export default async function Page({
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { urlFor } from "@/sanity/lib/image";
+import { getDate } from "@/utils/getDate";
 
 const BlogCard = ({ post }: { post: any }) => {
   return (
@@ -11,13 +12,7 @@ const BlogCard = ({ post }: { post: any }) => {
           alt=""
           className="mb-4 aspect-video rounded-lg object-cover"
         />
-        <p className="text-sm">
-          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
+        <p className="text-sm">{getDate(post.publishedAt)}</p>
         <p className="text-lg font-semibold">{post.title}</p>
       </article>
     </Link>

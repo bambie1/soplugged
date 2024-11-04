@@ -17,6 +17,10 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: "excerpt",
+      type: "string",
+    }),
+    defineField({
       name: "author",
       type: "reference",
       to: { type: "author" },

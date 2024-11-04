@@ -59,8 +59,8 @@ export const HOME_POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc
   slug, title, body, mainImage, publishedAt
 }`;
 
-export const POSTS_QUERY = groq`*[_type == "post"]{
-  slug,title, body, mainImage, publishedAt
+export const POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc){
+  slug,title, body, mainImage, publishedAt, author
 }`;
 
 export const POST_QUERY =
@@ -71,7 +71,7 @@ export const POST_QUERY =
       ...,
       asset->
     }
-  }, mainImage, publishedAt
+  }, mainImage, publishedAt,author ->
 }`);
 
 export const EVENTS_QUERY = groq`*[_type == "event"]{

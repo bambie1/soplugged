@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
+
 import BlogCard from "@/components/shared/BlogCard";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
+
+export const metadata: Metadata = {
+  title: "The Business Corner | SoPlugged Blog",
+  description: "Empowering Black entrepreneurs & creators",
+};
 
 export default async function BlogPage() {
   const content = await client.fetch(POSTS_QUERY);
