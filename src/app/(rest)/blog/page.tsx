@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Header } from "@/components/Header";
 import BlogCard from "@/components/shared/BlogCard";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
@@ -19,10 +20,11 @@ export default async function BlogPage() {
 
   return (
     <>
+      <Header />
+
       <PageHeader
-        preTitle="Our blog"
         title="The Business Corner"
-        description="Welcome to our blog"
+        description="SoPlugged updates, and helpful resources to grow your business as an entrepreneur"
       />
       <div className="padded mb-20">
         <div className="grid gap-10 lg:grid-cols-3">

@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { href: "/blog", label: "Blog" },
 ];
 
-export function Header() {
+export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -54,8 +54,10 @@ export function Header() {
 
   return (
     <header
-      className={clsx("fixed left-0 top-0 z-50 w-full", {
-        "animate-slideDown": isScrolled,
+      className={clsx("z-50 w-full", {
+        "animate-slideDown": isScrolled && !isHome,
+        "fixed left-0 top-0": isHome || isScrolled,
+        "bg-light": backgroundColor === "light",
       })}
     >
       <div
@@ -98,7 +100,7 @@ export function Header() {
                 onClick={toggleMobileMenu}
                 className={clsx(
                   "flex flex-col items-center justify-center space-y-2",
-                  { "fixed right-4 top-6 z-30": isScrolled },
+                  { "fixed right-4 top-6 z-30": isMobileMenuOpen },
                 )}
               >
                 <span

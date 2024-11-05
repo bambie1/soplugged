@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Header } from "@/components/Header";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -15,7 +16,8 @@ export default async function EventsPage() {
 
   return (
     <>
-      <PageHeader title="Events" description="Upcoming events" />
+      <Header />
+      <PageHeader title="Upcoming events" description="Upcoming events" />
       <div className="padded mb-20">
         <div className="mx-auto grid max-w-2xl gap-10">
           {content.map((event: any) => (

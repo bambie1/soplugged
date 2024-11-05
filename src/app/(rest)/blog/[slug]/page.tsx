@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { POST_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
@@ -51,17 +51,30 @@ export default async function Page({
 
   return (
     <>
-      <PageHeader
-        title={content.title}
-        description={`${getDate(content.publishedAt)} | ${content.author?.name}`}
-      />
-      <div className="padded mb-20">
-        <div className="prose mx-auto">
-          <img
-            src={urlFor(content.mainImage).url()}
-            alt=""
-            className="mb-8 aspect-video w-full rounded-lg object-cover"
-          />
+      <Header backgroundColor="light" />
+      <div className="bg-light">
+        <div className="padded grid gap-20 py-10 lg:grid-cols-3 lg:py-20">
+          <div className="lg:col-span-2">
+            <p className="uppercase">{getDate(content.publishedAt)}</p>
+            <h1 className="mb-4 mt-4 text-primary">{content.title}</h1>
+            <div className="flex items-center gap-2">
+              <img
+                src={urlFor(content.author.image).url()}
+                alt=""
+                className="h-10 w-10 rounded-full border border-primary object-cover"
+              />
+              <p>{content.author.name}</p>
+            </div>
+            <img
+              src={urlFor(content.mainImage).url()}
+              alt=""
+              className="-mb-40 mt-10 aspect-video w-full rounded-lg object-cover"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="padded mb-20 mt-40 flex flex-col lg:flex-row">
+        <div className="prose">
           <PortableText
             value={content.body}
             components={{
@@ -72,6 +85,11 @@ export default async function Page({
               },
             }}
           />
+        </div>
+        <div className="ml-auto max-w-sm flex-shrink-0 lg:w-1/3">
+          <div className="sticky top-24">
+            <p className="uppercase">Table of contents</p>
+          </div>
         </div>
       </div>
     </>

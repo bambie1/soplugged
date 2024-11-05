@@ -71,7 +71,9 @@ export const POST_QUERY =
       ...,
       asset->
     }
-  }, mainImage, publishedAt, excerpt,author ->
+  }, mainImage, publishedAt, excerpt,author -> {
+    name, image  
+  }
 }`);
 
 export const EVENTS_QUERY = groq`*[_type == "event"]{

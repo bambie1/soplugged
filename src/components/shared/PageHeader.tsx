@@ -10,23 +10,25 @@ export const PageHeader = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div className="relative mb-10 overflow-hidden bg-light pb-10 pt-36 text-center lg:mb-16 lg:pt-40">
-      <div className="absolute -top-40 left-0 right-0">
-        <img src="/header_pattern.svg" alt="" className="w-full opacity-30" />
-      </div>
+    <div className="mb-6 mt-4 pb-10 text-center lg:mb-10">
+      <div className="padded relative overflow-hidden bg-light py-12 md:rounded-2xl lg:py-20">
+        <div className="absolute -top-10 left-0 right-0">
+          <img src="/header_pattern.svg" alt="" className="w-full opacity-30" />
+        </div>
 
-      <div className="padded">
-        <span>
-          {preTitle && (
-            <p className="mb-2 font-medium uppercase text-primary lg:text-lg">
-              {preTitle}
-            </p>
-          )}
-        </span>
-        <h1 className="mx-auto mb-4 max-w-3xl text-primary">{title}</h1>
-        <p className="text-primary lg:text-lg">{description}</p>
+        <div className="padded">
+          <span>
+            {preTitle && (
+              <p className="mb-2 font-medium uppercase text-primary lg:text-lg">
+                {preTitle}
+              </p>
+            )}
+          </span>
+          <h1 className="mx-auto mb-4 max-w-3xl text-primary">{title}</h1>
+          <p className="text-primary lg:text-lg">{description}</p>
 
-        {children}
+          {children}
+        </div>
       </div>
     </div>
   );
