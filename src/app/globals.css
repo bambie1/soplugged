@@ -17,9 +17,9 @@ h1 {
 }
 
 h2 {
-  @apply text-3xl font-bold tracking-tight xl:text-4xl;
+  @apply scroll-m-24 text-3xl font-bold tracking-tight xl:text-4xl;
 }
 
 h3 {
-  @apply text-2xl font-semibold tracking-tight xl:text-3xl;
+  @apply scroll-m-24 text-2xl font-semibold tracking-tight xl:text-3xl;
 }

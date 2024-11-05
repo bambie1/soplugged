@@ -1,11 +1,23 @@
+import Link from "next/link";
+import slugify from "slugify";
+
 export const TableOfContents = ({
   blocks,
 }: {
   blocks: { children: { text: string }[] }[];
 }) => {
-  const getText = (block: any) =>
-    block.children.map((child: any) => child.text || "").join(" ") ||
-    "Untitled";
+  const getText = (block: any) => {
+    const text =
+      block.children.map((child: any) => child.text || "").join(" ") ||
+      "Untitled";
+
+    const slug = slugify(text);
+
+    return {
+      text,
+      slug,
+    };
+  };
 
   if (!blocks?.length) {
     return null;
@@ -15,10 +27,15 @@ export const TableOfContents = ({
     <div className="mb-10">
       <p className="uppercase">Table of contents</p>
 
-      <ul>
-        {blocks.map((block, index) => (
-          <li key={index}>{getText(block)}</li>
-        ))}
+      <ul className="mt-4 space-y-2 text-gray-700">
+        {blocks.map((block, index) => {
+          const { text, slug } = getText(block);
+          return (
+            <li key={index} className="text-sm">
+              <Link href={`#${slug}`}>{text}</Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
