@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
+import { TableOfContents } from "@/components/blog/TableOfContents";
 import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -88,7 +89,9 @@ export default async function Page({
         </div>
         <div className="ml-auto max-w-sm flex-shrink-0 lg:w-1/3">
           <div className="sticky top-24">
-            <p className="uppercase">Table of contents</p>
+            <TableOfContents blocks={content.headings} />
+
+            <div>Advertisement</div>
           </div>
         </div>
       </div>

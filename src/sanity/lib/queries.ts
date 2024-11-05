@@ -73,7 +73,9 @@ export const POST_QUERY =
     }
   }, mainImage, publishedAt, excerpt,author -> {
     name, image  
-  }
+  },
+  "headings": body[style in [ "h2", "h3" ]]
+
 }`);
 
 export const EVENTS_QUERY = groq`*[_type == "event"]{
