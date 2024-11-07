@@ -19,6 +19,7 @@ export default async function Home() {
     <>
       <main className="bg-black text-white">
         {content.video && <VideoHero content={content} />}
+        {content.ourMission && <MissionCarousel mission={content.ourMission} />}
 
         {content.featuredEvent?.event && (
           <FeaturedEvent
@@ -26,8 +27,6 @@ export default async function Home() {
             title={content.featuredEvent.title!}
           />
         )}
-
-        {content.ourMission && <MissionCarousel mission={content.ourMission} />}
 
         {content.featuredBusinesses && (
           <BuyBlackSection content={content.featuredBusinesses} />

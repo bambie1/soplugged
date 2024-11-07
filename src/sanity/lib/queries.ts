@@ -17,6 +17,7 @@ export const HOME_PAGE_QUERY = groq`
       title,
       event->{
         name,
+        slug,
         details,
         date,
         image,
@@ -84,7 +85,7 @@ export const EVENTS_QUERY = groq`*[_type == "event"]{
 
 export const EVENT_QUERY =
   defineQuery(groq`*[_type == "event" && slug.current == $slug][0]{
-  name, details[]{
+  name, date, details[]{
     ...,
     _type == "image" => {
       ...,

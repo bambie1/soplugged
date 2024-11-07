@@ -1,10 +1,8 @@
 export const PageHeader = ({
-  preTitle,
   title,
   description,
   children,
 }: {
-  preTitle?: string;
   title: string;
   description?: string;
   children?: React.ReactNode;
@@ -17,13 +15,6 @@ export const PageHeader = ({
         </div>
 
         <div className="padded">
-          <span>
-            {preTitle && (
-              <p className="mb-2 font-medium uppercase text-primary lg:text-lg">
-                {preTitle}
-              </p>
-            )}
-          </span>
           <h1 className="mx-auto mb-4 max-w-3xl text-primary">{title}</h1>
           <p className="text-primary lg:text-lg">{description}</p>
 

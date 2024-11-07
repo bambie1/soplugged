@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PortableText } from "next-sanity";
 
 import { urlFor } from "@/sanity/lib/image";
@@ -15,9 +16,13 @@ export const FeaturedEvent = ({
         <h2 className="mb-10">{title}</h2>
 
         <div className="grid items-center gap-5 lg:grid-cols-2 lg:gap-10">
-          <img src={urlFor(event.image).url()} alt="" />
+          <Link href={`/events/${event.slug.current}`}>
+            <img src={urlFor(event.image).url()} alt="" />
+          </Link>
           <div>
-            <h3 className="mb-4">{event.name}</h3>
+            <Link href={`/events/${event.slug.current}`}>
+              <h3 className="mb-4 hover:underline">{event.name}</h3>
+            </Link>
             <PortableText value={event.details} />
 
             <a

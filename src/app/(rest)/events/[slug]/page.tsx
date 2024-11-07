@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
+import { Header } from "@/components/Header";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -51,10 +52,8 @@ export default async function Page({
 
   return (
     <>
-      <PageHeader
-        title={content.name}
-        description={`${getDate(content.publishedAt)} | ${content.author?.name}`}
-      />
+      <Header />
+      <PageHeader title={content.name} description={getDate(content.date)} />
       <div className="padded mb-20">
         <div className="prose mx-auto">
           <PortableText value={content.details} />
