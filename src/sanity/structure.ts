@@ -2,6 +2,7 @@ import {
   CalendarIcon,
   CogIcon,
   DocumentIcon,
+  DocumentVideoIcon,
   EditIcon,
   PinIcon,
   TiersIcon,
@@ -55,6 +56,18 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem("post").title("Posts").icon(EditIcon),
               S.documentTypeListItem("blogCategory").title("Categories"),
               S.documentTypeListItem("author").title("Authors").icon(UserIcon),
+            ]),
+        ),
+      S.listItem()
+        .title("TBM Podcast")
+        .icon(DocumentVideoIcon)
+        .child(
+          S.list()
+            .title("Podcast")
+            .items([
+              S.documentTypeListItem("episode")
+                .title("Episodes")
+                .icon(DocumentVideoIcon),
             ]),
         ),
       S.divider(),
