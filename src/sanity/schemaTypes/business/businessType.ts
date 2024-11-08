@@ -47,6 +47,12 @@ export const businessType = defineType({
       group: "business_info",
     }),
     defineField({
+      name: "confidence_level",
+      description: "How confident are we in recommending this business?",
+      type: "rating",
+      validation: (rule) => rule.min(1).max(5),
+    }),
+    defineField({
       name: "description",
       type: "array",
       of: [{ type: "block" }],

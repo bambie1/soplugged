@@ -2,6 +2,7 @@ import { type SchemaTypeDefinition } from "sanity";
 
 import { blogSchemaTypes } from "./blog";
 import { businessSchemaTypes } from "./business";
+import { ratingType } from "./business/rating/ratingType";
 import { eventType } from "./eventType";
 import home from "./pages/home";
 import { podcastSchemaTypes } from "./podcast";
@@ -15,5 +16,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ...blogSchemaTypes,
     ...podcastSchemaTypes,
     home,
+    ratingType,
   ],
 };
