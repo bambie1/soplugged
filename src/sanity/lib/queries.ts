@@ -33,7 +33,9 @@ export const HOME_PAGE_QUERY = groq`
         slug,
         coverImage, 
         episodeNumber,
-        season
+        season,
+        owner,
+        businessName
       }
     } ,
     featuredBusinesses {

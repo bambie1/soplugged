@@ -23,7 +23,7 @@ export const VideoHero = ({ content }: { content: any }) => {
 
       <div className="absolute inset-0 z-10 bg-gradient-to-tr from-black via-black to-[#140701] opacity-50" />
 
-      <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[80vh]">
+      <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[700px]">
         <Header />
 
         <section className="padded flex flex-1 pb-10 pt-64 xl:pt-64">

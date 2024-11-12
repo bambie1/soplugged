@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { BuyBlackSection } from "@/components/home/BuyBlackSection";
+import { CoCreateAd } from "@/components/home/CoCreateAd";
 import { FeaturedEvent } from "@/components/home/FeaturedEvent";
 import { PodcastHighlight } from "@/components/home/PodcastHighlight";
 import { RecentBlogs } from "@/components/home/RecentBlogs";
@@ -10,8 +11,6 @@ import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "@/sanity/lib/queries";
 export default async function Home() {
   const content = await client.fetch(HOME_PAGE_QUERY);
   const recentBlogs = await client.fetch(HOME_POSTS_QUERY);
-
-  console.log(content.podcastHighlight);
 
   if (!content) {
     return null;
@@ -32,6 +31,8 @@ export default async function Home() {
         {content.podcastHighlight && (
           <PodcastHighlight content={content.podcastHighlight} />
         )}
+
+        <CoCreateAd />
 
         {/* {content.featuredBusinesses && (
           <BuyBlackSection content={content.featuredBusinesses} />

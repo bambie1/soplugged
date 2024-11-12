@@ -12,6 +12,7 @@ const config: Config = {
         black: "#1F1F1F",
         light: "#F8F4EF",
         primary: "#4E3505",
+        pink: "#FCC0E8",
       },
       keyframes: {
         slideDown: {
