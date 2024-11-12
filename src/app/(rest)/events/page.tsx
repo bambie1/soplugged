@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { EVENTS_QUERY } from "@/sanity/lib/queries";
 import { getDate } from "@/utils/getDate";
+import { EVENTS_QUERY } from "./queries";
 
 export default async function EventsPage() {
   const content = await client.fetch(EVENTS_QUERY);

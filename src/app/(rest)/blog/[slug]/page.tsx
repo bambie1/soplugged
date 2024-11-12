@@ -7,8 +7,8 @@ import { TableOfContents } from "@/components/blog/TableOfContents";
 import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { POST_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
 import { getDate } from "@/utils/getDate";
+import { POST_QUERY, POSTS_QUERY } from "../queries";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(POSTS_QUERY);
@@ -73,7 +73,7 @@ export default async function Page({
 
   return (
     <>
-      <Header backgroundColor="light" />
+      <Header />
       <div className="bg-light">
         <div className="padded grid gap-20 py-10 lg:grid-cols-3 lg:py-20">
           <div className="lg:col-span-2">

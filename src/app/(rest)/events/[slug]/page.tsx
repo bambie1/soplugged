@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { EVENT_QUERY, EVENTS_QUERY } from "@/sanity/lib/queries";
+import { EVENT_QUERY, EVENTS_QUERY } from "../queries";
 import { getDate } from "@/utils/getDate";
 
 export async function generateStaticParams() {

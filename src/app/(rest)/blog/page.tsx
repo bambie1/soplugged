@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import BlogCard from "@/components/shared/BlogCard";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
-import { POSTS_QUERY } from "@/sanity/lib/queries";
+import { POSTS_QUERY } from "./queries";
 
 export const metadata: Metadata = {
   title: "The Business Corner | SoPlugged Blog",
