@@ -20,4 +20,9 @@ export const categoryType = defineType({
       validation: (rule) => rule.required().error("A slug is required"),
     }),
   ],
+  preview: {
+    select: {
+      title: "name",
+    },
+  },
 });

@@ -1,7 +1,7 @@
 import type { Rule } from "sanity";
 import { defineField } from "sanity";
 
-export default {
+export const homeType = {
   name: "home",
   type: "document",
   title: "Home Page",
@@ -25,7 +25,6 @@ export default {
       validation: (rule) =>
         rule.required().error("A background video is required"),
     }),
-    // Featured Event section
     {
       name: "featuredEvent",
       type: "object",
@@ -47,31 +46,31 @@ export default {
       ],
     },
     {
-      name: "ourMission",
+      name: "podcastHighlight",
       type: "object",
-      title: "Our Mission",
+      title: "Podcast Highlight",
       fields: [
-        { name: "title", type: "string", title: "Title" },
-        {
-          name: "missionCarousel",
+        defineField({
+          name: "title",
+          type: "string",
+          title: "Title",
+          validation: (rule) =>
+            rule.required().error("A section title is required"),
+        }),
+        defineField({
+          name: "description",
+          type: "string",
+          title: "Description",
+          validation: (rule) =>
+            rule.required().error("A description is required"),
+        }),
+        defineField({
+          name: "episodes",
           type: "array",
-          title: "Mission Carousel Slides",
-          of: [
-            {
-              type: "object",
-              fields: [
-                {
-                  name: "backgroundColor",
-                  type: "string",
-                  title: "Background Color",
-                },
-                { name: "image", type: "image", title: "Image" },
-                { name: "title", type: "string", title: "Title" },
-                { name: "description", type: "text", title: "Description" },
-              ],
-            },
-          ],
-        },
+          of: [{ type: "reference", to: { type: "episode" } }],
+          validation: (rule) =>
+            rule.min(3).max(3).error("You must select 3 episodes"),
+        }),
       ],
     },
     {

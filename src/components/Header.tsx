@@ -63,9 +63,9 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
     >
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border border-black/10 bg-white": isScrolled && !isHome,
+          "border-b border-black/10 bg-white": isScrolled && !isHome,
           "border-b border-white/50 bg-black": isScrolled && isHome,
-          "border border-black/10": !backgroundColor,
+          "border-b border-black/10": !backgroundColor,
         })}
       >
         <div className="padded">

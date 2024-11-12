@@ -25,13 +25,15 @@ export const HOME_PAGE_QUERY = groq`
         ctaLabel
       }
     },
-    ourMission {
-      title,
-      missionCarousel[]{
-         backgroundColor,
-        image,
+    podcastHighlight {
+      title, 
+      description,
+      episodes[]->{
         title,
-        description
+        slug,
+        coverImage, 
+        episodeNumber,
+        season
       }
     } ,
     featuredBusinesses {
@@ -57,7 +59,11 @@ export const HOME_PAGE_QUERY = groq`
 `;
 
 export const HOME_POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc)[0...3]{
-  slug, title, body, mainImage, excerpt,publishedAt
+  slug, title, mainImage, excerpt,publishedAt
+}`;
+
+export const HOME_TBM_QUERY = groq`*[_type == "episode"] | order(publishedAt desc)[0...3]{
+  slug, title, coverImage, excerpt,publishedAt, episodeNumber, season
 }`;
 
 export const POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc){
