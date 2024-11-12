@@ -34,9 +34,9 @@ export default async function Home() {
 
         <CoCreateAd />
 
-        {/* {content.featuredBusinesses && (
+        {content.featuredBusinesses && (
           <BuyBlackSection content={content.featuredBusinesses} />
-        )} */}
+        )}
 
         {recentBlogs && <RecentBlogs posts={recentBlogs} />}
       </main>

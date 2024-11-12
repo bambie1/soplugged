@@ -79,32 +79,11 @@ export const homeType = {
       title: "Featured Businesses",
       fields: [
         { name: "title", type: "string", title: "Title" },
-        { name: "description", type: "string", title: "Description" },
-        {
-          name: "featuredCategories",
+        defineField({
+          name: "businesses",
           type: "array",
-          title: "Featured categories",
-          of: [
-            {
-              type: "object",
-              fields: [
-                {
-                  name: "category",
-                  type: "reference",
-                  to: [{ type: "businessCategory" }],
-                },
-                {
-                  name: "selectedBusinesses",
-                  title: "Selected Businesses",
-                  type: "array",
-                  of: [{ type: "reference", to: [{ type: "business" }] }],
-                  validation: (rule: Rule) =>
-                    rule.max(3).error("Only 3 businesses allowed per category"),
-                },
-              ],
-            },
-          ],
-        },
+          of: [{ type: "reference", to: { type: "business" } }],
+        }),
       ],
     },
   ],
