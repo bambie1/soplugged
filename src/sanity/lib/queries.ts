@@ -68,7 +68,17 @@ export const OURSTORY_PAGE_QUERY = groq`
         url
       }
     }, content,
-    ourPartners 
+    ourPartners,
+    meetTheTeam {
+      title,
+      content,
+      members[]->{
+        name,
+        slug,
+        image,
+        role
+      }
+    } 
   }
 `;
 

@@ -9,7 +9,7 @@ import { OURSTORY_PAGE_QUERY } from "@/sanity/lib/queries";
 export default async function OurStoryPage() {
   const content = await client.fetch(OURSTORY_PAGE_QUERY);
 
-  const { images, ourPartners } = content;
+  const { images, ourPartners, meetTheTeam } = content;
 
   const renderImage = (url: string) => (
     <div className="flex h-full overflow-hidden rounded-xl">
@@ -45,6 +45,25 @@ export default async function OurStoryPage() {
         <div className="mx-auto my-10 h-60 w-full max-w-4xl rounded-xl bg-[#D0E1EA] lg:my-20"></div>
 
         <div className="prose mx-auto">
+          <div className="mb-20">
+            <h2>{meetTheTeam.title}</h2>
+            <div className="mb-8 flex items-center gap-8 lg:gap-24">
+              {meetTheTeam.members.map((member: any) => (
+                <div key={member.name} className="flex items-center gap-2">
+                  <img
+                    src={urlFor(member.image).url()}
+                    alt=""
+                    className="m-0 h-16 w-16 rounded-full border border-primary object-cover"
+                  />
+                  <div>
+                    <p className="m-0 font-bold">{member.name}</p>
+                    <p className="m-0 text-sm">{member.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <PortableText value={meetTheTeam.content} />
+          </div>
           {ourPartners.partners.length > 0 && (
             <div>
               <h2>{ourPartners.title}</h2>

@@ -29,6 +29,30 @@ export const ourStoryType = {
       of: [{ type: "block" }],
     }),
     {
+      name: "meetTheTeam",
+      type: "object",
+      fields: [
+        defineField({
+          name: "title",
+          type: "string",
+          title: "Title",
+          validation: (rule) =>
+            rule.required().error("A section title is required"),
+        }),
+        defineField({
+          name: "members",
+          type: "array",
+          title: "Members",
+          of: [{ type: "reference", to: { type: "author" } }],
+        }),
+        defineField({
+          name: "content",
+          type: "array",
+          of: [{ type: "block" }],
+        }),
+      ],
+    },
+    {
       name: "ourPartners",
       type: "object",
       fields: [
