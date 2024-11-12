@@ -5,7 +5,7 @@ export const Footer = () => {
     <div className="mt-auto bg-black text-white">
       <div className="padded py-10 lg:pt-20">
         <img
-          src="/soplugged.svg"
+          src="/logos/soplugged.svg"
           alt="SoPlugged logo"
           className="mb-4 h-8 lg:h-10"
         />

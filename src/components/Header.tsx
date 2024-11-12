@@ -65,8 +65,8 @@ export function Header({ isDark }: { isDark?: boolean }) {
               <img
                 src={
                   isDark && !isMobileMenuOpen
-                    ? "/soplugged.svg"
-                    : "/soplugged_black.svg"
+                    ? "/logos/soplugged.svg"
+                    : "/logos/soplugged_black.svg"
                 }
                 alt="SoPlugged logo"
                 className="h-8 lg:h-10"
