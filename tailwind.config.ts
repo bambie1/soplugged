@@ -23,6 +23,10 @@ const config: Config = {
       animation: {
         slideDown: "slideDown 0.3s ease-out",
       },
+      backgroundImage: {
+        "tbm-gradient":
+          "radial-gradient(29.77% 50% at 50% 50%, #5D1344 0%, #141414 100%)",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

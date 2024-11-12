@@ -13,12 +13,10 @@ const NAV_LINKS = [
   { href: "/podcast", label: "TBM Podcast" },
 ];
 
-export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
+export function Header({ isDark }: { isDark?: boolean }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const isHome = pathname === "/";
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
@@ -54,16 +52,11 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
   };
 
   return (
-    <header
-      className={clsx("fixed left-0 top-0 z-50 w-full", {
-        "animate-slideDown": isScrolled && !isHome,
-        "bg-light": backgroundColor === "light",
-      })}
-    >
+    <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border-b border-black/10 bg-white": isScrolled && !isHome,
-          "border-b border-white/50 bg-black": isScrolled && isHome,
+          "border-b border-black/10 bg-white": isScrolled && !isDark,
+          "border-b border-white/50 bg-black": isScrolled && isDark,
         })}
       >
         <div className="padded">
@@ -71,7 +64,7 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
             <Link href="/" className="z-30">
               <img
                 src={
-                  isHome && !isMobileMenuOpen
+                  isDark && !isMobileMenuOpen
                     ? "/soplugged.svg"
                     : "/soplugged_black.svg"
                 }
@@ -87,6 +80,7 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
                       href={href}
                       className={clsx({
                         "font-bold": pathname === href,
+                        "text-white": isDark,
                       })}
                     >
                       {label}
@@ -109,8 +103,8 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
                     {
                       "translate-y-1 rotate-45 scale-75 transform":
                         isMobileMenuOpen,
-                      "bg-white": isHome && !isMobileMenuOpen,
-                      "bg-black": !isHome || (isHome && isMobileMenuOpen),
+                      "bg-white": isDark && !isMobileMenuOpen,
+                      "bg-black": !isDark || (isDark && isMobileMenuOpen),
                     },
                   )}
                 ></span>
@@ -120,8 +114,8 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
                     {
                       "-translate-y-1 -rotate-45 scale-75 transform":
                         isMobileMenuOpen,
-                      "bg-white": isHome && !isMobileMenuOpen,
-                      "bg-black": !isHome || (isHome && isMobileMenuOpen),
+                      "bg-white": isDark && !isMobileMenuOpen,
+                      "bg-black": !isDark || (isDark && isMobileMenuOpen),
                     },
                   )}
                 ></span>

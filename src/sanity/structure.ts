@@ -55,22 +55,13 @@ export const structure: StructureResolver = (S) =>
             .items([
               S.documentTypeListItem("post").title("Posts").icon(EditIcon),
               S.documentTypeListItem("blogCategory").title("Categories"),
-              S.documentTypeListItem("author").title("Authors").icon(UserIcon),
             ]),
         ),
-      S.listItem()
-        .title("TBM Podcast")
-        .icon(DocumentVideoIcon)
-        .child(
-          S.list()
-            .title("Podcast")
-            .items([
-              S.documentTypeListItem("episode")
-                .title("Episodes")
-                .icon(DocumentVideoIcon),
-            ]),
-        ),
+      S.documentTypeListItem("episode")
+        .title("TBM Podcast episodes")
+        .icon(DocumentVideoIcon),
       S.divider(),
+      S.documentTypeListItem("author").title("Members").icon(UserIcon),
       S.listItem()
         .title("Site Settings")
         .icon(CogIcon)
