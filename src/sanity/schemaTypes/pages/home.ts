@@ -1,4 +1,3 @@
-import type { Rule } from "sanity";
 import { defineField } from "sanity";
 
 export const homeType = {

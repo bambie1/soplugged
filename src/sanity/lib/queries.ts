@@ -60,6 +60,18 @@ export const HOME_PAGE_QUERY = groq`
   }
 `;
 
+export const OURSTORY_PAGE_QUERY = groq`
+  *[_type == "our-story"][0]{
+    title,
+    description, images[]{
+      asset-> {
+        url
+      }
+    }, content,
+    ourPartners 
+  }
+`;
+
 export const HOME_POSTS_QUERY = groq`*[_type == "post"] | order(publishedAt desc)[0...3]{
   slug, title, mainImage, excerpt,publishedAt
 }`;

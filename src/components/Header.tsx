@@ -55,9 +55,8 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
 
   return (
     <header
-      className={clsx("z-50 w-full", {
+      className={clsx("fixed left-0 top-0 z-50 w-full", {
         "animate-slideDown": isScrolled && !isHome,
-        "fixed left-0 top-0": isHome || isScrolled,
         "bg-light": backgroundColor === "light",
       })}
     >
@@ -65,7 +64,6 @@ export function Header({ backgroundColor }: { backgroundColor?: "light" }) {
         className={clsx("w-full transition-all duration-300", {
           "border-b border-black/10 bg-white": isScrolled && !isHome,
           "border-b border-white/50 bg-black": isScrolled && isHome,
-          "border-b border-black/10": !backgroundColor,
         })}
       >
         <div className="padded">
