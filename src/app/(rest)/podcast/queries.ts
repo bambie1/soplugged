@@ -9,18 +9,19 @@ export const PODCAST_PAGE_QUERY = groq`
 `;
 
 export const EPISODES_QUERY = groq`*[_type == "episode"] | order(publishedAt desc){
-  slug,title, body, coverImage, publishedAt,  
+  slug,title, body, coverImage, publishedAt, episodeNumber,
+  season, businessName
 }`;
 
 export const EPISODE_QUERY =
-  defineQuery(groq`*[_type == "post" && slug.current == $slug][0]{
+  defineQuery(groq`*[_type == "episode" && slug.current == $slug][0]{
   title, body[]{
     ...,
     _type == "image" => {
       ...,
       asset->
     }
-  }, coverImage, publishedAt,  
+  }, coverImage, publishedAt,businessName,  
   "headings": body[style in [ "h2", "h3" ]]
 
 }`);

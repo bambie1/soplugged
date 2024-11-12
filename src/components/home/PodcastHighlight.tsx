@@ -55,9 +55,11 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
                     <p className="mb-2 text-gray-300">{item.businessName}</p>
                     <p className="w-96 text-xl font-bold">{item.title}</p>
                   </div>
-                  <div className="absolute right-6 top-6 flex h-16 w-16 items-center justify-center rounded-full bg-black">
-                    TBM
-                  </div>
+                  <img
+                    src="/tbm_logo.png"
+                    alt="TBM Podcast logo"
+                    className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
+                  />
                 </>
               )}
             </Link>
