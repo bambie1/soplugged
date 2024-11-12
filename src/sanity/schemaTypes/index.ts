@@ -8,6 +8,7 @@ import { homeType } from "./pages/home";
 import { ourStoryType } from "./pages/our-story";
 import { podcastSchemaTypes } from "./podcast";
 import siteSettings from "./site-settings";
+import { authorType } from "./authorType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homeType,
     ourStoryType,
     ratingType,
+    authorType,
   ],
 };
