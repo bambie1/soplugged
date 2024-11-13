@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 
 export const BuyBlackSection = ({ content }: { content: any }) => {
   const businesses = content.businesses;
@@ -24,12 +25,16 @@ export const BuyBlackSection = ({ content }: { content: any }) => {
   };
 
   return (
-    <div className="page-section lg:pt-36">
-      <div className="padded">
-        <h2 className="mx-auto max-w-md text-center">{content.title}</h2>
+    <div className="page-section pb-0 lg:pt-36">
+      <div className="padded flex flex-col items-center">
+        <h2 className="mx-auto mb-12 max-w-md text-center">{content.title}</h2>
+
+        <Link href="/directory" className="rounded-full border px-6 py-4">
+          Explore the directory
+        </Link>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 items-start gap-4 px-4 sm:px-6 xl:grid-cols-6 xl:gap-6 xl:px-12">
+      <div className="grid h-96 grid-cols-2 items-start gap-4 overflow-hidden px-4 sm:px-6 lg:h-[50rem] xl:grid-cols-6 xl:gap-6 xl:px-12">
         <div className="grid grid-rows-2 gap-6">
           {renderCard(businesses[0])}
           {renderCard(businesses[1])}
@@ -49,6 +54,24 @@ export const BuyBlackSection = ({ content }: { content: any }) => {
         <div className="grid grid-rows-2 gap-6">
           {renderCard(businesses[8])}
           {renderCard(businesses[9])}
+        </div>
+      </div>
+
+      <div className="bg-[#3B3B3B] py-10 lg:py-16">
+        <div className="padded flex items-center justify-between gap-10">
+          <div>
+            <h3 className="mb-2">Are you a business owner?</h3>
+            <p>
+              Expand your reach by listing your business on our directory today!
+            </p>
+          </div>
+
+          <Link
+            href="/join"
+            className="rounded-full bg-white px-6 py-4 font-medium text-black"
+          >
+            List your business
+          </Link>
         </div>
       </div>
     </div>

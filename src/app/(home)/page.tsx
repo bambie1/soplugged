@@ -8,6 +8,7 @@ import { VideoHero } from "@/components/home/VideoHero";
 import { client } from "@/sanity/lib/client";
 
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
+import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 
 export default async function Home() {
   const content = await client.fetch(HOME_PAGE_QUERY);
@@ -40,6 +41,8 @@ export default async function Home() {
         )}
 
         {recentBlogs && <RecentBlogs posts={recentBlogs} />}
+
+        <SubscribeBanner />
       </main>
 
       <Footer />

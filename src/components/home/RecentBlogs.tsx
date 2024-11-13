@@ -2,7 +2,7 @@ import BlogCard from "../shared/BlogCard";
 
 export const RecentBlogs = ({ posts }: { posts: any[] }) => {
   return (
-    <div className="page-section bg-[#EAECF6] text-black">
+    <div className="page-section bg-white text-black">
       <div className="padded">
         <p>OUR BLOG</p>
         <h2 className="mb-2 mt-4">The Business corner</h2>
