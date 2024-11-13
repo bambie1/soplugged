@@ -41,12 +41,7 @@ export const HOME_PAGE_QUERY = groq`
     featuredBusinesses {
       title,
       description,
-      featuredCategories[]{
-        category->{
-          name,
-          slug
-        },
-        selectedBusinesses[]->{
+      businesses[]->{
           name,
           slug,
           sample_images[]{
@@ -55,7 +50,6 @@ export const HOME_PAGE_QUERY = groq`
             }
           }
         }
-      }
     }  
   }
 `;
