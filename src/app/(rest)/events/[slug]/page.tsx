@@ -31,10 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${content.name} | SoPlugged Blog`,
-    openGraph: {
-      images: [urlFor(content.image).url()],
-      description: content.excerpt,
-    },
+    // openGraph: {
+    //   images: [urlFor(content.image).url()],
+    //   description: content.excerpt,
+    // },
   };
 }
 
