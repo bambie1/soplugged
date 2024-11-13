@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { PortableTextComponents } from "next-sanity";
 import { PortableText, toPlainText } from "next-sanity";
 import slugify from "slugify";
@@ -8,8 +9,8 @@ import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDate } from "@/utils/getDate";
+
 import { EPISODE_QUERY, EPISODES_QUERY } from "../queries";
-import Link from "next/link";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(EPISODES_QUERY);

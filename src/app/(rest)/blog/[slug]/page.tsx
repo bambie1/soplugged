@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDate } from "@/utils/getDate";
+
 import { POST_QUERY, POSTS_QUERY } from "../queries";
 
 export async function generateStaticParams() {

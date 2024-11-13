@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDate } from "@/utils/getDate";
+
 import { EVENTS_QUERY } from "./queries";
 
 export default async function EventsPage() {

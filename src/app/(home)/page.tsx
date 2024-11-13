@@ -6,6 +6,7 @@ import { PodcastHighlight } from "@/components/home/PodcastHighlight";
 import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { VideoHero } from "@/components/home/VideoHero";
 import { client } from "@/sanity/lib/client";
+
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 
 export default async function Home() {

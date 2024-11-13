@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 import { Header } from "@/components/Header";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
-import { EPISODES_QUERY, PODCAST_PAGE_QUERY } from "./queries";
 import { urlFor } from "@/sanity/lib/image";
+
 import { PlatformContainer } from "./PlatformContainer";
-import Link from "next/link";
+import { EPISODES_QUERY, PODCAST_PAGE_QUERY } from "./queries";
 
 export default async function PodcastPage() {
   const episodes = await client.fetch(EPISODES_QUERY);

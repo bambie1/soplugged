@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+
 import { OURSTORY_PAGE_QUERY } from "./queries";
 
 export default async function OurStoryPage() {

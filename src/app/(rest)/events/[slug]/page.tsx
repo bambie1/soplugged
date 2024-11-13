@@ -5,8 +5,9 @@ import { Header } from "@/components/Header";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { EVENT_QUERY, EVENTS_QUERY } from "../queries";
 import { getDate } from "@/utils/getDate";
+
+import { EVENT_QUERY, EVENTS_QUERY } from "../queries";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(EVENTS_QUERY);
