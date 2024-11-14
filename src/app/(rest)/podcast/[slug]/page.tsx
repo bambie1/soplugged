@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = await client.fetch(EPISODE_QUERY, { slug });
 
   return {
-    title: `${content.title} | SoPlugged Blog`,
+    title: `${content.title} | TBM Podcast`,
     openGraph: {
       images: [urlFor(content.coverImage).url()],
       description: content.excerpt,
@@ -72,7 +72,7 @@ export default async function Page({
     <>
       <Header isDark />
       <div className="relative -mb-10 pt-20 text-white lg:pt-48">
-        <div className="bg-tbm-gradient absolute left-0 right-0 top-0 -z-10 h-[80%]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 h-[80%] bg-tbm-gradient"></div>
         <div className="padded">
           <div className="mb-10 flex items-center gap-4">
             <Link href="/podcast" className="underline opacity-70">

@@ -1,9 +1,9 @@
 import { defineField, type Rule } from "sanity";
 
-export const podcastPageType = {
-  name: "podcast",
+export const eventPageType = {
+  name: "eventsPage",
   type: "document",
-  title: "Podcast",
+  title: "Event",
   fields: [
     {
       name: "title",
@@ -23,22 +23,10 @@ export const podcastPageType = {
       type: "seo",
     },
     defineField({
-      name: "links",
-      type: "object",
-      fields: [
-        {
-          name: "youtube",
-          type: "url",
-        },
-        {
-          name: "spotify",
-          type: "url",
-        },
-        {
-          name: "applePodcasts",
-          type: "url",
-        },
-      ],
+      name: "images",
+      type: "array",
+      of: [{ type: "image" }],
+      validation: (Rule) => Rule.min(4),
     }),
   ],
 };

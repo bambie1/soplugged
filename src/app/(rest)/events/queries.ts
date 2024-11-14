@@ -1,5 +1,16 @@
 import { defineQuery, groq } from "next-sanity";
 
+export const EVENTS_PAGE_QUERY = groq`
+  *[_type == "eventsPage"][0]{
+    title,
+    description,seo,images[]{
+      asset-> {
+        url
+      }
+    }
+  }
+`;
+
 export const EVENTS_QUERY = groq`*[_type == "event"]{
   name, slug, eventType, date, venue, image, details, ctaLink, ctaLabel
 }`;

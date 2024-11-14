@@ -17,6 +17,11 @@ export const ourStoryType = {
       title: "Description",
       validation: (Rule: Rule) => Rule.required(),
     },
+    {
+      name: "seo",
+      title: "SEO Metadata",
+      type: "seo",
+    },
     defineField({
       name: "images",
       type: "array",

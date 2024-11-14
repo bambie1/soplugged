@@ -7,6 +7,11 @@ export const homeType = {
   fields: [
     { name: "title", type: "string", title: "Title" },
     { name: "subtitle", type: "string", title: "Subtitle" },
+    {
+      name: "seo",
+      title: "SEO Metadata",
+      type: "seo",
+    },
     defineField({
       name: "cta",
       type: "object",

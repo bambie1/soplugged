@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Footer } from "@/components/Footer";
 import { BuyBlackSection } from "@/components/home/BuyBlackSection";
 import { CoCreateAd } from "@/components/home/CoCreateAd";
@@ -5,10 +7,21 @@ import { FeaturedEvent } from "@/components/home/FeaturedEvent";
 import { PodcastHighlight } from "@/components/home/PodcastHighlight";
 import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { VideoHero } from "@/components/home/VideoHero";
+import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
-import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await client.fetch(HOME_PAGE_QUERY);
+
+  return {
+    title: `${content.seo.title} | SoPlugged`,
+    openGraph: {
+      description: content.seo.description,
+    },
+  };
+}
 
 export default async function Home() {
   const content = await client.fetch(HOME_PAGE_QUERY);

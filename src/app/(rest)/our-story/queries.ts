@@ -3,7 +3,7 @@ import { defineQuery, groq } from "next-sanity";
 export const OURSTORY_PAGE_QUERY = groq`
   *[_type == "our-story"][0]{
     title,
-    description, images[]{
+    description,seo, images[]{
       asset-> {
         url
       }

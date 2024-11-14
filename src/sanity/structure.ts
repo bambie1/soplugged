@@ -34,6 +34,18 @@ export const structure: StructureResolver = (S) =>
                 .child(
                   S.document().schemaType("podcast").documentId("podcast"),
                 ),
+              S.listItem()
+                .title("Blogs Home page")
+                .child(
+                  S.document().schemaType("blogsPage").documentId("blogsPage"),
+                ),
+              S.listItem()
+                .title("Events Home page")
+                .child(
+                  S.document()
+                    .schemaType("eventsPage")
+                    .documentId("eventsPage"),
+                ),
             ]),
         ),
       S.listItem()

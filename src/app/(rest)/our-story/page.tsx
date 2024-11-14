@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
 import { Header } from "@/components/Header";
@@ -6,6 +7,19 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
 import { OURSTORY_PAGE_QUERY } from "./queries";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await client.fetch(OURSTORY_PAGE_QUERY);
+
+  if (!content.seo) return {};
+
+  return {
+    title: `${content.seo.title} | SoPlugged`,
+    openGraph: {
+      description: content.seo.description,
+    },
+  };
+}
 
 export default async function OurStoryPage() {
   const content = await client.fetch(OURSTORY_PAGE_QUERY);
