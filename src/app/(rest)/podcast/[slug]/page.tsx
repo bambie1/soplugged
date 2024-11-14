@@ -71,7 +71,7 @@ export default async function Page({
   return (
     <>
       <Header isDark />
-      <div className="relative -mb-10 pt-20 text-white lg:pt-48">
+      <div className="relative -mb-10 pt-36 text-white lg:pt-48">
         <div className="absolute left-0 right-0 top-0 -z-10 h-[80%] bg-tbm-gradient"></div>
         <div className="padded">
           <div className="mb-10 flex items-center gap-4">
@@ -85,7 +85,7 @@ export default async function Page({
           <img
             src={urlFor(content.coverImage).url()}
             alt=""
-            className="aspect-video max-w-4xl rounded-xl"
+            className="aspect-video w-full max-w-4xl rounded-xl"
           />
 
           <div className="py-4 text-black">Youtube</div>

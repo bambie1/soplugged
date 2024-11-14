@@ -20,7 +20,7 @@ export default async function PodcastPage() {
   return (
     <>
       <Header isDark />
-      <div className="bg-tbm-gradient py-20 text-center text-white lg:py-48">
+      <div className="bg-tbm-gradient py-40 pb-28 text-center text-white lg:py-48">
         <div className="padded">
           <div className="mx-auto max-w-xl">
             <h1 className="mb-4">{title}</h1>
@@ -51,17 +51,17 @@ export default async function PodcastPage() {
           </div>
         </div>
       </div>
-      <div className="mx-auto -mt-36 aspect-video w-full max-w-3xl overflow-hidden rounded-xl border bg-white">
+      <div className="mx-4 -mt-20 aspect-video max-w-3xl overflow-hidden rounded-xl border bg-white lg:mx-auto lg:-mt-36">
         <Link href={`/podcast/${latestEpisode.slug.current}`}>
           <img src={urlFor(latestEpisode.coverImage).url()} alt="" />
         </Link>
       </div>
 
-      <hr className="mx-auto mb-20 mt-10 w-full max-w-xl" />
+      <hr className="mx-auto my-10 w-full max-w-xl lg:mb-20" />
 
-      <div className="padded grid max-w-5xl gap-x-8 gap-y-4 md:grid-cols-2">
+      <div className="padded grid max-w-5xl gap-x-8 gap-y-8 md:grid-cols-2 lg:gap-y-16">
         {episodes.map((episode: any) => (
-          <div key={episode._id} className="mb-10">
+          <div key={episode._id}>
             <Link href={`/podcast/${episode.slug.current}`}>
               <img
                 src={urlFor(episode.coverImage).url()}
@@ -69,7 +69,7 @@ export default async function PodcastPage() {
                 className="mb-4 aspect-video w-full rounded-xl"
               />
               <div>
-                <p>
+                <p className="text-sm lg:text-base">
                   S{" "}
                   {episode.season.toLocaleString("en-US", {
                     minimumIntegerDigits: 2,
@@ -79,7 +79,7 @@ export default async function PodcastPage() {
                     minimumIntegerDigits: 2,
                   })}
                 </p>
-                <h2 className="w-[90%] text-xl font-semibold">
+                <h2 className="text-lg font-semibold lg:w-[90%] lg:text-xl">
                   {episode.title}
                 </h2>
                 <p className="mt-1 text-sm uppercase text-gray-600">
