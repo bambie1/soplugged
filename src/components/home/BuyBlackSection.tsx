@@ -34,7 +34,7 @@ export const BuyBlackSection = ({ content }: { content: any }) => {
         </Link>
       </div>
 
-      <div className="grid h-96 grid-cols-2 items-start gap-4 overflow-hidden px-4 sm:px-6 lg:h-[50rem] xl:grid-cols-6 xl:gap-6 xl:px-12">
+      <div className="mt-10 grid h-96 grid-cols-2 items-start gap-4 overflow-hidden px-4 sm:px-6 lg:mt-0 lg:h-[50rem] xl:grid-cols-6 xl:gap-6 xl:px-12">
         <div className="grid grid-rows-2 gap-6">
           {renderCard(businesses[0])}
           {renderCard(businesses[1])}
@@ -58,7 +58,7 @@ export const BuyBlackSection = ({ content }: { content: any }) => {
       </div>
 
       <div className="bg-[#3B3B3B] py-10 lg:py-16">
-        <div className="padded flex items-center justify-between gap-10">
+        <div className="padded flex flex-wrap items-center justify-between gap-10">
           <div>
             <h3 className="mb-2">Are you a business owner?</h3>
             <p>

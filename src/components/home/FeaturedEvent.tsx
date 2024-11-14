@@ -7,8 +7,8 @@ export const FeaturedEvent = ({
 }) => {
   return (
     <div className="bg-light py-8 text-black">
-      <div className="padded flex items-center justify-center gap-10">
-        <p className="text-lg font-bold">{title}</p>
+      <div className="padded flex flex-wrap items-center justify-center gap-4 lg:gap-10">
+        <p className="text-center text-lg font-bold">{title}</p>
         <a
           href={event.ctaLink}
           className="rounded-full bg-black p-4 font-medium text-white"

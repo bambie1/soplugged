@@ -8,9 +8,9 @@ const dmSerif = DM_Serif_Display({
 
 export const CoCreateAd = () => {
   return (
-    <div className="from-pink relative bg-gradient-to-t to-white py-20 text-black lg:py-28">
+    <div className="relative bg-gradient-to-t from-pink to-white py-10 text-black lg:py-28">
       <div className="padded">
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <span
             className={`mb-10 block text-2xl text-gray-600 lg:text-3xl ${dmSerif.className}`}
           >
@@ -35,7 +35,7 @@ export const CoCreateAd = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 right-0 top-0 w-2/5 bg-white/25"></div>
+      <div className="absolute bottom-0 right-0 top-0 hidden w-2/5 bg-white/25 lg:block"></div>
     </div>
   );
 };

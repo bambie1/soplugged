@@ -9,37 +9,55 @@ import { urlFor } from "@/sanity/lib/image";
 export const PodcastHighlight = ({ content }: { content: any }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const renderEpisodeInfo = (item: any) => (
+    <>
+      <div className="absolute inset-0 flex h-96 flex-col justify-end bg-gradient-to-t from-[#000] to-black/20 p-6 lg:p-8">
+        <p className="mb-2 text-sm text-gray-300">{item.businessName}</p>
+        <p className="w-[90%] text-lg font-bold leading-tight lg:w-96 lg:text-xl">
+          {item.title}
+        </p>
+      </div>
+      <img
+        src="/tbm_logo.png"
+        alt="TBM Podcast logo"
+        className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
+      />
+    </>
+  );
+
   return (
     <div className="page-section">
-      <div className="padded">
-        <p className="mb-6 uppercase tracking-wide">
-          The Business Mindset Podcast
-        </p>
-        <div className="flex justify-between gap-10">
-          <div>
-            <h2 className="mb-4">{content.title}</h2>
-            <p className="max-w-2xl">{content.description}</p>
-          </div>
+      <div>
+        <div className="padded">
+          <p className="mb-6 text-sm uppercase tracking-wide lg:text-base">
+            The Business Mindset Podcast
+          </p>
+          <div className="flex justify-between gap-10">
+            <div>
+              <h2 className="mb-4">{content.title}</h2>
+              <p className="max-w-2xl">{content.description}</p>
+            </div>
 
-          <Link href="/podcast" className="underline">
-            See all episodes
-          </Link>
+            <Link href="/podcast" className="hidden underline lg:block">
+              See all episodes
+            </Link>
+          </div>
         </div>
 
-        <div className="relative mt-16 flex gap-4 overflow-hidden">
+        <div className="lg:padded relative mt-10 flex snap-x snap-mandatory gap-4 overflow-auto px-4 lg:mt-16">
           {content.episodes.map((item: any, index: number) => (
             <Link
               href={`/podcast/${item.slug.current}`}
               key={item.title}
               className={clsx(
-                "relative h-96 flex-grow overflow-hidden rounded-2xl border-[.25px] p-4 transition-all duration-500 ease-in-out",
+                "relative h-96 min-w-[80vw] flex-grow snap-center overflow-hidden rounded-2xl p-4 transition-all duration-500 ease-in-out lg:min-w-[250px] lg:border-[.25px]",
                 {
-                  "flex-grow-[2] border-white shadow-sm": index === activeIndex,
-                  "flex-grow-[1] border-transparent opacity-40":
+                  "border-white/50 shadow-sm lg:flex-grow-[2]":
+                    index === activeIndex,
+                  "border-transparent lg:flex-grow-[1] lg:opacity-40":
                     index !== activeIndex,
                 },
               )}
-              style={{ minWidth: "250px" }}
               onMouseEnter={() => setActiveIndex(index)}
             >
               <div className="absolute inset-0">
@@ -49,19 +67,9 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
                   className="h-full w-full object-cover object-top"
                 />
               </div>
-              {index === activeIndex && (
-                <>
-                  <div className="absolute inset-0 flex h-96 flex-col justify-end bg-gradient-to-t from-black to-black/20 p-4 lg:p-8">
-                    <p className="mb-2 text-gray-300">{item.businessName}</p>
-                    <p className="w-96 text-xl font-bold">{item.title}</p>
-                  </div>
-                  <img
-                    src="/tbm_logo.png"
-                    alt="TBM Podcast logo"
-                    className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
-                  />
-                </>
-              )}
+              {index === activeIndex && renderEpisodeInfo(item)}
+
+              <div className="lg:hidden">{renderEpisodeInfo(item)}</div>
             </Link>
           ))}
         </div>
