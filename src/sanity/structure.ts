@@ -63,6 +63,7 @@ export const structure: StructureResolver = (S) =>
             ]),
         ),
       S.documentTypeListItem("event").title("Events").icon(CalendarIcon),
+      S.documentTypeListItem("page").title("Pages").icon(DocumentIcon),
       S.listItem()
         .title("Blogs")
         .icon(DocumentIcon)
