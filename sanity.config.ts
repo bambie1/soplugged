@@ -7,6 +7,7 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { cloudinarySchemaPlugin } from "sanity-plugin-cloudinary";
 
 import { Logo } from "./src/sanity/components/Logo";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
@@ -26,5 +27,6 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    cloudinarySchemaPlugin(),
   ],
 });

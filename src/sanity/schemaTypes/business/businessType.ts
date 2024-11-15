@@ -65,6 +65,12 @@ export const businessType = defineType({
       group: "images",
     }),
     defineField({
+      name: "cloudi_sample_images",
+      type: "array",
+      of: [{ type: "cloudinary.asset" }],
+      description: "This asset is served from Cloudinary",
+    }),
+    defineField({
       name: "logo",
       type: "image",
       group: "images",
