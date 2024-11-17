@@ -69,11 +69,21 @@ export default async function Page({
   }
 
   return (
-    <>
+    <div className="bg-black">
       <Header isDark />
-      <div className="relative -mb-10 pt-36 text-white lg:pt-48">
-        <div className="absolute left-0 right-0 top-0 -z-10 h-[80%] bg-tbm-gradient"></div>
-        <div className="padded">
+
+      <div className="relative flex h-[80vh] w-full flex-col justify-end text-white">
+        <img
+          src={urlFor(content.coverImage).url()}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+
+        <div className="absolute left-0 right-0 top-0 h-40 bg-gradient-to-b from-black to-transparent"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-[#5D1344]/20 to-[#141414]" />
+
+        <div className="padded z-20 py-10">
           <div className="mb-10 flex items-center gap-4">
             <Link href="/podcast" className="underline opacity-70">
               TBM Podcast
@@ -81,23 +91,18 @@ export default async function Page({
             <p>{content.businessName}</p>
           </div>
           <h1 className="mb-10 max-w-3xl lg:mb-16">{content.title}</h1>
-
-          <img
-            src={urlFor(content.coverImage).url()}
-            alt=""
-            className="aspect-video w-full max-w-4xl rounded-xl"
-          />
-
-          <div className="py-4 text-black">Youtube</div>
-          <hr className="mb-10 max-w-3xl" />
         </div>
       </div>
 
-      <div className="padded mb-20 mt-12">
-        <div className="prose">
-          <PortableText value={content.body} components={components} />
+      <div className="text-white">
+        <div className="padded">
+          <div className="prose prose-invert mb-20">
+            <div>Youtube</div>
+            <hr />
+            <PortableText value={content.body} components={components} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
