@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import type { PortableTextComponents } from "next-sanity";
 import { PortableText, toPlainText } from "next-sanity";
 import slugify from "slugify";
 
-import { TableOfContents } from "@/components/blog/TableOfContents";
 import { Header } from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { getDate } from "@/utils/getDate";
 
 import { EPISODE_QUERY, EPISODES_QUERY } from "../queries";
+import { PodcastHero } from "./PodcastHero";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(EPISODES_QUERY);
@@ -72,35 +70,13 @@ export default async function Page({
     <div className="bg-black">
       <Header isDark />
 
-      <div className="relative flex h-[80vh] w-full flex-col justify-end text-white">
-        <img
-          src={urlFor(content.coverImage).url()}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-top"
-        />
+      <PodcastHero content={content} />
 
-        <div className="absolute left-0 right-0 top-0 h-40 bg-gradient-to-b from-black to-transparent"></div>
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-[#5D1344]/20 to-[#141414]" />
-
-        <div className="padded z-20 py-10">
-          <div className="mb-10 flex items-center gap-4">
-            <Link href="/podcast" className="underline opacity-70">
-              TBM Podcast
-            </Link>
-            <p>{content.businessName}</p>
-          </div>
-          <h1 className="mb-10 max-w-3xl lg:mb-16">{content.title}</h1>
-        </div>
-      </div>
-
-      <div className="text-white">
-        <div className="padded">
-          <div className="prose prose-invert mb-20">
-            <div>Youtube</div>
-            <hr />
-            <PortableText value={content.body} components={components} />
-          </div>
+      <div className="padded">
+        <div className="prose prose-invert mb-20">
+          <div>Youtube</div>
+          <hr />
+          <PortableText value={content.body} components={components} />
         </div>
       </div>
     </div>
