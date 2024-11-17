@@ -38,7 +38,7 @@ export const pageType = defineType({
       name: "pageBuilder",
       title: "Page builder",
       type: "array",
-      of: [{ type: "seo" }],
+      of: [{ type: "ctaBanner" }],
     }),
   ],
   preview: {
