@@ -13,7 +13,7 @@ export const PodcastHero = ({ content }: { content: any }) => {
   const backgroundY = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <div className="relative h-[80vh] w-full overflow-hidden">
+    <div className="relative h-[50vh] max-h-[600px] w-full overflow-hidden lg:h-[80vh]">
       {/* Background Image with Parallax */}
       <motion.img
         src={urlFor(content.coverImage).url()}
