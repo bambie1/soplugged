@@ -2,8 +2,6 @@ import { ArrowRightIcon } from "@sanity/icons";
 
 import { getFileUrl } from "@/sanity/lib/client";
 
-import { Header } from "../Header";
-
 export const VideoHero = ({ content }: { content: any }) => {
   const videoUrl = content.video?.asset?._ref
     ? getFileUrl(content.video.asset._ref)
@@ -21,13 +19,14 @@ export const VideoHero = ({ content }: { content: any }) => {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 bg-gradient-to-tr from-black via-black to-[#140701] opacity-50" />
+      <div className="relative flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[700px]">
+        <div className="absolute inset-0">
+          <div className="absolute left-0 right-0 top-0 h-40 bg-gradient-to-b from-black to-transparent"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/30 to-[#141414]" />
+        </div>
 
-      <div className="relative z-10 flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[700px]">
-        <Header isDark />
-        <div className="absolute left-0 right-0 top-0 h-40 bg-gradient-to-b from-black"></div>
-
-        <section className="padded flex flex-1 pb-10 pt-64 xl:pt-64">
+        <section className="padded z-10 flex flex-1 pb-10 pt-64 xl:pt-64">
           <div className="mr-auto mt-auto h-full lg:w-2/3">
             <h1 className="mb-4">{content.title}</h1>
             <p className="font-light lg:w-3/4 lg:text-lg">{content.subtitle}</p>

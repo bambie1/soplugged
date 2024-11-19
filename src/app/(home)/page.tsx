@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { BuyBlackSection } from "@/components/home/BuyBlackSection";
 import { CoCreateAd } from "@/components/home/CoCreateAd";
 import { FeaturedEvent } from "@/components/home/FeaturedEvent";
@@ -33,8 +34,13 @@ export default async function Home() {
 
   return (
     <>
+      <Header isDark />
       <main className="bg-black text-white">
         {content.video && <VideoHero content={content} />}
+
+        {content.podcastHighlight && (
+          <PodcastHighlight content={content.podcastHighlight} />
+        )}
 
         {content.featuredEvent?.event && (
           <FeaturedEvent
@@ -42,12 +48,6 @@ export default async function Home() {
             title={content.featuredEvent.title!}
           />
         )}
-
-        {content.podcastHighlight && (
-          <PodcastHighlight content={content.podcastHighlight} />
-        )}
-
-        <CoCreateAd />
 
         {content.featuredBusinesses && (
           <BuyBlackSection content={content.featuredBusinesses} />

@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jakarta.className} scroll-m-30 flex min-h-screen flex-col overflow-auto !overflow-x-hidden antialiased`}
+        className={`${jakarta.className} scroll-m-30 flex min-h-screen flex-col overflow-auto !overflow-x-hidden bg-black text-white antialiased`}
       >
         {children}
       </body>
