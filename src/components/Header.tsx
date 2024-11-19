@@ -82,6 +82,7 @@ export function Header({ isDark }: { isDark?: boolean }) {
                       className={clsx({
                         "font-bold": pathname === href,
                         "text-white": isDark,
+                        "opacity-70": pathname !== href,
                       })}
                     >
                       {label}
