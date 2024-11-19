@@ -29,13 +29,11 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
     <div className="page-section">
       <div>
         <div className="padded">
-          <p className="mb-6 text-sm uppercase tracking-wide lg:text-base">
-            The Business Mindset Podcast
-          </p>
           <div className="flex justify-between gap-10">
             <div>
-              <h2 className="mb-4">{content.title}</h2>
-              <p className="max-w-2xl">{content.description}</p>
+              <h2 className="max-w-lg font-medium lg:text-2xl">
+                {content.title}
+              </h2>
             </div>
 
             <Link href="/podcast" className="hidden underline lg:block">
@@ -44,7 +42,7 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
           </div>
         </div>
 
-        <div className="lg:padded relative mt-10 flex snap-x snap-mandatory gap-4 overflow-auto px-4 lg:mt-16">
+        <div className="lg:padded relative mt-10 flex snap-x snap-mandatory gap-4 overflow-auto px-4 lg:mt-10">
           {content.episodes.map((item: any, index: number) => (
             <Link
               href={`/podcast/${item.slug.current}`}
