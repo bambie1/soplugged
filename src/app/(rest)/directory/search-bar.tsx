@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDownIcon } from "@sanity/icons"; // Use Heroicons or any icon library
+import { ChevronDownIcon } from "@sanity/icons";
 import { useState } from "react";
 
 export const SearchBar = () => {
@@ -44,8 +44,8 @@ export const SearchBar = () => {
       </div>
 
       <div className="mt-4 flex items-center justify-center gap-4">
-        <p className="text-sm">Popular searches</p>
-        <div className="flex items-center gap-4">
+        <p className="text-sm font-bold">Popular searches</p>
+        <div className="flex flex-wrap items-center gap-2">
           {popularSearches.map((search) => (
             <button
               key={search}
