@@ -56,7 +56,8 @@ export function Header({ isDark }: { isDark?: boolean }) {
       <div
         className={clsx("w-full transition-all duration-300", {
           "border-b border-black/10 bg-white": isScrolled && !isDark,
-          "border-b border-white/50 bg-black": isScrolled && isDark,
+          "border-b border-white/50 bg-black/90 backdrop-blur-md":
+            isScrolled && isDark,
         })}
       >
         <div className="padded">
