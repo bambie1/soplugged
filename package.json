@@ -13,6 +13,7 @@
   "dependencies": {
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.62.2",
+    "@supabase/ssr": "^0.5.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.10",
     "next": "15.0.1",
