@@ -1,14 +1,20 @@
 import { defineField, defineType } from "sanity";
 
-export const ctaBannerType = defineType({
-  name: "ctaBanner",
-  title: "CTA Banner",
+export const footerBannerType = defineType({
+  name: "footerBanner",
+  title: "Footer Banner",
   type: "object",
   fields: [
     defineField({
       type: "string",
       name: "title",
       title: "Title",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      type: "text",
+      name: "subTitle",
+      title: "Subtitle",
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -23,7 +29,7 @@ export const ctaBannerType = defineType({
     },
     prepare({ title }) {
       return {
-        subtitle: "CTA Banner",
+        subtitle: "Footer Banner",
         title,
       };
     },

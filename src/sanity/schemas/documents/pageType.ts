@@ -38,7 +38,15 @@ export const pageType = defineType({
       name: "pageBuilder",
       title: "Page builder",
       type: "array",
-      of: [{ type: "ctaBanner" }],
+      of: [
+        { type: "footerBanner" },
+        {
+          type: "ctaBanner",
+        },
+        {
+          type: "videoHero",
+        },
+      ],
     }),
   ],
   preview: {
