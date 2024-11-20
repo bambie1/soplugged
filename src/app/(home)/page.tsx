@@ -39,14 +39,32 @@ export default async function Home() {
         {content.video && <VideoHero content={content} />}
 
         <div className="mx-auto mt-10 grid max-w-screen-2xl gap-8 px-4 lg:grid-cols-3">
-          <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
-            <Link href="#amplify">Amplify</Link>
+          <div className="flex aspect-[3/1] flex-col border-t border-white/20 py-4">
+            <div className="mb-4 h-12 w-12 rounded-full border bg-tbm-gradient"></div>
+            <p className="mb-4 text-xl font-medium">Amplify</p>
+            <p className="opacity-70">
+              Showcase your work, share your story, and let your business or
+              creative vision shine across our platform. Together, we amplify
+              the voices shaping our future.
+            </p>
           </div>
-          <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
-            Connect
+          <div className="flex aspect-[3/1] flex-col border-t border-white/20 py-4">
+            <div className="mb-4 h-12 w-12 rounded-full border"></div>
+            <p className="mb-4 text-xl font-medium">Connect</p>
+            <p className="opacity-70">
+              Build meaningful relationships with like-minded creators,
+              entrepreneurs, and leaders. Find collaboration opportunities and
+              grow your network in a thriving community.
+            </p>
           </div>
-          <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
-            Educate
+          <div className="flex aspect-[3/1] flex-col border-t border-white/20 py-4">
+            <div className="mb-4 h-12 w-12 rounded-full border"></div>
+            <p className="mb-4 text-xl font-medium">Educate</p>
+            <p className="opacity-70">
+              Access valuable resources, attend workshops, and gain the
+              knowledge you need to take your business or creative pursuits to
+              the next level.
+            </p>
           </div>
         </div>
 
@@ -69,9 +87,9 @@ export default async function Home() {
           </div>
         </div>
 
-        {content.podcastHighlight && (
+        {/* {content.podcastHighlight && (
           <PodcastHighlight content={content.podcastHighlight} />
-        )}
+        )} */}
         {/* 
         {content.featuredEvent?.event && (
           <FeaturedEvent
@@ -89,7 +107,7 @@ export default async function Home() {
         {/* <SubscribeBanner /> */}
       </main>
 
-      <div className="fixed bottom-4 hidden w-full">
+      <div className="fixed bottom-4 w-full">
         <div className="padded flex items-center justify-center">
           <div className="flex items-center justify-center gap-10 rounded-full bg-light p-2 text-black shadow-md shadow-light/40">
             <div className="flex items-center gap-4">
@@ -107,8 +125,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
-      {/* <Footer /> */}
     </>
   );
 }
