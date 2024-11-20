@@ -30,16 +30,11 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
       <div className="padded">
         <div className="flex items-center justify-between gap-10">
           <div className="flex max-w-2xl flex-col items-start">
-            <p className="mb-4 rounded-full border border-white/10 px-4 py-2">
-              Amplify
-            </p>
-            <h2 className="mb-2 font-semibold lg:text-4xl xl:text-5xl">
+            <p className="mb-2 font-medium text-yellow-50 opacity-70">
               The Business Mindset Podcast
-            </h2>
-            <p className="opacity-80">
-              On this podcast, we amplify the stories of Black entrepreneurs in
-              Canada as we explore their journey to building a successful
-              business.
+            </p>
+            <p className="mb-8 max-w-2xl text-2xl lg:text-4xl xl:text-5xl">
+              Amplifying the stories of entrepreneurs
             </p>
           </div>
 
@@ -49,7 +44,7 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
         </div>
       </div>
 
-      <div className="lg:padded relative mt-10 flex snap-x snap-mandatory gap-4 overflow-auto px-4 lg:mt-10">
+      <div className="lg:padded relative mt-6 flex snap-x snap-mandatory gap-4 overflow-auto px-4">
         {content.episodes.map((item: any, index: number) => (
           <Link
             href={`/podcast/${item.slug.current}`}

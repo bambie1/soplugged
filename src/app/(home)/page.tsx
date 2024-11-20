@@ -10,6 +10,7 @@ import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { VideoHero } from "@/components/home/VideoHero";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 
@@ -70,7 +71,7 @@ export default async function Home() {
 
         <div className="page-section padded mt-10">
           <div className="flex max-w-2xl flex-col items-start">
-            <p className="mb-2 opacity-70">
+            <p className="mb-2 font-medium text-yellow-50 opacity-70">
               Our journey began with a simple question
             </p>
             <p className="mb-8 text-2xl lg:text-4xl xl:text-5xl">
@@ -87,9 +88,9 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* {content.podcastHighlight && (
+        {content.podcastHighlight && (
           <PodcastHighlight content={content.podcastHighlight} />
-        )} */}
+        )}
         {/* 
         {content.featuredEvent?.event && (
           <FeaturedEvent
