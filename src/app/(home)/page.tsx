@@ -40,13 +40,13 @@ export default async function Home() {
 
         <div className="mx-auto mt-10 grid max-w-screen-2xl gap-8 px-4 lg:grid-cols-3">
           <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
-            Amplify
-          </div>
-          <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
-            Educate
+            <Link href="#amplify">Amplify</Link>
           </div>
           <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
             Connect
+          </div>
+          <div className="flex aspect-[3/1] items-center justify-center border border-white/20">
+            Educate
           </div>
         </div>
 

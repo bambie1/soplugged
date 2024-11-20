@@ -26,7 +26,7 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
   );
 
   return (
-    <div className="page-section">
+    <div className="page-section" id="amplify">
       <div className="padded">
         <div className="flex items-center justify-between gap-10">
           <div className="flex max-w-2xl flex-col items-start">
