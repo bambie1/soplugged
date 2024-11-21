@@ -15,13 +15,13 @@ const pillars = [
     title: "Connect",
     description:
       "Build meaningful relationships with like-minded creators, entrepreneurs, and leaders. Find collaboration opportunities and grow your network in a thriving community.",
-    href: "#amplify",
+    href: "#connect",
   },
   {
-    title: "Educate",
+    title: "Grow",
     description:
       "Access valuable resources, attend workshops, and gain the knowledge you need to take your business or creative pursuits to the next level.",
-    href: "#amplify",
+    href: "#grow",
   },
 ];
 
@@ -35,7 +35,7 @@ export const Pillars = () => {
           href={pillar.href}
           key={pillar.title}
           className={clsx(
-            "group flex aspect-[3/1] flex-col border-t border-white py-4 transition-all duration-150",
+            "group flex aspect-[3/1] flex-col border-t border-white py-4 transition-all duration-150 hover:border-yellow-100",
             {
               "opacity-100": activeIndex === index,
               "opacity-50": activeIndex !== index,

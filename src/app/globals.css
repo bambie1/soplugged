@@ -13,7 +13,7 @@
 }
 
 h1 {
-  @apply text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl;
+  @apply text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl;
 }
 
 h2 {

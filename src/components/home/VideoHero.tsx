@@ -29,7 +29,7 @@ export const VideoHero = ({ content }: { content: any }) => {
 
         <section className="padded z-10 flex flex-1 pb-10 pt-64 xl:pt-64">
           <div className="mr-auto mt-auto h-full lg:w-3/4">
-            <h1 className="mb-4 xl:text-7xl">{content.title}</h1>
+            <h1 className="mb-4 font-semibold xl:text-7xl">{content.title}</h1>
             <p className="font-light lg:w-3/4 lg:text-lg">{content.subtitle}</p>
 
             <div className="mt-8">

@@ -11,7 +11,7 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
 
   const renderEpisodeInfo = (item: any) => (
     <>
-      <div className="absolute inset-0 flex h-96 flex-col justify-end bg-gradient-to-t from-[#000] to-black/20 p-6 lg:p-8">
+      <div className="absolute inset-0 flex h-full flex-col justify-end bg-gradient-to-t from-[#000] to-black/20 p-6 lg:p-8">
         <p className="mb-2 text-sm text-gray-300">{item.businessName}</p>
         <p className="w-[90%] text-lg font-bold leading-tight lg:w-96 lg:text-xl">
           {item.title}
@@ -33,24 +33,27 @@ export const PodcastHighlight = ({ content }: { content: any }) => {
             <p className="mb-2 font-medium text-yellow-50 opacity-70">
               The Business Mindset Podcast
             </p>
-            <p className="mb-8 max-w-2xl text-2xl lg:text-4xl xl:text-5xl">
+            <p className="mb-8 max-w-2xl text-2xl tracking-tight lg:text-4xl xl:text-5xl">
               Amplifying the stories of entrepreneurs
             </p>
           </div>
 
-          <Link href="/podcast" className="hidden underline lg:block">
+          <Link
+            href="/podcast"
+            className="py-8 underline decoration-yellow-100 underline-offset-8 transition-all duration-150 hover:underline-offset-4"
+          >
             See all episodes
           </Link>
         </div>
       </div>
 
-      <div className="lg:padded relative mt-6 flex snap-x snap-mandatory gap-4 overflow-auto px-4">
+      <div className="relative mx-auto mt-6 flex max-w-screen-2xl snap-x snap-mandatory gap-4 overflow-auto px-4">
         {content.episodes.map((item: any, index: number) => (
           <Link
             href={`/podcast/${item.slug.current}`}
             key={item.title}
             className={clsx(
-              "relative h-96 min-w-[80vw] flex-grow snap-center overflow-hidden rounded-2xl p-4 transition-all duration-500 ease-in-out lg:min-w-[250px] lg:border-[.25px]",
+              "relative h-96 min-w-[80vw] flex-grow snap-center overflow-hidden rounded-2xl p-4 transition-all duration-500 ease-in-out lg:h-[30rem] lg:min-w-[250px] lg:border-[.25px]",
               {
                 "border-white/50 shadow-sm lg:flex-grow-[2]":
                   index === activeIndex,
