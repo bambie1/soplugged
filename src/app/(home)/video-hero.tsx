@@ -1,6 +1,24 @@
+"use client";
+
 import { ArrowRightIcon } from "@sanity/icons";
 
 import { getFileUrl } from "@/sanity/lib/client";
+import { motion } from "framer-motion";
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 export const VideoHero = ({ content }: { content: any }) => {
   const videoUrl = content.video?.asset?._ref
@@ -9,15 +27,21 @@ export const VideoHero = ({ content }: { content: any }) => {
 
   return (
     <div className="relative">
-      <div className="absolute inset-0">
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+      >
         <video
           src={videoUrl}
           autoPlay
           muted
           loop
           className="h-full w-full object-cover"
+          poster="/fallback.jpeg"
         />
-      </div>
+      </motion.div>
 
       <div className="relative flex min-h-[60vh] flex-col bg-black bg-opacity-50 lg:min-h-[700px]">
         {/* Overlays */}
@@ -27,20 +51,35 @@ export const VideoHero = ({ content }: { content: any }) => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/30 to-black" />
         </div>
 
-        <section className="padded z-10 flex flex-1 pb-10 pt-64 xl:pt-64">
+        <motion.section
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="padded z-10 flex flex-1 pb-10 pt-64 xl:pt-64"
+        >
           <div className="mr-auto mt-auto h-full lg:w-3/4">
-            <h1 className="mb-4 font-semibold xl:text-7xl">{content.title}</h1>
-            <p className="font-light lg:w-3/4 lg:text-lg">{content.subtitle}</p>
+            <motion.h1
+              variants={fadeInUp}
+              className="mb-4 font-semibold xl:text-7xl"
+            >
+              {content.title}
+            </motion.h1>
+            <motion.p
+              variants={fadeInUp}
+              className="font-light lg:w-3/4 lg:text-lg"
+            >
+              {content.subtitle}
+            </motion.p>
 
-            <div className="mt-8">
+            <motion.div variants={fadeInUp} className="mt-8">
               <button className="flex items-center gap-2 rounded-full bg-white p-4 font-semibold text-black">
                 {content.cta?.label}
 
                 <ArrowRightIcon className="h-6 w-6" />
               </button>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </div>
     </div>
   );
