@@ -14,6 +14,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { Pillars } from "./pillars";
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 import { ConnectPillar } from "./connect-pillar";
+import { GrowthPillar } from "./growth-pillar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await client.fetch(HOME_PAGE_QUERY);
@@ -66,7 +67,7 @@ export default async function Home() {
         )}
 
         <ConnectPillar />
-
+        <GrowthPillar />
         {/* {content.featuredBusinesses && (
           <BuyBlackSection content={content.featuredBusinesses} />
         )}

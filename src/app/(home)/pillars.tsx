@@ -20,7 +20,7 @@ const pillars = [
   {
     title: "Grow",
     description:
-      "Access valuable resources, attend workshops, and gain the knowledge you need to take your business or creative pursuits to the next level.",
+      "Promote your business on our free online directory and reach a wider audience. Discover resources and tools to help you scale your business and achieve your goals.",
     href: "#grow",
   },
 ];
