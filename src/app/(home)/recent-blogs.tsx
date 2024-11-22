@@ -1,5 +1,6 @@
-import BlogCard from "@/components/shared/BlogCard";
 import Link from "next/link";
+
+import BlogCard from "@/components/shared/BlogCard";
 
 export const RecentBlogs = ({ posts }: { posts: any[] }) => {
   return (
@@ -16,7 +17,7 @@ export const RecentBlogs = ({ posts }: { posts: any[] }) => {
           </div>
 
           <Link
-            href="/events"
+            href="/blog"
             className="py-8 underline decoration-slate-400 underline-offset-8 transition-all duration-150 hover:underline-offset-4"
           >
             See all posts

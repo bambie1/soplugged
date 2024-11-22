@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { VideoHero } from "@/components/home/VideoHero";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -14,6 +13,7 @@ import { Pillars } from "./pillars";
 import { PodcastPillar } from "./podcast-pillar";
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 import { RecentBlogs } from "./recent-blogs";
+import { VideoHero } from "./video-hero";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await client.fetch(HOME_PAGE_QUERY);
