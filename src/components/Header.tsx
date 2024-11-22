@@ -21,7 +21,7 @@ const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
   { href: "/events", label: "Events" },
   { href: "/directory", label: "Directory" },
-  { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
+  // { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
 ];
 
 const resources: { title: string; href: string; description: string }[] = [
