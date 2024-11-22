@@ -4,13 +4,44 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import React from "react";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
   { href: "/events", label: "Events" },
   { href: "/directory", label: "Directory" },
-  { href: "/blog", label: "Blog" },
-  { href: "/podcast", label: "TBM Podcast" },
+  { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
+];
+
+const resources: { title: string; href: string; description: string }[] = [
+  {
+    title: "Blog",
+    href: "/blog",
+    description:
+      "Helpful articles and resources for building your business and brand",
+  },
+  {
+    title: "TBM Podcast",
+    href: "/podcast",
+    description:
+      "Listen to our podcast for interviews with Black entrepreneurs and business owners",
+  },
+  {
+    title: "Events",
+    href: "/events",
+    description: "Join our events and workshops to grow your business",
+  },
 ];
 
 export function Header({ isDark }: { isDark?: boolean }) {
@@ -74,22 +105,45 @@ export function Header({ isDark }: { isDark?: boolean }) {
               />
             </Link>
             <nav className="hidden md:block">
-              <ul className="flex space-x-4">
-                {NAV_LINKS.map(({ href, label }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className={clsx({
-                        "font-bold": pathname === href,
-                        "text-white": isDark,
-                        "opacity-70": pathname !== href,
-                      })}
-                    >
-                      {label}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <Link href="/our-story" legacyBehavior passHref>
+                      <NavigationMenuLink>Our story</NavigationMenuLink>
                     </Link>
-                  </li>
-                ))}
-              </ul>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/directory" legacyBehavior passHref>
+                      <NavigationMenuLink>
+                        Business Directory
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>{" "}
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4">
+                        {resources.map((component) => (
+                          <ListItem
+                            key={component.title}
+                            title={component.title}
+                            href={component.href}
+                          >
+                            {component.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/join" legacyBehavior passHref>
+                      <NavigationMenuLink className="flex items-center gap-2 rounded-full border border-white px-4 py-2">
+                        Join the community
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
             </nav>
             <div className="md:hidden">
               <button
@@ -140,7 +194,7 @@ export function Header({ isDark }: { isDark?: boolean }) {
               {NAV_LINKS.map(({ href, label }) => (
                 <li key={href}>
                   <Link
-                    href={href}
+                    href="/"
                     className={clsx("uppercase", {
                       "font-bold": pathname === href,
                     })}
@@ -153,15 +207,41 @@ export function Header({ isDark }: { isDark?: boolean }) {
           </nav>
 
           <div className="mt-auto pb-8">
-            <a
+            <Link
               href="/join"
               className="block w-full rounded-full bg-black px-6 py-4 text-center text-lg font-medium text-white transition-colors hover:bg-black/90"
             >
               Join the community
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </header>
   );
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex select-none gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-black/5",
+            className,
+          )}
+          {...props}
+        >
+          <div className="h-10 w-10 shrink-0 rounded-full border"></div>
+          <div>
+            <div className="mb-2 font-semibold">{title}</div>
+            <p className="line-clamp-2 text-sm opacity-80">{children}</p>
+          </div>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
