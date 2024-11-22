@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { urlFor } from "@/sanity/lib/image";
 
-export const PodcastHighlight = ({ content }: { content: any }) => {
+export const PodcastPillar = ({ content }: { content: any }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const renderEpisodeInfo = (item: any) => (

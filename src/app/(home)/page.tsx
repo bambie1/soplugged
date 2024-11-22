@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { BuyBlackSection } from "@/components/home/BuyBlackSection";
-import { PodcastHighlight } from "@/components/home/PodcastHighlight";
+import { PodcastPillar } from "@/app/(home)/podcast-pillar";
 import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { VideoHero } from "@/components/home/VideoHero";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
@@ -62,7 +62,7 @@ export default async function Home() {
         </div>
 
         {content.podcastHighlight && (
-          <PodcastHighlight content={content.podcastHighlight} />
+          <PodcastPillar content={content.podcastHighlight} />
         )}
 
         <ConnectPillar />
