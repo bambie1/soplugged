@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-export const GrowthPillar = () => {
+import { FeaturedBusinessesGrid } from "./featured-businesses-grid";
+
+export const GrowthPillar = ({ content }: { content: any }) => {
   return (
     <>
       <div className="page-section" id="grow">
@@ -22,7 +24,9 @@ export const GrowthPillar = () => {
           </Link>
         </div>
 
-        <div className="mt-10 h-96 border"></div>
+        <div className="mt-10">
+          <FeaturedBusinessesGrid content={content} />
+        </div>
       </div>
     </>
   );

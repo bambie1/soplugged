@@ -3,18 +3,17 @@ import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { BuyBlackSection } from "@/components/home/BuyBlackSection";
-import { PodcastPillar } from "@/app/(home)/podcast-pillar";
-import { RecentBlogs } from "@/components/home/RecentBlogs";
 import { VideoHero } from "@/components/home/VideoHero";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
-import { Pillars } from "./pillars";
-import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 import { ConnectPillar } from "./connect-pillar";
 import { GrowthPillar } from "./growth-pillar";
+import { Pillars } from "./pillars";
+import { PodcastPillar } from "./podcast-pillar";
+import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
+import { RecentBlogs } from "./recent-blogs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await client.fetch(HOME_PAGE_QUERY);
@@ -67,15 +66,11 @@ export default async function Home() {
         )}
 
         <ConnectPillar />
-        <GrowthPillar />
-        {/* {content.featuredBusinesses && (
-          <BuyBlackSection content={content.featuredBusinesses} />
-        )}
+        <GrowthPillar content={content.featuredBusinesses} />
 
-        {recentBlogs && <RecentBlogs posts={recentBlogs} />} */}
+        {recentBlogs && <RecentBlogs posts={recentBlogs} />}
 
-        {/* <SubscribeBanner /> */}
-        <div className="sticky bottom-4 mb-10 w-full">
+        <div className="fixed bottom-4 w-full">
           <div className="padded flex items-center justify-center">
             <div className="flex items-center justify-center gap-10 rounded-full bg-light p-2 text-black shadow-md shadow-light/40">
               <div className="flex items-center gap-4">
@@ -93,7 +88,6 @@ export default async function Home() {
             </div>
           </div>
         </div>
-
         <SubscribeBanner />
       </main>
 
