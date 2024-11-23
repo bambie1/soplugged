@@ -71,7 +71,15 @@ export default async function Home() {
 
         {recentBlogs && <RecentBlogs posts={recentBlogs} />}
 
-        <div className="fixed bottom-4 w-full">
+        <div className="fixed bottom-4 right-4 lg:hidden">
+          <Link
+            href="/"
+            className="flex aspect-square w-12 items-center justify-center rounded-full bg-light p-1 font-medium text-black"
+          >
+            <div className="aspect-square w-full rounded-full border border-black"></div>
+          </Link>
+        </div>
+        <div className="fixed bottom-4 hidden w-full lg:block">
           <div className="padded flex items-center justify-center">
             <div className="flex items-center justify-center gap-10 rounded-full bg-light p-2 text-black shadow-md shadow-light/40">
               <div className="flex items-center gap-4">

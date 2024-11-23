@@ -60,7 +60,7 @@ export const VideoHero = ({ content }: { content: any }) => {
           <div className="mr-auto mt-auto h-full lg:w-3/4">
             <motion.h1
               variants={fadeInUp}
-              className="mb-4 font-semibold xl:text-7xl"
+              className="mb-4 text-5xl font-semibold xl:text-7xl"
             >
               {content.title}
             </motion.h1>
