@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -16,17 +17,17 @@ const NAV_LINKS = [
 export const MobileNav = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     setIsScrolled(scrollPosition > 200);
 
     // Close mobile menu when scrolling
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
     }
-  }, [isMobileMenuOpen]);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScrollDebounced = () => {
@@ -41,21 +42,21 @@ export const MobileNav = () => {
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset"; // Ensure to reset on cleanup
     };
-  }, [isMobileMenuOpen]);
+  }, [isMenuOpen]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prev) => !prev);
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border-b border-white/50 bg-black/90 backdrop-blur-md": isScrolled,
+          "border-b border-white/50 bg-black/90": isScrolled,
         })}
       >
         <div className="padded">
@@ -67,70 +68,82 @@ export const MobileNav = () => {
                 className="h-8 lg:h-10"
               />
             </Link>
+
             <div>
               <button
-                onClick={toggleMobileMenu}
-                className={clsx(
-                  "flex flex-col items-center justify-center space-y-2",
-                  { "fixed right-4 top-6 z-30": isMobileMenuOpen },
-                )}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="fixed right-0 top-0 z-20 mx-4 flex h-16 w-16 cursor-pointer items-center justify-center"
               >
-                <span
-                  className={clsx(
-                    "h-0.5 w-10 rounded-full transition-transform",
-                    {
-                      "translate-y-1 rotate-45 scale-75 transform":
-                        isMobileMenuOpen,
-                    },
-                  )}
-                ></span>
-                <span
-                  className={clsx(
-                    "h-0.5 w-10 rounded-full transition-transform",
-                    {
-                      "-translate-y-1 -rotate-45 scale-75 transform":
-                        isMobileMenuOpen,
-                    },
-                  )}
-                ></span>
+                <div className="relative w-full">
+                  <div
+                    className={clsx(
+                      "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform bg-white transition-transform",
+                      isMenuOpen ? "top-[calc(50%-1px)] rotate-45" : "-top-1",
+                    )}
+                  ></div>
+                  <div
+                    className={clsx(
+                      "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform bg-white transition-transform",
+                      isMenuOpen ? "top-[calc(50%-1px)] -rotate-45" : "top-1",
+                    )}
+                  ></div>
+                </div>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className={clsx(
-          "fixed inset-0 z-20 bg-white text-black transition-transform duration-300",
-          {
-            hidden: !isMobileMenuOpen,
-          },
-        )}
-      >
-        <div className="padded flex h-full flex-col pt-24">
-          <nav className="flex-1">
-            <ul className="mt-10 space-y-8 text-2xl">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href="/"
-                    className={clsx("uppercase", {
-                      "font-bold": pathname === href,
-                    })}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
-          <div className="mt-auto pb-8">
-            <Link
-              href="/join"
-              className="block w-full rounded-full bg-black px-6 py-4 text-center text-lg font-medium text-white transition-colors hover:bg-black/90"
-            >
-              Join the community
-            </Link>
+            <AnimatePresence mode="wait">
+              {isMenuOpen && (
+                <motion.div
+                  variants={{
+                    initial: { x: "calc(100% + 100px)" },
+
+                    enter: {
+                      x: "0",
+                      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                    },
+
+                    exit: {
+                      x: "calc(100% + 100px)",
+                      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                    },
+                  }}
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                  className="fixed right-0 top-0 h-screen w-screen bg-black/80 text-white backdrop-blur-lg"
+                >
+                  <div className="box-border flex h-full flex-col justify-between p-4">
+                    <div className="mt-40 flex flex-col gap-3 text-4xl">
+                      {NAV_LINKS.map((data, index) => (
+                        <Link
+                          href={data.href}
+                          key={index}
+                          className={clsx(
+                            "mb-4 border-b border-white/20 pb-6 font-light text-white no-underline transition",
+                          )}
+                        >
+                          {data.label}
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap justify-between gap-4">
+                      <a href="#" className="text-white hover:text-gray-400">
+                        Awwwards
+                      </a>
+                      <a href="#" className="text-white hover:text-gray-400">
+                        Instagram
+                      </a>
+                      <a href="#" className="text-white hover:text-gray-400">
+                        Dribble
+                      </a>
+                      <a href="#" className="text-white hover:text-gray-400">
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
