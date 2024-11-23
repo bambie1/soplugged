@@ -37,7 +37,7 @@ export default async function Home() {
 
   return (
     <>
-      <Nav isDark />
+      <Nav />
       <main className="relative bg-black text-white selection:bg-light/90 selection:text-black">
         {content.video && <VideoHero content={content} />}
 

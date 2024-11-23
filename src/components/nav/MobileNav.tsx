@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
+import { NavProps } from ".";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
@@ -14,7 +15,7 @@ const NAV_LINKS = [
   // { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
 ];
 
-export const MobileNav = () => {
+export const MobileNav = (props: NavProps) => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -34,7 +34,7 @@ export default async function OurStoryPage() {
 
   return (
     <>
-      <Nav />
+      <Nav isLight />
 
       <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 

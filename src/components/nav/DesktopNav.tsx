@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { NavProps } from ".";
 
 const resources: { title: string; href: string; description: string }[] = [
   {
@@ -35,8 +36,10 @@ const resources: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export const DesktopNav = () => {
+export const DesktopNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const showLight = isLight && !isScrolled;
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
@@ -58,14 +61,19 @@ export const DesktopNav = () => {
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border-b border-white/50 bg-black/90 backdrop-blur-md": isScrolled,
+          "border-b border-white/50 bg-black/90 text-white backdrop-blur-md":
+            isScrolled,
         })}
       >
         <div className="padded">
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link href="/" className="z-30">
               <img
-                src="/logos/soplugged.svg"
+                src={
+                  showLight
+                    ? "/logos/soplugged_black.svg"
+                    : "/logos/soplugged.svg"
+                }
                 alt="SoPlugged logo"
                 className="h-8 lg:h-10"
               />
@@ -103,7 +111,12 @@ export const DesktopNav = () => {
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Link href="/join" legacyBehavior passHref>
-                      <NavigationMenuLink className="flex items-center gap-2 rounded-full border border-white px-4 py-2">
+                      <NavigationMenuLink
+                        className={clsx(
+                          "flex items-center gap-2 rounded-full border px-4 py-2",
+                          showLight ? "border-black" : "border-white",
+                        )}
+                      >
                         Join the community
                       </NavigationMenuLink>
                     </Link>

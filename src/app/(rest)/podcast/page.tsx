@@ -19,7 +19,7 @@ export default async function PodcastPage() {
 
   return (
     <>
-      <Nav isDark />
+      <Nav />
       <div className="bg-tbm-gradient py-40 pb-28 text-center text-white lg:py-48">
         <div className="padded">
           <div className="mx-auto max-w-xl">
