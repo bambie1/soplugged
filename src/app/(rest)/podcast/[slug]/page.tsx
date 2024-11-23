@@ -3,7 +3,7 @@ import type { PortableTextComponents } from "next-sanity";
 import { PortableText, toPlainText } from "next-sanity";
 import slugify from "slugify";
 
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -68,7 +68,7 @@ export default async function Page({
 
   return (
     <div className="bg-black">
-      <Header isDark />
+      <Nav isDark />
 
       <PodcastHero content={content} />
 

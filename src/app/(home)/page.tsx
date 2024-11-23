@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -37,7 +37,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header isDark />
+      <Nav isDark />
       <main className="relative bg-black text-white selection:bg-light/90 selection:text-black">
         {content.video && <VideoHero content={content} />}
 

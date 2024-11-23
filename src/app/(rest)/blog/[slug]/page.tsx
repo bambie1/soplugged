@@ -4,7 +4,7 @@ import { PortableText, toPlainText } from "next-sanity";
 import slugify from "slugify";
 
 import { TableOfContents } from "@/components/blog/TableOfContents";
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDate } from "@/utils/getDate";
@@ -74,7 +74,7 @@ export default async function Page({
 
   return (
     <>
-      <Header />
+      <Nav />
       <div className="bg-light">
         <div className="padded grid gap-20 py-10 lg:grid-cols-3 lg:py-20">
           <div className="lg:col-span-2">

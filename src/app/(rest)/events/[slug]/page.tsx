@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -53,7 +53,7 @@ export default async function Page({
 
   return (
     <>
-      <Header />
+      <Nav />
       <PageHeader title={content.name} description={getDate(content.date)} />
       <div className="padded mb-20">
         <div className="prose mx-auto">

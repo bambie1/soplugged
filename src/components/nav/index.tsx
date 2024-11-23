@@ -3,7 +3,7 @@
 import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
 
-export function Header({}: { isDark?: boolean }) {
+export function Nav({}: { isDark?: boolean }) {
   return (
     <>
       <div className="hidden lg:block">

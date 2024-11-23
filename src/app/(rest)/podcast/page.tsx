@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -19,7 +19,7 @@ export default async function PodcastPage() {
 
   return (
     <>
-      <Header isDark />
+      <Nav isDark />
       <div className="bg-tbm-gradient py-40 pb-28 text-center text-white lg:py-48">
         <div className="padded">
           <div className="mx-auto max-w-xl">

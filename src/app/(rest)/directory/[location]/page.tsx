@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 
 import { SearchBar } from "../search-bar";
@@ -7,7 +7,7 @@ import { SearchResults } from "../search-results";
 export default async function LocationDirectoryPage() {
   return (
     <div className="relative z-10">
-      <Header />
+      <Nav />
 
       <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
