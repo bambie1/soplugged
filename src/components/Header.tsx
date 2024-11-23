@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { List } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -17,7 +18,6 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { List } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
