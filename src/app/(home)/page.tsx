@@ -47,7 +47,7 @@ export default async function Home() {
             <p className="mb-2 font-medium text-yellow-50 opacity-70">
               Our journey began with a simple question
             </p>
-            <p className="mb-8 text-2xl tracking-tight lg:text-4xl xl:text-5xl">
+            <p className="mb-8 text-3xl tracking-tight lg:text-4xl xl:text-5xl">
               How can we close the gap for Black entrepreneurs who often face
               unique challenges in visibility and resources?
             </p>

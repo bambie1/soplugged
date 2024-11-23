@@ -29,23 +29,27 @@ export const Pillars = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="mx-auto mt-10 grid max-w-screen-2xl gap-8 px-4 lg:grid-cols-3">
+    <div className="mx-auto mt-10 grid w-full gap-4 overflow-hidden px-4 lg:grid-cols-3 lg:gap-8 xl:max-w-screen-2xl">
       {pillars.map((pillar, index) => (
         <Link
           href={pillar.href}
           key={pillar.title}
           className={clsx(
-            "group flex aspect-[3/1] flex-col border-t border-white py-4 transition-all duration-150 hover:border-yellow-100",
+            "group flex flex-col border-t border-white/50 py-4 transition-all duration-150 hover:border-yellow-100 lg:border-white",
             {
-              "opacity-100": activeIndex === index,
-              "opacity-50": activeIndex !== index,
+              "lg:opacity-100": activeIndex === index,
+              "lg:opacity-50": activeIndex !== index,
             },
           )}
           onMouseOver={() => setActiveIndex(index)}
         >
-          <div className="mb-4 h-12 w-12 rounded-full border"></div>
-          <p className="mb-4 text-xl font-medium">{pillar.title}</p>
-          <p className="opacity-70">{pillar.description}</p>
+          <div className="mb-4 aspect-square w-8 rounded-full border lg:w-12"></div>
+          <p className="mb-2 text-lg font-medium lg:mb-4 lg:text-xl">
+            {pillar.title}
+          </p>
+          <p className="text-sm opacity-70 lg:text-base">
+            {pillar.description}
+          </p>
         </Link>
       ))}
     </div>

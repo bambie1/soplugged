@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { urlFor } from "@/sanity/lib/image";
+import { PillarHeading } from "./pillar-heading";
 
 export const PodcastPillar = ({ content }: { content: any }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,25 +28,11 @@ export const PodcastPillar = ({ content }: { content: any }) => {
 
   return (
     <div className="page-section" id="amplify">
-      <div className="padded">
-        <div className="flex items-center justify-between gap-10">
-          <div className="flex max-w-2xl flex-col items-start">
-            <p className="mb-2 font-medium text-yellow-50 opacity-70">
-              The Business Mindset Podcast
-            </p>
-            <p className="mb-8 max-w-2xl text-2xl tracking-tight lg:text-4xl xl:text-5xl">
-              Amplifying the stories of entrepreneurs
-            </p>
-          </div>
-
-          <Link
-            href="/podcast"
-            className="py-8 underline decoration-yellow-100 underline-offset-8 transition-all duration-150 hover:underline-offset-4"
-          >
-            See all episodes
-          </Link>
-        </div>
-      </div>
+      <PillarHeading
+        title="Amplifying the stories of entrepreneurs"
+        subTitle="The Business Mindset Podcast"
+        link={{ href: "/podcast", text: "See all episodes" }}
+      />
 
       <div className="relative mx-auto mt-6 flex max-w-screen-2xl snap-x snap-mandatory gap-4 overflow-auto px-4">
         {content.episodes.map((item: any, index: number) => (
