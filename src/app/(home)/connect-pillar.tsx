@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { PillarHeading } from "./pillar-heading";
 
 export const ConnectPillar = () => {

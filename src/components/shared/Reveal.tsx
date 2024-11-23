@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-import { ReactNode, useEffect, useRef } from "react";
+import type { ReactNode} from "react";
+import { useEffect, useRef } from "react";
 
 export const Reveal = ({ children }: { children: ReactNode }) => {
   const ref = useRef(null);

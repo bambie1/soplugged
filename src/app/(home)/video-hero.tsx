@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRightIcon } from "@sanity/icons";
+import { motion } from "framer-motion";
 
 import { getFileUrl } from "@/sanity/lib/client";
-import { motion } from "framer-motion";
 
 const staggerContainer = {
   hidden: { opacity: 0 },

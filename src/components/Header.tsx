@@ -4,6 +4,8 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import React from "react";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +17,6 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import React from "react";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },

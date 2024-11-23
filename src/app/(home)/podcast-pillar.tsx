@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { urlFor } from "@/sanity/lib/image";
+
 import { PillarHeading } from "./pillar-heading";
 
 export const PodcastPillar = ({ content }: { content: any }) => {
