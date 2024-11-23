@@ -17,6 +17,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { List } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
@@ -246,3 +247,5 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
+
+ListItem.displayName = "ListItem";
