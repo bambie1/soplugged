@@ -27,7 +27,7 @@ export default async function OurStoryPage() {
   const { images, ourPartners, meetTheTeam } = content;
 
   const renderImage = (url: string) => (
-    <div className="flex h-full overflow-hidden rounded-xl">
+    <div className="flex h-full overflow-hidden rounded-md lg:rounded-xl">
       <img src={url} alt="" className="w-full object-cover" />
     </div>
   );
@@ -38,11 +38,13 @@ export default async function OurStoryPage() {
 
       <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
-      <div className="flex flex-col items-center pb-20 pt-40 text-center text-primary lg:pt-48">
-        <h1 className="mb-4">{content.title}</h1>
+      <div className="flex flex-col items-center overflow-hidden pb-20 pt-40 text-center text-primary lg:pt-48">
+        <h1 className="mb-4 text-5xl font-semibold xl:text-7xl">
+          {content.title}
+        </h1>
         <p className="lg:text-lg">{content.description}</p>
 
-        <div className="mt-20 grid aspect-[3/1] w-full max-w-5xl grid-cols-3 gap-2 lg:gap-4">
+        <div className="-ml-2 mt-16 grid aspect-[3/1] w-[115%] max-w-5xl grid-cols-3 gap-2 lg:w-full lg:gap-4">
           {renderImage(images[0].asset.url)}
 
           <div className="grid h-full min-h-0 grid-rows-2 gap-2 rounded-xl lg:gap-4">
@@ -62,7 +64,7 @@ export default async function OurStoryPage() {
         <div className="prose mx-auto">
           <div className="mb-20">
             <h2>{meetTheTeam.title}</h2>
-            <div className="mb-8 flex items-center gap-8 lg:gap-24">
+            <div className="mb-8 flex flex-wrap items-center gap-8 lg:gap-24">
               {meetTheTeam.members.map((member: any) => (
                 <div key={member.name} className="flex items-center gap-2">
                   <img

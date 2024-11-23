@@ -3,10 +3,10 @@
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
-import { NavProps } from ".";
+
+import type { NavProps } from ".";
 
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
@@ -15,10 +15,11 @@ const NAV_LINKS = [
   // { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
 ];
 
-export const MobileNav = (props: NavProps) => {
-  const pathname = usePathname();
+export const MobileNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const showLight = !isMenuOpen && isLight && !isScrolled;
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
@@ -49,10 +50,6 @@ export const MobileNav = (props: NavProps) => {
     };
   }, [isMenuOpen]);
 
-  const toggleMobileMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
   return (
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
@@ -64,48 +61,54 @@ export const MobileNav = (props: NavProps) => {
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link href="/" className="z-30">
               <img
-                src="/logos/soplugged.svg"
+                src={
+                  showLight
+                    ? "/logos/soplugged_black.svg"
+                    : "/logos/soplugged.svg"
+                }
                 alt="SoPlugged logo"
                 className="h-8 lg:h-10"
               />
             </Link>
 
-            <div>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="fixed right-0 top-0 z-20 mx-4 flex h-16 w-16 cursor-pointer items-center justify-center"
-              >
-                <div className="relative w-full">
-                  <div
-                    className={clsx(
-                      "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform bg-white transition-transform",
-                      isMenuOpen ? "top-[calc(50%-1px)] rotate-45" : "-top-1",
-                    )}
-                  ></div>
-                  <div
-                    className={clsx(
-                      "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform bg-white transition-transform",
-                      isMenuOpen ? "top-[calc(50%-1px)] -rotate-45" : "top-1",
-                    )}
-                  ></div>
-                </div>
-              </button>
-            </div>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="z-20 flex h-16 w-16 cursor-pointer items-center justify-center"
+            >
+              <div className="relative w-full">
+                <div
+                  className={clsx(
+                    "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform transition-transform",
+                    isMenuOpen ? "top-[calc(50%-1px)] rotate-45" : "-top-1",
+                    showLight ? "bg-black" : "bg-white",
+                  )}
+                ></div>
+                <div
+                  className={clsx(
+                    "absolute left-1/2 h-[1px] -translate-x-1/2 transform transition-transform",
+                    isMenuOpen
+                      ? "top-[calc(50%-1px)] w-3/5 -rotate-45"
+                      : "top-1 w-1/2",
+                    showLight ? "bg-black" : "bg-white",
+                  )}
+                ></div>
+              </div>
+            </button>
 
             <AnimatePresence mode="wait">
               {isMenuOpen && (
                 <motion.div
                   variants={{
-                    initial: { x: "calc(100% + 100px)" },
+                    initial: { y: "-100%" },
 
                     enter: {
-                      x: "0",
-                      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                      y: "0",
+                      transition: { duration: 0.2, ease: [0.76, 0, 0.24, 1] },
                     },
 
                     exit: {
-                      x: "calc(100% + 100px)",
-                      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+                      y: "-100%",
+                      transition: { duration: 0.2, ease: [0.76, 0, 0.24, 1] },
                     },
                   }}
                   initial="initial"
@@ -126,20 +129,6 @@ export const MobileNav = (props: NavProps) => {
                           {data.label}
                         </Link>
                       ))}
-                    </div>
-                    <div className="flex flex-wrap justify-between gap-4">
-                      <a href="#" className="text-white hover:text-gray-400">
-                        Awwwards
-                      </a>
-                      <a href="#" className="text-white hover:text-gray-400">
-                        Instagram
-                      </a>
-                      <a href="#" className="text-white hover:text-gray-400">
-                        Dribble
-                      </a>
-                      <a href="#" className="text-white hover:text-gray-400">
-                        LinkedIn
-                      </a>
                     </div>
                   </div>
                 </motion.div>

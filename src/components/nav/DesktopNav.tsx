@@ -14,7 +14,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { NavProps } from ".";
+
+import type { NavProps } from ".";
 
 const resources: { title: string; href: string; description: string }[] = [
   {
