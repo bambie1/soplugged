@@ -14,6 +14,7 @@ import { PodcastPillar } from "./podcast-pillar";
 import { HOME_PAGE_QUERY, HOME_POSTS_QUERY } from "./queries";
 import { RecentBlogs } from "./recent-blogs";
 import { VideoHero } from "./video-hero";
+import { ArrowRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await client.fetch(HOME_PAGE_QUERY);
@@ -83,7 +84,9 @@ export default async function Home() {
                 href="/"
                 className="rounded-full bg-black p-4 font-medium text-white"
               >
-                Get your tickets
+                <span className="hidden md:inline">Get your tickets</span>
+
+                <ArrowRight size={24} className="lg:hidden" />
               </Link>
             </div>
           </div>

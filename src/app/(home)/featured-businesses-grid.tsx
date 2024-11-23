@@ -30,31 +30,31 @@ export const FeaturedBusinessesGrid = ({ content }: { content: any }) => {
   };
 
   return (
-    <>
-      <div className="relative -ml-10 mt-10 grid h-[30rem] w-[105%] grid-cols-4 items-start gap-4 overflow-hidden lg:h-[50rem] xl:grid-cols-6 xl:gap-6">
-        <div className="grid grid-rows-2 gap-6">
+    <div className="overflow-hidden">
+      <div className="relative -ml-10 mt-10 grid h-[30rem] w-[120%] grid-cols-3 items-start gap-4 md:grid-cols-4 lg:h-[50rem] lg:w-[105%] xl:grid-cols-6 xl:gap-6">
+        <div className="grid grid-rows-2 gap-4 xl:gap-6">
           {renderCard(businesses[0])}
           {renderCard(businesses[1])}
         </div>
-        <div className="mt-20 grid grid-rows-2 gap-6">
+        <div className="mt-20 grid grid-rows-2 gap-4 xl:gap-6">
           {renderCard(businesses[2])}
           {renderCard(businesses[3])}
         </div>
-        <div className="mt-40 grid grid-rows-2 gap-6 xl:col-span-2">
+        <div className="mt-40 hidden grid-rows-2 gap-4 lg:grid xl:col-span-2 xl:gap-6">
           {renderCard(businesses[4], true)}
           {renderCard(businesses[5], true)}
         </div>
-        <div className="mt-20 grid grid-rows-2 gap-6">
+        <div className="mt-20 hidden grid-rows-2 gap-4 lg:grid xl:gap-6">
           {renderCard(businesses[6])}
           {renderCard(businesses[7])}
         </div>
-        <div className="grid grid-rows-2 gap-6">
+        <div className="grid grid-rows-2 gap-4 xl:gap-6">
           {renderCard(businesses[8])}
           {renderCard(businesses[9])}
         </div>
 
         <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-black"></div>
       </div>
-    </>
+    </div>
   );
 };
