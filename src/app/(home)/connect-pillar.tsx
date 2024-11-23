@@ -26,12 +26,14 @@ export const ConnectPillar = () => {
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="aspect-square h-24 w-24 rounded-full bg-white opacity-75"></div>
+              <div className="aspect-square w-12 rounded-full bg-white opacity-75 lg:w-24"></div>
             </div>
 
-            <div className="absolute bottom-10 right-10 flex flex-col items-end">
-              <p className="font-semibold lg:text-lg">Black Market at Stackt</p>
-              <p className="text-sm opacity-80 lg:text-base">October 2024</p>
+            <div className="absolute bottom-4 right-4 flex flex-col items-end lg:bottom-10 lg:right-10">
+              <p className="text-sm font-semibold lg:text-lg">
+                Black Market at Stackt
+              </p>
+              <p className="text-xs opacity-80 lg:text-base">October 2024</p>
             </div>
           </div>
         </div>

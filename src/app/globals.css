@@ -24,9 +24,16 @@ h3 {
   @apply scroll-m-24 text-2xl font-semibold tracking-tight xl:text-3xl;
 }
 
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 @layer base {
   :root {
-
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
 }
