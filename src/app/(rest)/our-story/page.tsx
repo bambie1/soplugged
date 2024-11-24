@@ -33,18 +33,18 @@ export default async function OurStoryPage() {
   );
 
   return (
-    <>
+    <div className="relative">
       <Nav isLight />
 
-      <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
+      <div className="absolute left-0 top-0 z-0 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
       <div className="flex flex-col items-center overflow-hidden pb-20 pt-40 text-center text-primary lg:pt-48">
-        <h1 className="mb-4 text-5xl font-semibold xl:text-7xl">
+        <h1 className="z-10 mb-4 text-5xl font-semibold xl:text-7xl">
           {content.title}
         </h1>
-        <p className="lg:text-lg">{content.description}</p>
+        <p className="z-10 lg:text-lg">{content.description}</p>
 
-        <div className="-ml-2 mt-16 grid aspect-[3/1] w-[115%] max-w-5xl grid-cols-3 gap-2 lg:w-full lg:gap-4">
+        <div className="z-10 -ml-2 mt-16 grid aspect-[3/1] w-[115%] max-w-5xl grid-cols-3 gap-2 lg:w-full lg:gap-4">
           {renderImage(images[0].asset.url)}
 
           <div className="grid h-full min-h-0 grid-rows-2 gap-2 rounded-xl lg:gap-4">
@@ -99,6 +99,6 @@ export default async function OurStoryPage() {
         title="Join the growing community"
         subtitle="On this podcast, we amplify the stories of Black entrepreneurs in Canada as we explore their journey to building a successful business."
       />
-    </>
+    </div>
   );
 }
