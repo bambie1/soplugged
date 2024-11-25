@@ -8,8 +8,8 @@ export default async function DirectoryPage() {
   const { data: businesses } = await supabase
     .from("businesses")
     .select()
-    .order("confidence_rating", { ascending: true })
-    .order("sample_images", { ascending: true });
+    .order("confidence_rating", { ascending: false, nullsFirst: false })
+    .order("sample_images", { ascending: false, nullsFirst: false });
 
   return (
     <>
