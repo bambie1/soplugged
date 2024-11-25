@@ -56,7 +56,11 @@ export default async function BusinessPage({
 export async function generateStaticParams() {
   const { data: businesses } = await supabase.from("businesses").select(`slug`);
 
-  return businesses?.map((business: any) => ({
+  if (!businesses) {
+    return [];
+  }
+
+  return businesses.map((business: any) => ({
     slug: business.slug,
   }));
 }
