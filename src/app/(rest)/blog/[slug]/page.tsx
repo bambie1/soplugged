@@ -74,10 +74,10 @@ export default async function Page({
 
   return (
     <>
-      <Nav />
+      <Nav isLight />
       <div className="bg-light">
         <div className="padded grid gap-20 py-10 lg:grid-cols-3 lg:py-20">
-          <div className="lg:col-span-2">
+          <div className="mt-10 lg:col-span-2 lg:mt-16">
             <p className="uppercase">{getDate(content.publishedAt)}</p>
             <h1 className="mb-4 mt-4 text-primary">{content.title}</h1>
             <div className="flex items-center gap-2">

@@ -8,7 +8,7 @@ export const ContactBox = ({
   website_url?: string;
 }) => {
   return (
-    <div className="bg-light p-4 text-primary lg:rounded-xl">
+    <div className="sticky top-24 bg-white p-4 text-primary shadow-md lg:mt-40 lg:rounded-xl">
       <p className="mb-4 text-lg font-bold text-primary">
         Shop with this business
       </p>

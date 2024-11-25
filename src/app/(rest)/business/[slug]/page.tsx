@@ -51,7 +51,6 @@ export default async function BusinessPage({
     sample_images,
     category,
     business_description,
-    fixed_to_one_location,
     ig_handle,
     website_url,
   } = business;
@@ -62,10 +61,10 @@ export default async function BusinessPage({
     <div className="relative z-10">
       <Nav isLight />
 
-      <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
+      <div className="absolute left-0 top-0 -z-10 h-96 w-full bg-light lg:h-[40rem]"></div>
 
-      <div className="padded pb-16 pt-28 lg:pt-48">
-        <div className=" ">
+      <div className="pb-16 pt-28 lg:pt-36">
+        <div className="padded">
           <div className="mb-2 flex items-center gap-2">
             <Link href="/directory">
               <Home size={16} />
@@ -81,8 +80,8 @@ export default async function BusinessPage({
           <h1 className="max-w-2xl text-primary">{business_name}</h1>
         </div>
 
-        <div className="mt-8 grid items-start gap-4 lg:mt-12 lg:grid-cols-3 lg:gap-8">
-          <div className="lg:col-span-2">
+        <div className="padded mt-8 flex flex-col gap-4 lg:mt-12 lg:flex-row lg:gap-8">
+          <div className="lg:w-2/3">
             <ImageGallery sample_images={sample_images} />
             <section
               dangerouslySetInnerHTML={{
@@ -92,7 +91,9 @@ export default async function BusinessPage({
             />
           </div>
 
-          <ContactBox ig_handle={ig_handle} website_url={website_url} />
+          <div className="flex-shrink-0 lg:w-1/3">
+            <ContactBox ig_handle={ig_handle} website_url={website_url} />
+          </div>
         </div>
       </div>
       <SubscribeBanner />
