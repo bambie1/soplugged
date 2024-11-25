@@ -9,7 +9,7 @@ export const SearchResults = ({ businesses }: { businesses?: any[] }) => {
 
         return (
           <Link key={business} className="" href={`/business/${business.slug}`}>
-            <div className="relative aspect-video overflow-hidden lg:rounded-2xl">
+            <div className="relative aspect-video overflow-hidden lg:rounded-2xl lg:border">
               {mainImage && (
                 <Image
                   src={mainImage}
