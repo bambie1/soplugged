@@ -68,7 +68,9 @@ export const VideoHero = ({ content }: { content: any }) => {
               variants={fadeInUp}
               className="font-light lg:w-3/4 lg:text-lg"
             >
-              {content.subtitle}
+              At SoPlugged, we're committed to empowering Black entrepreneurs
+              through useful business resources, networking opportunities and
+              lots more!
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mt-8">
