@@ -106,15 +106,15 @@ export const MobileNav = ({ isLight }: NavProps) => {
               {isMenuOpen && (
                 <motion.div
                   variants={{
-                    initial: { y: "-100%" },
+                    initial: { opacity: 0 },
 
                     enter: {
-                      y: "0",
+                      opacity: 1,
                       transition: { duration: 0.2, ease: [0.76, 0, 0.24, 1] },
                     },
 
                     exit: {
-                      y: "-100%",
+                      opacity: 0,
                       transition: { duration: 0.2, ease: [0.76, 0, 0.24, 1] },
                     },
                   }}
