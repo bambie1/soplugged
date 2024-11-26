@@ -40,8 +40,6 @@ const resources: { title: string; href: string; description: string }[] = [
 export const DesktopNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const showLight = isLight && !isScrolled;
-
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     setIsScrolled(scrollPosition > 200);
@@ -61,21 +59,18 @@ export const DesktopNav = ({ isLight }: NavProps) => {
   return (
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
-        className={clsx(
-          "w-full transition-all duration-300",
-          {
-            "border-b border-white/50 bg-black/90 text-white backdrop-blur-md":
-              isScrolled,
-          },
-          showLight ? "text-black" : "text-white",
-        )}
+        className={clsx("w-full transition-all duration-300", {
+          "border-white/50 bg-black/90 text-white": isScrolled && !isLight,
+          "border-black/20 bg-white/90 text-black": isScrolled && isLight,
+          "border-b backdrop-blur-md": isScrolled,
+        })}
       >
         <div className="padded">
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link href="/" className="z-30">
               <img
                 src={
-                  showLight
+                  isLight
                     ? "/logos/soplugged_black.svg"
                     : "/logos/soplugged.svg"
                 }
@@ -119,7 +114,7 @@ export const DesktopNav = ({ isLight }: NavProps) => {
                       <NavigationMenuLink
                         className={clsx(
                           "flex items-center gap-2 rounded-full border px-4 py-2",
-                          showLight ? "border-black" : "border-white",
+                          isLight ? "border-black" : "border-white",
                         )}
                       >
                         Join the community

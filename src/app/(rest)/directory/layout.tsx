@@ -1,9 +1,6 @@
 import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 
-import { SearchBar } from "./search-bar";
-import { SearchResults } from "./search-results";
-
 export default function DirectoryLayout({
   children,
 }: Readonly<{

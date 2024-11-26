@@ -8,7 +8,11 @@ export const SearchResults = ({ businesses }: { businesses?: any[] }) => {
         const mainImage = business.sample_images?.split(",")[0];
 
         return (
-          <Link key={business} className="" href={`/business/${business.slug}`}>
+          <Link
+            key={business.slug}
+            className=""
+            href={`/business/${business.slug}`}
+          >
             <div className="relative aspect-video overflow-hidden lg:rounded-2xl lg:border">
               {mainImage && (
                 <Image

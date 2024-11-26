@@ -43,7 +43,7 @@ export const SearchBar = () => {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-center gap-4">
+      <div className="mt-4 hidden items-center justify-center gap-4 lg:flex">
         <p className="text-sm font-bold">Popular searches</p>
         <div className="flex flex-wrap items-center gap-2">
           {popularSearches.map((search) => (
