@@ -19,8 +19,6 @@ export const MobileNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const showLight = !isMenuOpen && isLight && !isScrolled;
-
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     setIsScrolled(scrollPosition > 200);
@@ -54,15 +52,24 @@ export const MobileNav = ({ isLight }: NavProps) => {
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border-b border-white/50 bg-black/90": isScrolled,
+          "border-white/50 bg-black/90": isScrolled && !isLight,
+          "border-black/20 bg-white/90": isScrolled && isLight,
+          "border-b": isScrolled,
+          "text-white": !isLight,
+          "text-black": isLight,
         })}
       >
         <div className="padded">
-          <div className="flex h-16 items-center justify-between sm:h-20">
+          <div
+            className={clsx(
+              "flex h-16 items-center justify-between sm:h-20",
+              isScrolled && "backdrop-blur-md",
+            )}
+          >
             <Link href="/" className="z-30">
               <img
                 src={
-                  showLight
+                  isLight
                     ? "/logos/soplugged_black.svg"
                     : "/logos/soplugged.svg"
                 }
@@ -80,7 +87,7 @@ export const MobileNav = ({ isLight }: NavProps) => {
                   className={clsx(
                     "absolute left-1/2 h-[1px] w-3/5 -translate-x-1/2 transform transition-transform",
                     isMenuOpen ? "top-[calc(50%-1px)] rotate-45" : "-top-1",
-                    showLight ? "bg-black" : "bg-white",
+                    isLight ? "bg-black" : "bg-white",
                   )}
                 ></div>
                 <div
@@ -89,7 +96,7 @@ export const MobileNav = ({ isLight }: NavProps) => {
                     isMenuOpen
                       ? "top-[calc(50%-1px)] w-3/5 -rotate-45"
                       : "top-1 w-1/2",
-                    showLight ? "bg-black" : "bg-white",
+                    isLight ? "bg-black" : "bg-white",
                   )}
                 ></div>
               </div>
@@ -114,7 +121,10 @@ export const MobileNav = ({ isLight }: NavProps) => {
                   initial="initial"
                   animate="enter"
                   exit="exit"
-                  className="fixed right-0 top-0 h-screen w-screen bg-black/80 text-white backdrop-blur-lg"
+                  className={clsx(
+                    "fixed right-0 top-0 h-screen w-screen bg-opacity-80 backdrop-blur-lg",
+                    isLight ? "bg-white text-black" : "bg-black text-white",
+                  )}
                 >
                   <div className="box-border flex h-full flex-col justify-between p-4">
                     <div className="mt-40 flex flex-col gap-3 text-4xl">
@@ -123,7 +133,9 @@ export const MobileNav = ({ isLight }: NavProps) => {
                           href={data.href}
                           key={index}
                           className={clsx(
-                            "mb-4 border-b border-white/20 pb-6 font-light text-white no-underline transition",
+                            "mb-4 border-b border-opacity-20 pb-6 font-light no-underline transition",
+
+                            isLight ? "border-black" : "border-white",
                           )}
                         >
                           {data.label}

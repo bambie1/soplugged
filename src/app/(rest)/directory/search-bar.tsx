@@ -21,11 +21,11 @@ export const SearchBar = () => {
         {/* Dropdown Button */}
         <div className="relative">
           <button
-            className="flex h-full items-center gap-2 rounded-full bg-light px-4 py-2 text-sm focus:outline-none"
+            className="flex h-full max-w-28 items-center gap-2 overflow-hidden rounded-full bg-light px-4 py-2 text-sm focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >
-            {location}
-            <ChevronDownIcon className="h-4 w-4 text-gray-600" />
+            <span className="truncate">{location}</span>
+            <ChevronDownIcon className="h-4 w-4 shrink-0 text-gray-600" />
           </button>
 
           {/* Dropdown Menu */}

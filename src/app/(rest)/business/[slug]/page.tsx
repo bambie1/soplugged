@@ -65,14 +65,17 @@ export default async function BusinessPage({
 
       <div className="pb-16 pt-28 lg:pt-36">
         <div className="padded">
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
             <Link href="/directory">
               <Home size={16} />
             </Link>
             {business_location && (
-              <Link href={`/directory/location/${business_location}`}>
-                {business_location}
-              </Link>
+              <>
+                <ChevronRight size={16} />
+                <Link href={`/directory/location/${business_location}`}>
+                  {business_location}
+                </Link>
+              </>
             )}
             <ChevronRight size={16} />
             <Link href={`/directory/category/${category}`}>{category}</Link>

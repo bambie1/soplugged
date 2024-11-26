@@ -60,9 +60,11 @@ export const DesktopNav = ({ isLight }: NavProps) => {
     <header className={clsx("fixed left-0 top-0 z-50 w-full")}>
       <div
         className={clsx("w-full transition-all duration-300", {
-          "border-white/50 bg-black/90 text-white": isScrolled && !isLight,
-          "border-black/20 bg-white/90 text-black": isScrolled && isLight,
+          "border-white/50 bg-black/90": isScrolled && !isLight,
+          "border-black/20 bg-white/90": isScrolled && isLight,
           "border-b backdrop-blur-md": isScrolled,
+          "text-white": !isLight,
+          "text-black": isLight,
         })}
       >
         <div className="padded">
