@@ -8,7 +8,7 @@ export const MissionStatement = () => {
         alt="lines"
         decoding="async"
         data-nimg="1"
-        className="absolute bottom-40 left-0 top-0 z-0 h-full min-w-[1650px] opacity-10 md:bottom-0 lg:opacity-20 xl:w-[2148px] xl:min-w-[2148px]"
+        className="absolute bottom-40 left-0 top-0 z-0 h-full min-w-[1650px] opacity-40 md:bottom-0 lg:opacity-20 xl:w-[2148px] xl:min-w-[2148px]"
         src="/waves.svg"
         loading="lazy"
       ></img>
