@@ -24,6 +24,10 @@ h3 {
   @apply scroll-m-24 text-2xl font-semibold tracking-tight xl:text-3xl;
 }
 
+* {
+  @apply scroll-m-20;
+}
+
 .no-scrollbar {
   scrollbar-width: none; /* Firefox */
 }
