@@ -1,19 +1,51 @@
+"use client";
+
 import { ArrowRight, CalendarClock } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const StickyAnnouncement = () => {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+    return () => document.documentElement.classList.remove("dark");
+  }, []);
+
   return (
     <>
-      <div className="fixed bottom-4 right-4 lg:hidden">
-        <Link
-          href="/"
-          className="relative flex aspect-square w-12 items-center justify-center rounded-full bg-light p-1 font-medium text-black"
-        >
-          <div className="absolute -bottom-1 -left-1 -right-1 -top-1 -z-10 animate-pulse rounded-full border border-white/40 bg-primary"></div>
-          <div className="flex aspect-square w-full items-center justify-center rounded-full border border-black">
-            <CalendarClock size={20} strokeWidth={1.5} />
-          </div>
-        </Link>
+      <div className="dark fixed bottom-4 right-4 lg:hidden">
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="relative flex aspect-square w-12 items-center justify-center rounded-full bg-light p-1 font-medium text-black">
+              <div className="absolute -bottom-1 -left-1 -right-1 -top-1 -z-10 animate-pulse rounded-full border border-white/40 bg-primary"></div>
+              <div className="flex aspect-square w-full items-center justify-center rounded-full border border-black">
+                <CalendarClock size={20} strokeWidth={1.5} />
+              </div>
+            </button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Join us on February 14th for PluggedIn!</DialogTitle>
+              <DialogDescription>
+                Get your tickets now for a day of learning and networking with
+                Black entrepreneurs and creators
+              </DialogDescription>
+            </DialogHeader>
+
+            <DialogFooter>
+              <button type="submit">Confirm</button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="fixed bottom-4 hidden w-full lg:block">
         <div className="padded flex items-center justify-center">
