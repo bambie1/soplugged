@@ -38,20 +38,7 @@ export const HOME_PAGE_QUERY = groq`
         owner,
         businessName
       }
-    } ,
-    featuredBusinesses {
-      title,
-      description,
-      businesses[]->{
-          name,
-          slug,
-          sample_images[]{
-            asset-> {
-              url
-            }
-          }
-        }
-    }  
+    }
   }
 `;
 

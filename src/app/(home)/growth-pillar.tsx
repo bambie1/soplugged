@@ -1,7 +1,7 @@
 import { FeaturedBusinessesGrid } from "./featured-businesses-grid";
 import { PillarHeading } from "./pillar-heading";
 
-export const GrowthPillar = ({ content }: { content: any }) => {
+export const GrowthPillar = (props: { featuredBusinesses: any }) => {
   return (
     <>
       <div className="page-section" id="grow">
@@ -12,7 +12,7 @@ export const GrowthPillar = ({ content }: { content: any }) => {
         />
 
         <div className="mt-10">
-          <FeaturedBusinessesGrid content={content} />
+          <FeaturedBusinessesGrid {...props} />
         </div>
       </div>
     </>

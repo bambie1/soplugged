@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import supabase from "@/utils/supabase/server";
 
 import { ConnectPillar } from "./connect-pillar";
 import { GrowthPillar } from "./growth-pillar";
@@ -30,6 +30,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const content = await client.fetch(HOME_PAGE_QUERY);
   const recentBlogs = await client.fetch(HOME_POSTS_QUERY);
+  const { data: featuredBusinesses } = await supabase
+    .from("businesses")
+    .select("business_name, slug, sample_images")
+    .order("confidence_rating", { ascending: false, nullsFirst: false })
+    .order("sample_images", { ascending: false, nullsFirst: false })
+    .limit(10);
 
   if (!content) {
     return null;
@@ -75,7 +81,7 @@ export default async function Home() {
         )}
 
         <ConnectPillar />
-        <GrowthPillar content={content.featuredBusinesses} />
+        <GrowthPillar featuredBusinesses={featuredBusinesses} />
 
         {recentBlogs && <RecentBlogs posts={recentBlogs} />}
 
