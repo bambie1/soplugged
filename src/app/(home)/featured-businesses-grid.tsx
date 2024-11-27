@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const FeaturedBusinessesGrid = ({ content }: { content: any }) => {
@@ -9,20 +11,21 @@ export const FeaturedBusinessesGrid = ({ content }: { content: any }) => {
       <Link
         href={`/business/${business.slug.current}`}
         className={clsx(
-          "group relative flex flex-col justify-end overflow-hidden rounded-xl p-4 opacity-20 transition-opacity duration-150 hover:opacity-50",
+          "group relative flex flex-col items-start justify-end overflow-hidden rounded-xl p-4 opacity-50 transition-opacity duration-150 hover:opacity-80 lg:opacity-50",
           {
             "aspect-[2/3]": !isWide,
             "aspect-[3/2]": isWide,
           },
         )}
       >
-        <img
+        <Image
           src={business.sample_images[0].asset.url}
           alt=""
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
+          fill
+          className="object-cover object-top"
         />
 
-        <div className="opacity-0 group-hover:opacity-100">
+        <div className="z-10 rounded-lg bg-black/60 p-2 opacity-0 group-hover:opacity-100">
           <p className="text-sm font-medium uppercase">{business.name}</p>
         </div>
       </Link>
@@ -53,7 +56,15 @@ export const FeaturedBusinessesGrid = ({ content }: { content: any }) => {
           {renderCard(businesses[9])}
         </div>
 
-        <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-black"></div>
+        <div className="absolute bottom-0 left-0 flex h-40 w-full items-end justify-center bg-gradient-to-t from-black">
+          <Link
+            href="/join"
+            className="flex items-center gap-2 rounded-full bg-white p-4 font-semibold text-black"
+          >
+            Add your business
+            <ArrowRightIcon className="h-6 w-6" strokeWidth={1.25} />
+          </Link>
+        </div>
       </div>
     </div>
   );

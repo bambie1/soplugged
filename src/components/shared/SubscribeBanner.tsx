@@ -1,5 +1,5 @@
 export const SubscribeBanner = ({
-  title = "Never miss a SoPlugged event",
+  title = "Stay Plugged-In!",
   subtitle = "Subscribe to our newsletter to stay up to date on all things SoPlugged.",
 }: {
   title?: string;
