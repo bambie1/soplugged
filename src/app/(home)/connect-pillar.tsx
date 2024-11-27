@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import ReactPlayer from "react-player";
 
 import { PillarHeading } from "./pillar-heading";

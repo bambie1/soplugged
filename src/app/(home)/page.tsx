@@ -54,8 +54,8 @@ export default async function Home() {
             alt="lines"
             decoding="async"
             data-nimg="1"
-            className="animate__animated animate__fadeIn absolute bottom-40 left-1/2 top-0 z-0 h-full w-[2148px] min-w-[2148px] -translate-x-[calc(50%-110px)] grayscale md:bottom-0 xl:object-cover"
-            src="https://restream.io/_next/static/media/about-hero-lines.1dea24a7a4e438b684e2f1fe10dc9b43.svg"
+            className="absolute bottom-40 left-1/2 top-0 z-0 h-full w-[2148px] min-w-[2148px] -translate-x-[calc(50%-110px)] opacity-10 md:bottom-0 lg:opacity-20"
+            src="/waves.svg"
           ></img>
 
           <div className="padded flex flex-col items-start bg-black">
