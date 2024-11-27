@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -62,7 +62,7 @@ export const FeaturedBusinessesGrid = ({ content }: { content: any }) => {
             className="flex items-center gap-2 rounded-full bg-white p-4 font-semibold text-black"
           >
             Add your business
-            <ArrowRightIcon className="h-6 w-6" strokeWidth={1.25} />
+            <Plus className="h-6 w-6" strokeWidth={1.25} />
           </Link>
         </div>
       </div>
