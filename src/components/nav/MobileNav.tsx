@@ -11,7 +11,10 @@ import type { NavProps } from ".";
 const NAV_LINKS = [
   { href: "/our-story", label: "Our story" },
   { href: "/events", label: "Events" },
-  { href: "/directory", label: "Directory" },
+  { href: "/blog", label: "Blog" },
+  { href: "/directory", label: "Business Directory" },
+  { href: "/podcast", label: "TBM Podcast" },
+  { href: "/join", label: "Join the community" },
   // { label: "Resources", subItems: [{ href: "/blog", label: "Blog" }] },
 ];
 
@@ -132,13 +135,13 @@ export const MobileNav = ({ isLight }: NavProps) => {
             )}
           >
             <div className="box-border flex h-full flex-col justify-between p-4">
-              <div className="mt-40 flex flex-col gap-3 text-4xl">
+              <div className="mt-40 flex flex-col gap-3">
                 {NAV_LINKS.map((data, index) => (
                   <Link
                     href={data.href}
                     key={index}
                     className={clsx(
-                      "mb-4 border-b border-opacity-20 pb-6 font-light no-underline transition",
+                      "mb-4 border-b border-opacity-20 pb-4 text-2xl tracking-tight no-underline transition",
 
                       isLight ? "border-black" : "border-white",
                     )}
