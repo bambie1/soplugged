@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarClock } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -81,9 +81,11 @@ export default async function Home() {
         </div>
         <div className="fixed bottom-4 hidden w-full lg:block">
           <div className="padded flex items-center justify-center">
-            <div className="flex items-center justify-center gap-10 rounded-full bg-light p-2 text-black shadow-md shadow-light/40">
+            <div className="flex items-center justify-center gap-10 rounded-full border border-black/10 bg-light p-2 text-black shadow-md shadow-light/40">
               <div className="flex items-center gap-4">
-                <div className="aspect-square h-12 rounded-full border border-black"></div>
+                <div className="flex aspect-square h-12 items-center justify-center rounded-full">
+                  <CalendarClock size={24} />
+                </div>
                 <p className="font-bold">
                   Join us on February 14th for PluggedIn!
                 </p>

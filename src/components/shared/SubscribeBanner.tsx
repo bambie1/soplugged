@@ -43,7 +43,7 @@ export const SubscribeBanner = ({
           <p>{subtitle}</p>
         </div>
 
-        <form onSubmit={handleEmailCapture} className="mx-auto w-full max-w-lg">
+        <form onSubmit={handleEmailCapture} className="w-full max-w-lg">
           <div className="flex flex-col items-center rounded-xl border border-gray-200 bg-white p-1 shadow-sm md:flex-row md:rounded-full lg:gap-2">
             <input
               type="email"
