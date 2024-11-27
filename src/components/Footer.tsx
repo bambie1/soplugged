@@ -1,3 +1,4 @@
+import { Instagram, Twitter, X, Youtube } from "lucide-react";
 import Link from "next/link";
 
 const communityLinks = [
@@ -5,6 +6,7 @@ const communityLinks = [
   { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
   { href: "/podcast", label: "TBM Podcast" },
+  { href: "/join", label: "Join the community" },
 ];
 
 const locationLinks = [
@@ -14,6 +16,17 @@ const locationLinks = [
   { href: "/calgary", label: "Calgary" },
   { href: "/edmonton", label: "Edmonton" },
   { href: "/ottawa", label: "Ottawa" },
+];
+
+const categoryLinks = [
+  { href: "/beauty", label: "Beauty" },
+  { href: "/fashion", label: "Fashion" },
+  { href: "/food", label: "Food" },
+  { href: "/health", label: "Health" },
+  { href: "/home", label: "Home" },
+  { href: "/kids", label: "Kids" },
+  { href: "/services", label: "Services" },
+  { href: "/tech", label: "Tech" },
 ];
 
 export const Footer = () => {
@@ -27,9 +40,9 @@ export const Footer = () => {
         />
         <p>Empowering Black entrepreneurs and creators in Canada</p>
 
-        <div className="mt-10 grid gap-10 lg:mt-20 xl:grid-cols-3">
-          <div>
-            <p className="font-bold uppercase">Community</p>
+        <div className="mt-10 flex flex-wrap gap-10 lg:mt-20 lg:gap-20">
+          <div className="min-w-40">
+            <p className="font-bold uppercase">SoPlugged</p>
 
             <ul className="mt-4 space-y-2 opacity-80">
               {communityLinks.map((link) => (
@@ -40,11 +53,11 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <p className="font-bold uppercase">Business Directory</p>
+            <p className="font-bold uppercase">Locations</p>
 
             <ul className="mt-4 space-y-2 opacity-80">
               <li>
-                <Link href="/directory">View all businesses</Link>
+                <Link href="/directory">View all locations</Link>
               </li>
               {locationLinks.map((link) => (
                 <li key={link.href}>
@@ -56,7 +69,35 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <p className="font-bold uppercase">Support</p>
+            <p className="font-bold uppercase">Categories</p>
+
+            <ul className="mt-4 space-y-2 opacity-80">
+              <li>
+                <Link href="/directory">View all categories</Link>
+              </li>
+              {categoryLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={`/directory${link.href}`}>
+                    Black-owned {link.label} businesses
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="font-bold uppercase">Follow us online</p>
+
+            <ul className="mt-4 flex flex-wrap items-center gap-4 opacity-80">
+              <Link href="https://www.instagram.com/soplugged/">
+                <Instagram size={24} />
+              </Link>
+              <Link href="https://www.instagram.com/soplugged/">
+                <Twitter size={24} />
+              </Link>
+              <Link href="https://www.instagram.com/soplugged/">
+                <Youtube size={24} />
+              </Link>
+            </ul>
           </div>
         </div>
 
