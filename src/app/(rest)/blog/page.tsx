@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { Nav } from "@/components/nav";
 import BlogCard from "@/components/shared/BlogCard";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 
 import { POSTS_QUERY } from "./queries";
@@ -21,18 +21,28 @@ export default async function BlogPage() {
 
   return (
     <>
-      <Nav />
+      <div className="relative z-10">
+        <Nav isLight />
 
-      <PageHeader
-        title="The Business Corner"
-        description="SoPlugged updates, and helpful resources to grow your business as an entrepreneur"
-      />
-      <div className="padded mb-20">
-        <div className="grid gap-10 lg:grid-cols-3">
-          {content.map((post: any) => (
-            <BlogCard post={post} key={post.title} />
-          ))}
+        <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
+
+        <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-36 text-center text-primary lg:pt-48">
+          <h1 className="mb-4">The Business Corner</h1>
+          <p className="lg:text-lg">
+            SoPlugged updates, and helpful resources to grow your business as an
+            entrepreneur
+          </p>
         </div>
+
+        <div className="padded mb-20">
+          <div className="mt-20 grid gap-10 lg:grid-cols-3">
+            {content.map((post: any) => (
+              <BlogCard post={post} key={post.title} />
+            ))}
+          </div>
+        </div>
+
+        <SubscribeBanner />
       </div>
     </>
   );
