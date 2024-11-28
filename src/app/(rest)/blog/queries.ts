@@ -12,7 +12,7 @@ export const POST_QUERY =
       ...,
       asset->
     }
-  }, mainImage, publishedAt, excerpt,author -> {
+  }, mainImage,categories[] -> {title}, publishedAt, excerpt,author -> {
     name, image  
   },
   "headings": body[style in [ "h2", "h3" ]]

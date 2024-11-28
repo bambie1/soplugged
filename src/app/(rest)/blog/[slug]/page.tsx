@@ -87,6 +87,16 @@ export default async function Page({
           </div>
           <div className="flex-shrink-0 lg:ml-auto lg:mt-20 lg:w-1/3 lg:max-w-sm">
             <div className="sticky top-32">
+              <div className="mb-10 flex">
+                {content.categories.map((category: any) => (
+                  <p
+                    key={category._id}
+                    className="rounded-full border border-primary px-2 py-1 text-sm text-primary"
+                  >
+                    {category.title}
+                  </p>
+                ))}
+              </div>
               <TableOfContents blocks={content.headings} />
 
               <div className="rounded-lg bg-light p-4">
