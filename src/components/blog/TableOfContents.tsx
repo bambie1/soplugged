@@ -25,7 +25,7 @@ export const TableOfContents = ({
 
   return (
     <div className="mb-10">
-      <p className="uppercase">Table of contents</p>
+      <p className="font-semibold">Table of contents</p>
 
       <ul className="mt-4 space-y-2 text-gray-700">
         {blocks.map((block, index) => {
