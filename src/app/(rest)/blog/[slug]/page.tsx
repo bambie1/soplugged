@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import type { PortableTextComponents } from "next-sanity";
-import { PortableText, toPlainText } from "next-sanity";
-import slugify from "slugify";
 
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { Nav } from "@/components/nav";
+import { PortableText } from "@/components/shared/PortableText";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDate } from "@/utils/getDate";
@@ -39,25 +37,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   };
 }
-
-const components: PortableTextComponents = {
-  types: {
-    image: ({ value }) => (
-      <img src={urlFor(value.asset).url()} alt={value.alt} />
-    ),
-  },
-  block: {
-    h2: ({ children, value }) => {
-      // `value` is the single Portable Text block for this header
-      const slug = slugify(toPlainText(value));
-      return <h2 id={slug}>{children}</h2>;
-    },
-    h3: ({ children, value }) => {
-      const slug = slugify(toPlainText(value));
-      return <h3 id={slug}>{children}</h3>;
-    },
-  },
-};
 
 export default async function Page({
   params,
@@ -98,7 +77,7 @@ export default async function Page({
       </div>
       <div className="padded mb-20 mt-40 flex flex-col lg:flex-row">
         <div className="prose order-2 lg:order-1">
-          <PortableText value={content.body} components={components} />
+          <PortableText value={content.body} />
         </div>
         <div className="order-1 max-w-sm flex-shrink-0 lg:order-2 lg:ml-auto lg:w-1/3">
           <div className="sticky top-24">

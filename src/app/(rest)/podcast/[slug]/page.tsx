@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import type { PortableTextComponents } from "next-sanity";
-import { PortableText, toPlainText } from "next-sanity";
-import slugify from "slugify";
 
 import { Nav } from "@/components/nav";
+import { PortableText } from "@/components/shared/PortableText";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -39,20 +37,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const components: PortableTextComponents = {
-  block: {
-    h2: ({ children, value }) => {
-      // `value` is the single Portable Text block for this header
-      const slug = slugify(toPlainText(value));
-      return <h2 id={slug}>{children}</h2>;
-    },
-    h3: ({ children, value }) => {
-      const slug = slugify(toPlainText(value));
-      return <h3 id={slug}>{children}</h3>;
-    },
-  },
-};
-
 export default async function Page({
   params,
 }: {
@@ -76,7 +60,7 @@ export default async function Page({
         <div className="prose prose-invert mb-20">
           <div>Youtube</div>
           <hr />
-          <PortableText value={content.body} components={components} />
+          <PortableText value={content.body} />
         </div>
       </div>
     </div>
