@@ -57,9 +57,9 @@ export default async function Page({
     <>
       <Nav isLight />
       <div className="padded mt-40">
-        <div className="max-w-5xl">
+        <div className="">
           <p className="">{getDate(content.publishedAt)}</p>
-          <h1 className="mb-6 mt-4 text-primary">{content.title}</h1>
+          <h1 className="mb-6 mt-4 max-w-3xl text-primary">{content.title}</h1>
           <div className="flex items-center gap-2">
             <Image
               width={40}
@@ -70,18 +70,22 @@ export default async function Page({
             />
             <p>{content.author.name}</p>
           </div>
-
-          <div className="relative mt-10 aspect-video overflow-hidden rounded-lg">
-            <Image
-              src={urlFor(content.mainImage).url()}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
         </div>
-        <div className="mb-20 mt-20 flex max-w-5xl flex-col gap-10 lg:flex-row lg:gap-16">
-          <div className="max-w-sm flex-shrink-0 lg:ml-auto lg:w-1/3">
+        <div className="mb-20 mt-10 flex flex-col gap-10 lg:flex-row lg:gap-16">
+          <div>
+            <div className="relative aspect-video overflow-hidden rounded-lg">
+              <Image
+                src={urlFor(content.mainImage).url()}
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="prose mt-20">
+              <PortableText value={content.body} />
+            </div>
+          </div>
+          <div className="flex-shrink-0 lg:ml-auto lg:mt-20 lg:w-1/3 lg:max-w-sm">
             <div className="sticky top-32">
               <TableOfContents blocks={content.headings} />
 
@@ -95,11 +99,6 @@ export default async function Page({
 
                 <NewsletterForm size="small" />
               </div>
-            </div>
-          </div>
-          <div>
-            <div className="prose order-2 lg:order-1">
-              <PortableText value={content.body} />
             </div>
           </div>
         </div>
