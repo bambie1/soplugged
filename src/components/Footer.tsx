@@ -107,8 +107,11 @@ export const Footer = () => {
 
           <div className="flex items-center gap-4">
             {[
-              { href: "/privacy", label: "Privacy" },
-              { href: "/terms", label: "Terms & Conditions" },
+              { href: "/policies/privacy", label: "Privacy" },
+              {
+                href: "/policies/terms-and-conditions",
+                label: "Terms & Conditions",
+              },
               { href: "/sitemap", label: "Sitemap" },
             ].map((link) => (
               <Link key={link.href} href={link.href}>

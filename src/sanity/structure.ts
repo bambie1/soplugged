@@ -2,6 +2,7 @@ import {
   CalendarIcon,
   CogIcon,
   DocumentIcon,
+  DocumentTextIcon,
   DocumentVideoIcon,
   EditIcon,
   PinIcon,
@@ -15,39 +16,6 @@ export const structure: StructureResolver = (S) =>
     .id("root")
     .title("Website Content")
     .items([
-      S.listItem()
-        .title("Pages")
-        .child(
-          S.list()
-            .title("Pages")
-            .items([
-              S.listItem()
-                .title("Home")
-                .child(S.document().schemaType("home").documentId("home")),
-              S.listItem()
-                .title("Our Story")
-                .child(
-                  S.document().schemaType("our-story").documentId("our-story"),
-                ),
-              S.listItem()
-                .title("TBM Podcast")
-                .child(
-                  S.document().schemaType("podcast").documentId("podcast"),
-                ),
-              S.listItem()
-                .title("Blogs Home page")
-                .child(
-                  S.document().schemaType("blogsPage").documentId("blogsPage"),
-                ),
-              S.listItem()
-                .title("Events Home page")
-                .child(
-                  S.document()
-                    .schemaType("eventsPage")
-                    .documentId("eventsPage"),
-                ),
-            ]),
-        ),
       S.listItem()
         .title("Business Directory")
         .icon(TiersIcon)
@@ -78,6 +46,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("episode")
         .title("TBM Podcast episodes")
         .icon(DocumentVideoIcon),
+      S.documentTypeListItem("policy").title("Policies").icon(DocumentTextIcon),
       S.divider(),
       S.documentTypeListItem("author").title("Members").icon(UserIcon),
       S.listItem()
