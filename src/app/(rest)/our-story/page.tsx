@@ -39,9 +39,7 @@ export default async function OurStoryPage() {
       <div className="absolute left-0 top-0 z-0 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
       <div className="flex flex-col items-center overflow-hidden pb-20 pt-40 text-center text-primary lg:pt-48">
-        <h1 className="z-10 mb-4 text-5xl font-semibold xl:text-7xl">
-          {content.title}
-        </h1>
+        <h1 className="large z-10 mb-4 font-semibold">{content.title}</h1>
         <p className="z-10 lg:text-lg">{content.description}</p>
 
         <div className="z-10 -ml-2 mt-16 grid aspect-[3/1] w-[115%] max-w-5xl grid-cols-3 gap-2 lg:w-full lg:gap-4">

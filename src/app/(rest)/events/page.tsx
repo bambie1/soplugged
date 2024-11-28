@@ -37,7 +37,7 @@ export default async function EventsPage() {
       <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
       <div className="mx-auto flex max-w-3xl flex-col items-center pb-20 pt-40 text-center text-primary lg:pt-48">
-        <h1 className="mb-4">{content.title}</h1>
+        <h1 className="large mb-4">{content.title}</h1>
         <p className="lg:text-lg">{content.description}</p>
       </div>
 

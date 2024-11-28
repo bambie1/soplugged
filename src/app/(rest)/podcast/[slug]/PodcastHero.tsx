@@ -38,7 +38,7 @@ export const PodcastHero = ({ content }: { content: any }) => {
             </Link>
             <p>{content.businessName}</p>
           </div>
-          <h1 className="mb-10 max-w-3xl lg:mb-16">{content.title}</h1>
+          <h1 className="large mb-10 max-w-3xl lg:mb-16">{content.title}</h1>
         </div>
       </div>
     </div>

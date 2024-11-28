@@ -27,7 +27,7 @@ export default async function BlogPage() {
         <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
         <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-36 text-center text-primary lg:pt-48">
-          <h1 className="mb-4">The Business Corner</h1>
+          <h1 className="large mb-4">The Business Corner</h1>
           <p className="lg:text-lg">
             SoPlugged updates, and helpful resources to grow your business as an
             entrepreneur

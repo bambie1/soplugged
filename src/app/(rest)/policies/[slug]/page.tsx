@@ -54,7 +54,7 @@ export default async function Page({
         <div className="absolute left-0 top-0 -z-10 h-80 w-full bg-gradient-to-b from-[#F2EDE3] to-white"></div>
 
         <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-36 text-center text-primary lg:pt-48">
-          <h1 className="mb-8">{content.title}</h1>
+          <h1 className="large mb-8">{content.title}</h1>
           <p>
             {content.lastUpdated && (
               <span>Last updated: {getDate(content.lastUpdated)}</span>

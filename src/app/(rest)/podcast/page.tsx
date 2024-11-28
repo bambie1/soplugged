@@ -23,7 +23,7 @@ export default async function PodcastPage() {
       <div className="bg-tbm-gradient py-40 pb-28 text-center text-white lg:py-48">
         <div className="padded">
           <div className="mx-auto max-w-xl">
-            <h1 className="mb-4">{title}</h1>
+            <h1 className="large mb-4">{title}</h1>
             <p>{description}</p>
 
             <div className="mt-10">

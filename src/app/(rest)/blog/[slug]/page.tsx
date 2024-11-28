@@ -59,9 +59,7 @@ export default async function Page({
       <div className="padded mt-40">
         <div className="">
           <p className="">{getDate(content.publishedAt)}</p>
-          <h1 className="mb-6 mt-4 max-w-3xl text-primary xl:text-5xl">
-            {content.title}
-          </h1>
+          <h1 className="mb-6 mt-4 max-w-3xl text-primary">{content.title}</h1>
           <div className="flex items-center gap-2">
             <Image
               width={40}
