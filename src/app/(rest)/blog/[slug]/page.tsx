@@ -59,7 +59,9 @@ export default async function Page({
       <div className="padded mt-40">
         <div className="">
           <p className="">{getDate(content.publishedAt)}</p>
-          <h1 className="mb-6 mt-4 max-w-3xl text-primary">{content.title}</h1>
+          <h1 className="mb-6 mt-4 max-w-3xl text-primary xl:text-5xl">
+            {content.title}
+          </h1>
           <div className="flex items-center gap-2">
             <Image
               width={40}
@@ -87,7 +89,7 @@ export default async function Page({
           </div>
           <div className="flex-shrink-0 lg:ml-auto lg:mt-20 lg:w-1/3 lg:max-w-sm">
             <div className="sticky top-32">
-              <div className="mb-10 flex">
+              <div className="mb-10 flex flex-wrap gap-2">
                 {content.categories.map((category: any) => (
                   <p
                     key={category._id}
