@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
 
@@ -41,7 +40,6 @@ const navLinks = [
 
 export const DesktopNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;

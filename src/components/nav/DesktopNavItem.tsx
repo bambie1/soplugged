@@ -1,6 +1,8 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 import {
@@ -20,11 +22,20 @@ export const DesktopNavItem = ({
     children?: { title: string; href: string; description: string }[];
   };
 }) => {
+  const pathname = usePathname();
+
+  const isActive = pathname.startsWith(item.href);
+
   if (!item.children) {
     return (
       <NavigationMenuItem>
         <Link href={item.href} legacyBehavior passHref>
-          <NavigationMenuLink className="rounded-full p-2">
+          <NavigationMenuLink
+            className={clsx("relative rounded-full p-2", {
+              "font-medium after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-1/2 after:-translate-x-1/2 after:bg-black after:content-['']":
+                isActive,
+            })}
+          >
             {item.title}
           </NavigationMenuLink>
         </Link>
