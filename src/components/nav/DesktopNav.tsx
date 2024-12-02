@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -8,15 +9,13 @@ import React from "react";
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 
 import type { NavProps } from ".";
+import { DesktopNavItem } from "./DesktopNavItem";
 
 const resources: { title: string; href: string; description: string }[] = [
   {
@@ -74,7 +73,9 @@ export const DesktopNav = ({ isLight }: NavProps) => {
         <div className="padded">
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link href="/" className="z-30">
-              <img
+              <Image
+                height={150}
+                width={150}
                 src={
                   isLight
                     ? "/logos/soplugged_black.svg"
@@ -82,42 +83,14 @@ export const DesktopNav = ({ isLight }: NavProps) => {
                 }
                 alt="SoPlugged logo"
                 className="h-8 lg:h-10"
+                priority
               />
             </Link>
-            <nav className="">
+            <nav>
               <NavigationMenu>
                 <NavigationMenuList>
-                  {navLinks.map((link) => (
-                    <NavigationMenuItem key={link.title}>
-                      {link.children ? (
-                        <>
-                          <NavigationMenuTrigger>
-                            Resources
-                          </NavigationMenuTrigger>
-                          <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4">
-                              {link.children.map((component) => (
-                                <ListItem
-                                  key={component.title}
-                                  title={component.title}
-                                  href={component.href}
-                                >
-                                  {component.description}
-                                </ListItem>
-                              ))}
-                            </ul>
-                          </NavigationMenuContent>
-                        </>
-                      ) : (
-                        <NavigationMenuItem>
-                          <Link href={link.href} legacyBehavior passHref>
-                            <NavigationMenuLink className="rounded-full p-2">
-                              {link.title}
-                            </NavigationMenuLink>
-                          </Link>
-                        </NavigationMenuItem>
-                      )}
-                    </NavigationMenuItem>
+                  {navLinks.map((item) => (
+                    <DesktopNavItem key={item.title} item={item} />
                   ))}
 
                   <NavigationMenuItem>
@@ -141,31 +114,3 @@ export const DesktopNav = ({ isLight }: NavProps) => {
     </header>
   );
 };
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex select-none gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-black/5",
-            className,
-          )}
-          {...props}
-        >
-          <div className="h-10 w-10 shrink-0 rounded-full border"></div>
-          <div>
-            <div className="mb-2 font-semibold">{title}</div>
-            <p className="line-clamp-2 text-sm opacity-80">{children}</p>
-          </div>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-
-ListItem.displayName = "ListItem";
