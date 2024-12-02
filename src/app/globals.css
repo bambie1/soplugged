@@ -21,7 +21,7 @@ h1.large {
 }
 
 h2 {
-  @apply scroll-m-24 text-3xl font-bold tracking-tight xl:text-4xl;
+  @apply scroll-m-24 text-3xl font-bold tracking-tight;
 }
 
 h3 {
