@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
 
@@ -30,15 +31,18 @@ const resources: { title: string; href: string; description: string }[] = [
     description:
       "Listen to our podcast for interviews with Black entrepreneurs and business owners",
   },
-  {
-    title: "Events",
-    href: "/events",
-    description: "Join our events and workshops to grow your business",
-  },
+];
+
+const navLinks = [
+  { title: "About Us", href: "/our-story" },
+  { title: "Events", href: "/events" },
+  { title: "Business Directory", href: "/directory" },
+  { title: "Resources", href: "", children: resources },
 ];
 
 export const DesktopNav = ({ isLight }: NavProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
@@ -83,34 +87,39 @@ export const DesktopNav = ({ isLight }: NavProps) => {
             <nav className="">
               <NavigationMenu>
                 <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <Link href="/our-story" legacyBehavior passHref>
-                      <NavigationMenuLink>Our story</NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/directory" legacyBehavior passHref>
-                      <NavigationMenuLink>
-                        Business Directory
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>{" "}
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4">
-                        {resources.map((component) => (
-                          <ListItem
-                            key={component.title}
-                            title={component.title}
-                            href={component.href}
-                          >
-                            {component.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                  {navLinks.map((link) => (
+                    <NavigationMenuItem key={link.title}>
+                      {link.children ? (
+                        <>
+                          <NavigationMenuTrigger>
+                            Resources
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            <ul className="grid w-[400px] gap-3 p-4">
+                              {link.children.map((component) => (
+                                <ListItem
+                                  key={component.title}
+                                  title={component.title}
+                                  href={component.href}
+                                >
+                                  {component.description}
+                                </ListItem>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuItem>
+                          <Link href={link.href} legacyBehavior passHref>
+                            <NavigationMenuLink className="rounded-full p-2">
+                              {link.title}
+                            </NavigationMenuLink>
+                          </Link>
+                        </NavigationMenuItem>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+
                   <NavigationMenuItem>
                     <Link href="/join" legacyBehavior passHref>
                       <NavigationMenuLink
