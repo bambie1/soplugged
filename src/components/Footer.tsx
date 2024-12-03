@@ -31,7 +31,7 @@ const categoryLinks = [
 
 export const Footer = () => {
   return (
-    <div className="mt-auto bg-black text-white">
+    <div className="mt-auto border-t-[.5px] bg-black text-white">
       <div className="padded py-10 lg:pt-20">
         <img
           src="/logos/soplugged.svg"

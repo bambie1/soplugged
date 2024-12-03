@@ -51,7 +51,7 @@ export default async function Page({
   }
 
   return (
-    <div className="bg-black">
+    <div className="flex-1 bg-black">
       <Nav />
 
       <PodcastHero content={content} />
