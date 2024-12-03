@@ -7,6 +7,8 @@ import { urlFor } from "@/sanity/lib/image";
 
 import { EPISODE_QUERY, EPISODES_QUERY } from "../queries";
 import { PodcastHero } from "./PodcastHero";
+import { NewsletterForm } from "@/components/forms/NewsletterForm";
+import { TableOfContents } from "@/components/blog/TableOfContents";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(EPISODES_QUERY);
@@ -56,11 +58,30 @@ export default async function Page({
 
       <PodcastHero content={content} />
 
-      <div className="padded">
-        <div className="prose prose-invert mb-20">
-          <div>Youtube</div>
-          <hr />
-          <PortableText value={content.body} />
+      <div className="padded text-white">
+        <div>Youtube</div>
+        <hr className="my-10 max-w-3xl opacity-40" />
+        <div className="mb-20 mt-10 flex flex-col gap-10 lg:flex-row lg:gap-16">
+          <div className="prose prose-invert mb-20">
+            <PortableText value={content.body} />
+          </div>
+
+          <div className="flex-shrink-0 lg:ml-auto lg:mt-20 lg:w-1/3 lg:max-w-sm">
+            <div className="sticky top-32">
+              <TableOfContents blocks={content.headings} isDark />
+
+              <div className="rounded-lg bg-light p-4 text-black">
+                <p className="mb-2 text-lg font-semibold leading-tight tracking-tight lg:text-xl">
+                  Join our newsletter for the latest business tips
+                </p>
+                <p className="mb-8 text-sm opacity-80">
+                  Get monthly updates in your inbox. Unsubscribe at any time
+                </p>
+
+                <NewsletterForm size="small" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
