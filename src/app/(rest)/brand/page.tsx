@@ -1,6 +1,7 @@
+import { Download } from "lucide-react";
+
 import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
-import { Download } from "lucide-react";
 
 export default async function BrandPage() {
   return (
