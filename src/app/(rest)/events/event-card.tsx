@@ -45,7 +45,7 @@ export const EventCard = ({
 
         <a
           href="/"
-          className="mt-4 inline-flex rounded-full bg-black px-4 py-2 text-white"
+          className="mt-4 inline-flex font-medium text-primary underline underline-offset-4"
         >
           Register now
         </a>
