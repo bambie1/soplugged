@@ -42,7 +42,7 @@ export const Footer = () => {
 
         <div className="mt-10 flex flex-wrap gap-10 lg:mt-20 lg:gap-20">
           <div className="min-w-40">
-            <p className="font-bold uppercase">SoPlugged</p>
+            <p className="font-bold uppercase">About</p>
 
             <ul className="mt-4 space-y-2 opacity-80">
               {communityLinks.map((link) => (
