@@ -13,11 +13,11 @@ const components: PortableTextComponents = {
   block: {
     h2: ({ children, value }) => {
       // `value` is the single Portable Text block for this header
-      const slug = slugify(toPlainText(value));
+      const slug = slugify(toPlainText(value), { lower: true });
       return <h2 id={slug}>{children}</h2>;
     },
     h3: ({ children, value }) => {
-      const slug = slugify(toPlainText(value));
+      const slug = slugify(toPlainText(value), { lower: true });
       return <h3 id={slug}>{children}</h3>;
     },
   },

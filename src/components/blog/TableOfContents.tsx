@@ -11,7 +11,7 @@ export const TableOfContents = ({
       block.children.map((child: any) => child.text || "").join(" ") ||
       "Untitled";
 
-    const slug = slugify(text);
+    const slug = slugify(text, { lower: true });
 
     return {
       text,

@@ -56,7 +56,7 @@ export default async function Page({
   return (
     <>
       <Nav isLight />
-      <div className="padded mt-40">
+      <div className="padded mt-28 md:mt-40">
         <div className="">
           <p className="">{getDate(content.publishedAt)}</p>
           <h1 className="mb-6 mt-4 max-w-3xl text-primary">{content.title}</h1>
@@ -81,7 +81,7 @@ export default async function Page({
                 className="object-cover"
               />
             </div>
-            <div className="prose mt-20">
+            <div className="prose mt-10 md:mt-20">
               <PortableText value={content.body} />
             </div>
           </div>
