@@ -1,4 +1,4 @@
-import { Instagram, Twitter, X, Youtube } from "lucide-react";
+import { Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 
 const communityLinks = [
@@ -6,6 +6,7 @@ const communityLinks = [
   { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
   { href: "/podcast", label: "TBM Podcast" },
+  { href: "/brand", label: "Brand kit" },
   { href: "/join", label: "Join the community" },
 ];
 

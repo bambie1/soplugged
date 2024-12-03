@@ -26,11 +26,14 @@ export const SearchResults = ({ businesses }: { businesses?: any[] }) => {
               <div className="absolute right-4 top-4 h-10 w-10 rounded-full"></div>
             </div>
 
-            <div className="mt-2 -space-y-1 px-4 lg:px-0">
-              <p className="text-lg font-semibold text-primary">
-                {business.business_name}
-              </p>
-              <p className="text-gray-600">{business.category}</p>
+            <div className="flex items-center justify-between gap-4">
+              <div className="mt-2 -space-y-1 px-4 lg:px-0">
+                <p className="text-lg font-semibold text-primary">
+                  {business.business_name}
+                </p>
+                <p className="text-gray-600">{business.category}</p>
+              </div>
+              <p className="text-sm">{business.business_location}</p>
             </div>
           </Link>
         );
