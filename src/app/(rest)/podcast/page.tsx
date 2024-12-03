@@ -15,8 +15,6 @@ export default async function PodcastPage() {
   const latestEpisode = episodes[0];
   episodes.shift();
 
-  console.log(links);
-
   return (
     <div className="bg-black text-white">
       <Nav />
