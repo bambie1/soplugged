@@ -44,7 +44,7 @@ export const EventCard = ({
         </Link>
 
         <a
-          href="/"
+          href="https://lu.ma"
           className="mt-4 inline-flex font-medium text-primary underline underline-offset-4"
         >
           Register now

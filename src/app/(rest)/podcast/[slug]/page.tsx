@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { Nav } from "@/components/nav";
 import { PortableText } from "@/components/shared/PortableText";
 import { client } from "@/sanity/lib/client";
@@ -7,8 +9,6 @@ import { urlFor } from "@/sanity/lib/image";
 
 import { EPISODE_QUERY, EPISODES_QUERY } from "../queries";
 import { PodcastHero } from "./PodcastHero";
-import { NewsletterForm } from "@/components/forms/NewsletterForm";
-import { TableOfContents } from "@/components/blog/TableOfContents";
 
 export async function generateStaticParams() {
   const posts = await client.fetch(EPISODES_QUERY);

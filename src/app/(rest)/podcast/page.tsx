@@ -18,7 +18,7 @@ export default async function PodcastPage() {
   console.log(links);
 
   return (
-    <>
+    <div className="bg-black text-white">
       <Nav />
       <div className="bg-tbm-gradient py-40 pb-28 text-center text-white lg:py-48">
         <div className="padded">
@@ -51,13 +51,13 @@ export default async function PodcastPage() {
           </div>
         </div>
       </div>
-      <div className="mx-4 -mt-20 aspect-video max-w-3xl overflow-hidden rounded-xl border bg-white lg:mx-auto lg:-mt-36">
+      <div className="mx-4 -mt-20 aspect-video max-w-3xl overflow-hidden rounded-xl bg-white lg:mx-auto lg:-mt-36">
         <Link href={`/podcast/${latestEpisode.slug.current}`}>
           <img src={urlFor(latestEpisode.coverImage).url()} alt="" />
         </Link>
       </div>
 
-      <hr className="mx-auto my-10 w-full max-w-xl lg:mb-20" />
+      <hr className="mx-auto my-10 w-full max-w-xl opacity-40 lg:mb-20" />
 
       <div className="padded grid max-w-5xl gap-x-8 gap-y-8 md:grid-cols-2 lg:gap-y-16">
         {episodes.map((episode: any) => (
@@ -82,7 +82,7 @@ export default async function PodcastPage() {
                 <h2 className="text-lg font-semibold lg:w-[90%] lg:text-xl">
                   {episode.title}
                 </h2>
-                <p className="mt-1 text-sm uppercase text-gray-600">
+                <p className="mt-1 text-sm uppercase text-gray-300">
                   {episode.businessName}
                 </p>
               </div>
@@ -95,6 +95,6 @@ export default async function PodcastPage() {
         title="Never miss another episode"
         subtitle="On this podcast, we amplify the stories of Black entrepreneurs in Canada as we explore their journey to building a successful business."
       />
-    </>
+    </div>
   );
 }

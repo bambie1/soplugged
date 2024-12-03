@@ -4,8 +4,8 @@ import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
 
-import { EVENTS_QUERY } from "./queries";
 import { EventCard } from "./event-card";
+import { EVENTS_QUERY } from "./queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
