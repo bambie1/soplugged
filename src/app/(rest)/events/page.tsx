@@ -1,13 +1,11 @@
-import { CalendarDaysIcon, PinIcon } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { Nav } from "@/components/nav";
 import { SubscribeBanner } from "@/components/shared/SubscribeBanner";
 import { client } from "@/sanity/lib/client";
-import { getDate } from "@/utils/getDate";
 
 import { EVENTS_QUERY } from "./queries";
+import { EventCard } from "./event-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -36,30 +34,17 @@ export default async function EventsPage() {
       </div>
 
       <div className="padded mb-20 lg:mt-10">
-        <div className="mx-auto grid max-w-2xl gap-10">
+        <div className="mx-auto grid max-w-4xl gap-10">
           {events.map((event: any) => (
-            <Link href={`/events/${event.slug.current}`} key={event.name}>
-              <div className="mb-4 flex items-center gap-8">
-                <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-2 font-medium">
-                  <CalendarDaysIcon size={16} />
-                  {getDate(event.date)}
-                </div>
-                <div className="flex items-center gap-1">
-                  <PinIcon size={16} />
-                  <p>Toronto, ON</p>
-                </div>
-              </div>
-              <img
-                src="/events_filler.jpeg"
-                alt=""
-                className="mb-4 aspect-video rounded-lg"
-              />
-              <h3 className="mb-4">{event.name}</h3>
-              <p>
-                Come enjoy a time of networking with other Black entrepreneurs
-                and creators.
-              </p>
-            </Link>
+            <EventCard
+              key={event._id}
+              event={{
+                name: event.name,
+                date: event.date,
+                href: `/events/${event.slug.current}`,
+                location: "Toronto, ON",
+              }}
+            />
           ))}
         </div>
       </div>
