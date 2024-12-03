@@ -21,7 +21,7 @@ export const EPISODE_QUERY =
       ...,
       asset->
     }
-  }, coverImage, publishedAt,businessName,  
+  }, coverImage, publishedAt,businessName, links, 
   "headings": body[style in [ "h2", "h3" ]]
 
 }`);

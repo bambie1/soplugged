@@ -59,7 +59,13 @@ export default async function Page({
       <PodcastHero content={content} />
 
       <div className="padded text-white">
-        <div>Youtube</div>
+        <a href={content.links.youtube} target="_blank">
+          <img
+            src="/icons/watch_on_yt_black.svg"
+            alt=""
+            className="rounded-full border border-white border-opacity-30 hover:border-opacity-100"
+          />
+        </a>
         <hr className="my-10 max-w-3xl opacity-40" />
         <div className="mb-20 mt-10 flex flex-col gap-10 lg:flex-row lg:gap-16">
           <div className="prose prose-invert mb-20">
@@ -69,6 +75,17 @@ export default async function Page({
           <div className="flex-shrink-0 lg:ml-auto lg:mt-20 lg:w-1/3 lg:max-w-sm">
             <div className="sticky top-32">
               <TableOfContents blocks={content.headings} isDark />
+              <a
+                href={content.links.youtube}
+                target="_blank"
+                className="mb-8 flex"
+              >
+                <img
+                  src="/icons/watch_on_yt_black.svg"
+                  alt=""
+                  className="rounded-full border border-white border-opacity-30 hover:border-opacity-100"
+                />
+              </a>
 
               <div className="rounded-lg bg-light p-4 text-black">
                 <p className="mb-2 text-lg font-semibold leading-tight tracking-tight lg:text-xl">
